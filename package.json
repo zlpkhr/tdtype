@@ -1,6 +1,7 @@
 {
 	"name": "tdtype",
 	"version": "1.8.50",
+	"types": "types/index.d.ts",
 	"exports": {
 		".": {
 			"types": "./types/index.d.ts"
@@ -9,7 +10,6 @@
 	"files": [
 		"types"
 	],
-	"types": "types/index.d.ts",
 	"devDependencies": {
 		"@biomejs/biome": "2.0.6",
 		"typescript": "^5.8.3"
