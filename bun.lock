@@ -1,0 +1,16 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "dependencies": {
+        "@types/tdweb": "^1.4.6",
+        "typescript": "^5.8.3",
+      },
+    },
+  },
+  "packages": {
+    "@types/tdweb": ["@types/tdweb@1.4.6", "", {}, "sha512-2SuH5m2RfqJ0U2S2E5AnKQ6NTbd/BI4aX4fcGLNRLX7ceIWfwf2kJ1trrw0alX0Q5Jd6X1cgtDqRKFZ7hW63Mw=="],
+
+    "typescript": ["typescript@5.8.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ=="],
+  }
+}
