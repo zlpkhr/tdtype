@@ -1,4 +1,4 @@
-import type { TdError, TdObject } from "tdweb";
+import type { TdObject, TdError } from "tdweb";
 
 /** TDLib concrete & update objects */
 

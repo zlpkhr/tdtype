@@ -1,27 +1,16 @@
 """Generate TypeScript declaration files for TDLib.
 
-This utility reads the already-generated ``td_api.json`` description and writes
-two **self-contained** declaration files under ``types/``:
+Reads the generated ``td_api.json`` and writes two self-contained files to ``types/``:
 
-• ``object.ts``   – all concrete object definitions (including updates) and
-  small abstract unions.
-• ``function.ts`` – function signatures in the form ``(args) => ReturnType``.
+- ``object.d.ts``   - all object types (including updates)
+- ``function.d.ts`` - function signatures as ``(args) => ReturnType``
 
-The output is tailored for fast TypeScript compilation: no gigantic global
-unions are produced and the special TDLib error object maps directly to the
-``TdError`` type from ``tdweb``.
+Run from project root:
 
-Run the script from the project root:
-
-    python generate_schema.py
-
-Only the Python standard library is used.
+    uv run generate_schema.py
 """
 
-from __future__ import annotations
-
 import json
-import shutil
 from pathlib import Path
 from typing import List
 
@@ -128,9 +117,6 @@ def main() -> None:  # noqa: C901
     # ------------------------------------------------------------------
 
     types_dir = Path("types")
-    # Remove stale generated files to avoid leftovers from previous runs
-    if types_dir.exists():
-        shutil.rmtree(types_dir)
     types_dir.mkdir(exist_ok=True)
 
     # ------------------------------------------------------------------
@@ -178,7 +164,7 @@ def main() -> None:  # noqa: C901
         variants = [to_camel_case(v, is_class=True) for v in cls_info["types"]]
         obj_lines.append(f"export type {parent_ts} = {' | '.join(variants)};\n")
 
-    (types_dir / "object.ts").write_text("\n".join(obj_lines))
+    (types_dir / "object.d.ts").write_text("\n".join(obj_lines))
 
     # ------------------------------------------------------------------
     # function.ts  – function signatures  (params) => return
@@ -219,11 +205,9 @@ def main() -> None:  # noqa: C901
             f"export type {ts_name} = (args: {params_obj}) => {return_ts};\n"
         )
 
-    (types_dir / "function.ts").write_text("\n".join(fn_lines))
+    (types_dir / "function.d.ts").write_text("\n".join(fn_lines))
 
-    print(
-        f"TypeScript declaration files written to {types_dir}/object.ts and function.ts"
-    )
+    print(f"Declaration files written to {types_dir}/object.d.ts and function.d.ts")
 
 
 if __name__ == "__main__":

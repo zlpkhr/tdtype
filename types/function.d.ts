@@ -1,5 +1,6 @@
-import type { TdError } from "tdweb";
 import type * as Obj from "./object";
+
+import type { TdError } from "tdweb";
 
 /** TDLib callable functions */
 
