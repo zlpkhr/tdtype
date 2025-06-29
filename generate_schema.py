@@ -124,9 +124,7 @@ def main():
     # object.ts  – concrete TDLib objects *and* update objects
     # ------------------------------------------------------------------
 
-    obj_lines: List[str] = [
-        "/** TDLib concrete & update objects */\n",
-    ]
+    obj_lines: List[str] = []
 
     def append_object(name: str, data: dict) -> None:
         ts_name = to_camel_case(name, is_class=True)
@@ -170,7 +168,6 @@ def main():
 
     fn_lines: List[str] = [
         "import type * as Obj from './object';\n",
-        "/** TDLib callable functions */\n",
     ]
 
     for name, data in td_json["functions"].items():

@@ -1,5 +1,3 @@
-/** TDLib concrete & update objects */
-
 /**
  * An object of this type can be returned on every function call, in case of an error
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1error.html

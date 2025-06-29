@@ -1,7 +1,5 @@
 import type * as Obj from "./object";
 
-/** TDLib callable functions */
-
 /**
  * Returns the current authorization state. This is an offline method. For informational purposes only. Use updateAuthorizationState instead to maintain the current authorization state. Can be called before initialization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_authorization_state.html
