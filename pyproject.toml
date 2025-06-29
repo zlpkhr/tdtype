@@ -1,0 +1,13 @@
+[project]
+name = "tdtype"
+version = "1.8.50"
+requires-python = ">=3.13"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.1",
+]
+
+[tool.ruff.lint]
+extend-select = ["I", "F401"]

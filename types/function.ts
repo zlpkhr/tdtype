@@ -1,6 +1,5 @@
-import type * as Obj from './object';
-
-import type { TdError } from 'tdweb';
+import type { TdError } from "tdweb";
+import type * as Obj from "./object";
 
 /** TDLib callable functions */
 
@@ -9,7 +8,7 @@ import type { TdError } from 'tdweb';
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_authorization_state.html
  */
 export type GetAuthorizationState = (args: {
-    '@type': 'getAuthorizationState';
+	"@type": "getAuthorizationState";
 }) => Obj.AuthorizationState;
 
 /**
@@ -17,35 +16,35 @@ export type GetAuthorizationState = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_tdlib_parameters.html
  */
 export type SetTdlibParameters = (args: {
-    '@type': 'setTdlibParameters';
-    /** Pass true to use Telegram test environment instead of the production environment */
-    use_test_dc: boolean;
-    /** The path to the directory for the persistent database; if empty, the current working directory will be used */
-    database_directory: string;
-    /** The path to the directory for storing files; if empty, database_directory will be used */
-    files_directory: string;
-    /** Encryption key for the database. If the encryption key is invalid, then an error with code 401 will be returned */
-    database_encryption_key: string;
-    /** Pass true to keep information about downloaded and uploaded files between application restarts */
-    use_file_database: boolean;
-    /** Pass true to keep cache of users, basic groups, supergroups, channels and secret chats between restarts. Implies use_file_database */
-    use_chat_info_database: boolean;
-    /** Pass true to keep cache of chats and messages between restarts. Implies use_chat_info_database */
-    use_message_database: boolean;
-    /** Pass true to enable support for secret chats */
-    use_secret_chats: boolean;
-    /** Application identifier for Telegram API access, which can be obtained at https://my.telegram.org */
-    api_id: number;
-    /** Application identifier hash for Telegram API access, which can be obtained at https://my.telegram.org */
-    api_hash: string;
-    /** IETF language tag of the user's operating system language; must be non-empty */
-    system_language_code: string;
-    /** Model of the device the application is being run on; must be non-empty */
-    device_model: string;
-    /** Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib */
-    system_version: string;
-    /** Application version; must be non-empty */
-    application_version: string;
+	"@type": "setTdlibParameters";
+	/** Pass true to use Telegram test environment instead of the production environment */
+	use_test_dc: boolean;
+	/** The path to the directory for the persistent database; if empty, the current working directory will be used */
+	database_directory: string;
+	/** The path to the directory for storing files; if empty, database_directory will be used */
+	files_directory: string;
+	/** Encryption key for the database. If the encryption key is invalid, then an error with code 401 will be returned */
+	database_encryption_key: string;
+	/** Pass true to keep information about downloaded and uploaded files between application restarts */
+	use_file_database: boolean;
+	/** Pass true to keep cache of users, basic groups, supergroups, channels and secret chats between restarts. Implies use_file_database */
+	use_chat_info_database: boolean;
+	/** Pass true to keep cache of chats and messages between restarts. Implies use_chat_info_database */
+	use_message_database: boolean;
+	/** Pass true to enable support for secret chats */
+	use_secret_chats: boolean;
+	/** Application identifier for Telegram API access, which can be obtained at https://my.telegram.org */
+	api_id: number;
+	/** Application identifier hash for Telegram API access, which can be obtained at https://my.telegram.org */
+	api_hash: string;
+	/** IETF language tag of the user's operating system language; must be non-empty */
+	system_language_code: string;
+	/** Model of the device the application is being run on; must be non-empty */
+	device_model: string;
+	/** Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib */
+	system_version: string;
+	/** Application version; must be non-empty */
+	application_version: string;
 }) => Obj.Ok;
 
 /**
@@ -53,11 +52,11 @@ export type SetTdlibParameters = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_authentication_phone_number.html
  */
 export type SetAuthenticationPhoneNumber = (args: {
-    '@type': 'setAuthenticationPhoneNumber';
-    /** The phone number of the user, in international format */
-    phone_number: string;
-    /** Settings for the authentication of the user's phone number; pass null to use default settings */
-    settings?: Obj.PhoneNumberAuthenticationSettings;
+	"@type": "setAuthenticationPhoneNumber";
+	/** The phone number of the user, in international format */
+	phone_number: string;
+	/** Settings for the authentication of the user's phone number; pass null to use default settings */
+	settings?: Obj.PhoneNumberAuthenticationSettings;
 }) => Obj.Ok;
 
 /**
@@ -65,11 +64,11 @@ export type SetAuthenticationPhoneNumber = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_authentication_premium_purchase.html
  */
 export type CheckAuthenticationPremiumPurchase = (args: {
-    '@type': 'checkAuthenticationPremiumPurchase';
-    /** ISO 4217 currency code of the payment currency */
-    currency: string;
-    /** Paid amount, in the smallest units of the currency */
-    amount: number;
+	"@type": "checkAuthenticationPremiumPurchase";
+	/** ISO 4217 currency code of the payment currency */
+	currency: string;
+	/** Paid amount, in the smallest units of the currency */
+	amount: number;
 }) => Obj.Ok;
 
 /**
@@ -77,15 +76,15 @@ export type CheckAuthenticationPremiumPurchase = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_authentication_premium_purchase_transaction.html
  */
 export type SetAuthenticationPremiumPurchaseTransaction = (args: {
-    '@type': 'setAuthenticationPremiumPurchaseTransaction';
-    /** Information about the transaction */
-    transaction: Obj.StoreTransaction;
-    /** Pass true if this is a restore of a Telegram Premium purchase; only for App Store */
-    is_restore: boolean;
-    /** ISO 4217 currency code of the payment currency */
-    currency: string;
-    /** Paid amount, in the smallest units of the currency */
-    amount: number;
+	"@type": "setAuthenticationPremiumPurchaseTransaction";
+	/** Information about the transaction */
+	transaction: Obj.StoreTransaction;
+	/** Pass true if this is a restore of a Telegram Premium purchase; only for App Store */
+	is_restore: boolean;
+	/** ISO 4217 currency code of the payment currency */
+	currency: string;
+	/** Paid amount, in the smallest units of the currency */
+	amount: number;
 }) => Obj.Ok;
 
 /**
@@ -93,9 +92,9 @@ export type SetAuthenticationPremiumPurchaseTransaction = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_authentication_email_address.html
  */
 export type SetAuthenticationEmailAddress = (args: {
-    '@type': 'setAuthenticationEmailAddress';
-    /** The email address of the user */
-    email_address: string;
+	"@type": "setAuthenticationEmailAddress";
+	/** The email address of the user */
+	email_address: string;
 }) => Obj.Ok;
 
 /**
@@ -103,9 +102,9 @@ export type SetAuthenticationEmailAddress = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1resend_authentication_code.html
  */
 export type ResendAuthenticationCode = (args: {
-    '@type': 'resendAuthenticationCode';
-    /** Reason of code resending; pass null if unknown */
-    reason?: Obj.ResendCodeReason;
+	"@type": "resendAuthenticationCode";
+	/** Reason of code resending; pass null if unknown */
+	reason?: Obj.ResendCodeReason;
 }) => Obj.Ok;
 
 /**
@@ -113,9 +112,9 @@ export type ResendAuthenticationCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_authentication_email_code.html
  */
 export type CheckAuthenticationEmailCode = (args: {
-    '@type': 'checkAuthenticationEmailCode';
-    /** Email address authentication to check */
-    code: Obj.EmailAddressAuthentication;
+	"@type": "checkAuthenticationEmailCode";
+	/** Email address authentication to check */
+	code: Obj.EmailAddressAuthentication;
 }) => Obj.Ok;
 
 /**
@@ -123,9 +122,9 @@ export type CheckAuthenticationEmailCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_authentication_code.html
  */
 export type CheckAuthenticationCode = (args: {
-    '@type': 'checkAuthenticationCode';
-    /** Authentication code to check */
-    code: string;
+	"@type": "checkAuthenticationCode";
+	/** Authentication code to check */
+	code: string;
 }) => Obj.Ok;
 
 /**
@@ -133,9 +132,9 @@ export type CheckAuthenticationCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1request_qr_code_authentication.html
  */
 export type RequestQrCodeAuthentication = (args: {
-    '@type': 'requestQrCodeAuthentication';
-    /** List of user identifiers of other users currently using the application */
-    other_user_ids: number[];
+	"@type": "requestQrCodeAuthentication";
+	/** List of user identifiers of other users currently using the application */
+	other_user_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -143,13 +142,13 @@ export type RequestQrCodeAuthentication = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1register_user.html
  */
 export type RegisterUser = (args: {
-    '@type': 'registerUser';
-    /** The first name of the user; 1-64 characters */
-    first_name: string;
-    /** The last name of the user; 0-64 characters */
-    last_name: string;
-    /** Pass true to disable notification about the current user joining Telegram for other users that added them to contact list */
-    disable_notification: boolean;
+	"@type": "registerUser";
+	/** The first name of the user; 1-64 characters */
+	first_name: string;
+	/** The last name of the user; 0-64 characters */
+	last_name: string;
+	/** Pass true to disable notification about the current user joining Telegram for other users that added them to contact list */
+	disable_notification: boolean;
 }) => Obj.Ok;
 
 /**
@@ -157,7 +156,7 @@ export type RegisterUser = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reset_authentication_email_address.html
  */
 export type ResetAuthenticationEmailAddress = (args: {
-    '@type': 'resetAuthenticationEmailAddress';
+	"@type": "resetAuthenticationEmailAddress";
 }) => Obj.Ok;
 
 /**
@@ -165,9 +164,9 @@ export type ResetAuthenticationEmailAddress = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_authentication_password.html
  */
 export type CheckAuthenticationPassword = (args: {
-    '@type': 'checkAuthenticationPassword';
-    /** The 2-step verification password to check */
-    password: string;
+	"@type": "checkAuthenticationPassword";
+	/** The 2-step verification password to check */
+	password: string;
 }) => Obj.Ok;
 
 /**
@@ -175,7 +174,7 @@ export type CheckAuthenticationPassword = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1request_authentication_password_recovery.html
  */
 export type RequestAuthenticationPasswordRecovery = (args: {
-    '@type': 'requestAuthenticationPasswordRecovery';
+	"@type": "requestAuthenticationPasswordRecovery";
 }) => Obj.Ok;
 
 /**
@@ -183,9 +182,9 @@ export type RequestAuthenticationPasswordRecovery = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_authentication_password_recovery_code.html
  */
 export type CheckAuthenticationPasswordRecoveryCode = (args: {
-    '@type': 'checkAuthenticationPasswordRecoveryCode';
-    /** Recovery code to check */
-    recovery_code: string;
+	"@type": "checkAuthenticationPasswordRecoveryCode";
+	/** Recovery code to check */
+	recovery_code: string;
 }) => Obj.Ok;
 
 /**
@@ -193,13 +192,13 @@ export type CheckAuthenticationPasswordRecoveryCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1recover_authentication_password.html
  */
 export type RecoverAuthenticationPassword = (args: {
-    '@type': 'recoverAuthenticationPassword';
-    /** Recovery code to check */
-    recovery_code: string;
-    /** New 2-step verification password of the user; may be empty to remove the password */
-    new_password?: string;
-    /** New password hint; may be empty */
-    new_hint?: string;
+	"@type": "recoverAuthenticationPassword";
+	/** Recovery code to check */
+	recovery_code: string;
+	/** New 2-step verification password of the user; may be empty to remove the password */
+	new_password?: string;
+	/** New password hint; may be empty */
+	new_hint?: string;
 }) => Obj.Ok;
 
 /**
@@ -207,9 +206,9 @@ export type RecoverAuthenticationPassword = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_authentication_firebase_sms.html
  */
 export type SendAuthenticationFirebaseSms = (args: {
-    '@type': 'sendAuthenticationFirebaseSms';
-    /** Play Integrity API or SafetyNet Attestation API token for the Android application, or secret from push notification for the iOS application */
-    token: string;
+	"@type": "sendAuthenticationFirebaseSms";
+	/** Play Integrity API or SafetyNet Attestation API token for the Android application, or secret from push notification for the iOS application */
+	token: string;
 }) => Obj.Ok;
 
 /**
@@ -217,9 +216,9 @@ export type SendAuthenticationFirebaseSms = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_authentication_code_missing.html
  */
 export type ReportAuthenticationCodeMissing = (args: {
-    '@type': 'reportAuthenticationCodeMissing';
-    /** Current mobile network code */
-    mobile_network_code: string;
+	"@type": "reportAuthenticationCodeMissing";
+	/** Current mobile network code */
+	mobile_network_code: string;
 }) => Obj.Ok;
 
 /**
@@ -227,43 +226,37 @@ export type ReportAuthenticationCodeMissing = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_authentication_bot_token.html
  */
 export type CheckAuthenticationBotToken = (args: {
-    '@type': 'checkAuthenticationBotToken';
-    /** The bot token */
-    token: string;
+	"@type": "checkAuthenticationBotToken";
+	/** The bot token */
+	token: string;
 }) => Obj.Ok;
 
 /**
  * Closes the TDLib instance after a proper logout. Requires an available network connection. All local data will be destroyed. After the logout completes, updateAuthorizationState with authorizationStateClosed will be sent
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1log_out.html
  */
-export type LogOut = (args: {
-    '@type': 'logOut';
-}) => Obj.Ok;
+export type LogOut = (args: { "@type": "logOut" }) => Obj.Ok;
 
 /**
  * Closes the TDLib instance. All databases will be flushed to disk and properly closed. After the close completes, updateAuthorizationState with authorizationStateClosed will be sent. Can be called before initialization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1close.html
  */
-export type Close = (args: {
-    '@type': 'close';
-}) => Obj.Ok;
+export type Close = (args: { "@type": "close" }) => Obj.Ok;
 
 /**
  * Closes the TDLib instance, destroying all local data without a proper logout. The current user session will remain in the list of all active sessions. All local data will be destroyed. After the destruction completes updateAuthorizationState with authorizationStateClosed will be sent. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1destroy.html
  */
-export type Destroy = (args: {
-    '@type': 'destroy';
-}) => Obj.Ok;
+export type Destroy = (args: { "@type": "destroy" }) => Obj.Ok;
 
 /**
  * Confirms QR code authentication on another device. Returns created session on success
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1confirm_qr_code_authentication.html
  */
 export type ConfirmQrCodeAuthentication = (args: {
-    '@type': 'confirmQrCodeAuthentication';
-    /** A link from a QR code. The link must be scanned by the in-app camera */
-    link: string;
+	"@type": "confirmQrCodeAuthentication";
+	/** A link from a QR code. The link must be scanned by the in-app camera */
+	link: string;
 }) => Obj.Session;
 
 /**
@@ -271,7 +264,7 @@ export type ConfirmQrCodeAuthentication = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_current_state.html
  */
 export type GetCurrentState = (args: {
-    '@type': 'getCurrentState';
+	"@type": "getCurrentState";
 }) => Obj.Updates;
 
 /**
@@ -279,9 +272,9 @@ export type GetCurrentState = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_database_encryption_key.html
  */
 export type SetDatabaseEncryptionKey = (args: {
-    '@type': 'setDatabaseEncryptionKey';
-    /** New encryption key */
-    new_encryption_key: string;
+	"@type": "setDatabaseEncryptionKey";
+	/** New encryption key */
+	new_encryption_key: string;
 }) => Obj.Ok;
 
 /**
@@ -289,7 +282,7 @@ export type SetDatabaseEncryptionKey = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_password_state.html
  */
 export type GetPasswordState = (args: {
-    '@type': 'getPasswordState';
+	"@type": "getPasswordState";
 }) => Obj.PasswordState;
 
 /**
@@ -297,17 +290,17 @@ export type GetPasswordState = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_password.html
  */
 export type SetPassword = (args: {
-    '@type': 'setPassword';
-    /** Previous 2-step verification password of the user */
-    old_password: string;
-    /** New 2-step verification password of the user; may be empty to remove the password */
-    new_password?: string;
-    /** New password hint; may be empty */
-    new_hint?: string;
-    /** Pass true to change also the recovery email address */
-    set_recovery_email_address: boolean;
-    /** New recovery email address; may be empty */
-    new_recovery_email_address?: string;
+	"@type": "setPassword";
+	/** Previous 2-step verification password of the user */
+	old_password: string;
+	/** New 2-step verification password of the user; may be empty to remove the password */
+	new_password?: string;
+	/** New password hint; may be empty */
+	new_hint?: string;
+	/** Pass true to change also the recovery email address */
+	set_recovery_email_address: boolean;
+	/** New recovery email address; may be empty */
+	new_recovery_email_address?: string;
 }) => Obj.PasswordState;
 
 /**
@@ -315,9 +308,9 @@ export type SetPassword = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_login_email_address.html
  */
 export type SetLoginEmailAddress = (args: {
-    '@type': 'setLoginEmailAddress';
-    /** New login email address */
-    new_login_email_address: string;
+	"@type": "setLoginEmailAddress";
+	/** New login email address */
+	new_login_email_address: string;
 }) => Obj.EmailAddressAuthenticationCodeInfo;
 
 /**
@@ -325,7 +318,7 @@ export type SetLoginEmailAddress = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1resend_login_email_address_code.html
  */
 export type ResendLoginEmailAddressCode = (args: {
-    '@type': 'resendLoginEmailAddressCode';
+	"@type": "resendLoginEmailAddressCode";
 }) => Obj.EmailAddressAuthenticationCodeInfo;
 
 /**
@@ -333,9 +326,9 @@ export type ResendLoginEmailAddressCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_login_email_address_code.html
  */
 export type CheckLoginEmailAddressCode = (args: {
-    '@type': 'checkLoginEmailAddressCode';
-    /** Email address authentication to check */
-    code: Obj.EmailAddressAuthentication;
+	"@type": "checkLoginEmailAddressCode";
+	/** Email address authentication to check */
+	code: Obj.EmailAddressAuthentication;
 }) => Obj.Ok;
 
 /**
@@ -343,9 +336,9 @@ export type CheckLoginEmailAddressCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_recovery_email_address.html
  */
 export type GetRecoveryEmailAddress = (args: {
-    '@type': 'getRecoveryEmailAddress';
-    /** The 2-step verification password for the current user */
-    password: string;
+	"@type": "getRecoveryEmailAddress";
+	/** The 2-step verification password for the current user */
+	password: string;
 }) => Obj.RecoveryEmailAddress;
 
 /**
@@ -353,11 +346,11 @@ export type GetRecoveryEmailAddress = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_recovery_email_address.html
  */
 export type SetRecoveryEmailAddress = (args: {
-    '@type': 'setRecoveryEmailAddress';
-    /** The 2-step verification password of the current user */
-    password: string;
-    /** New recovery email address */
-    new_recovery_email_address: string;
+	"@type": "setRecoveryEmailAddress";
+	/** The 2-step verification password of the current user */
+	password: string;
+	/** New recovery email address */
+	new_recovery_email_address: string;
 }) => Obj.PasswordState;
 
 /**
@@ -365,9 +358,9 @@ export type SetRecoveryEmailAddress = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_recovery_email_address_code.html
  */
 export type CheckRecoveryEmailAddressCode = (args: {
-    '@type': 'checkRecoveryEmailAddressCode';
-    /** Verification code to check */
-    code: string;
+	"@type": "checkRecoveryEmailAddressCode";
+	/** Verification code to check */
+	code: string;
 }) => Obj.PasswordState;
 
 /**
@@ -375,7 +368,7 @@ export type CheckRecoveryEmailAddressCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1resend_recovery_email_address_code.html
  */
 export type ResendRecoveryEmailAddressCode = (args: {
-    '@type': 'resendRecoveryEmailAddressCode';
+	"@type": "resendRecoveryEmailAddressCode";
 }) => Obj.PasswordState;
 
 /**
@@ -383,7 +376,7 @@ export type ResendRecoveryEmailAddressCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1cancel_recovery_email_address_verification.html
  */
 export type CancelRecoveryEmailAddressVerification = (args: {
-    '@type': 'cancelRecoveryEmailAddressVerification';
+	"@type": "cancelRecoveryEmailAddressVerification";
 }) => Obj.PasswordState;
 
 /**
@@ -391,7 +384,7 @@ export type CancelRecoveryEmailAddressVerification = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1request_password_recovery.html
  */
 export type RequestPasswordRecovery = (args: {
-    '@type': 'requestPasswordRecovery';
+	"@type": "requestPasswordRecovery";
 }) => Obj.EmailAddressAuthenticationCodeInfo;
 
 /**
@@ -399,9 +392,9 @@ export type RequestPasswordRecovery = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_password_recovery_code.html
  */
 export type CheckPasswordRecoveryCode = (args: {
-    '@type': 'checkPasswordRecoveryCode';
-    /** Recovery code to check */
-    recovery_code: string;
+	"@type": "checkPasswordRecoveryCode";
+	/** Recovery code to check */
+	recovery_code: string;
 }) => Obj.Ok;
 
 /**
@@ -409,13 +402,13 @@ export type CheckPasswordRecoveryCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1recover_password.html
  */
 export type RecoverPassword = (args: {
-    '@type': 'recoverPassword';
-    /** Recovery code to check */
-    recovery_code: string;
-    /** New 2-step verification password of the user; may be empty to remove the password */
-    new_password?: string;
-    /** New password hint; may be empty */
-    new_hint?: string;
+	"@type": "recoverPassword";
+	/** Recovery code to check */
+	recovery_code: string;
+	/** New 2-step verification password of the user; may be empty to remove the password */
+	new_password?: string;
+	/** New password hint; may be empty */
+	new_hint?: string;
 }) => Obj.PasswordState;
 
 /**
@@ -423,7 +416,7 @@ export type RecoverPassword = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reset_password.html
  */
 export type ResetPassword = (args: {
-    '@type': 'resetPassword';
+	"@type": "resetPassword";
 }) => Obj.ResetPasswordResult;
 
 /**
@@ -431,7 +424,7 @@ export type ResetPassword = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1cancel_password_reset.html
  */
 export type CancelPasswordReset = (args: {
-    '@type': 'cancelPasswordReset';
+	"@type": "cancelPasswordReset";
 }) => Obj.Ok;
 
 /**
@@ -439,11 +432,11 @@ export type CancelPasswordReset = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_temporary_password.html
  */
 export type CreateTemporaryPassword = (args: {
-    '@type': 'createTemporaryPassword';
-    /** The 2-step verification password of the current user */
-    password: string;
-    /** Time during which the temporary password will be valid, in seconds; must be between 60 and 86400 */
-    valid_for: number;
+	"@type": "createTemporaryPassword";
+	/** The 2-step verification password of the current user */
+	password: string;
+	/** Time during which the temporary password will be valid, in seconds; must be between 60 and 86400 */
+	valid_for: number;
 }) => Obj.TemporaryPasswordState;
 
 /**
@@ -451,25 +444,23 @@ export type CreateTemporaryPassword = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_temporary_password_state.html
  */
 export type GetTemporaryPasswordState = (args: {
-    '@type': 'getTemporaryPasswordState';
+	"@type": "getTemporaryPasswordState";
 }) => Obj.TemporaryPasswordState;
 
 /**
  * Returns the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_me.html
  */
-export type GetMe = (args: {
-    '@type': 'getMe';
-}) => Obj.User;
+export type GetMe = (args: { "@type": "getMe" }) => Obj.User;
 
 /**
  * Returns information about a user by their identifier. This is an offline method if the current user is not a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_user.html
  */
 export type GetUser = (args: {
-    '@type': 'getUser';
-    /** User identifier */
-    user_id: number;
+	"@type": "getUser";
+	/** User identifier */
+	user_id: number;
 }) => Obj.User;
 
 /**
@@ -477,9 +468,9 @@ export type GetUser = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_user_full_info.html
  */
 export type GetUserFullInfo = (args: {
-    '@type': 'getUserFullInfo';
-    /** User identifier */
-    user_id: number;
+	"@type": "getUserFullInfo";
+	/** User identifier */
+	user_id: number;
 }) => Obj.UserFullInfo;
 
 /**
@@ -487,9 +478,9 @@ export type GetUserFullInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_basic_group.html
  */
 export type GetBasicGroup = (args: {
-    '@type': 'getBasicGroup';
-    /** Basic group identifier */
-    basic_group_id: number;
+	"@type": "getBasicGroup";
+	/** Basic group identifier */
+	basic_group_id: number;
 }) => Obj.BasicGroup;
 
 /**
@@ -497,9 +488,9 @@ export type GetBasicGroup = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_basic_group_full_info.html
  */
 export type GetBasicGroupFullInfo = (args: {
-    '@type': 'getBasicGroupFullInfo';
-    /** Basic group identifier */
-    basic_group_id: number;
+	"@type": "getBasicGroupFullInfo";
+	/** Basic group identifier */
+	basic_group_id: number;
 }) => Obj.BasicGroupFullInfo;
 
 /**
@@ -507,9 +498,9 @@ export type GetBasicGroupFullInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_supergroup.html
  */
 export type GetSupergroup = (args: {
-    '@type': 'getSupergroup';
-    /** Supergroup or channel identifier */
-    supergroup_id: number;
+	"@type": "getSupergroup";
+	/** Supergroup or channel identifier */
+	supergroup_id: number;
 }) => Obj.Supergroup;
 
 /**
@@ -517,9 +508,9 @@ export type GetSupergroup = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_supergroup_full_info.html
  */
 export type GetSupergroupFullInfo = (args: {
-    '@type': 'getSupergroupFullInfo';
-    /** Supergroup or channel identifier */
-    supergroup_id: number;
+	"@type": "getSupergroupFullInfo";
+	/** Supergroup or channel identifier */
+	supergroup_id: number;
 }) => Obj.SupergroupFullInfo;
 
 /**
@@ -527,9 +518,9 @@ export type GetSupergroupFullInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_secret_chat.html
  */
 export type GetSecretChat = (args: {
-    '@type': 'getSecretChat';
-    /** Secret chat identifier */
-    secret_chat_id: number;
+	"@type": "getSecretChat";
+	/** Secret chat identifier */
+	secret_chat_id: number;
 }) => Obj.SecretChat;
 
 /**
@@ -537,9 +528,9 @@ export type GetSecretChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat.html
  */
 export type GetChat = (args: {
-    '@type': 'getChat';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "getChat";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Chat;
 
 /**
@@ -547,11 +538,11 @@ export type GetChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message.html
  */
 export type GetMessage = (args: {
-    '@type': 'getMessage';
-    /** Identifier of the chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message to get */
-    message_id: number;
+	"@type": "getMessage";
+	/** Identifier of the chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message to get */
+	message_id: number;
 }) => Obj.Message;
 
 /**
@@ -559,11 +550,11 @@ export type GetMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_locally.html
  */
 export type GetMessageLocally = (args: {
-    '@type': 'getMessageLocally';
-    /** Identifier of the chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message to get */
-    message_id: number;
+	"@type": "getMessageLocally";
+	/** Identifier of the chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message to get */
+	message_id: number;
 }) => Obj.Message;
 
 /**
@@ -571,11 +562,11 @@ export type GetMessageLocally = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_replied_message.html
  */
 export type GetRepliedMessage = (args: {
-    '@type': 'getRepliedMessage';
-    /** Identifier of the chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the reply message */
-    message_id: number;
+	"@type": "getRepliedMessage";
+	/** Identifier of the chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the reply message */
+	message_id: number;
 }) => Obj.Message;
 
 /**
@@ -583,9 +574,9 @@ export type GetRepliedMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_pinned_message.html
  */
 export type GetChatPinnedMessage = (args: {
-    '@type': 'getChatPinnedMessage';
-    /** Identifier of the chat the message belongs to */
-    chat_id: number;
+	"@type": "getChatPinnedMessage";
+	/** Identifier of the chat the message belongs to */
+	chat_id: number;
 }) => Obj.Message;
 
 /**
@@ -593,13 +584,13 @@ export type GetChatPinnedMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_callback_query_message.html
  */
 export type GetCallbackQueryMessage = (args: {
-    '@type': 'getCallbackQueryMessage';
-    /** Identifier of the chat the message belongs to */
-    chat_id: number;
-    /** Message identifier */
-    message_id: number;
-    /** Identifier of the callback query */
-    callback_query_id: string;
+	"@type": "getCallbackQueryMessage";
+	/** Identifier of the chat the message belongs to */
+	chat_id: number;
+	/** Message identifier */
+	message_id: number;
+	/** Identifier of the callback query */
+	callback_query_id: string;
 }) => Obj.Message;
 
 /**
@@ -607,11 +598,11 @@ export type GetCallbackQueryMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_messages.html
  */
 export type GetMessages = (args: {
-    '@type': 'getMessages';
-    /** Identifier of the chat the messages belong to */
-    chat_id: number;
-    /** Identifiers of the messages to get */
-    message_ids: number[];
+	"@type": "getMessages";
+	/** Identifier of the chat the messages belong to */
+	chat_id: number;
+	/** Identifiers of the messages to get */
+	message_ids: number[];
 }) => Obj.Messages;
 
 /**
@@ -619,11 +610,11 @@ export type GetMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_properties.html
  */
 export type GetMessageProperties = (args: {
-    '@type': 'getMessageProperties';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
+	"@type": "getMessageProperties";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
 }) => Obj.MessageProperties;
 
 /**
@@ -631,11 +622,11 @@ export type GetMessageProperties = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_thread.html
  */
 export type GetMessageThread = (args: {
-    '@type': 'getMessageThread';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
+	"@type": "getMessageThread";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
 }) => Obj.MessageThreadInfo;
 
 /**
@@ -643,11 +634,11 @@ export type GetMessageThread = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_read_date.html
  */
 export type GetMessageReadDate = (args: {
-    '@type': 'getMessageReadDate';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
+	"@type": "getMessageReadDate";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
 }) => Obj.MessageReadDate;
 
 /**
@@ -655,11 +646,11 @@ export type GetMessageReadDate = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_viewers.html
  */
 export type GetMessageViewers = (args: {
-    '@type': 'getMessageViewers';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
+	"@type": "getMessageViewers";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
 }) => Obj.MessageViewers;
 
 /**
@@ -667,11 +658,11 @@ export type GetMessageViewers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_author.html
  */
 export type GetMessageAuthor = (args: {
-    '@type': 'getMessageAuthor';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
+	"@type": "getMessageAuthor";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
 }) => Obj.User;
 
 /**
@@ -679,9 +670,9 @@ export type GetMessageAuthor = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_file.html
  */
 export type GetFile = (args: {
-    '@type': 'getFile';
-    /** Identifier of the file to get */
-    file_id: number;
+	"@type": "getFile";
+	/** Identifier of the file to get */
+	file_id: number;
 }) => Obj.File;
 
 /**
@@ -689,11 +680,11 @@ export type GetFile = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_remote_file.html
  */
 export type GetRemoteFile = (args: {
-    '@type': 'getRemoteFile';
-    /** Remote identifier of the file to get */
-    remote_file_id: string;
-    /** File type; pass null if unknown */
-    file_type?: Obj.FileType;
+	"@type": "getRemoteFile";
+	/** Remote identifier of the file to get */
+	remote_file_id: string;
+	/** File type; pass null if unknown */
+	file_type?: Obj.FileType;
 }) => Obj.File;
 
 /**
@@ -701,11 +692,11 @@ export type GetRemoteFile = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1load_chats.html
  */
 export type LoadChats = (args: {
-    '@type': 'loadChats';
-    /** The chat list in which to load chats; pass null to load chats from the main chat list */
-    chat_list?: Obj.ChatList;
-    /** The maximum number of chats to be loaded. For optimal performance, the number of loaded chats is chosen by TDLib and can be smaller than the specified limit, even if the end of the list is not reached */
-    limit: number;
+	"@type": "loadChats";
+	/** The chat list in which to load chats; pass null to load chats from the main chat list */
+	chat_list?: Obj.ChatList;
+	/** The maximum number of chats to be loaded. For optimal performance, the number of loaded chats is chosen by TDLib and can be smaller than the specified limit, even if the end of the list is not reached */
+	limit: number;
 }) => Obj.Ok;
 
 /**
@@ -713,11 +704,11 @@ export type LoadChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chats.html
  */
 export type GetChats = (args: {
-    '@type': 'getChats';
-    /** The chat list in which to return chats; pass null to get chats from the main chat list */
-    chat_list?: Obj.ChatList;
-    /** The maximum number of chats to be returned */
-    limit: number;
+	"@type": "getChats";
+	/** The chat list in which to return chats; pass null to get chats from the main chat list */
+	chat_list?: Obj.ChatList;
+	/** The maximum number of chats to be returned */
+	limit: number;
 }) => Obj.Chats;
 
 /**
@@ -725,9 +716,9 @@ export type GetChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_public_chat.html
  */
 export type SearchPublicChat = (args: {
-    '@type': 'searchPublicChat';
-    /** Username to be resolved */
-    username: string;
+	"@type": "searchPublicChat";
+	/** Username to be resolved */
+	username: string;
 }) => Obj.Chat;
 
 /**
@@ -735,9 +726,9 @@ export type SearchPublicChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_public_chats.html
  */
 export type SearchPublicChats = (args: {
-    '@type': 'searchPublicChats';
-    /** Query to search for */
-    query: string;
+	"@type": "searchPublicChats";
+	/** Query to search for */
+	query: string;
 }) => Obj.Chats;
 
 /**
@@ -745,11 +736,11 @@ export type SearchPublicChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_chats.html
  */
 export type SearchChats = (args: {
-    '@type': 'searchChats';
-    /** Query to search for. If the query is empty, returns up to 50 recently found chats */
-    query: string;
-    /** The maximum number of chats to be returned */
-    limit: number;
+	"@type": "searchChats";
+	/** Query to search for. If the query is empty, returns up to 50 recently found chats */
+	query: string;
+	/** The maximum number of chats to be returned */
+	limit: number;
 }) => Obj.Chats;
 
 /**
@@ -757,11 +748,11 @@ export type SearchChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_chats_on_server.html
  */
 export type SearchChatsOnServer = (args: {
-    '@type': 'searchChatsOnServer';
-    /** Query to search for */
-    query: string;
-    /** The maximum number of chats to be returned */
-    limit: number;
+	"@type": "searchChatsOnServer";
+	/** Query to search for */
+	query: string;
+	/** The maximum number of chats to be returned */
+	limit: number;
 }) => Obj.Chats;
 
 /**
@@ -769,7 +760,7 @@ export type SearchChatsOnServer = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_recommended_chats.html
  */
 export type GetRecommendedChats = (args: {
-    '@type': 'getRecommendedChats';
+	"@type": "getRecommendedChats";
 }) => Obj.Chats;
 
 /**
@@ -777,9 +768,9 @@ export type GetRecommendedChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_similar_chats.html
  */
 export type GetChatSimilarChats = (args: {
-    '@type': 'getChatSimilarChats';
-    /** Identifier of the target chat; must be an identifier of a channel chat */
-    chat_id: number;
+	"@type": "getChatSimilarChats";
+	/** Identifier of the target chat; must be an identifier of a channel chat */
+	chat_id: number;
 }) => Obj.Chats;
 
 /**
@@ -787,11 +778,11 @@ export type GetChatSimilarChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_similar_chat_count.html
  */
 export type GetChatSimilarChatCount = (args: {
-    '@type': 'getChatSimilarChatCount';
-    /** Identifier of the target chat; must be an identifier of a channel chat */
-    chat_id: number;
-    /** Pass true to get the number of chats without sending network requests, or -1 if the number of chats is unknown locally */
-    return_local: boolean;
+	"@type": "getChatSimilarChatCount";
+	/** Identifier of the target chat; must be an identifier of a channel chat */
+	chat_id: number;
+	/** Pass true to get the number of chats without sending network requests, or -1 if the number of chats is unknown locally */
+	return_local: boolean;
 }) => Obj.Count;
 
 /**
@@ -799,11 +790,11 @@ export type GetChatSimilarChatCount = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1open_chat_similar_chat.html
  */
 export type OpenChatSimilarChat = (args: {
-    '@type': 'openChatSimilarChat';
-    /** Identifier of the original chat, which similar chats were requested */
-    chat_id: number;
-    /** Identifier of the opened chat */
-    opened_chat_id: number;
+	"@type": "openChatSimilarChat";
+	/** Identifier of the original chat, which similar chats were requested */
+	chat_id: number;
+	/** Identifier of the opened chat */
+	opened_chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -811,9 +802,9 @@ export type OpenChatSimilarChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_bot_similar_bots.html
  */
 export type GetBotSimilarBots = (args: {
-    '@type': 'getBotSimilarBots';
-    /** User identifier of the target bot */
-    bot_user_id: number;
+	"@type": "getBotSimilarBots";
+	/** User identifier of the target bot */
+	bot_user_id: number;
 }) => Obj.Users;
 
 /**
@@ -821,11 +812,11 @@ export type GetBotSimilarBots = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_bot_similar_bot_count.html
  */
 export type GetBotSimilarBotCount = (args: {
-    '@type': 'getBotSimilarBotCount';
-    /** User identifier of the target bot */
-    bot_user_id: number;
-    /** Pass true to get the number of bots without sending network requests, or -1 if the number of bots is unknown locally */
-    return_local: boolean;
+	"@type": "getBotSimilarBotCount";
+	/** User identifier of the target bot */
+	bot_user_id: number;
+	/** Pass true to get the number of bots without sending network requests, or -1 if the number of bots is unknown locally */
+	return_local: boolean;
 }) => Obj.Count;
 
 /**
@@ -833,11 +824,11 @@ export type GetBotSimilarBotCount = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1open_bot_similar_bot.html
  */
 export type OpenBotSimilarBot = (args: {
-    '@type': 'openBotSimilarBot';
-    /** Identifier of the original bot, which similar bots were requested */
-    bot_user_id: number;
-    /** Identifier of the opened bot */
-    opened_bot_user_id: number;
+	"@type": "openBotSimilarBot";
+	/** Identifier of the original bot, which similar bots were requested */
+	bot_user_id: number;
+	/** Identifier of the opened bot */
+	opened_bot_user_id: number;
 }) => Obj.Ok;
 
 /**
@@ -845,11 +836,11 @@ export type OpenBotSimilarBot = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_top_chats.html
  */
 export type GetTopChats = (args: {
-    '@type': 'getTopChats';
-    /** Category of chats to be returned */
-    category: Obj.TopChatCategory;
-    /** The maximum number of chats to be returned; up to 30 */
-    limit: number;
+	"@type": "getTopChats";
+	/** Category of chats to be returned */
+	category: Obj.TopChatCategory;
+	/** The maximum number of chats to be returned; up to 30 */
+	limit: number;
 }) => Obj.Chats;
 
 /**
@@ -857,11 +848,11 @@ export type GetTopChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_top_chat.html
  */
 export type RemoveTopChat = (args: {
-    '@type': 'removeTopChat';
-    /** Category of frequently used chats */
-    category: Obj.TopChatCategory;
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "removeTopChat";
+	/** Category of frequently used chats */
+	category: Obj.TopChatCategory;
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -869,11 +860,11 @@ export type RemoveTopChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_recently_found_chats.html
  */
 export type SearchRecentlyFoundChats = (args: {
-    '@type': 'searchRecentlyFoundChats';
-    /** Query to search for */
-    query: string;
-    /** The maximum number of chats to be returned */
-    limit: number;
+	"@type": "searchRecentlyFoundChats";
+	/** Query to search for */
+	query: string;
+	/** The maximum number of chats to be returned */
+	limit: number;
 }) => Obj.Chats;
 
 /**
@@ -881,9 +872,9 @@ export type SearchRecentlyFoundChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_recently_found_chat.html
  */
 export type AddRecentlyFoundChat = (args: {
-    '@type': 'addRecentlyFoundChat';
-    /** Identifier of the chat to add */
-    chat_id: number;
+	"@type": "addRecentlyFoundChat";
+	/** Identifier of the chat to add */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -891,9 +882,9 @@ export type AddRecentlyFoundChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_recently_found_chat.html
  */
 export type RemoveRecentlyFoundChat = (args: {
-    '@type': 'removeRecentlyFoundChat';
-    /** Identifier of the chat to be removed */
-    chat_id: number;
+	"@type": "removeRecentlyFoundChat";
+	/** Identifier of the chat to be removed */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -901,7 +892,7 @@ export type RemoveRecentlyFoundChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1clear_recently_found_chats.html
  */
 export type ClearRecentlyFoundChats = (args: {
-    '@type': 'clearRecentlyFoundChats';
+	"@type": "clearRecentlyFoundChats";
 }) => Obj.Ok;
 
 /**
@@ -909,9 +900,9 @@ export type ClearRecentlyFoundChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_recently_opened_chats.html
  */
 export type GetRecentlyOpenedChats = (args: {
-    '@type': 'getRecentlyOpenedChats';
-    /** The maximum number of chats to be returned */
-    limit: number;
+	"@type": "getRecentlyOpenedChats";
+	/** The maximum number of chats to be returned */
+	limit: number;
 }) => Obj.Chats;
 
 /**
@@ -919,11 +910,11 @@ export type GetRecentlyOpenedChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_chat_username.html
  */
 export type CheckChatUsername = (args: {
-    '@type': 'checkChatUsername';
-    /** Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or 0 if the chat is being created */
-    chat_id: number;
-    /** Username to be checked */
-    username: string;
+	"@type": "checkChatUsername";
+	/** Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or 0 if the chat is being created */
+	chat_id: number;
+	/** Username to be checked */
+	username: string;
 }) => Obj.CheckChatUsernameResult;
 
 /**
@@ -931,9 +922,9 @@ export type CheckChatUsername = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_created_public_chats.html
  */
 export type GetCreatedPublicChats = (args: {
-    '@type': 'getCreatedPublicChats';
-    /** Type of the public chats to return */
-    type: Obj.PublicChatType;
+	"@type": "getCreatedPublicChats";
+	/** Type of the public chats to return */
+	type: Obj.PublicChatType;
 }) => Obj.Chats;
 
 /**
@@ -941,9 +932,9 @@ export type GetCreatedPublicChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_created_public_chats_limit.html
  */
 export type CheckCreatedPublicChatsLimit = (args: {
-    '@type': 'checkCreatedPublicChatsLimit';
-    /** Type of the public chats, for which to check the limit */
-    type: Obj.PublicChatType;
+	"@type": "checkCreatedPublicChatsLimit";
+	/** Type of the public chats, for which to check the limit */
+	type: Obj.PublicChatType;
 }) => Obj.Ok;
 
 /**
@@ -951,7 +942,7 @@ export type CheckCreatedPublicChatsLimit = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_suitable_discussion_chats.html
  */
 export type GetSuitableDiscussionChats = (args: {
-    '@type': 'getSuitableDiscussionChats';
+	"@type": "getSuitableDiscussionChats";
 }) => Obj.Chats;
 
 /**
@@ -959,7 +950,7 @@ export type GetSuitableDiscussionChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_inactive_supergroup_chats.html
  */
 export type GetInactiveSupergroupChats = (args: {
-    '@type': 'getInactiveSupergroupChats';
+	"@type": "getInactiveSupergroupChats";
 }) => Obj.Chats;
 
 /**
@@ -967,7 +958,7 @@ export type GetInactiveSupergroupChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_suitable_personal_chats.html
  */
 export type GetSuitablePersonalChats = (args: {
-    '@type': 'getSuitablePersonalChats';
+	"@type": "getSuitablePersonalChats";
 }) => Obj.Chats;
 
 /**
@@ -975,11 +966,11 @@ export type GetSuitablePersonalChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1load_direct_messages_chat_topics.html
  */
 export type LoadDirectMessagesChatTopics = (args: {
-    '@type': 'loadDirectMessagesChatTopics';
-    /** Chat identifier of the channel direct messages chat */
-    chat_id: number;
-    /** The maximum number of topics to be loaded. For optimal performance, the number of loaded topics is chosen by TDLib and can be smaller than the specified limit, even if the end of the list is not reached */
-    limit: number;
+	"@type": "loadDirectMessagesChatTopics";
+	/** Chat identifier of the channel direct messages chat */
+	chat_id: number;
+	/** The maximum number of topics to be loaded. For optimal performance, the number of loaded topics is chosen by TDLib and can be smaller than the specified limit, even if the end of the list is not reached */
+	limit: number;
 }) => Obj.Ok;
 
 /**
@@ -987,11 +978,11 @@ export type LoadDirectMessagesChatTopics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_direct_messages_chat_topic.html
  */
 export type GetDirectMessagesChatTopic = (args: {
-    '@type': 'getDirectMessagesChatTopic';
-    /** Chat identifier of the channel direct messages chat */
-    chat_id: number;
-    /** Identifier of the topic to get */
-    topic_id: number;
+	"@type": "getDirectMessagesChatTopic";
+	/** Chat identifier of the channel direct messages chat */
+	chat_id: number;
+	/** Identifier of the topic to get */
+	topic_id: number;
 }) => Obj.DirectMessagesChatTopic;
 
 /**
@@ -999,17 +990,17 @@ export type GetDirectMessagesChatTopic = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_direct_messages_chat_topic_history.html
  */
 export type GetDirectMessagesChatTopicHistory = (args: {
-    '@type': 'getDirectMessagesChatTopicHistory';
-    /** Chat identifier of the channel direct messages chat */
-    chat_id: number;
-    /** Identifier of the topic which messages will be fetched */
-    topic_id: number;
-    /** Identifier of the message starting from which messages must be fetched; use 0 to get results from the last message */
-    from_message_id: number;
-    /** Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages */
-    offset: number;
-    /** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "getDirectMessagesChatTopicHistory";
+	/** Chat identifier of the channel direct messages chat */
+	chat_id: number;
+	/** Identifier of the topic which messages will be fetched */
+	topic_id: number;
+	/** Identifier of the message starting from which messages must be fetched; use 0 to get results from the last message */
+	from_message_id: number;
+	/** Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages */
+	offset: number;
+	/** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.Messages;
 
 /**
@@ -1017,13 +1008,13 @@ export type GetDirectMessagesChatTopicHistory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_direct_messages_chat_topic_message_by_date.html
  */
 export type GetDirectMessagesChatTopicMessageByDate = (args: {
-    '@type': 'getDirectMessagesChatTopicMessageByDate';
-    /** Chat identifier of the channel direct messages chat */
-    chat_id: number;
-    /** Identifier of the topic which messages will be fetched */
-    topic_id: number;
-    /** Point in time (Unix timestamp) relative to which to search for messages */
-    date: number;
+	"@type": "getDirectMessagesChatTopicMessageByDate";
+	/** Chat identifier of the channel direct messages chat */
+	chat_id: number;
+	/** Identifier of the topic which messages will be fetched */
+	topic_id: number;
+	/** Point in time (Unix timestamp) relative to which to search for messages */
+	date: number;
 }) => Obj.Message;
 
 /**
@@ -1031,11 +1022,11 @@ export type GetDirectMessagesChatTopicMessageByDate = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_direct_messages_chat_topic_history.html
  */
 export type DeleteDirectMessagesChatTopicHistory = (args: {
-    '@type': 'deleteDirectMessagesChatTopicHistory';
-    /** Chat identifier of the channel direct messages chat */
-    chat_id: number;
-    /** Identifier of the topic which messages will be deleted */
-    topic_id: number;
+	"@type": "deleteDirectMessagesChatTopicHistory";
+	/** Chat identifier of the channel direct messages chat */
+	chat_id: number;
+	/** Identifier of the topic which messages will be deleted */
+	topic_id: number;
 }) => Obj.Ok;
 
 /**
@@ -1043,15 +1034,15 @@ export type DeleteDirectMessagesChatTopicHistory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_direct_messages_chat_topic_messages_by_date.html
  */
 export type DeleteDirectMessagesChatTopicMessagesByDate = (args: {
-    '@type': 'deleteDirectMessagesChatTopicMessagesByDate';
-    /** Chat identifier of the channel direct messages chat */
-    chat_id: number;
-    /** Identifier of the topic which messages will be deleted */
-    topic_id: number;
-    /** The minimum date of the messages to delete */
-    min_date: number;
-    /** The maximum date of the messages to delete */
-    max_date: number;
+	"@type": "deleteDirectMessagesChatTopicMessagesByDate";
+	/** Chat identifier of the channel direct messages chat */
+	chat_id: number;
+	/** Identifier of the topic which messages will be deleted */
+	topic_id: number;
+	/** The minimum date of the messages to delete */
+	min_date: number;
+	/** The maximum date of the messages to delete */
+	max_date: number;
 }) => Obj.Ok;
 
 /**
@@ -1059,13 +1050,13 @@ export type DeleteDirectMessagesChatTopicMessagesByDate = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_direct_messages_chat_topic_is_marked_as_unread.html
  */
 export type SetDirectMessagesChatTopicIsMarkedAsUnread = (args: {
-    '@type': 'setDirectMessagesChatTopicIsMarkedAsUnread';
-    /** Chat identifier of the channel direct messages chat */
-    chat_id: number;
-    /** Topic identifier */
-    topic_id: number;
-    /** New value of is_marked_as_unread */
-    is_marked_as_unread: boolean;
+	"@type": "setDirectMessagesChatTopicIsMarkedAsUnread";
+	/** Chat identifier of the channel direct messages chat */
+	chat_id: number;
+	/** Topic identifier */
+	topic_id: number;
+	/** New value of is_marked_as_unread */
+	is_marked_as_unread: boolean;
 }) => Obj.Ok;
 
 /**
@@ -1073,13 +1064,13 @@ export type SetDirectMessagesChatTopicIsMarkedAsUnread = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_direct_messages_chat_topic_draft_message.html
  */
 export type SetDirectMessagesChatTopicDraftMessage = (args: {
-    '@type': 'setDirectMessagesChatTopicDraftMessage';
-    /** Chat identifier */
-    chat_id: number;
-    /** Topic identifier */
-    topic_id: number;
-    /** New draft message; pass null to remove the draft. All files in draft message content must be of the type inputFileLocal. Media thumbnails and captions are ignored */
-    draft_message?: Obj.DraftMessage;
+	"@type": "setDirectMessagesChatTopicDraftMessage";
+	/** Chat identifier */
+	chat_id: number;
+	/** Topic identifier */
+	topic_id: number;
+	/** New draft message; pass null to remove the draft. All files in draft message content must be of the type inputFileLocal. Media thumbnails and captions are ignored */
+	draft_message?: Obj.DraftMessage;
 }) => Obj.Ok;
 
 /**
@@ -1087,11 +1078,11 @@ export type SetDirectMessagesChatTopicDraftMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1unpin_all_direct_messages_chat_topic_messages.html
  */
 export type UnpinAllDirectMessagesChatTopicMessages = (args: {
-    '@type': 'unpinAllDirectMessagesChatTopicMessages';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Topic identifier */
-    topic_id: number;
+	"@type": "unpinAllDirectMessagesChatTopicMessages";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Topic identifier */
+	topic_id: number;
 }) => Obj.Ok;
 
 /**
@@ -1099,11 +1090,11 @@ export type UnpinAllDirectMessagesChatTopicMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1read_all_direct_messages_chat_topic_reactions.html
  */
 export type ReadAllDirectMessagesChatTopicReactions = (args: {
-    '@type': 'readAllDirectMessagesChatTopicReactions';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Topic identifier */
-    topic_id: number;
+	"@type": "readAllDirectMessagesChatTopicReactions";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Topic identifier */
+	topic_id: number;
 }) => Obj.Ok;
 
 /**
@@ -1111,9 +1102,9 @@ export type ReadAllDirectMessagesChatTopicReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1load_saved_messages_topics.html
  */
 export type LoadSavedMessagesTopics = (args: {
-    '@type': 'loadSavedMessagesTopics';
-    /** The maximum number of topics to be loaded. For optimal performance, the number of loaded topics is chosen by TDLib and can be smaller than the specified limit, even if the end of the list is not reached */
-    limit: number;
+	"@type": "loadSavedMessagesTopics";
+	/** The maximum number of topics to be loaded. For optimal performance, the number of loaded topics is chosen by TDLib and can be smaller than the specified limit, even if the end of the list is not reached */
+	limit: number;
 }) => Obj.Ok;
 
 /**
@@ -1121,15 +1112,15 @@ export type LoadSavedMessagesTopics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_saved_messages_topic_history.html
  */
 export type GetSavedMessagesTopicHistory = (args: {
-    '@type': 'getSavedMessagesTopicHistory';
-    /** Identifier of Saved Messages topic which messages will be fetched */
-    saved_messages_topic_id: number;
-    /** Identifier of the message starting from which messages must be fetched; use 0 to get results from the last message */
-    from_message_id: number;
-    /** Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages */
-    offset: number;
-    /** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "getSavedMessagesTopicHistory";
+	/** Identifier of Saved Messages topic which messages will be fetched */
+	saved_messages_topic_id: number;
+	/** Identifier of the message starting from which messages must be fetched; use 0 to get results from the last message */
+	from_message_id: number;
+	/** Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages */
+	offset: number;
+	/** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.Messages;
 
 /**
@@ -1137,11 +1128,11 @@ export type GetSavedMessagesTopicHistory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_saved_messages_topic_message_by_date.html
  */
 export type GetSavedMessagesTopicMessageByDate = (args: {
-    '@type': 'getSavedMessagesTopicMessageByDate';
-    /** Identifier of Saved Messages topic which message will be returned */
-    saved_messages_topic_id: number;
-    /** Point in time (Unix timestamp) relative to which to search for messages */
-    date: number;
+	"@type": "getSavedMessagesTopicMessageByDate";
+	/** Identifier of Saved Messages topic which message will be returned */
+	saved_messages_topic_id: number;
+	/** Point in time (Unix timestamp) relative to which to search for messages */
+	date: number;
 }) => Obj.Message;
 
 /**
@@ -1149,9 +1140,9 @@ export type GetSavedMessagesTopicMessageByDate = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_saved_messages_topic_history.html
  */
 export type DeleteSavedMessagesTopicHistory = (args: {
-    '@type': 'deleteSavedMessagesTopicHistory';
-    /** Identifier of Saved Messages topic which messages will be deleted */
-    saved_messages_topic_id: number;
+	"@type": "deleteSavedMessagesTopicHistory";
+	/** Identifier of Saved Messages topic which messages will be deleted */
+	saved_messages_topic_id: number;
 }) => Obj.Ok;
 
 /**
@@ -1159,13 +1150,13 @@ export type DeleteSavedMessagesTopicHistory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_saved_messages_topic_messages_by_date.html
  */
 export type DeleteSavedMessagesTopicMessagesByDate = (args: {
-    '@type': 'deleteSavedMessagesTopicMessagesByDate';
-    /** Identifier of Saved Messages topic which messages will be deleted */
-    saved_messages_topic_id: number;
-    /** The minimum date of the messages to delete */
-    min_date: number;
-    /** The maximum date of the messages to delete */
-    max_date: number;
+	"@type": "deleteSavedMessagesTopicMessagesByDate";
+	/** Identifier of Saved Messages topic which messages will be deleted */
+	saved_messages_topic_id: number;
+	/** The minimum date of the messages to delete */
+	min_date: number;
+	/** The maximum date of the messages to delete */
+	max_date: number;
 }) => Obj.Ok;
 
 /**
@@ -1173,11 +1164,11 @@ export type DeleteSavedMessagesTopicMessagesByDate = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_saved_messages_topic_is_pinned.html
  */
 export type ToggleSavedMessagesTopicIsPinned = (args: {
-    '@type': 'toggleSavedMessagesTopicIsPinned';
-    /** Identifier of Saved Messages topic to pin or unpin */
-    saved_messages_topic_id: number;
-    /** Pass true to pin the topic; pass false to unpin it */
-    is_pinned: boolean;
+	"@type": "toggleSavedMessagesTopicIsPinned";
+	/** Identifier of Saved Messages topic to pin or unpin */
+	saved_messages_topic_id: number;
+	/** Pass true to pin the topic; pass false to unpin it */
+	is_pinned: boolean;
 }) => Obj.Ok;
 
 /**
@@ -1185,9 +1176,9 @@ export type ToggleSavedMessagesTopicIsPinned = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_pinned_saved_messages_topics.html
  */
 export type SetPinnedSavedMessagesTopics = (args: {
-    '@type': 'setPinnedSavedMessagesTopics';
-    /** Identifiers of the new pinned Saved Messages topics */
-    saved_messages_topic_ids: number[];
+	"@type": "setPinnedSavedMessagesTopics";
+	/** Identifiers of the new pinned Saved Messages topics */
+	saved_messages_topic_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -1195,13 +1186,13 @@ export type SetPinnedSavedMessagesTopics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_groups_in_common.html
  */
 export type GetGroupsInCommon = (args: {
-    '@type': 'getGroupsInCommon';
-    /** User identifier */
-    user_id: number;
-    /** Chat identifier starting from which to return chats; use 0 for the first request */
-    offset_chat_id: number;
-    /** The maximum number of chats to be returned; up to 100 */
-    limit: number;
+	"@type": "getGroupsInCommon";
+	/** User identifier */
+	user_id: number;
+	/** Chat identifier starting from which to return chats; use 0 for the first request */
+	offset_chat_id: number;
+	/** The maximum number of chats to be returned; up to 100 */
+	limit: number;
 }) => Obj.Chats;
 
 /**
@@ -1209,17 +1200,17 @@ export type GetGroupsInCommon = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_history.html
  */
 export type GetChatHistory = (args: {
-    '@type': 'getChatHistory';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the message starting from which history must be fetched; use 0 to get results from the last message */
-    from_message_id: number;
-    /** Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages */
-    offset: number;
-    /** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
-    /** Pass true to get only messages that are available without sending network requests */
-    only_local: boolean;
+	"@type": "getChatHistory";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the message starting from which history must be fetched; use 0 to get results from the last message */
+	from_message_id: number;
+	/** Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages */
+	offset: number;
+	/** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
+	/** Pass true to get only messages that are available without sending network requests */
+	only_local: boolean;
 }) => Obj.Messages;
 
 /**
@@ -1227,17 +1218,17 @@ export type GetChatHistory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_thread_history.html
  */
 export type GetMessageThreadHistory = (args: {
-    '@type': 'getMessageThreadHistory';
-    /** Chat identifier */
-    chat_id: number;
-    /** Message identifier, which thread history needs to be returned */
-    message_id: number;
-    /** Identifier of the message starting from which history must be fetched; use 0 to get results from the last message */
-    from_message_id: number;
-    /** Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages */
-    offset: number;
-    /** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "getMessageThreadHistory";
+	/** Chat identifier */
+	chat_id: number;
+	/** Message identifier, which thread history needs to be returned */
+	message_id: number;
+	/** Identifier of the message starting from which history must be fetched; use 0 to get results from the last message */
+	from_message_id: number;
+	/** Specify 0 to get results from exactly the message from_message_id or a negative offset up to 99 to get additionally some newer messages */
+	offset: number;
+	/** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.Messages;
 
 /**
@@ -1245,13 +1236,13 @@ export type GetMessageThreadHistory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_chat_history.html
  */
 export type DeleteChatHistory = (args: {
-    '@type': 'deleteChatHistory';
-    /** Chat identifier */
-    chat_id: number;
-    /** Pass true to remove the chat from all chat lists */
-    remove_from_chat_list: boolean;
-    /** Pass true to delete chat history for all users */
-    revoke: boolean;
+	"@type": "deleteChatHistory";
+	/** Chat identifier */
+	chat_id: number;
+	/** Pass true to remove the chat from all chat lists */
+	remove_from_chat_list: boolean;
+	/** Pass true to delete chat history for all users */
+	revoke: boolean;
 }) => Obj.Ok;
 
 /**
@@ -1259,9 +1250,9 @@ export type DeleteChatHistory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_chat.html
  */
 export type DeleteChat = (args: {
-    '@type': 'deleteChat';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "deleteChat";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -1269,23 +1260,23 @@ export type DeleteChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_chat_messages.html
  */
 export type SearchChatMessages = (args: {
-    '@type': 'searchChatMessages';
-    /** Identifier of the chat in which to search messages */
-    chat_id: number;
-    /** Pass topic identifier to search messages only in specific topic; pass null to search for messages in all topics */
-    topic_id?: Obj.MessageTopic;
-    /** Query to search for */
-    query: string;
-    /** Identifier of the sender of messages to search for; pass null to search for messages from any sender. Not supported in secret chats */
-    sender_id?: Obj.MessageSender;
-    /** Identifier of the message starting from which history must be fetched; use 0 to get results from the last message */
-    from_message_id: number;
-    /** Specify 0 to get results from exactly the message from_message_id or a negative offset to get the specified message and some newer messages */
-    offset: number;
-    /** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
-    /** Additional filter for messages to search; pass null to search for all messages */
-    filter?: Obj.SearchMessagesFilter;
+	"@type": "searchChatMessages";
+	/** Identifier of the chat in which to search messages */
+	chat_id: number;
+	/** Pass topic identifier to search messages only in specific topic; pass null to search for messages in all topics */
+	topic_id?: Obj.MessageTopic;
+	/** Query to search for */
+	query: string;
+	/** Identifier of the sender of messages to search for; pass null to search for messages from any sender. Not supported in secret chats */
+	sender_id?: Obj.MessageSender;
+	/** Identifier of the message starting from which history must be fetched; use 0 to get results from the last message */
+	from_message_id: number;
+	/** Specify 0 to get results from exactly the message from_message_id or a negative offset to get the specified message and some newer messages */
+	offset: number;
+	/** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
+	/** Additional filter for messages to search; pass null to search for all messages */
+	filter?: Obj.SearchMessagesFilter;
 }) => Obj.FoundChatMessages;
 
 /**
@@ -1293,23 +1284,23 @@ export type SearchChatMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages.html
  */
 export type SearchMessages = (args: {
-    '@type': 'searchMessages';
-    /** Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported */
-    chat_list?: Obj.ChatList;
-    /** Query to search for */
-    query: string;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
-    /** Additional filter for messages to search; pass null to search for all messages. Filters searchMessagesFilterMention, searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction, searchMessagesFilterFailedToSend, and searchMessagesFilterPinned are unsupported in this function */
-    filter?: Obj.SearchMessagesFilter;
-    /** Additional filter for type of the chat of the searched messages; pass null to search for messages in all chats */
-    chat_type_filter?: Obj.SearchMessagesChatTypeFilter;
-    /** If not 0, the minimum date of the messages to return */
-    min_date: number;
-    /** If not 0, the maximum date of the messages to return */
-    max_date: number;
+	"@type": "searchMessages";
+	/** Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported */
+	chat_list?: Obj.ChatList;
+	/** Query to search for */
+	query: string;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
+	/** Additional filter for messages to search; pass null to search for all messages. Filters searchMessagesFilterMention, searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction, searchMessagesFilterFailedToSend, and searchMessagesFilterPinned are unsupported in this function */
+	filter?: Obj.SearchMessagesFilter;
+	/** Additional filter for type of the chat of the searched messages; pass null to search for messages in all chats */
+	chat_type_filter?: Obj.SearchMessagesChatTypeFilter;
+	/** If not 0, the minimum date of the messages to return */
+	min_date: number;
+	/** If not 0, the maximum date of the messages to return */
+	max_date: number;
 }) => Obj.FoundMessages;
 
 /**
@@ -1317,17 +1308,17 @@ export type SearchMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_secret_messages.html
  */
 export type SearchSecretMessages = (args: {
-    '@type': 'searchSecretMessages';
-    /** Identifier of the chat in which to search. Specify 0 to search in all secret chats */
-    chat_id: number;
-    /** Query to search for. If empty, searchChatMessages must be used instead */
-    query: string;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
-    /** Additional filter for messages to search; pass null to search for all messages */
-    filter?: Obj.SearchMessagesFilter;
+	"@type": "searchSecretMessages";
+	/** Identifier of the chat in which to search. Specify 0 to search in all secret chats */
+	chat_id: number;
+	/** Query to search for. If empty, searchChatMessages must be used instead */
+	query: string;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
+	/** Additional filter for messages to search; pass null to search for all messages */
+	filter?: Obj.SearchMessagesFilter;
 }) => Obj.FoundMessages;
 
 /**
@@ -1335,19 +1326,19 @@ export type SearchSecretMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_saved_messages.html
  */
 export type SearchSavedMessages = (args: {
-    '@type': 'searchSavedMessages';
-    /** If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages */
-    saved_messages_topic_id: number;
-    /** Tag to search for; pass null to return all suitable messages */
-    tag?: Obj.ReactionType;
-    /** Query to search for */
-    query: string;
-    /** Identifier of the message starting from which messages must be fetched; use 0 to get results from the last message */
-    from_message_id: number;
-    /** Specify 0 to get results from exactly the message from_message_id or a negative offset to get the specified message and some newer messages */
-    offset: number;
-    /** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "searchSavedMessages";
+	/** If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages */
+	saved_messages_topic_id: number;
+	/** Tag to search for; pass null to return all suitable messages */
+	tag?: Obj.ReactionType;
+	/** Query to search for */
+	query: string;
+	/** Identifier of the message starting from which messages must be fetched; use 0 to get results from the last message */
+	from_message_id: number;
+	/** Specify 0 to get results from exactly the message from_message_id or a negative offset to get the specified message and some newer messages */
+	offset: number;
+	/** The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.FoundChatMessages;
 
 /**
@@ -1355,13 +1346,13 @@ export type SearchSavedMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_call_messages.html
  */
 export type SearchCallMessages = (args: {
-    '@type': 'searchCallMessages';
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
-    /** Pass true to search only for messages with missed/declined calls */
-    only_missed: boolean;
+	"@type": "searchCallMessages";
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
+	/** Pass true to search only for messages with missed/declined calls */
+	only_missed: boolean;
 }) => Obj.FoundMessages;
 
 /**
@@ -1369,11 +1360,11 @@ export type SearchCallMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_outgoing_document_messages.html
  */
 export type SearchOutgoingDocumentMessages = (args: {
-    '@type': 'searchOutgoingDocumentMessages';
-    /** Query to search for in document file name and message caption */
-    query: string;
-    /** The maximum number of messages to be returned; up to 100 */
-    limit: number;
+	"@type": "searchOutgoingDocumentMessages";
+	/** Query to search for in document file name and message caption */
+	query: string;
+	/** The maximum number of messages to be returned; up to 100 */
+	limit: number;
 }) => Obj.FoundMessages;
 
 /**
@@ -1381,13 +1372,13 @@ export type SearchOutgoingDocumentMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_public_messages_by_tag.html
  */
 export type SearchPublicMessagesByTag = (args: {
-    '@type': 'searchPublicMessagesByTag';
-    /** Hashtag or cashtag to search for */
-    tag: string;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "searchPublicMessagesByTag";
+	/** Hashtag or cashtag to search for */
+	tag: string;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.FoundMessages;
 
 /**
@@ -1395,15 +1386,15 @@ export type SearchPublicMessagesByTag = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_public_stories_by_tag.html
  */
 export type SearchPublicStoriesByTag = (args: {
-    '@type': 'searchPublicStoriesByTag';
-    /** Identifier of the chat that posted the stories to search for; pass 0 to search stories in all chats */
-    story_poster_chat_id: number;
-    /** Hashtag or cashtag to search for */
-    tag: string;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of stories to be returned; up to 100. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "searchPublicStoriesByTag";
+	/** Identifier of the chat that posted the stories to search for; pass 0 to search stories in all chats */
+	story_poster_chat_id: number;
+	/** Hashtag or cashtag to search for */
+	tag: string;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of stories to be returned; up to 100. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.FoundStories;
 
 /**
@@ -1411,13 +1402,13 @@ export type SearchPublicStoriesByTag = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_public_stories_by_location.html
  */
 export type SearchPublicStoriesByLocation = (args: {
-    '@type': 'searchPublicStoriesByLocation';
-    /** Address of the location */
-    address: Obj.LocationAddress;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of stories to be returned; up to 100. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "searchPublicStoriesByLocation";
+	/** Address of the location */
+	address: Obj.LocationAddress;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of stories to be returned; up to 100. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.FoundStories;
 
 /**
@@ -1425,15 +1416,15 @@ export type SearchPublicStoriesByLocation = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_public_stories_by_venue.html
  */
 export type SearchPublicStoriesByVenue = (args: {
-    '@type': 'searchPublicStoriesByVenue';
-    /** Provider of the venue */
-    venue_provider: string;
-    /** Identifier of the venue in the provider database */
-    venue_id: string;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of stories to be returned; up to 100. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "searchPublicStoriesByVenue";
+	/** Provider of the venue */
+	venue_provider: string;
+	/** Identifier of the venue in the provider database */
+	venue_id: string;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of stories to be returned; up to 100. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.FoundStories;
 
 /**
@@ -1441,11 +1432,11 @@ export type SearchPublicStoriesByVenue = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_searched_for_tags.html
  */
 export type GetSearchedForTags = (args: {
-    '@type': 'getSearchedForTags';
-    /** Prefix of hashtags or cashtags to return */
-    tag_prefix: string;
-    /** The maximum number of items to be returned */
-    limit: number;
+	"@type": "getSearchedForTags";
+	/** Prefix of hashtags or cashtags to return */
+	tag_prefix: string;
+	/** The maximum number of items to be returned */
+	limit: number;
 }) => Obj.Hashtags;
 
 /**
@@ -1453,9 +1444,9 @@ export type GetSearchedForTags = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_searched_for_tag.html
  */
 export type RemoveSearchedForTag = (args: {
-    '@type': 'removeSearchedForTag';
-    /** Hashtag or cashtag to delete */
-    tag: string;
+	"@type": "removeSearchedForTag";
+	/** Hashtag or cashtag to delete */
+	tag: string;
 }) => Obj.Ok;
 
 /**
@@ -1463,9 +1454,9 @@ export type RemoveSearchedForTag = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1clear_searched_for_tags.html
  */
 export type ClearSearchedForTags = (args: {
-    '@type': 'clearSearchedForTags';
-    /** Pass true to clear the list of recently searched for cashtags; otherwise, the list of recently searched for hashtags will be cleared */
-    clear_cashtags: boolean;
+	"@type": "clearSearchedForTags";
+	/** Pass true to clear the list of recently searched for cashtags; otherwise, the list of recently searched for hashtags will be cleared */
+	clear_cashtags: boolean;
 }) => Obj.Ok;
 
 /**
@@ -1473,9 +1464,9 @@ export type ClearSearchedForTags = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_all_call_messages.html
  */
 export type DeleteAllCallMessages = (args: {
-    '@type': 'deleteAllCallMessages';
-    /** Pass true to delete the messages for all users */
-    revoke: boolean;
+	"@type": "deleteAllCallMessages";
+	/** Pass true to delete the messages for all users */
+	revoke: boolean;
 }) => Obj.Ok;
 
 /**
@@ -1483,11 +1474,11 @@ export type DeleteAllCallMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_chat_recent_location_messages.html
  */
 export type SearchChatRecentLocationMessages = (args: {
-    '@type': 'searchChatRecentLocationMessages';
-    /** Chat identifier */
-    chat_id: number;
-    /** The maximum number of messages to be returned */
-    limit: number;
+	"@type": "searchChatRecentLocationMessages";
+	/** Chat identifier */
+	chat_id: number;
+	/** The maximum number of messages to be returned */
+	limit: number;
 }) => Obj.Messages;
 
 /**
@@ -1495,11 +1486,11 @@ export type SearchChatRecentLocationMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_message_by_date.html
  */
 export type GetChatMessageByDate = (args: {
-    '@type': 'getChatMessageByDate';
-    /** Chat identifier */
-    chat_id: number;
-    /** Point in time (Unix timestamp) relative to which to search for messages */
-    date: number;
+	"@type": "getChatMessageByDate";
+	/** Chat identifier */
+	chat_id: number;
+	/** Point in time (Unix timestamp) relative to which to search for messages */
+	date: number;
 }) => Obj.Message;
 
 /**
@@ -1507,17 +1498,17 @@ export type GetChatMessageByDate = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_sparse_message_positions.html
  */
 export type GetChatSparseMessagePositions = (args: {
-    '@type': 'getChatSparseMessagePositions';
-    /** Identifier of the chat in which to return information about message positions */
-    chat_id: number;
-    /** Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function */
-    filter: Obj.SearchMessagesFilter;
-    /** The message identifier from which to return information about message positions */
-    from_message_id: number;
-    /** The expected number of message positions to be returned; 50-2000. A smaller number of positions can be returned, if there are not enough appropriate messages */
-    limit: number;
-    /** If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages */
-    saved_messages_topic_id: number;
+	"@type": "getChatSparseMessagePositions";
+	/** Identifier of the chat in which to return information about message positions */
+	chat_id: number;
+	/** Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function */
+	filter: Obj.SearchMessagesFilter;
+	/** The message identifier from which to return information about message positions */
+	from_message_id: number;
+	/** The expected number of message positions to be returned; 50-2000. A smaller number of positions can be returned, if there are not enough appropriate messages */
+	limit: number;
+	/** If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages */
+	saved_messages_topic_id: number;
 }) => Obj.MessagePositions;
 
 /**
@@ -1525,15 +1516,15 @@ export type GetChatSparseMessagePositions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_message_calendar.html
  */
 export type GetChatMessageCalendar = (args: {
-    '@type': 'getChatMessageCalendar';
-    /** Identifier of the chat in which to return information about messages */
-    chat_id: number;
-    /** Pass topic identifier to get the result only in specific topic; pass null to get the result in all topics; forum topics aren't supported */
-    topic_id?: Obj.MessageTopic;
-    /** Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function */
-    filter: Obj.SearchMessagesFilter;
-    /** The message identifier from which to return information about messages; use 0 to get results from the last message */
-    from_message_id: number;
+	"@type": "getChatMessageCalendar";
+	/** Identifier of the chat in which to return information about messages */
+	chat_id: number;
+	/** Pass topic identifier to get the result only in specific topic; pass null to get the result in all topics; forum topics aren't supported */
+	topic_id?: Obj.MessageTopic;
+	/** Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function */
+	filter: Obj.SearchMessagesFilter;
+	/** The message identifier from which to return information about messages; use 0 to get results from the last message */
+	from_message_id: number;
 }) => Obj.MessageCalendar;
 
 /**
@@ -1541,15 +1532,15 @@ export type GetChatMessageCalendar = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_message_count.html
  */
 export type GetChatMessageCount = (args: {
-    '@type': 'getChatMessageCount';
-    /** Identifier of the chat in which to count messages */
-    chat_id: number;
-    /** Pass topic identifier to get number of messages only in specific topic; pass null to get number of messages in all topics */
-    topic_id?: Obj.MessageTopic;
-    /** Filter for message content; searchMessagesFilterEmpty is unsupported in this function */
-    filter: Obj.SearchMessagesFilter;
-    /** Pass true to get the number of messages without sending network requests, or -1 if the number of messages is unknown locally */
-    return_local: boolean;
+	"@type": "getChatMessageCount";
+	/** Identifier of the chat in which to count messages */
+	chat_id: number;
+	/** Pass topic identifier to get number of messages only in specific topic; pass null to get number of messages in all topics */
+	topic_id?: Obj.MessageTopic;
+	/** Filter for message content; searchMessagesFilterEmpty is unsupported in this function */
+	filter: Obj.SearchMessagesFilter;
+	/** Pass true to get the number of messages without sending network requests, or -1 if the number of messages is unknown locally */
+	return_local: boolean;
 }) => Obj.Count;
 
 /**
@@ -1557,15 +1548,15 @@ export type GetChatMessageCount = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_message_position.html
  */
 export type GetChatMessagePosition = (args: {
-    '@type': 'getChatMessagePosition';
-    /** Identifier of the chat in which to find message position */
-    chat_id: number;
-    /** Pass topic identifier to get position among messages only in specific topic; pass null to get position among all chat messages */
-    topic_id?: Obj.MessageTopic;
-    /** Filter for message content; searchMessagesFilterEmpty, searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction, and searchMessagesFilterFailedToSend are unsupported in this function */
-    filter: Obj.SearchMessagesFilter;
-    /** Message identifier */
-    message_id: number;
+	"@type": "getChatMessagePosition";
+	/** Identifier of the chat in which to find message position */
+	chat_id: number;
+	/** Pass topic identifier to get position among messages only in specific topic; pass null to get position among all chat messages */
+	topic_id?: Obj.MessageTopic;
+	/** Filter for message content; searchMessagesFilterEmpty, searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction, and searchMessagesFilterFailedToSend are unsupported in this function */
+	filter: Obj.SearchMessagesFilter;
+	/** Message identifier */
+	message_id: number;
 }) => Obj.Count;
 
 /**
@@ -1573,9 +1564,9 @@ export type GetChatMessagePosition = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_scheduled_messages.html
  */
 export type GetChatScheduledMessages = (args: {
-    '@type': 'getChatScheduledMessages';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "getChatScheduledMessages";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Messages;
 
 /**
@@ -1583,9 +1574,9 @@ export type GetChatScheduledMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_sponsored_messages.html
  */
 export type GetChatSponsoredMessages = (args: {
-    '@type': 'getChatSponsoredMessages';
-    /** Identifier of the chat */
-    chat_id: number;
+	"@type": "getChatSponsoredMessages";
+	/** Identifier of the chat */
+	chat_id: number;
 }) => Obj.SponsoredMessages;
 
 /**
@@ -1593,15 +1584,15 @@ export type GetChatSponsoredMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1click_chat_sponsored_message.html
  */
 export type ClickChatSponsoredMessage = (args: {
-    '@type': 'clickChatSponsoredMessage';
-    /** Chat identifier of the sponsored message */
-    chat_id: number;
-    /** Identifier of the sponsored message */
-    message_id: number;
-    /** Pass true if the media was clicked in the sponsored message */
-    is_media_click: boolean;
-    /** Pass true if the user expanded the video from the sponsored message fullscreen before the click */
-    from_fullscreen: boolean;
+	"@type": "clickChatSponsoredMessage";
+	/** Chat identifier of the sponsored message */
+	chat_id: number;
+	/** Identifier of the sponsored message */
+	message_id: number;
+	/** Pass true if the media was clicked in the sponsored message */
+	is_media_click: boolean;
+	/** Pass true if the user expanded the video from the sponsored message fullscreen before the click */
+	from_fullscreen: boolean;
 }) => Obj.Ok;
 
 /**
@@ -1609,13 +1600,13 @@ export type ClickChatSponsoredMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_sponsored_message.html
  */
 export type ReportChatSponsoredMessage = (args: {
-    '@type': 'reportChatSponsoredMessage';
-    /** Chat identifier of the sponsored message */
-    chat_id: number;
-    /** Identifier of the sponsored message */
-    message_id: number;
-    /** Option identifier chosen by the user; leave empty for the initial request */
-    option_id: string;
+	"@type": "reportChatSponsoredMessage";
+	/** Chat identifier of the sponsored message */
+	chat_id: number;
+	/** Identifier of the sponsored message */
+	message_id: number;
+	/** Option identifier chosen by the user; leave empty for the initial request */
+	option_id: string;
 }) => Obj.ReportSponsoredResult;
 
 /**
@@ -1623,9 +1614,9 @@ export type ReportChatSponsoredMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_search_sponsored_chats.html
  */
 export type GetSearchSponsoredChats = (args: {
-    '@type': 'getSearchSponsoredChats';
-    /** Query the user searches for */
-    query: string;
+	"@type": "getSearchSponsoredChats";
+	/** Query the user searches for */
+	query: string;
 }) => Obj.SponsoredChats;
 
 /**
@@ -1633,9 +1624,9 @@ export type GetSearchSponsoredChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1view_sponsored_chat.html
  */
 export type ViewSponsoredChat = (args: {
-    '@type': 'viewSponsoredChat';
-    /** Unique identifier of the sponsored chat */
-    sponsored_chat_unique_id: number;
+	"@type": "viewSponsoredChat";
+	/** Unique identifier of the sponsored chat */
+	sponsored_chat_unique_id: number;
 }) => Obj.Ok;
 
 /**
@@ -1643,9 +1634,9 @@ export type ViewSponsoredChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1open_sponsored_chat.html
  */
 export type OpenSponsoredChat = (args: {
-    '@type': 'openSponsoredChat';
-    /** Unique identifier of the sponsored chat */
-    sponsored_chat_unique_id: number;
+	"@type": "openSponsoredChat";
+	/** Unique identifier of the sponsored chat */
+	sponsored_chat_unique_id: number;
 }) => Obj.Ok;
 
 /**
@@ -1653,11 +1644,11 @@ export type OpenSponsoredChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_sponsored_chat.html
  */
 export type ReportSponsoredChat = (args: {
-    '@type': 'reportSponsoredChat';
-    /** Unique identifier of the sponsored chat */
-    sponsored_chat_unique_id: number;
-    /** Option identifier chosen by the user; leave empty for the initial request */
-    option_id: string;
+	"@type": "reportSponsoredChat";
+	/** Unique identifier of the sponsored chat */
+	sponsored_chat_unique_id: number;
+	/** Option identifier chosen by the user; leave empty for the initial request */
+	option_id: string;
 }) => Obj.ReportSponsoredResult;
 
 /**
@@ -1665,11 +1656,11 @@ export type ReportSponsoredChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_notification.html
  */
 export type RemoveNotification = (args: {
-    '@type': 'removeNotification';
-    /** Identifier of notification group to which the notification belongs */
-    notification_group_id: number;
-    /** Identifier of removed notification */
-    notification_id: number;
+	"@type": "removeNotification";
+	/** Identifier of notification group to which the notification belongs */
+	notification_group_id: number;
+	/** Identifier of removed notification */
+	notification_id: number;
 }) => Obj.Ok;
 
 /**
@@ -1677,11 +1668,11 @@ export type RemoveNotification = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_notification_group.html
  */
 export type RemoveNotificationGroup = (args: {
-    '@type': 'removeNotificationGroup';
-    /** Notification group identifier */
-    notification_group_id: number;
-    /** The maximum identifier of removed notifications */
-    max_notification_id: number;
+	"@type": "removeNotificationGroup";
+	/** Notification group identifier */
+	notification_group_id: number;
+	/** The maximum identifier of removed notifications */
+	max_notification_id: number;
 }) => Obj.Ok;
 
 /**
@@ -1689,17 +1680,17 @@ export type RemoveNotificationGroup = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_link.html
  */
 export type GetMessageLink = (args: {
-    '@type': 'getMessageLink';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its link preview */
-    media_timestamp: number;
-    /** Pass true to create a link for the whole media album */
-    for_album: boolean;
-    /** Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic */
-    in_message_thread: boolean;
+	"@type": "getMessageLink";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** If not 0, timestamp from which the video/audio/video note/voice note/story playing must start, in seconds. The media can be in the message content or in its link preview */
+	media_timestamp: number;
+	/** Pass true to create a link for the whole media album */
+	for_album: boolean;
+	/** Pass true to create a link to the message as a channel post comment, in a message thread, or a forum topic */
+	in_message_thread: boolean;
 }) => Obj.MessageLink;
 
 /**
@@ -1707,13 +1698,13 @@ export type GetMessageLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_embedding_code.html
  */
 export type GetMessageEmbeddingCode = (args: {
-    '@type': 'getMessageEmbeddingCode';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** Pass true to return an HTML code for embedding of the whole media album */
-    for_album: boolean;
+	"@type": "getMessageEmbeddingCode";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** Pass true to return an HTML code for embedding of the whole media album */
+	for_album: boolean;
 }) => Obj.Text;
 
 /**
@@ -1721,9 +1712,9 @@ export type GetMessageEmbeddingCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_link_info.html
  */
 export type GetMessageLinkInfo = (args: {
-    '@type': 'getMessageLinkInfo';
-    /** The message link */
-    url: string;
+	"@type": "getMessageLinkInfo";
+	/** The message link */
+	url: string;
 }) => Obj.MessageLinkInfo;
 
 /**
@@ -1731,11 +1722,11 @@ export type GetMessageLinkInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_text.html
  */
 export type TranslateText = (args: {
-    '@type': 'translateText';
-    /** Text to translate */
-    text: Obj.FormattedText;
-    /** Language code of the language to which the message is translated. Must be one of "af", "sq", "am", "ar", "hy", "az", "eu", "be", "bn", "bs", "bg", "ca", "ceb", "zh-CN", "zh", "zh-Hans", "zh-TW", "zh-Hant", "co", "hr", "cs", "da", "nl", "en", "eo", "et", "fi", "fr", "fy", "gl", "ka", "de", "el", "gu", "ht", "ha", "haw", "he", "iw", "hi", "hmn", "hu", "is", "ig", "id", "in", "ga", "it", "ja", "jv", "kn", "kk", "km", "rw", "ko", "ku", "ky", "lo", "la", "lv", "lt", "lb", "mk", "mg", "ms", "ml", "mt", "mi", "mr", "mn", "my", "ne", "no", "ny", "or", "ps", "fa", "pl", "pt", "pa", "ro", "ru", "sm", "gd", "sr", "st", "sn", "sd", "si", "sk", "sl", "so", "es", "su", "sw", "sv", "tl", "tg", "ta", "tt", "te", "th", "tr", "tk", "uk", "ur", "ug", "uz", "vi", "cy", "xh", "yi", "ji", "yo", "zu" */
-    to_language_code: string;
+	"@type": "translateText";
+	/** Text to translate */
+	text: Obj.FormattedText;
+	/** Language code of the language to which the message is translated. Must be one of "af", "sq", "am", "ar", "hy", "az", "eu", "be", "bn", "bs", "bg", "ca", "ceb", "zh-CN", "zh", "zh-Hans", "zh-TW", "zh-Hant", "co", "hr", "cs", "da", "nl", "en", "eo", "et", "fi", "fr", "fy", "gl", "ka", "de", "el", "gu", "ht", "ha", "haw", "he", "iw", "hi", "hmn", "hu", "is", "ig", "id", "in", "ga", "it", "ja", "jv", "kn", "kk", "km", "rw", "ko", "ku", "ky", "lo", "la", "lv", "lt", "lb", "mk", "mg", "ms", "ml", "mt", "mi", "mr", "mn", "my", "ne", "no", "ny", "or", "ps", "fa", "pl", "pt", "pa", "ro", "ru", "sm", "gd", "sr", "st", "sn", "sd", "si", "sk", "sl", "so", "es", "su", "sw", "sv", "tl", "tg", "ta", "tt", "te", "th", "tr", "tk", "uk", "ur", "ug", "uz", "vi", "cy", "xh", "yi", "ji", "yo", "zu" */
+	to_language_code: string;
 }) => Obj.FormattedText;
 
 /**
@@ -1743,13 +1734,13 @@ export type TranslateText = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1translate_message_text.html
  */
 export type TranslateMessageText = (args: {
-    '@type': 'translateMessageText';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** Language code of the language to which the message is translated. Must be one of "af", "sq", "am", "ar", "hy", "az", "eu", "be", "bn", "bs", "bg", "ca", "ceb", "zh-CN", "zh", "zh-Hans", "zh-TW", "zh-Hant", "co", "hr", "cs", "da", "nl", "en", "eo", "et", "fi", "fr", "fy", "gl", "ka", "de", "el", "gu", "ht", "ha", "haw", "he", "iw", "hi", "hmn", "hu", "is", "ig", "id", "in", "ga", "it", "ja", "jv", "kn", "kk", "km", "rw", "ko", "ku", "ky", "lo", "la", "lv", "lt", "lb", "mk", "mg", "ms", "ml", "mt", "mi", "mr", "mn", "my", "ne", "no", "ny", "or", "ps", "fa", "pl", "pt", "pa", "ro", "ru", "sm", "gd", "sr", "st", "sn", "sd", "si", "sk", "sl", "so", "es", "su", "sw", "sv", "tl", "tg", "ta", "tt", "te", "th", "tr", "tk", "uk", "ur", "ug", "uz", "vi", "cy", "xh", "yi", "ji", "yo", "zu" */
-    to_language_code: string;
+	"@type": "translateMessageText";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** Language code of the language to which the message is translated. Must be one of "af", "sq", "am", "ar", "hy", "az", "eu", "be", "bn", "bs", "bg", "ca", "ceb", "zh-CN", "zh", "zh-Hans", "zh-TW", "zh-Hant", "co", "hr", "cs", "da", "nl", "en", "eo", "et", "fi", "fr", "fy", "gl", "ka", "de", "el", "gu", "ht", "ha", "haw", "he", "iw", "hi", "hmn", "hu", "is", "ig", "id", "in", "ga", "it", "ja", "jv", "kn", "kk", "km", "rw", "ko", "ku", "ky", "lo", "la", "lv", "lt", "lb", "mk", "mg", "ms", "ml", "mt", "mi", "mr", "mn", "my", "ne", "no", "ny", "or", "ps", "fa", "pl", "pt", "pa", "ro", "ru", "sm", "gd", "sr", "st", "sn", "sd", "si", "sk", "sl", "so", "es", "su", "sw", "sv", "tl", "tg", "ta", "tt", "te", "th", "tr", "tk", "uk", "ur", "ug", "uz", "vi", "cy", "xh", "yi", "ji", "yo", "zu" */
+	to_language_code: string;
 }) => Obj.FormattedText;
 
 /**
@@ -1757,11 +1748,11 @@ export type TranslateMessageText = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1recognize_speech.html
  */
 export type RecognizeSpeech = (args: {
-    '@type': 'recognizeSpeech';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message. Use messageProperties.can_recognize_speech to check whether the message is suitable */
-    message_id: number;
+	"@type": "recognizeSpeech";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message. Use messageProperties.can_recognize_speech to check whether the message is suitable */
+	message_id: number;
 }) => Obj.Ok;
 
 /**
@@ -1769,13 +1760,13 @@ export type RecognizeSpeech = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rate_speech_recognition.html
  */
 export type RateSpeechRecognition = (args: {
-    '@type': 'rateSpeechRecognition';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** Pass true if the speech recognition is good */
-    is_good: boolean;
+	"@type": "rateSpeechRecognition";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** Pass true if the speech recognition is good */
+	is_good: boolean;
 }) => Obj.Ok;
 
 /**
@@ -1783,9 +1774,9 @@ export type RateSpeechRecognition = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_available_message_senders.html
  */
 export type GetChatAvailableMessageSenders = (args: {
-    '@type': 'getChatAvailableMessageSenders';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "getChatAvailableMessageSenders";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.ChatMessageSenders;
 
 /**
@@ -1793,11 +1784,11 @@ export type GetChatAvailableMessageSenders = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_message_sender.html
  */
 export type SetChatMessageSender = (args: {
-    '@type': 'setChatMessageSender';
-    /** Chat identifier */
-    chat_id: number;
-    /** New message sender for the chat */
-    message_sender_id: Obj.MessageSender;
+	"@type": "setChatMessageSender";
+	/** Chat identifier */
+	chat_id: number;
+	/** New message sender for the chat */
+	message_sender_id: Obj.MessageSender;
 }) => Obj.Ok;
 
 /**
@@ -1805,19 +1796,19 @@ export type SetChatMessageSender = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_message.html
  */
 export type SendMessage = (args: {
-    '@type': 'sendMessage';
-    /** Target chat */
-    chat_id: number;
-    /** If not 0, the message thread identifier in which the message will be sent */
-    message_thread_id: number;
-    /** Information about the message or story to be replied; pass null if none */
-    reply_to?: Obj.InputMessageReplyTo;
-    /** Options to be used to send the message; pass null to use default options */
-    options?: Obj.MessageSendOptions;
-    /** Markup for replying to the message; pass null if none; for bots only */
-    reply_markup?: Obj.ReplyMarkup;
-    /** The content of the message to be sent */
-    input_message_content: Obj.InputMessageContent;
+	"@type": "sendMessage";
+	/** Target chat */
+	chat_id: number;
+	/** If not 0, the message thread identifier in which the message will be sent */
+	message_thread_id: number;
+	/** Information about the message or story to be replied; pass null if none */
+	reply_to?: Obj.InputMessageReplyTo;
+	/** Options to be used to send the message; pass null to use default options */
+	options?: Obj.MessageSendOptions;
+	/** Markup for replying to the message; pass null if none; for bots only */
+	reply_markup?: Obj.ReplyMarkup;
+	/** The content of the message to be sent */
+	input_message_content: Obj.InputMessageContent;
 }) => Obj.Message;
 
 /**
@@ -1825,17 +1816,17 @@ export type SendMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_message_album.html
  */
 export type SendMessageAlbum = (args: {
-    '@type': 'sendMessageAlbum';
-    /** Target chat */
-    chat_id: number;
-    /** If not 0, the message thread identifier in which the messages will be sent */
-    message_thread_id: number;
-    /** Information about the message or story to be replied; pass null if none */
-    reply_to?: Obj.InputMessageReplyTo;
-    /** Options to be used to send the messages; pass null to use default options */
-    options?: Obj.MessageSendOptions;
-    /** Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media */
-    input_message_contents: Obj.InputMessageContent[];
+	"@type": "sendMessageAlbum";
+	/** Target chat */
+	chat_id: number;
+	/** If not 0, the message thread identifier in which the messages will be sent */
+	message_thread_id: number;
+	/** Information about the message or story to be replied; pass null if none */
+	reply_to?: Obj.InputMessageReplyTo;
+	/** Options to be used to send the messages; pass null to use default options */
+	options?: Obj.MessageSendOptions;
+	/** Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media */
+	input_message_contents: Obj.InputMessageContent[];
 }) => Obj.Messages;
 
 /**
@@ -1843,13 +1834,13 @@ export type SendMessageAlbum = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_bot_start_message.html
  */
 export type SendBotStartMessage = (args: {
-    '@type': 'sendBotStartMessage';
-    /** Identifier of the bot */
-    bot_user_id: number;
-    /** Identifier of the target chat */
-    chat_id: number;
-    /** A hidden parameter sent to the bot for deep linking purposes (https://core.telegram.org/bots#deep-linking) */
-    parameter: string;
+	"@type": "sendBotStartMessage";
+	/** Identifier of the bot */
+	bot_user_id: number;
+	/** Identifier of the target chat */
+	chat_id: number;
+	/** A hidden parameter sent to the bot for deep linking purposes (https://core.telegram.org/bots#deep-linking) */
+	parameter: string;
 }) => Obj.Message;
 
 /**
@@ -1857,21 +1848,21 @@ export type SendBotStartMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_inline_query_result_message.html
  */
 export type SendInlineQueryResultMessage = (args: {
-    '@type': 'sendInlineQueryResultMessage';
-    /** Target chat */
-    chat_id: number;
-    /** If not 0, the message thread identifier in which the message will be sent */
-    message_thread_id: number;
-    /** Information about the message or story to be replied; pass null if none */
-    reply_to?: Obj.InputMessageReplyTo;
-    /** Options to be used to send the message; pass null to use default options */
-    options?: Obj.MessageSendOptions;
-    /** Identifier of the inline query */
-    query_id: string;
-    /** Identifier of the inline query result */
-    result_id: string;
-    /** Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username") */
-    hide_via_bot: boolean;
+	"@type": "sendInlineQueryResultMessage";
+	/** Target chat */
+	chat_id: number;
+	/** If not 0, the message thread identifier in which the message will be sent */
+	message_thread_id: number;
+	/** Information about the message or story to be replied; pass null if none */
+	reply_to?: Obj.InputMessageReplyTo;
+	/** Options to be used to send the message; pass null to use default options */
+	options?: Obj.MessageSendOptions;
+	/** Identifier of the inline query */
+	query_id: string;
+	/** Identifier of the inline query result */
+	result_id: string;
+	/** Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username") */
+	hide_via_bot: boolean;
 }) => Obj.Message;
 
 /**
@@ -1879,21 +1870,21 @@ export type SendInlineQueryResultMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1forward_messages.html
  */
 export type ForwardMessages = (args: {
-    '@type': 'forwardMessages';
-    /** Identifier of the chat to which to forward messages */
-    chat_id: number;
-    /** If not 0, the message thread identifier in which the message will be sent; for forum threads only */
-    message_thread_id: number;
-    /** Identifier of the chat from which to forward messages */
-    from_chat_id: number;
-    /** Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if messageProperties.can_be_forwarded */
-    message_ids: number[];
-    /** Options to be used to send the messages; pass null to use default options */
-    options?: Obj.MessageSendOptions;
-    /** Pass true to copy content of the messages without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local. Use messageProperties.can_be_copied and messageProperties.can_be_copied_to_secret_chat to check whether the message is suitable */
-    send_copy: boolean;
-    /** Pass true to remove media captions of message copies. Ignored if send_copy is false */
-    remove_caption: boolean;
+	"@type": "forwardMessages";
+	/** Identifier of the chat to which to forward messages */
+	chat_id: number;
+	/** If not 0, the message thread identifier in which the message will be sent; for forum threads only */
+	message_thread_id: number;
+	/** Identifier of the chat from which to forward messages */
+	from_chat_id: number;
+	/** Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if messageProperties.can_be_forwarded */
+	message_ids: number[];
+	/** Options to be used to send the messages; pass null to use default options */
+	options?: Obj.MessageSendOptions;
+	/** Pass true to copy content of the messages without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local. Use messageProperties.can_be_copied and messageProperties.can_be_copied_to_secret_chat to check whether the message is suitable */
+	send_copy: boolean;
+	/** Pass true to remove media captions of message copies. Ignored if send_copy is false */
+	remove_caption: boolean;
 }) => Obj.Messages;
 
 /**
@@ -1901,13 +1892,13 @@ export type ForwardMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_quick_reply_shortcut_messages.html
  */
 export type SendQuickReplyShortcutMessages = (args: {
-    '@type': 'sendQuickReplyShortcutMessages';
-    /** Identifier of the chat to which to send messages. The chat must be a private chat with a regular user */
-    chat_id: number;
-    /** Unique identifier of the quick reply shortcut */
-    shortcut_id: number;
-    /** Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates */
-    sending_id: number;
+	"@type": "sendQuickReplyShortcutMessages";
+	/** Identifier of the chat to which to send messages. The chat must be a private chat with a regular user */
+	chat_id: number;
+	/** Unique identifier of the quick reply shortcut */
+	shortcut_id: number;
+	/** Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates */
+	sending_id: number;
 }) => Obj.Messages;
 
 /**
@@ -1915,15 +1906,15 @@ export type SendQuickReplyShortcutMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1resend_messages.html
  */
 export type ResendMessages = (args: {
-    '@type': 'resendMessages';
-    /** Identifier of the chat to send messages */
-    chat_id: number;
-    /** Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order */
-    message_ids: number[];
-    /** New manually chosen quote from the message to be replied; pass null if none. Ignored if more than one message is re-sent, or if messageSendingStateFailed.need_another_reply_quote == false */
-    quote?: Obj.InputTextQuote;
-    /** The number of Telegram Stars the user agreed to pay to send the messages. Ignored if messageSendingStateFailed.required_paid_message_star_count == 0 */
-    paid_message_star_count: number;
+	"@type": "resendMessages";
+	/** Identifier of the chat to send messages */
+	chat_id: number;
+	/** Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order */
+	message_ids: number[];
+	/** New manually chosen quote from the message to be replied; pass null if none. Ignored if more than one message is re-sent, or if messageSendingStateFailed.need_another_reply_quote == false */
+	quote?: Obj.InputTextQuote;
+	/** The number of Telegram Stars the user agreed to pay to send the messages. Ignored if messageSendingStateFailed.required_paid_message_star_count == 0 */
+	paid_message_star_count: number;
 }) => Obj.Messages;
 
 /**
@@ -1931,17 +1922,17 @@ export type ResendMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_local_message.html
  */
 export type AddLocalMessage = (args: {
-    '@type': 'addLocalMessage';
-    /** Target chat; channel direct messages chats aren't supported */
-    chat_id: number;
-    /** Identifier of the sender of the message */
-    sender_id: Obj.MessageSender;
-    /** Information about the message or story to be replied; pass null if none */
-    reply_to?: Obj.InputMessageReplyTo;
-    /** Pass true to disable notification for the message */
-    disable_notification: boolean;
-    /** The content of the message to be added */
-    input_message_content: Obj.InputMessageContent;
+	"@type": "addLocalMessage";
+	/** Target chat; channel direct messages chats aren't supported */
+	chat_id: number;
+	/** Identifier of the sender of the message */
+	sender_id: Obj.MessageSender;
+	/** Information about the message or story to be replied; pass null if none */
+	reply_to?: Obj.InputMessageReplyTo;
+	/** Pass true to disable notification for the message */
+	disable_notification: boolean;
+	/** The content of the message to be added */
+	input_message_content: Obj.InputMessageContent;
 }) => Obj.Message;
 
 /**
@@ -1949,13 +1940,13 @@ export type AddLocalMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_messages.html
  */
 export type DeleteMessages = (args: {
-    '@type': 'deleteMessages';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifiers of the messages to be deleted. Use messageProperties.can_be_deleted_only_for_self and messageProperties.can_be_deleted_for_all_users to get suitable messages */
-    message_ids: number[];
-    /** Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats */
-    revoke: boolean;
+	"@type": "deleteMessages";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifiers of the messages to be deleted. Use messageProperties.can_be_deleted_only_for_self and messageProperties.can_be_deleted_for_all_users to get suitable messages */
+	message_ids: number[];
+	/** Pass true to delete messages for all chat members. Always true for supergroups, channels and secret chats */
+	revoke: boolean;
 }) => Obj.Ok;
 
 /**
@@ -1963,11 +1954,11 @@ export type DeleteMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_chat_messages_by_sender.html
  */
 export type DeleteChatMessagesBySender = (args: {
-    '@type': 'deleteChatMessagesBySender';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the sender of messages to delete */
-    sender_id: Obj.MessageSender;
+	"@type": "deleteChatMessagesBySender";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the sender of messages to delete */
+	sender_id: Obj.MessageSender;
 }) => Obj.Ok;
 
 /**
@@ -1975,15 +1966,15 @@ export type DeleteChatMessagesBySender = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_chat_messages_by_date.html
  */
 export type DeleteChatMessagesByDate = (args: {
-    '@type': 'deleteChatMessagesByDate';
-    /** Chat identifier */
-    chat_id: number;
-    /** The minimum date of the messages to delete */
-    min_date: number;
-    /** The maximum date of the messages to delete */
-    max_date: number;
-    /** Pass true to delete chat messages for all users; private chats only */
-    revoke: boolean;
+	"@type": "deleteChatMessagesByDate";
+	/** Chat identifier */
+	chat_id: number;
+	/** The minimum date of the messages to delete */
+	min_date: number;
+	/** The maximum date of the messages to delete */
+	max_date: number;
+	/** Pass true to delete chat messages for all users; private chats only */
+	revoke: boolean;
 }) => Obj.Ok;
 
 /**
@@ -1991,15 +1982,15 @@ export type DeleteChatMessagesByDate = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_text.html
  */
 export type EditMessageText = (args: {
-    '@type': 'editMessageText';
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited */
-    message_id: number;
-    /** The new message reply markup; pass null if none; for bots only */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New text content of the message. Must be of type inputMessageText */
-    input_message_content: Obj.InputMessageContent;
+	"@type": "editMessageText";
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited */
+	message_id: number;
+	/** The new message reply markup; pass null if none; for bots only */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New text content of the message. Must be of type inputMessageText */
+	input_message_content: Obj.InputMessageContent;
 }) => Obj.Message;
 
 /**
@@ -2007,21 +1998,21 @@ export type EditMessageText = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_live_location.html
  */
 export type EditMessageLiveLocation = (args: {
-    '@type': 'editMessageLiveLocation';
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited */
-    message_id: number;
-    /** The new message reply markup; pass null if none; for bots only */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New location content of the message; pass null to stop sharing the live location */
-    location?: Obj.Location;
-    /** New time relative to the message send date, for which the location can be updated, in seconds. If 0x7FFFFFFF specified, then the location can be updated forever. Otherwise, must not exceed the current live_period by more than a day, and the live location expiration date must remain in the next 90 days. Pass 0 to keep the current live_period */
-    live_period: number;
-    /** The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown */
-    heading: number;
-    /** The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled */
-    proximity_alert_radius: number;
+	"@type": "editMessageLiveLocation";
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited */
+	message_id: number;
+	/** The new message reply markup; pass null if none; for bots only */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New location content of the message; pass null to stop sharing the live location */
+	location?: Obj.Location;
+	/** New time relative to the message send date, for which the location can be updated, in seconds. If 0x7FFFFFFF specified, then the location can be updated forever. Otherwise, must not exceed the current live_period by more than a day, and the live location expiration date must remain in the next 90 days. Pass 0 to keep the current live_period */
+	live_period: number;
+	/** The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown */
+	heading: number;
+	/** The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled */
+	proximity_alert_radius: number;
 }) => Obj.Message;
 
 /**
@@ -2029,15 +2020,15 @@ export type EditMessageLiveLocation = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_media.html
  */
 export type EditMessageMedia = (args: {
-    '@type': 'editMessageMedia';
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message. Use messageProperties.can_edit_media to check whether the message can be edited */
-    message_id: number;
-    /** The new message reply markup; pass null if none; for bots only */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo */
-    input_message_content: Obj.InputMessageContent;
+	"@type": "editMessageMedia";
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message. Use messageProperties.can_edit_media to check whether the message can be edited */
+	message_id: number;
+	/** The new message reply markup; pass null if none; for bots only */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo */
+	input_message_content: Obj.InputMessageContent;
 }) => Obj.Message;
 
 /**
@@ -2045,17 +2036,17 @@ export type EditMessageMedia = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_caption.html
  */
 export type EditMessageCaption = (args: {
-    '@type': 'editMessageCaption';
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited */
-    message_id: number;
-    /** The new message reply markup; pass null if none; for bots only */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New message content caption; 0-getOption("message_caption_length_max") characters; pass null to remove caption */
-    caption?: Obj.FormattedText;
-    /** Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages */
-    show_caption_above_media: boolean;
+	"@type": "editMessageCaption";
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited */
+	message_id: number;
+	/** The new message reply markup; pass null if none; for bots only */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New message content caption; 0-getOption("message_caption_length_max") characters; pass null to remove caption */
+	caption?: Obj.FormattedText;
+	/** Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages */
+	show_caption_above_media: boolean;
 }) => Obj.Message;
 
 /**
@@ -2063,13 +2054,13 @@ export type EditMessageCaption = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_reply_markup.html
  */
 export type EditMessageReplyMarkup = (args: {
-    '@type': 'editMessageReplyMarkup';
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited */
-    message_id: number;
-    /** The new message reply markup; pass null if none */
-    reply_markup?: Obj.ReplyMarkup;
+	"@type": "editMessageReplyMarkup";
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited */
+	message_id: number;
+	/** The new message reply markup; pass null if none */
+	reply_markup?: Obj.ReplyMarkup;
 }) => Obj.Message;
 
 /**
@@ -2077,13 +2068,13 @@ export type EditMessageReplyMarkup = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_inline_message_text.html
  */
 export type EditInlineMessageText = (args: {
-    '@type': 'editInlineMessageText';
-    /** Inline message identifier */
-    inline_message_id: string;
-    /** The new message reply markup; pass null if none */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New text content of the message. Must be of type inputMessageText */
-    input_message_content: Obj.InputMessageContent;
+	"@type": "editInlineMessageText";
+	/** Inline message identifier */
+	inline_message_id: string;
+	/** The new message reply markup; pass null if none */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New text content of the message. Must be of type inputMessageText */
+	input_message_content: Obj.InputMessageContent;
 }) => Obj.Ok;
 
 /**
@@ -2091,19 +2082,19 @@ export type EditInlineMessageText = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_inline_message_live_location.html
  */
 export type EditInlineMessageLiveLocation = (args: {
-    '@type': 'editInlineMessageLiveLocation';
-    /** Inline message identifier */
-    inline_message_id: string;
-    /** The new message reply markup; pass null if none */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New location content of the message; pass null to stop sharing the live location */
-    location?: Obj.Location;
-    /** New time relative to the message send date, for which the location can be updated, in seconds. If 0x7FFFFFFF specified, then the location can be updated forever. Otherwise, must not exceed the current live_period by more than a day, and the live location expiration date must remain in the next 90 days. Pass 0 to keep the current live_period */
-    live_period: number;
-    /** The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown */
-    heading: number;
-    /** The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled */
-    proximity_alert_radius: number;
+	"@type": "editInlineMessageLiveLocation";
+	/** Inline message identifier */
+	inline_message_id: string;
+	/** The new message reply markup; pass null if none */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New location content of the message; pass null to stop sharing the live location */
+	location?: Obj.Location;
+	/** New time relative to the message send date, for which the location can be updated, in seconds. If 0x7FFFFFFF specified, then the location can be updated forever. Otherwise, must not exceed the current live_period by more than a day, and the live location expiration date must remain in the next 90 days. Pass 0 to keep the current live_period */
+	live_period: number;
+	/** The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown */
+	heading: number;
+	/** The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled */
+	proximity_alert_radius: number;
 }) => Obj.Ok;
 
 /**
@@ -2111,13 +2102,13 @@ export type EditInlineMessageLiveLocation = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_inline_message_media.html
  */
 export type EditInlineMessageMedia = (args: {
-    '@type': 'editInlineMessageMedia';
-    /** Inline message identifier */
-    inline_message_id: string;
-    /** The new message reply markup; pass null if none; for bots only */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo */
-    input_message_content: Obj.InputMessageContent;
+	"@type": "editInlineMessageMedia";
+	/** Inline message identifier */
+	inline_message_id: string;
+	/** The new message reply markup; pass null if none; for bots only */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo */
+	input_message_content: Obj.InputMessageContent;
 }) => Obj.Ok;
 
 /**
@@ -2125,15 +2116,15 @@ export type EditInlineMessageMedia = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_inline_message_caption.html
  */
 export type EditInlineMessageCaption = (args: {
-    '@type': 'editInlineMessageCaption';
-    /** Inline message identifier */
-    inline_message_id: string;
-    /** The new message reply markup; pass null if none */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters */
-    caption?: Obj.FormattedText;
-    /** Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages */
-    show_caption_above_media: boolean;
+	"@type": "editInlineMessageCaption";
+	/** Inline message identifier */
+	inline_message_id: string;
+	/** The new message reply markup; pass null if none */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters */
+	caption?: Obj.FormattedText;
+	/** Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages */
+	show_caption_above_media: boolean;
 }) => Obj.Ok;
 
 /**
@@ -2141,11 +2132,11 @@ export type EditInlineMessageCaption = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_inline_message_reply_markup.html
  */
 export type EditInlineMessageReplyMarkup = (args: {
-    '@type': 'editInlineMessageReplyMarkup';
-    /** Inline message identifier */
-    inline_message_id: string;
-    /** The new message reply markup; pass null if none */
-    reply_markup?: Obj.ReplyMarkup;
+	"@type": "editInlineMessageReplyMarkup";
+	/** Inline message identifier */
+	inline_message_id: string;
+	/** The new message reply markup; pass null if none */
+	reply_markup?: Obj.ReplyMarkup;
 }) => Obj.Ok;
 
 /**
@@ -2153,13 +2144,13 @@ export type EditInlineMessageReplyMarkup = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_message_scheduling_state.html
  */
 export type EditMessageSchedulingState = (args: {
-    '@type': 'editMessageSchedulingState';
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message. Use messageProperties.can_edit_scheduling_state to check whether the message is suitable */
-    message_id: number;
-    /** The new message scheduling state; pass null to send the message immediately. Must be null for messages in the state messageSchedulingStateSendWhenVideoProcessed */
-    scheduling_state?: Obj.MessageSchedulingState;
+	"@type": "editMessageSchedulingState";
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message. Use messageProperties.can_edit_scheduling_state to check whether the message is suitable */
+	message_id: number;
+	/** The new message scheduling state; pass null to send the message immediately. Must be null for messages in the state messageSchedulingStateSendWhenVideoProcessed */
+	scheduling_state?: Obj.MessageSchedulingState;
 }) => Obj.Ok;
 
 /**
@@ -2167,13 +2158,13 @@ export type EditMessageSchedulingState = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_message_fact_check.html
  */
 export type SetMessageFactCheck = (args: {
-    '@type': 'setMessageFactCheck';
-    /** The channel chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** New text of the fact-check; 0-getOption("fact_check_length_max") characters; pass null to remove it. Only Bold, Italic, and TextUrl entities with https://t.me/ links are supported */
-    text?: Obj.FormattedText;
+	"@type": "setMessageFactCheck";
+	/** The channel chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** New text of the fact-check; 0-getOption("fact_check_length_max") characters; pass null to remove it. Only Bold, Italic, and TextUrl entities with https://t.me/ links are supported */
+	text?: Obj.FormattedText;
 }) => Obj.Ok;
 
 /**
@@ -2181,23 +2172,23 @@ export type SetMessageFactCheck = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_business_message.html
  */
 export type SendBusinessMessage = (args: {
-    '@type': 'sendBusinessMessage';
-    /** Unique identifier of business connection on behalf of which to send the request */
-    business_connection_id: string;
-    /** Target chat */
-    chat_id: number;
-    /** Information about the message to be replied; pass null if none */
-    reply_to?: Obj.InputMessageReplyTo;
-    /** Pass true to disable notification for the message */
-    disable_notification: boolean;
-    /** Pass true if the content of the message must be protected from forwarding and saving */
-    protect_content: boolean;
-    /** Identifier of the effect to apply to the message */
-    effect_id: string;
-    /** Markup for replying to the message; pass null if none */
-    reply_markup?: Obj.ReplyMarkup;
-    /** The content of the message to be sent */
-    input_message_content: Obj.InputMessageContent;
+	"@type": "sendBusinessMessage";
+	/** Unique identifier of business connection on behalf of which to send the request */
+	business_connection_id: string;
+	/** Target chat */
+	chat_id: number;
+	/** Information about the message to be replied; pass null if none */
+	reply_to?: Obj.InputMessageReplyTo;
+	/** Pass true to disable notification for the message */
+	disable_notification: boolean;
+	/** Pass true if the content of the message must be protected from forwarding and saving */
+	protect_content: boolean;
+	/** Identifier of the effect to apply to the message */
+	effect_id: string;
+	/** Markup for replying to the message; pass null if none */
+	reply_markup?: Obj.ReplyMarkup;
+	/** The content of the message to be sent */
+	input_message_content: Obj.InputMessageContent;
 }) => Obj.BusinessMessage;
 
 /**
@@ -2205,21 +2196,21 @@ export type SendBusinessMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_business_message_album.html
  */
 export type SendBusinessMessageAlbum = (args: {
-    '@type': 'sendBusinessMessageAlbum';
-    /** Unique identifier of business connection on behalf of which to send the request */
-    business_connection_id: string;
-    /** Target chat */
-    chat_id: number;
-    /** Information about the message to be replied; pass null if none */
-    reply_to?: Obj.InputMessageReplyTo;
-    /** Pass true to disable notification for the message */
-    disable_notification: boolean;
-    /** Pass true if the content of the message must be protected from forwarding and saving */
-    protect_content: boolean;
-    /** Identifier of the effect to apply to the message */
-    effect_id: string;
-    /** Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media */
-    input_message_contents: Obj.InputMessageContent[];
+	"@type": "sendBusinessMessageAlbum";
+	/** Unique identifier of business connection on behalf of which to send the request */
+	business_connection_id: string;
+	/** Target chat */
+	chat_id: number;
+	/** Information about the message to be replied; pass null if none */
+	reply_to?: Obj.InputMessageReplyTo;
+	/** Pass true to disable notification for the message */
+	disable_notification: boolean;
+	/** Pass true if the content of the message must be protected from forwarding and saving */
+	protect_content: boolean;
+	/** Identifier of the effect to apply to the message */
+	effect_id: string;
+	/** Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media */
+	input_message_contents: Obj.InputMessageContent[];
 }) => Obj.BusinessMessages;
 
 /**
@@ -2227,17 +2218,17 @@ export type SendBusinessMessageAlbum = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_business_message_text.html
  */
 export type EditBusinessMessageText = (args: {
-    '@type': 'editBusinessMessageText';
-    /** Unique identifier of business connection on behalf of which the message was sent */
-    business_connection_id: string;
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** The new message reply markup; pass null if none */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New text content of the message. Must be of type inputMessageText */
-    input_message_content: Obj.InputMessageContent;
+	"@type": "editBusinessMessageText";
+	/** Unique identifier of business connection on behalf of which the message was sent */
+	business_connection_id: string;
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** The new message reply markup; pass null if none */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New text content of the message. Must be of type inputMessageText */
+	input_message_content: Obj.InputMessageContent;
 }) => Obj.BusinessMessage;
 
 /**
@@ -2245,23 +2236,23 @@ export type EditBusinessMessageText = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_business_message_live_location.html
  */
 export type EditBusinessMessageLiveLocation = (args: {
-    '@type': 'editBusinessMessageLiveLocation';
-    /** Unique identifier of business connection on behalf of which the message was sent */
-    business_connection_id: string;
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** The new message reply markup; pass null if none */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New location content of the message; pass null to stop sharing the live location */
-    location?: Obj.Location;
-    /** New time relative to the message send date, for which the location can be updated, in seconds. If 0x7FFFFFFF specified, then the location can be updated forever. Otherwise, must not exceed the current live_period by more than a day, and the live location expiration date must remain in the next 90 days. Pass 0 to keep the current live_period */
-    live_period: number;
-    /** The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown */
-    heading: number;
-    /** The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled */
-    proximity_alert_radius: number;
+	"@type": "editBusinessMessageLiveLocation";
+	/** Unique identifier of business connection on behalf of which the message was sent */
+	business_connection_id: string;
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** The new message reply markup; pass null if none */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New location content of the message; pass null to stop sharing the live location */
+	location?: Obj.Location;
+	/** New time relative to the message send date, for which the location can be updated, in seconds. If 0x7FFFFFFF specified, then the location can be updated forever. Otherwise, must not exceed the current live_period by more than a day, and the live location expiration date must remain in the next 90 days. Pass 0 to keep the current live_period */
+	live_period: number;
+	/** The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown */
+	heading: number;
+	/** The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled */
+	proximity_alert_radius: number;
 }) => Obj.BusinessMessage;
 
 /**
@@ -2269,17 +2260,17 @@ export type EditBusinessMessageLiveLocation = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_business_message_media.html
  */
 export type EditBusinessMessageMedia = (args: {
-    '@type': 'editBusinessMessageMedia';
-    /** Unique identifier of business connection on behalf of which the message was sent */
-    business_connection_id: string;
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** The new message reply markup; pass null if none; for bots only */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo */
-    input_message_content: Obj.InputMessageContent;
+	"@type": "editBusinessMessageMedia";
+	/** Unique identifier of business connection on behalf of which the message was sent */
+	business_connection_id: string;
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** The new message reply markup; pass null if none; for bots only */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo */
+	input_message_content: Obj.InputMessageContent;
 }) => Obj.BusinessMessage;
 
 /**
@@ -2287,19 +2278,19 @@ export type EditBusinessMessageMedia = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_business_message_caption.html
  */
 export type EditBusinessMessageCaption = (args: {
-    '@type': 'editBusinessMessageCaption';
-    /** Unique identifier of business connection on behalf of which the message was sent */
-    business_connection_id: string;
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** The new message reply markup; pass null if none */
-    reply_markup?: Obj.ReplyMarkup;
-    /** New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters */
-    caption?: Obj.FormattedText;
-    /** Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages */
-    show_caption_above_media: boolean;
+	"@type": "editBusinessMessageCaption";
+	/** Unique identifier of business connection on behalf of which the message was sent */
+	business_connection_id: string;
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** The new message reply markup; pass null if none */
+	reply_markup?: Obj.ReplyMarkup;
+	/** New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters */
+	caption?: Obj.FormattedText;
+	/** Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages */
+	show_caption_above_media: boolean;
 }) => Obj.BusinessMessage;
 
 /**
@@ -2307,15 +2298,15 @@ export type EditBusinessMessageCaption = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_business_message_reply_markup.html
  */
 export type EditBusinessMessageReplyMarkup = (args: {
-    '@type': 'editBusinessMessageReplyMarkup';
-    /** Unique identifier of business connection on behalf of which the message was sent */
-    business_connection_id: string;
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** The new message reply markup; pass null if none */
-    reply_markup?: Obj.ReplyMarkup;
+	"@type": "editBusinessMessageReplyMarkup";
+	/** Unique identifier of business connection on behalf of which the message was sent */
+	business_connection_id: string;
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** The new message reply markup; pass null if none */
+	reply_markup?: Obj.ReplyMarkup;
 }) => Obj.BusinessMessage;
 
 /**
@@ -2323,15 +2314,15 @@ export type EditBusinessMessageReplyMarkup = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1stop_business_poll.html
  */
 export type StopBusinessPoll = (args: {
-    '@type': 'stopBusinessPoll';
-    /** Unique identifier of business connection on behalf of which the message with the poll was sent */
-    business_connection_id: string;
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message containing the poll */
-    message_id: number;
-    /** The new message reply markup; pass null if none */
-    reply_markup?: Obj.ReplyMarkup;
+	"@type": "stopBusinessPoll";
+	/** Unique identifier of business connection on behalf of which the message with the poll was sent */
+	business_connection_id: string;
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message containing the poll */
+	message_id: number;
+	/** The new message reply markup; pass null if none */
+	reply_markup?: Obj.ReplyMarkup;
 }) => Obj.BusinessMessage;
 
 /**
@@ -2339,15 +2330,15 @@ export type StopBusinessPoll = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_message_is_pinned.html
  */
 export type SetBusinessMessageIsPinned = (args: {
-    '@type': 'setBusinessMessageIsPinned';
-    /** Unique identifier of business connection on behalf of which the message was sent */
-    business_connection_id: string;
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** Pass true to pin the message, pass false to unpin it */
-    is_pinned: boolean;
+	"@type": "setBusinessMessageIsPinned";
+	/** Unique identifier of business connection on behalf of which the message was sent */
+	business_connection_id: string;
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** Pass true to pin the message, pass false to unpin it */
+	is_pinned: boolean;
 }) => Obj.Ok;
 
 /**
@@ -2355,13 +2346,13 @@ export type SetBusinessMessageIsPinned = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1read_business_message.html
  */
 export type ReadBusinessMessage = (args: {
-    '@type': 'readBusinessMessage';
-    /** Unique identifier of business connection through which the message was received */
-    business_connection_id: string;
-    /** The chat the message belongs to */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
+	"@type": "readBusinessMessage";
+	/** Unique identifier of business connection through which the message was received */
+	business_connection_id: string;
+	/** The chat the message belongs to */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
 }) => Obj.Ok;
 
 /**
@@ -2369,11 +2360,11 @@ export type ReadBusinessMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_business_messages.html
  */
 export type DeleteBusinessMessages = (args: {
-    '@type': 'deleteBusinessMessages';
-    /** Unique identifier of business connection through which the messages were received */
-    business_connection_id: string;
-    /** Identifier of the messages */
-    message_ids: number[];
+	"@type": "deleteBusinessMessages";
+	/** Unique identifier of business connection through which the messages were received */
+	business_connection_id: string;
+	/** Identifier of the messages */
+	message_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -2381,19 +2372,19 @@ export type DeleteBusinessMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_business_story.html
  */
 export type EditBusinessStory = (args: {
-    '@type': 'editBusinessStory';
-    /** Identifier of the chat that posted the story */
-    story_poster_chat_id: number;
-    /** Identifier of the story to edit */
-    story_id: number;
-    /** New content of the story */
-    content: Obj.InputStoryContent;
-    /** New clickable rectangle areas to be shown on the story media */
-    areas: Obj.InputStoryAreas;
-    /** New story caption */
-    caption: Obj.FormattedText;
-    /** The new privacy settings for the story */
-    privacy_settings: Obj.StoryPrivacySettings;
+	"@type": "editBusinessStory";
+	/** Identifier of the chat that posted the story */
+	story_poster_chat_id: number;
+	/** Identifier of the story to edit */
+	story_id: number;
+	/** New content of the story */
+	content: Obj.InputStoryContent;
+	/** New clickable rectangle areas to be shown on the story media */
+	areas: Obj.InputStoryAreas;
+	/** New story caption */
+	caption: Obj.FormattedText;
+	/** The new privacy settings for the story */
+	privacy_settings: Obj.StoryPrivacySettings;
 }) => Obj.Story;
 
 /**
@@ -2401,11 +2392,11 @@ export type EditBusinessStory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_business_story.html
  */
 export type DeleteBusinessStory = (args: {
-    '@type': 'deleteBusinessStory';
-    /** Unique identifier of business connection */
-    business_connection_id: string;
-    /** Identifier of the story to delete */
-    story_id: number;
+	"@type": "deleteBusinessStory";
+	/** Unique identifier of business connection */
+	business_connection_id: string;
+	/** Identifier of the story to delete */
+	story_id: number;
 }) => Obj.Ok;
 
 /**
@@ -2413,13 +2404,13 @@ export type DeleteBusinessStory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_account_name.html
  */
 export type SetBusinessAccountName = (args: {
-    '@type': 'setBusinessAccountName';
-    /** Unique identifier of business connection */
-    business_connection_id: string;
-    /** The new value of the first name for the business account; 1-64 characters */
-    first_name: string;
-    /** The new value of the optional last name for the business account; 0-64 characters */
-    last_name: string;
+	"@type": "setBusinessAccountName";
+	/** Unique identifier of business connection */
+	business_connection_id: string;
+	/** The new value of the first name for the business account; 1-64 characters */
+	first_name: string;
+	/** The new value of the optional last name for the business account; 0-64 characters */
+	last_name: string;
 }) => Obj.Ok;
 
 /**
@@ -2427,11 +2418,11 @@ export type SetBusinessAccountName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_account_bio.html
  */
 export type SetBusinessAccountBio = (args: {
-    '@type': 'setBusinessAccountBio';
-    /** Unique identifier of business connection */
-    business_connection_id: string;
-    /** The new value of the bio; 0-getOption("bio_length_max") characters without line feeds */
-    bio: string;
+	"@type": "setBusinessAccountBio";
+	/** Unique identifier of business connection */
+	business_connection_id: string;
+	/** The new value of the bio; 0-getOption("bio_length_max") characters without line feeds */
+	bio: string;
 }) => Obj.Ok;
 
 /**
@@ -2439,13 +2430,13 @@ export type SetBusinessAccountBio = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_account_profile_photo.html
  */
 export type SetBusinessAccountProfilePhoto = (args: {
-    '@type': 'setBusinessAccountProfilePhoto';
-    /** Unique identifier of business connection */
-    business_connection_id: string;
-    /** Profile photo to set; pass null to remove the photo */
-    photo?: Obj.InputChatPhoto;
-    /** Pass true to set the public photo, which will be visible even the main photo is hidden by privacy settings */
-    is_public: boolean;
+	"@type": "setBusinessAccountProfilePhoto";
+	/** Unique identifier of business connection */
+	business_connection_id: string;
+	/** Profile photo to set; pass null to remove the photo */
+	photo?: Obj.InputChatPhoto;
+	/** Pass true to set the public photo, which will be visible even the main photo is hidden by privacy settings */
+	is_public: boolean;
 }) => Obj.Ok;
 
 /**
@@ -2453,11 +2444,11 @@ export type SetBusinessAccountProfilePhoto = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_account_username.html
  */
 export type SetBusinessAccountUsername = (args: {
-    '@type': 'setBusinessAccountUsername';
-    /** Unique identifier of business connection */
-    business_connection_id: string;
-    /** The new value of the username */
-    username: string;
+	"@type": "setBusinessAccountUsername";
+	/** Unique identifier of business connection */
+	business_connection_id: string;
+	/** The new value of the username */
+	username: string;
 }) => Obj.Ok;
 
 /**
@@ -2465,11 +2456,11 @@ export type SetBusinessAccountUsername = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_account_gift_settings.html
  */
 export type SetBusinessAccountGiftSettings = (args: {
-    '@type': 'setBusinessAccountGiftSettings';
-    /** Unique identifier of business connection */
-    business_connection_id: string;
-    /** The new settings */
-    settings: Obj.GiftSettings;
+	"@type": "setBusinessAccountGiftSettings";
+	/** Unique identifier of business connection */
+	business_connection_id: string;
+	/** The new settings */
+	settings: Obj.GiftSettings;
 }) => Obj.Ok;
 
 /**
@@ -2477,9 +2468,9 @@ export type SetBusinessAccountGiftSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_business_account_star_amount.html
  */
 export type GetBusinessAccountStarAmount = (args: {
-    '@type': 'getBusinessAccountStarAmount';
-    /** Unique identifier of business connection */
-    business_connection_id: string;
+	"@type": "getBusinessAccountStarAmount";
+	/** Unique identifier of business connection */
+	business_connection_id: string;
 }) => Obj.StarAmount;
 
 /**
@@ -2487,11 +2478,11 @@ export type GetBusinessAccountStarAmount = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1transfer_business_account_stars.html
  */
 export type TransferBusinessAccountStars = (args: {
-    '@type': 'transferBusinessAccountStars';
-    /** Unique identifier of business connection */
-    business_connection_id: string;
-    /** Number of Telegram Stars to transfer */
-    star_count: number;
+	"@type": "transferBusinessAccountStars";
+	/** Unique identifier of business connection */
+	business_connection_id: string;
+	/** Number of Telegram Stars to transfer */
+	star_count: number;
 }) => Obj.Ok;
 
 /**
@@ -2499,9 +2490,9 @@ export type TransferBusinessAccountStars = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_quick_reply_shortcut_name.html
  */
 export type CheckQuickReplyShortcutName = (args: {
-    '@type': 'checkQuickReplyShortcutName';
-    /** The name of the shortcut; 1-32 characters */
-    name: string;
+	"@type": "checkQuickReplyShortcutName";
+	/** The name of the shortcut; 1-32 characters */
+	name: string;
 }) => Obj.Ok;
 
 /**
@@ -2509,7 +2500,7 @@ export type CheckQuickReplyShortcutName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1load_quick_reply_shortcuts.html
  */
 export type LoadQuickReplyShortcuts = (args: {
-    '@type': 'loadQuickReplyShortcuts';
+	"@type": "loadQuickReplyShortcuts";
 }) => Obj.Ok;
 
 /**
@@ -2517,11 +2508,11 @@ export type LoadQuickReplyShortcuts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_quick_reply_shortcut_name.html
  */
 export type SetQuickReplyShortcutName = (args: {
-    '@type': 'setQuickReplyShortcutName';
-    /** Unique identifier of the quick reply shortcut */
-    shortcut_id: number;
-    /** New name for the shortcut. Use checkQuickReplyShortcutName to check its validness */
-    name: string;
+	"@type": "setQuickReplyShortcutName";
+	/** Unique identifier of the quick reply shortcut */
+	shortcut_id: number;
+	/** New name for the shortcut. Use checkQuickReplyShortcutName to check its validness */
+	name: string;
 }) => Obj.Ok;
 
 /**
@@ -2529,9 +2520,9 @@ export type SetQuickReplyShortcutName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_quick_reply_shortcut.html
  */
 export type DeleteQuickReplyShortcut = (args: {
-    '@type': 'deleteQuickReplyShortcut';
-    /** Unique identifier of the quick reply shortcut */
-    shortcut_id: number;
+	"@type": "deleteQuickReplyShortcut";
+	/** Unique identifier of the quick reply shortcut */
+	shortcut_id: number;
 }) => Obj.Ok;
 
 /**
@@ -2539,9 +2530,9 @@ export type DeleteQuickReplyShortcut = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reorder_quick_reply_shortcuts.html
  */
 export type ReorderQuickReplyShortcuts = (args: {
-    '@type': 'reorderQuickReplyShortcuts';
-    /** The new order of quick reply shortcuts */
-    shortcut_ids: number[];
+	"@type": "reorderQuickReplyShortcuts";
+	/** The new order of quick reply shortcuts */
+	shortcut_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -2549,9 +2540,9 @@ export type ReorderQuickReplyShortcuts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1load_quick_reply_shortcut_messages.html
  */
 export type LoadQuickReplyShortcutMessages = (args: {
-    '@type': 'loadQuickReplyShortcutMessages';
-    /** Unique identifier of the quick reply shortcut */
-    shortcut_id: number;
+	"@type": "loadQuickReplyShortcutMessages";
+	/** Unique identifier of the quick reply shortcut */
+	shortcut_id: number;
 }) => Obj.Ok;
 
 /**
@@ -2559,11 +2550,11 @@ export type LoadQuickReplyShortcutMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_quick_reply_shortcut_messages.html
  */
 export type DeleteQuickReplyShortcutMessages = (args: {
-    '@type': 'deleteQuickReplyShortcutMessages';
-    /** Unique identifier of the quick reply shortcut to which the messages belong */
-    shortcut_id: number;
-    /** Unique identifiers of the messages */
-    message_ids: number[];
+	"@type": "deleteQuickReplyShortcutMessages";
+	/** Unique identifier of the quick reply shortcut to which the messages belong */
+	shortcut_id: number;
+	/** Unique identifiers of the messages */
+	message_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -2571,13 +2562,13 @@ export type DeleteQuickReplyShortcutMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_quick_reply_shortcut_message.html
  */
 export type AddQuickReplyShortcutMessage = (args: {
-    '@type': 'addQuickReplyShortcutMessage';
-    /** Name of the target shortcut */
-    shortcut_name: string;
-    /** Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none */
-    reply_to_message_id: number;
-    /** The content of the message to be added; inputMessagePoll, inputMessageForwarded and inputMessageLocation with live_period aren't supported */
-    input_message_content: Obj.InputMessageContent;
+	"@type": "addQuickReplyShortcutMessage";
+	/** Name of the target shortcut */
+	shortcut_name: string;
+	/** Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none */
+	reply_to_message_id: number;
+	/** The content of the message to be added; inputMessagePoll, inputMessageForwarded and inputMessageLocation with live_period aren't supported */
+	input_message_content: Obj.InputMessageContent;
 }) => Obj.QuickReplyMessage;
 
 /**
@@ -2585,17 +2576,17 @@ export type AddQuickReplyShortcutMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_quick_reply_shortcut_inline_query_result_message.html
  */
 export type AddQuickReplyShortcutInlineQueryResultMessage = (args: {
-    '@type': 'addQuickReplyShortcutInlineQueryResultMessage';
-    /** Name of the target shortcut */
-    shortcut_name: string;
-    /** Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none */
-    reply_to_message_id: number;
-    /** Identifier of the inline query */
-    query_id: string;
-    /** Identifier of the inline query result */
-    result_id: string;
-    /** Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username") */
-    hide_via_bot: boolean;
+	"@type": "addQuickReplyShortcutInlineQueryResultMessage";
+	/** Name of the target shortcut */
+	shortcut_name: string;
+	/** Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none */
+	reply_to_message_id: number;
+	/** Identifier of the inline query */
+	query_id: string;
+	/** Identifier of the inline query result */
+	result_id: string;
+	/** Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username") */
+	hide_via_bot: boolean;
 }) => Obj.QuickReplyMessage;
 
 /**
@@ -2603,13 +2594,13 @@ export type AddQuickReplyShortcutInlineQueryResultMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_quick_reply_shortcut_message_album.html
  */
 export type AddQuickReplyShortcutMessageAlbum = (args: {
-    '@type': 'addQuickReplyShortcutMessageAlbum';
-    /** Name of the target shortcut */
-    shortcut_name: string;
-    /** Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none */
-    reply_to_message_id: number;
-    /** Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media */
-    input_message_contents: Obj.InputMessageContent[];
+	"@type": "addQuickReplyShortcutMessageAlbum";
+	/** Name of the target shortcut */
+	shortcut_name: string;
+	/** Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none */
+	reply_to_message_id: number;
+	/** Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media */
+	input_message_contents: Obj.InputMessageContent[];
 }) => Obj.QuickReplyMessages;
 
 /**
@@ -2617,11 +2608,11 @@ export type AddQuickReplyShortcutMessageAlbum = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1readd_quick_reply_shortcut_messages.html
  */
 export type ReaddQuickReplyShortcutMessages = (args: {
-    '@type': 'readdQuickReplyShortcutMessages';
-    /** Name of the target shortcut */
-    shortcut_name: string;
-    /** Identifiers of the quick reply messages to readd. Message identifiers must be in a strictly increasing order */
-    message_ids: number[];
+	"@type": "readdQuickReplyShortcutMessages";
+	/** Name of the target shortcut */
+	shortcut_name: string;
+	/** Identifiers of the quick reply messages to readd. Message identifiers must be in a strictly increasing order */
+	message_ids: number[];
 }) => Obj.QuickReplyMessages;
 
 /**
@@ -2629,13 +2620,13 @@ export type ReaddQuickReplyShortcutMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_quick_reply_message.html
  */
 export type EditQuickReplyMessage = (args: {
-    '@type': 'editQuickReplyMessage';
-    /** Unique identifier of the quick reply shortcut with the message */
-    shortcut_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** New content of the message. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo */
-    input_message_content: Obj.InputMessageContent;
+	"@type": "editQuickReplyMessage";
+	/** Unique identifier of the quick reply shortcut with the message */
+	shortcut_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** New content of the message. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo */
+	input_message_content: Obj.InputMessageContent;
 }) => Obj.Ok;
 
 /**
@@ -2643,7 +2634,7 @@ export type EditQuickReplyMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_forum_topic_default_icons.html
  */
 export type GetForumTopicDefaultIcons = (args: {
-    '@type': 'getForumTopicDefaultIcons';
+	"@type": "getForumTopicDefaultIcons";
 }) => Obj.Stickers;
 
 /**
@@ -2651,13 +2642,13 @@ export type GetForumTopicDefaultIcons = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_forum_topic.html
  */
 export type CreateForumTopic = (args: {
-    '@type': 'createForumTopic';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Name of the topic; 1-128 characters */
-    name: string;
-    /** Icon of the topic. Icon color must be one of 0x6FB9F0, 0xFFD67E, 0xCB86DB, 0x8EEE98, 0xFF93B2, or 0xFB6F5F. Telegram Premium users can use any custom emoji as topic icon, other users can use only a custom emoji returned by getForumTopicDefaultIcons */
-    icon: Obj.ForumTopicIcon;
+	"@type": "createForumTopic";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Name of the topic; 1-128 characters */
+	name: string;
+	/** Icon of the topic. Icon color must be one of 0x6FB9F0, 0xFFD67E, 0xCB86DB, 0x8EEE98, 0xFF93B2, or 0xFB6F5F. Telegram Premium users can use any custom emoji as topic icon, other users can use only a custom emoji returned by getForumTopicDefaultIcons */
+	icon: Obj.ForumTopicIcon;
 }) => Obj.ForumTopicInfo;
 
 /**
@@ -2665,17 +2656,17 @@ export type CreateForumTopic = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_forum_topic.html
  */
 export type EditForumTopic = (args: {
-    '@type': 'editForumTopic';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Message thread identifier of the forum topic */
-    message_thread_id: number;
-    /** New name of the topic; 0-128 characters. If empty, the previous topic name is kept */
-    name: string;
-    /** Pass true to edit the icon of the topic. Icon of the General topic can't be edited */
-    edit_icon_custom_emoji: boolean;
-    /** Identifier of the new custom emoji for topic icon; pass 0 to remove the custom emoji. Ignored if edit_icon_custom_emoji is false. Telegram Premium users can use any custom emoji, other users can use only a custom emoji returned by getForumTopicDefaultIcons */
-    icon_custom_emoji_id: string;
+	"@type": "editForumTopic";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Message thread identifier of the forum topic */
+	message_thread_id: number;
+	/** New name of the topic; 0-128 characters. If empty, the previous topic name is kept */
+	name: string;
+	/** Pass true to edit the icon of the topic. Icon of the General topic can't be edited */
+	edit_icon_custom_emoji: boolean;
+	/** Identifier of the new custom emoji for topic icon; pass 0 to remove the custom emoji. Ignored if edit_icon_custom_emoji is false. Telegram Premium users can use any custom emoji, other users can use only a custom emoji returned by getForumTopicDefaultIcons */
+	icon_custom_emoji_id: string;
 }) => Obj.Ok;
 
 /**
@@ -2683,11 +2674,11 @@ export type EditForumTopic = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_forum_topic.html
  */
 export type GetForumTopic = (args: {
-    '@type': 'getForumTopic';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Message thread identifier of the forum topic */
-    message_thread_id: number;
+	"@type": "getForumTopic";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Message thread identifier of the forum topic */
+	message_thread_id: number;
 }) => Obj.ForumTopic;
 
 /**
@@ -2695,11 +2686,11 @@ export type GetForumTopic = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_forum_topic_link.html
  */
 export type GetForumTopicLink = (args: {
-    '@type': 'getForumTopicLink';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Message thread identifier of the forum topic */
-    message_thread_id: number;
+	"@type": "getForumTopicLink";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Message thread identifier of the forum topic */
+	message_thread_id: number;
 }) => Obj.MessageLink;
 
 /**
@@ -2707,19 +2698,19 @@ export type GetForumTopicLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_forum_topics.html
  */
 export type GetForumTopics = (args: {
-    '@type': 'getForumTopics';
-    /** Identifier of the forum chat */
-    chat_id: number;
-    /** Query to search for in the forum topic's name */
-    query: string;
-    /** The date starting from which the results need to be fetched. Use 0 or any date in the future to get results from the last topic */
-    offset_date: number;
-    /** The message identifier of the last message in the last found topic, or 0 for the first request */
-    offset_message_id: number;
-    /** The message thread identifier of the last found topic, or 0 for the first request */
-    offset_message_thread_id: number;
-    /** The maximum number of forum topics to be returned; up to 100. For optimal performance, the number of returned forum topics is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "getForumTopics";
+	/** Identifier of the forum chat */
+	chat_id: number;
+	/** Query to search for in the forum topic's name */
+	query: string;
+	/** The date starting from which the results need to be fetched. Use 0 or any date in the future to get results from the last topic */
+	offset_date: number;
+	/** The message identifier of the last message in the last found topic, or 0 for the first request */
+	offset_message_id: number;
+	/** The message thread identifier of the last found topic, or 0 for the first request */
+	offset_message_thread_id: number;
+	/** The maximum number of forum topics to be returned; up to 100. For optimal performance, the number of returned forum topics is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.ForumTopics;
 
 /**
@@ -2727,13 +2718,13 @@ export type GetForumTopics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_forum_topic_notification_settings.html
  */
 export type SetForumTopicNotificationSettings = (args: {
-    '@type': 'setForumTopicNotificationSettings';
-    /** Chat identifier */
-    chat_id: number;
-    /** Message thread identifier of the forum topic */
-    message_thread_id: number;
-    /** New notification settings for the forum topic. If the topic is muted for more than 366 days, it is considered to be muted forever */
-    notification_settings: Obj.ChatNotificationSettings;
+	"@type": "setForumTopicNotificationSettings";
+	/** Chat identifier */
+	chat_id: number;
+	/** Message thread identifier of the forum topic */
+	message_thread_id: number;
+	/** New notification settings for the forum topic. If the topic is muted for more than 366 days, it is considered to be muted forever */
+	notification_settings: Obj.ChatNotificationSettings;
 }) => Obj.Ok;
 
 /**
@@ -2741,13 +2732,13 @@ export type SetForumTopicNotificationSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_forum_topic_is_closed.html
  */
 export type ToggleForumTopicIsClosed = (args: {
-    '@type': 'toggleForumTopicIsClosed';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Message thread identifier of the forum topic */
-    message_thread_id: number;
-    /** Pass true to close the topic; pass false to reopen it */
-    is_closed: boolean;
+	"@type": "toggleForumTopicIsClosed";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Message thread identifier of the forum topic */
+	message_thread_id: number;
+	/** Pass true to close the topic; pass false to reopen it */
+	is_closed: boolean;
 }) => Obj.Ok;
 
 /**
@@ -2755,11 +2746,11 @@ export type ToggleForumTopicIsClosed = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_general_forum_topic_is_hidden.html
  */
 export type ToggleGeneralForumTopicIsHidden = (args: {
-    '@type': 'toggleGeneralForumTopicIsHidden';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Pass true to hide and close the General topic; pass false to unhide it */
-    is_hidden: boolean;
+	"@type": "toggleGeneralForumTopicIsHidden";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Pass true to hide and close the General topic; pass false to unhide it */
+	is_hidden: boolean;
 }) => Obj.Ok;
 
 /**
@@ -2767,13 +2758,13 @@ export type ToggleGeneralForumTopicIsHidden = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_forum_topic_is_pinned.html
  */
 export type ToggleForumTopicIsPinned = (args: {
-    '@type': 'toggleForumTopicIsPinned';
-    /** Chat identifier */
-    chat_id: number;
-    /** Message thread identifier of the forum topic */
-    message_thread_id: number;
-    /** Pass true to pin the topic; pass false to unpin it */
-    is_pinned: boolean;
+	"@type": "toggleForumTopicIsPinned";
+	/** Chat identifier */
+	chat_id: number;
+	/** Message thread identifier of the forum topic */
+	message_thread_id: number;
+	/** Pass true to pin the topic; pass false to unpin it */
+	is_pinned: boolean;
 }) => Obj.Ok;
 
 /**
@@ -2781,11 +2772,11 @@ export type ToggleForumTopicIsPinned = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_pinned_forum_topics.html
  */
 export type SetPinnedForumTopics = (args: {
-    '@type': 'setPinnedForumTopics';
-    /** Chat identifier */
-    chat_id: number;
-    /** The new list of pinned forum topics */
-    message_thread_ids: number[];
+	"@type": "setPinnedForumTopics";
+	/** Chat identifier */
+	chat_id: number;
+	/** The new list of pinned forum topics */
+	message_thread_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -2793,11 +2784,11 @@ export type SetPinnedForumTopics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_forum_topic.html
  */
 export type DeleteForumTopic = (args: {
-    '@type': 'deleteForumTopic';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Message thread identifier of the forum topic */
-    message_thread_id: number;
+	"@type": "deleteForumTopic";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Message thread identifier of the forum topic */
+	message_thread_id: number;
 }) => Obj.Ok;
 
 /**
@@ -2805,9 +2796,9 @@ export type DeleteForumTopic = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_emoji_reaction.html
  */
 export type GetEmojiReaction = (args: {
-    '@type': 'getEmojiReaction';
-    /** Text representation of the reaction */
-    emoji: string;
+	"@type": "getEmojiReaction";
+	/** Text representation of the reaction */
+	emoji: string;
 }) => Obj.EmojiReaction;
 
 /**
@@ -2815,7 +2806,7 @@ export type GetEmojiReaction = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_custom_emoji_reaction_animations.html
  */
 export type GetCustomEmojiReactionAnimations = (args: {
-    '@type': 'getCustomEmojiReactionAnimations';
+	"@type": "getCustomEmojiReactionAnimations";
 }) => Obj.Stickers;
 
 /**
@@ -2823,13 +2814,13 @@ export type GetCustomEmojiReactionAnimations = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_available_reactions.html
  */
 export type GetMessageAvailableReactions = (args: {
-    '@type': 'getMessageAvailableReactions';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** Number of reaction per row, 5-25 */
-    row_size: number;
+	"@type": "getMessageAvailableReactions";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** Number of reaction per row, 5-25 */
+	row_size: number;
 }) => Obj.AvailableReactions;
 
 /**
@@ -2837,7 +2828,7 @@ export type GetMessageAvailableReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1clear_recent_reactions.html
  */
 export type ClearRecentReactions = (args: {
-    '@type': 'clearRecentReactions';
+	"@type": "clearRecentReactions";
 }) => Obj.Ok;
 
 /**
@@ -2845,17 +2836,17 @@ export type ClearRecentReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_message_reaction.html
  */
 export type AddMessageReaction = (args: {
-    '@type': 'addMessageReaction';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** Type of the reaction to add. Use addPendingPaidMessageReaction instead to add the paid reaction */
-    reaction_type: Obj.ReactionType;
-    /** Pass true if the reaction is added with a big animation */
-    is_big: boolean;
-    /** Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions */
-    update_recent_reactions: boolean;
+	"@type": "addMessageReaction";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** Type of the reaction to add. Use addPendingPaidMessageReaction instead to add the paid reaction */
+	reaction_type: Obj.ReactionType;
+	/** Pass true if the reaction is added with a big animation */
+	is_big: boolean;
+	/** Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions */
+	update_recent_reactions: boolean;
 }) => Obj.Ok;
 
 /**
@@ -2863,13 +2854,13 @@ export type AddMessageReaction = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_message_reaction.html
  */
 export type RemoveMessageReaction = (args: {
-    '@type': 'removeMessageReaction';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** Type of the reaction to remove. The paid reaction can't be removed */
-    reaction_type: Obj.ReactionType;
+	"@type": "removeMessageReaction";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** Type of the reaction to remove. The paid reaction can't be removed */
+	reaction_type: Obj.ReactionType;
 }) => Obj.Ok;
 
 /**
@@ -2877,9 +2868,9 @@ export type RemoveMessageReaction = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_available_paid_message_reaction_senders.html
  */
 export type GetChatAvailablePaidMessageReactionSenders = (args: {
-    '@type': 'getChatAvailablePaidMessageReactionSenders';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "getChatAvailablePaidMessageReactionSenders";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.MessageSenders;
 
 /**
@@ -2887,15 +2878,15 @@ export type GetChatAvailablePaidMessageReactionSenders = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_pending_paid_message_reaction.html
  */
 export type AddPendingPaidMessageReaction = (args: {
-    '@type': 'addPendingPaidMessageReaction';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** Number of Telegram Stars to be used for the reaction. The total number of pending paid reactions must not exceed getOption("paid_reaction_star_count_max") */
-    star_count: number;
-    /** Type of the paid reaction; pass null if the user didn't choose reaction type explicitly, for example, the reaction is set from the message bubble */
-    type?: Obj.PaidReactionType;
+	"@type": "addPendingPaidMessageReaction";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** Number of Telegram Stars to be used for the reaction. The total number of pending paid reactions must not exceed getOption("paid_reaction_star_count_max") */
+	star_count: number;
+	/** Type of the paid reaction; pass null if the user didn't choose reaction type explicitly, for example, the reaction is set from the message bubble */
+	type?: Obj.PaidReactionType;
 }) => Obj.Ok;
 
 /**
@@ -2903,11 +2894,11 @@ export type AddPendingPaidMessageReaction = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1commit_pending_paid_message_reactions.html
  */
 export type CommitPendingPaidMessageReactions = (args: {
-    '@type': 'commitPendingPaidMessageReactions';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
+	"@type": "commitPendingPaidMessageReactions";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
 }) => Obj.Ok;
 
 /**
@@ -2915,11 +2906,11 @@ export type CommitPendingPaidMessageReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_pending_paid_message_reactions.html
  */
 export type RemovePendingPaidMessageReactions = (args: {
-    '@type': 'removePendingPaidMessageReactions';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
+	"@type": "removePendingPaidMessageReactions";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
 }) => Obj.Ok;
 
 /**
@@ -2927,13 +2918,13 @@ export type RemovePendingPaidMessageReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_paid_message_reaction_type.html
  */
 export type SetPaidMessageReactionType = (args: {
-    '@type': 'setPaidMessageReactionType';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** New type of the paid reaction */
-    type: Obj.PaidReactionType;
+	"@type": "setPaidMessageReactionType";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** New type of the paid reaction */
+	type: Obj.PaidReactionType;
 }) => Obj.Ok;
 
 /**
@@ -2941,15 +2932,15 @@ export type SetPaidMessageReactionType = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_message_reactions.html
  */
 export type SetMessageReactions = (args: {
-    '@type': 'setMessageReactions';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** Types of the reaction to set; pass an empty list to remove the reactions */
-    reaction_types: Obj.ReactionType[];
-    /** Pass true if the reactions are added with a big animation */
-    is_big: boolean;
+	"@type": "setMessageReactions";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** Types of the reaction to set; pass an empty list to remove the reactions */
+	reaction_types: Obj.ReactionType[];
+	/** Pass true if the reactions are added with a big animation */
+	is_big: boolean;
 }) => Obj.Ok;
 
 /**
@@ -2957,17 +2948,17 @@ export type SetMessageReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_added_reactions.html
  */
 export type GetMessageAddedReactions = (args: {
-    '@type': 'getMessageAddedReactions';
-    /** Identifier of the chat to which the message belongs */
-    chat_id: number;
-    /** Identifier of the message. Use message.interaction_info.reactions.can_get_added_reactions to check whether added reactions can be received for the message */
-    message_id: number;
-    /** Type of the reactions to return; pass null to return all added reactions; reactionTypePaid isn't supported */
-    reaction_type?: Obj.ReactionType;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of reactions to be returned; must be positive and can't be greater than 100 */
-    limit: number;
+	"@type": "getMessageAddedReactions";
+	/** Identifier of the chat to which the message belongs */
+	chat_id: number;
+	/** Identifier of the message. Use message.interaction_info.reactions.can_get_added_reactions to check whether added reactions can be received for the message */
+	message_id: number;
+	/** Type of the reactions to return; pass null to return all added reactions; reactionTypePaid isn't supported */
+	reaction_type?: Obj.ReactionType;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of reactions to be returned; must be positive and can't be greater than 100 */
+	limit: number;
 }) => Obj.AddedReactions;
 
 /**
@@ -2975,9 +2966,9 @@ export type GetMessageAddedReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_default_reaction_type.html
  */
 export type SetDefaultReactionType = (args: {
-    '@type': 'setDefaultReactionType';
-    /** New type of the default reaction. The paid reaction can't be set as default */
-    reaction_type: Obj.ReactionType;
+	"@type": "setDefaultReactionType";
+	/** New type of the default reaction. The paid reaction can't be set as default */
+	reaction_type: Obj.ReactionType;
 }) => Obj.Ok;
 
 /**
@@ -2985,9 +2976,9 @@ export type SetDefaultReactionType = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_saved_messages_tags.html
  */
 export type GetSavedMessagesTags = (args: {
-    '@type': 'getSavedMessagesTags';
-    /** Identifier of Saved Messages topic which tags will be returned; pass 0 to get all Saved Messages tags */
-    saved_messages_topic_id: number;
+	"@type": "getSavedMessagesTags";
+	/** Identifier of Saved Messages topic which tags will be returned; pass 0 to get all Saved Messages tags */
+	saved_messages_topic_id: number;
 }) => Obj.SavedMessagesTags;
 
 /**
@@ -2995,11 +2986,11 @@ export type GetSavedMessagesTags = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_saved_messages_tag_label.html
  */
 export type SetSavedMessagesTagLabel = (args: {
-    '@type': 'setSavedMessagesTagLabel';
-    /** The tag which label will be changed */
-    tag: Obj.ReactionType;
-    /** New label for the tag; 0-12 characters */
-    label: string;
+	"@type": "setSavedMessagesTagLabel";
+	/** The tag which label will be changed */
+	tag: Obj.ReactionType;
+	/** New label for the tag; 0-12 characters */
+	label: string;
 }) => Obj.Ok;
 
 /**
@@ -3007,9 +2998,9 @@ export type SetSavedMessagesTagLabel = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_effect.html
  */
 export type GetMessageEffect = (args: {
-    '@type': 'getMessageEffect';
-    /** Unique identifier of the effect */
-    effect_id: string;
+	"@type": "getMessageEffect";
+	/** Unique identifier of the effect */
+	effect_id: string;
 }) => Obj.MessageEffect;
 
 /**
@@ -3017,13 +3008,13 @@ export type GetMessageEffect = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_quote.html
  */
 export type SearchQuote = (args: {
-    '@type': 'searchQuote';
-    /** Text in which to search for the quote */
-    text: Obj.FormattedText;
-    /** Quote to search for */
-    quote: Obj.FormattedText;
-    /** Approximate quote position in UTF-16 code units */
-    quote_position: number;
+	"@type": "searchQuote";
+	/** Text in which to search for the quote */
+	text: Obj.FormattedText;
+	/** Quote to search for */
+	quote: Obj.FormattedText;
+	/** Approximate quote position in UTF-16 code units */
+	quote_position: number;
 }) => Obj.FoundPosition;
 
 /**
@@ -3031,9 +3022,9 @@ export type SearchQuote = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_text_entities.html
  */
 export type GetTextEntities = (args: {
-    '@type': 'getTextEntities';
-    /** The text in which to look for entities */
-    text: string;
+	"@type": "getTextEntities";
+	/** The text in which to look for entities */
+	text: string;
 }) => Obj.TextEntities;
 
 /**
@@ -3041,11 +3032,11 @@ export type GetTextEntities = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1parse_text_entities.html
  */
 export type ParseTextEntities = (args: {
-    '@type': 'parseTextEntities';
-    /** The text to parse */
-    text: string;
-    /** Text parse mode */
-    parse_mode: Obj.TextParseMode;
+	"@type": "parseTextEntities";
+	/** The text to parse */
+	text: string;
+	/** Text parse mode */
+	parse_mode: Obj.TextParseMode;
 }) => Obj.FormattedText;
 
 /**
@@ -3053,9 +3044,9 @@ export type ParseTextEntities = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1parse_markdown.html
  */
 export type ParseMarkdown = (args: {
-    '@type': 'parseMarkdown';
-    /** The text to parse. For example, "__italic__ ~~strikethrough~~ ||spoiler|| **bold** `code` ```pre``` __[italic__ text_url](telegram.org) __italic**bold italic__bold**" */
-    text: Obj.FormattedText;
+	"@type": "parseMarkdown";
+	/** The text to parse. For example, "__italic__ ~~strikethrough~~ ||spoiler|| **bold** `code` ```pre``` __[italic__ text_url](telegram.org) __italic**bold italic__bold**" */
+	text: Obj.FormattedText;
 }) => Obj.FormattedText;
 
 /**
@@ -3063,9 +3054,9 @@ export type ParseMarkdown = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_markdown_text.html
  */
 export type GetMarkdownText = (args: {
-    '@type': 'getMarkdownText';
-    /** The text */
-    text: Obj.FormattedText;
+	"@type": "getMarkdownText";
+	/** The text */
+	text: Obj.FormattedText;
 }) => Obj.FormattedText;
 
 /**
@@ -3073,9 +3064,9 @@ export type GetMarkdownText = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_country_flag_emoji.html
  */
 export type GetCountryFlagEmoji = (args: {
-    '@type': 'getCountryFlagEmoji';
-    /** A two-letter ISO 3166-1 alpha-2 country code as received from getCountries */
-    country_code: string;
+	"@type": "getCountryFlagEmoji";
+	/** A two-letter ISO 3166-1 alpha-2 country code as received from getCountries */
+	country_code: string;
 }) => Obj.Text;
 
 /**
@@ -3083,9 +3074,9 @@ export type GetCountryFlagEmoji = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_file_mime_type.html
  */
 export type GetFileMimeType = (args: {
-    '@type': 'getFileMimeType';
-    /** The name of the file or path to the file */
-    file_name: string;
+	"@type": "getFileMimeType";
+	/** The name of the file or path to the file */
+	file_name: string;
 }) => Obj.Text;
 
 /**
@@ -3093,9 +3084,9 @@ export type GetFileMimeType = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_file_extension.html
  */
 export type GetFileExtension = (args: {
-    '@type': 'getFileExtension';
-    /** The MIME type of the file */
-    mime_type: string;
+	"@type": "getFileExtension";
+	/** The MIME type of the file */
+	mime_type: string;
 }) => Obj.Text;
 
 /**
@@ -3103,9 +3094,9 @@ export type GetFileExtension = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1clean_file_name.html
  */
 export type CleanFileName = (args: {
-    '@type': 'cleanFileName';
-    /** File name or path to the file */
-    file_name: string;
+	"@type": "cleanFileName";
+	/** File name or path to the file */
+	file_name: string;
 }) => Obj.Text;
 
 /**
@@ -3113,15 +3104,15 @@ export type CleanFileName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_language_pack_string.html
  */
 export type GetLanguagePackString = (args: {
-    '@type': 'getLanguagePackString';
-    /** Path to the language pack database in which strings are stored */
-    language_pack_database_path: string;
-    /** Localization target to which the language pack belongs */
-    localization_target: string;
-    /** Language pack identifier */
-    language_pack_id: string;
-    /** Language pack key of the string to be returned */
-    key: string;
+	"@type": "getLanguagePackString";
+	/** Path to the language pack database in which strings are stored */
+	language_pack_database_path: string;
+	/** Localization target to which the language pack belongs */
+	localization_target: string;
+	/** Language pack identifier */
+	language_pack_id: string;
+	/** Language pack key of the string to be returned */
+	key: string;
 }) => Obj.LanguagePackStringValue;
 
 /**
@@ -3129,9 +3120,9 @@ export type GetLanguagePackString = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_json_value.html
  */
 export type GetJsonValue = (args: {
-    '@type': 'getJsonValue';
-    /** The JSON-serialized string */
-    json: string;
+	"@type": "getJsonValue";
+	/** The JSON-serialized string */
+	json: string;
 }) => Obj.JsonValue;
 
 /**
@@ -3139,9 +3130,9 @@ export type GetJsonValue = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_json_string.html
  */
 export type GetJsonString = (args: {
-    '@type': 'getJsonString';
-    /** The JsonValue object */
-    json_value: Obj.JsonValue;
+	"@type": "getJsonString";
+	/** The JsonValue object */
+	json_value: Obj.JsonValue;
 }) => Obj.Text;
 
 /**
@@ -3149,9 +3140,9 @@ export type GetJsonString = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_theme_parameters_json_string.html
  */
 export type GetThemeParametersJsonString = (args: {
-    '@type': 'getThemeParametersJsonString';
-    /** Theme parameters to convert to JSON */
-    theme: Obj.ThemeParameters;
+	"@type": "getThemeParametersJsonString";
+	/** Theme parameters to convert to JSON */
+	theme: Obj.ThemeParameters;
 }) => Obj.Text;
 
 /**
@@ -3159,13 +3150,13 @@ export type GetThemeParametersJsonString = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_poll_answer.html
  */
 export type SetPollAnswer = (args: {
-    '@type': 'setPollAnswer';
-    /** Identifier of the chat to which the poll belongs */
-    chat_id: number;
-    /** Identifier of the message containing the poll */
-    message_id: number;
-    /** 0-based identifiers of answer options, chosen by the user. User can choose more than 1 answer option only is the poll allows multiple answers */
-    option_ids: number[];
+	"@type": "setPollAnswer";
+	/** Identifier of the chat to which the poll belongs */
+	chat_id: number;
+	/** Identifier of the message containing the poll */
+	message_id: number;
+	/** 0-based identifiers of answer options, chosen by the user. User can choose more than 1 answer option only is the poll allows multiple answers */
+	option_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -3173,17 +3164,17 @@ export type SetPollAnswer = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_poll_voters.html
  */
 export type GetPollVoters = (args: {
-    '@type': 'getPollVoters';
-    /** Identifier of the chat to which the poll belongs */
-    chat_id: number;
-    /** Identifier of the message containing the poll */
-    message_id: number;
-    /** 0-based identifier of the answer option */
-    option_id: number;
-    /** Number of voters to skip in the result; must be non-negative */
-    offset: number;
-    /** The maximum number of voters to be returned; must be positive and can't be greater than 50. For optimal performance, the number of returned voters is chosen by TDLib and can be smaller than the specified limit, even if the end of the voter list has not been reached */
-    limit: number;
+	"@type": "getPollVoters";
+	/** Identifier of the chat to which the poll belongs */
+	chat_id: number;
+	/** Identifier of the message containing the poll */
+	message_id: number;
+	/** 0-based identifier of the answer option */
+	option_id: number;
+	/** Number of voters to skip in the result; must be non-negative */
+	offset: number;
+	/** The maximum number of voters to be returned; must be positive and can't be greater than 50. For optimal performance, the number of returned voters is chosen by TDLib and can be smaller than the specified limit, even if the end of the voter list has not been reached */
+	limit: number;
 }) => Obj.MessageSenders;
 
 /**
@@ -3191,13 +3182,13 @@ export type GetPollVoters = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1stop_poll.html
  */
 export type StopPoll = (args: {
-    '@type': 'stopPoll';
-    /** Identifier of the chat to which the poll belongs */
-    chat_id: number;
-    /** Identifier of the message containing the poll. Use messageProperties.can_be_edited to check whether the poll can be stopped */
-    message_id: number;
-    /** The new message reply markup; pass null if none; for bots only */
-    reply_markup?: Obj.ReplyMarkup;
+	"@type": "stopPoll";
+	/** Identifier of the chat to which the poll belongs */
+	chat_id: number;
+	/** Identifier of the message containing the poll. Use messageProperties.can_be_edited to check whether the poll can be stopped */
+	message_id: number;
+	/** The new message reply markup; pass null if none; for bots only */
+	reply_markup?: Obj.ReplyMarkup;
 }) => Obj.Ok;
 
 /**
@@ -3205,9 +3196,9 @@ export type StopPoll = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1hide_suggested_action.html
  */
 export type HideSuggestedAction = (args: {
-    '@type': 'hideSuggestedAction';
-    /** Suggested action to hide */
-    action: Obj.SuggestedAction;
+	"@type": "hideSuggestedAction";
+	/** Suggested action to hide */
+	action: Obj.SuggestedAction;
 }) => Obj.Ok;
 
 /**
@@ -3215,7 +3206,7 @@ export type HideSuggestedAction = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1hide_contact_close_birthdays.html
  */
 export type HideContactCloseBirthdays = (args: {
-    '@type': 'hideContactCloseBirthdays';
+	"@type": "hideContactCloseBirthdays";
 }) => Obj.Ok;
 
 /**
@@ -3223,9 +3214,9 @@ export type HideContactCloseBirthdays = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_business_connection.html
  */
 export type GetBusinessConnection = (args: {
-    '@type': 'getBusinessConnection';
-    /** Identifier of the business connection to return */
-    connection_id: string;
+	"@type": "getBusinessConnection";
+	/** Identifier of the business connection to return */
+	connection_id: string;
 }) => Obj.BusinessConnection;
 
 /**
@@ -3233,13 +3224,13 @@ export type GetBusinessConnection = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_login_url_info.html
  */
 export type GetLoginUrlInfo = (args: {
-    '@type': 'getLoginUrlInfo';
-    /** Chat identifier of the message with the button */
-    chat_id: number;
-    /** Message identifier of the message with the button. The message must not be scheduled */
-    message_id: number;
-    /** Button identifier */
-    button_id: number;
+	"@type": "getLoginUrlInfo";
+	/** Chat identifier of the message with the button */
+	chat_id: number;
+	/** Message identifier of the message with the button. The message must not be scheduled */
+	message_id: number;
+	/** Button identifier */
+	button_id: number;
 }) => Obj.LoginUrlInfo;
 
 /**
@@ -3247,15 +3238,15 @@ export type GetLoginUrlInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_login_url.html
  */
 export type GetLoginUrl = (args: {
-    '@type': 'getLoginUrl';
-    /** Chat identifier of the message with the button */
-    chat_id: number;
-    /** Message identifier of the message with the button */
-    message_id: number;
-    /** Button identifier */
-    button_id: number;
-    /** Pass true to allow the bot to send messages to the current user */
-    allow_write_access: boolean;
+	"@type": "getLoginUrl";
+	/** Chat identifier of the message with the button */
+	chat_id: number;
+	/** Message identifier of the message with the button */
+	message_id: number;
+	/** Button identifier */
+	button_id: number;
+	/** Pass true to allow the bot to send messages to the current user */
+	allow_write_access: boolean;
 }) => Obj.HttpUrl;
 
 /**
@@ -3263,17 +3254,17 @@ export type GetLoginUrl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1share_users_with_bot.html
  */
 export type ShareUsersWithBot = (args: {
-    '@type': 'shareUsersWithBot';
-    /** Identifier of the chat with the bot */
-    chat_id: number;
-    /** Identifier of the message with the button */
-    message_id: number;
-    /** Identifier of the button */
-    button_id: number;
-    /** Identifiers of the shared users */
-    shared_user_ids: number[];
-    /** Pass true to check that the users can be shared by the button instead of actually sharing them */
-    only_check: boolean;
+	"@type": "shareUsersWithBot";
+	/** Identifier of the chat with the bot */
+	chat_id: number;
+	/** Identifier of the message with the button */
+	message_id: number;
+	/** Identifier of the button */
+	button_id: number;
+	/** Identifiers of the shared users */
+	shared_user_ids: number[];
+	/** Pass true to check that the users can be shared by the button instead of actually sharing them */
+	only_check: boolean;
 }) => Obj.Ok;
 
 /**
@@ -3281,17 +3272,17 @@ export type ShareUsersWithBot = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1share_chat_with_bot.html
  */
 export type ShareChatWithBot = (args: {
-    '@type': 'shareChatWithBot';
-    /** Identifier of the chat with the bot */
-    chat_id: number;
-    /** Identifier of the message with the button */
-    message_id: number;
-    /** Identifier of the button */
-    button_id: number;
-    /** Identifier of the shared chat */
-    shared_chat_id: number;
-    /** Pass true to check that the chat can be shared by the button instead of actually sharing it. Doesn't check bot_is_member and bot_administrator_rights restrictions. If the bot must be a member, then all chats from getGroupsInCommon and all chats, where the user can add the bot, are suitable. In the latter case the bot will be automatically added to the chat. If the bot must be an administrator, then all chats, where the bot already has requested rights or can be added to administrators by the user, are suitable. In the latter case the bot will be automatically granted requested rights */
-    only_check: boolean;
+	"@type": "shareChatWithBot";
+	/** Identifier of the chat with the bot */
+	chat_id: number;
+	/** Identifier of the message with the button */
+	message_id: number;
+	/** Identifier of the button */
+	button_id: number;
+	/** Identifier of the shared chat */
+	shared_chat_id: number;
+	/** Pass true to check that the chat can be shared by the button instead of actually sharing it. Doesn't check bot_is_member and bot_administrator_rights restrictions. If the bot must be a member, then all chats from getGroupsInCommon and all chats, where the user can add the bot, are suitable. In the latter case the bot will be automatically added to the chat. If the bot must be an administrator, then all chats, where the bot already has requested rights or can be added to administrators by the user, are suitable. In the latter case the bot will be automatically granted requested rights */
+	only_check: boolean;
 }) => Obj.Ok;
 
 /**
@@ -3299,17 +3290,17 @@ export type ShareChatWithBot = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_inline_query_results.html
  */
 export type GetInlineQueryResults = (args: {
-    '@type': 'getInlineQueryResults';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** Identifier of the chat where the query was sent */
-    chat_id: number;
-    /** Location of the user; pass null if unknown or the bot doesn't need user's location */
-    user_location?: Obj.Location;
-    /** Text of the query */
-    query: string;
-    /** Offset of the first entry to return; use empty string to get the first chunk of results */
-    offset: string;
+	"@type": "getInlineQueryResults";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** Identifier of the chat where the query was sent */
+	chat_id: number;
+	/** Location of the user; pass null if unknown or the bot doesn't need user's location */
+	user_location?: Obj.Location;
+	/** Text of the query */
+	query: string;
+	/** Offset of the first entry to return; use empty string to get the first chunk of results */
+	offset: string;
 }) => Obj.InlineQueryResults;
 
 /**
@@ -3317,19 +3308,19 @@ export type GetInlineQueryResults = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1answer_inline_query.html
  */
 export type AnswerInlineQuery = (args: {
-    '@type': 'answerInlineQuery';
-    /** Identifier of the inline query */
-    inline_query_id: string;
-    /** Pass true if results may be cached and returned only for the user that sent the query. By default, results may be returned to any user who sends the same query */
-    is_personal: boolean;
-    /** Button to be shown above inline query results; pass null if none */
-    button?: Obj.InlineQueryResultsButton;
-    /** The results of the query */
-    results: Obj.InputInlineQueryResult[];
-    /** Allowed time to cache the results of the query, in seconds */
-    cache_time: number;
-    /** Offset for the next inline query; pass an empty string if there are no more results */
-    next_offset: string;
+	"@type": "answerInlineQuery";
+	/** Identifier of the inline query */
+	inline_query_id: string;
+	/** Pass true if results may be cached and returned only for the user that sent the query. By default, results may be returned to any user who sends the same query */
+	is_personal: boolean;
+	/** Button to be shown above inline query results; pass null if none */
+	button?: Obj.InlineQueryResultsButton;
+	/** The results of the query */
+	results: Obj.InputInlineQueryResult[];
+	/** Allowed time to cache the results of the query, in seconds */
+	cache_time: number;
+	/** Offset for the next inline query; pass an empty string if there are no more results */
+	next_offset: string;
 }) => Obj.Ok;
 
 /**
@@ -3337,13 +3328,13 @@ export type AnswerInlineQuery = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1save_prepared_inline_message.html
  */
 export type SavePreparedInlineMessage = (args: {
-    '@type': 'savePreparedInlineMessage';
-    /** Identifier of the user */
-    user_id: number;
-    /** The description of the message */
-    result: Obj.InputInlineQueryResult;
-    /** Types of the chats to which the message can be sent */
-    chat_types: Obj.TargetChatTypes;
+	"@type": "savePreparedInlineMessage";
+	/** Identifier of the user */
+	user_id: number;
+	/** The description of the message */
+	result: Obj.InputInlineQueryResult;
+	/** Types of the chats to which the message can be sent */
+	chat_types: Obj.TargetChatTypes;
 }) => Obj.PreparedInlineMessageId;
 
 /**
@@ -3351,11 +3342,11 @@ export type SavePreparedInlineMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_prepared_inline_message.html
  */
 export type GetPreparedInlineMessage = (args: {
-    '@type': 'getPreparedInlineMessage';
-    /** Identifier of the bot that created the message */
-    bot_user_id: number;
-    /** Identifier of the prepared message */
-    prepared_message_id: string;
+	"@type": "getPreparedInlineMessage";
+	/** Identifier of the bot that created the message */
+	bot_user_id: number;
+	/** Identifier of the prepared message */
+	prepared_message_id: string;
 }) => Obj.PreparedInlineMessage;
 
 /**
@@ -3363,11 +3354,11 @@ export type GetPreparedInlineMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_grossing_web_app_bots.html
  */
 export type GetGrossingWebAppBots = (args: {
-    '@type': 'getGrossingWebAppBots';
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of bots to be returned; up to 100 */
-    limit: number;
+	"@type": "getGrossingWebAppBots";
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of bots to be returned; up to 100 */
+	limit: number;
 }) => Obj.FoundUsers;
 
 /**
@@ -3375,11 +3366,11 @@ export type GetGrossingWebAppBots = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_web_app.html
  */
 export type SearchWebApp = (args: {
-    '@type': 'searchWebApp';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** Short name of the Web App */
-    web_app_short_name: string;
+	"@type": "searchWebApp";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** Short name of the Web App */
+	web_app_short_name: string;
 }) => Obj.FoundWebApp;
 
 /**
@@ -3387,9 +3378,9 @@ export type SearchWebApp = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_web_app_placeholder.html
  */
 export type GetWebAppPlaceholder = (args: {
-    '@type': 'getWebAppPlaceholder';
-    /** Identifier of the target bot */
-    bot_user_id: number;
+	"@type": "getWebAppPlaceholder";
+	/** Identifier of the target bot */
+	bot_user_id: number;
 }) => Obj.Outline;
 
 /**
@@ -3397,19 +3388,19 @@ export type GetWebAppPlaceholder = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_web_app_link_url.html
  */
 export type GetWebAppLinkUrl = (args: {
-    '@type': 'getWebAppLinkUrl';
-    /** Identifier of the chat in which the link was clicked; pass 0 if none */
-    chat_id: number;
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** Short name of the Web App */
-    web_app_short_name: string;
-    /** Start parameter from internalLinkTypeWebApp */
-    start_parameter: string;
-    /** Pass true if the current user allowed the bot to send them messages */
-    allow_write_access: boolean;
-    /** Parameters to use to open the Web App */
-    parameters: Obj.WebAppOpenParameters;
+	"@type": "getWebAppLinkUrl";
+	/** Identifier of the chat in which the link was clicked; pass 0 if none */
+	chat_id: number;
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** Short name of the Web App */
+	web_app_short_name: string;
+	/** Start parameter from internalLinkTypeWebApp */
+	start_parameter: string;
+	/** Pass true if the current user allowed the bot to send them messages */
+	allow_write_access: boolean;
+	/** Parameters to use to open the Web App */
+	parameters: Obj.WebAppOpenParameters;
 }) => Obj.HttpUrl;
 
 /**
@@ -3417,15 +3408,15 @@ export type GetWebAppLinkUrl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_main_web_app.html
  */
 export type GetMainWebApp = (args: {
-    '@type': 'getMainWebApp';
-    /** Identifier of the chat in which the Web App is opened; pass 0 if none */
-    chat_id: number;
-    /** Identifier of the target bot. If the bot is restricted for the current user, then show an error instead of calling the method */
-    bot_user_id: number;
-    /** Start parameter from internalLinkTypeMainWebApp */
-    start_parameter: string;
-    /** Parameters to use to open the Web App */
-    parameters: Obj.WebAppOpenParameters;
+	"@type": "getMainWebApp";
+	/** Identifier of the chat in which the Web App is opened; pass 0 if none */
+	chat_id: number;
+	/** Identifier of the target bot. If the bot is restricted for the current user, then show an error instead of calling the method */
+	bot_user_id: number;
+	/** Start parameter from internalLinkTypeMainWebApp */
+	start_parameter: string;
+	/** Parameters to use to open the Web App */
+	parameters: Obj.WebAppOpenParameters;
 }) => Obj.MainWebApp;
 
 /**
@@ -3433,13 +3424,13 @@ export type GetMainWebApp = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_web_app_url.html
  */
 export type GetWebAppUrl = (args: {
-    '@type': 'getWebAppUrl';
-    /** Identifier of the target bot. If the bot is restricted for the current user, then show an error instead of calling the method */
-    bot_user_id: number;
-    /** The URL from a keyboardButtonTypeWebApp button, inlineQueryResultsButtonTypeWebApp button, or an empty string when the bot is opened from the side menu */
-    url: string;
-    /** Parameters to use to open the Web App */
-    parameters: Obj.WebAppOpenParameters;
+	"@type": "getWebAppUrl";
+	/** Identifier of the target bot. If the bot is restricted for the current user, then show an error instead of calling the method */
+	bot_user_id: number;
+	/** The URL from a keyboardButtonTypeWebApp button, inlineQueryResultsButtonTypeWebApp button, or an empty string when the bot is opened from the side menu */
+	url: string;
+	/** Parameters to use to open the Web App */
+	parameters: Obj.WebAppOpenParameters;
 }) => Obj.HttpUrl;
 
 /**
@@ -3447,13 +3438,13 @@ export type GetWebAppUrl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_web_app_data.html
  */
 export type SendWebAppData = (args: {
-    '@type': 'sendWebAppData';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** Text of the keyboardButtonTypeWebApp button, which opened the Web App */
-    button_text: string;
-    /** The data */
-    data: string;
+	"@type": "sendWebAppData";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** Text of the keyboardButtonTypeWebApp button, which opened the Web App */
+	button_text: string;
+	/** The data */
+	data: string;
 }) => Obj.Ok;
 
 /**
@@ -3461,21 +3452,21 @@ export type SendWebAppData = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1open_web_app.html
  */
 export type OpenWebApp = (args: {
-    '@type': 'openWebApp';
-    /** Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats */
-    chat_id: number;
-    /** Identifier of the bot, providing the Web App. If the bot is restricted for the current user, then show an error instead of calling the method */
-    bot_user_id: number;
-    /** The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise */
-    url: string;
-    /** If not 0, the message thread identifier to which the message will be sent */
-    message_thread_id: number;
-    /** If not 0, unique identifier of the topic of channel direct messages chat to which the message will be sent */
-    direct_messages_chat_topic_id: number;
-    /** Information about the message or story to be replied in the message sent by the Web App; pass null if none */
-    reply_to?: Obj.InputMessageReplyTo;
-    /** Parameters to use to open the Web App */
-    parameters: Obj.WebAppOpenParameters;
+	"@type": "openWebApp";
+	/** Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats */
+	chat_id: number;
+	/** Identifier of the bot, providing the Web App. If the bot is restricted for the current user, then show an error instead of calling the method */
+	bot_user_id: number;
+	/** The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise */
+	url: string;
+	/** If not 0, the message thread identifier to which the message will be sent */
+	message_thread_id: number;
+	/** If not 0, unique identifier of the topic of channel direct messages chat to which the message will be sent */
+	direct_messages_chat_topic_id: number;
+	/** Information about the message or story to be replied in the message sent by the Web App; pass null if none */
+	reply_to?: Obj.InputMessageReplyTo;
+	/** Parameters to use to open the Web App */
+	parameters: Obj.WebAppOpenParameters;
 }) => Obj.WebAppInfo;
 
 /**
@@ -3483,9 +3474,9 @@ export type OpenWebApp = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1close_web_app.html
  */
 export type CloseWebApp = (args: {
-    '@type': 'closeWebApp';
-    /** Identifier of Web App launch, received from openWebApp */
-    web_app_launch_id: string;
+	"@type": "closeWebApp";
+	/** Identifier of Web App launch, received from openWebApp */
+	web_app_launch_id: string;
 }) => Obj.Ok;
 
 /**
@@ -3493,11 +3484,11 @@ export type CloseWebApp = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1answer_web_app_query.html
  */
 export type AnswerWebAppQuery = (args: {
-    '@type': 'answerWebAppQuery';
-    /** Identifier of the Web App query */
-    web_app_query_id: string;
-    /** The result of the query */
-    result: Obj.InputInlineQueryResult;
+	"@type": "answerWebAppQuery";
+	/** Identifier of the Web App query */
+	web_app_query_id: string;
+	/** The result of the query */
+	result: Obj.InputInlineQueryResult;
 }) => Obj.SentWebAppMessage;
 
 /**
@@ -3505,13 +3496,13 @@ export type AnswerWebAppQuery = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_web_app_file_download.html
  */
 export type CheckWebAppFileDownload = (args: {
-    '@type': 'checkWebAppFileDownload';
-    /** Identifier of the bot, providing the Web App */
-    bot_user_id: number;
-    /** Name of the file */
-    file_name: string;
-    /** URL of the file */
-    url: string;
+	"@type": "checkWebAppFileDownload";
+	/** Identifier of the bot, providing the Web App */
+	bot_user_id: number;
+	/** Name of the file */
+	file_name: string;
+	/** URL of the file */
+	url: string;
 }) => Obj.Ok;
 
 /**
@@ -3519,13 +3510,13 @@ export type CheckWebAppFileDownload = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_callback_query_answer.html
  */
 export type GetCallbackQueryAnswer = (args: {
-    '@type': 'getCallbackQueryAnswer';
-    /** Identifier of the chat with the message */
-    chat_id: number;
-    /** Identifier of the message from which the query originated. The message must not be scheduled */
-    message_id: number;
-    /** Query payload */
-    payload: Obj.CallbackQueryPayload;
+	"@type": "getCallbackQueryAnswer";
+	/** Identifier of the chat with the message */
+	chat_id: number;
+	/** Identifier of the message from which the query originated. The message must not be scheduled */
+	message_id: number;
+	/** Query payload */
+	payload: Obj.CallbackQueryPayload;
 }) => Obj.CallbackQueryAnswer;
 
 /**
@@ -3533,17 +3524,17 @@ export type GetCallbackQueryAnswer = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1answer_callback_query.html
  */
 export type AnswerCallbackQuery = (args: {
-    '@type': 'answerCallbackQuery';
-    /** Identifier of the callback query */
-    callback_query_id: string;
-    /** Text of the answer */
-    text: string;
-    /** Pass true to show an alert to the user instead of a toast notification */
-    show_alert: boolean;
-    /** URL to be opened */
-    url: string;
-    /** Time during which the result of the query can be cached, in seconds */
-    cache_time: number;
+	"@type": "answerCallbackQuery";
+	/** Identifier of the callback query */
+	callback_query_id: string;
+	/** Text of the answer */
+	text: string;
+	/** Pass true to show an alert to the user instead of a toast notification */
+	show_alert: boolean;
+	/** URL to be opened */
+	url: string;
+	/** Time during which the result of the query can be cached, in seconds */
+	cache_time: number;
 }) => Obj.Ok;
 
 /**
@@ -3551,13 +3542,13 @@ export type AnswerCallbackQuery = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1answer_shipping_query.html
  */
 export type AnswerShippingQuery = (args: {
-    '@type': 'answerShippingQuery';
-    /** Identifier of the shipping query */
-    shipping_query_id: string;
-    /** Available shipping options */
-    shipping_options: Obj.ShippingOption[];
-    /** An error message, empty on success */
-    error_message: string;
+	"@type": "answerShippingQuery";
+	/** Identifier of the shipping query */
+	shipping_query_id: string;
+	/** Available shipping options */
+	shipping_options: Obj.ShippingOption[];
+	/** An error message, empty on success */
+	error_message: string;
 }) => Obj.Ok;
 
 /**
@@ -3565,11 +3556,11 @@ export type AnswerShippingQuery = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1answer_pre_checkout_query.html
  */
 export type AnswerPreCheckoutQuery = (args: {
-    '@type': 'answerPreCheckoutQuery';
-    /** Identifier of the pre-checkout query */
-    pre_checkout_query_id: string;
-    /** An error message, empty on success */
-    error_message: string;
+	"@type": "answerPreCheckoutQuery";
+	/** Identifier of the pre-checkout query */
+	pre_checkout_query_id: string;
+	/** An error message, empty on success */
+	error_message: string;
 }) => Obj.Ok;
 
 /**
@@ -3577,19 +3568,19 @@ export type AnswerPreCheckoutQuery = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_game_score.html
  */
 export type SetGameScore = (args: {
-    '@type': 'setGameScore';
-    /** The chat to which the message with the game belongs */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** Pass true to edit the game message to include the current scoreboard */
-    edit_message: boolean;
-    /** User identifier */
-    user_id: number;
-    /** The new score */
-    score: number;
-    /** Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table */
-    force: boolean;
+	"@type": "setGameScore";
+	/** The chat to which the message with the game belongs */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** Pass true to edit the game message to include the current scoreboard */
+	edit_message: boolean;
+	/** User identifier */
+	user_id: number;
+	/** The new score */
+	score: number;
+	/** Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table */
+	force: boolean;
 }) => Obj.Message;
 
 /**
@@ -3597,17 +3588,17 @@ export type SetGameScore = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_inline_game_score.html
  */
 export type SetInlineGameScore = (args: {
-    '@type': 'setInlineGameScore';
-    /** Inline message identifier */
-    inline_message_id: string;
-    /** Pass true to edit the game message to include the current scoreboard */
-    edit_message: boolean;
-    /** User identifier */
-    user_id: number;
-    /** The new score */
-    score: number;
-    /** Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table */
-    force: boolean;
+	"@type": "setInlineGameScore";
+	/** Inline message identifier */
+	inline_message_id: string;
+	/** Pass true to edit the game message to include the current scoreboard */
+	edit_message: boolean;
+	/** User identifier */
+	user_id: number;
+	/** The new score */
+	score: number;
+	/** Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table */
+	force: boolean;
 }) => Obj.Ok;
 
 /**
@@ -3615,13 +3606,13 @@ export type SetInlineGameScore = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_game_high_scores.html
  */
 export type GetGameHighScores = (args: {
-    '@type': 'getGameHighScores';
-    /** The chat that contains the message with the game */
-    chat_id: number;
-    /** Identifier of the message */
-    message_id: number;
-    /** User identifier */
-    user_id: number;
+	"@type": "getGameHighScores";
+	/** The chat that contains the message with the game */
+	chat_id: number;
+	/** Identifier of the message */
+	message_id: number;
+	/** User identifier */
+	user_id: number;
 }) => Obj.GameHighScores;
 
 /**
@@ -3629,11 +3620,11 @@ export type GetGameHighScores = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_inline_game_high_scores.html
  */
 export type GetInlineGameHighScores = (args: {
-    '@type': 'getInlineGameHighScores';
-    /** Inline message identifier */
-    inline_message_id: string;
-    /** User identifier */
-    user_id: number;
+	"@type": "getInlineGameHighScores";
+	/** Inline message identifier */
+	inline_message_id: string;
+	/** User identifier */
+	user_id: number;
 }) => Obj.GameHighScores;
 
 /**
@@ -3641,11 +3632,11 @@ export type GetInlineGameHighScores = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_chat_reply_markup.html
  */
 export type DeleteChatReplyMarkup = (args: {
-    '@type': 'deleteChatReplyMarkup';
-    /** Chat identifier */
-    chat_id: number;
-    /** The message identifier of the used keyboard */
-    message_id: number;
+	"@type": "deleteChatReplyMarkup";
+	/** Chat identifier */
+	chat_id: number;
+	/** The message identifier of the used keyboard */
+	message_id: number;
 }) => Obj.Ok;
 
 /**
@@ -3653,15 +3644,15 @@ export type DeleteChatReplyMarkup = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_chat_action.html
  */
 export type SendChatAction = (args: {
-    '@type': 'sendChatAction';
-    /** Chat identifier */
-    chat_id: number;
-    /** If not 0, the message thread identifier in which the action was performed */
-    message_thread_id: number;
-    /** Unique identifier of business connection on behalf of which to send the request; for bots only */
-    business_connection_id: string;
-    /** The action description; pass null to cancel the currently active action */
-    action?: Obj.ChatAction;
+	"@type": "sendChatAction";
+	/** Chat identifier */
+	chat_id: number;
+	/** If not 0, the message thread identifier in which the action was performed */
+	message_thread_id: number;
+	/** Unique identifier of business connection on behalf of which to send the request; for bots only */
+	business_connection_id: string;
+	/** The action description; pass null to cancel the currently active action */
+	action?: Obj.ChatAction;
 }) => Obj.Ok;
 
 /**
@@ -3669,9 +3660,9 @@ export type SendChatAction = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1open_chat.html
  */
 export type OpenChat = (args: {
-    '@type': 'openChat';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "openChat";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -3679,9 +3670,9 @@ export type OpenChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1close_chat.html
  */
 export type CloseChat = (args: {
-    '@type': 'closeChat';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "closeChat";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -3689,15 +3680,15 @@ export type CloseChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1view_messages.html
  */
 export type ViewMessages = (args: {
-    '@type': 'viewMessages';
-    /** Chat identifier */
-    chat_id: number;
-    /** The identifiers of the messages being viewed */
-    message_ids: number[];
-    /** Source of the message view; pass null to guess the source based on chat open state */
-    source?: Obj.MessageSource;
-    /** Pass true to mark as read the specified messages even the chat is closed */
-    force_read: boolean;
+	"@type": "viewMessages";
+	/** Chat identifier */
+	chat_id: number;
+	/** The identifiers of the messages being viewed */
+	message_ids: number[];
+	/** Source of the message view; pass null to guess the source based on chat open state */
+	source?: Obj.MessageSource;
+	/** Pass true to mark as read the specified messages even the chat is closed */
+	force_read: boolean;
 }) => Obj.Ok;
 
 /**
@@ -3705,11 +3696,11 @@ export type ViewMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1open_message_content.html
  */
 export type OpenMessageContent = (args: {
-    '@type': 'openMessageContent';
-    /** Chat identifier of the message */
-    chat_id: number;
-    /** Identifier of the message with the opened content */
-    message_id: number;
+	"@type": "openMessageContent";
+	/** Chat identifier of the message */
+	chat_id: number;
+	/** Identifier of the message with the opened content */
+	message_id: number;
 }) => Obj.Ok;
 
 /**
@@ -3717,11 +3708,11 @@ export type OpenMessageContent = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1click_animated_emoji_message.html
  */
 export type ClickAnimatedEmojiMessage = (args: {
-    '@type': 'clickAnimatedEmojiMessage';
-    /** Chat identifier of the message */
-    chat_id: number;
-    /** Identifier of the clicked message */
-    message_id: number;
+	"@type": "clickAnimatedEmojiMessage";
+	/** Chat identifier of the message */
+	chat_id: number;
+	/** Identifier of the clicked message */
+	message_id: number;
 }) => Obj.Sticker;
 
 /**
@@ -3729,11 +3720,11 @@ export type ClickAnimatedEmojiMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_internal_link.html
  */
 export type GetInternalLink = (args: {
-    '@type': 'getInternalLink';
-    /** Expected type of the link */
-    type: Obj.InternalLinkType;
-    /** Pass true to create an HTTPS link (only available for some link types); pass false to create a tg: link */
-    is_http: boolean;
+	"@type": "getInternalLink";
+	/** Expected type of the link */
+	type: Obj.InternalLinkType;
+	/** Pass true to create an HTTPS link (only available for some link types); pass false to create a tg: link */
+	is_http: boolean;
 }) => Obj.HttpUrl;
 
 /**
@@ -3741,9 +3732,9 @@ export type GetInternalLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_internal_link_type.html
  */
 export type GetInternalLinkType = (args: {
-    '@type': 'getInternalLinkType';
-    /** The link */
-    link: string;
+	"@type": "getInternalLinkType";
+	/** The link */
+	link: string;
 }) => Obj.InternalLinkType;
 
 /**
@@ -3751,9 +3742,9 @@ export type GetInternalLinkType = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_external_link_info.html
  */
 export type GetExternalLinkInfo = (args: {
-    '@type': 'getExternalLinkInfo';
-    /** The link */
-    link: string;
+	"@type": "getExternalLinkInfo";
+	/** The link */
+	link: string;
 }) => Obj.LoginUrlInfo;
 
 /**
@@ -3761,11 +3752,11 @@ export type GetExternalLinkInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_external_link.html
  */
 export type GetExternalLink = (args: {
-    '@type': 'getExternalLink';
-    /** The HTTP link */
-    link: string;
-    /** Pass true if the current user allowed the bot, returned in getExternalLinkInfo, to send them messages */
-    allow_write_access: boolean;
+	"@type": "getExternalLink";
+	/** The HTTP link */
+	link: string;
+	/** Pass true if the current user allowed the bot, returned in getExternalLinkInfo, to send them messages */
+	allow_write_access: boolean;
 }) => Obj.HttpUrl;
 
 /**
@@ -3773,9 +3764,9 @@ export type GetExternalLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1read_all_chat_mentions.html
  */
 export type ReadAllChatMentions = (args: {
-    '@type': 'readAllChatMentions';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "readAllChatMentions";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -3783,11 +3774,11 @@ export type ReadAllChatMentions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1read_all_message_thread_mentions.html
  */
 export type ReadAllMessageThreadMentions = (args: {
-    '@type': 'readAllMessageThreadMentions';
-    /** Chat identifier */
-    chat_id: number;
-    /** Message thread identifier in which mentions are marked as read */
-    message_thread_id: number;
+	"@type": "readAllMessageThreadMentions";
+	/** Chat identifier */
+	chat_id: number;
+	/** Message thread identifier in which mentions are marked as read */
+	message_thread_id: number;
 }) => Obj.Ok;
 
 /**
@@ -3795,9 +3786,9 @@ export type ReadAllMessageThreadMentions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1read_all_chat_reactions.html
  */
 export type ReadAllChatReactions = (args: {
-    '@type': 'readAllChatReactions';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "readAllChatReactions";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -3805,11 +3796,11 @@ export type ReadAllChatReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1read_all_message_thread_reactions.html
  */
 export type ReadAllMessageThreadReactions = (args: {
-    '@type': 'readAllMessageThreadReactions';
-    /** Chat identifier */
-    chat_id: number;
-    /** Message thread identifier in which reactions are marked as read */
-    message_thread_id: number;
+	"@type": "readAllMessageThreadReactions";
+	/** Chat identifier */
+	chat_id: number;
+	/** Message thread identifier in which reactions are marked as read */
+	message_thread_id: number;
 }) => Obj.Ok;
 
 /**
@@ -3817,11 +3808,11 @@ export type ReadAllMessageThreadReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_private_chat.html
  */
 export type CreatePrivateChat = (args: {
-    '@type': 'createPrivateChat';
-    /** User identifier */
-    user_id: number;
-    /** Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect */
-    force: boolean;
+	"@type": "createPrivateChat";
+	/** User identifier */
+	user_id: number;
+	/** Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect */
+	force: boolean;
 }) => Obj.Chat;
 
 /**
@@ -3829,11 +3820,11 @@ export type CreatePrivateChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_basic_group_chat.html
  */
 export type CreateBasicGroupChat = (args: {
-    '@type': 'createBasicGroupChat';
-    /** Basic group identifier */
-    basic_group_id: number;
-    /** Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect */
-    force: boolean;
+	"@type": "createBasicGroupChat";
+	/** Basic group identifier */
+	basic_group_id: number;
+	/** Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect */
+	force: boolean;
 }) => Obj.Chat;
 
 /**
@@ -3841,11 +3832,11 @@ export type CreateBasicGroupChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_supergroup_chat.html
  */
 export type CreateSupergroupChat = (args: {
-    '@type': 'createSupergroupChat';
-    /** Supergroup or channel identifier */
-    supergroup_id: number;
-    /** Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect */
-    force: boolean;
+	"@type": "createSupergroupChat";
+	/** Supergroup or channel identifier */
+	supergroup_id: number;
+	/** Pass true to create the chat without a network request. In this case all information about the chat except its type, title and photo can be incorrect */
+	force: boolean;
 }) => Obj.Chat;
 
 /**
@@ -3853,9 +3844,9 @@ export type CreateSupergroupChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_secret_chat.html
  */
 export type CreateSecretChat = (args: {
-    '@type': 'createSecretChat';
-    /** Secret chat identifier */
-    secret_chat_id: number;
+	"@type": "createSecretChat";
+	/** Secret chat identifier */
+	secret_chat_id: number;
 }) => Obj.Chat;
 
 /**
@@ -3863,13 +3854,13 @@ export type CreateSecretChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_new_basic_group_chat.html
  */
 export type CreateNewBasicGroupChat = (args: {
-    '@type': 'createNewBasicGroupChat';
-    /** Identifiers of users to be added to the basic group; may be empty to create a basic group without other members */
-    user_ids?: number[];
-    /** Title of the new basic group; 1-128 characters */
-    title: string;
-    /** Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically */
-    message_auto_delete_time: number;
+	"@type": "createNewBasicGroupChat";
+	/** Identifiers of users to be added to the basic group; may be empty to create a basic group without other members */
+	user_ids?: number[];
+	/** Title of the new basic group; 1-128 characters */
+	title: string;
+	/** Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically */
+	message_auto_delete_time: number;
 }) => Obj.CreatedBasicGroupChat;
 
 /**
@@ -3877,21 +3868,21 @@ export type CreateNewBasicGroupChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_new_supergroup_chat.html
  */
 export type CreateNewSupergroupChat = (args: {
-    '@type': 'createNewSupergroupChat';
-    /** Title of the new chat; 1-128 characters */
-    title: string;
-    /** Pass true to create a forum supergroup chat */
-    is_forum: boolean;
-    /** Pass true to create a channel chat; ignored if a forum is created */
-    is_channel: boolean;
-    /** Chat description; 0-255 characters */
-    description: string;
-    /** Chat location if a location-based supergroup is being created; pass null to create an ordinary supergroup chat */
-    location?: Obj.ChatLocation;
-    /** Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically */
-    message_auto_delete_time: number;
-    /** Pass true to create a supergroup for importing messages using importMessages */
-    for_import: boolean;
+	"@type": "createNewSupergroupChat";
+	/** Title of the new chat; 1-128 characters */
+	title: string;
+	/** Pass true to create a forum supergroup chat */
+	is_forum: boolean;
+	/** Pass true to create a channel chat; ignored if a forum is created */
+	is_channel: boolean;
+	/** Chat description; 0-255 characters */
+	description: string;
+	/** Chat location if a location-based supergroup is being created; pass null to create an ordinary supergroup chat */
+	location?: Obj.ChatLocation;
+	/** Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically */
+	message_auto_delete_time: number;
+	/** Pass true to create a supergroup for importing messages using importMessages */
+	for_import: boolean;
 }) => Obj.Chat;
 
 /**
@@ -3899,9 +3890,9 @@ export type CreateNewSupergroupChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_new_secret_chat.html
  */
 export type CreateNewSecretChat = (args: {
-    '@type': 'createNewSecretChat';
-    /** Identifier of the target user */
-    user_id: number;
+	"@type": "createNewSecretChat";
+	/** Identifier of the target user */
+	user_id: number;
 }) => Obj.Chat;
 
 /**
@@ -3909,9 +3900,9 @@ export type CreateNewSecretChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgrade_basic_group_chat_to_supergroup_chat.html
  */
 export type UpgradeBasicGroupChatToSupergroupChat = (args: {
-    '@type': 'upgradeBasicGroupChatToSupergroupChat';
-    /** Identifier of the chat to upgrade */
-    chat_id: number;
+	"@type": "upgradeBasicGroupChatToSupergroupChat";
+	/** Identifier of the chat to upgrade */
+	chat_id: number;
 }) => Obj.Chat;
 
 /**
@@ -3919,9 +3910,9 @@ export type UpgradeBasicGroupChatToSupergroupChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_lists_to_add_chat.html
  */
 export type GetChatListsToAddChat = (args: {
-    '@type': 'getChatListsToAddChat';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "getChatListsToAddChat";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.ChatLists;
 
 /**
@@ -3929,11 +3920,11 @@ export type GetChatListsToAddChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_chat_to_list.html
  */
 export type AddChatToList = (args: {
-    '@type': 'addChatToList';
-    /** Chat identifier */
-    chat_id: number;
-    /** The chat list. Use getChatListsToAddChat to get suitable chat lists */
-    chat_list: Obj.ChatList;
+	"@type": "addChatToList";
+	/** Chat identifier */
+	chat_id: number;
+	/** The chat list. Use getChatListsToAddChat to get suitable chat lists */
+	chat_list: Obj.ChatList;
 }) => Obj.Ok;
 
 /**
@@ -3941,9 +3932,9 @@ export type AddChatToList = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_folder.html
  */
 export type GetChatFolder = (args: {
-    '@type': 'getChatFolder';
-    /** Chat folder identifier */
-    chat_folder_id: number;
+	"@type": "getChatFolder";
+	/** Chat folder identifier */
+	chat_folder_id: number;
 }) => Obj.ChatFolder;
 
 /**
@@ -3951,9 +3942,9 @@ export type GetChatFolder = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_chat_folder.html
  */
 export type CreateChatFolder = (args: {
-    '@type': 'createChatFolder';
-    /** The new chat folder */
-    folder: Obj.ChatFolder;
+	"@type": "createChatFolder";
+	/** The new chat folder */
+	folder: Obj.ChatFolder;
 }) => Obj.ChatFolderInfo;
 
 /**
@@ -3961,11 +3952,11 @@ export type CreateChatFolder = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_chat_folder.html
  */
 export type EditChatFolder = (args: {
-    '@type': 'editChatFolder';
-    /** Chat folder identifier */
-    chat_folder_id: number;
-    /** The edited chat folder */
-    folder: Obj.ChatFolder;
+	"@type": "editChatFolder";
+	/** Chat folder identifier */
+	chat_folder_id: number;
+	/** The edited chat folder */
+	folder: Obj.ChatFolder;
 }) => Obj.ChatFolderInfo;
 
 /**
@@ -3973,11 +3964,11 @@ export type EditChatFolder = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_chat_folder.html
  */
 export type DeleteChatFolder = (args: {
-    '@type': 'deleteChatFolder';
-    /** Chat folder identifier */
-    chat_folder_id: number;
-    /** Identifiers of the chats to leave. The chats must be pinned or always included in the folder */
-    leave_chat_ids: number[];
+	"@type": "deleteChatFolder";
+	/** Chat folder identifier */
+	chat_folder_id: number;
+	/** Identifiers of the chats to leave. The chats must be pinned or always included in the folder */
+	leave_chat_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -3985,9 +3976,9 @@ export type DeleteChatFolder = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_folder_chats_to_leave.html
  */
 export type GetChatFolderChatsToLeave = (args: {
-    '@type': 'getChatFolderChatsToLeave';
-    /** Chat folder identifier */
-    chat_folder_id: number;
+	"@type": "getChatFolderChatsToLeave";
+	/** Chat folder identifier */
+	chat_folder_id: number;
 }) => Obj.Chats;
 
 /**
@@ -3995,9 +3986,9 @@ export type GetChatFolderChatsToLeave = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_folder_chat_count.html
  */
 export type GetChatFolderChatCount = (args: {
-    '@type': 'getChatFolderChatCount';
-    /** The new chat folder */
-    folder: Obj.ChatFolder;
+	"@type": "getChatFolderChatCount";
+	/** The new chat folder */
+	folder: Obj.ChatFolder;
 }) => Obj.Count;
 
 /**
@@ -4005,11 +3996,11 @@ export type GetChatFolderChatCount = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reorder_chat_folders.html
  */
 export type ReorderChatFolders = (args: {
-    '@type': 'reorderChatFolders';
-    /** Identifiers of chat folders in the new correct order */
-    chat_folder_ids: number[];
-    /** Position of the main chat list among chat folders, 0-based. Can be non-zero only for Premium users */
-    main_chat_list_position: number;
+	"@type": "reorderChatFolders";
+	/** Identifiers of chat folders in the new correct order */
+	chat_folder_ids: number[];
+	/** Position of the main chat list among chat folders, 0-based. Can be non-zero only for Premium users */
+	main_chat_list_position: number;
 }) => Obj.Ok;
 
 /**
@@ -4017,9 +4008,9 @@ export type ReorderChatFolders = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_chat_folder_tags.html
  */
 export type ToggleChatFolderTags = (args: {
-    '@type': 'toggleChatFolderTags';
-    /** Pass true to enable folder tags; pass false to disable them */
-    are_tags_enabled: boolean;
+	"@type": "toggleChatFolderTags";
+	/** Pass true to enable folder tags; pass false to disable them */
+	are_tags_enabled: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4027,7 +4018,7 @@ export type ToggleChatFolderTags = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_recommended_chat_folders.html
  */
 export type GetRecommendedChatFolders = (args: {
-    '@type': 'getRecommendedChatFolders';
+	"@type": "getRecommendedChatFolders";
 }) => Obj.RecommendedChatFolders;
 
 /**
@@ -4035,9 +4026,9 @@ export type GetRecommendedChatFolders = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_folder_default_icon_name.html
  */
 export type GetChatFolderDefaultIconName = (args: {
-    '@type': 'getChatFolderDefaultIconName';
-    /** Chat folder */
-    folder: Obj.ChatFolder;
+	"@type": "getChatFolderDefaultIconName";
+	/** Chat folder */
+	folder: Obj.ChatFolder;
 }) => Obj.ChatFolderIcon;
 
 /**
@@ -4045,9 +4036,9 @@ export type GetChatFolderDefaultIconName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chats_for_chat_folder_invite_link.html
  */
 export type GetChatsForChatFolderInviteLink = (args: {
-    '@type': 'getChatsForChatFolderInviteLink';
-    /** Chat folder identifier */
-    chat_folder_id: number;
+	"@type": "getChatsForChatFolderInviteLink";
+	/** Chat folder identifier */
+	chat_folder_id: number;
 }) => Obj.Chats;
 
 /**
@@ -4055,13 +4046,13 @@ export type GetChatsForChatFolderInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_chat_folder_invite_link.html
  */
 export type CreateChatFolderInviteLink = (args: {
-    '@type': 'createChatFolderInviteLink';
-    /** Chat folder identifier */
-    chat_folder_id: number;
-    /** Name of the link; 0-32 characters */
-    name: string;
-    /** Identifiers of chats to be accessible by the invite link. Use getChatsForChatFolderInviteLink to get suitable chats. Basic groups will be automatically converted to supergroups before link creation */
-    chat_ids: number[];
+	"@type": "createChatFolderInviteLink";
+	/** Chat folder identifier */
+	chat_folder_id: number;
+	/** Name of the link; 0-32 characters */
+	name: string;
+	/** Identifiers of chats to be accessible by the invite link. Use getChatsForChatFolderInviteLink to get suitable chats. Basic groups will be automatically converted to supergroups before link creation */
+	chat_ids: number[];
 }) => Obj.ChatFolderInviteLink;
 
 /**
@@ -4069,9 +4060,9 @@ export type CreateChatFolderInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_folder_invite_links.html
  */
 export type GetChatFolderInviteLinks = (args: {
-    '@type': 'getChatFolderInviteLinks';
-    /** Chat folder identifier */
-    chat_folder_id: number;
+	"@type": "getChatFolderInviteLinks";
+	/** Chat folder identifier */
+	chat_folder_id: number;
 }) => Obj.ChatFolderInviteLinks;
 
 /**
@@ -4079,15 +4070,15 @@ export type GetChatFolderInviteLinks = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_chat_folder_invite_link.html
  */
 export type EditChatFolderInviteLink = (args: {
-    '@type': 'editChatFolderInviteLink';
-    /** Chat folder identifier */
-    chat_folder_id: number;
-    /** Invite link to be edited */
-    invite_link: string;
-    /** New name of the link; 0-32 characters */
-    name: string;
-    /** New identifiers of chats to be accessible by the invite link. Use getChatsForChatFolderInviteLink to get suitable chats. Basic groups will be automatically converted to supergroups before link editing */
-    chat_ids: number[];
+	"@type": "editChatFolderInviteLink";
+	/** Chat folder identifier */
+	chat_folder_id: number;
+	/** Invite link to be edited */
+	invite_link: string;
+	/** New name of the link; 0-32 characters */
+	name: string;
+	/** New identifiers of chats to be accessible by the invite link. Use getChatsForChatFolderInviteLink to get suitable chats. Basic groups will be automatically converted to supergroups before link editing */
+	chat_ids: number[];
 }) => Obj.ChatFolderInviteLink;
 
 /**
@@ -4095,11 +4086,11 @@ export type EditChatFolderInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_chat_folder_invite_link.html
  */
 export type DeleteChatFolderInviteLink = (args: {
-    '@type': 'deleteChatFolderInviteLink';
-    /** Chat folder identifier */
-    chat_folder_id: number;
-    /** Invite link to be deleted */
-    invite_link: string;
+	"@type": "deleteChatFolderInviteLink";
+	/** Chat folder identifier */
+	chat_folder_id: number;
+	/** Invite link to be deleted */
+	invite_link: string;
 }) => Obj.Ok;
 
 /**
@@ -4107,9 +4098,9 @@ export type DeleteChatFolderInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_chat_folder_invite_link.html
  */
 export type CheckChatFolderInviteLink = (args: {
-    '@type': 'checkChatFolderInviteLink';
-    /** Invite link to be checked */
-    invite_link: string;
+	"@type": "checkChatFolderInviteLink";
+	/** Invite link to be checked */
+	invite_link: string;
 }) => Obj.ChatFolderInviteLinkInfo;
 
 /**
@@ -4117,11 +4108,11 @@ export type CheckChatFolderInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_chat_folder_by_invite_link.html
  */
 export type AddChatFolderByInviteLink = (args: {
-    '@type': 'addChatFolderByInviteLink';
-    /** Invite link for the chat folder */
-    invite_link: string;
-    /** Identifiers of the chats added to the chat folder. The chats are automatically joined if they aren't joined yet */
-    chat_ids: number[];
+	"@type": "addChatFolderByInviteLink";
+	/** Invite link for the chat folder */
+	invite_link: string;
+	/** Identifiers of the chats added to the chat folder. The chats are automatically joined if they aren't joined yet */
+	chat_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -4129,9 +4120,9 @@ export type AddChatFolderByInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_folder_new_chats.html
  */
 export type GetChatFolderNewChats = (args: {
-    '@type': 'getChatFolderNewChats';
-    /** Chat folder identifier */
-    chat_folder_id: number;
+	"@type": "getChatFolderNewChats";
+	/** Chat folder identifier */
+	chat_folder_id: number;
 }) => Obj.Chats;
 
 /**
@@ -4139,11 +4130,11 @@ export type GetChatFolderNewChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1process_chat_folder_new_chats.html
  */
 export type ProcessChatFolderNewChats = (args: {
-    '@type': 'processChatFolderNewChats';
-    /** Chat folder identifier */
-    chat_folder_id: number;
-    /** Identifiers of the new chats, which are added to the chat folder. The chats are automatically joined if they aren't joined yet */
-    added_chat_ids: number[];
+	"@type": "processChatFolderNewChats";
+	/** Chat folder identifier */
+	chat_folder_id: number;
+	/** Identifiers of the new chats, which are added to the chat folder. The chats are automatically joined if they aren't joined yet */
+	added_chat_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -4151,7 +4142,7 @@ export type ProcessChatFolderNewChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_archive_chat_list_settings.html
  */
 export type GetArchiveChatListSettings = (args: {
-    '@type': 'getArchiveChatListSettings';
+	"@type": "getArchiveChatListSettings";
 }) => Obj.ArchiveChatListSettings;
 
 /**
@@ -4159,9 +4150,9 @@ export type GetArchiveChatListSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_archive_chat_list_settings.html
  */
 export type SetArchiveChatListSettings = (args: {
-    '@type': 'setArchiveChatListSettings';
-    /** New settings */
-    settings: Obj.ArchiveChatListSettings;
+	"@type": "setArchiveChatListSettings";
+	/** New settings */
+	settings: Obj.ArchiveChatListSettings;
 }) => Obj.Ok;
 
 /**
@@ -4169,11 +4160,11 @@ export type SetArchiveChatListSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_title.html
  */
 export type SetChatTitle = (args: {
-    '@type': 'setChatTitle';
-    /** Chat identifier */
-    chat_id: number;
-    /** New title of the chat; 1-128 characters */
-    title: string;
+	"@type": "setChatTitle";
+	/** Chat identifier */
+	chat_id: number;
+	/** New title of the chat; 1-128 characters */
+	title: string;
 }) => Obj.Ok;
 
 /**
@@ -4181,11 +4172,11 @@ export type SetChatTitle = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_photo.html
  */
 export type SetChatPhoto = (args: {
-    '@type': 'setChatPhoto';
-    /** Chat identifier */
-    chat_id: number;
-    /** New chat photo; pass null to delete the chat photo */
-    photo?: Obj.InputChatPhoto;
+	"@type": "setChatPhoto";
+	/** Chat identifier */
+	chat_id: number;
+	/** New chat photo; pass null to delete the chat photo */
+	photo?: Obj.InputChatPhoto;
 }) => Obj.Ok;
 
 /**
@@ -4193,13 +4184,13 @@ export type SetChatPhoto = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_accent_color.html
  */
 export type SetChatAccentColor = (args: {
-    '@type': 'setChatAccentColor';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the accent color to use. The chat must have at least accentColor.min_channel_chat_boost_level boost level to pass the corresponding color */
-    accent_color_id: number;
-    /** Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none. Use chatBoostLevelFeatures.can_set_background_custom_emoji to check whether a custom emoji can be set */
-    background_custom_emoji_id: string;
+	"@type": "setChatAccentColor";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the accent color to use. The chat must have at least accentColor.min_channel_chat_boost_level boost level to pass the corresponding color */
+	accent_color_id: number;
+	/** Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none. Use chatBoostLevelFeatures.can_set_background_custom_emoji to check whether a custom emoji can be set */
+	background_custom_emoji_id: string;
 }) => Obj.Ok;
 
 /**
@@ -4207,13 +4198,13 @@ export type SetChatAccentColor = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_profile_accent_color.html
  */
 export type SetChatProfileAccentColor = (args: {
-    '@type': 'setChatProfileAccentColor';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the accent color to use for profile; pass -1 if none. The chat must have at least profileAccentColor.min_supergroup_chat_boost_level for supergroups or profileAccentColor.min_channel_chat_boost_level for channels boost level to pass the corresponding color */
-    profile_accent_color_id: number;
-    /** Identifier of a custom emoji to be shown on the chat's profile photo background; 0 if none. Use chatBoostLevelFeatures.can_set_profile_background_custom_emoji to check whether a custom emoji can be set */
-    profile_background_custom_emoji_id: string;
+	"@type": "setChatProfileAccentColor";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the accent color to use for profile; pass -1 if none. The chat must have at least profileAccentColor.min_supergroup_chat_boost_level for supergroups or profileAccentColor.min_channel_chat_boost_level for channels boost level to pass the corresponding color */
+	profile_accent_color_id: number;
+	/** Identifier of a custom emoji to be shown on the chat's profile photo background; 0 if none. Use chatBoostLevelFeatures.can_set_profile_background_custom_emoji to check whether a custom emoji can be set */
+	profile_background_custom_emoji_id: string;
 }) => Obj.Ok;
 
 /**
@@ -4221,11 +4212,11 @@ export type SetChatProfileAccentColor = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_message_auto_delete_time.html
  */
 export type SetChatMessageAutoDeleteTime = (args: {
-    '@type': 'setChatMessageAutoDeleteTime';
-    /** Chat identifier */
-    chat_id: number;
-    /** New time value, in seconds; unless the chat is secret, it must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically */
-    message_auto_delete_time: number;
+	"@type": "setChatMessageAutoDeleteTime";
+	/** Chat identifier */
+	chat_id: number;
+	/** New time value, in seconds; unless the chat is secret, it must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically */
+	message_auto_delete_time: number;
 }) => Obj.Ok;
 
 /**
@@ -4233,11 +4224,11 @@ export type SetChatMessageAutoDeleteTime = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_emoji_status.html
  */
 export type SetChatEmojiStatus = (args: {
-    '@type': 'setChatEmojiStatus';
-    /** Chat identifier */
-    chat_id: number;
-    /** New emoji status; pass null to remove emoji status */
-    emoji_status?: Obj.EmojiStatus;
+	"@type": "setChatEmojiStatus";
+	/** Chat identifier */
+	chat_id: number;
+	/** New emoji status; pass null to remove emoji status */
+	emoji_status?: Obj.EmojiStatus;
 }) => Obj.Ok;
 
 /**
@@ -4245,11 +4236,11 @@ export type SetChatEmojiStatus = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_permissions.html
  */
 export type SetChatPermissions = (args: {
-    '@type': 'setChatPermissions';
-    /** Chat identifier */
-    chat_id: number;
-    /** New non-administrator members permissions in the chat */
-    permissions: Obj.ChatPermissions;
+	"@type": "setChatPermissions";
+	/** Chat identifier */
+	chat_id: number;
+	/** New non-administrator members permissions in the chat */
+	permissions: Obj.ChatPermissions;
 }) => Obj.Ok;
 
 /**
@@ -4257,17 +4248,17 @@ export type SetChatPermissions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_background.html
  */
 export type SetChatBackground = (args: {
-    '@type': 'setChatBackground';
-    /** Chat identifier */
-    chat_id: number;
-    /** The input background to use; pass null to create a new filled or chat theme background */
-    background?: Obj.InputBackground;
-    /** Background type; pass null to use default background type for the chosen background; backgroundTypeChatTheme isn't supported for private and secret chats. Use chatBoostLevelFeatures.chat_theme_background_count and chatBoostLevelFeatures.can_set_custom_background to check whether the background type can be set in the boosted chat */
-    type?: Obj.BackgroundType;
-    /** Dimming of the background in dark themes, as a percentage; 0-100. Applied only to Wallpaper and Fill types of background */
-    dark_theme_dimming: number;
-    /** Pass true to set background only for self; pass false to set background for all chat users. Always false for backgrounds set in boosted chats. Background can be set for both users only by Telegram Premium users and if set background isn't of the type inputBackgroundPrevious */
-    only_for_self: boolean;
+	"@type": "setChatBackground";
+	/** Chat identifier */
+	chat_id: number;
+	/** The input background to use; pass null to create a new filled or chat theme background */
+	background?: Obj.InputBackground;
+	/** Background type; pass null to use default background type for the chosen background; backgroundTypeChatTheme isn't supported for private and secret chats. Use chatBoostLevelFeatures.chat_theme_background_count and chatBoostLevelFeatures.can_set_custom_background to check whether the background type can be set in the boosted chat */
+	type?: Obj.BackgroundType;
+	/** Dimming of the background in dark themes, as a percentage; 0-100. Applied only to Wallpaper and Fill types of background */
+	dark_theme_dimming: number;
+	/** Pass true to set background only for self; pass false to set background for all chat users. Always false for backgrounds set in boosted chats. Background can be set for both users only by Telegram Premium users and if set background isn't of the type inputBackgroundPrevious */
+	only_for_self: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4275,11 +4266,11 @@ export type SetChatBackground = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_chat_background.html
  */
 export type DeleteChatBackground = (args: {
-    '@type': 'deleteChatBackground';
-    /** Chat identifier */
-    chat_id: number;
-    /** Pass true to restore previously set background. Can be used only in private and secret chats with non-deleted users if userFullInfo.set_chat_background == true. Supposed to be used from messageChatSetBackground messages with the currently set background that was set for both sides by the other user */
-    restore_previous: boolean;
+	"@type": "deleteChatBackground";
+	/** Chat identifier */
+	chat_id: number;
+	/** Pass true to restore previously set background. Can be used only in private and secret chats with non-deleted users if userFullInfo.set_chat_background == true. Supposed to be used from messageChatSetBackground messages with the currently set background that was set for both sides by the other user */
+	restore_previous: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4287,11 +4278,11 @@ export type DeleteChatBackground = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_theme.html
  */
 export type SetChatTheme = (args: {
-    '@type': 'setChatTheme';
-    /** Chat identifier */
-    chat_id: number;
-    /** Name of the new chat theme; pass an empty string to return the default theme */
-    theme_name: string;
+	"@type": "setChatTheme";
+	/** Chat identifier */
+	chat_id: number;
+	/** Name of the new chat theme; pass an empty string to return the default theme */
+	theme_name: string;
 }) => Obj.Ok;
 
 /**
@@ -4299,13 +4290,13 @@ export type SetChatTheme = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_draft_message.html
  */
 export type SetChatDraftMessage = (args: {
-    '@type': 'setChatDraftMessage';
-    /** Chat identifier */
-    chat_id: number;
-    /** If not 0, the message thread identifier in which the draft was changed */
-    message_thread_id: number;
-    /** New draft message; pass null to remove the draft. All files in draft message content must be of the type inputFileLocal. Media thumbnails and captions are ignored */
-    draft_message?: Obj.DraftMessage;
+	"@type": "setChatDraftMessage";
+	/** Chat identifier */
+	chat_id: number;
+	/** If not 0, the message thread identifier in which the draft was changed */
+	message_thread_id: number;
+	/** New draft message; pass null to remove the draft. All files in draft message content must be of the type inputFileLocal. Media thumbnails and captions are ignored */
+	draft_message?: Obj.DraftMessage;
 }) => Obj.Ok;
 
 /**
@@ -4313,11 +4304,11 @@ export type SetChatDraftMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_notification_settings.html
  */
 export type SetChatNotificationSettings = (args: {
-    '@type': 'setChatNotificationSettings';
-    /** Chat identifier */
-    chat_id: number;
-    /** New notification settings for the chat. If the chat is muted for more than 366 days, it is considered to be muted forever */
-    notification_settings: Obj.ChatNotificationSettings;
+	"@type": "setChatNotificationSettings";
+	/** Chat identifier */
+	chat_id: number;
+	/** New notification settings for the chat. If the chat is muted for more than 366 days, it is considered to be muted forever */
+	notification_settings: Obj.ChatNotificationSettings;
 }) => Obj.Ok;
 
 /**
@@ -4325,11 +4316,11 @@ export type SetChatNotificationSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_chat_has_protected_content.html
  */
 export type ToggleChatHasProtectedContent = (args: {
-    '@type': 'toggleChatHasProtectedContent';
-    /** Chat identifier */
-    chat_id: number;
-    /** New value of has_protected_content */
-    has_protected_content: boolean;
+	"@type": "toggleChatHasProtectedContent";
+	/** Chat identifier */
+	chat_id: number;
+	/** New value of has_protected_content */
+	has_protected_content: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4337,11 +4328,11 @@ export type ToggleChatHasProtectedContent = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_chat_view_as_topics.html
  */
 export type ToggleChatViewAsTopics = (args: {
-    '@type': 'toggleChatViewAsTopics';
-    /** Chat identifier */
-    chat_id: number;
-    /** New value of view_as_topics */
-    view_as_topics: boolean;
+	"@type": "toggleChatViewAsTopics";
+	/** Chat identifier */
+	chat_id: number;
+	/** New value of view_as_topics */
+	view_as_topics: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4349,11 +4340,11 @@ export type ToggleChatViewAsTopics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_chat_is_translatable.html
  */
 export type ToggleChatIsTranslatable = (args: {
-    '@type': 'toggleChatIsTranslatable';
-    /** Chat identifier */
-    chat_id: number;
-    /** New value of is_translatable */
-    is_translatable: boolean;
+	"@type": "toggleChatIsTranslatable";
+	/** Chat identifier */
+	chat_id: number;
+	/** New value of is_translatable */
+	is_translatable: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4361,11 +4352,11 @@ export type ToggleChatIsTranslatable = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_chat_is_marked_as_unread.html
  */
 export type ToggleChatIsMarkedAsUnread = (args: {
-    '@type': 'toggleChatIsMarkedAsUnread';
-    /** Chat identifier */
-    chat_id: number;
-    /** New value of is_marked_as_unread */
-    is_marked_as_unread: boolean;
+	"@type": "toggleChatIsMarkedAsUnread";
+	/** Chat identifier */
+	chat_id: number;
+	/** New value of is_marked_as_unread */
+	is_marked_as_unread: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4373,11 +4364,11 @@ export type ToggleChatIsMarkedAsUnread = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_chat_default_disable_notification.html
  */
 export type ToggleChatDefaultDisableNotification = (args: {
-    '@type': 'toggleChatDefaultDisableNotification';
-    /** Chat identifier */
-    chat_id: number;
-    /** New value of default_disable_notification */
-    default_disable_notification: boolean;
+	"@type": "toggleChatDefaultDisableNotification";
+	/** Chat identifier */
+	chat_id: number;
+	/** New value of default_disable_notification */
+	default_disable_notification: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4385,11 +4376,11 @@ export type ToggleChatDefaultDisableNotification = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_available_reactions.html
  */
 export type SetChatAvailableReactions = (args: {
-    '@type': 'setChatAvailableReactions';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Reactions available in the chat. All explicitly specified emoji reactions must be active. In channel chats up to the chat's boost level custom emoji reactions can be explicitly specified */
-    available_reactions: Obj.ChatAvailableReactions;
+	"@type": "setChatAvailableReactions";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Reactions available in the chat. All explicitly specified emoji reactions must be active. In channel chats up to the chat's boost level custom emoji reactions can be explicitly specified */
+	available_reactions: Obj.ChatAvailableReactions;
 }) => Obj.Ok;
 
 /**
@@ -4397,11 +4388,11 @@ export type SetChatAvailableReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_client_data.html
  */
 export type SetChatClientData = (args: {
-    '@type': 'setChatClientData';
-    /** Chat identifier */
-    chat_id: number;
-    /** New value of client_data */
-    client_data: string;
+	"@type": "setChatClientData";
+	/** Chat identifier */
+	chat_id: number;
+	/** New value of client_data */
+	client_data: string;
 }) => Obj.Ok;
 
 /**
@@ -4409,11 +4400,11 @@ export type SetChatClientData = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_description.html
  */
 export type SetChatDescription = (args: {
-    '@type': 'setChatDescription';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** New chat description; 0-255 characters */
-    description: string;
+	"@type": "setChatDescription";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** New chat description; 0-255 characters */
+	description: string;
 }) => Obj.Ok;
 
 /**
@@ -4421,11 +4412,11 @@ export type SetChatDescription = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_discussion_group.html
  */
 export type SetChatDiscussionGroup = (args: {
-    '@type': 'setChatDiscussionGroup';
-    /** Identifier of the channel chat. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat (requires can_pin_messages member right in the supergroup) */
-    chat_id: number;
-    /** Identifier of a new channel's discussion group. Use 0 to remove the discussion group. Use the method getSuitableDiscussionChats to find all suitable groups. Basic group chats must be first upgraded to supergroup chats. If new chat members don't have access to old messages in the supergroup, then toggleSupergroupIsAllHistoryAvailable must be used first to change that */
-    discussion_chat_id: number;
+	"@type": "setChatDiscussionGroup";
+	/** Identifier of the channel chat. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat (requires can_pin_messages member right in the supergroup) */
+	chat_id: number;
+	/** Identifier of a new channel's discussion group. Use 0 to remove the discussion group. Use the method getSuitableDiscussionChats to find all suitable groups. Basic group chats must be first upgraded to supergroup chats. If new chat members don't have access to old messages in the supergroup, then toggleSupergroupIsAllHistoryAvailable must be used first to change that */
+	discussion_chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -4433,13 +4424,13 @@ export type SetChatDiscussionGroup = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_direct_messages_group.html
  */
 export type SetChatDirectMessagesGroup = (args: {
-    '@type': 'setChatDirectMessagesGroup';
-    /** Identifier of the channel chat */
-    chat_id: number;
-    /** Pass true if the direct messages group is enabled for the channel chat; pass false otherwise */
-    is_enabled: boolean;
-    /** The new number of Telegram Stars that must be paid for each message that is sent to the direct messages chat unless the sender is an administrator of the channel chat; 0-getOption("paid_message_star_count_max"). The channel will receive getOption("paid_message_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for message sending. Requires supergroupFullInfo.can_enable_paid_messages for positive amounts */
-    paid_message_star_count: number;
+	"@type": "setChatDirectMessagesGroup";
+	/** Identifier of the channel chat */
+	chat_id: number;
+	/** Pass true if the direct messages group is enabled for the channel chat; pass false otherwise */
+	is_enabled: boolean;
+	/** The new number of Telegram Stars that must be paid for each message that is sent to the direct messages chat unless the sender is an administrator of the channel chat; 0-getOption("paid_message_star_count_max"). The channel will receive getOption("paid_message_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for message sending. Requires supergroupFullInfo.can_enable_paid_messages for positive amounts */
+	paid_message_star_count: number;
 }) => Obj.Ok;
 
 /**
@@ -4447,11 +4438,11 @@ export type SetChatDirectMessagesGroup = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_location.html
  */
 export type SetChatLocation = (args: {
-    '@type': 'setChatLocation';
-    /** Chat identifier */
-    chat_id: number;
-    /** New location for the chat; must be valid and not null */
-    location: Obj.ChatLocation;
+	"@type": "setChatLocation";
+	/** Chat identifier */
+	chat_id: number;
+	/** New location for the chat; must be valid and not null */
+	location: Obj.ChatLocation;
 }) => Obj.Ok;
 
 /**
@@ -4459,11 +4450,11 @@ export type SetChatLocation = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_slow_mode_delay.html
  */
 export type SetChatSlowModeDelay = (args: {
-    '@type': 'setChatSlowModeDelay';
-    /** Chat identifier */
-    chat_id: number;
-    /** New slow mode delay for the chat, in seconds; must be one of 0, 10, 30, 60, 300, 900, 3600 */
-    slow_mode_delay: number;
+	"@type": "setChatSlowModeDelay";
+	/** Chat identifier */
+	chat_id: number;
+	/** New slow mode delay for the chat, in seconds; must be one of 0, 10, 30, 60, 300, 900, 3600 */
+	slow_mode_delay: number;
 }) => Obj.Ok;
 
 /**
@@ -4471,15 +4462,15 @@ export type SetChatSlowModeDelay = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1pin_chat_message.html
  */
 export type PinChatMessage = (args: {
-    '@type': 'pinChatMessage';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Identifier of the new pinned message */
-    message_id: number;
-    /** Pass true to disable notification about the pinned message. Notifications are always disabled in channels and private chats */
-    disable_notification: boolean;
-    /** Pass true to pin the message only for self; private chats only */
-    only_for_self: boolean;
+	"@type": "pinChatMessage";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Identifier of the new pinned message */
+	message_id: number;
+	/** Pass true to disable notification about the pinned message. Notifications are always disabled in channels and private chats */
+	disable_notification: boolean;
+	/** Pass true to pin the message only for self; private chats only */
+	only_for_self: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4487,11 +4478,11 @@ export type PinChatMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1unpin_chat_message.html
  */
 export type UnpinChatMessage = (args: {
-    '@type': 'unpinChatMessage';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Identifier of the removed pinned message */
-    message_id: number;
+	"@type": "unpinChatMessage";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Identifier of the removed pinned message */
+	message_id: number;
 }) => Obj.Ok;
 
 /**
@@ -4499,9 +4490,9 @@ export type UnpinChatMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1unpin_all_chat_messages.html
  */
 export type UnpinAllChatMessages = (args: {
-    '@type': 'unpinAllChatMessages';
-    /** Identifier of the chat */
-    chat_id: number;
+	"@type": "unpinAllChatMessages";
+	/** Identifier of the chat */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -4509,11 +4500,11 @@ export type UnpinAllChatMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1unpin_all_message_thread_messages.html
  */
 export type UnpinAllMessageThreadMessages = (args: {
-    '@type': 'unpinAllMessageThreadMessages';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Message thread identifier in which messages will be unpinned */
-    message_thread_id: number;
+	"@type": "unpinAllMessageThreadMessages";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Message thread identifier in which messages will be unpinned */
+	message_thread_id: number;
 }) => Obj.Ok;
 
 /**
@@ -4521,9 +4512,9 @@ export type UnpinAllMessageThreadMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1join_chat.html
  */
 export type JoinChat = (args: {
-    '@type': 'joinChat';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "joinChat";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -4531,9 +4522,9 @@ export type JoinChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1leave_chat.html
  */
 export type LeaveChat = (args: {
-    '@type': 'leaveChat';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "leaveChat";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -4541,13 +4532,13 @@ export type LeaveChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_chat_member.html
  */
 export type AddChatMember = (args: {
-    '@type': 'addChatMember';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the user */
-    user_id: number;
-    /** The number of earlier messages from the chat to be forwarded to the new member; up to 100. Ignored for supergroups and channels, or if the added user is a bot */
-    forward_limit: number;
+	"@type": "addChatMember";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the user */
+	user_id: number;
+	/** The number of earlier messages from the chat to be forwarded to the new member; up to 100. Ignored for supergroups and channels, or if the added user is a bot */
+	forward_limit: number;
 }) => Obj.FailedToAddMembers;
 
 /**
@@ -4555,11 +4546,11 @@ export type AddChatMember = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_chat_members.html
  */
 export type AddChatMembers = (args: {
-    '@type': 'addChatMembers';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifiers of the users to be added to the chat. The maximum number of added users is 20 for supergroups and 100 for channels */
-    user_ids: number[];
+	"@type": "addChatMembers";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifiers of the users to be added to the chat. The maximum number of added users is 20 for supergroups and 100 for channels */
+	user_ids: number[];
 }) => Obj.FailedToAddMembers;
 
 /**
@@ -4567,13 +4558,13 @@ export type AddChatMembers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_member_status.html
  */
 export type SetChatMemberStatus = (args: {
-    '@type': 'setChatMemberStatus';
-    /** Chat identifier */
-    chat_id: number;
-    /** Member identifier. Chats can be only banned and unbanned in supergroups and channels */
-    member_id: Obj.MessageSender;
-    /** The new status of the member in the chat */
-    status: Obj.ChatMemberStatus;
+	"@type": "setChatMemberStatus";
+	/** Chat identifier */
+	chat_id: number;
+	/** Member identifier. Chats can be only banned and unbanned in supergroups and channels */
+	member_id: Obj.MessageSender;
+	/** The new status of the member in the chat */
+	status: Obj.ChatMemberStatus;
 }) => Obj.Ok;
 
 /**
@@ -4581,15 +4572,15 @@ export type SetChatMemberStatus = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ban_chat_member.html
  */
 export type BanChatMember = (args: {
-    '@type': 'banChatMember';
-    /** Chat identifier */
-    chat_id: number;
-    /** Member identifier */
-    member_id: Obj.MessageSender;
-    /** Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Ignored in basic groups and if a chat is banned */
-    banned_until_date: number;
-    /** Pass true to delete all messages in the chat for the user that is being removed. Always true for supergroups and channels */
-    revoke_messages: boolean;
+	"@type": "banChatMember";
+	/** Chat identifier */
+	chat_id: number;
+	/** Member identifier */
+	member_id: Obj.MessageSender;
+	/** Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Ignored in basic groups and if a chat is banned */
+	banned_until_date: number;
+	/** Pass true to delete all messages in the chat for the user that is being removed. Always true for supergroups and channels */
+	revoke_messages: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4597,7 +4588,7 @@ export type BanChatMember = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_transfer_ownership.html
  */
 export type CanTransferOwnership = (args: {
-    '@type': 'canTransferOwnership';
+	"@type": "canTransferOwnership";
 }) => Obj.CanTransferOwnershipResult;
 
 /**
@@ -4605,13 +4596,13 @@ export type CanTransferOwnership = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1transfer_chat_ownership.html
  */
 export type TransferChatOwnership = (args: {
-    '@type': 'transferChatOwnership';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the user to which transfer the ownership. The ownership can't be transferred to a bot or to a deleted user */
-    user_id: number;
-    /** The 2-step verification password of the current user */
-    password: string;
+	"@type": "transferChatOwnership";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the user to which transfer the ownership. The ownership can't be transferred to a bot or to a deleted user */
+	user_id: number;
+	/** The 2-step verification password of the current user */
+	password: string;
 }) => Obj.Ok;
 
 /**
@@ -4619,11 +4610,11 @@ export type TransferChatOwnership = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_member.html
  */
 export type GetChatMember = (args: {
-    '@type': 'getChatMember';
-    /** Chat identifier */
-    chat_id: number;
-    /** Member identifier */
-    member_id: Obj.MessageSender;
+	"@type": "getChatMember";
+	/** Chat identifier */
+	chat_id: number;
+	/** Member identifier */
+	member_id: Obj.MessageSender;
 }) => Obj.ChatMember;
 
 /**
@@ -4631,15 +4622,15 @@ export type GetChatMember = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_chat_members.html
  */
 export type SearchChatMembers = (args: {
-    '@type': 'searchChatMembers';
-    /** Chat identifier */
-    chat_id: number;
-    /** Query to search for */
-    query: string;
-    /** The maximum number of users to be returned; up to 200 */
-    limit: number;
-    /** The type of users to search for; pass null to search among all chat members */
-    filter?: Obj.ChatMembersFilter;
+	"@type": "searchChatMembers";
+	/** Chat identifier */
+	chat_id: number;
+	/** Query to search for */
+	query: string;
+	/** The maximum number of users to be returned; up to 200 */
+	limit: number;
+	/** The type of users to search for; pass null to search among all chat members */
+	filter?: Obj.ChatMembersFilter;
 }) => Obj.ChatMembers;
 
 /**
@@ -4647,9 +4638,9 @@ export type SearchChatMembers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_administrators.html
  */
 export type GetChatAdministrators = (args: {
-    '@type': 'getChatAdministrators';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "getChatAdministrators";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.ChatAdministrators;
 
 /**
@@ -4657,9 +4648,9 @@ export type GetChatAdministrators = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1clear_all_draft_messages.html
  */
 export type ClearAllDraftMessages = (args: {
-    '@type': 'clearAllDraftMessages';
-    /** Pass true to keep local message drafts in secret chats */
-    exclude_secret_chats: boolean;
+	"@type": "clearAllDraftMessages";
+	/** Pass true to keep local message drafts in secret chats */
+	exclude_secret_chats: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4667,9 +4658,9 @@ export type ClearAllDraftMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_saved_notification_sound.html
  */
 export type GetSavedNotificationSound = (args: {
-    '@type': 'getSavedNotificationSound';
-    /** Identifier of the notification sound */
-    notification_sound_id: string;
+	"@type": "getSavedNotificationSound";
+	/** Identifier of the notification sound */
+	notification_sound_id: string;
 }) => Obj.NotificationSounds;
 
 /**
@@ -4677,7 +4668,7 @@ export type GetSavedNotificationSound = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_saved_notification_sounds.html
  */
 export type GetSavedNotificationSounds = (args: {
-    '@type': 'getSavedNotificationSounds';
+	"@type": "getSavedNotificationSounds";
 }) => Obj.NotificationSounds;
 
 /**
@@ -4685,9 +4676,9 @@ export type GetSavedNotificationSounds = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_saved_notification_sound.html
  */
 export type AddSavedNotificationSound = (args: {
-    '@type': 'addSavedNotificationSound';
-    /** Notification sound file to add */
-    sound: Obj.InputFile;
+	"@type": "addSavedNotificationSound";
+	/** Notification sound file to add */
+	sound: Obj.InputFile;
 }) => Obj.NotificationSound;
 
 /**
@@ -4695,9 +4686,9 @@ export type AddSavedNotificationSound = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_saved_notification_sound.html
  */
 export type RemoveSavedNotificationSound = (args: {
-    '@type': 'removeSavedNotificationSound';
-    /** Identifier of the notification sound */
-    notification_sound_id: string;
+	"@type": "removeSavedNotificationSound";
+	/** Identifier of the notification sound */
+	notification_sound_id: string;
 }) => Obj.Ok;
 
 /**
@@ -4705,11 +4696,11 @@ export type RemoveSavedNotificationSound = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_notification_settings_exceptions.html
  */
 export type GetChatNotificationSettingsExceptions = (args: {
-    '@type': 'getChatNotificationSettingsExceptions';
-    /** If specified, only chats from the scope will be returned; pass null to return chats from all scopes */
-    scope?: Obj.NotificationSettingsScope;
-    /** Pass true to include in the response chats with only non-default sound */
-    compare_sound: boolean;
+	"@type": "getChatNotificationSettingsExceptions";
+	/** If specified, only chats from the scope will be returned; pass null to return chats from all scopes */
+	scope?: Obj.NotificationSettingsScope;
+	/** Pass true to include in the response chats with only non-default sound */
+	compare_sound: boolean;
 }) => Obj.Chats;
 
 /**
@@ -4717,9 +4708,9 @@ export type GetChatNotificationSettingsExceptions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_scope_notification_settings.html
  */
 export type GetScopeNotificationSettings = (args: {
-    '@type': 'getScopeNotificationSettings';
-    /** Types of chats for which to return the notification settings information */
-    scope: Obj.NotificationSettingsScope;
+	"@type": "getScopeNotificationSettings";
+	/** Types of chats for which to return the notification settings information */
+	scope: Obj.NotificationSettingsScope;
 }) => Obj.ScopeNotificationSettings;
 
 /**
@@ -4727,11 +4718,11 @@ export type GetScopeNotificationSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_scope_notification_settings.html
  */
 export type SetScopeNotificationSettings = (args: {
-    '@type': 'setScopeNotificationSettings';
-    /** Types of chats for which to change the notification settings */
-    scope: Obj.NotificationSettingsScope;
-    /** The new notification settings for the given scope */
-    notification_settings: Obj.ScopeNotificationSettings;
+	"@type": "setScopeNotificationSettings";
+	/** Types of chats for which to change the notification settings */
+	scope: Obj.NotificationSettingsScope;
+	/** The new notification settings for the given scope */
+	notification_settings: Obj.ScopeNotificationSettings;
 }) => Obj.Ok;
 
 /**
@@ -4739,9 +4730,9 @@ export type SetScopeNotificationSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_reaction_notification_settings.html
  */
 export type SetReactionNotificationSettings = (args: {
-    '@type': 'setReactionNotificationSettings';
-    /** The new notification settings for reactions */
-    notification_settings: Obj.ReactionNotificationSettings;
+	"@type": "setReactionNotificationSettings";
+	/** The new notification settings for reactions */
+	notification_settings: Obj.ReactionNotificationSettings;
 }) => Obj.Ok;
 
 /**
@@ -4749,7 +4740,7 @@ export type SetReactionNotificationSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reset_all_notification_settings.html
  */
 export type ResetAllNotificationSettings = (args: {
-    '@type': 'resetAllNotificationSettings';
+	"@type": "resetAllNotificationSettings";
 }) => Obj.Ok;
 
 /**
@@ -4757,13 +4748,13 @@ export type ResetAllNotificationSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_chat_is_pinned.html
  */
 export type ToggleChatIsPinned = (args: {
-    '@type': 'toggleChatIsPinned';
-    /** Chat list in which to change the pinned state of the chat */
-    chat_list: Obj.ChatList;
-    /** Chat identifier */
-    chat_id: number;
-    /** Pass true to pin the chat; pass false to unpin it */
-    is_pinned: boolean;
+	"@type": "toggleChatIsPinned";
+	/** Chat list in which to change the pinned state of the chat */
+	chat_list: Obj.ChatList;
+	/** Chat identifier */
+	chat_id: number;
+	/** Pass true to pin the chat; pass false to unpin it */
+	is_pinned: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4771,11 +4762,11 @@ export type ToggleChatIsPinned = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_pinned_chats.html
  */
 export type SetPinnedChats = (args: {
-    '@type': 'setPinnedChats';
-    /** Chat list in which to change the order of pinned chats */
-    chat_list: Obj.ChatList;
-    /** The new list of pinned chats */
-    chat_ids: number[];
+	"@type": "setPinnedChats";
+	/** Chat list in which to change the order of pinned chats */
+	chat_list: Obj.ChatList;
+	/** The new list of pinned chats */
+	chat_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -4783,9 +4774,9 @@ export type SetPinnedChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1read_chat_list.html
  */
 export type ReadChatList = (args: {
-    '@type': 'readChatList';
-    /** Chat list in which to mark all chats as read */
-    chat_list: Obj.ChatList;
+	"@type": "readChatList";
+	/** Chat list in which to mark all chats as read */
+	chat_list: Obj.ChatList;
 }) => Obj.Ok;
 
 /**
@@ -4793,9 +4784,9 @@ export type ReadChatList = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_current_weather.html
  */
 export type GetCurrentWeather = (args: {
-    '@type': 'getCurrentWeather';
-    /** The location */
-    location: Obj.Location;
+	"@type": "getCurrentWeather";
+	/** The location */
+	location: Obj.Location;
 }) => Obj.CurrentWeather;
 
 /**
@@ -4803,13 +4794,13 @@ export type GetCurrentWeather = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_story.html
  */
 export type GetStory = (args: {
-    '@type': 'getStory';
-    /** Identifier of the chat that posted the story */
-    story_poster_chat_id: number;
-    /** Story identifier */
-    story_id: number;
-    /** Pass true to get only locally available information without sending network requests */
-    only_local: boolean;
+	"@type": "getStory";
+	/** Identifier of the chat that posted the story */
+	story_poster_chat_id: number;
+	/** Story identifier */
+	story_id: number;
+	/** Pass true to get only locally available information without sending network requests */
+	only_local: boolean;
 }) => Obj.Story;
 
 /**
@@ -4817,7 +4808,7 @@ export type GetStory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chats_to_post_stories.html
  */
 export type GetChatsToPostStories = (args: {
-    '@type': 'getChatsToPostStories';
+	"@type": "getChatsToPostStories";
 }) => Obj.Chats;
 
 /**
@@ -4825,9 +4816,9 @@ export type GetChatsToPostStories = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story.html
  */
 export type CanPostStory = (args: {
-    '@type': 'canPostStory';
-    /** Chat identifier. Pass Saved Messages chat identifier when posting a story on behalf of the current user */
-    chat_id: number;
+	"@type": "canPostStory";
+	/** Chat identifier. Pass Saved Messages chat identifier when posting a story on behalf of the current user */
+	chat_id: number;
 }) => Obj.CanPostStoryResult;
 
 /**
@@ -4835,25 +4826,25 @@ export type CanPostStory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1post_story.html
  */
 export type PostStory = (args: {
-    '@type': 'postStory';
-    /** Identifier of the chat that will post the story. Pass Saved Messages chat identifier when posting a story on behalf of the current user */
-    chat_id: number;
-    /** Content of the story */
-    content: Obj.InputStoryContent;
-    /** Clickable rectangle areas to be shown on the story media; pass null if none */
-    areas?: Obj.InputStoryAreas;
-    /** Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters; can have entities only if getOption("can_use_text_entities_in_story_caption") */
-    caption?: Obj.FormattedText;
-    /** The privacy settings for the story; ignored for stories posted on behalf of supergroup and channel chats */
-    privacy_settings: Obj.StoryPrivacySettings;
-    /** Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise */
-    active_period: number;
-    /** Full identifier of the original story, which content was used to create the story; pass null if the story isn't repost of another story */
-    from_story_full_id?: Obj.StoryFullId;
-    /** Pass true to keep the story accessible after expiration */
-    is_posted_to_chat_page: boolean;
-    /** Pass true if the content of the story must be protected from forwarding and screenshotting */
-    protect_content: boolean;
+	"@type": "postStory";
+	/** Identifier of the chat that will post the story. Pass Saved Messages chat identifier when posting a story on behalf of the current user */
+	chat_id: number;
+	/** Content of the story */
+	content: Obj.InputStoryContent;
+	/** Clickable rectangle areas to be shown on the story media; pass null if none */
+	areas?: Obj.InputStoryAreas;
+	/** Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters; can have entities only if getOption("can_use_text_entities_in_story_caption") */
+	caption?: Obj.FormattedText;
+	/** The privacy settings for the story; ignored for stories posted on behalf of supergroup and channel chats */
+	privacy_settings: Obj.StoryPrivacySettings;
+	/** Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise */
+	active_period: number;
+	/** Full identifier of the original story, which content was used to create the story; pass null if the story isn't repost of another story */
+	from_story_full_id?: Obj.StoryFullId;
+	/** Pass true to keep the story accessible after expiration */
+	is_posted_to_chat_page: boolean;
+	/** Pass true if the content of the story must be protected from forwarding and screenshotting */
+	protect_content: boolean;
 }) => Obj.Story;
 
 /**
@@ -4861,17 +4852,17 @@ export type PostStory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_story.html
  */
 export type EditStory = (args: {
-    '@type': 'editStory';
-    /** Identifier of the chat that posted the story */
-    story_poster_chat_id: number;
-    /** Identifier of the story to edit */
-    story_id: number;
-    /** New content of the story; pass null to keep the current content */
-    content?: Obj.InputStoryContent;
-    /** New clickable rectangle areas to be shown on the story media; pass null to keep the current areas. Areas can't be edited if story content isn't changed */
-    areas?: Obj.InputStoryAreas;
-    /** New story caption; pass null to keep the current caption */
-    caption?: Obj.FormattedText;
+	"@type": "editStory";
+	/** Identifier of the chat that posted the story */
+	story_poster_chat_id: number;
+	/** Identifier of the story to edit */
+	story_id: number;
+	/** New content of the story; pass null to keep the current content */
+	content?: Obj.InputStoryContent;
+	/** New clickable rectangle areas to be shown on the story media; pass null to keep the current areas. Areas can't be edited if story content isn't changed */
+	areas?: Obj.InputStoryAreas;
+	/** New story caption; pass null to keep the current caption */
+	caption?: Obj.FormattedText;
 }) => Obj.Ok;
 
 /**
@@ -4879,13 +4870,13 @@ export type EditStory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_story_cover.html
  */
 export type EditStoryCover = (args: {
-    '@type': 'editStoryCover';
-    /** Identifier of the chat that posted the story */
-    story_poster_chat_id: number;
-    /** Identifier of the story to edit */
-    story_id: number;
-    /** New timestamp of the frame, which will be used as video thumbnail */
-    cover_frame_timestamp: number;
+	"@type": "editStoryCover";
+	/** Identifier of the chat that posted the story */
+	story_poster_chat_id: number;
+	/** Identifier of the story to edit */
+	story_id: number;
+	/** New timestamp of the frame, which will be used as video thumbnail */
+	cover_frame_timestamp: number;
 }) => Obj.Ok;
 
 /**
@@ -4893,11 +4884,11 @@ export type EditStoryCover = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_story_privacy_settings.html
  */
 export type SetStoryPrivacySettings = (args: {
-    '@type': 'setStoryPrivacySettings';
-    /** Identifier of the story */
-    story_id: number;
-    /** The new privacy settings for the story */
-    privacy_settings: Obj.StoryPrivacySettings;
+	"@type": "setStoryPrivacySettings";
+	/** Identifier of the story */
+	story_id: number;
+	/** The new privacy settings for the story */
+	privacy_settings: Obj.StoryPrivacySettings;
 }) => Obj.Ok;
 
 /**
@@ -4905,13 +4896,13 @@ export type SetStoryPrivacySettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_story_is_posted_to_chat_page.html
  */
 export type ToggleStoryIsPostedToChatPage = (args: {
-    '@type': 'toggleStoryIsPostedToChatPage';
-    /** Identifier of the chat that posted the story */
-    story_poster_chat_id: number;
-    /** Identifier of the story */
-    story_id: number;
-    /** Pass true to make the story accessible after expiration; pass false to make it private */
-    is_posted_to_chat_page: boolean;
+	"@type": "toggleStoryIsPostedToChatPage";
+	/** Identifier of the chat that posted the story */
+	story_poster_chat_id: number;
+	/** Identifier of the story */
+	story_id: number;
+	/** Pass true to make the story accessible after expiration; pass false to make it private */
+	is_posted_to_chat_page: boolean;
 }) => Obj.Ok;
 
 /**
@@ -4919,11 +4910,11 @@ export type ToggleStoryIsPostedToChatPage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_story.html
  */
 export type DeleteStory = (args: {
-    '@type': 'deleteStory';
-    /** Identifier of the chat that posted the story */
-    story_poster_chat_id: number;
-    /** Identifier of the story to delete */
-    story_id: number;
+	"@type": "deleteStory";
+	/** Identifier of the chat that posted the story */
+	story_poster_chat_id: number;
+	/** Identifier of the story to delete */
+	story_id: number;
 }) => Obj.Ok;
 
 /**
@@ -4931,7 +4922,7 @@ export type DeleteStory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_story_notification_settings_exceptions.html
  */
 export type GetStoryNotificationSettingsExceptions = (args: {
-    '@type': 'getStoryNotificationSettingsExceptions';
+	"@type": "getStoryNotificationSettingsExceptions";
 }) => Obj.Chats;
 
 /**
@@ -4939,9 +4930,9 @@ export type GetStoryNotificationSettingsExceptions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1load_active_stories.html
  */
 export type LoadActiveStories = (args: {
-    '@type': 'loadActiveStories';
-    /** The story list in which to load active stories */
-    story_list: Obj.StoryList;
+	"@type": "loadActiveStories";
+	/** The story list in which to load active stories */
+	story_list: Obj.StoryList;
 }) => Obj.Ok;
 
 /**
@@ -4949,11 +4940,11 @@ export type LoadActiveStories = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_active_stories_list.html
  */
 export type SetChatActiveStoriesList = (args: {
-    '@type': 'setChatActiveStoriesList';
-    /** Identifier of the chat that posted stories */
-    chat_id: number;
-    /** New list for active stories posted by the chat */
-    story_list: Obj.StoryList;
+	"@type": "setChatActiveStoriesList";
+	/** Identifier of the chat that posted stories */
+	chat_id: number;
+	/** New list for active stories posted by the chat */
+	story_list: Obj.StoryList;
 }) => Obj.Ok;
 
 /**
@@ -4961,9 +4952,9 @@ export type SetChatActiveStoriesList = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_active_stories.html
  */
 export type GetChatActiveStories = (args: {
-    '@type': 'getChatActiveStories';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "getChatActiveStories";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.ChatActiveStories;
 
 /**
@@ -4971,13 +4962,13 @@ export type GetChatActiveStories = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_posted_to_chat_page_stories.html
  */
 export type GetChatPostedToChatPageStories = (args: {
-    '@type': 'getChatPostedToChatPageStories';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the story starting from which stories must be returned; use 0 to get results from pinned and the newest story */
-    from_story_id: number;
-    /** The maximum number of stories to be returned. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "getChatPostedToChatPageStories";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the story starting from which stories must be returned; use 0 to get results from pinned and the newest story */
+	from_story_id: number;
+	/** The maximum number of stories to be returned. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.Stories;
 
 /**
@@ -4985,13 +4976,13 @@ export type GetChatPostedToChatPageStories = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_archived_stories.html
  */
 export type GetChatArchivedStories = (args: {
-    '@type': 'getChatArchivedStories';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the story starting from which stories must be returned; use 0 to get results from the last story */
-    from_story_id: number;
-    /** The maximum number of stories to be returned. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "getChatArchivedStories";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the story starting from which stories must be returned; use 0 to get results from the last story */
+	from_story_id: number;
+	/** The maximum number of stories to be returned. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.Stories;
 
 /**
@@ -4999,11 +4990,11 @@ export type GetChatArchivedStories = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_pinned_stories.html
  */
 export type SetChatPinnedStories = (args: {
-    '@type': 'setChatPinnedStories';
-    /** Identifier of the chat that posted the stories */
-    chat_id: number;
-    /** New list of pinned stories. All stories must be posted to the chat page first. There can be up to getOption("pinned_story_count_max") pinned stories on a chat page */
-    story_ids: number[];
+	"@type": "setChatPinnedStories";
+	/** Identifier of the chat that posted the stories */
+	chat_id: number;
+	/** New list of pinned stories. All stories must be posted to the chat page first. There can be up to getOption("pinned_story_count_max") pinned stories on a chat page */
+	story_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -5011,11 +5002,11 @@ export type SetChatPinnedStories = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1open_story.html
  */
 export type OpenStory = (args: {
-    '@type': 'openStory';
-    /** The identifier of the chat that posted the opened story */
-    story_poster_chat_id: number;
-    /** The identifier of the story */
-    story_id: number;
+	"@type": "openStory";
+	/** The identifier of the chat that posted the opened story */
+	story_poster_chat_id: number;
+	/** The identifier of the story */
+	story_id: number;
 }) => Obj.Ok;
 
 /**
@@ -5023,11 +5014,11 @@ export type OpenStory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1close_story.html
  */
 export type CloseStory = (args: {
-    '@type': 'closeStory';
-    /** The identifier of the poster of the story to close */
-    story_poster_chat_id: number;
-    /** The identifier of the story */
-    story_id: number;
+	"@type": "closeStory";
+	/** The identifier of the poster of the story to close */
+	story_poster_chat_id: number;
+	/** The identifier of the story */
+	story_id: number;
 }) => Obj.Ok;
 
 /**
@@ -5035,9 +5026,9 @@ export type CloseStory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_story_available_reactions.html
  */
 export type GetStoryAvailableReactions = (args: {
-    '@type': 'getStoryAvailableReactions';
-    /** Number of reaction per row, 5-25 */
-    row_size: number;
+	"@type": "getStoryAvailableReactions";
+	/** Number of reaction per row, 5-25 */
+	row_size: number;
 }) => Obj.AvailableReactions;
 
 /**
@@ -5045,15 +5036,15 @@ export type GetStoryAvailableReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_story_reaction.html
  */
 export type SetStoryReaction = (args: {
-    '@type': 'setStoryReaction';
-    /** The identifier of the poster of the story */
-    story_poster_chat_id: number;
-    /** The identifier of the story */
-    story_id: number;
-    /** Type of the reaction to set; pass null to remove the reaction. Custom emoji reactions can be used only by Telegram Premium users. Paid reactions can't be set */
-    reaction_type?: Obj.ReactionType;
-    /** Pass true if the reaction needs to be added to recent reactions */
-    update_recent_reactions: boolean;
+	"@type": "setStoryReaction";
+	/** The identifier of the poster of the story */
+	story_poster_chat_id: number;
+	/** The identifier of the story */
+	story_id: number;
+	/** Type of the reaction to set; pass null to remove the reaction. Custom emoji reactions can be used only by Telegram Premium users. Paid reactions can't be set */
+	reaction_type?: Obj.ReactionType;
+	/** Pass true if the reaction needs to be added to recent reactions */
+	update_recent_reactions: boolean;
 }) => Obj.Ok;
 
 /**
@@ -5061,21 +5052,21 @@ export type SetStoryReaction = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_story_interactions.html
  */
 export type GetStoryInteractions = (args: {
-    '@type': 'getStoryInteractions';
-    /** Story identifier */
-    story_id: number;
-    /** Query to search for in names, usernames and titles; may be empty to get all relevant interactions */
-    query?: string;
-    /** Pass true to get only interactions by contacts; pass false to get all relevant interactions */
-    only_contacts: boolean;
-    /** Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date */
-    prefer_forwards: boolean;
-    /** Pass true to get interactions with reaction first; pass false to get interactions sorted just by interaction date. Ignored if prefer_forwards == true */
-    prefer_with_reaction: boolean;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of story interactions to return */
-    limit: number;
+	"@type": "getStoryInteractions";
+	/** Story identifier */
+	story_id: number;
+	/** Query to search for in names, usernames and titles; may be empty to get all relevant interactions */
+	query?: string;
+	/** Pass true to get only interactions by contacts; pass false to get all relevant interactions */
+	only_contacts: boolean;
+	/** Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date */
+	prefer_forwards: boolean;
+	/** Pass true to get interactions with reaction first; pass false to get interactions sorted just by interaction date. Ignored if prefer_forwards == true */
+	prefer_with_reaction: boolean;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of story interactions to return */
+	limit: number;
 }) => Obj.StoryInteractions;
 
 /**
@@ -5083,19 +5074,19 @@ export type GetStoryInteractions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_story_interactions.html
  */
 export type GetChatStoryInteractions = (args: {
-    '@type': 'getChatStoryInteractions';
-    /** The identifier of the poster of the story */
-    story_poster_chat_id: number;
-    /** Story identifier */
-    story_id: number;
-    /** Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions; reactionTypePaid isn't supported */
-    reaction_type?: Obj.ReactionType;
-    /** Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date */
-    prefer_forwards: boolean;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of story interactions to return */
-    limit: number;
+	"@type": "getChatStoryInteractions";
+	/** The identifier of the poster of the story */
+	story_poster_chat_id: number;
+	/** Story identifier */
+	story_id: number;
+	/** Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions; reactionTypePaid isn't supported */
+	reaction_type?: Obj.ReactionType;
+	/** Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date */
+	prefer_forwards: boolean;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of story interactions to return */
+	limit: number;
 }) => Obj.StoryInteractions;
 
 /**
@@ -5103,15 +5094,15 @@ export type GetChatStoryInteractions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_story.html
  */
 export type ReportStory = (args: {
-    '@type': 'reportStory';
-    /** The identifier of the poster of the story to report */
-    story_poster_chat_id: number;
-    /** The identifier of the story to report */
-    story_id: number;
-    /** Option identifier chosen by the user; leave empty for the initial request */
-    option_id: string;
-    /** Additional report details; 0-1024 characters; leave empty for the initial request */
-    text: string;
+	"@type": "reportStory";
+	/** The identifier of the poster of the story to report */
+	story_poster_chat_id: number;
+	/** The identifier of the story to report */
+	story_id: number;
+	/** Option identifier chosen by the user; leave empty for the initial request */
+	option_id: string;
+	/** Additional report details; 0-1024 characters; leave empty for the initial request */
+	text: string;
 }) => Obj.ReportStoryResult;
 
 /**
@@ -5119,7 +5110,7 @@ export type ReportStory = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1activate_story_stealth_mode.html
  */
 export type ActivateStoryStealthMode = (args: {
-    '@type': 'activateStoryStealthMode';
+	"@type": "activateStoryStealthMode";
 }) => Obj.Ok;
 
 /**
@@ -5127,15 +5118,15 @@ export type ActivateStoryStealthMode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_story_public_forwards.html
  */
 export type GetStoryPublicForwards = (args: {
-    '@type': 'getStoryPublicForwards';
-    /** The identifier of the poster of the story */
-    story_poster_chat_id: number;
-    /** The identifier of the story */
-    story_id: number;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of messages and stories to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "getStoryPublicForwards";
+	/** The identifier of the poster of the story */
+	story_poster_chat_id: number;
+	/** The identifier of the story */
+	story_id: number;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of messages and stories to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.PublicForwards;
 
 /**
@@ -5143,11 +5134,11 @@ export type GetStoryPublicForwards = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_boost_level_features.html
  */
 export type GetChatBoostLevelFeatures = (args: {
-    '@type': 'getChatBoostLevelFeatures';
-    /** Pass true to get the list of features for channels; pass false to get the list of features for supergroups */
-    is_channel: boolean;
-    /** Chat boost level */
-    level: number;
+	"@type": "getChatBoostLevelFeatures";
+	/** Pass true to get the list of features for channels; pass false to get the list of features for supergroups */
+	is_channel: boolean;
+	/** Chat boost level */
+	level: number;
 }) => Obj.ChatBoostLevelFeatures;
 
 /**
@@ -5155,9 +5146,9 @@ export type GetChatBoostLevelFeatures = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_boost_features.html
  */
 export type GetChatBoostFeatures = (args: {
-    '@type': 'getChatBoostFeatures';
-    /** Pass true to get the list of features for channels; pass false to get the list of features for supergroups */
-    is_channel: boolean;
+	"@type": "getChatBoostFeatures";
+	/** Pass true to get the list of features for channels; pass false to get the list of features for supergroups */
+	is_channel: boolean;
 }) => Obj.ChatBoostFeatures;
 
 /**
@@ -5165,7 +5156,7 @@ export type GetChatBoostFeatures = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_available_chat_boost_slots.html
  */
 export type GetAvailableChatBoostSlots = (args: {
-    '@type': 'getAvailableChatBoostSlots';
+	"@type": "getAvailableChatBoostSlots";
 }) => Obj.ChatBoostSlots;
 
 /**
@@ -5173,9 +5164,9 @@ export type GetAvailableChatBoostSlots = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_boost_status.html
  */
 export type GetChatBoostStatus = (args: {
-    '@type': 'getChatBoostStatus';
-    /** Identifier of the chat */
-    chat_id: number;
+	"@type": "getChatBoostStatus";
+	/** Identifier of the chat */
+	chat_id: number;
 }) => Obj.ChatBoostStatus;
 
 /**
@@ -5183,11 +5174,11 @@ export type GetChatBoostStatus = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1boost_chat.html
  */
 export type BoostChat = (args: {
-    '@type': 'boostChat';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Identifiers of boost slots of the current user from which to apply boosts to the chat */
-    slot_ids: number[];
+	"@type": "boostChat";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Identifiers of boost slots of the current user from which to apply boosts to the chat */
+	slot_ids: number[];
 }) => Obj.ChatBoostSlots;
 
 /**
@@ -5195,9 +5186,9 @@ export type BoostChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_boost_link.html
  */
 export type GetChatBoostLink = (args: {
-    '@type': 'getChatBoostLink';
-    /** Identifier of the chat */
-    chat_id: number;
+	"@type": "getChatBoostLink";
+	/** Identifier of the chat */
+	chat_id: number;
 }) => Obj.ChatBoostLink;
 
 /**
@@ -5205,9 +5196,9 @@ export type GetChatBoostLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_boost_link_info.html
  */
 export type GetChatBoostLinkInfo = (args: {
-    '@type': 'getChatBoostLinkInfo';
-    /** The link to boost a chat */
-    url: string;
+	"@type": "getChatBoostLinkInfo";
+	/** The link to boost a chat */
+	url: string;
 }) => Obj.ChatBoostLinkInfo;
 
 /**
@@ -5215,15 +5206,15 @@ export type GetChatBoostLinkInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_boosts.html
  */
 export type GetChatBoosts = (args: {
-    '@type': 'getChatBoosts';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Pass true to receive only boosts received from gift codes and giveaways created by the chat */
-    only_gift_codes: boolean;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of boosts to be returned; up to 100. For optimal performance, the number of returned boosts can be smaller than the specified limit */
-    limit: number;
+	"@type": "getChatBoosts";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Pass true to receive only boosts received from gift codes and giveaways created by the chat */
+	only_gift_codes: boolean;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of boosts to be returned; up to 100. For optimal performance, the number of returned boosts can be smaller than the specified limit */
+	limit: number;
 }) => Obj.FoundChatBoosts;
 
 /**
@@ -5231,11 +5222,11 @@ export type GetChatBoosts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_user_chat_boosts.html
  */
 export type GetUserChatBoosts = (args: {
-    '@type': 'getUserChatBoosts';
-    /** Identifier of the chat */
-    chat_id: number;
-    /** Identifier of the user */
-    user_id: number;
+	"@type": "getUserChatBoosts";
+	/** Identifier of the chat */
+	chat_id: number;
+	/** Identifier of the user */
+	user_id: number;
 }) => Obj.FoundChatBoosts;
 
 /**
@@ -5243,9 +5234,9 @@ export type GetUserChatBoosts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_attachment_menu_bot.html
  */
 export type GetAttachmentMenuBot = (args: {
-    '@type': 'getAttachmentMenuBot';
-    /** Bot's user identifier */
-    bot_user_id: number;
+	"@type": "getAttachmentMenuBot";
+	/** Bot's user identifier */
+	bot_user_id: number;
 }) => Obj.AttachmentMenuBot;
 
 /**
@@ -5253,13 +5244,13 @@ export type GetAttachmentMenuBot = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_bot_is_added_to_attachment_menu.html
  */
 export type ToggleBotIsAddedToAttachmentMenu = (args: {
-    '@type': 'toggleBotIsAddedToAttachmentMenu';
-    /** Bot's user identifier */
-    bot_user_id: number;
-    /** Pass true to add the bot to attachment menu; pass false to remove the bot from attachment menu */
-    is_added: boolean;
-    /** Pass true if the current user allowed the bot to send them messages. Ignored if is_added is false */
-    allow_write_access: boolean;
+	"@type": "toggleBotIsAddedToAttachmentMenu";
+	/** Bot's user identifier */
+	bot_user_id: number;
+	/** Pass true to add the bot to attachment menu; pass false to remove the bot from attachment menu */
+	is_added: boolean;
+	/** Pass true if the current user allowed the bot to send them messages. Ignored if is_added is false */
+	allow_write_access: boolean;
 }) => Obj.Ok;
 
 /**
@@ -5267,7 +5258,7 @@ export type ToggleBotIsAddedToAttachmentMenu = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_themed_emoji_statuses.html
  */
 export type GetThemedEmojiStatuses = (args: {
-    '@type': 'getThemedEmojiStatuses';
+	"@type": "getThemedEmojiStatuses";
 }) => Obj.EmojiStatusCustomEmojis;
 
 /**
@@ -5275,7 +5266,7 @@ export type GetThemedEmojiStatuses = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_recent_emoji_statuses.html
  */
 export type GetRecentEmojiStatuses = (args: {
-    '@type': 'getRecentEmojiStatuses';
+	"@type": "getRecentEmojiStatuses";
 }) => Obj.EmojiStatuses;
 
 /**
@@ -5283,7 +5274,7 @@ export type GetRecentEmojiStatuses = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_upgraded_gift_emoji_statuses.html
  */
 export type GetUpgradedGiftEmojiStatuses = (args: {
-    '@type': 'getUpgradedGiftEmojiStatuses';
+	"@type": "getUpgradedGiftEmojiStatuses";
 }) => Obj.EmojiStatuses;
 
 /**
@@ -5291,7 +5282,7 @@ export type GetUpgradedGiftEmojiStatuses = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_default_emoji_statuses.html
  */
 export type GetDefaultEmojiStatuses = (args: {
-    '@type': 'getDefaultEmojiStatuses';
+	"@type": "getDefaultEmojiStatuses";
 }) => Obj.EmojiStatusCustomEmojis;
 
 /**
@@ -5299,7 +5290,7 @@ export type GetDefaultEmojiStatuses = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1clear_recent_emoji_statuses.html
  */
 export type ClearRecentEmojiStatuses = (args: {
-    '@type': 'clearRecentEmojiStatuses';
+	"@type": "clearRecentEmojiStatuses";
 }) => Obj.Ok;
 
 /**
@@ -5307,7 +5298,7 @@ export type ClearRecentEmojiStatuses = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_themed_chat_emoji_statuses.html
  */
 export type GetThemedChatEmojiStatuses = (args: {
-    '@type': 'getThemedChatEmojiStatuses';
+	"@type": "getThemedChatEmojiStatuses";
 }) => Obj.EmojiStatusCustomEmojis;
 
 /**
@@ -5315,7 +5306,7 @@ export type GetThemedChatEmojiStatuses = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_default_chat_emoji_statuses.html
  */
 export type GetDefaultChatEmojiStatuses = (args: {
-    '@type': 'getDefaultChatEmojiStatuses';
+	"@type": "getDefaultChatEmojiStatuses";
 }) => Obj.EmojiStatusCustomEmojis;
 
 /**
@@ -5323,7 +5314,7 @@ export type GetDefaultChatEmojiStatuses = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_disallowed_chat_emoji_statuses.html
  */
 export type GetDisallowedChatEmojiStatuses = (args: {
-    '@type': 'getDisallowedChatEmojiStatuses';
+	"@type": "getDisallowedChatEmojiStatuses";
 }) => Obj.EmojiStatusCustomEmojis;
 
 /**
@@ -5331,17 +5322,17 @@ export type GetDisallowedChatEmojiStatuses = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1download_file.html
  */
 export type DownloadFile = (args: {
-    '@type': 'downloadFile';
-    /** Identifier of the file to download */
-    file_id: number;
-    /** Priority of the download (1-32). The higher the priority, the earlier the file will be downloaded. If the priorities of two files are equal, then the last one for which downloadFile/addFileToDownloads was called will be downloaded first */
-    priority: number;
-    /** The starting position from which the file needs to be downloaded */
-    offset: number;
-    /** Number of bytes which need to be downloaded starting from the "offset" position before the download will automatically be canceled; use 0 to download without a limit */
-    limit: number;
-    /** Pass true to return response only after the file download has succeeded, has failed, has been canceled, or a new downloadFile request with different offset/limit parameters was sent; pass false to return file state immediately, just after the download has been started */
-    synchronous: boolean;
+	"@type": "downloadFile";
+	/** Identifier of the file to download */
+	file_id: number;
+	/** Priority of the download (1-32). The higher the priority, the earlier the file will be downloaded. If the priorities of two files are equal, then the last one for which downloadFile/addFileToDownloads was called will be downloaded first */
+	priority: number;
+	/** The starting position from which the file needs to be downloaded */
+	offset: number;
+	/** Number of bytes which need to be downloaded starting from the "offset" position before the download will automatically be canceled; use 0 to download without a limit */
+	limit: number;
+	/** Pass true to return response only after the file download has succeeded, has failed, has been canceled, or a new downloadFile request with different offset/limit parameters was sent; pass false to return file state immediately, just after the download has been started */
+	synchronous: boolean;
 }) => Obj.File;
 
 /**
@@ -5349,11 +5340,11 @@ export type DownloadFile = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_file_downloaded_prefix_size.html
  */
 export type GetFileDownloadedPrefixSize = (args: {
-    '@type': 'getFileDownloadedPrefixSize';
-    /** Identifier of the file */
-    file_id: number;
-    /** Offset from which downloaded prefix size needs to be calculated */
-    offset: number;
+	"@type": "getFileDownloadedPrefixSize";
+	/** Identifier of the file */
+	file_id: number;
+	/** Offset from which downloaded prefix size needs to be calculated */
+	offset: number;
 }) => Obj.FileDownloadedPrefixSize;
 
 /**
@@ -5361,11 +5352,11 @@ export type GetFileDownloadedPrefixSize = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1cancel_download_file.html
  */
 export type CancelDownloadFile = (args: {
-    '@type': 'cancelDownloadFile';
-    /** Identifier of a file to stop downloading */
-    file_id: number;
-    /** Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server */
-    only_if_pending: boolean;
+	"@type": "cancelDownloadFile";
+	/** Identifier of a file to stop downloading */
+	file_id: number;
+	/** Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server */
+	only_if_pending: boolean;
 }) => Obj.Ok;
 
 /**
@@ -5373,11 +5364,11 @@ export type CancelDownloadFile = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_suggested_file_name.html
  */
 export type GetSuggestedFileName = (args: {
-    '@type': 'getSuggestedFileName';
-    /** Identifier of the file */
-    file_id: number;
-    /** Directory in which the file is expected to be saved */
-    directory: string;
+	"@type": "getSuggestedFileName";
+	/** Identifier of the file */
+	file_id: number;
+	/** Directory in which the file is expected to be saved */
+	directory: string;
 }) => Obj.Text;
 
 /**
@@ -5385,13 +5376,13 @@ export type GetSuggestedFileName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1preliminary_upload_file.html
  */
 export type PreliminaryUploadFile = (args: {
-    '@type': 'preliminaryUploadFile';
-    /** File to upload */
-    file: Obj.InputFile;
-    /** File type; pass null if unknown */
-    file_type?: Obj.FileType;
-    /** Priority of the upload (1-32). The higher the priority, the earlier the file will be uploaded. If the priorities of two files are equal, then the first one for which preliminaryUploadFile was called will be uploaded first */
-    priority: number;
+	"@type": "preliminaryUploadFile";
+	/** File to upload */
+	file: Obj.InputFile;
+	/** File type; pass null if unknown */
+	file_type?: Obj.FileType;
+	/** Priority of the upload (1-32). The higher the priority, the earlier the file will be uploaded. If the priorities of two files are equal, then the first one for which preliminaryUploadFile was called will be uploaded first */
+	priority: number;
 }) => Obj.File;
 
 /**
@@ -5399,9 +5390,9 @@ export type PreliminaryUploadFile = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1cancel_preliminary_upload_file.html
  */
 export type CancelPreliminaryUploadFile = (args: {
-    '@type': 'cancelPreliminaryUploadFile';
-    /** Identifier of the file to stop uploading */
-    file_id: number;
+	"@type": "cancelPreliminaryUploadFile";
+	/** Identifier of the file to stop uploading */
+	file_id: number;
 }) => Obj.Ok;
 
 /**
@@ -5409,13 +5400,13 @@ export type CancelPreliminaryUploadFile = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1write_generated_file_part.html
  */
 export type WriteGeneratedFilePart = (args: {
-    '@type': 'writeGeneratedFilePart';
-    /** The identifier of the generation process */
-    generation_id: string;
-    /** The offset from which to write the data to the file */
-    offset: number;
-    /** The data to write */
-    data: string;
+	"@type": "writeGeneratedFilePart";
+	/** The identifier of the generation process */
+	generation_id: string;
+	/** The offset from which to write the data to the file */
+	offset: number;
+	/** The data to write */
+	data: string;
 }) => Obj.Ok;
 
 /**
@@ -5423,13 +5414,13 @@ export type WriteGeneratedFilePart = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_file_generation_progress.html
  */
 export type SetFileGenerationProgress = (args: {
-    '@type': 'setFileGenerationProgress';
-    /** The identifier of the generation process */
-    generation_id: string;
-    /** Expected size of the generated file, in bytes; 0 if unknown */
-    expected_size: number;
-    /** The number of bytes already generated */
-    local_prefix_size: number;
+	"@type": "setFileGenerationProgress";
+	/** The identifier of the generation process */
+	generation_id: string;
+	/** Expected size of the generated file, in bytes; 0 if unknown */
+	expected_size: number;
+	/** The number of bytes already generated */
+	local_prefix_size: number;
 }) => Obj.Ok;
 
 /**
@@ -5437,11 +5428,11 @@ export type SetFileGenerationProgress = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1finish_file_generation.html
  */
 export type FinishFileGeneration = (args: {
-    '@type': 'finishFileGeneration';
-    /** The identifier of the generation process */
-    generation_id: string;
-    /** If passed, the file generation has failed and must be terminated; pass null if the file generation succeeded */
-    error?: TdError;
+	"@type": "finishFileGeneration";
+	/** The identifier of the generation process */
+	generation_id: string;
+	/** If passed, the file generation has failed and must be terminated; pass null if the file generation succeeded */
+	error?: TdError;
 }) => Obj.Ok;
 
 /**
@@ -5449,13 +5440,13 @@ export type FinishFileGeneration = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1read_file_part.html
  */
 export type ReadFilePart = (args: {
-    '@type': 'readFilePart';
-    /** Identifier of the file. The file must be located in the TDLib file cache */
-    file_id: number;
-    /** The offset from which to read the file */
-    offset: number;
-    /** Number of bytes to read. An error will be returned if there are not enough bytes available in the file from the specified position. Pass 0 to read all available data from the specified position */
-    count: number;
+	"@type": "readFilePart";
+	/** Identifier of the file. The file must be located in the TDLib file cache */
+	file_id: number;
+	/** The offset from which to read the file */
+	offset: number;
+	/** Number of bytes to read. An error will be returned if there are not enough bytes available in the file from the specified position. Pass 0 to read all available data from the specified position */
+	count: number;
 }) => Obj.Data;
 
 /**
@@ -5463,9 +5454,9 @@ export type ReadFilePart = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_file.html
  */
 export type DeleteFile = (args: {
-    '@type': 'deleteFile';
-    /** Identifier of the file to delete */
-    file_id: number;
+	"@type": "deleteFile";
+	/** Identifier of the file to delete */
+	file_id: number;
 }) => Obj.Ok;
 
 /**
@@ -5473,15 +5464,15 @@ export type DeleteFile = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_file_to_downloads.html
  */
 export type AddFileToDownloads = (args: {
-    '@type': 'addFileToDownloads';
-    /** Identifier of the file to download */
-    file_id: number;
-    /** Chat identifier of the message with the file */
-    chat_id: number;
-    /** Message identifier */
-    message_id: number;
-    /** Priority of the download (1-32). The higher the priority, the earlier the file will be downloaded. If the priorities of two files are equal, then the last one for which downloadFile/addFileToDownloads was called will be downloaded first */
-    priority: number;
+	"@type": "addFileToDownloads";
+	/** Identifier of the file to download */
+	file_id: number;
+	/** Chat identifier of the message with the file */
+	chat_id: number;
+	/** Message identifier */
+	message_id: number;
+	/** Priority of the download (1-32). The higher the priority, the earlier the file will be downloaded. If the priorities of two files are equal, then the last one for which downloadFile/addFileToDownloads was called will be downloaded first */
+	priority: number;
 }) => Obj.File;
 
 /**
@@ -5489,11 +5480,11 @@ export type AddFileToDownloads = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_download_is_paused.html
  */
 export type ToggleDownloadIsPaused = (args: {
-    '@type': 'toggleDownloadIsPaused';
-    /** Identifier of the downloaded file */
-    file_id: number;
-    /** Pass true if the download is paused */
-    is_paused: boolean;
+	"@type": "toggleDownloadIsPaused";
+	/** Identifier of the downloaded file */
+	file_id: number;
+	/** Pass true if the download is paused */
+	is_paused: boolean;
 }) => Obj.Ok;
 
 /**
@@ -5501,9 +5492,9 @@ export type ToggleDownloadIsPaused = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_all_downloads_are_paused.html
  */
 export type ToggleAllDownloadsArePaused = (args: {
-    '@type': 'toggleAllDownloadsArePaused';
-    /** Pass true to pause all downloads; pass false to unpause them */
-    are_paused: boolean;
+	"@type": "toggleAllDownloadsArePaused";
+	/** Pass true to pause all downloads; pass false to unpause them */
+	are_paused: boolean;
 }) => Obj.Ok;
 
 /**
@@ -5511,11 +5502,11 @@ export type ToggleAllDownloadsArePaused = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_file_from_downloads.html
  */
 export type RemoveFileFromDownloads = (args: {
-    '@type': 'removeFileFromDownloads';
-    /** Identifier of the downloaded file */
-    file_id: number;
-    /** Pass true to delete the file from the TDLib file cache */
-    delete_from_cache: boolean;
+	"@type": "removeFileFromDownloads";
+	/** Identifier of the downloaded file */
+	file_id: number;
+	/** Pass true to delete the file from the TDLib file cache */
+	delete_from_cache: boolean;
 }) => Obj.Ok;
 
 /**
@@ -5523,13 +5514,13 @@ export type RemoveFileFromDownloads = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_all_files_from_downloads.html
  */
 export type RemoveAllFilesFromDownloads = (args: {
-    '@type': 'removeAllFilesFromDownloads';
-    /** Pass true to remove only active downloads, including paused */
-    only_active: boolean;
-    /** Pass true to remove only completed downloads */
-    only_completed: boolean;
-    /** Pass true to delete the file from the TDLib file cache */
-    delete_from_cache: boolean;
+	"@type": "removeAllFilesFromDownloads";
+	/** Pass true to remove only active downloads, including paused */
+	only_active: boolean;
+	/** Pass true to remove only completed downloads */
+	only_completed: boolean;
+	/** Pass true to delete the file from the TDLib file cache */
+	delete_from_cache: boolean;
 }) => Obj.Ok;
 
 /**
@@ -5537,17 +5528,17 @@ export type RemoveAllFilesFromDownloads = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_file_downloads.html
  */
 export type SearchFileDownloads = (args: {
-    '@type': 'searchFileDownloads';
-    /** Query to search for; may be empty to return all downloaded files */
-    query?: string;
-    /** Pass true to search only for active downloads, including paused */
-    only_active: boolean;
-    /** Pass true to search only for completed downloads */
-    only_completed: boolean;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of files to be returned */
-    limit: number;
+	"@type": "searchFileDownloads";
+	/** Query to search for; may be empty to return all downloaded files */
+	query?: string;
+	/** Pass true to search only for active downloads, including paused */
+	only_active: boolean;
+	/** Pass true to search only for completed downloads */
+	only_completed: boolean;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of files to be returned */
+	limit: number;
 }) => Obj.FoundFileDownloads;
 
 /**
@@ -5555,11 +5546,11 @@ export type SearchFileDownloads = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_application_verification_token.html
  */
 export type SetApplicationVerificationToken = (args: {
-    '@type': 'setApplicationVerificationToken';
-    /** Unique identifier for the verification process as received from updateApplicationVerificationRequired or updateApplicationRecaptchaVerificationRequired */
-    verification_id: number;
-    /** Play Integrity API token for the Android application, or secret from push notification for the iOS application for application verification, or reCAPTCHA token for reCAPTCHA verifications; pass an empty string to abort verification and receive the error "VERIFICATION_FAILED" for the request */
-    token: string;
+	"@type": "setApplicationVerificationToken";
+	/** Unique identifier for the verification process as received from updateApplicationVerificationRequired or updateApplicationRecaptchaVerificationRequired */
+	verification_id: number;
+	/** Play Integrity API token for the Android application, or secret from push notification for the iOS application for application verification, or reCAPTCHA token for reCAPTCHA verifications; pass an empty string to abort verification and receive the error "VERIFICATION_FAILED" for the request */
+	token: string;
 }) => Obj.Ok;
 
 /**
@@ -5567,9 +5558,9 @@ export type SetApplicationVerificationToken = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_file_type.html
  */
 export type GetMessageFileType = (args: {
-    '@type': 'getMessageFileType';
-    /** Beginning of the message file; up to 100 first lines */
-    message_file_head: string;
+	"@type": "getMessageFileType";
+	/** Beginning of the message file; up to 100 first lines */
+	message_file_head: string;
 }) => Obj.MessageFileType;
 
 /**
@@ -5577,9 +5568,9 @@ export type GetMessageFileType = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_import_confirmation_text.html
  */
 export type GetMessageImportConfirmationText = (args: {
-    '@type': 'getMessageImportConfirmationText';
-    /** Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info member right */
-    chat_id: number;
+	"@type": "getMessageImportConfirmationText";
+	/** Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info member right */
+	chat_id: number;
 }) => Obj.Text;
 
 /**
@@ -5587,13 +5578,13 @@ export type GetMessageImportConfirmationText = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1import_messages.html
  */
 export type ImportMessages = (args: {
-    '@type': 'importMessages';
-    /** Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info member right */
-    chat_id: number;
-    /** File with messages to import. Only inputFileLocal and inputFileGenerated are supported. The file must not be previously uploaded */
-    message_file: Obj.InputFile;
-    /** Files used in the imported messages. Only inputFileLocal and inputFileGenerated are supported. The files must not be previously uploaded */
-    attached_files: Obj.InputFile[];
+	"@type": "importMessages";
+	/** Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info member right */
+	chat_id: number;
+	/** File with messages to import. Only inputFileLocal and inputFileGenerated are supported. The file must not be previously uploaded */
+	message_file: Obj.InputFile;
+	/** Files used in the imported messages. Only inputFileLocal and inputFileGenerated are supported. The files must not be previously uploaded */
+	attached_files: Obj.InputFile[];
 }) => Obj.Ok;
 
 /**
@@ -5601,9 +5592,9 @@ export type ImportMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1replace_primary_chat_invite_link.html
  */
 export type ReplacePrimaryChatInviteLink = (args: {
-    '@type': 'replacePrimaryChatInviteLink';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "replacePrimaryChatInviteLink";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.ChatInviteLink;
 
 /**
@@ -5611,17 +5602,17 @@ export type ReplacePrimaryChatInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_chat_invite_link.html
  */
 export type CreateChatInviteLink = (args: {
-    '@type': 'createChatInviteLink';
-    /** Chat identifier */
-    chat_id: number;
-    /** Invite link name; 0-32 characters */
-    name: string;
-    /** Point in time (Unix timestamp) when the link will expire; pass 0 if never */
-    expiration_date: number;
-    /** The maximum number of chat members that can join the chat via the link simultaneously; 0-99999; pass 0 if not limited */
-    member_limit: number;
-    /** Pass true if users joining the chat via the link need to be approved by chat administrators. In this case, member_limit must be 0 */
-    creates_join_request: boolean;
+	"@type": "createChatInviteLink";
+	/** Chat identifier */
+	chat_id: number;
+	/** Invite link name; 0-32 characters */
+	name: string;
+	/** Point in time (Unix timestamp) when the link will expire; pass 0 if never */
+	expiration_date: number;
+	/** The maximum number of chat members that can join the chat via the link simultaneously; 0-99999; pass 0 if not limited */
+	member_limit: number;
+	/** Pass true if users joining the chat via the link need to be approved by chat administrators. In this case, member_limit must be 0 */
+	creates_join_request: boolean;
 }) => Obj.ChatInviteLink;
 
 /**
@@ -5629,13 +5620,13 @@ export type CreateChatInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_chat_subscription_invite_link.html
  */
 export type CreateChatSubscriptionInviteLink = (args: {
-    '@type': 'createChatSubscriptionInviteLink';
-    /** Chat identifier */
-    chat_id: number;
-    /** Invite link name; 0-32 characters */
-    name: string;
-    /** Information about subscription plan that will be applied to the users joining the chat via the link. Subscription period must be 2592000 in production environment, and 60 or 300 if Telegram test environment is used */
-    subscription_pricing: Obj.StarSubscriptionPricing;
+	"@type": "createChatSubscriptionInviteLink";
+	/** Chat identifier */
+	chat_id: number;
+	/** Invite link name; 0-32 characters */
+	name: string;
+	/** Information about subscription plan that will be applied to the users joining the chat via the link. Subscription period must be 2592000 in production environment, and 60 or 300 if Telegram test environment is used */
+	subscription_pricing: Obj.StarSubscriptionPricing;
 }) => Obj.ChatInviteLink;
 
 /**
@@ -5643,19 +5634,19 @@ export type CreateChatSubscriptionInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_chat_invite_link.html
  */
 export type EditChatInviteLink = (args: {
-    '@type': 'editChatInviteLink';
-    /** Chat identifier */
-    chat_id: number;
-    /** Invite link to be edited */
-    invite_link: string;
-    /** Invite link name; 0-32 characters */
-    name: string;
-    /** Point in time (Unix timestamp) when the link will expire; pass 0 if never */
-    expiration_date: number;
-    /** The maximum number of chat members that can join the chat via the link simultaneously; 0-99999; pass 0 if not limited */
-    member_limit: number;
-    /** Pass true if users joining the chat via the link need to be approved by chat administrators. In this case, member_limit must be 0 */
-    creates_join_request: boolean;
+	"@type": "editChatInviteLink";
+	/** Chat identifier */
+	chat_id: number;
+	/** Invite link to be edited */
+	invite_link: string;
+	/** Invite link name; 0-32 characters */
+	name: string;
+	/** Point in time (Unix timestamp) when the link will expire; pass 0 if never */
+	expiration_date: number;
+	/** The maximum number of chat members that can join the chat via the link simultaneously; 0-99999; pass 0 if not limited */
+	member_limit: number;
+	/** Pass true if users joining the chat via the link need to be approved by chat administrators. In this case, member_limit must be 0 */
+	creates_join_request: boolean;
 }) => Obj.ChatInviteLink;
 
 /**
@@ -5663,13 +5654,13 @@ export type EditChatInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_chat_subscription_invite_link.html
  */
 export type EditChatSubscriptionInviteLink = (args: {
-    '@type': 'editChatSubscriptionInviteLink';
-    /** Chat identifier */
-    chat_id: number;
-    /** Invite link to be edited */
-    invite_link: string;
-    /** Invite link name; 0-32 characters */
-    name: string;
+	"@type": "editChatSubscriptionInviteLink";
+	/** Chat identifier */
+	chat_id: number;
+	/** Invite link to be edited */
+	invite_link: string;
+	/** Invite link name; 0-32 characters */
+	name: string;
 }) => Obj.ChatInviteLink;
 
 /**
@@ -5677,11 +5668,11 @@ export type EditChatSubscriptionInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_invite_link.html
  */
 export type GetChatInviteLink = (args: {
-    '@type': 'getChatInviteLink';
-    /** Chat identifier */
-    chat_id: number;
-    /** Invite link to get */
-    invite_link: string;
+	"@type": "getChatInviteLink";
+	/** Chat identifier */
+	chat_id: number;
+	/** Invite link to get */
+	invite_link: string;
 }) => Obj.ChatInviteLink;
 
 /**
@@ -5689,9 +5680,9 @@ export type GetChatInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_invite_link_counts.html
  */
 export type GetChatInviteLinkCounts = (args: {
-    '@type': 'getChatInviteLinkCounts';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "getChatInviteLinkCounts";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.ChatInviteLinkCounts;
 
 /**
@@ -5699,19 +5690,19 @@ export type GetChatInviteLinkCounts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_invite_links.html
  */
 export type GetChatInviteLinks = (args: {
-    '@type': 'getChatInviteLinks';
-    /** Chat identifier */
-    chat_id: number;
-    /** User identifier of a chat administrator. Must be an identifier of the current user for non-owner */
-    creator_user_id: number;
-    /** Pass true if revoked links needs to be returned instead of active or expired */
-    is_revoked: boolean;
-    /** Creation date of an invite link starting after which to return invite links; use 0 to get results from the beginning */
-    offset_date: number;
-    /** Invite link starting after which to return invite links; use empty string to get results from the beginning */
-    offset_invite_link: string;
-    /** The maximum number of invite links to return; up to 100 */
-    limit: number;
+	"@type": "getChatInviteLinks";
+	/** Chat identifier */
+	chat_id: number;
+	/** User identifier of a chat administrator. Must be an identifier of the current user for non-owner */
+	creator_user_id: number;
+	/** Pass true if revoked links needs to be returned instead of active or expired */
+	is_revoked: boolean;
+	/** Creation date of an invite link starting after which to return invite links; use 0 to get results from the beginning */
+	offset_date: number;
+	/** Invite link starting after which to return invite links; use empty string to get results from the beginning */
+	offset_invite_link: string;
+	/** The maximum number of invite links to return; up to 100 */
+	limit: number;
 }) => Obj.ChatInviteLinks;
 
 /**
@@ -5719,17 +5710,17 @@ export type GetChatInviteLinks = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_invite_link_members.html
  */
 export type GetChatInviteLinkMembers = (args: {
-    '@type': 'getChatInviteLinkMembers';
-    /** Chat identifier */
-    chat_id: number;
-    /** Invite link for which to return chat members */
-    invite_link: string;
-    /** Pass true if the link is a subscription link and only members with expired subscription must be returned */
-    only_with_expired_subscription: boolean;
-    /** A chat member from which to return next chat members; pass null to get results from the beginning */
-    offset_member?: Obj.ChatInviteLinkMember;
-    /** The maximum number of chat members to return; up to 100 */
-    limit: number;
+	"@type": "getChatInviteLinkMembers";
+	/** Chat identifier */
+	chat_id: number;
+	/** Invite link for which to return chat members */
+	invite_link: string;
+	/** Pass true if the link is a subscription link and only members with expired subscription must be returned */
+	only_with_expired_subscription: boolean;
+	/** A chat member from which to return next chat members; pass null to get results from the beginning */
+	offset_member?: Obj.ChatInviteLinkMember;
+	/** The maximum number of chat members to return; up to 100 */
+	limit: number;
 }) => Obj.ChatInviteLinkMembers;
 
 /**
@@ -5737,11 +5728,11 @@ export type GetChatInviteLinkMembers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1revoke_chat_invite_link.html
  */
 export type RevokeChatInviteLink = (args: {
-    '@type': 'revokeChatInviteLink';
-    /** Chat identifier */
-    chat_id: number;
-    /** Invite link to be revoked */
-    invite_link: string;
+	"@type": "revokeChatInviteLink";
+	/** Chat identifier */
+	chat_id: number;
+	/** Invite link to be revoked */
+	invite_link: string;
 }) => Obj.ChatInviteLinks;
 
 /**
@@ -5749,11 +5740,11 @@ export type RevokeChatInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_revoked_chat_invite_link.html
  */
 export type DeleteRevokedChatInviteLink = (args: {
-    '@type': 'deleteRevokedChatInviteLink';
-    /** Chat identifier */
-    chat_id: number;
-    /** Invite link to revoke */
-    invite_link: string;
+	"@type": "deleteRevokedChatInviteLink";
+	/** Chat identifier */
+	chat_id: number;
+	/** Invite link to revoke */
+	invite_link: string;
 }) => Obj.Ok;
 
 /**
@@ -5761,11 +5752,11 @@ export type DeleteRevokedChatInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_all_revoked_chat_invite_links.html
  */
 export type DeleteAllRevokedChatInviteLinks = (args: {
-    '@type': 'deleteAllRevokedChatInviteLinks';
-    /** Chat identifier */
-    chat_id: number;
-    /** User identifier of a chat administrator, which links will be deleted. Must be an identifier of the current user for non-owner */
-    creator_user_id: number;
+	"@type": "deleteAllRevokedChatInviteLinks";
+	/** Chat identifier */
+	chat_id: number;
+	/** User identifier of a chat administrator, which links will be deleted. Must be an identifier of the current user for non-owner */
+	creator_user_id: number;
 }) => Obj.Ok;
 
 /**
@@ -5773,9 +5764,9 @@ export type DeleteAllRevokedChatInviteLinks = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_chat_invite_link.html
  */
 export type CheckChatInviteLink = (args: {
-    '@type': 'checkChatInviteLink';
-    /** Invite link to be checked */
-    invite_link: string;
+	"@type": "checkChatInviteLink";
+	/** Invite link to be checked */
+	invite_link: string;
 }) => Obj.ChatInviteLinkInfo;
 
 /**
@@ -5783,9 +5774,9 @@ export type CheckChatInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1join_chat_by_invite_link.html
  */
 export type JoinChatByInviteLink = (args: {
-    '@type': 'joinChatByInviteLink';
-    /** Invite link to use */
-    invite_link: string;
+	"@type": "joinChatByInviteLink";
+	/** Invite link to use */
+	invite_link: string;
 }) => Obj.Chat;
 
 /**
@@ -5793,17 +5784,17 @@ export type JoinChatByInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_join_requests.html
  */
 export type GetChatJoinRequests = (args: {
-    '@type': 'getChatJoinRequests';
-    /** Chat identifier */
-    chat_id: number;
-    /** Invite link for which to return join requests. If empty, all join requests will be returned. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links */
-    invite_link: string;
-    /** A query to search for in the first names, last names and usernames of the users to return */
-    query: string;
-    /** A chat join request from which to return next requests; pass null to get results from the beginning */
-    offset_request?: Obj.ChatJoinRequest;
-    /** The maximum number of requests to join the chat to return */
-    limit: number;
+	"@type": "getChatJoinRequests";
+	/** Chat identifier */
+	chat_id: number;
+	/** Invite link for which to return join requests. If empty, all join requests will be returned. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links */
+	invite_link: string;
+	/** A query to search for in the first names, last names and usernames of the users to return */
+	query: string;
+	/** A chat join request from which to return next requests; pass null to get results from the beginning */
+	offset_request?: Obj.ChatJoinRequest;
+	/** The maximum number of requests to join the chat to return */
+	limit: number;
 }) => Obj.ChatJoinRequests;
 
 /**
@@ -5811,13 +5802,13 @@ export type GetChatJoinRequests = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1process_chat_join_request.html
  */
 export type ProcessChatJoinRequest = (args: {
-    '@type': 'processChatJoinRequest';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the user that sent the request */
-    user_id: number;
-    /** Pass true to approve the request; pass false to decline it */
-    approve: boolean;
+	"@type": "processChatJoinRequest";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the user that sent the request */
+	user_id: number;
+	/** Pass true to approve the request; pass false to decline it */
+	approve: boolean;
 }) => Obj.Ok;
 
 /**
@@ -5825,13 +5816,13 @@ export type ProcessChatJoinRequest = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1process_chat_join_requests.html
  */
 export type ProcessChatJoinRequests = (args: {
-    '@type': 'processChatJoinRequests';
-    /** Chat identifier */
-    chat_id: number;
-    /** Invite link for which to process join requests. If empty, all join requests will be processed. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links */
-    invite_link: string;
-    /** Pass true to approve all requests; pass false to decline them */
-    approve: boolean;
+	"@type": "processChatJoinRequests";
+	/** Chat identifier */
+	chat_id: number;
+	/** Invite link for which to process join requests. If empty, all join requests will be processed. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links */
+	invite_link: string;
+	/** Pass true to approve all requests; pass false to decline them */
+	approve: boolean;
 }) => Obj.Ok;
 
 /**
@@ -5839,13 +5830,13 @@ export type ProcessChatJoinRequests = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_call.html
  */
 export type CreateCall = (args: {
-    '@type': 'createCall';
-    /** Identifier of the user to be called */
-    user_id: number;
-    /** The call protocols supported by the application */
-    protocol: Obj.CallProtocol;
-    /** Pass true to create a video call */
-    is_video: boolean;
+	"@type": "createCall";
+	/** Identifier of the user to be called */
+	user_id: number;
+	/** The call protocols supported by the application */
+	protocol: Obj.CallProtocol;
+	/** Pass true to create a video call */
+	is_video: boolean;
 }) => Obj.CallId;
 
 /**
@@ -5853,11 +5844,11 @@ export type CreateCall = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accept_call.html
  */
 export type AcceptCall = (args: {
-    '@type': 'acceptCall';
-    /** Call identifier */
-    call_id: number;
-    /** The call protocols supported by the application */
-    protocol: Obj.CallProtocol;
+	"@type": "acceptCall";
+	/** Call identifier */
+	call_id: number;
+	/** The call protocols supported by the application */
+	protocol: Obj.CallProtocol;
 }) => Obj.Ok;
 
 /**
@@ -5865,11 +5856,11 @@ export type AcceptCall = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_call_signaling_data.html
  */
 export type SendCallSignalingData = (args: {
-    '@type': 'sendCallSignalingData';
-    /** Call identifier */
-    call_id: number;
-    /** The data */
-    data: string;
+	"@type": "sendCallSignalingData";
+	/** Call identifier */
+	call_id: number;
+	/** The data */
+	data: string;
 }) => Obj.Ok;
 
 /**
@@ -5877,19 +5868,19 @@ export type SendCallSignalingData = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1discard_call.html
  */
 export type DiscardCall = (args: {
-    '@type': 'discardCall';
-    /** Call identifier */
-    call_id: number;
-    /** Pass true if the user was disconnected */
-    is_disconnected: boolean;
-    /** If the call was upgraded to a group call, pass invite link to the group call */
-    invite_link: string;
-    /** The call duration, in seconds */
-    duration: number;
-    /** Pass true if the call was a video call */
-    is_video: boolean;
-    /** Identifier of the connection used during the call */
-    connection_id: string;
+	"@type": "discardCall";
+	/** Call identifier */
+	call_id: number;
+	/** Pass true if the user was disconnected */
+	is_disconnected: boolean;
+	/** If the call was upgraded to a group call, pass invite link to the group call */
+	invite_link: string;
+	/** The call duration, in seconds */
+	duration: number;
+	/** Pass true if the call was a video call */
+	is_video: boolean;
+	/** Identifier of the connection used during the call */
+	connection_id: string;
 }) => Obj.Ok;
 
 /**
@@ -5897,15 +5888,15 @@ export type DiscardCall = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_call_rating.html
  */
 export type SendCallRating = (args: {
-    '@type': 'sendCallRating';
-    /** Call identifier */
-    call_id: number;
-    /** Call rating; 1-5 */
-    rating: number;
-    /** An optional user comment if the rating is less than 5 */
-    comment: string;
-    /** List of the exact types of problems with the call, specified by the user */
-    problems: Obj.CallProblem[];
+	"@type": "sendCallRating";
+	/** Call identifier */
+	call_id: number;
+	/** Call rating; 1-5 */
+	rating: number;
+	/** An optional user comment if the rating is less than 5 */
+	comment: string;
+	/** List of the exact types of problems with the call, specified by the user */
+	problems: Obj.CallProblem[];
 }) => Obj.Ok;
 
 /**
@@ -5913,11 +5904,11 @@ export type SendCallRating = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_call_debug_information.html
  */
 export type SendCallDebugInformation = (args: {
-    '@type': 'sendCallDebugInformation';
-    /** Call identifier */
-    call_id: number;
-    /** Debug information in application-specific format */
-    debug_information: string;
+	"@type": "sendCallDebugInformation";
+	/** Call identifier */
+	call_id: number;
+	/** Debug information in application-specific format */
+	debug_information: string;
 }) => Obj.Ok;
 
 /**
@@ -5925,11 +5916,11 @@ export type SendCallDebugInformation = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_call_log.html
  */
 export type SendCallLog = (args: {
-    '@type': 'sendCallLog';
-    /** Call identifier */
-    call_id: number;
-    /** Call log file. Only inputFileLocal and inputFileGenerated are supported */
-    log_file: Obj.InputFile;
+	"@type": "sendCallLog";
+	/** Call identifier */
+	call_id: number;
+	/** Call log file. Only inputFileLocal and inputFileGenerated are supported */
+	log_file: Obj.InputFile;
 }) => Obj.Ok;
 
 /**
@@ -5937,9 +5928,9 @@ export type SendCallLog = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_video_chat_available_participants.html
  */
 export type GetVideoChatAvailableParticipants = (args: {
-    '@type': 'getVideoChatAvailableParticipants';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "getVideoChatAvailableParticipants";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.MessageSenders;
 
 /**
@@ -5947,11 +5938,11 @@ export type GetVideoChatAvailableParticipants = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_video_chat_default_participant.html
  */
 export type SetVideoChatDefaultParticipant = (args: {
-    '@type': 'setVideoChatDefaultParticipant';
-    /** Chat identifier */
-    chat_id: number;
-    /** Default group call participant identifier to join the video chats */
-    default_participant_id: Obj.MessageSender;
+	"@type": "setVideoChatDefaultParticipant";
+	/** Chat identifier */
+	chat_id: number;
+	/** Default group call participant identifier to join the video chats */
+	default_participant_id: Obj.MessageSender;
 }) => Obj.Ok;
 
 /**
@@ -5959,15 +5950,15 @@ export type SetVideoChatDefaultParticipant = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_video_chat.html
  */
 export type CreateVideoChat = (args: {
-    '@type': 'createVideoChat';
-    /** Identifier of a chat in which the video chat will be created */
-    chat_id: number;
-    /** Group call title; if empty, chat title will be used */
-    title: string;
-    /** Point in time (Unix timestamp) when the group call is expected to be started by an administrator; 0 to start the video chat immediately. The date must be at least 10 seconds and at most 8 days in the future */
-    start_date: number;
-    /** Pass true to create an RTMP stream instead of an ordinary video chat */
-    is_rtmp_stream: boolean;
+	"@type": "createVideoChat";
+	/** Identifier of a chat in which the video chat will be created */
+	chat_id: number;
+	/** Group call title; if empty, chat title will be used */
+	title: string;
+	/** Point in time (Unix timestamp) when the group call is expected to be started by an administrator; 0 to start the video chat immediately. The date must be at least 10 seconds and at most 8 days in the future */
+	start_date: number;
+	/** Pass true to create an RTMP stream instead of an ordinary video chat */
+	is_rtmp_stream: boolean;
 }) => Obj.GroupCallId;
 
 /**
@@ -5975,9 +5966,9 @@ export type CreateVideoChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_group_call.html
  */
 export type CreateGroupCall = (args: {
-    '@type': 'createGroupCall';
-    /** Parameters to join the call; pass null to only create call link without joining the call */
-    join_parameters?: Obj.GroupCallJoinParameters;
+	"@type": "createGroupCall";
+	/** Parameters to join the call; pass null to only create call link without joining the call */
+	join_parameters?: Obj.GroupCallJoinParameters;
 }) => Obj.GroupCallInfo;
 
 /**
@@ -5985,9 +5976,9 @@ export type CreateGroupCall = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_video_chat_rtmp_url.html
  */
 export type GetVideoChatRtmpUrl = (args: {
-    '@type': 'getVideoChatRtmpUrl';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "getVideoChatRtmpUrl";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.RtmpUrl;
 
 /**
@@ -5995,9 +5986,9 @@ export type GetVideoChatRtmpUrl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1replace_video_chat_rtmp_url.html
  */
 export type ReplaceVideoChatRtmpUrl = (args: {
-    '@type': 'replaceVideoChatRtmpUrl';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "replaceVideoChatRtmpUrl";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.RtmpUrl;
 
 /**
@@ -6005,9 +5996,9 @@ export type ReplaceVideoChatRtmpUrl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_group_call.html
  */
 export type GetGroupCall = (args: {
-    '@type': 'getGroupCall';
-    /** Group call identifier */
-    group_call_id: number;
+	"@type": "getGroupCall";
+	/** Group call identifier */
+	group_call_id: number;
 }) => Obj.GroupCall;
 
 /**
@@ -6015,9 +6006,9 @@ export type GetGroupCall = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1start_scheduled_video_chat.html
  */
 export type StartScheduledVideoChat = (args: {
-    '@type': 'startScheduledVideoChat';
-    /** Group call identifier of the video chat */
-    group_call_id: number;
+	"@type": "startScheduledVideoChat";
+	/** Group call identifier of the video chat */
+	group_call_id: number;
 }) => Obj.Ok;
 
 /**
@@ -6025,11 +6016,11 @@ export type StartScheduledVideoChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_video_chat_enabled_start_notification.html
  */
 export type ToggleVideoChatEnabledStartNotification = (args: {
-    '@type': 'toggleVideoChatEnabledStartNotification';
-    /** Group call identifier */
-    group_call_id: number;
-    /** New value of the enabled_start_notification setting */
-    enabled_start_notification: boolean;
+	"@type": "toggleVideoChatEnabledStartNotification";
+	/** Group call identifier */
+	group_call_id: number;
+	/** New value of the enabled_start_notification setting */
+	enabled_start_notification: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6037,11 +6028,11 @@ export type ToggleVideoChatEnabledStartNotification = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1join_group_call.html
  */
 export type JoinGroupCall = (args: {
-    '@type': 'joinGroupCall';
-    /** The group call to join */
-    input_group_call: Obj.InputGroupCall;
-    /** Parameters to join the call */
-    join_parameters: Obj.GroupCallJoinParameters;
+	"@type": "joinGroupCall";
+	/** The group call to join */
+	input_group_call: Obj.InputGroupCall;
+	/** Parameters to join the call */
+	join_parameters: Obj.GroupCallJoinParameters;
 }) => Obj.GroupCallInfo;
 
 /**
@@ -6049,15 +6040,15 @@ export type JoinGroupCall = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1join_video_chat.html
  */
 export type JoinVideoChat = (args: {
-    '@type': 'joinVideoChat';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Identifier of a group call participant, which will be used to join the call; pass null to join as self; video chats only */
-    participant_id?: Obj.MessageSender;
-    /** Parameters to join the call */
-    join_parameters: Obj.GroupCallJoinParameters;
-    /** Invite hash as received from internalLinkTypeVideoChat */
-    invite_hash: string;
+	"@type": "joinVideoChat";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Identifier of a group call participant, which will be used to join the call; pass null to join as self; video chats only */
+	participant_id?: Obj.MessageSender;
+	/** Parameters to join the call */
+	join_parameters: Obj.GroupCallJoinParameters;
+	/** Invite hash as received from internalLinkTypeVideoChat */
+	invite_hash: string;
 }) => Obj.Text;
 
 /**
@@ -6065,13 +6056,13 @@ export type JoinVideoChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1start_group_call_screen_sharing.html
  */
 export type StartGroupCallScreenSharing = (args: {
-    '@type': 'startGroupCallScreenSharing';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Screen sharing audio channel synchronization source identifier; received from tgcalls */
-    audio_source_id: number;
-    /** Group call join payload; received from tgcalls */
-    payload: string;
+	"@type": "startGroupCallScreenSharing";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Screen sharing audio channel synchronization source identifier; received from tgcalls */
+	audio_source_id: number;
+	/** Group call join payload; received from tgcalls */
+	payload: string;
 }) => Obj.Text;
 
 /**
@@ -6079,11 +6070,11 @@ export type StartGroupCallScreenSharing = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_group_call_screen_sharing_is_paused.html
  */
 export type ToggleGroupCallScreenSharingIsPaused = (args: {
-    '@type': 'toggleGroupCallScreenSharingIsPaused';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Pass true to pause screen sharing; pass false to unpause it */
-    is_paused: boolean;
+	"@type": "toggleGroupCallScreenSharingIsPaused";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Pass true to pause screen sharing; pass false to unpause it */
+	is_paused: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6091,9 +6082,9 @@ export type ToggleGroupCallScreenSharingIsPaused = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1end_group_call_screen_sharing.html
  */
 export type EndGroupCallScreenSharing = (args: {
-    '@type': 'endGroupCallScreenSharing';
-    /** Group call identifier */
-    group_call_id: number;
+	"@type": "endGroupCallScreenSharing";
+	/** Group call identifier */
+	group_call_id: number;
 }) => Obj.Ok;
 
 /**
@@ -6101,11 +6092,11 @@ export type EndGroupCallScreenSharing = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_video_chat_title.html
  */
 export type SetVideoChatTitle = (args: {
-    '@type': 'setVideoChatTitle';
-    /** Group call identifier */
-    group_call_id: number;
-    /** New group call title; 1-64 characters */
-    title: string;
+	"@type": "setVideoChatTitle";
+	/** Group call identifier */
+	group_call_id: number;
+	/** New group call title; 1-64 characters */
+	title: string;
 }) => Obj.Ok;
 
 /**
@@ -6113,11 +6104,11 @@ export type SetVideoChatTitle = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_video_chat_mute_new_participants.html
  */
 export type ToggleVideoChatMuteNewParticipants = (args: {
-    '@type': 'toggleVideoChatMuteNewParticipants';
-    /** Group call identifier */
-    group_call_id: number;
-    /** New value of the mute_new_participants setting */
-    mute_new_participants: boolean;
+	"@type": "toggleVideoChatMuteNewParticipants";
+	/** Group call identifier */
+	group_call_id: number;
+	/** New value of the mute_new_participants setting */
+	mute_new_participants: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6125,13 +6116,13 @@ export type ToggleVideoChatMuteNewParticipants = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_group_call_participant.html
  */
 export type InviteGroupCallParticipant = (args: {
-    '@type': 'inviteGroupCallParticipant';
-    /** Group call identifier */
-    group_call_id: number;
-    /** User identifier */
-    user_id: number;
-    /** Pass true if the group call is a video call */
-    is_video: boolean;
+	"@type": "inviteGroupCallParticipant";
+	/** Group call identifier */
+	group_call_id: number;
+	/** User identifier */
+	user_id: number;
+	/** Pass true if the group call is a video call */
+	is_video: boolean;
 }) => Obj.InviteGroupCallParticipantResult;
 
 /**
@@ -6139,11 +6130,11 @@ export type InviteGroupCallParticipant = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1decline_group_call_invitation.html
  */
 export type DeclineGroupCallInvitation = (args: {
-    '@type': 'declineGroupCallInvitation';
-    /** Identifier of the chat with the message */
-    chat_id: number;
-    /** Identifier of the message of the type messageGroupCall */
-    message_id: number;
+	"@type": "declineGroupCallInvitation";
+	/** Identifier of the chat with the message */
+	chat_id: number;
+	/** Identifier of the message of the type messageGroupCall */
+	message_id: number;
 }) => Obj.Ok;
 
 /**
@@ -6151,11 +6142,11 @@ export type DeclineGroupCallInvitation = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ban_group_call_participants.html
  */
 export type BanGroupCallParticipants = (args: {
-    '@type': 'banGroupCallParticipants';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Identifiers of group call participants to ban; identifiers of unknown users from the update updateGroupCallParticipants can be also passed to the method */
-    user_ids: string[];
+	"@type": "banGroupCallParticipants";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Identifiers of group call participants to ban; identifiers of unknown users from the update updateGroupCallParticipants can be also passed to the method */
+	user_ids: string[];
 }) => Obj.Ok;
 
 /**
@@ -6163,11 +6154,11 @@ export type BanGroupCallParticipants = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_video_chat_participants.html
  */
 export type InviteVideoChatParticipants = (args: {
-    '@type': 'inviteVideoChatParticipants';
-    /** Group call identifier */
-    group_call_id: number;
-    /** User identifiers. At most 10 users can be invited simultaneously */
-    user_ids: number[];
+	"@type": "inviteVideoChatParticipants";
+	/** Group call identifier */
+	group_call_id: number;
+	/** User identifiers. At most 10 users can be invited simultaneously */
+	user_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -6175,11 +6166,11 @@ export type InviteVideoChatParticipants = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_video_chat_invite_link.html
  */
 export type GetVideoChatInviteLink = (args: {
-    '@type': 'getVideoChatInviteLink';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Pass true if the invite link needs to contain an invite hash, passing which to joinVideoChat would allow the invited user to unmute themselves. Requires groupCall.can_be_managed right */
-    can_self_unmute: boolean;
+	"@type": "getVideoChatInviteLink";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Pass true if the invite link needs to contain an invite hash, passing which to joinVideoChat would allow the invited user to unmute themselves. Requires groupCall.can_be_managed right */
+	can_self_unmute: boolean;
 }) => Obj.HttpUrl;
 
 /**
@@ -6187,9 +6178,9 @@ export type GetVideoChatInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1revoke_group_call_invite_link.html
  */
 export type RevokeGroupCallInviteLink = (args: {
-    '@type': 'revokeGroupCallInviteLink';
-    /** Group call identifier */
-    group_call_id: number;
+	"@type": "revokeGroupCallInviteLink";
+	/** Group call identifier */
+	group_call_id: number;
 }) => Obj.Ok;
 
 /**
@@ -6197,15 +6188,15 @@ export type RevokeGroupCallInviteLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1start_group_call_recording.html
  */
 export type StartGroupCallRecording = (args: {
-    '@type': 'startGroupCallRecording';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Group call recording title; 0-64 characters */
-    title: string;
-    /** Pass true to record a video file instead of an audio file */
-    record_video: boolean;
-    /** Pass true to use portrait orientation for video instead of landscape one */
-    use_portrait_orientation: boolean;
+	"@type": "startGroupCallRecording";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Group call recording title; 0-64 characters */
+	title: string;
+	/** Pass true to record a video file instead of an audio file */
+	record_video: boolean;
+	/** Pass true to use portrait orientation for video instead of landscape one */
+	use_portrait_orientation: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6213,9 +6204,9 @@ export type StartGroupCallRecording = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1end_group_call_recording.html
  */
 export type EndGroupCallRecording = (args: {
-    '@type': 'endGroupCallRecording';
-    /** Group call identifier */
-    group_call_id: number;
+	"@type": "endGroupCallRecording";
+	/** Group call identifier */
+	group_call_id: number;
 }) => Obj.Ok;
 
 /**
@@ -6223,11 +6214,11 @@ export type EndGroupCallRecording = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_group_call_is_my_video_paused.html
  */
 export type ToggleGroupCallIsMyVideoPaused = (args: {
-    '@type': 'toggleGroupCallIsMyVideoPaused';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Pass true if the current user's video is paused */
-    is_my_video_paused: boolean;
+	"@type": "toggleGroupCallIsMyVideoPaused";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Pass true if the current user's video is paused */
+	is_my_video_paused: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6235,11 +6226,11 @@ export type ToggleGroupCallIsMyVideoPaused = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_group_call_is_my_video_enabled.html
  */
 export type ToggleGroupCallIsMyVideoEnabled = (args: {
-    '@type': 'toggleGroupCallIsMyVideoEnabled';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Pass true if the current user's video is enabled */
-    is_my_video_enabled: boolean;
+	"@type": "toggleGroupCallIsMyVideoEnabled";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Pass true if the current user's video is enabled */
+	is_my_video_enabled: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6247,13 +6238,13 @@ export type ToggleGroupCallIsMyVideoEnabled = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_group_call_participant_is_speaking.html
  */
 export type SetGroupCallParticipantIsSpeaking = (args: {
-    '@type': 'setGroupCallParticipantIsSpeaking';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Group call participant's synchronization audio source identifier, or 0 for the current user */
-    audio_source: number;
-    /** Pass true if the user is speaking */
-    is_speaking: boolean;
+	"@type": "setGroupCallParticipantIsSpeaking";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Group call participant's synchronization audio source identifier, or 0 for the current user */
+	audio_source: number;
+	/** Pass true if the user is speaking */
+	is_speaking: boolean;
 }) => Obj.MessageSender;
 
 /**
@@ -6261,13 +6252,13 @@ export type SetGroupCallParticipantIsSpeaking = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_group_call_participant_is_muted.html
  */
 export type ToggleGroupCallParticipantIsMuted = (args: {
-    '@type': 'toggleGroupCallParticipantIsMuted';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Participant identifier */
-    participant_id: Obj.MessageSender;
-    /** Pass true to mute the user; pass false to unmute them */
-    is_muted: boolean;
+	"@type": "toggleGroupCallParticipantIsMuted";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Participant identifier */
+	participant_id: Obj.MessageSender;
+	/** Pass true to mute the user; pass false to unmute them */
+	is_muted: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6275,13 +6266,13 @@ export type ToggleGroupCallParticipantIsMuted = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_group_call_participant_volume_level.html
  */
 export type SetGroupCallParticipantVolumeLevel = (args: {
-    '@type': 'setGroupCallParticipantVolumeLevel';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Participant identifier */
-    participant_id: Obj.MessageSender;
-    /** New participant's volume level; 1-20000 in hundreds of percents */
-    volume_level: number;
+	"@type": "setGroupCallParticipantVolumeLevel";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Participant identifier */
+	participant_id: Obj.MessageSender;
+	/** New participant's volume level; 1-20000 in hundreds of percents */
+	volume_level: number;
 }) => Obj.Ok;
 
 /**
@@ -6289,13 +6280,13 @@ export type SetGroupCallParticipantVolumeLevel = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_group_call_participant_is_hand_raised.html
  */
 export type ToggleGroupCallParticipantIsHandRaised = (args: {
-    '@type': 'toggleGroupCallParticipantIsHandRaised';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Participant identifier */
-    participant_id: Obj.MessageSender;
-    /** Pass true if the user's hand needs to be raised. Only self hand can be raised. Requires groupCall.can_be_managed right to lower other's hand */
-    is_hand_raised: boolean;
+	"@type": "toggleGroupCallParticipantIsHandRaised";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Participant identifier */
+	participant_id: Obj.MessageSender;
+	/** Pass true if the user's hand needs to be raised. Only self hand can be raised. Requires groupCall.can_be_managed right to lower other's hand */
+	is_hand_raised: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6303,11 +6294,11 @@ export type ToggleGroupCallParticipantIsHandRaised = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_group_call_participants.html
  */
 export type GetGroupCallParticipants = (args: {
-    '@type': 'getGroupCallParticipants';
-    /** The group call which participants will be returned */
-    input_group_call: Obj.InputGroupCall;
-    /** The maximum number of participants to return; must be positive */
-    limit: number;
+	"@type": "getGroupCallParticipants";
+	/** The group call which participants will be returned */
+	input_group_call: Obj.InputGroupCall;
+	/** The maximum number of participants to return; must be positive */
+	limit: number;
 }) => Obj.GroupCallParticipants;
 
 /**
@@ -6315,11 +6306,11 @@ export type GetGroupCallParticipants = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1load_group_call_participants.html
  */
 export type LoadGroupCallParticipants = (args: {
-    '@type': 'loadGroupCallParticipants';
-    /** Group call identifier. The group call must be previously received through getGroupCall and must be joined or being joined */
-    group_call_id: number;
-    /** The maximum number of participants to load; up to 100 */
-    limit: number;
+	"@type": "loadGroupCallParticipants";
+	/** Group call identifier. The group call must be previously received through getGroupCall and must be joined or being joined */
+	group_call_id: number;
+	/** The maximum number of participants to load; up to 100 */
+	limit: number;
 }) => Obj.Ok;
 
 /**
@@ -6327,9 +6318,9 @@ export type LoadGroupCallParticipants = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1leave_group_call.html
  */
 export type LeaveGroupCall = (args: {
-    '@type': 'leaveGroupCall';
-    /** Group call identifier */
-    group_call_id: number;
+	"@type": "leaveGroupCall";
+	/** Group call identifier */
+	group_call_id: number;
 }) => Obj.Ok;
 
 /**
@@ -6337,9 +6328,9 @@ export type LeaveGroupCall = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1end_group_call.html
  */
 export type EndGroupCall = (args: {
-    '@type': 'endGroupCall';
-    /** Group call identifier */
-    group_call_id: number;
+	"@type": "endGroupCall";
+	/** Group call identifier */
+	group_call_id: number;
 }) => Obj.Ok;
 
 /**
@@ -6347,9 +6338,9 @@ export type EndGroupCall = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_video_chat_streams.html
  */
 export type GetVideoChatStreams = (args: {
-    '@type': 'getVideoChatStreams';
-    /** Group call identifier */
-    group_call_id: number;
+	"@type": "getVideoChatStreams";
+	/** Group call identifier */
+	group_call_id: number;
 }) => Obj.VideoChatStreams;
 
 /**
@@ -6357,17 +6348,17 @@ export type GetVideoChatStreams = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_video_chat_stream_segment.html
  */
 export type GetVideoChatStreamSegment = (args: {
-    '@type': 'getVideoChatStreamSegment';
-    /** Group call identifier */
-    group_call_id: number;
-    /** Point in time when the stream segment begins; Unix timestamp in milliseconds */
-    time_offset: number;
-    /** Segment duration scale; 0-1. Segment's duration is 1000/(2**scale) milliseconds */
-    scale: number;
-    /** Identifier of an audio/video channel to get as received from tgcalls */
-    channel_id: number;
-    /** Video quality as received from tgcalls; pass null to get the worst available quality */
-    video_quality?: Obj.GroupCallVideoQuality;
+	"@type": "getVideoChatStreamSegment";
+	/** Group call identifier */
+	group_call_id: number;
+	/** Point in time when the stream segment begins; Unix timestamp in milliseconds */
+	time_offset: number;
+	/** Segment duration scale; 0-1. Segment's duration is 1000/(2**scale) milliseconds */
+	scale: number;
+	/** Identifier of an audio/video channel to get as received from tgcalls */
+	channel_id: number;
+	/** Video quality as received from tgcalls; pass null to get the worst available quality */
+	video_quality?: Obj.GroupCallVideoQuality;
 }) => Obj.Data;
 
 /**
@@ -6375,15 +6366,15 @@ export type GetVideoChatStreamSegment = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1encrypt_group_call_data.html
  */
 export type EncryptGroupCallData = (args: {
-    '@type': 'encryptGroupCallData';
-    /** Group call identifier. The call must not be a video chat */
-    group_call_id: number;
-    /** Data channel for which data is encrypted */
-    data_channel: Obj.GroupCallDataChannel;
-    /** Data to encrypt */
-    data: string;
-    /** Size of data prefix that must be kept unencrypted */
-    unencrypted_prefix_size: number;
+	"@type": "encryptGroupCallData";
+	/** Group call identifier. The call must not be a video chat */
+	group_call_id: number;
+	/** Data channel for which data is encrypted */
+	data_channel: Obj.GroupCallDataChannel;
+	/** Data to encrypt */
+	data: string;
+	/** Size of data prefix that must be kept unencrypted */
+	unencrypted_prefix_size: number;
 }) => Obj.Data;
 
 /**
@@ -6391,15 +6382,15 @@ export type EncryptGroupCallData = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1decrypt_group_call_data.html
  */
 export type DecryptGroupCallData = (args: {
-    '@type': 'decryptGroupCallData';
-    /** Group call identifier. The call must not be a video chat */
-    group_call_id: number;
-    /** Identifier of the group call participant, which sent the data */
-    participant_id: Obj.MessageSender;
-    /** Data channel for which data was encrypted; pass null if unknown */
-    data_channel?: Obj.GroupCallDataChannel;
-    /** Data to decrypt */
-    data: string;
+	"@type": "decryptGroupCallData";
+	/** Group call identifier. The call must not be a video chat */
+	group_call_id: number;
+	/** Identifier of the group call participant, which sent the data */
+	participant_id: Obj.MessageSender;
+	/** Data channel for which data was encrypted; pass null if unknown */
+	data_channel?: Obj.GroupCallDataChannel;
+	/** Data to decrypt */
+	data: string;
 }) => Obj.Data;
 
 /**
@@ -6407,11 +6398,11 @@ export type DecryptGroupCallData = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_message_sender_block_list.html
  */
 export type SetMessageSenderBlockList = (args: {
-    '@type': 'setMessageSenderBlockList';
-    /** Identifier of a message sender to block/unblock */
-    sender_id: Obj.MessageSender;
-    /** New block list for the message sender; pass null to unblock the message sender */
-    block_list?: Obj.BlockList;
+	"@type": "setMessageSenderBlockList";
+	/** Identifier of a message sender to block/unblock */
+	sender_id: Obj.MessageSender;
+	/** New block list for the message sender; pass null to unblock the message sender */
+	block_list?: Obj.BlockList;
 }) => Obj.Ok;
 
 /**
@@ -6419,15 +6410,15 @@ export type SetMessageSenderBlockList = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1block_message_sender_from_replies.html
  */
 export type BlockMessageSenderFromReplies = (args: {
-    '@type': 'blockMessageSenderFromReplies';
-    /** The identifier of an incoming message in the Replies chat */
-    message_id: number;
-    /** Pass true to delete the message */
-    delete_message: boolean;
-    /** Pass true to delete all messages from the same sender */
-    delete_all_messages: boolean;
-    /** Pass true to report the sender to the Telegram moderators */
-    report_spam: boolean;
+	"@type": "blockMessageSenderFromReplies";
+	/** The identifier of an incoming message in the Replies chat */
+	message_id: number;
+	/** Pass true to delete the message */
+	delete_message: boolean;
+	/** Pass true to delete all messages from the same sender */
+	delete_all_messages: boolean;
+	/** Pass true to report the sender to the Telegram moderators */
+	report_spam: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6435,13 +6426,13 @@ export type BlockMessageSenderFromReplies = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_blocked_message_senders.html
  */
 export type GetBlockedMessageSenders = (args: {
-    '@type': 'getBlockedMessageSenders';
-    /** Block list from which to return users */
-    block_list: Obj.BlockList;
-    /** Number of users and chats to skip in the result; must be non-negative */
-    offset: number;
-    /** The maximum number of users and chats to return; up to 100 */
-    limit: number;
+	"@type": "getBlockedMessageSenders";
+	/** Block list from which to return users */
+	block_list: Obj.BlockList;
+	/** Number of users and chats to skip in the result; must be non-negative */
+	offset: number;
+	/** The maximum number of users and chats to return; up to 100 */
+	limit: number;
 }) => Obj.MessageSenders;
 
 /**
@@ -6449,11 +6440,11 @@ export type GetBlockedMessageSenders = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_contact.html
  */
 export type AddContact = (args: {
-    '@type': 'addContact';
-    /** The contact to add or edit; phone number may be empty and needs to be specified only if known, vCard is ignored */
-    contact: Obj.Contact;
-    /** Pass true to share the current user's phone number with the new contact. A corresponding rule to userPrivacySettingShowPhoneNumber will be added if needed. Use the field userFullInfo.need_phone_number_privacy_exception to check whether the current user needs to be asked to share their phone number */
-    share_phone_number: boolean;
+	"@type": "addContact";
+	/** The contact to add or edit; phone number may be empty and needs to be specified only if known, vCard is ignored */
+	contact: Obj.Contact;
+	/** Pass true to share the current user's phone number with the new contact. A corresponding rule to userPrivacySettingShowPhoneNumber will be added if needed. Use the field userFullInfo.need_phone_number_privacy_exception to check whether the current user needs to be asked to share their phone number */
+	share_phone_number: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6461,29 +6452,27 @@ export type AddContact = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1import_contacts.html
  */
 export type ImportContacts = (args: {
-    '@type': 'importContacts';
-    /** The list of contacts to import or edit; contacts' vCard are ignored and are not imported */
-    contacts: Obj.Contact[];
+	"@type": "importContacts";
+	/** The list of contacts to import or edit; contacts' vCard are ignored and are not imported */
+	contacts: Obj.Contact[];
 }) => Obj.ImportedContacts;
 
 /**
  * Returns all contacts of the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_contacts.html
  */
-export type GetContacts = (args: {
-    '@type': 'getContacts';
-}) => Obj.Users;
+export type GetContacts = (args: { "@type": "getContacts" }) => Obj.Users;
 
 /**
  * Searches for the specified query in the first names, last names and usernames of the known user contacts
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_contacts.html
  */
 export type SearchContacts = (args: {
-    '@type': 'searchContacts';
-    /** Query to search for; may be empty to return all contacts */
-    query?: string;
-    /** The maximum number of users to be returned */
-    limit: number;
+	"@type": "searchContacts";
+	/** Query to search for; may be empty to return all contacts */
+	query?: string;
+	/** The maximum number of users to be returned */
+	limit: number;
 }) => Obj.Users;
 
 /**
@@ -6491,9 +6480,9 @@ export type SearchContacts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_contacts.html
  */
 export type RemoveContacts = (args: {
-    '@type': 'removeContacts';
-    /** Identifiers of users to be deleted */
-    user_ids: number[];
+	"@type": "removeContacts";
+	/** Identifiers of users to be deleted */
+	user_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -6501,7 +6490,7 @@ export type RemoveContacts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_imported_contact_count.html
  */
 export type GetImportedContactCount = (args: {
-    '@type': 'getImportedContactCount';
+	"@type": "getImportedContactCount";
 }) => Obj.Count;
 
 /**
@@ -6509,9 +6498,9 @@ export type GetImportedContactCount = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1change_imported_contacts.html
  */
 export type ChangeImportedContacts = (args: {
-    '@type': 'changeImportedContacts';
-    /** The new list of contacts, contact's vCard are ignored and are not imported */
-    contacts: Obj.Contact[];
+	"@type": "changeImportedContacts";
+	/** The new list of contacts, contact's vCard are ignored and are not imported */
+	contacts: Obj.Contact[];
 }) => Obj.ImportedContacts;
 
 /**
@@ -6519,7 +6508,7 @@ export type ChangeImportedContacts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1clear_imported_contacts.html
  */
 export type ClearImportedContacts = (args: {
-    '@type': 'clearImportedContacts';
+	"@type": "clearImportedContacts";
 }) => Obj.Ok;
 
 /**
@@ -6527,9 +6516,9 @@ export type ClearImportedContacts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_close_friends.html
  */
 export type SetCloseFriends = (args: {
-    '@type': 'setCloseFriends';
-    /** User identifiers of close friends; the users must be contacts of the current user */
-    user_ids: number[];
+	"@type": "setCloseFriends";
+	/** User identifiers of close friends; the users must be contacts of the current user */
+	user_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -6537,7 +6526,7 @@ export type SetCloseFriends = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_close_friends.html
  */
 export type GetCloseFriends = (args: {
-    '@type': 'getCloseFriends';
+	"@type": "getCloseFriends";
 }) => Obj.Users;
 
 /**
@@ -6545,11 +6534,11 @@ export type GetCloseFriends = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_user_personal_profile_photo.html
  */
 export type SetUserPersonalProfilePhoto = (args: {
-    '@type': 'setUserPersonalProfilePhoto';
-    /** User identifier */
-    user_id: number;
-    /** Profile photo to set; pass null to delete the photo; inputChatPhotoPrevious isn't supported in this function */
-    photo?: Obj.InputChatPhoto;
+	"@type": "setUserPersonalProfilePhoto";
+	/** User identifier */
+	user_id: number;
+	/** Profile photo to set; pass null to delete the photo; inputChatPhotoPrevious isn't supported in this function */
+	photo?: Obj.InputChatPhoto;
 }) => Obj.Ok;
 
 /**
@@ -6557,11 +6546,11 @@ export type SetUserPersonalProfilePhoto = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggest_user_profile_photo.html
  */
 export type SuggestUserProfilePhoto = (args: {
-    '@type': 'suggestUserProfilePhoto';
-    /** User identifier */
-    user_id: number;
-    /** Profile photo to suggest; inputChatPhotoPrevious isn't supported in this function */
-    photo: Obj.InputChatPhoto;
+	"@type": "suggestUserProfilePhoto";
+	/** User identifier */
+	user_id: number;
+	/** Profile photo to suggest; inputChatPhotoPrevious isn't supported in this function */
+	photo: Obj.InputChatPhoto;
 }) => Obj.Ok;
 
 /**
@@ -6569,11 +6558,11 @@ export type SuggestUserProfilePhoto = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_bot_can_manage_emoji_status.html
  */
 export type ToggleBotCanManageEmojiStatus = (args: {
-    '@type': 'toggleBotCanManageEmojiStatus';
-    /** User identifier of the bot */
-    bot_user_id: number;
-    /** Pass true if the bot is allowed to change emoji status of the user; pass false otherwise */
-    can_manage_emoji_status: boolean;
+	"@type": "toggleBotCanManageEmojiStatus";
+	/** User identifier of the bot */
+	bot_user_id: number;
+	/** Pass true if the bot is allowed to change emoji status of the user; pass false otherwise */
+	can_manage_emoji_status: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6581,11 +6570,11 @@ export type ToggleBotCanManageEmojiStatus = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_user_emoji_status.html
  */
 export type SetUserEmojiStatus = (args: {
-    '@type': 'setUserEmojiStatus';
-    /** Identifier of the user */
-    user_id: number;
-    /** New emoji status; pass null to switch to the default badge */
-    emoji_status?: Obj.EmojiStatus;
+	"@type": "setUserEmojiStatus";
+	/** Identifier of the user */
+	user_id: number;
+	/** New emoji status; pass null to switch to the default badge */
+	emoji_status?: Obj.EmojiStatus;
 }) => Obj.Ok;
 
 /**
@@ -6593,11 +6582,11 @@ export type SetUserEmojiStatus = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_user_by_phone_number.html
  */
 export type SearchUserByPhoneNumber = (args: {
-    '@type': 'searchUserByPhoneNumber';
-    /** Phone number to search for */
-    phone_number: string;
-    /** Pass true to get only locally available information without sending network requests */
-    only_local: boolean;
+	"@type": "searchUserByPhoneNumber";
+	/** Phone number to search for */
+	phone_number: string;
+	/** Pass true to get only locally available information without sending network requests */
+	only_local: boolean;
 }) => Obj.User;
 
 /**
@@ -6605,9 +6594,9 @@ export type SearchUserByPhoneNumber = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1share_phone_number.html
  */
 export type SharePhoneNumber = (args: {
-    '@type': 'sharePhoneNumber';
-    /** Identifier of the user with whom to share the phone number. The user must be a mutual contact */
-    user_id: number;
+	"@type": "sharePhoneNumber";
+	/** Identifier of the user with whom to share the phone number. The user must be a mutual contact */
+	user_id: number;
 }) => Obj.Ok;
 
 /**
@@ -6615,13 +6604,13 @@ export type SharePhoneNumber = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_user_profile_photos.html
  */
 export type GetUserProfilePhotos = (args: {
-    '@type': 'getUserProfilePhotos';
-    /** User identifier */
-    user_id: number;
-    /** The number of photos to skip; must be non-negative */
-    offset: number;
-    /** The maximum number of photos to be returned; up to 100 */
-    limit: number;
+	"@type": "getUserProfilePhotos";
+	/** User identifier */
+	user_id: number;
+	/** The number of photos to skip; must be non-negative */
+	offset: number;
+	/** The maximum number of photos to be returned; up to 100 */
+	limit: number;
 }) => Obj.ChatPhotos;
 
 /**
@@ -6629,13 +6618,13 @@ export type GetUserProfilePhotos = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_sticker_outline.html
  */
 export type GetStickerOutline = (args: {
-    '@type': 'getStickerOutline';
-    /** File identifier of the sticker */
-    sticker_file_id: number;
-    /** Pass true to get the outline scaled for animated emoji */
-    for_animated_emoji: boolean;
-    /** Pass true to get the outline scaled for clicked animated emoji message */
-    for_clicked_animated_emoji_message: boolean;
+	"@type": "getStickerOutline";
+	/** File identifier of the sticker */
+	sticker_file_id: number;
+	/** Pass true to get the outline scaled for animated emoji */
+	for_animated_emoji: boolean;
+	/** Pass true to get the outline scaled for clicked animated emoji message */
+	for_clicked_animated_emoji_message: boolean;
 }) => Obj.Outline;
 
 /**
@@ -6643,15 +6632,15 @@ export type GetStickerOutline = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_stickers.html
  */
 export type GetStickers = (args: {
-    '@type': 'getStickers';
-    /** Type of the stickers to return */
-    sticker_type: Obj.StickerType;
-    /** Search query; a space-separated list of emojis or a keyword prefix. If empty, returns all known installed stickers */
-    query: string;
-    /** The maximum number of stickers to be returned */
-    limit: number;
-    /** Chat identifier for which to return stickers. Available custom emoji stickers may be different for different chats */
-    chat_id: number;
+	"@type": "getStickers";
+	/** Type of the stickers to return */
+	sticker_type: Obj.StickerType;
+	/** Search query; a space-separated list of emojis or a keyword prefix. If empty, returns all known installed stickers */
+	query: string;
+	/** The maximum number of stickers to be returned */
+	limit: number;
+	/** Chat identifier for which to return stickers. Available custom emoji stickers may be different for different chats */
+	chat_id: number;
 }) => Obj.Stickers;
 
 /**
@@ -6659,15 +6648,15 @@ export type GetStickers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_all_sticker_emojis.html
  */
 export type GetAllStickerEmojis = (args: {
-    '@type': 'getAllStickerEmojis';
-    /** Type of the stickers to search for */
-    sticker_type: Obj.StickerType;
-    /** Search query */
-    query: string;
-    /** Chat identifier for which to find stickers */
-    chat_id: number;
-    /** Pass true if only main emoji for each found sticker must be included in the result */
-    return_only_main_emoji: boolean;
+	"@type": "getAllStickerEmojis";
+	/** Type of the stickers to search for */
+	sticker_type: Obj.StickerType;
+	/** Search query */
+	query: string;
+	/** Chat identifier for which to find stickers */
+	chat_id: number;
+	/** Pass true if only main emoji for each found sticker must be included in the result */
+	return_only_main_emoji: boolean;
 }) => Obj.Emojis;
 
 /**
@@ -6675,19 +6664,19 @@ export type GetAllStickerEmojis = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_stickers.html
  */
 export type SearchStickers = (args: {
-    '@type': 'searchStickers';
-    /** Type of the stickers to return */
-    sticker_type: Obj.StickerType;
-    /** Space-separated list of emojis to search for */
-    emojis: string;
-    /** Query to search for; may be empty to search for emoji only */
-    query?: string;
-    /** List of possible IETF language tags of the user's input language; may be empty if unknown */
-    input_language_codes?: string[];
-    /** The offset from which to return the stickers; must be non-negative */
-    offset: number;
-    /** The maximum number of stickers to be returned; 0-100 */
-    limit: number;
+	"@type": "searchStickers";
+	/** Type of the stickers to return */
+	sticker_type: Obj.StickerType;
+	/** Space-separated list of emojis to search for */
+	emojis: string;
+	/** Query to search for; may be empty to search for emoji only */
+	query?: string;
+	/** List of possible IETF language tags of the user's input language; may be empty if unknown */
+	input_language_codes?: string[];
+	/** The offset from which to return the stickers; must be non-negative */
+	offset: number;
+	/** The maximum number of stickers to be returned; 0-100 */
+	limit: number;
 }) => Obj.Stickers;
 
 /**
@@ -6695,7 +6684,7 @@ export type SearchStickers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_greeting_stickers.html
  */
 export type GetGreetingStickers = (args: {
-    '@type': 'getGreetingStickers';
+	"@type": "getGreetingStickers";
 }) => Obj.Stickers;
 
 /**
@@ -6703,9 +6692,9 @@ export type GetGreetingStickers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_premium_stickers.html
  */
 export type GetPremiumStickers = (args: {
-    '@type': 'getPremiumStickers';
-    /** The maximum number of stickers to be returned; 0-100 */
-    limit: number;
+	"@type": "getPremiumStickers";
+	/** The maximum number of stickers to be returned; 0-100 */
+	limit: number;
 }) => Obj.Stickers;
 
 /**
@@ -6713,9 +6702,9 @@ export type GetPremiumStickers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_installed_sticker_sets.html
  */
 export type GetInstalledStickerSets = (args: {
-    '@type': 'getInstalledStickerSets';
-    /** Type of the sticker sets to return */
-    sticker_type: Obj.StickerType;
+	"@type": "getInstalledStickerSets";
+	/** Type of the sticker sets to return */
+	sticker_type: Obj.StickerType;
 }) => Obj.StickerSets;
 
 /**
@@ -6723,13 +6712,13 @@ export type GetInstalledStickerSets = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_archived_sticker_sets.html
  */
 export type GetArchivedStickerSets = (args: {
-    '@type': 'getArchivedStickerSets';
-    /** Type of the sticker sets to return */
-    sticker_type: Obj.StickerType;
-    /** Identifier of the sticker set from which to return the result; use 0 to get results from the beginning */
-    offset_sticker_set_id: string;
-    /** The maximum number of sticker sets to return; up to 100 */
-    limit: number;
+	"@type": "getArchivedStickerSets";
+	/** Type of the sticker sets to return */
+	sticker_type: Obj.StickerType;
+	/** Identifier of the sticker set from which to return the result; use 0 to get results from the beginning */
+	offset_sticker_set_id: string;
+	/** The maximum number of sticker sets to return; up to 100 */
+	limit: number;
 }) => Obj.StickerSets;
 
 /**
@@ -6737,13 +6726,13 @@ export type GetArchivedStickerSets = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_trending_sticker_sets.html
  */
 export type GetTrendingStickerSets = (args: {
-    '@type': 'getTrendingStickerSets';
-    /** Type of the sticker sets to return */
-    sticker_type: Obj.StickerType;
-    /** The offset from which to return the sticker sets; must be non-negative */
-    offset: number;
-    /** The maximum number of sticker sets to be returned; up to 100. For optimal performance, the number of returned sticker sets is chosen by TDLib and can be smaller than the specified limit, even if the end of the list has not been reached */
-    limit: number;
+	"@type": "getTrendingStickerSets";
+	/** Type of the sticker sets to return */
+	sticker_type: Obj.StickerType;
+	/** The offset from which to return the sticker sets; must be non-negative */
+	offset: number;
+	/** The maximum number of sticker sets to be returned; up to 100. For optimal performance, the number of returned sticker sets is chosen by TDLib and can be smaller than the specified limit, even if the end of the list has not been reached */
+	limit: number;
 }) => Obj.TrendingStickerSets;
 
 /**
@@ -6751,9 +6740,9 @@ export type GetTrendingStickerSets = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_attached_sticker_sets.html
  */
 export type GetAttachedStickerSets = (args: {
-    '@type': 'getAttachedStickerSets';
-    /** File identifier */
-    file_id: number;
+	"@type": "getAttachedStickerSets";
+	/** File identifier */
+	file_id: number;
 }) => Obj.StickerSets;
 
 /**
@@ -6761,9 +6750,9 @@ export type GetAttachedStickerSets = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_sticker_set.html
  */
 export type GetStickerSet = (args: {
-    '@type': 'getStickerSet';
-    /** Identifier of the sticker set */
-    set_id: string;
+	"@type": "getStickerSet";
+	/** Identifier of the sticker set */
+	set_id: string;
 }) => Obj.StickerSet;
 
 /**
@@ -6771,9 +6760,9 @@ export type GetStickerSet = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_sticker_set_name.html
  */
 export type GetStickerSetName = (args: {
-    '@type': 'getStickerSetName';
-    /** Identifier of the sticker set */
-    set_id: string;
+	"@type": "getStickerSetName";
+	/** Identifier of the sticker set */
+	set_id: string;
 }) => Obj.Text;
 
 /**
@@ -6781,11 +6770,11 @@ export type GetStickerSetName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_sticker_set.html
  */
 export type SearchStickerSet = (args: {
-    '@type': 'searchStickerSet';
-    /** Name of the sticker set */
-    name: string;
-    /** Pass true to ignore local cache of sticker sets and always send a network request */
-    ignore_cache: boolean;
+	"@type": "searchStickerSet";
+	/** Name of the sticker set */
+	name: string;
+	/** Pass true to ignore local cache of sticker sets and always send a network request */
+	ignore_cache: boolean;
 }) => Obj.StickerSet;
 
 /**
@@ -6793,13 +6782,13 @@ export type SearchStickerSet = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_installed_sticker_sets.html
  */
 export type SearchInstalledStickerSets = (args: {
-    '@type': 'searchInstalledStickerSets';
-    /** Type of the sticker sets to search for */
-    sticker_type: Obj.StickerType;
-    /** Query to search for */
-    query: string;
-    /** The maximum number of sticker sets to return */
-    limit: number;
+	"@type": "searchInstalledStickerSets";
+	/** Type of the sticker sets to search for */
+	sticker_type: Obj.StickerType;
+	/** Query to search for */
+	query: string;
+	/** The maximum number of sticker sets to return */
+	limit: number;
 }) => Obj.StickerSets;
 
 /**
@@ -6807,11 +6796,11 @@ export type SearchInstalledStickerSets = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_sticker_sets.html
  */
 export type SearchStickerSets = (args: {
-    '@type': 'searchStickerSets';
-    /** Type of the sticker sets to return */
-    sticker_type: Obj.StickerType;
-    /** Query to search for */
-    query: string;
+	"@type": "searchStickerSets";
+	/** Type of the sticker sets to return */
+	sticker_type: Obj.StickerType;
+	/** Query to search for */
+	query: string;
 }) => Obj.StickerSets;
 
 /**
@@ -6819,13 +6808,13 @@ export type SearchStickerSets = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1change_sticker_set.html
  */
 export type ChangeStickerSet = (args: {
-    '@type': 'changeStickerSet';
-    /** Identifier of the sticker set */
-    set_id: string;
-    /** The new value of is_installed */
-    is_installed: boolean;
-    /** The new value of is_archived. A sticker set can't be installed and archived simultaneously */
-    is_archived: boolean;
+	"@type": "changeStickerSet";
+	/** Identifier of the sticker set */
+	set_id: string;
+	/** The new value of is_installed */
+	is_installed: boolean;
+	/** The new value of is_archived. A sticker set can't be installed and archived simultaneously */
+	is_archived: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6833,9 +6822,9 @@ export type ChangeStickerSet = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1view_trending_sticker_sets.html
  */
 export type ViewTrendingStickerSets = (args: {
-    '@type': 'viewTrendingStickerSets';
-    /** Identifiers of viewed trending sticker sets */
-    sticker_set_ids: string[];
+	"@type": "viewTrendingStickerSets";
+	/** Identifiers of viewed trending sticker sets */
+	sticker_set_ids: string[];
 }) => Obj.Ok;
 
 /**
@@ -6843,11 +6832,11 @@ export type ViewTrendingStickerSets = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reorder_installed_sticker_sets.html
  */
 export type ReorderInstalledStickerSets = (args: {
-    '@type': 'reorderInstalledStickerSets';
-    /** Type of the sticker sets to reorder */
-    sticker_type: Obj.StickerType;
-    /** Identifiers of installed sticker sets in the new correct order */
-    sticker_set_ids: string[];
+	"@type": "reorderInstalledStickerSets";
+	/** Type of the sticker sets to reorder */
+	sticker_type: Obj.StickerType;
+	/** Identifiers of installed sticker sets in the new correct order */
+	sticker_set_ids: string[];
 }) => Obj.Ok;
 
 /**
@@ -6855,9 +6844,9 @@ export type ReorderInstalledStickerSets = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_recent_stickers.html
  */
 export type GetRecentStickers = (args: {
-    '@type': 'getRecentStickers';
-    /** Pass true to return stickers and masks that were recently attached to photos or video files; pass false to return recently sent stickers */
-    is_attached: boolean;
+	"@type": "getRecentStickers";
+	/** Pass true to return stickers and masks that were recently attached to photos or video files; pass false to return recently sent stickers */
+	is_attached: boolean;
 }) => Obj.Stickers;
 
 /**
@@ -6865,11 +6854,11 @@ export type GetRecentStickers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_recent_sticker.html
  */
 export type AddRecentSticker = (args: {
-    '@type': 'addRecentSticker';
-    /** Pass true to add the sticker to the list of stickers recently attached to photo or video files; pass false to add the sticker to the list of recently sent stickers */
-    is_attached: boolean;
-    /** Sticker file to add */
-    sticker: Obj.InputFile;
+	"@type": "addRecentSticker";
+	/** Pass true to add the sticker to the list of stickers recently attached to photo or video files; pass false to add the sticker to the list of recently sent stickers */
+	is_attached: boolean;
+	/** Sticker file to add */
+	sticker: Obj.InputFile;
 }) => Obj.Stickers;
 
 /**
@@ -6877,11 +6866,11 @@ export type AddRecentSticker = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_recent_sticker.html
  */
 export type RemoveRecentSticker = (args: {
-    '@type': 'removeRecentSticker';
-    /** Pass true to remove the sticker from the list of stickers recently attached to photo or video files; pass false to remove the sticker from the list of recently sent stickers */
-    is_attached: boolean;
-    /** Sticker file to delete */
-    sticker: Obj.InputFile;
+	"@type": "removeRecentSticker";
+	/** Pass true to remove the sticker from the list of stickers recently attached to photo or video files; pass false to remove the sticker from the list of recently sent stickers */
+	is_attached: boolean;
+	/** Sticker file to delete */
+	sticker: Obj.InputFile;
 }) => Obj.Ok;
 
 /**
@@ -6889,9 +6878,9 @@ export type RemoveRecentSticker = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1clear_recent_stickers.html
  */
 export type ClearRecentStickers = (args: {
-    '@type': 'clearRecentStickers';
-    /** Pass true to clear the list of stickers recently attached to photo or video files; pass false to clear the list of recently sent stickers */
-    is_attached: boolean;
+	"@type": "clearRecentStickers";
+	/** Pass true to clear the list of stickers recently attached to photo or video files; pass false to clear the list of recently sent stickers */
+	is_attached: boolean;
 }) => Obj.Ok;
 
 /**
@@ -6899,7 +6888,7 @@ export type ClearRecentStickers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_favorite_stickers.html
  */
 export type GetFavoriteStickers = (args: {
-    '@type': 'getFavoriteStickers';
+	"@type": "getFavoriteStickers";
 }) => Obj.Stickers;
 
 /**
@@ -6907,9 +6896,9 @@ export type GetFavoriteStickers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_favorite_sticker.html
  */
 export type AddFavoriteSticker = (args: {
-    '@type': 'addFavoriteSticker';
-    /** Sticker file to add */
-    sticker: Obj.InputFile;
+	"@type": "addFavoriteSticker";
+	/** Sticker file to add */
+	sticker: Obj.InputFile;
 }) => Obj.Ok;
 
 /**
@@ -6917,9 +6906,9 @@ export type AddFavoriteSticker = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_favorite_sticker.html
  */
 export type RemoveFavoriteSticker = (args: {
-    '@type': 'removeFavoriteSticker';
-    /** Sticker file to delete from the list */
-    sticker: Obj.InputFile;
+	"@type": "removeFavoriteSticker";
+	/** Sticker file to delete from the list */
+	sticker: Obj.InputFile;
 }) => Obj.Ok;
 
 /**
@@ -6927,9 +6916,9 @@ export type RemoveFavoriteSticker = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_sticker_emojis.html
  */
 export type GetStickerEmojis = (args: {
-    '@type': 'getStickerEmojis';
-    /** Sticker file identifier */
-    sticker: Obj.InputFile;
+	"@type": "getStickerEmojis";
+	/** Sticker file identifier */
+	sticker: Obj.InputFile;
 }) => Obj.Emojis;
 
 /**
@@ -6937,11 +6926,11 @@ export type GetStickerEmojis = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_emojis.html
  */
 export type SearchEmojis = (args: {
-    '@type': 'searchEmojis';
-    /** Text to search for */
-    text: string;
-    /** List of possible IETF language tags of the user's input language; may be empty if unknown */
-    input_language_codes?: string[];
+	"@type": "searchEmojis";
+	/** Text to search for */
+	text: string;
+	/** List of possible IETF language tags of the user's input language; may be empty if unknown */
+	input_language_codes?: string[];
 }) => Obj.EmojiKeywords;
 
 /**
@@ -6949,11 +6938,11 @@ export type SearchEmojis = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_keyword_emojis.html
  */
 export type GetKeywordEmojis = (args: {
-    '@type': 'getKeywordEmojis';
-    /** Text to search for */
-    text: string;
-    /** List of possible IETF language tags of the user's input language; may be empty if unknown */
-    input_language_codes?: string[];
+	"@type": "getKeywordEmojis";
+	/** Text to search for */
+	text: string;
+	/** List of possible IETF language tags of the user's input language; may be empty if unknown */
+	input_language_codes?: string[];
 }) => Obj.Emojis;
 
 /**
@@ -6961,9 +6950,9 @@ export type GetKeywordEmojis = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_emoji_categories.html
  */
 export type GetEmojiCategories = (args: {
-    '@type': 'getEmojiCategories';
-    /** Type of emoji categories to return; pass null to get default emoji categories */
-    type?: Obj.EmojiCategoryType;
+	"@type": "getEmojiCategories";
+	/** Type of emoji categories to return; pass null to get default emoji categories */
+	type?: Obj.EmojiCategoryType;
 }) => Obj.EmojiCategories;
 
 /**
@@ -6971,9 +6960,9 @@ export type GetEmojiCategories = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_animated_emoji.html
  */
 export type GetAnimatedEmoji = (args: {
-    '@type': 'getAnimatedEmoji';
-    /** The emoji */
-    emoji: string;
+	"@type": "getAnimatedEmoji";
+	/** The emoji */
+	emoji: string;
 }) => Obj.AnimatedEmoji;
 
 /**
@@ -6981,9 +6970,9 @@ export type GetAnimatedEmoji = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_emoji_suggestions_url.html
  */
 export type GetEmojiSuggestionsUrl = (args: {
-    '@type': 'getEmojiSuggestionsUrl';
-    /** Language code for which the emoji replacements will be suggested */
-    language_code: string;
+	"@type": "getEmojiSuggestionsUrl";
+	/** Language code for which the emoji replacements will be suggested */
+	language_code: string;
 }) => Obj.HttpUrl;
 
 /**
@@ -6991,9 +6980,9 @@ export type GetEmojiSuggestionsUrl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_custom_emoji_stickers.html
  */
 export type GetCustomEmojiStickers = (args: {
-    '@type': 'getCustomEmojiStickers';
-    /** Identifiers of custom emoji stickers. At most 200 custom emoji stickers can be received simultaneously */
-    custom_emoji_ids: string[];
+	"@type": "getCustomEmojiStickers";
+	/** Identifiers of custom emoji stickers. At most 200 custom emoji stickers can be received simultaneously */
+	custom_emoji_ids: string[];
 }) => Obj.Stickers;
 
 /**
@@ -7001,7 +6990,7 @@ export type GetCustomEmojiStickers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_default_chat_photo_custom_emoji_stickers.html
  */
 export type GetDefaultChatPhotoCustomEmojiStickers = (args: {
-    '@type': 'getDefaultChatPhotoCustomEmojiStickers';
+	"@type": "getDefaultChatPhotoCustomEmojiStickers";
 }) => Obj.Stickers;
 
 /**
@@ -7009,7 +6998,7 @@ export type GetDefaultChatPhotoCustomEmojiStickers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_default_profile_photo_custom_emoji_stickers.html
  */
 export type GetDefaultProfilePhotoCustomEmojiStickers = (args: {
-    '@type': 'getDefaultProfilePhotoCustomEmojiStickers';
+	"@type": "getDefaultProfilePhotoCustomEmojiStickers";
 }) => Obj.Stickers;
 
 /**
@@ -7017,7 +7006,7 @@ export type GetDefaultProfilePhotoCustomEmojiStickers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_default_background_custom_emoji_stickers.html
  */
 export type GetDefaultBackgroundCustomEmojiStickers = (args: {
-    '@type': 'getDefaultBackgroundCustomEmojiStickers';
+	"@type": "getDefaultBackgroundCustomEmojiStickers";
 }) => Obj.Stickers;
 
 /**
@@ -7025,7 +7014,7 @@ export type GetDefaultBackgroundCustomEmojiStickers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_saved_animations.html
  */
 export type GetSavedAnimations = (args: {
-    '@type': 'getSavedAnimations';
+	"@type": "getSavedAnimations";
 }) => Obj.Animations;
 
 /**
@@ -7033,9 +7022,9 @@ export type GetSavedAnimations = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_saved_animation.html
  */
 export type AddSavedAnimation = (args: {
-    '@type': 'addSavedAnimation';
-    /** The animation file to be added. Only animations known to the server (i.e., successfully sent via a message) can be added to the list */
-    animation: Obj.InputFile;
+	"@type": "addSavedAnimation";
+	/** The animation file to be added. Only animations known to the server (i.e., successfully sent via a message) can be added to the list */
+	animation: Obj.InputFile;
 }) => Obj.Ok;
 
 /**
@@ -7043,9 +7032,9 @@ export type AddSavedAnimation = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_saved_animation.html
  */
 export type RemoveSavedAnimation = (args: {
-    '@type': 'removeSavedAnimation';
-    /** Animation file to be removed */
-    animation: Obj.InputFile;
+	"@type": "removeSavedAnimation";
+	/** Animation file to be removed */
+	animation: Obj.InputFile;
 }) => Obj.Ok;
 
 /**
@@ -7053,27 +7042,25 @@ export type RemoveSavedAnimation = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_recent_inline_bots.html
  */
 export type GetRecentInlineBots = (args: {
-    '@type': 'getRecentInlineBots';
+	"@type": "getRecentInlineBots";
 }) => Obj.Users;
 
 /**
  * Returns the list of bots owned by the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_owned_bots.html
  */
-export type GetOwnedBots = (args: {
-    '@type': 'getOwnedBots';
-}) => Obj.Users;
+export type GetOwnedBots = (args: { "@type": "getOwnedBots" }) => Obj.Users;
 
 /**
  * Searches for recently used hashtags by their prefix
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_hashtags.html
  */
 export type SearchHashtags = (args: {
-    '@type': 'searchHashtags';
-    /** Hashtag prefix to search for */
-    prefix: string;
-    /** The maximum number of hashtags to be returned */
-    limit: number;
+	"@type": "searchHashtags";
+	/** Hashtag prefix to search for */
+	prefix: string;
+	/** The maximum number of hashtags to be returned */
+	limit: number;
 }) => Obj.Hashtags;
 
 /**
@@ -7081,9 +7068,9 @@ export type SearchHashtags = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_recent_hashtag.html
  */
 export type RemoveRecentHashtag = (args: {
-    '@type': 'removeRecentHashtag';
-    /** Hashtag to delete */
-    hashtag: string;
+	"@type": "removeRecentHashtag";
+	/** Hashtag to delete */
+	hashtag: string;
 }) => Obj.Ok;
 
 /**
@@ -7091,11 +7078,11 @@ export type RemoveRecentHashtag = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_link_preview.html
  */
 export type GetLinkPreview = (args: {
-    '@type': 'getLinkPreview';
-    /** Message text with formatting */
-    text: Obj.FormattedText;
-    /** Options to be used for generation of the link preview; pass null to use default link preview options */
-    link_preview_options?: Obj.LinkPreviewOptions;
+	"@type": "getLinkPreview";
+	/** Message text with formatting */
+	text: Obj.FormattedText;
+	/** Options to be used for generation of the link preview; pass null to use default link preview options */
+	link_preview_options?: Obj.LinkPreviewOptions;
 }) => Obj.LinkPreview;
 
 /**
@@ -7103,11 +7090,11 @@ export type GetLinkPreview = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_web_page_instant_view.html
  */
 export type GetWebPageInstantView = (args: {
-    '@type': 'getWebPageInstantView';
-    /** The web page URL */
-    url: string;
-    /** Pass true to get only locally available information without sending network requests */
-    only_local: boolean;
+	"@type": "getWebPageInstantView";
+	/** The web page URL */
+	url: string;
+	/** Pass true to get only locally available information without sending network requests */
+	only_local: boolean;
 }) => Obj.WebPageInstantView;
 
 /**
@@ -7115,11 +7102,11 @@ export type GetWebPageInstantView = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_profile_photo.html
  */
 export type SetProfilePhoto = (args: {
-    '@type': 'setProfilePhoto';
-    /** Profile photo to set */
-    photo: Obj.InputChatPhoto;
-    /** Pass true to set the public photo, which will be visible even the main photo is hidden by privacy settings */
-    is_public: boolean;
+	"@type": "setProfilePhoto";
+	/** Profile photo to set */
+	photo: Obj.InputChatPhoto;
+	/** Pass true to set the public photo, which will be visible even the main photo is hidden by privacy settings */
+	is_public: boolean;
 }) => Obj.Ok;
 
 /**
@@ -7127,9 +7114,9 @@ export type SetProfilePhoto = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_profile_photo.html
  */
 export type DeleteProfilePhoto = (args: {
-    '@type': 'deleteProfilePhoto';
-    /** Identifier of the profile photo to delete */
-    profile_photo_id: string;
+	"@type": "deleteProfilePhoto";
+	/** Identifier of the profile photo to delete */
+	profile_photo_id: string;
 }) => Obj.Ok;
 
 /**
@@ -7137,11 +7124,11 @@ export type DeleteProfilePhoto = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_accent_color.html
  */
 export type SetAccentColor = (args: {
-    '@type': 'setAccentColor';
-    /** Identifier of the accent color to use */
-    accent_color_id: number;
-    /** Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none */
-    background_custom_emoji_id: string;
+	"@type": "setAccentColor";
+	/** Identifier of the accent color to use */
+	accent_color_id: number;
+	/** Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none */
+	background_custom_emoji_id: string;
 }) => Obj.Ok;
 
 /**
@@ -7149,11 +7136,11 @@ export type SetAccentColor = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_profile_accent_color.html
  */
 export type SetProfileAccentColor = (args: {
-    '@type': 'setProfileAccentColor';
-    /** Identifier of the accent color to use for profile; pass -1 if none */
-    profile_accent_color_id: number;
-    /** Identifier of a custom emoji to be shown on the user's profile photo background; 0 if none */
-    profile_background_custom_emoji_id: string;
+	"@type": "setProfileAccentColor";
+	/** Identifier of the accent color to use for profile; pass -1 if none */
+	profile_accent_color_id: number;
+	/** Identifier of a custom emoji to be shown on the user's profile photo background; 0 if none */
+	profile_background_custom_emoji_id: string;
 }) => Obj.Ok;
 
 /**
@@ -7161,11 +7148,11 @@ export type SetProfileAccentColor = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_name.html
  */
 export type SetName = (args: {
-    '@type': 'setName';
-    /** The new value of the first name for the current user; 1-64 characters */
-    first_name: string;
-    /** The new value of the optional last name for the current user; 0-64 characters */
-    last_name: string;
+	"@type": "setName";
+	/** The new value of the first name for the current user; 1-64 characters */
+	first_name: string;
+	/** The new value of the optional last name for the current user; 0-64 characters */
+	last_name: string;
 }) => Obj.Ok;
 
 /**
@@ -7173,9 +7160,9 @@ export type SetName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_bio.html
  */
 export type SetBio = (args: {
-    '@type': 'setBio';
-    /** The new value of the user bio; 0-getOption("bio_length_max") characters without line feeds */
-    bio: string;
+	"@type": "setBio";
+	/** The new value of the user bio; 0-getOption("bio_length_max") characters without line feeds */
+	bio: string;
 }) => Obj.Ok;
 
 /**
@@ -7183,9 +7170,9 @@ export type SetBio = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_username.html
  */
 export type SetUsername = (args: {
-    '@type': 'setUsername';
-    /** The new value of the username. Use an empty string to remove the username. The username can't be completely removed if there is another active or disabled username */
-    username: string;
+	"@type": "setUsername";
+	/** The new value of the username. Use an empty string to remove the username. The username can't be completely removed if there is another active or disabled username */
+	username: string;
 }) => Obj.Ok;
 
 /**
@@ -7193,11 +7180,11 @@ export type SetUsername = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_username_is_active.html
  */
 export type ToggleUsernameIsActive = (args: {
-    '@type': 'toggleUsernameIsActive';
-    /** The username to change */
-    username: string;
-    /** Pass true to activate the username; pass false to disable it */
-    is_active: boolean;
+	"@type": "toggleUsernameIsActive";
+	/** The username to change */
+	username: string;
+	/** Pass true to activate the username; pass false to disable it */
+	is_active: boolean;
 }) => Obj.Ok;
 
 /**
@@ -7205,9 +7192,9 @@ export type ToggleUsernameIsActive = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reorder_active_usernames.html
  */
 export type ReorderActiveUsernames = (args: {
-    '@type': 'reorderActiveUsernames';
-    /** The new order of active usernames. All currently active usernames must be specified */
-    usernames: string[];
+	"@type": "reorderActiveUsernames";
+	/** The new order of active usernames. All currently active usernames must be specified */
+	usernames: string[];
 }) => Obj.Ok;
 
 /**
@@ -7215,9 +7202,9 @@ export type ReorderActiveUsernames = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_birthdate.html
  */
 export type SetBirthdate = (args: {
-    '@type': 'setBirthdate';
-    /** The new value of the current user's birthdate; pass null to remove the birthdate */
-    birthdate?: Obj.Birthdate;
+	"@type": "setBirthdate";
+	/** The new value of the current user's birthdate; pass null to remove the birthdate */
+	birthdate?: Obj.Birthdate;
 }) => Obj.Ok;
 
 /**
@@ -7225,9 +7212,9 @@ export type SetBirthdate = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_personal_chat.html
  */
 export type SetPersonalChat = (args: {
-    '@type': 'setPersonalChat';
-    /** Identifier of the new personal chat; pass 0 to remove the chat. Use getSuitablePersonalChats to get suitable chats */
-    chat_id: number;
+	"@type": "setPersonalChat";
+	/** Identifier of the new personal chat; pass 0 to remove the chat. Use getSuitablePersonalChats to get suitable chats */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -7235,9 +7222,9 @@ export type SetPersonalChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_emoji_status.html
  */
 export type SetEmojiStatus = (args: {
-    '@type': 'setEmojiStatus';
-    /** New emoji status; pass null to switch to the default badge */
-    emoji_status?: Obj.EmojiStatus;
+	"@type": "setEmojiStatus";
+	/** New emoji status; pass null to switch to the default badge */
+	emoji_status?: Obj.EmojiStatus;
 }) => Obj.Ok;
 
 /**
@@ -7245,9 +7232,9 @@ export type SetEmojiStatus = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_has_sponsored_messages_enabled.html
  */
 export type ToggleHasSponsoredMessagesEnabled = (args: {
-    '@type': 'toggleHasSponsoredMessagesEnabled';
-    /** Pass true to enable sponsored messages for the current user; false to disable them */
-    has_sponsored_messages_enabled: boolean;
+	"@type": "toggleHasSponsoredMessagesEnabled";
+	/** Pass true to enable sponsored messages for the current user; false to disable them */
+	has_sponsored_messages_enabled: boolean;
 }) => Obj.Ok;
 
 /**
@@ -7255,9 +7242,9 @@ export type ToggleHasSponsoredMessagesEnabled = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_location.html
  */
 export type SetBusinessLocation = (args: {
-    '@type': 'setBusinessLocation';
-    /** The new location of the business; pass null to remove the location */
-    location?: Obj.BusinessLocation;
+	"@type": "setBusinessLocation";
+	/** The new location of the business; pass null to remove the location */
+	location?: Obj.BusinessLocation;
 }) => Obj.Ok;
 
 /**
@@ -7265,9 +7252,9 @@ export type SetBusinessLocation = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_opening_hours.html
  */
 export type SetBusinessOpeningHours = (args: {
-    '@type': 'setBusinessOpeningHours';
-    /** The new opening hours of the business; pass null to remove the opening hours; up to 28 time intervals can be specified */
-    opening_hours?: Obj.BusinessOpeningHours;
+	"@type": "setBusinessOpeningHours";
+	/** The new opening hours of the business; pass null to remove the opening hours; up to 28 time intervals can be specified */
+	opening_hours?: Obj.BusinessOpeningHours;
 }) => Obj.Ok;
 
 /**
@@ -7275,9 +7262,9 @@ export type SetBusinessOpeningHours = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_greeting_message_settings.html
  */
 export type SetBusinessGreetingMessageSettings = (args: {
-    '@type': 'setBusinessGreetingMessageSettings';
-    /** The new settings for the greeting message of the business; pass null to disable the greeting message */
-    greeting_message_settings?: Obj.BusinessGreetingMessageSettings;
+	"@type": "setBusinessGreetingMessageSettings";
+	/** The new settings for the greeting message of the business; pass null to disable the greeting message */
+	greeting_message_settings?: Obj.BusinessGreetingMessageSettings;
 }) => Obj.Ok;
 
 /**
@@ -7285,9 +7272,9 @@ export type SetBusinessGreetingMessageSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_away_message_settings.html
  */
 export type SetBusinessAwayMessageSettings = (args: {
-    '@type': 'setBusinessAwayMessageSettings';
-    /** The new settings for the away message of the business; pass null to disable the away message */
-    away_message_settings?: Obj.BusinessAwayMessageSettings;
+	"@type": "setBusinessAwayMessageSettings";
+	/** The new settings for the away message of the business; pass null to disable the away message */
+	away_message_settings?: Obj.BusinessAwayMessageSettings;
 }) => Obj.Ok;
 
 /**
@@ -7295,9 +7282,9 @@ export type SetBusinessAwayMessageSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_start_page.html
  */
 export type SetBusinessStartPage = (args: {
-    '@type': 'setBusinessStartPage';
-    /** The new start page of the business; pass null to remove custom start page */
-    start_page?: Obj.InputBusinessStartPage;
+	"@type": "setBusinessStartPage";
+	/** The new start page of the business; pass null to remove custom start page */
+	start_page?: Obj.InputBusinessStartPage;
 }) => Obj.Ok;
 
 /**
@@ -7305,13 +7292,13 @@ export type SetBusinessStartPage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_phone_number_code.html
  */
 export type SendPhoneNumberCode = (args: {
-    '@type': 'sendPhoneNumberCode';
-    /** The phone number, in international format */
-    phone_number: string;
-    /** Settings for the authentication of the user's phone number; pass null to use default settings */
-    settings?: Obj.PhoneNumberAuthenticationSettings;
-    /** Type of the request for which the code is sent */
-    type: Obj.PhoneNumberCodeType;
+	"@type": "sendPhoneNumberCode";
+	/** The phone number, in international format */
+	phone_number: string;
+	/** Settings for the authentication of the user's phone number; pass null to use default settings */
+	settings?: Obj.PhoneNumberAuthenticationSettings;
+	/** Type of the request for which the code is sent */
+	type: Obj.PhoneNumberCodeType;
 }) => Obj.AuthenticationCodeInfo;
 
 /**
@@ -7319,9 +7306,9 @@ export type SendPhoneNumberCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_phone_number_firebase_sms.html
  */
 export type SendPhoneNumberFirebaseSms = (args: {
-    '@type': 'sendPhoneNumberFirebaseSms';
-    /** Play Integrity API or SafetyNet Attestation API token for the Android application, or secret from push notification for the iOS application */
-    token: string;
+	"@type": "sendPhoneNumberFirebaseSms";
+	/** Play Integrity API or SafetyNet Attestation API token for the Android application, or secret from push notification for the iOS application */
+	token: string;
 }) => Obj.Ok;
 
 /**
@@ -7329,9 +7316,9 @@ export type SendPhoneNumberFirebaseSms = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_phone_number_code_missing.html
  */
 export type ReportPhoneNumberCodeMissing = (args: {
-    '@type': 'reportPhoneNumberCodeMissing';
-    /** Current mobile network code */
-    mobile_network_code: string;
+	"@type": "reportPhoneNumberCodeMissing";
+	/** Current mobile network code */
+	mobile_network_code: string;
 }) => Obj.Ok;
 
 /**
@@ -7339,9 +7326,9 @@ export type ReportPhoneNumberCodeMissing = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1resend_phone_number_code.html
  */
 export type ResendPhoneNumberCode = (args: {
-    '@type': 'resendPhoneNumberCode';
-    /** Reason of code resending; pass null if unknown */
-    reason?: Obj.ResendCodeReason;
+	"@type": "resendPhoneNumberCode";
+	/** Reason of code resending; pass null if unknown */
+	reason?: Obj.ResendCodeReason;
 }) => Obj.AuthenticationCodeInfo;
 
 /**
@@ -7349,9 +7336,9 @@ export type ResendPhoneNumberCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_phone_number_code.html
  */
 export type CheckPhoneNumberCode = (args: {
-    '@type': 'checkPhoneNumberCode';
-    /** Authentication code to check */
-    code: string;
+	"@type": "checkPhoneNumberCode";
+	/** Authentication code to check */
+	code: string;
 }) => Obj.Ok;
 
 /**
@@ -7359,7 +7346,7 @@ export type CheckPhoneNumberCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_business_connected_bot.html
  */
 export type GetBusinessConnectedBot = (args: {
-    '@type': 'getBusinessConnectedBot';
+	"@type": "getBusinessConnectedBot";
 }) => Obj.BusinessConnectedBot;
 
 /**
@@ -7367,9 +7354,9 @@ export type GetBusinessConnectedBot = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_business_connected_bot.html
  */
 export type SetBusinessConnectedBot = (args: {
-    '@type': 'setBusinessConnectedBot';
-    /** Connection settings for the bot */
-    bot: Obj.BusinessConnectedBot;
+	"@type": "setBusinessConnectedBot";
+	/** Connection settings for the bot */
+	bot: Obj.BusinessConnectedBot;
 }) => Obj.Ok;
 
 /**
@@ -7377,9 +7364,9 @@ export type SetBusinessConnectedBot = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_business_connected_bot.html
  */
 export type DeleteBusinessConnectedBot = (args: {
-    '@type': 'deleteBusinessConnectedBot';
-    /** Unique user identifier for the bot */
-    bot_user_id: number;
+	"@type": "deleteBusinessConnectedBot";
+	/** Unique user identifier for the bot */
+	bot_user_id: number;
 }) => Obj.Ok;
 
 /**
@@ -7387,11 +7374,11 @@ export type DeleteBusinessConnectedBot = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_business_connected_bot_chat_is_paused.html
  */
 export type ToggleBusinessConnectedBotChatIsPaused = (args: {
-    '@type': 'toggleBusinessConnectedBotChatIsPaused';
-    /** Chat identifier */
-    chat_id: number;
-    /** Pass true to pause the connected bot in the chat; pass false to resume the bot */
-    is_paused: boolean;
+	"@type": "toggleBusinessConnectedBotChatIsPaused";
+	/** Chat identifier */
+	chat_id: number;
+	/** Pass true to pause the connected bot in the chat; pass false to resume the bot */
+	is_paused: boolean;
 }) => Obj.Ok;
 
 /**
@@ -7399,9 +7386,9 @@ export type ToggleBusinessConnectedBotChatIsPaused = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_business_connected_bot_from_chat.html
  */
 export type RemoveBusinessConnectedBotFromChat = (args: {
-    '@type': 'removeBusinessConnectedBotFromChat';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "removeBusinessConnectedBotFromChat";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -7409,7 +7396,7 @@ export type RemoveBusinessConnectedBotFromChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_business_chat_links.html
  */
 export type GetBusinessChatLinks = (args: {
-    '@type': 'getBusinessChatLinks';
+	"@type": "getBusinessChatLinks";
 }) => Obj.BusinessChatLinks;
 
 /**
@@ -7417,9 +7404,9 @@ export type GetBusinessChatLinks = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_business_chat_link.html
  */
 export type CreateBusinessChatLink = (args: {
-    '@type': 'createBusinessChatLink';
-    /** Information about the link to create */
-    link_info: Obj.InputBusinessChatLink;
+	"@type": "createBusinessChatLink";
+	/** Information about the link to create */
+	link_info: Obj.InputBusinessChatLink;
 }) => Obj.BusinessChatLink;
 
 /**
@@ -7427,11 +7414,11 @@ export type CreateBusinessChatLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_business_chat_link.html
  */
 export type EditBusinessChatLink = (args: {
-    '@type': 'editBusinessChatLink';
-    /** The link to edit */
-    link: string;
-    /** New description of the link */
-    link_info: Obj.InputBusinessChatLink;
+	"@type": "editBusinessChatLink";
+	/** The link to edit */
+	link: string;
+	/** New description of the link */
+	link_info: Obj.InputBusinessChatLink;
 }) => Obj.BusinessChatLink;
 
 /**
@@ -7439,9 +7426,9 @@ export type EditBusinessChatLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_business_chat_link.html
  */
 export type DeleteBusinessChatLink = (args: {
-    '@type': 'deleteBusinessChatLink';
-    /** The link to delete */
-    link: string;
+	"@type": "deleteBusinessChatLink";
+	/** The link to delete */
+	link: string;
 }) => Obj.Ok;
 
 /**
@@ -7449,27 +7436,25 @@ export type DeleteBusinessChatLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_business_chat_link_info.html
  */
 export type GetBusinessChatLinkInfo = (args: {
-    '@type': 'getBusinessChatLinkInfo';
-    /** Name of the link */
-    link_name: string;
+	"@type": "getBusinessChatLinkInfo";
+	/** Name of the link */
+	link_name: string;
 }) => Obj.BusinessChatLinkInfo;
 
 /**
  * Returns an HTTPS link, which can be used to get information about the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_user_link.html
  */
-export type GetUserLink = (args: {
-    '@type': 'getUserLink';
-}) => Obj.UserLink;
+export type GetUserLink = (args: { "@type": "getUserLink" }) => Obj.UserLink;
 
 /**
  * Searches a user by a token from the user's link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_user_by_token.html
  */
 export type SearchUserByToken = (args: {
-    '@type': 'searchUserByToken';
-    /** Token to search for */
-    token: string;
+	"@type": "searchUserByToken";
+	/** Token to search for */
+	token: string;
 }) => Obj.User;
 
 /**
@@ -7477,13 +7462,13 @@ export type SearchUserByToken = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_commands.html
  */
 export type SetCommands = (args: {
-    '@type': 'setCommands';
-    /** The scope to which the commands are relevant; pass null to change commands in the default bot command scope */
-    scope?: Obj.BotCommandScope;
-    /** A two-letter ISO 639-1 language code. If empty, the commands will be applied to all users from the given scope, for which language there are no dedicated commands */
-    language_code: string;
-    /** List of the bot's commands */
-    commands: Obj.BotCommand[];
+	"@type": "setCommands";
+	/** The scope to which the commands are relevant; pass null to change commands in the default bot command scope */
+	scope?: Obj.BotCommandScope;
+	/** A two-letter ISO 639-1 language code. If empty, the commands will be applied to all users from the given scope, for which language there are no dedicated commands */
+	language_code: string;
+	/** List of the bot's commands */
+	commands: Obj.BotCommand[];
 }) => Obj.Ok;
 
 /**
@@ -7491,11 +7476,11 @@ export type SetCommands = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_commands.html
  */
 export type DeleteCommands = (args: {
-    '@type': 'deleteCommands';
-    /** The scope to which the commands are relevant; pass null to delete commands in the default bot command scope */
-    scope?: Obj.BotCommandScope;
-    /** A two-letter ISO 639-1 language code or an empty string */
-    language_code: string;
+	"@type": "deleteCommands";
+	/** The scope to which the commands are relevant; pass null to delete commands in the default bot command scope */
+	scope?: Obj.BotCommandScope;
+	/** A two-letter ISO 639-1 language code or an empty string */
+	language_code: string;
 }) => Obj.Ok;
 
 /**
@@ -7503,11 +7488,11 @@ export type DeleteCommands = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_commands.html
  */
 export type GetCommands = (args: {
-    '@type': 'getCommands';
-    /** The scope to which the commands are relevant; pass null to get commands in the default bot command scope */
-    scope?: Obj.BotCommandScope;
-    /** A two-letter ISO 639-1 language code or an empty string */
-    language_code: string;
+	"@type": "getCommands";
+	/** The scope to which the commands are relevant; pass null to get commands in the default bot command scope */
+	scope?: Obj.BotCommandScope;
+	/** A two-letter ISO 639-1 language code or an empty string */
+	language_code: string;
 }) => Obj.BotCommands;
 
 /**
@@ -7515,11 +7500,11 @@ export type GetCommands = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_menu_button.html
  */
 export type SetMenuButton = (args: {
-    '@type': 'setMenuButton';
-    /** Identifier of the user or 0 to set menu button for all users */
-    user_id: number;
-    /** New menu button */
-    menu_button: Obj.BotMenuButton;
+	"@type": "setMenuButton";
+	/** Identifier of the user or 0 to set menu button for all users */
+	user_id: number;
+	/** New menu button */
+	menu_button: Obj.BotMenuButton;
 }) => Obj.Ok;
 
 /**
@@ -7527,9 +7512,9 @@ export type SetMenuButton = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_menu_button.html
  */
 export type GetMenuButton = (args: {
-    '@type': 'getMenuButton';
-    /** Identifier of the user or 0 to get the default menu button */
-    user_id: number;
+	"@type": "getMenuButton";
+	/** Identifier of the user or 0 to get the default menu button */
+	user_id: number;
 }) => Obj.BotMenuButton;
 
 /**
@@ -7537,9 +7522,9 @@ export type GetMenuButton = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_default_group_administrator_rights.html
  */
 export type SetDefaultGroupAdministratorRights = (args: {
-    '@type': 'setDefaultGroupAdministratorRights';
-    /** Default administrator rights for adding the bot to basic group and supergroup chats; pass null to remove default rights */
-    default_group_administrator_rights?: Obj.ChatAdministratorRights;
+	"@type": "setDefaultGroupAdministratorRights";
+	/** Default administrator rights for adding the bot to basic group and supergroup chats; pass null to remove default rights */
+	default_group_administrator_rights?: Obj.ChatAdministratorRights;
 }) => Obj.Ok;
 
 /**
@@ -7547,9 +7532,9 @@ export type SetDefaultGroupAdministratorRights = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_default_channel_administrator_rights.html
  */
 export type SetDefaultChannelAdministratorRights = (args: {
-    '@type': 'setDefaultChannelAdministratorRights';
-    /** Default administrator rights for adding the bot to channels; pass null to remove default rights */
-    default_channel_administrator_rights?: Obj.ChatAdministratorRights;
+	"@type": "setDefaultChannelAdministratorRights";
+	/** Default administrator rights for adding the bot to channels; pass null to remove default rights */
+	default_channel_administrator_rights?: Obj.ChatAdministratorRights;
 }) => Obj.Ok;
 
 /**
@@ -7557,9 +7542,9 @@ export type SetDefaultChannelAdministratorRights = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_bot_send_messages.html
  */
 export type CanBotSendMessages = (args: {
-    '@type': 'canBotSendMessages';
-    /** Identifier of the target bot */
-    bot_user_id: number;
+	"@type": "canBotSendMessages";
+	/** Identifier of the target bot */
+	bot_user_id: number;
 }) => Obj.Ok;
 
 /**
@@ -7567,9 +7552,9 @@ export type CanBotSendMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1allow_bot_to_send_messages.html
  */
 export type AllowBotToSendMessages = (args: {
-    '@type': 'allowBotToSendMessages';
-    /** Identifier of the target bot */
-    bot_user_id: number;
+	"@type": "allowBotToSendMessages";
+	/** Identifier of the target bot */
+	bot_user_id: number;
 }) => Obj.Ok;
 
 /**
@@ -7577,13 +7562,13 @@ export type AllowBotToSendMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_web_app_custom_request.html
  */
 export type SendWebAppCustomRequest = (args: {
-    '@type': 'sendWebAppCustomRequest';
-    /** Identifier of the bot */
-    bot_user_id: number;
-    /** The method name */
-    method: string;
-    /** JSON-serialized method parameters */
-    parameters: string;
+	"@type": "sendWebAppCustomRequest";
+	/** Identifier of the bot */
+	bot_user_id: number;
+	/** The method name */
+	method: string;
+	/** JSON-serialized method parameters */
+	parameters: string;
 }) => Obj.CustomRequestResult;
 
 /**
@@ -7591,9 +7576,9 @@ export type SendWebAppCustomRequest = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_bot_media_previews.html
  */
 export type GetBotMediaPreviews = (args: {
-    '@type': 'getBotMediaPreviews';
-    /** Identifier of the target bot. The bot must have the main Web App */
-    bot_user_id: number;
+	"@type": "getBotMediaPreviews";
+	/** Identifier of the target bot. The bot must have the main Web App */
+	bot_user_id: number;
 }) => Obj.BotMediaPreviews;
 
 /**
@@ -7601,11 +7586,11 @@ export type GetBotMediaPreviews = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_bot_media_preview_info.html
  */
 export type GetBotMediaPreviewInfo = (args: {
-    '@type': 'getBotMediaPreviewInfo';
-    /** Identifier of the target bot. The bot must be owned and must have the main Web App */
-    bot_user_id: number;
-    /** A two-letter ISO 639-1 language code for which to get previews. If empty, then default previews are returned */
-    language_code: string;
+	"@type": "getBotMediaPreviewInfo";
+	/** Identifier of the target bot. The bot must be owned and must have the main Web App */
+	bot_user_id: number;
+	/** A two-letter ISO 639-1 language code for which to get previews. If empty, then default previews are returned */
+	language_code: string;
 }) => Obj.BotMediaPreviewInfo;
 
 /**
@@ -7613,13 +7598,13 @@ export type GetBotMediaPreviewInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_bot_media_preview.html
  */
 export type AddBotMediaPreview = (args: {
-    '@type': 'addBotMediaPreview';
-    /** Identifier of the target bot. The bot must be owned and must have the main Web App */
-    bot_user_id: number;
-    /** A two-letter ISO 639-1 language code for which preview is added. If empty, then the preview will be shown to all users for whose languages there are no dedicated previews. If non-empty, then there must be an official language pack of the same name, which is returned by getLocalizationTargetInfo */
-    language_code?: string;
-    /** Content of the added preview */
-    content: Obj.InputStoryContent;
+	"@type": "addBotMediaPreview";
+	/** Identifier of the target bot. The bot must be owned and must have the main Web App */
+	bot_user_id: number;
+	/** A two-letter ISO 639-1 language code for which preview is added. If empty, then the preview will be shown to all users for whose languages there are no dedicated previews. If non-empty, then there must be an official language pack of the same name, which is returned by getLocalizationTargetInfo */
+	language_code?: string;
+	/** Content of the added preview */
+	content: Obj.InputStoryContent;
 }) => Obj.BotMediaPreview;
 
 /**
@@ -7627,15 +7612,15 @@ export type AddBotMediaPreview = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_bot_media_preview.html
  */
 export type EditBotMediaPreview = (args: {
-    '@type': 'editBotMediaPreview';
-    /** Identifier of the target bot. The bot must be owned and must have the main Web App */
-    bot_user_id: number;
-    /** Language code of the media preview to edit */
-    language_code: string;
-    /** File identifier of the media to replace */
-    file_id: number;
-    /** Content of the new preview */
-    content: Obj.InputStoryContent;
+	"@type": "editBotMediaPreview";
+	/** Identifier of the target bot. The bot must be owned and must have the main Web App */
+	bot_user_id: number;
+	/** Language code of the media preview to edit */
+	language_code: string;
+	/** File identifier of the media to replace */
+	file_id: number;
+	/** Content of the new preview */
+	content: Obj.InputStoryContent;
 }) => Obj.BotMediaPreview;
 
 /**
@@ -7643,13 +7628,13 @@ export type EditBotMediaPreview = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reorder_bot_media_previews.html
  */
 export type ReorderBotMediaPreviews = (args: {
-    '@type': 'reorderBotMediaPreviews';
-    /** Identifier of the target bot. The bot must be owned and must have the main Web App */
-    bot_user_id: number;
-    /** Language code of the media previews to reorder */
-    language_code: string;
-    /** File identifiers of the media in the new order */
-    file_ids: number[];
+	"@type": "reorderBotMediaPreviews";
+	/** Identifier of the target bot. The bot must be owned and must have the main Web App */
+	bot_user_id: number;
+	/** Language code of the media previews to reorder */
+	language_code: string;
+	/** File identifiers of the media in the new order */
+	file_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -7657,13 +7642,13 @@ export type ReorderBotMediaPreviews = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_bot_media_previews.html
  */
 export type DeleteBotMediaPreviews = (args: {
-    '@type': 'deleteBotMediaPreviews';
-    /** Identifier of the target bot. The bot must be owned and must have the main Web App */
-    bot_user_id: number;
-    /** Language code of the media previews to delete */
-    language_code: string;
-    /** File identifiers of the media to delete */
-    file_ids: number[];
+	"@type": "deleteBotMediaPreviews";
+	/** Identifier of the target bot. The bot must be owned and must have the main Web App */
+	bot_user_id: number;
+	/** Language code of the media previews to delete */
+	language_code: string;
+	/** File identifiers of the media to delete */
+	file_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -7671,13 +7656,13 @@ export type DeleteBotMediaPreviews = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_bot_name.html
  */
 export type SetBotName = (args: {
-    '@type': 'setBotName';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** A two-letter ISO 639-1 language code. If empty, the name will be shown to all users for whose languages there is no dedicated name */
-    language_code: string;
-    /** New bot's name on the specified language; 0-64 characters; must be non-empty if language code is empty */
-    name: string;
+	"@type": "setBotName";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** A two-letter ISO 639-1 language code. If empty, the name will be shown to all users for whose languages there is no dedicated name */
+	language_code: string;
+	/** New bot's name on the specified language; 0-64 characters; must be non-empty if language code is empty */
+	name: string;
 }) => Obj.Ok;
 
 /**
@@ -7685,11 +7670,11 @@ export type SetBotName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_bot_name.html
  */
 export type GetBotName = (args: {
-    '@type': 'getBotName';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** A two-letter ISO 639-1 language code or an empty string */
-    language_code: string;
+	"@type": "getBotName";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** A two-letter ISO 639-1 language code or an empty string */
+	language_code: string;
 }) => Obj.Text;
 
 /**
@@ -7697,11 +7682,11 @@ export type GetBotName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_bot_profile_photo.html
  */
 export type SetBotProfilePhoto = (args: {
-    '@type': 'setBotProfilePhoto';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** Profile photo to set; pass null to delete the chat photo */
-    photo?: Obj.InputChatPhoto;
+	"@type": "setBotProfilePhoto";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** Profile photo to set; pass null to delete the chat photo */
+	photo?: Obj.InputChatPhoto;
 }) => Obj.Ok;
 
 /**
@@ -7709,13 +7694,13 @@ export type SetBotProfilePhoto = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_bot_username_is_active.html
  */
 export type ToggleBotUsernameIsActive = (args: {
-    '@type': 'toggleBotUsernameIsActive';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** The username to change */
-    username: string;
-    /** Pass true to activate the username; pass false to disable it */
-    is_active: boolean;
+	"@type": "toggleBotUsernameIsActive";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** The username to change */
+	username: string;
+	/** Pass true to activate the username; pass false to disable it */
+	is_active: boolean;
 }) => Obj.Ok;
 
 /**
@@ -7723,11 +7708,11 @@ export type ToggleBotUsernameIsActive = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reorder_bot_active_usernames.html
  */
 export type ReorderBotActiveUsernames = (args: {
-    '@type': 'reorderBotActiveUsernames';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** The new order of active usernames. All currently active usernames must be specified */
-    usernames: string[];
+	"@type": "reorderBotActiveUsernames";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** The new order of active usernames. All currently active usernames must be specified */
+	usernames: string[];
 }) => Obj.Ok;
 
 /**
@@ -7735,13 +7720,13 @@ export type ReorderBotActiveUsernames = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_bot_info_description.html
  */
 export type SetBotInfoDescription = (args: {
-    '@type': 'setBotInfoDescription';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** A two-letter ISO 639-1 language code. If empty, the description will be shown to all users for whose languages there is no dedicated description */
-    language_code: string;
-    /** New bot's description on the specified language */
-    description: string;
+	"@type": "setBotInfoDescription";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** A two-letter ISO 639-1 language code. If empty, the description will be shown to all users for whose languages there is no dedicated description */
+	language_code: string;
+	/** New bot's description on the specified language */
+	description: string;
 }) => Obj.Ok;
 
 /**
@@ -7749,11 +7734,11 @@ export type SetBotInfoDescription = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_bot_info_description.html
  */
 export type GetBotInfoDescription = (args: {
-    '@type': 'getBotInfoDescription';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** A two-letter ISO 639-1 language code or an empty string */
-    language_code: string;
+	"@type": "getBotInfoDescription";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** A two-letter ISO 639-1 language code or an empty string */
+	language_code: string;
 }) => Obj.Text;
 
 /**
@@ -7761,13 +7746,13 @@ export type GetBotInfoDescription = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_bot_info_short_description.html
  */
 export type SetBotInfoShortDescription = (args: {
-    '@type': 'setBotInfoShortDescription';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** A two-letter ISO 639-1 language code. If empty, the short description will be shown to all users for whose languages there is no dedicated description */
-    language_code: string;
-    /** New bot's short description on the specified language */
-    short_description: string;
+	"@type": "setBotInfoShortDescription";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** A two-letter ISO 639-1 language code. If empty, the short description will be shown to all users for whose languages there is no dedicated description */
+	language_code: string;
+	/** New bot's short description on the specified language */
+	short_description: string;
 }) => Obj.Ok;
 
 /**
@@ -7775,11 +7760,11 @@ export type SetBotInfoShortDescription = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_bot_info_short_description.html
  */
 export type GetBotInfoShortDescription = (args: {
-    '@type': 'getBotInfoShortDescription';
-    /** Identifier of the target bot */
-    bot_user_id: number;
-    /** A two-letter ISO 639-1 language code or an empty string */
-    language_code: string;
+	"@type": "getBotInfoShortDescription";
+	/** Identifier of the target bot */
+	bot_user_id: number;
+	/** A two-letter ISO 639-1 language code or an empty string */
+	language_code: string;
 }) => Obj.Text;
 
 /**
@@ -7787,13 +7772,13 @@ export type GetBotInfoShortDescription = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_message_sender_bot_verification.html
  */
 export type SetMessageSenderBotVerification = (args: {
-    '@type': 'setMessageSenderBotVerification';
-    /** Identifier of the owned bot, which will verify the user or the chat */
-    bot_user_id: number;
-    /** Identifier of the user or the supergroup or channel chat, which will be verified by the bot */
-    verified_id: Obj.MessageSender;
-    /** Custom description of verification reason; 0-getOption("bot_verification_custom_description_length_max"). If empty, then "was verified by organization "organization_name"" will be used as description. Can be specified only if the bot is allowed to provide custom description */
-    custom_description: string;
+	"@type": "setMessageSenderBotVerification";
+	/** Identifier of the owned bot, which will verify the user or the chat */
+	bot_user_id: number;
+	/** Identifier of the user or the supergroup or channel chat, which will be verified by the bot */
+	verified_id: Obj.MessageSender;
+	/** Custom description of verification reason; 0-getOption("bot_verification_custom_description_length_max"). If empty, then "was verified by organization "organization_name"" will be used as description. Can be specified only if the bot is allowed to provide custom description */
+	custom_description: string;
 }) => Obj.Ok;
 
 /**
@@ -7801,11 +7786,11 @@ export type SetMessageSenderBotVerification = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_message_sender_bot_verification.html
  */
 export type RemoveMessageSenderBotVerification = (args: {
-    '@type': 'removeMessageSenderBotVerification';
-    /** Identifier of the owned bot, which verified the user or the chat */
-    bot_user_id: number;
-    /** Identifier of the user or the supergroup or channel chat, which verification is removed */
-    verified_id: Obj.MessageSender;
+	"@type": "removeMessageSenderBotVerification";
+	/** Identifier of the owned bot, which verified the user or the chat */
+	bot_user_id: number;
+	/** Identifier of the user or the supergroup or channel chat, which verification is removed */
+	verified_id: Obj.MessageSender;
 }) => Obj.Ok;
 
 /**
@@ -7813,7 +7798,7 @@ export type RemoveMessageSenderBotVerification = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_active_sessions.html
  */
 export type GetActiveSessions = (args: {
-    '@type': 'getActiveSessions';
+	"@type": "getActiveSessions";
 }) => Obj.Sessions;
 
 /**
@@ -7821,9 +7806,9 @@ export type GetActiveSessions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1terminate_session.html
  */
 export type TerminateSession = (args: {
-    '@type': 'terminateSession';
-    /** Session identifier */
-    session_id: string;
+	"@type": "terminateSession";
+	/** Session identifier */
+	session_id: string;
 }) => Obj.Ok;
 
 /**
@@ -7831,7 +7816,7 @@ export type TerminateSession = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1terminate_all_other_sessions.html
  */
 export type TerminateAllOtherSessions = (args: {
-    '@type': 'terminateAllOtherSessions';
+	"@type": "terminateAllOtherSessions";
 }) => Obj.Ok;
 
 /**
@@ -7839,9 +7824,9 @@ export type TerminateAllOtherSessions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1confirm_session.html
  */
 export type ConfirmSession = (args: {
-    '@type': 'confirmSession';
-    /** Session identifier */
-    session_id: string;
+	"@type": "confirmSession";
+	/** Session identifier */
+	session_id: string;
 }) => Obj.Ok;
 
 /**
@@ -7849,11 +7834,11 @@ export type ConfirmSession = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_session_can_accept_calls.html
  */
 export type ToggleSessionCanAcceptCalls = (args: {
-    '@type': 'toggleSessionCanAcceptCalls';
-    /** Session identifier */
-    session_id: string;
-    /** Pass true to allow accepting incoming calls by the session; pass false otherwise */
-    can_accept_calls: boolean;
+	"@type": "toggleSessionCanAcceptCalls";
+	/** Session identifier */
+	session_id: string;
+	/** Pass true to allow accepting incoming calls by the session; pass false otherwise */
+	can_accept_calls: boolean;
 }) => Obj.Ok;
 
 /**
@@ -7861,11 +7846,11 @@ export type ToggleSessionCanAcceptCalls = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_session_can_accept_secret_chats.html
  */
 export type ToggleSessionCanAcceptSecretChats = (args: {
-    '@type': 'toggleSessionCanAcceptSecretChats';
-    /** Session identifier */
-    session_id: string;
-    /** Pass true to allow accepting secret chats by the session; pass false otherwise */
-    can_accept_secret_chats: boolean;
+	"@type": "toggleSessionCanAcceptSecretChats";
+	/** Session identifier */
+	session_id: string;
+	/** Pass true to allow accepting secret chats by the session; pass false otherwise */
+	can_accept_secret_chats: boolean;
 }) => Obj.Ok;
 
 /**
@@ -7873,9 +7858,9 @@ export type ToggleSessionCanAcceptSecretChats = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_inactive_session_ttl.html
  */
 export type SetInactiveSessionTtl = (args: {
-    '@type': 'setInactiveSessionTtl';
-    /** New number of days of inactivity before sessions will be automatically terminated; 1-366 days */
-    inactive_session_ttl_days: number;
+	"@type": "setInactiveSessionTtl";
+	/** New number of days of inactivity before sessions will be automatically terminated; 1-366 days */
+	inactive_session_ttl_days: number;
 }) => Obj.Ok;
 
 /**
@@ -7883,7 +7868,7 @@ export type SetInactiveSessionTtl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_connected_websites.html
  */
 export type GetConnectedWebsites = (args: {
-    '@type': 'getConnectedWebsites';
+	"@type": "getConnectedWebsites";
 }) => Obj.ConnectedWebsites;
 
 /**
@@ -7891,9 +7876,9 @@ export type GetConnectedWebsites = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1disconnect_website.html
  */
 export type DisconnectWebsite = (args: {
-    '@type': 'disconnectWebsite';
-    /** Website identifier */
-    website_id: string;
+	"@type": "disconnectWebsite";
+	/** Website identifier */
+	website_id: string;
 }) => Obj.Ok;
 
 /**
@@ -7901,7 +7886,7 @@ export type DisconnectWebsite = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1disconnect_all_websites.html
  */
 export type DisconnectAllWebsites = (args: {
-    '@type': 'disconnectAllWebsites';
+	"@type": "disconnectAllWebsites";
 }) => Obj.Ok;
 
 /**
@@ -7909,11 +7894,11 @@ export type DisconnectAllWebsites = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_supergroup_username.html
  */
 export type SetSupergroupUsername = (args: {
-    '@type': 'setSupergroupUsername';
-    /** Identifier of the supergroup or channel */
-    supergroup_id: number;
-    /** New value of the username. Use an empty string to remove the username. The username can't be completely removed if there is another active or disabled username */
-    username: string;
+	"@type": "setSupergroupUsername";
+	/** Identifier of the supergroup or channel */
+	supergroup_id: number;
+	/** New value of the username. Use an empty string to remove the username. The username can't be completely removed if there is another active or disabled username */
+	username: string;
 }) => Obj.Ok;
 
 /**
@@ -7921,13 +7906,13 @@ export type SetSupergroupUsername = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_username_is_active.html
  */
 export type ToggleSupergroupUsernameIsActive = (args: {
-    '@type': 'toggleSupergroupUsernameIsActive';
-    /** Identifier of the supergroup or channel */
-    supergroup_id: number;
-    /** The username to change */
-    username: string;
-    /** Pass true to activate the username; pass false to disable it */
-    is_active: boolean;
+	"@type": "toggleSupergroupUsernameIsActive";
+	/** Identifier of the supergroup or channel */
+	supergroup_id: number;
+	/** The username to change */
+	username: string;
+	/** Pass true to activate the username; pass false to disable it */
+	is_active: boolean;
 }) => Obj.Ok;
 
 /**
@@ -7935,9 +7920,9 @@ export type ToggleSupergroupUsernameIsActive = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1disable_all_supergroup_usernames.html
  */
 export type DisableAllSupergroupUsernames = (args: {
-    '@type': 'disableAllSupergroupUsernames';
-    /** Identifier of the supergroup or channel */
-    supergroup_id: number;
+	"@type": "disableAllSupergroupUsernames";
+	/** Identifier of the supergroup or channel */
+	supergroup_id: number;
 }) => Obj.Ok;
 
 /**
@@ -7945,11 +7930,11 @@ export type DisableAllSupergroupUsernames = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reorder_supergroup_active_usernames.html
  */
 export type ReorderSupergroupActiveUsernames = (args: {
-    '@type': 'reorderSupergroupActiveUsernames';
-    /** Identifier of the supergroup or channel */
-    supergroup_id: number;
-    /** The new order of active usernames. All currently active usernames must be specified */
-    usernames: string[];
+	"@type": "reorderSupergroupActiveUsernames";
+	/** Identifier of the supergroup or channel */
+	supergroup_id: number;
+	/** The new order of active usernames. All currently active usernames must be specified */
+	usernames: string[];
 }) => Obj.Ok;
 
 /**
@@ -7957,11 +7942,11 @@ export type ReorderSupergroupActiveUsernames = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_supergroup_sticker_set.html
  */
 export type SetSupergroupStickerSet = (args: {
-    '@type': 'setSupergroupStickerSet';
-    /** Identifier of the supergroup */
-    supergroup_id: number;
-    /** New value of the supergroup sticker set identifier. Use 0 to remove the supergroup sticker set */
-    sticker_set_id: string;
+	"@type": "setSupergroupStickerSet";
+	/** Identifier of the supergroup */
+	supergroup_id: number;
+	/** New value of the supergroup sticker set identifier. Use 0 to remove the supergroup sticker set */
+	sticker_set_id: string;
 }) => Obj.Ok;
 
 /**
@@ -7969,11 +7954,11 @@ export type SetSupergroupStickerSet = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_supergroup_custom_emoji_sticker_set.html
  */
 export type SetSupergroupCustomEmojiStickerSet = (args: {
-    '@type': 'setSupergroupCustomEmojiStickerSet';
-    /** Identifier of the supergroup */
-    supergroup_id: number;
-    /** New value of the custom emoji sticker set identifier for the supergroup. Use 0 to remove the custom emoji sticker set in the supergroup */
-    custom_emoji_sticker_set_id: string;
+	"@type": "setSupergroupCustomEmojiStickerSet";
+	/** Identifier of the supergroup */
+	supergroup_id: number;
+	/** New value of the custom emoji sticker set identifier for the supergroup. Use 0 to remove the custom emoji sticker set in the supergroup */
+	custom_emoji_sticker_set_id: string;
 }) => Obj.Ok;
 
 /**
@@ -7981,11 +7966,11 @@ export type SetSupergroupCustomEmojiStickerSet = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_supergroup_unrestrict_boost_count.html
  */
 export type SetSupergroupUnrestrictBoostCount = (args: {
-    '@type': 'setSupergroupUnrestrictBoostCount';
-    /** Identifier of the supergroup */
-    supergroup_id: number;
-    /** New value of the unrestrict_boost_count supergroup setting; 0-8. Use 0 to remove the setting */
-    unrestrict_boost_count: number;
+	"@type": "setSupergroupUnrestrictBoostCount";
+	/** Identifier of the supergroup */
+	supergroup_id: number;
+	/** New value of the unrestrict_boost_count supergroup setting; 0-8. Use 0 to remove the setting */
+	unrestrict_boost_count: number;
 }) => Obj.Ok;
 
 /**
@@ -7993,13 +7978,13 @@ export type SetSupergroupUnrestrictBoostCount = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_sign_messages.html
  */
 export type ToggleSupergroupSignMessages = (args: {
-    '@type': 'toggleSupergroupSignMessages';
-    /** Identifier of the channel */
-    supergroup_id: number;
-    /** New value of sign_messages */
-    sign_messages: boolean;
-    /** New value of show_message_sender */
-    show_message_sender: boolean;
+	"@type": "toggleSupergroupSignMessages";
+	/** Identifier of the channel */
+	supergroup_id: number;
+	/** New value of sign_messages */
+	sign_messages: boolean;
+	/** New value of show_message_sender */
+	show_message_sender: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8007,11 +7992,11 @@ export type ToggleSupergroupSignMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_join_to_send_messages.html
  */
 export type ToggleSupergroupJoinToSendMessages = (args: {
-    '@type': 'toggleSupergroupJoinToSendMessages';
-    /** Identifier of the supergroup that isn't a broadcast group */
-    supergroup_id: number;
-    /** New value of join_to_send_messages */
-    join_to_send_messages: boolean;
+	"@type": "toggleSupergroupJoinToSendMessages";
+	/** Identifier of the supergroup that isn't a broadcast group */
+	supergroup_id: number;
+	/** New value of join_to_send_messages */
+	join_to_send_messages: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8019,11 +8004,11 @@ export type ToggleSupergroupJoinToSendMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_join_by_request.html
  */
 export type ToggleSupergroupJoinByRequest = (args: {
-    '@type': 'toggleSupergroupJoinByRequest';
-    /** Identifier of the supergroup that isn't a broadcast group */
-    supergroup_id: number;
-    /** New value of join_by_request */
-    join_by_request: boolean;
+	"@type": "toggleSupergroupJoinByRequest";
+	/** Identifier of the supergroup that isn't a broadcast group */
+	supergroup_id: number;
+	/** New value of join_by_request */
+	join_by_request: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8031,11 +8016,11 @@ export type ToggleSupergroupJoinByRequest = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_is_all_history_available.html
  */
 export type ToggleSupergroupIsAllHistoryAvailable = (args: {
-    '@type': 'toggleSupergroupIsAllHistoryAvailable';
-    /** The identifier of the supergroup */
-    supergroup_id: number;
-    /** The new value of is_all_history_available */
-    is_all_history_available: boolean;
+	"@type": "toggleSupergroupIsAllHistoryAvailable";
+	/** The identifier of the supergroup */
+	supergroup_id: number;
+	/** The new value of is_all_history_available */
+	is_all_history_available: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8043,11 +8028,11 @@ export type ToggleSupergroupIsAllHistoryAvailable = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_can_have_sponsored_messages.html
  */
 export type ToggleSupergroupCanHaveSponsoredMessages = (args: {
-    '@type': 'toggleSupergroupCanHaveSponsoredMessages';
-    /** The identifier of the channel */
-    supergroup_id: number;
-    /** The new value of can_have_sponsored_messages */
-    can_have_sponsored_messages: boolean;
+	"@type": "toggleSupergroupCanHaveSponsoredMessages";
+	/** The identifier of the channel */
+	supergroup_id: number;
+	/** The new value of can_have_sponsored_messages */
+	can_have_sponsored_messages: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8055,11 +8040,11 @@ export type ToggleSupergroupCanHaveSponsoredMessages = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_has_automatic_translation.html
  */
 export type ToggleSupergroupHasAutomaticTranslation = (args: {
-    '@type': 'toggleSupergroupHasAutomaticTranslation';
-    /** The identifier of the channel */
-    supergroup_id: number;
-    /** The new value of has_automatic_translation */
-    has_automatic_translation: boolean;
+	"@type": "toggleSupergroupHasAutomaticTranslation";
+	/** The identifier of the channel */
+	supergroup_id: number;
+	/** The new value of has_automatic_translation */
+	has_automatic_translation: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8067,11 +8052,11 @@ export type ToggleSupergroupHasAutomaticTranslation = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_has_hidden_members.html
  */
 export type ToggleSupergroupHasHiddenMembers = (args: {
-    '@type': 'toggleSupergroupHasHiddenMembers';
-    /** Identifier of the supergroup */
-    supergroup_id: number;
-    /** New value of has_hidden_members */
-    has_hidden_members: boolean;
+	"@type": "toggleSupergroupHasHiddenMembers";
+	/** Identifier of the supergroup */
+	supergroup_id: number;
+	/** New value of has_hidden_members */
+	has_hidden_members: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8079,11 +8064,11 @@ export type ToggleSupergroupHasHiddenMembers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_has_aggressive_anti_spam_enabled.html
  */
 export type ToggleSupergroupHasAggressiveAntiSpamEnabled = (args: {
-    '@type': 'toggleSupergroupHasAggressiveAntiSpamEnabled';
-    /** The identifier of the supergroup, which isn't a broadcast group */
-    supergroup_id: number;
-    /** The new value of has_aggressive_anti_spam_enabled */
-    has_aggressive_anti_spam_enabled: boolean;
+	"@type": "toggleSupergroupHasAggressiveAntiSpamEnabled";
+	/** The identifier of the supergroup, which isn't a broadcast group */
+	supergroup_id: number;
+	/** The new value of has_aggressive_anti_spam_enabled */
+	has_aggressive_anti_spam_enabled: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8091,13 +8076,13 @@ export type ToggleSupergroupHasAggressiveAntiSpamEnabled = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_is_forum.html
  */
 export type ToggleSupergroupIsForum = (args: {
-    '@type': 'toggleSupergroupIsForum';
-    /** Identifier of the supergroup */
-    supergroup_id: number;
-    /** New value of is_forum */
-    is_forum: boolean;
-    /** New value of has_forum_tabs; ignored if is_forum is false */
-    has_forum_tabs: boolean;
+	"@type": "toggleSupergroupIsForum";
+	/** Identifier of the supergroup */
+	supergroup_id: number;
+	/** New value of is_forum */
+	is_forum: boolean;
+	/** New value of has_forum_tabs; ignored if is_forum is false */
+	has_forum_tabs: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8105,9 +8090,9 @@ export type ToggleSupergroupIsForum = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_supergroup_is_broadcast_group.html
  */
 export type ToggleSupergroupIsBroadcastGroup = (args: {
-    '@type': 'toggleSupergroupIsBroadcastGroup';
-    /** Identifier of the supergroup */
-    supergroup_id: number;
+	"@type": "toggleSupergroupIsBroadcastGroup";
+	/** Identifier of the supergroup */
+	supergroup_id: number;
 }) => Obj.Ok;
 
 /**
@@ -8115,11 +8100,11 @@ export type ToggleSupergroupIsBroadcastGroup = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_supergroup_spam.html
  */
 export type ReportSupergroupSpam = (args: {
-    '@type': 'reportSupergroupSpam';
-    /** Supergroup identifier */
-    supergroup_id: number;
-    /** Identifiers of messages to report. Use messageProperties.can_report_supergroup_spam to check whether the message can be reported */
-    message_ids: number[];
+	"@type": "reportSupergroupSpam";
+	/** Supergroup identifier */
+	supergroup_id: number;
+	/** Identifiers of messages to report. Use messageProperties.can_report_supergroup_spam to check whether the message can be reported */
+	message_ids: number[];
 }) => Obj.Ok;
 
 /**
@@ -8127,11 +8112,11 @@ export type ReportSupergroupSpam = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_supergroup_anti_spam_false_positive.html
  */
 export type ReportSupergroupAntiSpamFalsePositive = (args: {
-    '@type': 'reportSupergroupAntiSpamFalsePositive';
-    /** Supergroup identifier */
-    supergroup_id: number;
-    /** Identifier of the erroneously deleted message from chatEventMessageDeleted */
-    message_id: number;
+	"@type": "reportSupergroupAntiSpamFalsePositive";
+	/** Supergroup identifier */
+	supergroup_id: number;
+	/** Identifier of the erroneously deleted message from chatEventMessageDeleted */
+	message_id: number;
 }) => Obj.Ok;
 
 /**
@@ -8139,15 +8124,15 @@ export type ReportSupergroupAntiSpamFalsePositive = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_supergroup_members.html
  */
 export type GetSupergroupMembers = (args: {
-    '@type': 'getSupergroupMembers';
-    /** Identifier of the supergroup or channel */
-    supergroup_id: number;
-    /** The type of users to return; pass null to use supergroupMembersFilterRecent */
-    filter?: Obj.SupergroupMembersFilter;
-    /** Number of users to skip */
-    offset: number;
-    /** The maximum number of users to be returned; up to 200 */
-    limit: number;
+	"@type": "getSupergroupMembers";
+	/** Identifier of the supergroup or channel */
+	supergroup_id: number;
+	/** The type of users to return; pass null to use supergroupMembersFilterRecent */
+	filter?: Obj.SupergroupMembersFilter;
+	/** Number of users to skip */
+	offset: number;
+	/** The maximum number of users to be returned; up to 200 */
+	limit: number;
 }) => Obj.ChatMembers;
 
 /**
@@ -8155,9 +8140,9 @@ export type GetSupergroupMembers = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1close_secret_chat.html
  */
 export type CloseSecretChat = (args: {
-    '@type': 'closeSecretChat';
-    /** Secret chat identifier */
-    secret_chat_id: number;
+	"@type": "closeSecretChat";
+	/** Secret chat identifier */
+	secret_chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -8165,39 +8150,37 @@ export type CloseSecretChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_event_log.html
  */
 export type GetChatEventLog = (args: {
-    '@type': 'getChatEventLog';
-    /** Chat identifier */
-    chat_id: number;
-    /** Search query by which to filter events */
-    query: string;
-    /** Identifier of an event from which to return results. Use 0 to get results from the latest events */
-    from_event_id: string;
-    /** The maximum number of events to return; up to 100 */
-    limit: number;
-    /** The types of events to return; pass null to get chat events of all types */
-    filters?: Obj.ChatEventLogFilters;
-    /** User identifiers by which to filter events. By default, events relating to all users will be returned */
-    user_ids: number[];
+	"@type": "getChatEventLog";
+	/** Chat identifier */
+	chat_id: number;
+	/** Search query by which to filter events */
+	query: string;
+	/** Identifier of an event from which to return results. Use 0 to get results from the latest events */
+	from_event_id: string;
+	/** The maximum number of events to return; up to 100 */
+	limit: number;
+	/** The types of events to return; pass null to get chat events of all types */
+	filters?: Obj.ChatEventLogFilters;
+	/** User identifiers by which to filter events. By default, events relating to all users will be returned */
+	user_ids: number[];
 }) => Obj.ChatEvents;
 
 /**
  * Returns the list of supported time zones
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_time_zones.html
  */
-export type GetTimeZones = (args: {
-    '@type': 'getTimeZones';
-}) => Obj.TimeZones;
+export type GetTimeZones = (args: { "@type": "getTimeZones" }) => Obj.TimeZones;
 
 /**
  * Returns an invoice payment form. This method must be called when the user presses inline button of the type inlineKeyboardButtonTypeBuy, or wants to buy access to media in a messagePaidMedia message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_payment_form.html
  */
 export type GetPaymentForm = (args: {
-    '@type': 'getPaymentForm';
-    /** The invoice */
-    input_invoice: Obj.InputInvoice;
-    /** Preferred payment form theme; pass null to use the default theme */
-    theme?: Obj.ThemeParameters;
+	"@type": "getPaymentForm";
+	/** The invoice */
+	input_invoice: Obj.InputInvoice;
+	/** Preferred payment form theme; pass null to use the default theme */
+	theme?: Obj.ThemeParameters;
 }) => Obj.PaymentForm;
 
 /**
@@ -8205,13 +8188,13 @@ export type GetPaymentForm = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1validate_order_info.html
  */
 export type ValidateOrderInfo = (args: {
-    '@type': 'validateOrderInfo';
-    /** The invoice */
-    input_invoice: Obj.InputInvoice;
-    /** The order information, provided by the user; pass null if empty */
-    order_info?: Obj.OrderInfo;
-    /** Pass true to save the order information */
-    allow_save: boolean;
+	"@type": "validateOrderInfo";
+	/** The invoice */
+	input_invoice: Obj.InputInvoice;
+	/** The order information, provided by the user; pass null if empty */
+	order_info?: Obj.OrderInfo;
+	/** Pass true to save the order information */
+	allow_save: boolean;
 }) => Obj.ValidatedOrderInfo;
 
 /**
@@ -8219,19 +8202,19 @@ export type ValidateOrderInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_payment_form.html
  */
 export type SendPaymentForm = (args: {
-    '@type': 'sendPaymentForm';
-    /** The invoice */
-    input_invoice: Obj.InputInvoice;
-    /** Payment form identifier returned by getPaymentForm */
-    payment_form_id: string;
-    /** Identifier returned by validateOrderInfo, or an empty string */
-    order_info_id: string;
-    /** Identifier of a chosen shipping option, if applicable */
-    shipping_option_id: string;
-    /** The credentials chosen by user for payment; pass null for a payment in Telegram Stars */
-    credentials?: Obj.InputCredentials;
-    /** Chosen by the user amount of tip in the smallest units of the currency */
-    tip_amount: number;
+	"@type": "sendPaymentForm";
+	/** The invoice */
+	input_invoice: Obj.InputInvoice;
+	/** Payment form identifier returned by getPaymentForm */
+	payment_form_id: string;
+	/** Identifier returned by validateOrderInfo, or an empty string */
+	order_info_id: string;
+	/** Identifier of a chosen shipping option, if applicable */
+	shipping_option_id: string;
+	/** The credentials chosen by user for payment; pass null for a payment in Telegram Stars */
+	credentials?: Obj.InputCredentials;
+	/** Chosen by the user amount of tip in the smallest units of the currency */
+	tip_amount: number;
 }) => Obj.PaymentResult;
 
 /**
@@ -8239,11 +8222,11 @@ export type SendPaymentForm = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_payment_receipt.html
  */
 export type GetPaymentReceipt = (args: {
-    '@type': 'getPaymentReceipt';
-    /** Chat identifier of the messagePaymentSuccessful message */
-    chat_id: number;
-    /** Message identifier */
-    message_id: number;
+	"@type": "getPaymentReceipt";
+	/** Chat identifier of the messagePaymentSuccessful message */
+	chat_id: number;
+	/** Message identifier */
+	message_id: number;
 }) => Obj.PaymentReceipt;
 
 /**
@@ -8251,7 +8234,7 @@ export type GetPaymentReceipt = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_saved_order_info.html
  */
 export type GetSavedOrderInfo = (args: {
-    '@type': 'getSavedOrderInfo';
+	"@type": "getSavedOrderInfo";
 }) => Obj.OrderInfo;
 
 /**
@@ -8259,7 +8242,7 @@ export type GetSavedOrderInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_saved_order_info.html
  */
 export type DeleteSavedOrderInfo = (args: {
-    '@type': 'deleteSavedOrderInfo';
+	"@type": "deleteSavedOrderInfo";
 }) => Obj.Ok;
 
 /**
@@ -8267,7 +8250,7 @@ export type DeleteSavedOrderInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_saved_credentials.html
  */
 export type DeleteSavedCredentials = (args: {
-    '@type': 'deleteSavedCredentials';
+	"@type": "deleteSavedCredentials";
 }) => Obj.Ok;
 
 /**
@@ -8275,9 +8258,9 @@ export type DeleteSavedCredentials = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_gift_settings.html
  */
 export type SetGiftSettings = (args: {
-    '@type': 'setGiftSettings';
-    /** The new settings */
-    settings: Obj.GiftSettings;
+	"@type": "setGiftSettings";
+	/** The new settings */
+	settings: Obj.GiftSettings;
 }) => Obj.Ok;
 
 /**
@@ -8285,7 +8268,7 @@ export type SetGiftSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_available_gifts.html
  */
 export type GetAvailableGifts = (args: {
-    '@type': 'getAvailableGifts';
+	"@type": "getAvailableGifts";
 }) => Obj.AvailableGifts;
 
 /**
@@ -8293,17 +8276,17 @@ export type GetAvailableGifts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_gift.html
  */
 export type SendGift = (args: {
-    '@type': 'sendGift';
-    /** Identifier of the gift to send */
-    gift_id: string;
-    /** Identifier of the user or the channel chat that will receive the gift */
-    owner_id: Obj.MessageSender;
-    /** Text to show along with the gift; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed. Must be empty if the receiver enabled paid messages */
-    text: Obj.FormattedText;
-    /** Pass true to show gift text and sender only to the gift receiver; otherwise, everyone will be able to see them */
-    is_private: boolean;
-    /** Pass true to additionally pay for the gift upgrade and allow the receiver to upgrade it for free */
-    pay_for_upgrade: boolean;
+	"@type": "sendGift";
+	/** Identifier of the gift to send */
+	gift_id: string;
+	/** Identifier of the user or the channel chat that will receive the gift */
+	owner_id: Obj.MessageSender;
+	/** Text to show along with the gift; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed. Must be empty if the receiver enabled paid messages */
+	text: Obj.FormattedText;
+	/** Pass true to show gift text and sender only to the gift receiver; otherwise, everyone will be able to see them */
+	is_private: boolean;
+	/** Pass true to additionally pay for the gift upgrade and allow the receiver to upgrade it for free */
+	pay_for_upgrade: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8311,11 +8294,11 @@ export type SendGift = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sell_gift.html
  */
 export type SellGift = (args: {
-    '@type': 'sellGift';
-    /** Unique identifier of business connection on behalf of which to send the request; for bots only */
-    business_connection_id: string;
-    /** Identifier of the gift */
-    received_gift_id: string;
+	"@type": "sellGift";
+	/** Unique identifier of business connection on behalf of which to send the request; for bots only */
+	business_connection_id: string;
+	/** Identifier of the gift */
+	received_gift_id: string;
 }) => Obj.Ok;
 
 /**
@@ -8323,11 +8306,11 @@ export type SellGift = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_gift_is_saved.html
  */
 export type ToggleGiftIsSaved = (args: {
-    '@type': 'toggleGiftIsSaved';
-    /** Identifier of the gift */
-    received_gift_id: string;
-    /** Pass true to display the gift on the user's or the channel's profile page; pass false to remove it from the profile page */
-    is_saved: boolean;
+	"@type": "toggleGiftIsSaved";
+	/** Identifier of the gift */
+	received_gift_id: string;
+	/** Pass true to display the gift on the user's or the channel's profile page; pass false to remove it from the profile page */
+	is_saved: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8335,11 +8318,11 @@ export type ToggleGiftIsSaved = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_pinned_gifts.html
  */
 export type SetPinnedGifts = (args: {
-    '@type': 'setPinnedGifts';
-    /** Identifier of the user or the channel chat that received the gifts */
-    owner_id: Obj.MessageSender;
-    /** New list of pinned gifts. All gifts must be upgraded and saved on the profile page first. There can be up to getOption("pinned_gift_count_max") pinned gifts */
-    received_gift_ids: string[];
+	"@type": "setPinnedGifts";
+	/** Identifier of the user or the channel chat that received the gifts */
+	owner_id: Obj.MessageSender;
+	/** New list of pinned gifts. All gifts must be upgraded and saved on the profile page first. There can be up to getOption("pinned_gift_count_max") pinned gifts */
+	received_gift_ids: string[];
 }) => Obj.Ok;
 
 /**
@@ -8347,11 +8330,11 @@ export type SetPinnedGifts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1toggle_chat_gift_notifications.html
  */
 export type ToggleChatGiftNotifications = (args: {
-    '@type': 'toggleChatGiftNotifications';
-    /** Identifier of the channel chat */
-    chat_id: number;
-    /** Pass true to enable notifications about new gifts owned by the channel chat; pass false to disable the notifications */
-    are_enabled: boolean;
+	"@type": "toggleChatGiftNotifications";
+	/** Identifier of the channel chat */
+	chat_id: number;
+	/** Pass true to enable notifications about new gifts owned by the channel chat; pass false to disable the notifications */
+	are_enabled: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8359,9 +8342,9 @@ export type ToggleChatGiftNotifications = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_gift_upgrade_preview.html
  */
 export type GetGiftUpgradePreview = (args: {
-    '@type': 'getGiftUpgradePreview';
-    /** Identifier of the gift */
-    gift_id: string;
+	"@type": "getGiftUpgradePreview";
+	/** Identifier of the gift */
+	gift_id: string;
 }) => Obj.GiftUpgradePreview;
 
 /**
@@ -8369,15 +8352,15 @@ export type GetGiftUpgradePreview = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgrade_gift.html
  */
 export type UpgradeGift = (args: {
-    '@type': 'upgradeGift';
-    /** Unique identifier of business connection on behalf of which to send the request; for bots only */
-    business_connection_id: string;
-    /** Identifier of the gift */
-    received_gift_id: string;
-    /** Pass true to keep the original gift text, sender and receiver in the upgraded gift */
-    keep_original_details: boolean;
-    /** The amount of Telegram Stars required to pay for the upgrade. It the gift has prepaid_upgrade_star_count > 0, then pass 0, otherwise, pass gift.upgrade_star_count */
-    star_count: number;
+	"@type": "upgradeGift";
+	/** Unique identifier of business connection on behalf of which to send the request; for bots only */
+	business_connection_id: string;
+	/** Identifier of the gift */
+	received_gift_id: string;
+	/** Pass true to keep the original gift text, sender and receiver in the upgraded gift */
+	keep_original_details: boolean;
+	/** The amount of Telegram Stars required to pay for the upgrade. It the gift has prepaid_upgrade_star_count > 0, then pass 0, otherwise, pass gift.upgrade_star_count */
+	star_count: number;
 }) => Obj.UpgradeGiftResult;
 
 /**
@@ -8385,15 +8368,15 @@ export type UpgradeGift = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1transfer_gift.html
  */
 export type TransferGift = (args: {
-    '@type': 'transferGift';
-    /** Unique identifier of business connection on behalf of which to send the request; for bots only */
-    business_connection_id: string;
-    /** Identifier of the gift */
-    received_gift_id: string;
-    /** Identifier of the user or the channel chat that will receive the gift */
-    new_owner_id: Obj.MessageSender;
-    /** The amount of Telegram Stars required to pay for the transfer */
-    star_count: number;
+	"@type": "transferGift";
+	/** Unique identifier of business connection on behalf of which to send the request; for bots only */
+	business_connection_id: string;
+	/** Identifier of the gift */
+	received_gift_id: string;
+	/** Identifier of the user or the channel chat that will receive the gift */
+	new_owner_id: Obj.MessageSender;
+	/** The amount of Telegram Stars required to pay for the transfer */
+	star_count: number;
 }) => Obj.Ok;
 
 /**
@@ -8401,13 +8384,13 @@ export type TransferGift = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_resold_gift.html
  */
 export type SendResoldGift = (args: {
-    '@type': 'sendResoldGift';
-    /** Name of the upgraded gift to send */
-    gift_name: string;
-    /** Identifier of the user or the channel chat that will receive the gift */
-    owner_id: Obj.MessageSender;
-    /** The amount of Telegram Stars required to pay for the gift */
-    star_count: number;
+	"@type": "sendResoldGift";
+	/** Name of the upgraded gift to send */
+	gift_name: string;
+	/** Identifier of the user or the channel chat that will receive the gift */
+	owner_id: Obj.MessageSender;
+	/** The amount of Telegram Stars required to pay for the gift */
+	star_count: number;
 }) => Obj.Ok;
 
 /**
@@ -8415,27 +8398,27 @@ export type SendResoldGift = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_received_gifts.html
  */
 export type GetReceivedGifts = (args: {
-    '@type': 'getReceivedGifts';
-    /** Unique identifier of business connection on behalf of which to send the request; for bots only */
-    business_connection_id: string;
-    /** Identifier of the gift receiver */
-    owner_id: Obj.MessageSender;
-    /** Pass true to exclude gifts that aren't saved to the chat's profile page. Always true for gifts received by other users and channel chats without can_post_messages administrator right */
-    exclude_unsaved: boolean;
-    /** Pass true to exclude gifts that are saved to the chat's profile page. Always false for gifts received by other users and channel chats without can_post_messages administrator right */
-    exclude_saved: boolean;
-    /** Pass true to exclude gifts that can be purchased unlimited number of times */
-    exclude_unlimited: boolean;
-    /** Pass true to exclude gifts that can be purchased limited number of times */
-    exclude_limited: boolean;
-    /** Pass true to exclude upgraded gifts */
-    exclude_upgraded: boolean;
-    /** Pass true to sort results by gift price instead of send date */
-    sort_by_price: boolean;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of gifts to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "getReceivedGifts";
+	/** Unique identifier of business connection on behalf of which to send the request; for bots only */
+	business_connection_id: string;
+	/** Identifier of the gift receiver */
+	owner_id: Obj.MessageSender;
+	/** Pass true to exclude gifts that aren't saved to the chat's profile page. Always true for gifts received by other users and channel chats without can_post_messages administrator right */
+	exclude_unsaved: boolean;
+	/** Pass true to exclude gifts that are saved to the chat's profile page. Always false for gifts received by other users and channel chats without can_post_messages administrator right */
+	exclude_saved: boolean;
+	/** Pass true to exclude gifts that can be purchased unlimited number of times */
+	exclude_unlimited: boolean;
+	/** Pass true to exclude gifts that can be purchased limited number of times */
+	exclude_limited: boolean;
+	/** Pass true to exclude upgraded gifts */
+	exclude_upgraded: boolean;
+	/** Pass true to sort results by gift price instead of send date */
+	sort_by_price: boolean;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of gifts to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.ReceivedGifts;
 
 /**
@@ -8443,9 +8426,9 @@ export type GetReceivedGifts = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_received_gift.html
  */
 export type GetReceivedGift = (args: {
-    '@type': 'getReceivedGift';
-    /** Identifier of the gift */
-    received_gift_id: string;
+	"@type": "getReceivedGift";
+	/** Identifier of the gift */
+	received_gift_id: string;
 }) => Obj.ReceivedGift;
 
 /**
@@ -8453,9 +8436,9 @@ export type GetReceivedGift = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_upgraded_gift.html
  */
 export type GetUpgradedGift = (args: {
-    '@type': 'getUpgradedGift';
-    /** Unique name of the upgraded gift */
-    name: string;
+	"@type": "getUpgradedGift";
+	/** Unique name of the upgraded gift */
+	name: string;
 }) => Obj.UpgradedGift;
 
 /**
@@ -8463,11 +8446,11 @@ export type GetUpgradedGift = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_upgraded_gift_withdrawal_url.html
  */
 export type GetUpgradedGiftWithdrawalUrl = (args: {
-    '@type': 'getUpgradedGiftWithdrawalUrl';
-    /** Identifier of the gift */
-    received_gift_id: string;
-    /** The 2-step verification password of the current user */
-    password: string;
+	"@type": "getUpgradedGiftWithdrawalUrl";
+	/** Identifier of the gift */
+	received_gift_id: string;
+	/** The 2-step verification password of the current user */
+	password: string;
 }) => Obj.HttpUrl;
 
 /**
@@ -8475,11 +8458,11 @@ export type GetUpgradedGiftWithdrawalUrl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_gift_resale_price.html
  */
 export type SetGiftResalePrice = (args: {
-    '@type': 'setGiftResalePrice';
-    /** Identifier of the unique gift */
-    received_gift_id: string;
-    /** The new price for the unique gift; 0 or getOption("gift_resale_star_count_min")-getOption("gift_resale_star_count_max"). Pass 0 to disallow gift resale. The current user will receive getOption("gift_resale_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for the gift */
-    resale_star_count: number;
+	"@type": "setGiftResalePrice";
+	/** Identifier of the unique gift */
+	received_gift_id: string;
+	/** The new price for the unique gift; 0 or getOption("gift_resale_star_count_min")-getOption("gift_resale_star_count_max"). Pass 0 to disallow gift resale. The current user will receive getOption("gift_resale_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for the gift */
+	resale_star_count: number;
 }) => Obj.Ok;
 
 /**
@@ -8487,17 +8470,17 @@ export type SetGiftResalePrice = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_gifts_for_resale.html
  */
 export type SearchGiftsForResale = (args: {
-    '@type': 'searchGiftsForResale';
-    /** Identifier of the regular gift that was upgraded to a unique gift */
-    gift_id: string;
-    /** Order in which the results will be sorted */
-    order: Obj.GiftForResaleOrder;
-    /** Attributes used to filter received gifts. If multiple attributes of the same type are specified, then all of them are allowed. If none attributes of specific type are specified, then all values for this attribute type are allowed */
-    attributes: Obj.UpgradedGiftAttributeId[];
-    /** Offset of the first entry to return as received from the previous request with the same order and attributes; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of gifts to return */
-    limit: number;
+	"@type": "searchGiftsForResale";
+	/** Identifier of the regular gift that was upgraded to a unique gift */
+	gift_id: string;
+	/** Order in which the results will be sorted */
+	order: Obj.GiftForResaleOrder;
+	/** Attributes used to filter received gifts. If multiple attributes of the same type are specified, then all of them are allowed. If none attributes of specific type are specified, then all values for this attribute type are allowed */
+	attributes: Obj.UpgradedGiftAttributeId[];
+	/** Offset of the first entry to return as received from the previous request with the same order and attributes; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of gifts to return */
+	limit: number;
 }) => Obj.GiftsForResale;
 
 /**
@@ -8505,11 +8488,11 @@ export type SearchGiftsForResale = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_invoice_link.html
  */
 export type CreateInvoiceLink = (args: {
-    '@type': 'createInvoiceLink';
-    /** Unique identifier of business connection on behalf of which to send the request */
-    business_connection_id: string;
-    /** Information about the invoice of the type inputMessageInvoice */
-    invoice: Obj.InputMessageContent;
+	"@type": "createInvoiceLink";
+	/** Unique identifier of business connection on behalf of which to send the request */
+	business_connection_id: string;
+	/** Information about the invoice of the type inputMessageInvoice */
+	invoice: Obj.InputMessageContent;
 }) => Obj.HttpUrl;
 
 /**
@@ -8517,31 +8500,29 @@ export type CreateInvoiceLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1refund_star_payment.html
  */
 export type RefundStarPayment = (args: {
-    '@type': 'refundStarPayment';
-    /** Identifier of the user that did the payment */
-    user_id: number;
-    /** Telegram payment identifier */
-    telegram_payment_charge_id: string;
+	"@type": "refundStarPayment";
+	/** Identifier of the user that did the payment */
+	user_id: number;
+	/** Telegram payment identifier */
+	telegram_payment_charge_id: string;
 }) => Obj.Ok;
 
 /**
  * Returns a user that can be contacted to get support
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_support_user.html
  */
-export type GetSupportUser = (args: {
-    '@type': 'getSupportUser';
-}) => Obj.User;
+export type GetSupportUser = (args: { "@type": "getSupportUser" }) => Obj.User;
 
 /**
  * Constructs a persistent HTTP URL for a background
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_background_url.html
  */
 export type GetBackgroundUrl = (args: {
-    '@type': 'getBackgroundUrl';
-    /** Background name */
-    name: string;
-    /** Background type; backgroundTypeChatTheme isn't supported */
-    type: Obj.BackgroundType;
+	"@type": "getBackgroundUrl";
+	/** Background name */
+	name: string;
+	/** Background type; backgroundTypeChatTheme isn't supported */
+	type: Obj.BackgroundType;
 }) => Obj.HttpUrl;
 
 /**
@@ -8549,9 +8530,9 @@ export type GetBackgroundUrl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_background.html
  */
 export type SearchBackground = (args: {
-    '@type': 'searchBackground';
-    /** The name of the background */
-    name: string;
+	"@type": "searchBackground";
+	/** The name of the background */
+	name: string;
 }) => Obj.Background;
 
 /**
@@ -8559,13 +8540,13 @@ export type SearchBackground = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_default_background.html
  */
 export type SetDefaultBackground = (args: {
-    '@type': 'setDefaultBackground';
-    /** The input background to use; pass null to create a new filled background */
-    background?: Obj.InputBackground;
-    /** Background type; pass null to use the default type of the remote background; backgroundTypeChatTheme isn't supported */
-    type?: Obj.BackgroundType;
-    /** Pass true if the background is set for a dark theme */
-    for_dark_theme: boolean;
+	"@type": "setDefaultBackground";
+	/** The input background to use; pass null to create a new filled background */
+	background?: Obj.InputBackground;
+	/** Background type; pass null to use the default type of the remote background; backgroundTypeChatTheme isn't supported */
+	type?: Obj.BackgroundType;
+	/** Pass true if the background is set for a dark theme */
+	for_dark_theme: boolean;
 }) => Obj.Background;
 
 /**
@@ -8573,9 +8554,9 @@ export type SetDefaultBackground = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_default_background.html
  */
 export type DeleteDefaultBackground = (args: {
-    '@type': 'deleteDefaultBackground';
-    /** Pass true if the background is deleted for a dark theme */
-    for_dark_theme: boolean;
+	"@type": "deleteDefaultBackground";
+	/** Pass true if the background is deleted for a dark theme */
+	for_dark_theme: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8583,9 +8564,9 @@ export type DeleteDefaultBackground = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_installed_backgrounds.html
  */
 export type GetInstalledBackgrounds = (args: {
-    '@type': 'getInstalledBackgrounds';
-    /** Pass true to order returned backgrounds for a dark theme */
-    for_dark_theme: boolean;
+	"@type": "getInstalledBackgrounds";
+	/** Pass true to order returned backgrounds for a dark theme */
+	for_dark_theme: boolean;
 }) => Obj.Backgrounds;
 
 /**
@@ -8593,9 +8574,9 @@ export type GetInstalledBackgrounds = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_installed_background.html
  */
 export type RemoveInstalledBackground = (args: {
-    '@type': 'removeInstalledBackground';
-    /** The background identifier */
-    background_id: string;
+	"@type": "removeInstalledBackground";
+	/** The background identifier */
+	background_id: string;
 }) => Obj.Ok;
 
 /**
@@ -8603,7 +8584,7 @@ export type RemoveInstalledBackground = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reset_installed_backgrounds.html
  */
 export type ResetInstalledBackgrounds = (args: {
-    '@type': 'resetInstalledBackgrounds';
+	"@type": "resetInstalledBackgrounds";
 }) => Obj.Ok;
 
 /**
@@ -8611,9 +8592,9 @@ export type ResetInstalledBackgrounds = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_localization_target_info.html
  */
 export type GetLocalizationTargetInfo = (args: {
-    '@type': 'getLocalizationTargetInfo';
-    /** Pass true to get only locally available information without sending network requests */
-    only_local: boolean;
+	"@type": "getLocalizationTargetInfo";
+	/** Pass true to get only locally available information without sending network requests */
+	only_local: boolean;
 }) => Obj.LocalizationTargetInfo;
 
 /**
@@ -8621,9 +8602,9 @@ export type GetLocalizationTargetInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_language_pack_info.html
  */
 export type GetLanguagePackInfo = (args: {
-    '@type': 'getLanguagePackInfo';
-    /** Language pack identifier */
-    language_pack_id: string;
+	"@type": "getLanguagePackInfo";
+	/** Language pack identifier */
+	language_pack_id: string;
 }) => Obj.LanguagePackInfo;
 
 /**
@@ -8631,11 +8612,11 @@ export type GetLanguagePackInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_language_pack_strings.html
  */
 export type GetLanguagePackStrings = (args: {
-    '@type': 'getLanguagePackStrings';
-    /** Language pack identifier of the strings to be returned */
-    language_pack_id: string;
-    /** Language pack keys of the strings to be returned; leave empty to request all available strings */
-    keys: string[];
+	"@type": "getLanguagePackStrings";
+	/** Language pack identifier of the strings to be returned */
+	language_pack_id: string;
+	/** Language pack keys of the strings to be returned; leave empty to request all available strings */
+	keys: string[];
 }) => Obj.LanguagePackStrings;
 
 /**
@@ -8643,9 +8624,9 @@ export type GetLanguagePackStrings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1synchronize_language_pack.html
  */
 export type SynchronizeLanguagePack = (args: {
-    '@type': 'synchronizeLanguagePack';
-    /** Language pack identifier */
-    language_pack_id: string;
+	"@type": "synchronizeLanguagePack";
+	/** Language pack identifier */
+	language_pack_id: string;
 }) => Obj.Ok;
 
 /**
@@ -8653,9 +8634,9 @@ export type SynchronizeLanguagePack = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_custom_server_language_pack.html
  */
 export type AddCustomServerLanguagePack = (args: {
-    '@type': 'addCustomServerLanguagePack';
-    /** Identifier of a language pack to be added */
-    language_pack_id: string;
+	"@type": "addCustomServerLanguagePack";
+	/** Identifier of a language pack to be added */
+	language_pack_id: string;
 }) => Obj.Ok;
 
 /**
@@ -8663,11 +8644,11 @@ export type AddCustomServerLanguagePack = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_custom_language_pack.html
  */
 export type SetCustomLanguagePack = (args: {
-    '@type': 'setCustomLanguagePack';
-    /** Information about the language pack. Language pack identifier must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization */
-    info: Obj.LanguagePackInfo;
-    /** Strings of the new language pack */
-    strings: Obj.LanguagePackString[];
+	"@type": "setCustomLanguagePack";
+	/** Information about the language pack. Language pack identifier must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization */
+	info: Obj.LanguagePackInfo;
+	/** Strings of the new language pack */
+	strings: Obj.LanguagePackString[];
 }) => Obj.Ok;
 
 /**
@@ -8675,9 +8656,9 @@ export type SetCustomLanguagePack = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_custom_language_pack_info.html
  */
 export type EditCustomLanguagePackInfo = (args: {
-    '@type': 'editCustomLanguagePackInfo';
-    /** New information about the custom local language pack */
-    info: Obj.LanguagePackInfo;
+	"@type": "editCustomLanguagePackInfo";
+	/** New information about the custom local language pack */
+	info: Obj.LanguagePackInfo;
 }) => Obj.Ok;
 
 /**
@@ -8685,11 +8666,11 @@ export type EditCustomLanguagePackInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_custom_language_pack_string.html
  */
 export type SetCustomLanguagePackString = (args: {
-    '@type': 'setCustomLanguagePackString';
-    /** Identifier of a previously added custom local language pack in the current localization target */
-    language_pack_id: string;
-    /** New language pack string */
-    new_string: Obj.LanguagePackString;
+	"@type": "setCustomLanguagePackString";
+	/** Identifier of a previously added custom local language pack in the current localization target */
+	language_pack_id: string;
+	/** New language pack string */
+	new_string: Obj.LanguagePackString;
 }) => Obj.Ok;
 
 /**
@@ -8697,9 +8678,9 @@ export type SetCustomLanguagePackString = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_language_pack.html
  */
 export type DeleteLanguagePack = (args: {
-    '@type': 'deleteLanguagePack';
-    /** Identifier of the language pack to delete */
-    language_pack_id: string;
+	"@type": "deleteLanguagePack";
+	/** Identifier of the language pack to delete */
+	language_pack_id: string;
 }) => Obj.Ok;
 
 /**
@@ -8707,11 +8688,11 @@ export type DeleteLanguagePack = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1register_device.html
  */
 export type RegisterDevice = (args: {
-    '@type': 'registerDevice';
-    /** Device token */
-    device_token: Obj.DeviceToken;
-    /** List of user identifiers of other users currently using the application */
-    other_user_ids: number[];
+	"@type": "registerDevice";
+	/** Device token */
+	device_token: Obj.DeviceToken;
+	/** List of user identifiers of other users currently using the application */
+	other_user_ids: number[];
 }) => Obj.PushReceiverId;
 
 /**
@@ -8719,9 +8700,9 @@ export type RegisterDevice = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1process_push_notification.html
  */
 export type ProcessPushNotification = (args: {
-    '@type': 'processPushNotification';
-    /** JSON-encoded push notification payload with all fields sent by the server, and "google.sent_time" and "google.notification.sound" fields added */
-    payload: string;
+	"@type": "processPushNotification";
+	/** JSON-encoded push notification payload with all fields sent by the server, and "google.sent_time" and "google.notification.sound" fields added */
+	payload: string;
 }) => Obj.Ok;
 
 /**
@@ -8729,9 +8710,9 @@ export type ProcessPushNotification = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_push_receiver_id.html
  */
 export type GetPushReceiverId = (args: {
-    '@type': 'getPushReceiverId';
-    /** JSON-encoded push notification payload */
-    payload: string;
+	"@type": "getPushReceiverId";
+	/** JSON-encoded push notification payload */
+	payload: string;
 }) => Obj.PushReceiverId;
 
 /**
@@ -8739,9 +8720,9 @@ export type GetPushReceiverId = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_recently_visited_t_me_urls.html
  */
 export type GetRecentlyVisitedTMeUrls = (args: {
-    '@type': 'getRecentlyVisitedTMeUrls';
-    /** Google Play referrer to identify the user */
-    referrer: string;
+	"@type": "getRecentlyVisitedTMeUrls";
+	/** Google Play referrer to identify the user */
+	referrer: string;
 }) => Obj.TMeUrls;
 
 /**
@@ -8749,11 +8730,11 @@ export type GetRecentlyVisitedTMeUrls = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_user_privacy_setting_rules.html
  */
 export type SetUserPrivacySettingRules = (args: {
-    '@type': 'setUserPrivacySettingRules';
-    /** The privacy setting */
-    setting: Obj.UserPrivacySetting;
-    /** The new privacy rules */
-    rules: Obj.UserPrivacySettingRules;
+	"@type": "setUserPrivacySettingRules";
+	/** The privacy setting */
+	setting: Obj.UserPrivacySetting;
+	/** The new privacy rules */
+	rules: Obj.UserPrivacySettingRules;
 }) => Obj.Ok;
 
 /**
@@ -8761,9 +8742,9 @@ export type SetUserPrivacySettingRules = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_user_privacy_setting_rules.html
  */
 export type GetUserPrivacySettingRules = (args: {
-    '@type': 'getUserPrivacySettingRules';
-    /** The privacy setting */
-    setting: Obj.UserPrivacySetting;
+	"@type": "getUserPrivacySettingRules";
+	/** The privacy setting */
+	setting: Obj.UserPrivacySetting;
 }) => Obj.UserPrivacySettingRules;
 
 /**
@@ -8771,9 +8752,9 @@ export type GetUserPrivacySettingRules = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_read_date_privacy_settings.html
  */
 export type SetReadDatePrivacySettings = (args: {
-    '@type': 'setReadDatePrivacySettings';
-    /** New settings */
-    settings: Obj.ReadDatePrivacySettings;
+	"@type": "setReadDatePrivacySettings";
+	/** New settings */
+	settings: Obj.ReadDatePrivacySettings;
 }) => Obj.Ok;
 
 /**
@@ -8781,7 +8762,7 @@ export type SetReadDatePrivacySettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_read_date_privacy_settings.html
  */
 export type GetReadDatePrivacySettings = (args: {
-    '@type': 'getReadDatePrivacySettings';
+	"@type": "getReadDatePrivacySettings";
 }) => Obj.ReadDatePrivacySettings;
 
 /**
@@ -8789,9 +8770,9 @@ export type GetReadDatePrivacySettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_new_chat_privacy_settings.html
  */
 export type SetNewChatPrivacySettings = (args: {
-    '@type': 'setNewChatPrivacySettings';
-    /** New settings */
-    settings: Obj.NewChatPrivacySettings;
+	"@type": "setNewChatPrivacySettings";
+	/** New settings */
+	settings: Obj.NewChatPrivacySettings;
 }) => Obj.Ok;
 
 /**
@@ -8799,7 +8780,7 @@ export type SetNewChatPrivacySettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_new_chat_privacy_settings.html
  */
 export type GetNewChatPrivacySettings = (args: {
-    '@type': 'getNewChatPrivacySettings';
+	"@type": "getNewChatPrivacySettings";
 }) => Obj.NewChatPrivacySettings;
 
 /**
@@ -8807,9 +8788,9 @@ export type GetNewChatPrivacySettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_paid_message_revenue.html
  */
 export type GetPaidMessageRevenue = (args: {
-    '@type': 'getPaidMessageRevenue';
-    /** Identifier of the user */
-    user_id: number;
+	"@type": "getPaidMessageRevenue";
+	/** Identifier of the user */
+	user_id: number;
 }) => Obj.StarCount;
 
 /**
@@ -8817,11 +8798,11 @@ export type GetPaidMessageRevenue = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1allow_unpaid_messages_from_user.html
  */
 export type AllowUnpaidMessagesFromUser = (args: {
-    '@type': 'allowUnpaidMessagesFromUser';
-    /** Identifier of the user */
-    user_id: number;
-    /** Pass true to refund the user previously paid messages */
-    refund_payments: boolean;
+	"@type": "allowUnpaidMessagesFromUser";
+	/** Identifier of the user */
+	user_id: number;
+	/** Pass true to refund the user previously paid messages */
+	refund_payments: boolean;
 }) => Obj.Ok;
 
 /**
@@ -8829,11 +8810,11 @@ export type AllowUnpaidMessagesFromUser = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_paid_message_star_count.html
  */
 export type SetChatPaidMessageStarCount = (args: {
-    '@type': 'setChatPaidMessageStarCount';
-    /** Identifier of the supergroup chat */
-    chat_id: number;
-    /** The new number of Telegram Stars that must be paid for each message that is sent to the supergroup chat unless the sender is an administrator of the chat; 0-getOption("paid_message_star_count_max"). The supergroup will receive getOption("paid_message_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for message sending */
-    paid_message_star_count: number;
+	"@type": "setChatPaidMessageStarCount";
+	/** Identifier of the supergroup chat */
+	chat_id: number;
+	/** The new number of Telegram Stars that must be paid for each message that is sent to the supergroup chat unless the sender is an administrator of the chat; 0-getOption("paid_message_star_count_max"). The supergroup will receive getOption("paid_message_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for message sending */
+	paid_message_star_count: number;
 }) => Obj.Ok;
 
 /**
@@ -8841,11 +8822,11 @@ export type SetChatPaidMessageStarCount = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_message_to_user.html
  */
 export type CanSendMessageToUser = (args: {
-    '@type': 'canSendMessageToUser';
-    /** Identifier of the other user */
-    user_id: number;
-    /** Pass true to get only locally available information without sending network requests */
-    only_local: boolean;
+	"@type": "canSendMessageToUser";
+	/** Identifier of the other user */
+	user_id: number;
+	/** Pass true to get only locally available information without sending network requests */
+	only_local: boolean;
 }) => Obj.CanSendMessageToUserResult;
 
 /**
@@ -8853,9 +8834,9 @@ export type CanSendMessageToUser = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_option.html
  */
 export type GetOption = (args: {
-    '@type': 'getOption';
-    /** The name of the option */
-    name: string;
+	"@type": "getOption";
+	/** The name of the option */
+	name: string;
 }) => Obj.OptionValue;
 
 /**
@@ -8863,11 +8844,11 @@ export type GetOption = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_option.html
  */
 export type SetOption = (args: {
-    '@type': 'setOption';
-    /** The name of the option */
-    name: string;
-    /** The new value of the option; pass null to reset option value to a default value */
-    value?: Obj.OptionValue;
+	"@type": "setOption";
+	/** The name of the option */
+	name: string;
+	/** The new value of the option; pass null to reset option value to a default value */
+	value?: Obj.OptionValue;
 }) => Obj.Ok;
 
 /**
@@ -8875,9 +8856,9 @@ export type SetOption = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_account_ttl.html
  */
 export type SetAccountTtl = (args: {
-    '@type': 'setAccountTtl';
-    /** New account TTL */
-    ttl: Obj.AccountTtl;
+	"@type": "setAccountTtl";
+	/** New account TTL */
+	ttl: Obj.AccountTtl;
 }) => Obj.Ok;
 
 /**
@@ -8885,7 +8866,7 @@ export type SetAccountTtl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_account_ttl.html
  */
 export type GetAccountTtl = (args: {
-    '@type': 'getAccountTtl';
+	"@type": "getAccountTtl";
 }) => Obj.AccountTtl;
 
 /**
@@ -8893,11 +8874,11 @@ export type GetAccountTtl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_account.html
  */
 export type DeleteAccount = (args: {
-    '@type': 'deleteAccount';
-    /** The reason why the account was deleted; optional */
-    reason: string;
-    /** The 2-step verification password of the current user. If the current user isn't authorized, then an empty string can be passed and account deletion can be canceled within one week */
-    password: string;
+	"@type": "deleteAccount";
+	/** The reason why the account was deleted; optional */
+	reason: string;
+	/** The 2-step verification password of the current user. If the current user isn't authorized, then an empty string can be passed and account deletion can be canceled within one week */
+	password: string;
 }) => Obj.Ok;
 
 /**
@@ -8905,9 +8886,9 @@ export type DeleteAccount = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_default_message_auto_delete_time.html
  */
 export type SetDefaultMessageAutoDeleteTime = (args: {
-    '@type': 'setDefaultMessageAutoDeleteTime';
-    /** New default message auto-delete time; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically */
-    message_auto_delete_time: Obj.MessageAutoDeleteTime;
+	"@type": "setDefaultMessageAutoDeleteTime";
+	/** New default message auto-delete time; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically */
+	message_auto_delete_time: Obj.MessageAutoDeleteTime;
 }) => Obj.Ok;
 
 /**
@@ -8915,7 +8896,7 @@ export type SetDefaultMessageAutoDeleteTime = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_default_message_auto_delete_time.html
  */
 export type GetDefaultMessageAutoDeleteTime = (args: {
-    '@type': 'getDefaultMessageAutoDeleteTime';
+	"@type": "getDefaultMessageAutoDeleteTime";
 }) => Obj.MessageAutoDeleteTime;
 
 /**
@@ -8923,9 +8904,9 @@ export type GetDefaultMessageAutoDeleteTime = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_chat_action_bar.html
  */
 export type RemoveChatActionBar = (args: {
-    '@type': 'removeChatActionBar';
-    /** Chat identifier */
-    chat_id: number;
+	"@type": "removeChatActionBar";
+	/** Chat identifier */
+	chat_id: number;
 }) => Obj.Ok;
 
 /**
@@ -8933,15 +8914,15 @@ export type RemoveChatActionBar = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat.html
  */
 export type ReportChat = (args: {
-    '@type': 'reportChat';
-    /** Chat identifier */
-    chat_id: number;
-    /** Option identifier chosen by the user; leave empty for the initial request */
-    option_id: string;
-    /** Identifiers of reported messages. Use messageProperties.can_report_chat to check whether the message can be reported */
-    message_ids: number[];
-    /** Additional report details if asked by the server; 0-1024 characters; leave empty for the initial request */
-    text: string;
+	"@type": "reportChat";
+	/** Chat identifier */
+	chat_id: number;
+	/** Option identifier chosen by the user; leave empty for the initial request */
+	option_id: string;
+	/** Identifiers of reported messages. Use messageProperties.can_report_chat to check whether the message can be reported */
+	message_ids: number[];
+	/** Additional report details if asked by the server; 0-1024 characters; leave empty for the initial request */
+	text: string;
 }) => Obj.ReportChatResult;
 
 /**
@@ -8949,15 +8930,15 @@ export type ReportChat = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_photo.html
  */
 export type ReportChatPhoto = (args: {
-    '@type': 'reportChatPhoto';
-    /** Chat identifier */
-    chat_id: number;
-    /** Identifier of the photo to report. Only full photos from chatPhoto can be reported */
-    file_id: number;
-    /** The reason for reporting the chat photo */
-    reason: Obj.ReportReason;
-    /** Additional report details; 0-1024 characters */
-    text: string;
+	"@type": "reportChatPhoto";
+	/** Chat identifier */
+	chat_id: number;
+	/** Identifier of the photo to report. Only full photos from chatPhoto can be reported */
+	file_id: number;
+	/** The reason for reporting the chat photo */
+	reason: Obj.ReportReason;
+	/** Additional report details; 0-1024 characters */
+	text: string;
 }) => Obj.Ok;
 
 /**
@@ -8965,13 +8946,13 @@ export type ReportChatPhoto = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_message_reactions.html
  */
 export type ReportMessageReactions = (args: {
-    '@type': 'reportMessageReactions';
-    /** Chat identifier */
-    chat_id: number;
-    /** Message identifier */
-    message_id: number;
-    /** Identifier of the sender, which added the reaction */
-    sender_id: Obj.MessageSender;
+	"@type": "reportMessageReactions";
+	/** Chat identifier */
+	chat_id: number;
+	/** Message identifier */
+	message_id: number;
+	/** Identifier of the sender, which added the reaction */
+	sender_id: Obj.MessageSender;
 }) => Obj.Ok;
 
 /**
@@ -8979,11 +8960,11 @@ export type ReportMessageReactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_revenue_statistics.html
  */
 export type GetChatRevenueStatistics = (args: {
-    '@type': 'getChatRevenueStatistics';
-    /** Chat identifier */
-    chat_id: number;
-    /** Pass true if a dark theme is used by the application */
-    is_dark: boolean;
+	"@type": "getChatRevenueStatistics";
+	/** Chat identifier */
+	chat_id: number;
+	/** Pass true if a dark theme is used by the application */
+	is_dark: boolean;
 }) => Obj.ChatRevenueStatistics;
 
 /**
@@ -8991,11 +8972,11 @@ export type GetChatRevenueStatistics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_revenue_withdrawal_url.html
  */
 export type GetChatRevenueWithdrawalUrl = (args: {
-    '@type': 'getChatRevenueWithdrawalUrl';
-    /** Chat identifier */
-    chat_id: number;
-    /** The 2-step verification password of the current user */
-    password: string;
+	"@type": "getChatRevenueWithdrawalUrl";
+	/** Chat identifier */
+	chat_id: number;
+	/** The 2-step verification password of the current user */
+	password: string;
 }) => Obj.HttpUrl;
 
 /**
@@ -9003,13 +8984,13 @@ export type GetChatRevenueWithdrawalUrl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_revenue_transactions.html
  */
 export type GetChatRevenueTransactions = (args: {
-    '@type': 'getChatRevenueTransactions';
-    /** Chat identifier */
-    chat_id: number;
-    /** Number of transactions to skip */
-    offset: number;
-    /** The maximum number of transactions to be returned; up to 200 */
-    limit: number;
+	"@type": "getChatRevenueTransactions";
+	/** Chat identifier */
+	chat_id: number;
+	/** Number of transactions to skip */
+	offset: number;
+	/** The maximum number of transactions to be returned; up to 200 */
+	limit: number;
 }) => Obj.ChatRevenueTransactions;
 
 /**
@@ -9017,11 +8998,11 @@ export type GetChatRevenueTransactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_star_revenue_statistics.html
  */
 export type GetStarRevenueStatistics = (args: {
-    '@type': 'getStarRevenueStatistics';
-    /** Identifier of the owner of the Telegram Stars; can be identifier of the current user, an owned bot, or a supergroup or a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true */
-    owner_id: Obj.MessageSender;
-    /** Pass true if a dark theme is used by the application */
-    is_dark: boolean;
+	"@type": "getStarRevenueStatistics";
+	/** Identifier of the owner of the Telegram Stars; can be identifier of the current user, an owned bot, or a supergroup or a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true */
+	owner_id: Obj.MessageSender;
+	/** Pass true if a dark theme is used by the application */
+	is_dark: boolean;
 }) => Obj.StarRevenueStatistics;
 
 /**
@@ -9029,13 +9010,13 @@ export type GetStarRevenueStatistics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_star_withdrawal_url.html
  */
 export type GetStarWithdrawalUrl = (args: {
-    '@type': 'getStarWithdrawalUrl';
-    /** Identifier of the owner of the Telegram Stars; can be identifier of the current user, an owned bot, or an owned supergroup or channel chat */
-    owner_id: Obj.MessageSender;
-    /** The number of Telegram Stars to withdraw. Must be at least getOption("star_withdrawal_count_min") */
-    star_count: number;
-    /** The 2-step verification password of the current user */
-    password: string;
+	"@type": "getStarWithdrawalUrl";
+	/** Identifier of the owner of the Telegram Stars; can be identifier of the current user, an owned bot, or an owned supergroup or channel chat */
+	owner_id: Obj.MessageSender;
+	/** The number of Telegram Stars to withdraw. Must be at least getOption("star_withdrawal_count_min") */
+	star_count: number;
+	/** The 2-step verification password of the current user */
+	password: string;
 }) => Obj.HttpUrl;
 
 /**
@@ -9043,9 +9024,9 @@ export type GetStarWithdrawalUrl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_star_ad_account_url.html
  */
 export type GetStarAdAccountUrl = (args: {
-    '@type': 'getStarAdAccountUrl';
-    /** Identifier of the owner of the Telegram Stars; can be identifier of an owned bot, or identifier of an owned channel chat */
-    owner_id: Obj.MessageSender;
+	"@type": "getStarAdAccountUrl";
+	/** Identifier of the owner of the Telegram Stars; can be identifier of an owned bot, or identifier of an owned channel chat */
+	owner_id: Obj.MessageSender;
 }) => Obj.HttpUrl;
 
 /**
@@ -9053,11 +9034,11 @@ export type GetStarAdAccountUrl = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_chat_statistics.html
  */
 export type GetChatStatistics = (args: {
-    '@type': 'getChatStatistics';
-    /** Chat identifier */
-    chat_id: number;
-    /** Pass true if a dark theme is used by the application */
-    is_dark: boolean;
+	"@type": "getChatStatistics";
+	/** Chat identifier */
+	chat_id: number;
+	/** Pass true if a dark theme is used by the application */
+	is_dark: boolean;
 }) => Obj.ChatStatistics;
 
 /**
@@ -9065,13 +9046,13 @@ export type GetChatStatistics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_statistics.html
  */
 export type GetMessageStatistics = (args: {
-    '@type': 'getMessageStatistics';
-    /** Chat identifier */
-    chat_id: number;
-    /** Message identifier */
-    message_id: number;
-    /** Pass true if a dark theme is used by the application */
-    is_dark: boolean;
+	"@type": "getMessageStatistics";
+	/** Chat identifier */
+	chat_id: number;
+	/** Message identifier */
+	message_id: number;
+	/** Pass true if a dark theme is used by the application */
+	is_dark: boolean;
 }) => Obj.MessageStatistics;
 
 /**
@@ -9079,15 +9060,15 @@ export type GetMessageStatistics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_message_public_forwards.html
  */
 export type GetMessagePublicForwards = (args: {
-    '@type': 'getMessagePublicForwards';
-    /** Chat identifier of the message */
-    chat_id: number;
-    /** Message identifier */
-    message_id: number;
-    /** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of messages and stories to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "getMessagePublicForwards";
+	/** Chat identifier of the message */
+	chat_id: number;
+	/** Message identifier */
+	message_id: number;
+	/** Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of messages and stories to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.PublicForwards;
 
 /**
@@ -9095,13 +9076,13 @@ export type GetMessagePublicForwards = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_story_statistics.html
  */
 export type GetStoryStatistics = (args: {
-    '@type': 'getStoryStatistics';
-    /** Chat identifier */
-    chat_id: number;
-    /** Story identifier */
-    story_id: number;
-    /** Pass true if a dark theme is used by the application */
-    is_dark: boolean;
+	"@type": "getStoryStatistics";
+	/** Chat identifier */
+	chat_id: number;
+	/** Story identifier */
+	story_id: number;
+	/** Pass true if a dark theme is used by the application */
+	is_dark: boolean;
 }) => Obj.StoryStatistics;
 
 /**
@@ -9109,13 +9090,13 @@ export type GetStoryStatistics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_statistical_graph.html
  */
 export type GetStatisticalGraph = (args: {
-    '@type': 'getStatisticalGraph';
-    /** Chat identifier */
-    chat_id: number;
-    /** The token for graph loading */
-    token: string;
-    /** X-value for zoomed in graph or 0 otherwise */
-    x: number;
+	"@type": "getStatisticalGraph";
+	/** Chat identifier */
+	chat_id: number;
+	/** The token for graph loading */
+	token: string;
+	/** X-value for zoomed in graph or 0 otherwise */
+	x: number;
 }) => Obj.StatisticalGraph;
 
 /**
@@ -9123,9 +9104,9 @@ export type GetStatisticalGraph = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_storage_statistics.html
  */
 export type GetStorageStatistics = (args: {
-    '@type': 'getStorageStatistics';
-    /** The maximum number of chats with the largest storage usage for which separate statistics need to be returned. All other chats will be grouped in entries with chat_id == 0. If the chat info database is not used, the chat_limit is ignored and is always set to 0 */
-    chat_limit: number;
+	"@type": "getStorageStatistics";
+	/** The maximum number of chats with the largest storage usage for which separate statistics need to be returned. All other chats will be grouped in entries with chat_id == 0. If the chat info database is not used, the chat_limit is ignored and is always set to 0 */
+	chat_limit: number;
 }) => Obj.StorageStatistics;
 
 /**
@@ -9133,7 +9114,7 @@ export type GetStorageStatistics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_storage_statistics_fast.html
  */
 export type GetStorageStatisticsFast = (args: {
-    '@type': 'getStorageStatisticsFast';
+	"@type": "getStorageStatisticsFast";
 }) => Obj.StorageStatisticsFast;
 
 /**
@@ -9141,7 +9122,7 @@ export type GetStorageStatisticsFast = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_database_statistics.html
  */
 export type GetDatabaseStatistics = (args: {
-    '@type': 'getDatabaseStatistics';
+	"@type": "getDatabaseStatistics";
 }) => Obj.DatabaseStatistics;
 
 /**
@@ -9149,25 +9130,25 @@ export type GetDatabaseStatistics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1optimize_storage.html
  */
 export type OptimizeStorage = (args: {
-    '@type': 'optimizeStorage';
-    /** Limit on the total size of files after deletion, in bytes. Pass -1 to use the default limit */
-    size: number;
-    /** Limit on the time that has passed since the last time a file was accessed (or creation time for some filesystems). Pass -1 to use the default limit */
-    ttl: number;
-    /** Limit on the total number of files after deletion. Pass -1 to use the default limit */
-    count: number;
-    /** The amount of time after the creation of a file during which it can't be deleted, in seconds. Pass -1 to use the default value */
-    immunity_delay: number;
-    /** If non-empty, only files with the given types are considered. By default, all types except thumbnails, profile photos, stickers and wallpapers are deleted */
-    file_types?: Obj.FileType[];
-    /** If non-empty, only files from the given chats are considered. Use 0 as chat identifier to delete files not belonging to any chat (e.g., profile photos) */
-    chat_ids?: number[];
-    /** If non-empty, files from the given chats are excluded. Use 0 as chat identifier to exclude all files not belonging to any chat (e.g., profile photos) */
-    exclude_chat_ids?: number[];
-    /** Pass true if statistics about the files that were deleted must be returned instead of the whole storage usage statistics. Affects only returned statistics */
-    return_deleted_file_statistics: boolean;
-    /** Same as in getStorageStatistics. Affects only returned statistics */
-    chat_limit: number;
+	"@type": "optimizeStorage";
+	/** Limit on the total size of files after deletion, in bytes. Pass -1 to use the default limit */
+	size: number;
+	/** Limit on the time that has passed since the last time a file was accessed (or creation time for some filesystems). Pass -1 to use the default limit */
+	ttl: number;
+	/** Limit on the total number of files after deletion. Pass -1 to use the default limit */
+	count: number;
+	/** The amount of time after the creation of a file during which it can't be deleted, in seconds. Pass -1 to use the default value */
+	immunity_delay: number;
+	/** If non-empty, only files with the given types are considered. By default, all types except thumbnails, profile photos, stickers and wallpapers are deleted */
+	file_types?: Obj.FileType[];
+	/** If non-empty, only files from the given chats are considered. Use 0 as chat identifier to delete files not belonging to any chat (e.g., profile photos) */
+	chat_ids?: number[];
+	/** If non-empty, files from the given chats are excluded. Use 0 as chat identifier to exclude all files not belonging to any chat (e.g., profile photos) */
+	exclude_chat_ids?: number[];
+	/** Pass true if statistics about the files that were deleted must be returned instead of the whole storage usage statistics. Affects only returned statistics */
+	return_deleted_file_statistics: boolean;
+	/** Same as in getStorageStatistics. Affects only returned statistics */
+	chat_limit: number;
 }) => Obj.StorageStatistics;
 
 /**
@@ -9175,9 +9156,9 @@ export type OptimizeStorage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_network_type.html
  */
 export type SetNetworkType = (args: {
-    '@type': 'setNetworkType';
-    /** The new network type; pass null to set network type to networkTypeOther */
-    type?: Obj.NetworkType;
+	"@type": "setNetworkType";
+	/** The new network type; pass null to set network type to networkTypeOther */
+	type?: Obj.NetworkType;
 }) => Obj.Ok;
 
 /**
@@ -9185,9 +9166,9 @@ export type SetNetworkType = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_network_statistics.html
  */
 export type GetNetworkStatistics = (args: {
-    '@type': 'getNetworkStatistics';
-    /** Pass true to get statistics only for the current library launch */
-    only_current: boolean;
+	"@type": "getNetworkStatistics";
+	/** Pass true to get statistics only for the current library launch */
+	only_current: boolean;
 }) => Obj.NetworkStatistics;
 
 /**
@@ -9195,9 +9176,9 @@ export type GetNetworkStatistics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_network_statistics.html
  */
 export type AddNetworkStatistics = (args: {
-    '@type': 'addNetworkStatistics';
-    /** The network statistics entry with the data to be added to statistics */
-    entry: Obj.NetworkStatisticsEntry;
+	"@type": "addNetworkStatistics";
+	/** The network statistics entry with the data to be added to statistics */
+	entry: Obj.NetworkStatisticsEntry;
 }) => Obj.Ok;
 
 /**
@@ -9205,7 +9186,7 @@ export type AddNetworkStatistics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reset_network_statistics.html
  */
 export type ResetNetworkStatistics = (args: {
-    '@type': 'resetNetworkStatistics';
+	"@type": "resetNetworkStatistics";
 }) => Obj.Ok;
 
 /**
@@ -9213,7 +9194,7 @@ export type ResetNetworkStatistics = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_auto_download_settings_presets.html
  */
 export type GetAutoDownloadSettingsPresets = (args: {
-    '@type': 'getAutoDownloadSettingsPresets';
+	"@type": "getAutoDownloadSettingsPresets";
 }) => Obj.AutoDownloadSettingsPresets;
 
 /**
@@ -9221,11 +9202,11 @@ export type GetAutoDownloadSettingsPresets = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_auto_download_settings.html
  */
 export type SetAutoDownloadSettings = (args: {
-    '@type': 'setAutoDownloadSettings';
-    /** New user auto-download settings */
-    settings: Obj.AutoDownloadSettings;
-    /** Type of the network for which the new settings are relevant */
-    type: Obj.NetworkType;
+	"@type": "setAutoDownloadSettings";
+	/** New user auto-download settings */
+	settings: Obj.AutoDownloadSettings;
+	/** Type of the network for which the new settings are relevant */
+	type: Obj.NetworkType;
 }) => Obj.Ok;
 
 /**
@@ -9233,7 +9214,7 @@ export type SetAutoDownloadSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_autosave_settings.html
  */
 export type GetAutosaveSettings = (args: {
-    '@type': 'getAutosaveSettings';
+	"@type": "getAutosaveSettings";
 }) => Obj.AutosaveSettings;
 
 /**
@@ -9241,11 +9222,11 @@ export type GetAutosaveSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_autosave_settings.html
  */
 export type SetAutosaveSettings = (args: {
-    '@type': 'setAutosaveSettings';
-    /** Autosave settings scope */
-    scope: Obj.AutosaveSettingsScope;
-    /** New autosave settings for the scope; pass null to set autosave settings to default */
-    settings?: Obj.ScopeAutosaveSettings;
+	"@type": "setAutosaveSettings";
+	/** Autosave settings scope */
+	scope: Obj.AutosaveSettingsScope;
+	/** New autosave settings for the scope; pass null to set autosave settings to default */
+	settings?: Obj.ScopeAutosaveSettings;
 }) => Obj.Ok;
 
 /**
@@ -9253,7 +9234,7 @@ export type SetAutosaveSettings = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1clear_autosave_settings_exceptions.html
  */
 export type ClearAutosaveSettingsExceptions = (args: {
-    '@type': 'clearAutosaveSettingsExceptions';
+	"@type": "clearAutosaveSettingsExceptions";
 }) => Obj.Ok;
 
 /**
@@ -9261,9 +9242,9 @@ export type ClearAutosaveSettingsExceptions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_bank_card_info.html
  */
 export type GetBankCardInfo = (args: {
-    '@type': 'getBankCardInfo';
-    /** The bank card number */
-    bank_card_number: string;
+	"@type": "getBankCardInfo";
+	/** The bank card number */
+	bank_card_number: string;
 }) => Obj.BankCardInfo;
 
 /**
@@ -9271,11 +9252,11 @@ export type GetBankCardInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_passport_element.html
  */
 export type GetPassportElement = (args: {
-    '@type': 'getPassportElement';
-    /** Telegram Passport element type */
-    type: Obj.PassportElementType;
-    /** The 2-step verification password of the current user */
-    password: string;
+	"@type": "getPassportElement";
+	/** Telegram Passport element type */
+	type: Obj.PassportElementType;
+	/** The 2-step verification password of the current user */
+	password: string;
 }) => Obj.PassportElement;
 
 /**
@@ -9283,9 +9264,9 @@ export type GetPassportElement = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_all_passport_elements.html
  */
 export type GetAllPassportElements = (args: {
-    '@type': 'getAllPassportElements';
-    /** The 2-step verification password of the current user */
-    password: string;
+	"@type": "getAllPassportElements";
+	/** The 2-step verification password of the current user */
+	password: string;
 }) => Obj.PassportElements;
 
 /**
@@ -9293,11 +9274,11 @@ export type GetAllPassportElements = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_passport_element.html
  */
 export type SetPassportElement = (args: {
-    '@type': 'setPassportElement';
-    /** Input Telegram Passport element */
-    element: Obj.InputPassportElement;
-    /** The 2-step verification password of the current user */
-    password: string;
+	"@type": "setPassportElement";
+	/** Input Telegram Passport element */
+	element: Obj.InputPassportElement;
+	/** The 2-step verification password of the current user */
+	password: string;
 }) => Obj.PassportElement;
 
 /**
@@ -9305,9 +9286,9 @@ export type SetPassportElement = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_passport_element.html
  */
 export type DeletePassportElement = (args: {
-    '@type': 'deletePassportElement';
-    /** Element type */
-    type: Obj.PassportElementType;
+	"@type": "deletePassportElement";
+	/** Element type */
+	type: Obj.PassportElementType;
 }) => Obj.Ok;
 
 /**
@@ -9315,11 +9296,11 @@ export type DeletePassportElement = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_passport_element_errors.html
  */
 export type SetPassportElementErrors = (args: {
-    '@type': 'setPassportElementErrors';
-    /** User identifier */
-    user_id: number;
-    /** The errors */
-    errors: Obj.InputPassportElementError[];
+	"@type": "setPassportElementErrors";
+	/** User identifier */
+	user_id: number;
+	/** The errors */
+	errors: Obj.InputPassportElementError[];
 }) => Obj.Ok;
 
 /**
@@ -9327,9 +9308,9 @@ export type SetPassportElementErrors = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_preferred_country_language.html
  */
 export type GetPreferredCountryLanguage = (args: {
-    '@type': 'getPreferredCountryLanguage';
-    /** A two-letter ISO 3166-1 alpha-2 country code */
-    country_code: string;
+	"@type": "getPreferredCountryLanguage";
+	/** A two-letter ISO 3166-1 alpha-2 country code */
+	country_code: string;
 }) => Obj.Text;
 
 /**
@@ -9337,9 +9318,9 @@ export type GetPreferredCountryLanguage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_email_address_verification_code.html
  */
 export type SendEmailAddressVerificationCode = (args: {
-    '@type': 'sendEmailAddressVerificationCode';
-    /** Email address */
-    email_address: string;
+	"@type": "sendEmailAddressVerificationCode";
+	/** Email address */
+	email_address: string;
 }) => Obj.EmailAddressAuthenticationCodeInfo;
 
 /**
@@ -9347,7 +9328,7 @@ export type SendEmailAddressVerificationCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1resend_email_address_verification_code.html
  */
 export type ResendEmailAddressVerificationCode = (args: {
-    '@type': 'resendEmailAddressVerificationCode';
+	"@type": "resendEmailAddressVerificationCode";
 }) => Obj.EmailAddressAuthenticationCodeInfo;
 
 /**
@@ -9355,9 +9336,9 @@ export type ResendEmailAddressVerificationCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_email_address_verification_code.html
  */
 export type CheckEmailAddressVerificationCode = (args: {
-    '@type': 'checkEmailAddressVerificationCode';
-    /** Verification code to check */
-    code: string;
+	"@type": "checkEmailAddressVerificationCode";
+	/** Verification code to check */
+	code: string;
 }) => Obj.Ok;
 
 /**
@@ -9365,15 +9346,15 @@ export type CheckEmailAddressVerificationCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_passport_authorization_form.html
  */
 export type GetPassportAuthorizationForm = (args: {
-    '@type': 'getPassportAuthorizationForm';
-    /** User identifier of the service's bot */
-    bot_user_id: number;
-    /** Telegram Passport element types requested by the service */
-    scope: string;
-    /** Service's public key */
-    public_key: string;
-    /** Unique request identifier provided by the service */
-    nonce: string;
+	"@type": "getPassportAuthorizationForm";
+	/** User identifier of the service's bot */
+	bot_user_id: number;
+	/** Telegram Passport element types requested by the service */
+	scope: string;
+	/** Service's public key */
+	public_key: string;
+	/** Unique request identifier provided by the service */
+	nonce: string;
 }) => Obj.PassportAuthorizationForm;
 
 /**
@@ -9381,11 +9362,11 @@ export type GetPassportAuthorizationForm = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_passport_authorization_form_available_elements.html
  */
 export type GetPassportAuthorizationFormAvailableElements = (args: {
-    '@type': 'getPassportAuthorizationFormAvailableElements';
-    /** Authorization form identifier */
-    authorization_form_id: number;
-    /** The 2-step verification password of the current user */
-    password: string;
+	"@type": "getPassportAuthorizationFormAvailableElements";
+	/** Authorization form identifier */
+	authorization_form_id: number;
+	/** The 2-step verification password of the current user */
+	password: string;
 }) => Obj.PassportElementsWithErrors;
 
 /**
@@ -9393,11 +9374,11 @@ export type GetPassportAuthorizationFormAvailableElements = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_passport_authorization_form.html
  */
 export type SendPassportAuthorizationForm = (args: {
-    '@type': 'sendPassportAuthorizationForm';
-    /** Authorization form identifier */
-    authorization_form_id: number;
-    /** Types of Telegram Passport elements chosen by user to complete the authorization form */
-    types: Obj.PassportElementType[];
+	"@type": "sendPassportAuthorizationForm";
+	/** Authorization form identifier */
+	authorization_form_id: number;
+	/** Types of Telegram Passport elements chosen by user to complete the authorization form */
+	types: Obj.PassportElementType[];
 }) => Obj.Ok;
 
 /**
@@ -9405,11 +9386,11 @@ export type SendPassportAuthorizationForm = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_bot_updates_status.html
  */
 export type SetBotUpdatesStatus = (args: {
-    '@type': 'setBotUpdatesStatus';
-    /** The number of pending updates */
-    pending_update_count: number;
-    /** The last error message */
-    error_message: string;
+	"@type": "setBotUpdatesStatus";
+	/** The number of pending updates */
+	pending_update_count: number;
+	/** The last error message */
+	error_message: string;
 }) => Obj.Ok;
 
 /**
@@ -9417,13 +9398,13 @@ export type SetBotUpdatesStatus = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upload_sticker_file.html
  */
 export type UploadStickerFile = (args: {
-    '@type': 'uploadStickerFile';
-    /** Sticker file owner; ignored for regular users */
-    user_id: number;
-    /** Sticker format */
-    sticker_format: Obj.StickerFormat;
-    /** File file to upload; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements */
-    sticker: Obj.InputFile;
+	"@type": "uploadStickerFile";
+	/** Sticker file owner; ignored for regular users */
+	user_id: number;
+	/** Sticker format */
+	sticker_format: Obj.StickerFormat;
+	/** File file to upload; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements */
+	sticker: Obj.InputFile;
 }) => Obj.File;
 
 /**
@@ -9431,9 +9412,9 @@ export type UploadStickerFile = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_suggested_sticker_set_name.html
  */
 export type GetSuggestedStickerSetName = (args: {
-    '@type': 'getSuggestedStickerSetName';
-    /** Sticker set title; 1-64 characters */
-    title: string;
+	"@type": "getSuggestedStickerSetName";
+	/** Sticker set title; 1-64 characters */
+	title: string;
 }) => Obj.Text;
 
 /**
@@ -9441,9 +9422,9 @@ export type GetSuggestedStickerSetName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_sticker_set_name.html
  */
 export type CheckStickerSetName = (args: {
-    '@type': 'checkStickerSetName';
-    /** Name to be checked */
-    name: string;
+	"@type": "checkStickerSetName";
+	/** Name to be checked */
+	name: string;
 }) => Obj.CheckStickerSetNameResult;
 
 /**
@@ -9451,21 +9432,21 @@ export type CheckStickerSetName = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1create_new_sticker_set.html
  */
 export type CreateNewStickerSet = (args: {
-    '@type': 'createNewStickerSet';
-    /** Sticker set owner; ignored for regular users */
-    user_id: number;
-    /** Sticker set title; 1-64 characters */
-    title: string;
-    /** Sticker set name. Can contain only English letters, digits and underscores. Must end with *"_by_<bot username>"* (*<bot_username>* is case insensitive) for bots; 0-64 characters. If empty, then the name returned by getSuggestedStickerSetName will be used automatically */
-    name: string;
-    /** Type of the stickers in the set */
-    sticker_type: Obj.StickerType;
-    /** Pass true if stickers in the sticker set must be repainted; for custom emoji sticker sets only */
-    needs_repainting: boolean;
-    /** List of stickers to be added to the set; 1-200 stickers for custom emoji sticker sets, and 1-120 stickers otherwise. For TGS stickers, uploadStickerFile must be used before the sticker is shown */
-    stickers: Obj.InputSticker[];
-    /** Source of the sticker set; may be empty if unknown */
-    source?: string;
+	"@type": "createNewStickerSet";
+	/** Sticker set owner; ignored for regular users */
+	user_id: number;
+	/** Sticker set title; 1-64 characters */
+	title: string;
+	/** Sticker set name. Can contain only English letters, digits and underscores. Must end with *"_by_<bot username>"* (*<bot_username>* is case insensitive) for bots; 0-64 characters. If empty, then the name returned by getSuggestedStickerSetName will be used automatically */
+	name: string;
+	/** Type of the stickers in the set */
+	sticker_type: Obj.StickerType;
+	/** Pass true if stickers in the sticker set must be repainted; for custom emoji sticker sets only */
+	needs_repainting: boolean;
+	/** List of stickers to be added to the set; 1-200 stickers for custom emoji sticker sets, and 1-120 stickers otherwise. For TGS stickers, uploadStickerFile must be used before the sticker is shown */
+	stickers: Obj.InputSticker[];
+	/** Source of the sticker set; may be empty if unknown */
+	source?: string;
 }) => Obj.StickerSet;
 
 /**
@@ -9473,13 +9454,13 @@ export type CreateNewStickerSet = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_sticker_to_set.html
  */
 export type AddStickerToSet = (args: {
-    '@type': 'addStickerToSet';
-    /** Sticker set owner; ignored for regular users */
-    user_id: number;
-    /** Sticker set name. The sticker set must be owned by the current user, and contain less than 200 stickers for custom emoji sticker sets and less than 120 otherwise */
-    name: string;
-    /** Sticker to add to the set */
-    sticker: Obj.InputSticker;
+	"@type": "addStickerToSet";
+	/** Sticker set owner; ignored for regular users */
+	user_id: number;
+	/** Sticker set name. The sticker set must be owned by the current user, and contain less than 200 stickers for custom emoji sticker sets and less than 120 otherwise */
+	name: string;
+	/** Sticker to add to the set */
+	sticker: Obj.InputSticker;
 }) => Obj.Ok;
 
 /**
@@ -9487,15 +9468,15 @@ export type AddStickerToSet = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1replace_sticker_in_set.html
  */
 export type ReplaceStickerInSet = (args: {
-    '@type': 'replaceStickerInSet';
-    /** Sticker set owner; ignored for regular users */
-    user_id: number;
-    /** Sticker set name. The sticker set must be owned by the current user */
-    name: string;
-    /** Sticker to remove from the set */
-    old_sticker: Obj.InputFile;
-    /** Sticker to add to the set */
-    new_sticker: Obj.InputSticker;
+	"@type": "replaceStickerInSet";
+	/** Sticker set owner; ignored for regular users */
+	user_id: number;
+	/** Sticker set name. The sticker set must be owned by the current user */
+	name: string;
+	/** Sticker to remove from the set */
+	old_sticker: Obj.InputFile;
+	/** Sticker to add to the set */
+	new_sticker: Obj.InputSticker;
 }) => Obj.Ok;
 
 /**
@@ -9503,15 +9484,15 @@ export type ReplaceStickerInSet = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_sticker_set_thumbnail.html
  */
 export type SetStickerSetThumbnail = (args: {
-    '@type': 'setStickerSetThumbnail';
-    /** Sticker set owner; ignored for regular users */
-    user_id: number;
-    /** Sticker set name. The sticker set must be owned by the current user */
-    name: string;
-    /** Thumbnail to set; pass null to remove the sticker set thumbnail */
-    thumbnail?: Obj.InputFile;
-    /** Format of the thumbnail; pass null if thumbnail is removed */
-    format?: Obj.StickerFormat;
+	"@type": "setStickerSetThumbnail";
+	/** Sticker set owner; ignored for regular users */
+	user_id: number;
+	/** Sticker set name. The sticker set must be owned by the current user */
+	name: string;
+	/** Thumbnail to set; pass null to remove the sticker set thumbnail */
+	thumbnail?: Obj.InputFile;
+	/** Format of the thumbnail; pass null if thumbnail is removed */
+	format?: Obj.StickerFormat;
 }) => Obj.Ok;
 
 /**
@@ -9519,11 +9500,11 @@ export type SetStickerSetThumbnail = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_custom_emoji_sticker_set_thumbnail.html
  */
 export type SetCustomEmojiStickerSetThumbnail = (args: {
-    '@type': 'setCustomEmojiStickerSetThumbnail';
-    /** Sticker set name. The sticker set must be owned by the current user */
-    name: string;
-    /** Identifier of the custom emoji from the sticker set, which will be set as sticker set thumbnail; pass 0 to remove the sticker set thumbnail */
-    custom_emoji_id: string;
+	"@type": "setCustomEmojiStickerSetThumbnail";
+	/** Sticker set name. The sticker set must be owned by the current user */
+	name: string;
+	/** Identifier of the custom emoji from the sticker set, which will be set as sticker set thumbnail; pass 0 to remove the sticker set thumbnail */
+	custom_emoji_id: string;
 }) => Obj.Ok;
 
 /**
@@ -9531,11 +9512,11 @@ export type SetCustomEmojiStickerSetThumbnail = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_sticker_set_title.html
  */
 export type SetStickerSetTitle = (args: {
-    '@type': 'setStickerSetTitle';
-    /** Sticker set name. The sticker set must be owned by the current user */
-    name: string;
-    /** New sticker set title */
-    title: string;
+	"@type": "setStickerSetTitle";
+	/** Sticker set name. The sticker set must be owned by the current user */
+	name: string;
+	/** New sticker set title */
+	title: string;
 }) => Obj.Ok;
 
 /**
@@ -9543,9 +9524,9 @@ export type SetStickerSetTitle = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1delete_sticker_set.html
  */
 export type DeleteStickerSet = (args: {
-    '@type': 'deleteStickerSet';
-    /** Sticker set name. The sticker set must be owned by the current user */
-    name: string;
+	"@type": "deleteStickerSet";
+	/** Sticker set name. The sticker set must be owned by the current user */
+	name: string;
 }) => Obj.Ok;
 
 /**
@@ -9553,11 +9534,11 @@ export type DeleteStickerSet = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_sticker_position_in_set.html
  */
 export type SetStickerPositionInSet = (args: {
-    '@type': 'setStickerPositionInSet';
-    /** Sticker */
-    sticker: Obj.InputFile;
-    /** New position of the sticker in the set, 0-based */
-    position: number;
+	"@type": "setStickerPositionInSet";
+	/** Sticker */
+	sticker: Obj.InputFile;
+	/** New position of the sticker in the set, 0-based */
+	position: number;
 }) => Obj.Ok;
 
 /**
@@ -9565,9 +9546,9 @@ export type SetStickerPositionInSet = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_sticker_from_set.html
  */
 export type RemoveStickerFromSet = (args: {
-    '@type': 'removeStickerFromSet';
-    /** Sticker to remove from the set */
-    sticker: Obj.InputFile;
+	"@type": "removeStickerFromSet";
+	/** Sticker to remove from the set */
+	sticker: Obj.InputFile;
 }) => Obj.Ok;
 
 /**
@@ -9575,11 +9556,11 @@ export type RemoveStickerFromSet = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_sticker_emojis.html
  */
 export type SetStickerEmojis = (args: {
-    '@type': 'setStickerEmojis';
-    /** Sticker */
-    sticker: Obj.InputFile;
-    /** New string with 1-20 emoji corresponding to the sticker */
-    emojis: string;
+	"@type": "setStickerEmojis";
+	/** Sticker */
+	sticker: Obj.InputFile;
+	/** New string with 1-20 emoji corresponding to the sticker */
+	emojis: string;
 }) => Obj.Ok;
 
 /**
@@ -9587,11 +9568,11 @@ export type SetStickerEmojis = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_sticker_keywords.html
  */
 export type SetStickerKeywords = (args: {
-    '@type': 'setStickerKeywords';
-    /** Sticker */
-    sticker: Obj.InputFile;
-    /** List of up to 20 keywords with total length up to 64 characters, which can be used to find the sticker */
-    keywords: string[];
+	"@type": "setStickerKeywords";
+	/** Sticker */
+	sticker: Obj.InputFile;
+	/** List of up to 20 keywords with total length up to 64 characters, which can be used to find the sticker */
+	keywords: string[];
 }) => Obj.Ok;
 
 /**
@@ -9599,11 +9580,11 @@ export type SetStickerKeywords = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_sticker_mask_position.html
  */
 export type SetStickerMaskPosition = (args: {
-    '@type': 'setStickerMaskPosition';
-    /** Sticker */
-    sticker: Obj.InputFile;
-    /** Position where the mask is placed; pass null to remove mask position */
-    mask_position?: Obj.MaskPosition;
+	"@type": "setStickerMaskPosition";
+	/** Sticker */
+	sticker: Obj.InputFile;
+	/** Position where the mask is placed; pass null to remove mask position */
+	mask_position?: Obj.MaskPosition;
 }) => Obj.Ok;
 
 /**
@@ -9611,11 +9592,11 @@ export type SetStickerMaskPosition = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_owned_sticker_sets.html
  */
 export type GetOwnedStickerSets = (args: {
-    '@type': 'getOwnedStickerSets';
-    /** Identifier of the sticker set from which to return owned sticker sets; use 0 to get results from the beginning */
-    offset_sticker_set_id: string;
-    /** The maximum number of sticker sets to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit */
-    limit: number;
+	"@type": "getOwnedStickerSets";
+	/** Identifier of the sticker set from which to return owned sticker sets; use 0 to get results from the beginning */
+	offset_sticker_set_id: string;
+	/** The maximum number of sticker sets to be returned; must be positive and can't be greater than 100. For optimal performance, the number of returned objects is chosen by TDLib and can be smaller than the specified limit */
+	limit: number;
 }) => Obj.StickerSets;
 
 /**
@@ -9623,19 +9604,19 @@ export type GetOwnedStickerSets = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_map_thumbnail_file.html
  */
 export type GetMapThumbnailFile = (args: {
-    '@type': 'getMapThumbnailFile';
-    /** Location of the map center */
-    location: Obj.Location;
-    /** Map zoom level; 13-20 */
-    zoom: number;
-    /** Map width in pixels before applying scale; 16-1024 */
-    width: number;
-    /** Map height in pixels before applying scale; 16-1024 */
-    height: number;
-    /** Map scale; 1-3 */
-    scale: number;
-    /** Identifier of a chat in which the thumbnail will be shown. Use 0 if unknown */
-    chat_id: number;
+	"@type": "getMapThumbnailFile";
+	/** Location of the map center */
+	location: Obj.Location;
+	/** Map zoom level; 13-20 */
+	zoom: number;
+	/** Map width in pixels before applying scale; 16-1024 */
+	width: number;
+	/** Map height in pixels before applying scale; 16-1024 */
+	height: number;
+	/** Map scale; 1-3 */
+	scale: number;
+	/** Identifier of a chat in which the thumbnail will be shown. Use 0 if unknown */
+	chat_id: number;
 }) => Obj.File;
 
 /**
@@ -9643,9 +9624,9 @@ export type GetMapThumbnailFile = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_premium_limit.html
  */
 export type GetPremiumLimit = (args: {
-    '@type': 'getPremiumLimit';
-    /** Type of the limit */
-    limit_type: Obj.PremiumLimitType;
+	"@type": "getPremiumLimit";
+	/** Type of the limit */
+	limit_type: Obj.PremiumLimitType;
 }) => Obj.PremiumLimit;
 
 /**
@@ -9653,9 +9634,9 @@ export type GetPremiumLimit = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_premium_features.html
  */
 export type GetPremiumFeatures = (args: {
-    '@type': 'getPremiumFeatures';
-    /** Source of the request; pass null if the method is called from some non-standard source */
-    source?: Obj.PremiumSource;
+	"@type": "getPremiumFeatures";
+	/** Source of the request; pass null if the method is called from some non-standard source */
+	source?: Obj.PremiumSource;
 }) => Obj.PremiumFeatures;
 
 /**
@@ -9663,7 +9644,7 @@ export type GetPremiumFeatures = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_premium_sticker_examples.html
  */
 export type GetPremiumStickerExamples = (args: {
-    '@type': 'getPremiumStickerExamples';
+	"@type": "getPremiumStickerExamples";
 }) => Obj.Stickers;
 
 /**
@@ -9671,9 +9652,9 @@ export type GetPremiumStickerExamples = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_premium_info_sticker.html
  */
 export type GetPremiumInfoSticker = (args: {
-    '@type': 'getPremiumInfoSticker';
-    /** Number of months the Telegram Premium subscription will be active */
-    month_count: number;
+	"@type": "getPremiumInfoSticker";
+	/** Number of months the Telegram Premium subscription will be active */
+	month_count: number;
 }) => Obj.Sticker;
 
 /**
@@ -9681,9 +9662,9 @@ export type GetPremiumInfoSticker = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1view_premium_feature.html
  */
 export type ViewPremiumFeature = (args: {
-    '@type': 'viewPremiumFeature';
-    /** The viewed premium feature */
-    feature: Obj.PremiumFeature;
+	"@type": "viewPremiumFeature";
+	/** The viewed premium feature */
+	feature: Obj.PremiumFeature;
 }) => Obj.Ok;
 
 /**
@@ -9691,7 +9672,7 @@ export type ViewPremiumFeature = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1click_premium_subscription_button.html
  */
 export type ClickPremiumSubscriptionButton = (args: {
-    '@type': 'clickPremiumSubscriptionButton';
+	"@type": "clickPremiumSubscriptionButton";
 }) => Obj.Ok;
 
 /**
@@ -9699,7 +9680,7 @@ export type ClickPremiumSubscriptionButton = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_premium_state.html
  */
 export type GetPremiumState = (args: {
-    '@type': 'getPremiumState';
+	"@type": "getPremiumState";
 }) => Obj.PremiumState;
 
 /**
@@ -9707,7 +9688,7 @@ export type GetPremiumState = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_premium_gift_payment_options.html
  */
 export type GetPremiumGiftPaymentOptions = (args: {
-    '@type': 'getPremiumGiftPaymentOptions';
+	"@type": "getPremiumGiftPaymentOptions";
 }) => Obj.PremiumGiftPaymentOptions;
 
 /**
@@ -9715,9 +9696,9 @@ export type GetPremiumGiftPaymentOptions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_premium_giveaway_payment_options.html
  */
 export type GetPremiumGiveawayPaymentOptions = (args: {
-    '@type': 'getPremiumGiveawayPaymentOptions';
-    /** Identifier of the supergroup or channel chat, which will be automatically boosted by receivers of the gift codes and which is administered by the user */
-    boosted_chat_id: number;
+	"@type": "getPremiumGiveawayPaymentOptions";
+	/** Identifier of the supergroup or channel chat, which will be automatically boosted by receivers of the gift codes and which is administered by the user */
+	boosted_chat_id: number;
 }) => Obj.PremiumGiveawayPaymentOptions;
 
 /**
@@ -9725,9 +9706,9 @@ export type GetPremiumGiveawayPaymentOptions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_premium_gift_code.html
  */
 export type CheckPremiumGiftCode = (args: {
-    '@type': 'checkPremiumGiftCode';
-    /** The code to check */
-    code: string;
+	"@type": "checkPremiumGiftCode";
+	/** The code to check */
+	code: string;
 }) => Obj.PremiumGiftCodeInfo;
 
 /**
@@ -9735,9 +9716,9 @@ export type CheckPremiumGiftCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1apply_premium_gift_code.html
  */
 export type ApplyPremiumGiftCode = (args: {
-    '@type': 'applyPremiumGiftCode';
-    /** The code to apply */
-    code: string;
+	"@type": "applyPremiumGiftCode";
+	/** The code to apply */
+	code: string;
 }) => Obj.Ok;
 
 /**
@@ -9745,15 +9726,15 @@ export type ApplyPremiumGiftCode = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_premium_with_stars.html
  */
 export type GiftPremiumWithStars = (args: {
-    '@type': 'giftPremiumWithStars';
-    /** Identifier of the user which will receive Telegram Premium */
-    user_id: number;
-    /** The number of Telegram Stars to pay for subscription */
-    star_count: number;
-    /** Number of months the Telegram Premium subscription will be active for the user */
-    month_count: number;
-    /** Text to show to the user receiving Telegram Premium; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed */
-    text: Obj.FormattedText;
+	"@type": "giftPremiumWithStars";
+	/** Identifier of the user which will receive Telegram Premium */
+	user_id: number;
+	/** The number of Telegram Stars to pay for subscription */
+	star_count: number;
+	/** Number of months the Telegram Premium subscription will be active for the user */
+	month_count: number;
+	/** Text to show to the user receiving Telegram Premium; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed */
+	text: Obj.FormattedText;
 }) => Obj.Ok;
 
 /**
@@ -9761,15 +9742,15 @@ export type GiftPremiumWithStars = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1launch_prepaid_giveaway.html
  */
 export type LaunchPrepaidGiveaway = (args: {
-    '@type': 'launchPrepaidGiveaway';
-    /** Unique identifier of the prepaid giveaway */
-    giveaway_id: string;
-    /** Giveaway parameters */
-    parameters: Obj.GiveawayParameters;
-    /** The number of users to receive giveaway prize */
-    winner_count: number;
-    /** The number of Telegram Stars to be distributed through the giveaway; pass 0 for Telegram Premium giveaways */
-    star_count: number;
+	"@type": "launchPrepaidGiveaway";
+	/** Unique identifier of the prepaid giveaway */
+	giveaway_id: string;
+	/** Giveaway parameters */
+	parameters: Obj.GiveawayParameters;
+	/** The number of users to receive giveaway prize */
+	winner_count: number;
+	/** The number of Telegram Stars to be distributed through the giveaway; pass 0 for Telegram Premium giveaways */
+	star_count: number;
 }) => Obj.Ok;
 
 /**
@@ -9777,11 +9758,11 @@ export type LaunchPrepaidGiveaway = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_giveaway_info.html
  */
 export type GetGiveawayInfo = (args: {
-    '@type': 'getGiveawayInfo';
-    /** Identifier of the channel chat which started the giveaway */
-    chat_id: number;
-    /** Identifier of the giveaway or a giveaway winners message in the chat */
-    message_id: number;
+	"@type": "getGiveawayInfo";
+	/** Identifier of the channel chat which started the giveaway */
+	chat_id: number;
+	/** Identifier of the giveaway or a giveaway winners message in the chat */
+	message_id: number;
 }) => Obj.GiveawayInfo;
 
 /**
@@ -9789,7 +9770,7 @@ export type GetGiveawayInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_star_payment_options.html
  */
 export type GetStarPaymentOptions = (args: {
-    '@type': 'getStarPaymentOptions';
+	"@type": "getStarPaymentOptions";
 }) => Obj.StarPaymentOptions;
 
 /**
@@ -9797,9 +9778,9 @@ export type GetStarPaymentOptions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_star_gift_payment_options.html
  */
 export type GetStarGiftPaymentOptions = (args: {
-    '@type': 'getStarGiftPaymentOptions';
-    /** Identifier of the user that will receive Telegram Stars; pass 0 to get options for an unspecified user */
-    user_id: number;
+	"@type": "getStarGiftPaymentOptions";
+	/** Identifier of the user that will receive Telegram Stars; pass 0 to get options for an unspecified user */
+	user_id: number;
 }) => Obj.StarPaymentOptions;
 
 /**
@@ -9807,7 +9788,7 @@ export type GetStarGiftPaymentOptions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_star_giveaway_payment_options.html
  */
 export type GetStarGiveawayPaymentOptions = (args: {
-    '@type': 'getStarGiveawayPaymentOptions';
+	"@type": "getStarGiveawayPaymentOptions";
 }) => Obj.StarGiveawayPaymentOptions;
 
 /**
@@ -9815,17 +9796,17 @@ export type GetStarGiveawayPaymentOptions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_star_transactions.html
  */
 export type GetStarTransactions = (args: {
-    '@type': 'getStarTransactions';
-    /** Identifier of the owner of the Telegram Stars; can be the identifier of the current user, identifier of an owned bot, or identifier of a supergroup or a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true */
-    owner_id: Obj.MessageSender;
-    /** If non-empty, only transactions related to the Star Subscription will be returned */
-    subscription_id?: string;
-    /** Direction of the transactions to receive; pass null to get all transactions */
-    direction?: Obj.StarTransactionDirection;
-    /** Offset of the first transaction to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of transactions to return */
-    limit: number;
+	"@type": "getStarTransactions";
+	/** Identifier of the owner of the Telegram Stars; can be the identifier of the current user, identifier of an owned bot, or identifier of a supergroup or a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true */
+	owner_id: Obj.MessageSender;
+	/** If non-empty, only transactions related to the Star Subscription will be returned */
+	subscription_id?: string;
+	/** Direction of the transactions to receive; pass null to get all transactions */
+	direction?: Obj.StarTransactionDirection;
+	/** Offset of the first transaction to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of transactions to return */
+	limit: number;
 }) => Obj.StarTransactions;
 
 /**
@@ -9833,11 +9814,11 @@ export type GetStarTransactions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_star_subscriptions.html
  */
 export type GetStarSubscriptions = (args: {
-    '@type': 'getStarSubscriptions';
-    /** Pass true to receive only expiring subscriptions for which there are no enough Telegram Stars to extend */
-    only_expiring: boolean;
-    /** Offset of the first subscription to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
+	"@type": "getStarSubscriptions";
+	/** Pass true to receive only expiring subscriptions for which there are no enough Telegram Stars to extend */
+	only_expiring: boolean;
+	/** Offset of the first subscription to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
 }) => Obj.StarSubscriptions;
 
 /**
@@ -9845,9 +9826,9 @@ export type GetStarSubscriptions = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_purchase_from_store.html
  */
 export type CanPurchaseFromStore = (args: {
-    '@type': 'canPurchaseFromStore';
-    /** Transaction purpose */
-    purpose: Obj.StorePaymentPurpose;
+	"@type": "canPurchaseFromStore";
+	/** Transaction purpose */
+	purpose: Obj.StorePaymentPurpose;
 }) => Obj.Ok;
 
 /**
@@ -9855,11 +9836,11 @@ export type CanPurchaseFromStore = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1assign_store_transaction.html
  */
 export type AssignStoreTransaction = (args: {
-    '@type': 'assignStoreTransaction';
-    /** Information about the transaction */
-    transaction: Obj.StoreTransaction;
-    /** Transaction purpose */
-    purpose: Obj.StorePaymentPurpose;
+	"@type": "assignStoreTransaction";
+	/** Information about the transaction */
+	transaction: Obj.StoreTransaction;
+	/** Transaction purpose */
+	purpose: Obj.StorePaymentPurpose;
 }) => Obj.Ok;
 
 /**
@@ -9867,11 +9848,11 @@ export type AssignStoreTransaction = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_star_subscription.html
  */
 export type EditStarSubscription = (args: {
-    '@type': 'editStarSubscription';
-    /** Identifier of the subscription to change */
-    subscription_id: string;
-    /** New value of is_canceled */
-    is_canceled: boolean;
+	"@type": "editStarSubscription";
+	/** Identifier of the subscription to change */
+	subscription_id: string;
+	/** New value of is_canceled */
+	is_canceled: boolean;
 }) => Obj.Ok;
 
 /**
@@ -9879,13 +9860,13 @@ export type EditStarSubscription = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_user_star_subscription.html
  */
 export type EditUserStarSubscription = (args: {
-    '@type': 'editUserStarSubscription';
-    /** User identifier */
-    user_id: number;
-    /** Telegram payment identifier of the subscription */
-    telegram_payment_charge_id: string;
-    /** Pass true to cancel the subscription; pass false to allow the user to enable it */
-    is_canceled: boolean;
+	"@type": "editUserStarSubscription";
+	/** User identifier */
+	user_id: number;
+	/** Telegram payment identifier of the subscription */
+	telegram_payment_charge_id: string;
+	/** Pass true to cancel the subscription; pass false to allow the user to enable it */
+	is_canceled: boolean;
 }) => Obj.Ok;
 
 /**
@@ -9893,9 +9874,9 @@ export type EditUserStarSubscription = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reuse_star_subscription.html
  */
 export type ReuseStarSubscription = (args: {
-    '@type': 'reuseStarSubscription';
-    /** Identifier of the subscription */
-    subscription_id: string;
+	"@type": "reuseStarSubscription";
+	/** Identifier of the subscription */
+	subscription_id: string;
 }) => Obj.Ok;
 
 /**
@@ -9903,11 +9884,11 @@ export type ReuseStarSubscription = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_chat_affiliate_program.html
  */
 export type SetChatAffiliateProgram = (args: {
-    '@type': 'setChatAffiliateProgram';
-    /** Identifier of the chat with an owned bot for which affiliate program is changed */
-    chat_id: number;
-    /** Parameters of the affiliate program; pass null to close the currently active program. If there is an active program, then commission and program duration can only be increased. If the active program is scheduled to be closed, then it can't be changed anymore */
-    parameters?: Obj.AffiliateProgramParameters;
+	"@type": "setChatAffiliateProgram";
+	/** Identifier of the chat with an owned bot for which affiliate program is changed */
+	chat_id: number;
+	/** Parameters of the affiliate program; pass null to close the currently active program. If there is an active program, then commission and program duration can only be increased. If the active program is scheduled to be closed, then it can't be changed anymore */
+	parameters?: Obj.AffiliateProgramParameters;
 }) => Obj.Ok;
 
 /**
@@ -9915,11 +9896,11 @@ export type SetChatAffiliateProgram = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_chat_affiliate_program.html
  */
 export type SearchChatAffiliateProgram = (args: {
-    '@type': 'searchChatAffiliateProgram';
-    /** Username of the chat */
-    username: string;
-    /** The referrer from an internalLinkTypeChatAffiliateProgram link */
-    referrer: string;
+	"@type": "searchChatAffiliateProgram";
+	/** Username of the chat */
+	username: string;
+	/** The referrer from an internalLinkTypeChatAffiliateProgram link */
+	referrer: string;
 }) => Obj.Chat;
 
 /**
@@ -9927,15 +9908,15 @@ export type SearchChatAffiliateProgram = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_affiliate_programs.html
  */
 export type SearchAffiliatePrograms = (args: {
-    '@type': 'searchAffiliatePrograms';
-    /** The affiliate for which affiliate programs are searched for */
-    affiliate: Obj.AffiliateType;
-    /** Sort order for the results */
-    sort_order: Obj.AffiliateProgramSortOrder;
-    /** Offset of the first affiliate program to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of affiliate programs to return */
-    limit: number;
+	"@type": "searchAffiliatePrograms";
+	/** The affiliate for which affiliate programs are searched for */
+	affiliate: Obj.AffiliateType;
+	/** Sort order for the results */
+	sort_order: Obj.AffiliateProgramSortOrder;
+	/** Offset of the first affiliate program to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of affiliate programs to return */
+	limit: number;
 }) => Obj.FoundAffiliatePrograms;
 
 /**
@@ -9943,11 +9924,11 @@ export type SearchAffiliatePrograms = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connect_affiliate_program.html
  */
 export type ConnectAffiliateProgram = (args: {
-    '@type': 'connectAffiliateProgram';
-    /** The affiliate to which the affiliate program will be connected */
-    affiliate: Obj.AffiliateType;
-    /** Identifier of the bot, which affiliate program is connected */
-    bot_user_id: number;
+	"@type": "connectAffiliateProgram";
+	/** The affiliate to which the affiliate program will be connected */
+	affiliate: Obj.AffiliateType;
+	/** Identifier of the bot, which affiliate program is connected */
+	bot_user_id: number;
 }) => Obj.ConnectedAffiliateProgram;
 
 /**
@@ -9955,11 +9936,11 @@ export type ConnectAffiliateProgram = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1disconnect_affiliate_program.html
  */
 export type DisconnectAffiliateProgram = (args: {
-    '@type': 'disconnectAffiliateProgram';
-    /** The affiliate to which the affiliate program is connected */
-    affiliate: Obj.AffiliateType;
-    /** The referral link of the affiliate program */
-    url: string;
+	"@type": "disconnectAffiliateProgram";
+	/** The affiliate to which the affiliate program is connected */
+	affiliate: Obj.AffiliateType;
+	/** The referral link of the affiliate program */
+	url: string;
 }) => Obj.ConnectedAffiliateProgram;
 
 /**
@@ -9967,11 +9948,11 @@ export type DisconnectAffiliateProgram = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_connected_affiliate_program.html
  */
 export type GetConnectedAffiliateProgram = (args: {
-    '@type': 'getConnectedAffiliateProgram';
-    /** The affiliate to which the affiliate program will be connected */
-    affiliate: Obj.AffiliateType;
-    /** Identifier of the bot that created the program */
-    bot_user_id: number;
+	"@type": "getConnectedAffiliateProgram";
+	/** The affiliate to which the affiliate program will be connected */
+	affiliate: Obj.AffiliateType;
+	/** Identifier of the bot that created the program */
+	bot_user_id: number;
 }) => Obj.ConnectedAffiliateProgram;
 
 /**
@@ -9979,13 +9960,13 @@ export type GetConnectedAffiliateProgram = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_connected_affiliate_programs.html
  */
 export type GetConnectedAffiliatePrograms = (args: {
-    '@type': 'getConnectedAffiliatePrograms';
-    /** The affiliate to which the affiliate program were connected */
-    affiliate: Obj.AffiliateType;
-    /** Offset of the first affiliate program to return as received from the previous request; use empty string to get the first chunk of results */
-    offset: string;
-    /** The maximum number of affiliate programs to return */
-    limit: number;
+	"@type": "getConnectedAffiliatePrograms";
+	/** The affiliate to which the affiliate program were connected */
+	affiliate: Obj.AffiliateType;
+	/** Offset of the first affiliate program to return as received from the previous request; use empty string to get the first chunk of results */
+	offset: string;
+	/** The maximum number of affiliate programs to return */
+	limit: number;
 }) => Obj.ConnectedAffiliatePrograms;
 
 /**
@@ -9993,9 +9974,9 @@ export type GetConnectedAffiliatePrograms = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_business_features.html
  */
 export type GetBusinessFeatures = (args: {
-    '@type': 'getBusinessFeatures';
-    /** Source of the request; pass null if the method is called from settings or some non-standard source */
-    source?: Obj.BusinessFeature;
+	"@type": "getBusinessFeatures";
+	/** Source of the request; pass null if the method is called from settings or some non-standard source */
+	source?: Obj.BusinessFeature;
 }) => Obj.BusinessFeatures;
 
 /**
@@ -10003,9 +9984,9 @@ export type GetBusinessFeatures = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accept_terms_of_service.html
  */
 export type AcceptTermsOfService = (args: {
-    '@type': 'acceptTermsOfService';
-    /** Terms of service identifier */
-    terms_of_service_id: string;
+	"@type": "acceptTermsOfService";
+	/** Terms of service identifier */
+	terms_of_service_id: string;
 }) => Obj.Ok;
 
 /**
@@ -10013,15 +9994,15 @@ export type AcceptTermsOfService = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_strings_by_prefix.html
  */
 export type SearchStringsByPrefix = (args: {
-    '@type': 'searchStringsByPrefix';
-    /** The strings to search in for the query */
-    strings: string[];
-    /** Query to search for */
-    query: string;
-    /** The maximum number of objects to return */
-    limit: number;
-    /** Pass true to receive no results for an empty query */
-    return_none_for_empty_query: boolean;
+	"@type": "searchStringsByPrefix";
+	/** The strings to search in for the query */
+	strings: string[];
+	/** Query to search for */
+	query: string;
+	/** The maximum number of objects to return */
+	limit: number;
+	/** Pass true to receive no results for an empty query */
+	return_none_for_empty_query: boolean;
 }) => Obj.FoundPositions;
 
 /**
@@ -10029,11 +10010,11 @@ export type SearchStringsByPrefix = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1send_custom_request.html
  */
 export type SendCustomRequest = (args: {
-    '@type': 'sendCustomRequest';
-    /** The method name */
-    method: string;
-    /** JSON-serialized method parameters */
-    parameters: string;
+	"@type": "sendCustomRequest";
+	/** The method name */
+	method: string;
+	/** JSON-serialized method parameters */
+	parameters: string;
 }) => Obj.CustomRequestResult;
 
 /**
@@ -10041,11 +10022,11 @@ export type SendCustomRequest = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1answer_custom_query.html
  */
 export type AnswerCustomQuery = (args: {
-    '@type': 'answerCustomQuery';
-    /** Identifier of a custom query */
-    custom_query_id: string;
-    /** JSON-serialized answer to the query */
-    data: string;
+	"@type": "answerCustomQuery";
+	/** Identifier of a custom query */
+	custom_query_id: string;
+	/** JSON-serialized answer to the query */
+	data: string;
 }) => Obj.Ok;
 
 /**
@@ -10053,35 +10034,31 @@ export type AnswerCustomQuery = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_alarm.html
  */
 export type SetAlarm = (args: {
-    '@type': 'setAlarm';
-    /** Number of seconds before the function returns */
-    seconds: number;
+	"@type": "setAlarm";
+	/** Number of seconds before the function returns */
+	seconds: number;
 }) => Obj.Ok;
 
 /**
  * Returns information about existing countries. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_countries.html
  */
-export type GetCountries = (args: {
-    '@type': 'getCountries';
-}) => Obj.Countries;
+export type GetCountries = (args: { "@type": "getCountries" }) => Obj.Countries;
 
 /**
  * Uses the current IP address to find the current country. Returns two-letter ISO 3166-1 alpha-2 country code. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_country_code.html
  */
-export type GetCountryCode = (args: {
-    '@type': 'getCountryCode';
-}) => Obj.Text;
+export type GetCountryCode = (args: { "@type": "getCountryCode" }) => Obj.Text;
 
 /**
  * Returns information about a phone number by its prefix. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_phone_number_info.html
  */
 export type GetPhoneNumberInfo = (args: {
-    '@type': 'getPhoneNumberInfo';
-    /** The phone number prefix */
-    phone_number_prefix: string;
+	"@type": "getPhoneNumberInfo";
+	/** The phone number prefix */
+	phone_number_prefix: string;
 }) => Obj.PhoneNumberInfo;
 
 /**
@@ -10089,11 +10066,11 @@ export type GetPhoneNumberInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_phone_number_info_sync.html
  */
 export type GetPhoneNumberInfoSync = (args: {
-    '@type': 'getPhoneNumberInfoSync';
-    /** A two-letter ISO 639-1 language code for country information localization */
-    language_code: string;
-    /** The phone number prefix */
-    phone_number_prefix: string;
+	"@type": "getPhoneNumberInfoSync";
+	/** A two-letter ISO 639-1 language code for country information localization */
+	language_code: string;
+	/** The phone number prefix */
+	phone_number_prefix: string;
 }) => Obj.PhoneNumberInfo;
 
 /**
@@ -10101,9 +10078,9 @@ export type GetPhoneNumberInfoSync = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_collectible_item_info.html
  */
 export type GetCollectibleItemInfo = (args: {
-    '@type': 'getCollectibleItemInfo';
-    /** Type of the collectible item. The item must be used by a user and must be visible to the current user */
-    type: Obj.CollectibleItemType;
+	"@type": "getCollectibleItemInfo";
+	/** Type of the collectible item. The item must be used by a user and must be visible to the current user */
+	type: Obj.CollectibleItemType;
 }) => Obj.CollectibleItemInfo;
 
 /**
@@ -10111,9 +10088,9 @@ export type GetCollectibleItemInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_deep_link_info.html
  */
 export type GetDeepLinkInfo = (args: {
-    '@type': 'getDeepLinkInfo';
-    /** The link */
-    link: string;
+	"@type": "getDeepLinkInfo";
+	/** The link */
+	link: string;
 }) => Obj.DeepLinkInfo;
 
 /**
@@ -10121,7 +10098,7 @@ export type GetDeepLinkInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_application_config.html
  */
 export type GetApplicationConfig = (args: {
-    '@type': 'getApplicationConfig';
+	"@type": "getApplicationConfig";
 }) => Obj.JsonValue;
 
 /**
@@ -10129,13 +10106,13 @@ export type GetApplicationConfig = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1save_application_log_event.html
  */
 export type SaveApplicationLogEvent = (args: {
-    '@type': 'saveApplicationLogEvent';
-    /** Event type */
-    type: string;
-    /** Optional chat identifier, associated with the event */
-    chat_id: number;
-    /** The log event data */
-    data: Obj.JsonValue;
+	"@type": "saveApplicationLogEvent";
+	/** Event type */
+	type: string;
+	/** Optional chat identifier, associated with the event */
+	chat_id: number;
+	/** The log event data */
+	data: Obj.JsonValue;
 }) => Obj.Ok;
 
 /**
@@ -10143,7 +10120,7 @@ export type SaveApplicationLogEvent = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_application_download_link.html
  */
 export type GetApplicationDownloadLink = (args: {
-    '@type': 'getApplicationDownloadLink';
+	"@type": "getApplicationDownloadLink";
 }) => Obj.HttpUrl;
 
 /**
@@ -10151,15 +10128,15 @@ export type GetApplicationDownloadLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_proxy.html
  */
 export type AddProxy = (args: {
-    '@type': 'addProxy';
-    /** Proxy server domain or IP address */
-    server: string;
-    /** Proxy server port */
-    port: number;
-    /** Pass true to immediately enable the proxy */
-    enable: boolean;
-    /** Proxy type */
-    type: Obj.ProxyType;
+	"@type": "addProxy";
+	/** Proxy server domain or IP address */
+	server: string;
+	/** Proxy server port */
+	port: number;
+	/** Pass true to immediately enable the proxy */
+	enable: boolean;
+	/** Proxy type */
+	type: Obj.ProxyType;
 }) => Obj.Proxy;
 
 /**
@@ -10167,17 +10144,17 @@ export type AddProxy = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1edit_proxy.html
  */
 export type EditProxy = (args: {
-    '@type': 'editProxy';
-    /** Proxy identifier */
-    proxy_id: number;
-    /** Proxy server domain or IP address */
-    server: string;
-    /** Proxy server port */
-    port: number;
-    /** Pass true to immediately enable the proxy */
-    enable: boolean;
-    /** Proxy type */
-    type: Obj.ProxyType;
+	"@type": "editProxy";
+	/** Proxy identifier */
+	proxy_id: number;
+	/** Proxy server domain or IP address */
+	server: string;
+	/** Proxy server port */
+	port: number;
+	/** Pass true to immediately enable the proxy */
+	enable: boolean;
+	/** Proxy type */
+	type: Obj.ProxyType;
 }) => Obj.Proxy;
 
 /**
@@ -10185,45 +10162,41 @@ export type EditProxy = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1enable_proxy.html
  */
 export type EnableProxy = (args: {
-    '@type': 'enableProxy';
-    /** Proxy identifier */
-    proxy_id: number;
+	"@type": "enableProxy";
+	/** Proxy identifier */
+	proxy_id: number;
 }) => Obj.Ok;
 
 /**
  * Disables the currently enabled proxy. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1disable_proxy.html
  */
-export type DisableProxy = (args: {
-    '@type': 'disableProxy';
-}) => Obj.Ok;
+export type DisableProxy = (args: { "@type": "disableProxy" }) => Obj.Ok;
 
 /**
  * Removes a proxy server. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remove_proxy.html
  */
 export type RemoveProxy = (args: {
-    '@type': 'removeProxy';
-    /** Proxy identifier */
-    proxy_id: number;
+	"@type": "removeProxy";
+	/** Proxy identifier */
+	proxy_id: number;
 }) => Obj.Ok;
 
 /**
  * Returns the list of proxies that are currently set up. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_proxies.html
  */
-export type GetProxies = (args: {
-    '@type': 'getProxies';
-}) => Obj.Proxies;
+export type GetProxies = (args: { "@type": "getProxies" }) => Obj.Proxies;
 
 /**
  * Returns an HTTPS link, which can be used to add a proxy. Available only for SOCKS5 and MTProto proxies. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_proxy_link.html
  */
 export type GetProxyLink = (args: {
-    '@type': 'getProxyLink';
-    /** Proxy identifier */
-    proxy_id: number;
+	"@type": "getProxyLink";
+	/** Proxy identifier */
+	proxy_id: number;
 }) => Obj.HttpUrl;
 
 /**
@@ -10231,9 +10204,9 @@ export type GetProxyLink = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ping_proxy.html
  */
 export type PingProxy = (args: {
-    '@type': 'pingProxy';
-    /** Proxy identifier. Use 0 to ping a Telegram server without a proxy */
-    proxy_id: number;
+	"@type": "pingProxy";
+	/** Proxy identifier. Use 0 to ping a Telegram server without a proxy */
+	proxy_id: number;
 }) => Obj.Seconds;
 
 /**
@@ -10241,27 +10214,25 @@ export type PingProxy = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_log_stream.html
  */
 export type SetLogStream = (args: {
-    '@type': 'setLogStream';
-    /** New log stream */
-    log_stream: Obj.LogStream;
+	"@type": "setLogStream";
+	/** New log stream */
+	log_stream: Obj.LogStream;
 }) => Obj.Ok;
 
 /**
  * Returns information about currently used log stream for internal logging of TDLib. Can be called synchronously
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_log_stream.html
  */
-export type GetLogStream = (args: {
-    '@type': 'getLogStream';
-}) => Obj.LogStream;
+export type GetLogStream = (args: { "@type": "getLogStream" }) => Obj.LogStream;
 
 /**
  * Sets the verbosity level of the internal logging of TDLib. Can be called synchronously
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_log_verbosity_level.html
  */
 export type SetLogVerbosityLevel = (args: {
-    '@type': 'setLogVerbosityLevel';
-    /** New value of the verbosity level for logging. Value 0 corresponds to fatal errors, value 1 corresponds to errors, value 2 corresponds to warnings and debug warnings, value 3 corresponds to informational, value 4 corresponds to debug, value 5 corresponds to verbose debug, value greater than 5 and up to 1023 can be used to enable even more logging */
-    new_verbosity_level: number;
+	"@type": "setLogVerbosityLevel";
+	/** New value of the verbosity level for logging. Value 0 corresponds to fatal errors, value 1 corresponds to errors, value 2 corresponds to warnings and debug warnings, value 3 corresponds to informational, value 4 corresponds to debug, value 5 corresponds to verbose debug, value greater than 5 and up to 1023 can be used to enable even more logging */
+	new_verbosity_level: number;
 }) => Obj.Ok;
 
 /**
@@ -10269,27 +10240,25 @@ export type SetLogVerbosityLevel = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_log_verbosity_level.html
  */
 export type GetLogVerbosityLevel = (args: {
-    '@type': 'getLogVerbosityLevel';
+	"@type": "getLogVerbosityLevel";
 }) => Obj.LogVerbosityLevel;
 
 /**
  * Returns the list of available TDLib internal log tags, for example, ["actor", "binlog", "connections", "notifications", "proxy"]. Can be called synchronously
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_log_tags.html
  */
-export type GetLogTags = (args: {
-    '@type': 'getLogTags';
-}) => Obj.LogTags;
+export type GetLogTags = (args: { "@type": "getLogTags" }) => Obj.LogTags;
 
 /**
  * Sets the verbosity level for a specified TDLib internal log tag. Can be called synchronously
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_log_tag_verbosity_level.html
  */
 export type SetLogTagVerbosityLevel = (args: {
-    '@type': 'setLogTagVerbosityLevel';
-    /** Logging tag to change verbosity level */
-    tag: string;
-    /** New verbosity level; 1-1024 */
-    new_verbosity_level: number;
+	"@type": "setLogTagVerbosityLevel";
+	/** Logging tag to change verbosity level */
+	tag: string;
+	/** New verbosity level; 1-1024 */
+	new_verbosity_level: number;
 }) => Obj.Ok;
 
 /**
@@ -10297,9 +10266,9 @@ export type SetLogTagVerbosityLevel = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_log_tag_verbosity_level.html
  */
 export type GetLogTagVerbosityLevel = (args: {
-    '@type': 'getLogTagVerbosityLevel';
-    /** Logging tag to change verbosity level */
-    tag: string;
+	"@type": "getLogTagVerbosityLevel";
+	/** Logging tag to change verbosity level */
+	tag: string;
 }) => Obj.LogVerbosityLevel;
 
 /**
@@ -10307,11 +10276,11 @@ export type GetLogTagVerbosityLevel = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1add_log_message.html
  */
 export type AddLogMessage = (args: {
-    '@type': 'addLogMessage';
-    /** The minimum verbosity level needed for the message to be logged; 0-1023 */
-    verbosity_level: number;
-    /** Text of a message to log */
-    text: string;
+	"@type": "addLogMessage";
+	/** The minimum verbosity level needed for the message to be logged; 0-1023 */
+	verbosity_level: number;
+	/** Text of a message to log */
+	text: string;
 }) => Obj.Ok;
 
 /**
@@ -10319,9 +10288,9 @@ export type AddLogMessage = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_user_support_info.html
  */
 export type GetUserSupportInfo = (args: {
-    '@type': 'getUserSupportInfo';
-    /** User identifier */
-    user_id: number;
+	"@type": "getUserSupportInfo";
+	/** User identifier */
+	user_id: number;
 }) => Obj.UserSupportInfo;
 
 /**
@@ -10329,37 +10298,33 @@ export type GetUserSupportInfo = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1set_user_support_info.html
  */
 export type SetUserSupportInfo = (args: {
-    '@type': 'setUserSupportInfo';
-    /** User identifier */
-    user_id: number;
-    /** New information message */
-    message: Obj.FormattedText;
+	"@type": "setUserSupportInfo";
+	/** User identifier */
+	user_id: number;
+	/** New information message */
+	message: Obj.FormattedText;
 }) => Obj.UserSupportInfo;
 
 /**
  * Returns localized name of the Telegram support user; for Telegram support only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1get_support_name.html
  */
-export type GetSupportName = (args: {
-    '@type': 'getSupportName';
-}) => Obj.Text;
+export type GetSupportName = (args: { "@type": "getSupportName" }) => Obj.Text;
 
 /**
  * Does nothing; for testing only. This is an offline method. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_call_empty.html
  */
-export type TestCallEmpty = (args: {
-    '@type': 'testCallEmpty';
-}) => Obj.Ok;
+export type TestCallEmpty = (args: { "@type": "testCallEmpty" }) => Obj.Ok;
 
 /**
  * Returns the received string; for testing only. This is an offline method. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_call_string.html
  */
 export type TestCallString = (args: {
-    '@type': 'testCallString';
-    /** String to return */
-    x: string;
+	"@type": "testCallString";
+	/** String to return */
+	x: string;
 }) => Obj.TestString;
 
 /**
@@ -10367,9 +10332,9 @@ export type TestCallString = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_call_bytes.html
  */
 export type TestCallBytes = (args: {
-    '@type': 'testCallBytes';
-    /** Bytes to return */
-    x: string;
+	"@type": "testCallBytes";
+	/** Bytes to return */
+	x: string;
 }) => Obj.TestBytes;
 
 /**
@@ -10377,9 +10342,9 @@ export type TestCallBytes = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_call_vector_int.html
  */
 export type TestCallVectorInt = (args: {
-    '@type': 'testCallVectorInt';
-    /** Vector of numbers to return */
-    x: number[];
+	"@type": "testCallVectorInt";
+	/** Vector of numbers to return */
+	x: number[];
 }) => Obj.TestVectorInt;
 
 /**
@@ -10387,9 +10352,9 @@ export type TestCallVectorInt = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_call_vector_int_object.html
  */
 export type TestCallVectorIntObject = (args: {
-    '@type': 'testCallVectorIntObject';
-    /** Vector of objects to return */
-    x: Obj.TestInt[];
+	"@type": "testCallVectorIntObject";
+	/** Vector of objects to return */
+	x: Obj.TestInt[];
 }) => Obj.TestVectorIntObject;
 
 /**
@@ -10397,9 +10362,9 @@ export type TestCallVectorIntObject = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_call_vector_string.html
  */
 export type TestCallVectorString = (args: {
-    '@type': 'testCallVectorString';
-    /** Vector of strings to return */
-    x: string[];
+	"@type": "testCallVectorString";
+	/** Vector of strings to return */
+	x: string[];
 }) => Obj.TestVectorString;
 
 /**
@@ -10407,9 +10372,9 @@ export type TestCallVectorString = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_call_vector_string_object.html
  */
 export type TestCallVectorStringObject = (args: {
-    '@type': 'testCallVectorStringObject';
-    /** Vector of objects to return */
-    x: Obj.TestString[];
+	"@type": "testCallVectorStringObject";
+	/** Vector of objects to return */
+	x: Obj.TestString[];
 }) => Obj.TestVectorStringObject;
 
 /**
@@ -10417,35 +10382,33 @@ export type TestCallVectorStringObject = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_square_int.html
  */
 export type TestSquareInt = (args: {
-    '@type': 'testSquareInt';
-    /** Number to square */
-    x: number;
+	"@type": "testSquareInt";
+	/** Number to square */
+	x: number;
 }) => Obj.TestInt;
 
 /**
  * Sends a simple network request to the Telegram servers; for testing only. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_network.html
  */
-export type TestNetwork = (args: {
-    '@type': 'testNetwork';
-}) => Obj.Ok;
+export type TestNetwork = (args: { "@type": "testNetwork" }) => Obj.Ok;
 
 /**
  * Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_proxy.html
  */
 export type TestProxy = (args: {
-    '@type': 'testProxy';
-    /** Proxy server domain or IP address */
-    server: string;
-    /** Proxy server port */
-    port: number;
-    /** Proxy type */
-    type: Obj.ProxyType;
-    /** Identifier of a datacenter with which to test connection */
-    dc_id: number;
-    /** The maximum overall timeout for the request */
-    timeout: number;
+	"@type": "testProxy";
+	/** Proxy server domain or IP address */
+	server: string;
+	/** Proxy server port */
+	port: number;
+	/** Proxy type */
+	type: Obj.ProxyType;
+	/** Identifier of a datacenter with which to test connection */
+	dc_id: number;
+	/** The maximum overall timeout for the request */
+	timeout: number;
 }) => Obj.Ok;
 
 /**
@@ -10453,23 +10416,21 @@ export type TestProxy = (args: {
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_get_difference.html
  */
 export type TestGetDifference = (args: {
-    '@type': 'testGetDifference';
+	"@type": "testGetDifference";
 }) => Obj.Ok;
 
 /**
  * Does nothing and ensures that the Update object is used; for testing only. This is an offline method. Can be called before authorization
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_use_update.html
  */
-export type TestUseUpdate = (args: {
-    '@type': 'testUseUpdate';
-}) => Obj.Update;
+export type TestUseUpdate = (args: { "@type": "testUseUpdate" }) => Obj.Update;
 
 /**
  * Returns the specified error and ensures that the Error object is used; for testing only. Can be called synchronously
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_return_error.html
  */
 export type TestReturnError = (args: {
-    '@type': 'testReturnError';
-    /** The error to be returned */
-    error: TdError;
+	"@type": "testReturnError";
+	/** The error to be returned */
+	error: TdError;
 }) => TdError;

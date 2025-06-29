@@ -33,7 +33,9 @@ DOCS_BASE = "https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1{}.html"
 # ---------------------------------------------------------------------------
 
 
-def to_camel_case(input_str: str, delimiter: str = ".", *, is_class: bool = True) -> str:
+def to_camel_case(
+    input_str: str, delimiter: str = ".", *, is_class: bool = True
+) -> str:
     """Return *input_str* converted to lower-/upper-camelCase as used in TDLib."""
     if not input_str:
         return ""
@@ -213,12 +215,16 @@ def main() -> None:  # noqa: C901
             " */",
         ]
         fn_lines.extend(doc_lines)
-        fn_lines.append(f"export type {ts_name} = (args: {params_obj}) => {return_ts};\n")
+        fn_lines.append(
+            f"export type {ts_name} = (args: {params_obj}) => {return_ts};\n"
+        )
 
     (types_dir / "function.ts").write_text("\n".join(fn_lines))
 
-    print(f"TypeScript declaration files written to {types_dir}/object.ts and function.ts")
+    print(
+        f"TypeScript declaration files written to {types_dir}/object.ts and function.ts"
+    )
 
 
 if __name__ == "__main__":
-    main() 
+    main()
