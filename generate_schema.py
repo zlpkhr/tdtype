@@ -64,7 +64,7 @@ def to_snake_case(input_str: str) -> str:
 # ---------------------------------------------------------------------------
 
 
-def main() -> None:  # noqa: C901
+def main():
     td_json_path = Path("td_api.json")
     if not td_json_path.exists():
         raise SystemExit("td_api.json not found. Run generate_json.py first.")
@@ -85,7 +85,7 @@ def main() -> None:  # noqa: C901
         prim_map = {
             "int32": "number",
             "int53": "number",
-            "int64": "string",  # BigInt not supported in tdweb typings
+            "int64": "string",  # BigInt not supported in tdlib typings
             "int256": "number",
             "double": "number",
             "bytes": "string",
@@ -107,7 +107,8 @@ def main() -> None:  # noqa: C901
 
         # Fallbacks
         if raw.lower() == "error":
-            return "TdError"
+            # Map the special "error" object to the generated Error/Obj.Error type
+            return "Obj.Error" if external else "Error"
 
         ref_name = to_camel_case(raw, is_class=True)
         return f"Obj.{ref_name}" if external else ref_name
@@ -124,7 +125,6 @@ def main() -> None:  # noqa: C901
     # ------------------------------------------------------------------
 
     obj_lines: List[str] = [
-        "import type { TdObject, TdError } from 'tdweb';\n",
         "/** TDLib concrete & update objects */\n",
     ]
 
@@ -137,7 +137,7 @@ def main() -> None:  # noqa: C901
             " */",
         ]
         obj_lines.extend(doc_lines)
-        obj_lines.append(f"export type {ts_name} = TdObject & {{")
+        obj_lines.append(f"export type {ts_name} = {{")
         obj_lines.append(f"  '@type': '{name}';")
         for arg_name, arg in data["args"].items():
             ts_type = tl_to_ts_type(arg["type"])
@@ -148,8 +148,6 @@ def main() -> None:  # noqa: C901
 
     # -- regular concrete types (skip special cases)
     for name, data in td_json["types"].items():
-        if name == "error":
-            continue  # handled via TdError import
         append_object(name, data)
 
     # -- updates (exclude container 'updates')
@@ -172,7 +170,6 @@ def main() -> None:  # noqa: C901
 
     fn_lines: List[str] = [
         "import type * as Obj from './object';\n",
-        "import type { TdError } from 'tdweb';\n",
         "/** TDLib callable functions */\n",
     ]
 

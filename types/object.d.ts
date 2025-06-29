@@ -1,12 +1,22 @@
-import type { TdObject, TdError } from "tdweb";
-
 /** TDLib concrete & update objects */
+
+/**
+ * An object of this type can be returned on every function call, in case of an error
+ * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1error.html
+ */
+export type Error = {
+	"@type": "error";
+	/** Error code; subject to future changes. If the error code is 406, the error message must not be processed in any way and must not be displayed to the user */
+	code: number;
+	/** Error message; subject to future changes */
+	message: string;
+};
 
 /**
  * An object of this type is returned on a successful function call for certain functions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1ok.html
  */
-export type Ok = TdObject & {
+export type Ok = {
 	"@type": "ok";
 };
 
@@ -14,7 +24,7 @@ export type Ok = TdObject & {
  * A digit-only authentication code is delivered via a private Telegram message, which can be viewed from another active session
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_telegram_message.html
  */
-export type AuthenticationCodeTypeTelegramMessage = TdObject & {
+export type AuthenticationCodeTypeTelegramMessage = {
 	"@type": "authenticationCodeTypeTelegramMessage";
 	/** Length of the code */
 	length: number;
@@ -24,7 +34,7 @@ export type AuthenticationCodeTypeTelegramMessage = TdObject & {
  * A digit-only authentication code is delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_sms.html
  */
-export type AuthenticationCodeTypeSms = TdObject & {
+export type AuthenticationCodeTypeSms = {
 	"@type": "authenticationCodeTypeSms";
 	/** Length of the code */
 	length: number;
@@ -34,7 +44,7 @@ export type AuthenticationCodeTypeSms = TdObject & {
  * An authentication code is a word delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_sms_word.html
  */
-export type AuthenticationCodeTypeSmsWord = TdObject & {
+export type AuthenticationCodeTypeSmsWord = {
 	"@type": "authenticationCodeTypeSmsWord";
 	/** The first letters of the word if known */
 	first_letter: string;
@@ -44,7 +54,7 @@ export type AuthenticationCodeTypeSmsWord = TdObject & {
  * An authentication code is a phrase from multiple words delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_sms_phrase.html
  */
-export type AuthenticationCodeTypeSmsPhrase = TdObject & {
+export type AuthenticationCodeTypeSmsPhrase = {
 	"@type": "authenticationCodeTypeSmsPhrase";
 	/** The first word of the phrase if known */
 	first_word: string;
@@ -54,7 +64,7 @@ export type AuthenticationCodeTypeSmsPhrase = TdObject & {
  * A digit-only authentication code is delivered via a phone call to the specified phone number
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_call.html
  */
-export type AuthenticationCodeTypeCall = TdObject & {
+export type AuthenticationCodeTypeCall = {
 	"@type": "authenticationCodeTypeCall";
 	/** Length of the code */
 	length: number;
@@ -64,7 +74,7 @@ export type AuthenticationCodeTypeCall = TdObject & {
  * An authentication code is delivered by an immediately canceled call to the specified phone number. The phone number that calls is the code that must be entered automatically
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_flash_call.html
  */
-export type AuthenticationCodeTypeFlashCall = TdObject & {
+export type AuthenticationCodeTypeFlashCall = {
 	"@type": "authenticationCodeTypeFlashCall";
 	/** Pattern of the phone number from which the call will be made */
 	pattern: string;
@@ -74,7 +84,7 @@ export type AuthenticationCodeTypeFlashCall = TdObject & {
  * An authentication code is delivered by an immediately canceled call to the specified phone number. The last digits of the phone number that calls are the code that must be entered manually by the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_missed_call.html
  */
-export type AuthenticationCodeTypeMissedCall = TdObject & {
+export type AuthenticationCodeTypeMissedCall = {
 	"@type": "authenticationCodeTypeMissedCall";
 	/** Prefix of the phone number from which the call will be made */
 	phone_number_prefix: string;
@@ -86,7 +96,7 @@ export type AuthenticationCodeTypeMissedCall = TdObject & {
  * A digit-only authentication code is delivered to https://fragment.com. The user must be logged in there via a wallet owning the phone number's NFT
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_fragment.html
  */
-export type AuthenticationCodeTypeFragment = TdObject & {
+export type AuthenticationCodeTypeFragment = {
 	"@type": "authenticationCodeTypeFragment";
 	/** URL to open to receive the code */
 	url: string;
@@ -98,7 +108,7 @@ export type AuthenticationCodeTypeFragment = TdObject & {
  * A digit-only authentication code is delivered via Firebase Authentication to the official Android application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_firebase_android.html
  */
-export type AuthenticationCodeTypeFirebaseAndroid = TdObject & {
+export type AuthenticationCodeTypeFirebaseAndroid = {
 	"@type": "authenticationCodeTypeFirebaseAndroid";
 	/** Parameters to be used for device verification */
 	device_verification_parameters: FirebaseDeviceVerificationParameters;
@@ -110,7 +120,7 @@ export type AuthenticationCodeTypeFirebaseAndroid = TdObject & {
  * A digit-only authentication code is delivered via Firebase Authentication to the official iOS application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_type_firebase_ios.html
  */
-export type AuthenticationCodeTypeFirebaseIos = TdObject & {
+export type AuthenticationCodeTypeFirebaseIos = {
 	"@type": "authenticationCodeTypeFirebaseIos";
 	/** Receipt of successful application token validation to compare with receipt from push notification */
 	receipt: string;
@@ -124,7 +134,7 @@ export type AuthenticationCodeTypeFirebaseIos = TdObject & {
  * Information about the authentication code that was sent
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authentication_code_info.html
  */
-export type AuthenticationCodeInfo = TdObject & {
+export type AuthenticationCodeInfo = {
 	"@type": "authenticationCodeInfo";
 	/** A phone number that is being authenticated */
 	phone_number: string;
@@ -140,7 +150,7 @@ export type AuthenticationCodeInfo = TdObject & {
  * Information about the email address authentication code that was sent
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1email_address_authentication_code_info.html
  */
-export type EmailAddressAuthenticationCodeInfo = TdObject & {
+export type EmailAddressAuthenticationCodeInfo = {
 	"@type": "emailAddressAuthenticationCodeInfo";
 	/** Pattern of the email address to which an authentication code was sent */
 	email_address_pattern: string;
@@ -152,7 +162,7 @@ export type EmailAddressAuthenticationCodeInfo = TdObject & {
  * An authentication code delivered to a user's email address
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1email_address_authentication_code.html
  */
-export type EmailAddressAuthenticationCode = TdObject & {
+export type EmailAddressAuthenticationCode = {
 	"@type": "emailAddressAuthenticationCode";
 	/** The code */
 	code: string;
@@ -162,7 +172,7 @@ export type EmailAddressAuthenticationCode = TdObject & {
  * An authentication token received through Apple ID
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1email_address_authentication_apple_id.html
  */
-export type EmailAddressAuthenticationAppleId = TdObject & {
+export type EmailAddressAuthenticationAppleId = {
 	"@type": "emailAddressAuthenticationAppleId";
 	/** The token */
 	token: string;
@@ -172,7 +182,7 @@ export type EmailAddressAuthenticationAppleId = TdObject & {
  * An authentication token received through Google ID
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1email_address_authentication_google_id.html
  */
-export type EmailAddressAuthenticationGoogleId = TdObject & {
+export type EmailAddressAuthenticationGoogleId = {
 	"@type": "emailAddressAuthenticationGoogleId";
 	/** The token */
 	token: string;
@@ -182,7 +192,7 @@ export type EmailAddressAuthenticationGoogleId = TdObject & {
  * Email address can be reset after the given period. Call resetAuthenticationEmailAddress to reset it and allow the user to authorize with a code sent to the user's phone number
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1email_address_reset_state_available.html
  */
-export type EmailAddressResetStateAvailable = TdObject & {
+export type EmailAddressResetStateAvailable = {
 	"@type": "emailAddressResetStateAvailable";
 	/** Time required to wait before the email address can be reset; 0 if the user is subscribed to Telegram Premium */
 	wait_period: number;
@@ -192,7 +202,7 @@ export type EmailAddressResetStateAvailable = TdObject & {
  * Email address reset has already been requested. Call resetAuthenticationEmailAddress to check whether immediate reset is possible
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1email_address_reset_state_pending.html
  */
-export type EmailAddressResetStatePending = TdObject & {
+export type EmailAddressResetStatePending = {
 	"@type": "emailAddressResetStatePending";
 	/** Left time before the email address will be reset, in seconds. updateAuthorizationState is not sent when this field changes */
 	reset_in: number;
@@ -202,7 +212,7 @@ export type EmailAddressResetStatePending = TdObject & {
  * Represents a part of the text that needs to be formatted in some unusual way
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity.html
  */
-export type TextEntity = TdObject & {
+export type TextEntity = {
 	"@type": "textEntity";
 	/** Offset of the entity, in UTF-16 code units */
 	offset: number;
@@ -216,7 +226,7 @@ export type TextEntity = TdObject & {
  * Contains a list of text entities
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entities.html
  */
-export type TextEntities = TdObject & {
+export type TextEntities = {
 	"@type": "textEntities";
 	/** List of text entities */
 	entities: TextEntity[];
@@ -226,7 +236,7 @@ export type TextEntities = TdObject & {
  * A text with some entities
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1formatted_text.html
  */
-export type FormattedText = TdObject & {
+export type FormattedText = {
 	"@type": "formattedText";
 	/** The text */
 	text: string;
@@ -238,7 +248,7 @@ export type FormattedText = TdObject & {
  * Contains Telegram terms of service
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1terms_of_service.html
  */
-export type TermsOfService = TdObject & {
+export type TermsOfService = {
 	"@type": "termsOfService";
 	/** Text of the terms of service */
 	text: FormattedText;
@@ -252,7 +262,7 @@ export type TermsOfService = TdObject & {
  * Initialization parameters are needed. Call setTdlibParameters to provide them
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_tdlib_parameters.html
  */
-export type AuthorizationStateWaitTdlibParameters = TdObject & {
+export type AuthorizationStateWaitTdlibParameters = {
 	"@type": "authorizationStateWaitTdlibParameters";
 };
 
@@ -260,7 +270,7 @@ export type AuthorizationStateWaitTdlibParameters = TdObject & {
  * TDLib needs the user's phone number to authorize. Call setAuthenticationPhoneNumber to provide the phone number, or use requestQrCodeAuthentication or checkAuthenticationBotToken for other authentication options
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_phone_number.html
  */
-export type AuthorizationStateWaitPhoneNumber = TdObject & {
+export type AuthorizationStateWaitPhoneNumber = {
 	"@type": "authorizationStateWaitPhoneNumber";
 };
 
@@ -268,7 +278,7 @@ export type AuthorizationStateWaitPhoneNumber = TdObject & {
  * The user must buy Telegram Premium as an in-store purchase to log in. Call checkAuthenticationPremiumPurchase and then setAuthenticationPremiumPurchaseTransaction
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_premium_purchase.html
  */
-export type AuthorizationStateWaitPremiumPurchase = TdObject & {
+export type AuthorizationStateWaitPremiumPurchase = {
 	"@type": "authorizationStateWaitPremiumPurchase";
 	/** Identifier of the store product that must be bought */
 	store_product_id: string;
@@ -278,7 +288,7 @@ export type AuthorizationStateWaitPremiumPurchase = TdObject & {
  * TDLib needs the user's email address to authorize. Call setAuthenticationEmailAddress to provide the email address, or directly call checkAuthenticationEmailCode with Apple ID/Google ID token if allowed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_address.html
  */
-export type AuthorizationStateWaitEmailAddress = TdObject & {
+export type AuthorizationStateWaitEmailAddress = {
 	"@type": "authorizationStateWaitEmailAddress";
 	/** True, if authorization through Apple ID is allowed */
 	allow_apple_id: boolean;
@@ -290,7 +300,7 @@ export type AuthorizationStateWaitEmailAddress = TdObject & {
  * TDLib needs the user's authentication code sent to an email address to authorize. Call checkAuthenticationEmailCode to provide the code
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_email_code.html
  */
-export type AuthorizationStateWaitEmailCode = TdObject & {
+export type AuthorizationStateWaitEmailCode = {
 	"@type": "authorizationStateWaitEmailCode";
 	/** True, if authorization through Apple ID is allowed */
 	allow_apple_id: boolean;
@@ -306,7 +316,7 @@ export type AuthorizationStateWaitEmailCode = TdObject & {
  * TDLib needs the user's authentication code to authorize. Call checkAuthenticationCode to check the code
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_code.html
  */
-export type AuthorizationStateWaitCode = TdObject & {
+export type AuthorizationStateWaitCode = {
 	"@type": "authorizationStateWaitCode";
 	/** Information about the authorization code that was sent */
 	code_info: AuthenticationCodeInfo;
@@ -316,7 +326,7 @@ export type AuthorizationStateWaitCode = TdObject & {
  * The user needs to confirm authorization on another logged in device by scanning a QR code with the provided link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_other_device_confirmation.html
  */
-export type AuthorizationStateWaitOtherDeviceConfirmation = TdObject & {
+export type AuthorizationStateWaitOtherDeviceConfirmation = {
 	"@type": "authorizationStateWaitOtherDeviceConfirmation";
 	/** A tg:// URL for the QR code. The link will be updated frequently */
 	link: string;
@@ -326,7 +336,7 @@ export type AuthorizationStateWaitOtherDeviceConfirmation = TdObject & {
  * The user is unregistered and need to accept terms of service and enter their first name and last name to finish registration. Call registerUser to accept the terms of service and provide the data
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_registration.html
  */
-export type AuthorizationStateWaitRegistration = TdObject & {
+export type AuthorizationStateWaitRegistration = {
 	"@type": "authorizationStateWaitRegistration";
 	/** Telegram terms of service */
 	terms_of_service: TermsOfService;
@@ -336,7 +346,7 @@ export type AuthorizationStateWaitRegistration = TdObject & {
  * The user has been authorized, but needs to enter a 2-step verification password to start using the application. Call checkAuthenticationPassword to provide the password, or requestAuthenticationPasswordRecovery to recover the password, or deleteAccount to delete the account after a week
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_wait_password.html
  */
-export type AuthorizationStateWaitPassword = TdObject & {
+export type AuthorizationStateWaitPassword = {
 	"@type": "authorizationStateWaitPassword";
 	/** Hint for the password; may be empty */
 	password_hint?: string;
@@ -352,7 +362,7 @@ export type AuthorizationStateWaitPassword = TdObject & {
  * The user has been successfully authorized. TDLib is now ready to answer general requests
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_ready.html
  */
-export type AuthorizationStateReady = TdObject & {
+export type AuthorizationStateReady = {
 	"@type": "authorizationStateReady";
 };
 
@@ -360,7 +370,7 @@ export type AuthorizationStateReady = TdObject & {
  * The user is currently logging out
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_logging_out.html
  */
-export type AuthorizationStateLoggingOut = TdObject & {
+export type AuthorizationStateLoggingOut = {
 	"@type": "authorizationStateLoggingOut";
 };
 
@@ -368,7 +378,7 @@ export type AuthorizationStateLoggingOut = TdObject & {
  * TDLib is closing, all subsequent queries will be answered with the error 500. Note that closing TDLib can take a while. All resources will be freed only after authorizationStateClosed has been received
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_closing.html
  */
-export type AuthorizationStateClosing = TdObject & {
+export type AuthorizationStateClosing = {
 	"@type": "authorizationStateClosing";
 };
 
@@ -376,7 +386,7 @@ export type AuthorizationStateClosing = TdObject & {
  * TDLib client is in its final state. All databases are closed and all resources are released. No other updates will be received after this. All queries will be responded to with error code 500. To continue working, one must create a new instance of the TDLib client
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1authorization_state_closed.html
  */
-export type AuthorizationStateClosed = TdObject & {
+export type AuthorizationStateClosed = {
 	"@type": "authorizationStateClosed";
 };
 
@@ -384,7 +394,7 @@ export type AuthorizationStateClosed = TdObject & {
  * Device verification must be performed with the SafetyNet Attestation API
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1firebase_device_verification_parameters_safety_net.html
  */
-export type FirebaseDeviceVerificationParametersSafetyNet = TdObject & {
+export type FirebaseDeviceVerificationParametersSafetyNet = {
 	"@type": "firebaseDeviceVerificationParametersSafetyNet";
 	/** Nonce to pass to the SafetyNet Attestation API */
 	nonce: string;
@@ -394,7 +404,7 @@ export type FirebaseDeviceVerificationParametersSafetyNet = TdObject & {
  * Device verification must be performed with the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1firebase_device_verification_parameters_play_integrity.html
  */
-export type FirebaseDeviceVerificationParametersPlayIntegrity = TdObject & {
+export type FirebaseDeviceVerificationParametersPlayIntegrity = {
 	"@type": "firebaseDeviceVerificationParametersPlayIntegrity";
 	/** Base64url-encoded nonce to pass to the Play Integrity API */
 	nonce: string;
@@ -406,7 +416,7 @@ export type FirebaseDeviceVerificationParametersPlayIntegrity = TdObject & {
  * Represents the current state of 2-step verification
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1password_state.html
  */
-export type PasswordState = TdObject & {
+export type PasswordState = {
 	"@type": "passwordState";
 	/** True, if a 2-step verification password is set */
 	has_password: boolean;
@@ -428,7 +438,7 @@ export type PasswordState = TdObject & {
  * Contains information about the current recovery email address
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1recovery_email_address.html
  */
-export type RecoveryEmailAddress = TdObject & {
+export type RecoveryEmailAddress = {
 	"@type": "recoveryEmailAddress";
 	/** Recovery email address */
 	recovery_email_address: string;
@@ -438,7 +448,7 @@ export type RecoveryEmailAddress = TdObject & {
  * Returns information about the availability of a temporary password, which can be used for payments
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1temporary_password_state.html
  */
-export type TemporaryPasswordState = TdObject & {
+export type TemporaryPasswordState = {
 	"@type": "temporaryPasswordState";
 	/** True, if a temporary password is available */
 	has_password: boolean;
@@ -450,7 +460,7 @@ export type TemporaryPasswordState = TdObject & {
  * Represents a local file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1local_file.html
  */
-export type LocalFile = TdObject & {
+export type LocalFile = {
 	"@type": "localFile";
 	/** Local path to the locally available file part; may be empty */
 	path?: string;
@@ -474,7 +484,7 @@ export type LocalFile = TdObject & {
  * Represents a remote file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1remote_file.html
  */
-export type RemoteFile = TdObject & {
+export type RemoteFile = {
 	"@type": "remoteFile";
 	/** Remote file identifier; may be empty. Can be used by the current user across application restarts or even from other devices. Uniquely identifies a file, but a file can have a lot of different valid identifiers. If the identifier starts with "http://" or "https://", it represents the HTTP URL of the file. TDLib is currently unable to download files if only their URL is known. If downloadFile/addFileToDownloads is called on such a file or if it is sent to a secret chat, TDLib starts a file generation process by sending updateFileGenerationStart to the application with the HTTP URL in the original_path and "#url#" as the conversion string. Application must generate the file by downloading it to the specified location */
 	id?: string;
@@ -492,7 +502,7 @@ export type RemoteFile = TdObject & {
  * Represents a file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file.html
  */
-export type File = TdObject & {
+export type File = {
 	"@type": "file";
 	/** Unique file identifier */
 	id: number;
@@ -510,7 +520,7 @@ export type File = TdObject & {
  * A file defined by its unique identifier
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_id.html
  */
-export type InputFileId = TdObject & {
+export type InputFileId = {
 	"@type": "inputFileId";
 	/** Unique file identifier */
 	id: number;
@@ -520,7 +530,7 @@ export type InputFileId = TdObject & {
  * A file defined by its remote identifier. The remote identifier is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_remote.html
  */
-export type InputFileRemote = TdObject & {
+export type InputFileRemote = {
 	"@type": "inputFileRemote";
 	/** Remote file identifier */
 	id: string;
@@ -530,7 +540,7 @@ export type InputFileRemote = TdObject & {
  * A file defined by a local path
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_local.html
  */
-export type InputFileLocal = TdObject & {
+export type InputFileLocal = {
 	"@type": "inputFileLocal";
 	/** Local path to the file */
 	path: string;
@@ -540,7 +550,7 @@ export type InputFileLocal = TdObject & {
  * A file generated by the application. The application must handle updates updateFileGenerationStart and updateFileGenerationStop to generate the file when asked by TDLib
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_file_generated.html
  */
-export type InputFileGenerated = TdObject & {
+export type InputFileGenerated = {
 	"@type": "inputFileGenerated";
 	/** Local path to a file from which the file is generated. The path doesn't have to be a valid path and is used by TDLib only to detect name and MIME type of the generated file */
 	original_path: string;
@@ -554,7 +564,7 @@ export type InputFileGenerated = TdObject & {
  * Describes an image in JPEG format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1photo_size.html
  */
-export type PhotoSize = TdObject & {
+export type PhotoSize = {
 	"@type": "photoSize";
 	/** Image type (see https://core.telegram.org/constructor/photoSize) */
 	type: string;
@@ -572,7 +582,7 @@ export type PhotoSize = TdObject & {
  * Thumbnail image of a very poor quality and low resolution
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1minithumbnail.html
  */
-export type Minithumbnail = TdObject & {
+export type Minithumbnail = {
 	"@type": "minithumbnail";
 	/** Thumbnail width, usually doesn't exceed 40 */
 	width: number;
@@ -586,7 +596,7 @@ export type Minithumbnail = TdObject & {
  * The thumbnail is in JPEG format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1thumbnail_format_jpeg.html
  */
-export type ThumbnailFormatJpeg = TdObject & {
+export type ThumbnailFormatJpeg = {
 	"@type": "thumbnailFormatJpeg";
 };
 
@@ -594,7 +604,7 @@ export type ThumbnailFormatJpeg = TdObject & {
  * The thumbnail is in static GIF format. It will be used only for some bot inline query results
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1thumbnail_format_gif.html
  */
-export type ThumbnailFormatGif = TdObject & {
+export type ThumbnailFormatGif = {
 	"@type": "thumbnailFormatGif";
 };
 
@@ -602,7 +612,7 @@ export type ThumbnailFormatGif = TdObject & {
  * The thumbnail is in MPEG4 format. It will be used only for some animations and videos
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1thumbnail_format_mpeg4.html
  */
-export type ThumbnailFormatMpeg4 = TdObject & {
+export type ThumbnailFormatMpeg4 = {
 	"@type": "thumbnailFormatMpeg4";
 };
 
@@ -610,7 +620,7 @@ export type ThumbnailFormatMpeg4 = TdObject & {
  * The thumbnail is in PNG format. It will be used only for background patterns
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1thumbnail_format_png.html
  */
-export type ThumbnailFormatPng = TdObject & {
+export type ThumbnailFormatPng = {
 	"@type": "thumbnailFormatPng";
 };
 
@@ -618,7 +628,7 @@ export type ThumbnailFormatPng = TdObject & {
  * The thumbnail is in TGS format. It will be used only for sticker sets
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1thumbnail_format_tgs.html
  */
-export type ThumbnailFormatTgs = TdObject & {
+export type ThumbnailFormatTgs = {
 	"@type": "thumbnailFormatTgs";
 };
 
@@ -626,7 +636,7 @@ export type ThumbnailFormatTgs = TdObject & {
  * The thumbnail is in WEBM format. It will be used only for sticker sets
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1thumbnail_format_webm.html
  */
-export type ThumbnailFormatWebm = TdObject & {
+export type ThumbnailFormatWebm = {
 	"@type": "thumbnailFormatWebm";
 };
 
@@ -634,7 +644,7 @@ export type ThumbnailFormatWebm = TdObject & {
  * The thumbnail is in WEBP format. It will be used only for some stickers and sticker sets
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1thumbnail_format_webp.html
  */
-export type ThumbnailFormatWebp = TdObject & {
+export type ThumbnailFormatWebp = {
 	"@type": "thumbnailFormatWebp";
 };
 
@@ -642,7 +652,7 @@ export type ThumbnailFormatWebp = TdObject & {
  * Represents a thumbnail
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1thumbnail.html
  */
-export type Thumbnail = TdObject & {
+export type Thumbnail = {
 	"@type": "thumbnail";
 	/** Thumbnail format */
 	format: ThumbnailFormat;
@@ -658,7 +668,7 @@ export type Thumbnail = TdObject & {
  * The mask is placed relatively to the forehead
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1mask_point_forehead.html
  */
-export type MaskPointForehead = TdObject & {
+export type MaskPointForehead = {
 	"@type": "maskPointForehead";
 };
 
@@ -666,7 +676,7 @@ export type MaskPointForehead = TdObject & {
  * The mask is placed relatively to the eyes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1mask_point_eyes.html
  */
-export type MaskPointEyes = TdObject & {
+export type MaskPointEyes = {
 	"@type": "maskPointEyes";
 };
 
@@ -674,7 +684,7 @@ export type MaskPointEyes = TdObject & {
  * The mask is placed relatively to the mouth
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1mask_point_mouth.html
  */
-export type MaskPointMouth = TdObject & {
+export type MaskPointMouth = {
 	"@type": "maskPointMouth";
 };
 
@@ -682,7 +692,7 @@ export type MaskPointMouth = TdObject & {
  * The mask is placed relatively to the chin
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1mask_point_chin.html
  */
-export type MaskPointChin = TdObject & {
+export type MaskPointChin = {
 	"@type": "maskPointChin";
 };
 
@@ -690,7 +700,7 @@ export type MaskPointChin = TdObject & {
  * Position on a photo where a mask is placed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1mask_position.html
  */
-export type MaskPosition = TdObject & {
+export type MaskPosition = {
 	"@type": "maskPosition";
 	/** Part of the face, relative to which the mask is placed */
 	point: MaskPoint;
@@ -706,7 +716,7 @@ export type MaskPosition = TdObject & {
  * The sticker is an image in WEBP format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_format_webp.html
  */
-export type StickerFormatWebp = TdObject & {
+export type StickerFormatWebp = {
 	"@type": "stickerFormatWebp";
 };
 
@@ -714,7 +724,7 @@ export type StickerFormatWebp = TdObject & {
  * The sticker is an animation in TGS format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_format_tgs.html
  */
-export type StickerFormatTgs = TdObject & {
+export type StickerFormatTgs = {
 	"@type": "stickerFormatTgs";
 };
 
@@ -722,7 +732,7 @@ export type StickerFormatTgs = TdObject & {
  * The sticker is a video in WEBM format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_format_webm.html
  */
-export type StickerFormatWebm = TdObject & {
+export type StickerFormatWebm = {
 	"@type": "stickerFormatWebm";
 };
 
@@ -730,7 +740,7 @@ export type StickerFormatWebm = TdObject & {
  * The sticker is a regular sticker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_type_regular.html
  */
-export type StickerTypeRegular = TdObject & {
+export type StickerTypeRegular = {
 	"@type": "stickerTypeRegular";
 };
 
@@ -738,7 +748,7 @@ export type StickerTypeRegular = TdObject & {
  * The sticker is a mask in WEBP format to be placed on photos or videos
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_type_mask.html
  */
-export type StickerTypeMask = TdObject & {
+export type StickerTypeMask = {
 	"@type": "stickerTypeMask";
 };
 
@@ -746,7 +756,7 @@ export type StickerTypeMask = TdObject & {
  * The sticker is a custom emoji to be used inside message text and caption
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_type_custom_emoji.html
  */
-export type StickerTypeCustomEmoji = TdObject & {
+export type StickerTypeCustomEmoji = {
 	"@type": "stickerTypeCustomEmoji";
 };
 
@@ -754,7 +764,7 @@ export type StickerTypeCustomEmoji = TdObject & {
  * The sticker is a regular sticker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_full_type_regular.html
  */
-export type StickerFullTypeRegular = TdObject & {
+export type StickerFullTypeRegular = {
 	"@type": "stickerFullTypeRegular";
 	/** Premium animation of the sticker; may be null. If present, only Telegram Premium users can use the sticker */
 	premium_animation?: File;
@@ -764,7 +774,7 @@ export type StickerFullTypeRegular = TdObject & {
  * The sticker is a mask in WEBP format to be placed on photos or videos
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_full_type_mask.html
  */
-export type StickerFullTypeMask = TdObject & {
+export type StickerFullTypeMask = {
 	"@type": "stickerFullTypeMask";
 	/** Position where the mask is placed; may be null */
 	mask_position?: MaskPosition;
@@ -774,7 +784,7 @@ export type StickerFullTypeMask = TdObject & {
  * The sticker is a custom emoji to be used inside message text and caption. Currently, only Telegram Premium users can use custom emoji
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_full_type_custom_emoji.html
  */
-export type StickerFullTypeCustomEmoji = TdObject & {
+export type StickerFullTypeCustomEmoji = {
 	"@type": "stickerFullTypeCustomEmoji";
 	/** Identifier of the custom emoji */
 	custom_emoji_id: string;
@@ -786,7 +796,7 @@ export type StickerFullTypeCustomEmoji = TdObject & {
  * Represents a closed vector path. The path begins at the end point of the last command. The coordinate system origin is in the upper-left corner
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1closed_vector_path.html
  */
-export type ClosedVectorPath = TdObject & {
+export type ClosedVectorPath = {
 	"@type": "closedVectorPath";
 	/** List of vector path commands */
 	commands: VectorPathCommand[];
@@ -796,7 +806,7 @@ export type ClosedVectorPath = TdObject & {
  * Represents outline of an image
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1outline.html
  */
-export type Outline = TdObject & {
+export type Outline = {
 	"@type": "outline";
 	/** The list of closed vector paths */
 	paths: ClosedVectorPath[];
@@ -806,7 +816,7 @@ export type Outline = TdObject & {
  * Describes one answer option of a poll
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_option.html
  */
-export type PollOption = TdObject & {
+export type PollOption = {
 	"@type": "pollOption";
 	/** Option text; 1-100 characters. Only custom emoji entities are allowed */
 	text: FormattedText;
@@ -824,7 +834,7 @@ export type PollOption = TdObject & {
  * A regular poll
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_type_regular.html
  */
-export type PollTypeRegular = TdObject & {
+export type PollTypeRegular = {
 	"@type": "pollTypeRegular";
 	/** True, if multiple answer options can be chosen simultaneously */
 	allow_multiple_answers: boolean;
@@ -834,7 +844,7 @@ export type PollTypeRegular = TdObject & {
  * A poll in quiz mode, which has exactly one correct answer option and can be answered only once
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll_type_quiz.html
  */
-export type PollTypeQuiz = TdObject & {
+export type PollTypeQuiz = {
 	"@type": "pollTypeQuiz";
 	/** 0-based identifier of the correct answer option; -1 for a yet unanswered poll */
 	correct_option_id: number;
@@ -846,7 +856,7 @@ export type PollTypeQuiz = TdObject & {
  * Describes an animation file. The animation must be encoded in GIF or MPEG4 format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1animation.html
  */
-export type Animation = TdObject & {
+export type Animation = {
 	"@type": "animation";
 	/** Duration of the animation, in seconds; as defined by the sender */
 	duration: number;
@@ -872,7 +882,7 @@ export type Animation = TdObject & {
  * Describes an audio file. Audio is usually in MP3 or M4A format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1audio.html
  */
-export type Audio = TdObject & {
+export type Audio = {
 	"@type": "audio";
 	/** Duration of the audio, in seconds; as defined by the sender */
 	duration: number;
@@ -898,7 +908,7 @@ export type Audio = TdObject & {
  * Describes a document of any type
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1document.html
  */
-export type Document = TdObject & {
+export type Document = {
 	"@type": "document";
 	/** Original name of the file; as defined by the sender */
 	file_name: string;
@@ -916,7 +926,7 @@ export type Document = TdObject & {
  * Describes a photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1photo.html
  */
-export type Photo = TdObject & {
+export type Photo = {
 	"@type": "photo";
 	/** True, if stickers were added to the photo. The list of corresponding sticker sets can be received using getAttachedStickerSets */
 	has_stickers: boolean;
@@ -930,7 +940,7 @@ export type Photo = TdObject & {
  * Describes a sticker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker.html
  */
-export type Sticker = TdObject & {
+export type Sticker = {
 	"@type": "sticker";
 	/** Unique sticker identifier within the set; 0 if none */
 	id: string;
@@ -956,7 +966,7 @@ export type Sticker = TdObject & {
  * Describes a video file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1video.html
  */
-export type Video = TdObject & {
+export type Video = {
 	"@type": "video";
 	/** Duration of the video, in seconds; as defined by the sender */
 	duration: number;
@@ -984,7 +994,7 @@ export type Video = TdObject & {
  * Describes a video note. The video must be equal in width and height, cropped to a circle, and stored in MPEG4 format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1video_note.html
  */
-export type VideoNote = TdObject & {
+export type VideoNote = {
 	"@type": "videoNote";
 	/** Duration of the video, in seconds; as defined by the sender */
 	duration: number;
@@ -1006,7 +1016,7 @@ export type VideoNote = TdObject & {
  * Describes a voice note
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1voice_note.html
  */
-export type VoiceNote = TdObject & {
+export type VoiceNote = {
 	"@type": "voiceNote";
 	/** Duration of the voice note, in seconds; as defined by the sender */
 	duration: number;
@@ -1024,7 +1034,7 @@ export type VoiceNote = TdObject & {
  * Describes an animated or custom representation of an emoji
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1animated_emoji.html
  */
-export type AnimatedEmoji = TdObject & {
+export type AnimatedEmoji = {
 	"@type": "animatedEmoji";
 	/** Sticker for the emoji; may be null if yet unknown for a custom emoji. If the sticker is a custom emoji, then it can have arbitrary format */
 	sticker?: Sticker;
@@ -1042,7 +1052,7 @@ export type AnimatedEmoji = TdObject & {
  * Describes a user contact
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1contact.html
  */
-export type Contact = TdObject & {
+export type Contact = {
 	"@type": "contact";
 	/** Phone number of the user */
 	phone_number: string;
@@ -1060,7 +1070,7 @@ export type Contact = TdObject & {
  * Describes a location on planet Earth
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1location.html
  */
-export type Location = TdObject & {
+export type Location = {
 	"@type": "location";
 	/** Latitude of the location in degrees; as defined by the sender */
 	latitude: number;
@@ -1074,7 +1084,7 @@ export type Location = TdObject & {
  * Describes a venue
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1venue.html
  */
-export type Venue = TdObject & {
+export type Venue = {
 	"@type": "venue";
 	/** Venue location; as defined by the sender */
 	location: Location;
@@ -1094,7 +1104,7 @@ export type Venue = TdObject & {
  * Describes a game. Use getInternalLink with internalLinkTypeGame to share the game
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1game.html
  */
-export type Game = TdObject & {
+export type Game = {
 	"@type": "game";
 	/** Unique game identifier */
 	id: string;
@@ -1116,7 +1126,7 @@ export type Game = TdObject & {
  * Describes a Web App. Use getInternalLink with internalLinkTypeWebApp to share the Web App
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app.html
  */
-export type WebApp = TdObject & {
+export type WebApp = {
 	"@type": "webApp";
 	/** Web App short name */
 	short_name: string;
@@ -1134,7 +1144,7 @@ export type WebApp = TdObject & {
  * Describes a poll
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1poll.html
  */
-export type Poll = TdObject & {
+export type Poll = {
 	"@type": "poll";
 	/** Unique poll identifier */
 	id: string;
@@ -1162,7 +1172,7 @@ export type Poll = TdObject & {
  * Describes an alternative re-encoded quality of a video file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1alternative_video.html
  */
-export type AlternativeVideo = TdObject & {
+export type AlternativeVideo = {
 	"@type": "alternativeVideo";
 	/** Unique identifier of the alternative video, which is used in the HLS file */
 	id: string;
@@ -1182,7 +1192,7 @@ export type AlternativeVideo = TdObject & {
  * Describes a chat background
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background.html
  */
-export type Background = TdObject & {
+export type Background = {
 	"@type": "background";
 	/** Unique background identifier */
 	id: string;
@@ -1202,7 +1212,7 @@ export type Background = TdObject & {
  * Contains a list of backgrounds
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1backgrounds.html
  */
-export type Backgrounds = TdObject & {
+export type Backgrounds = {
 	"@type": "backgrounds";
 	/** A list of backgrounds */
 	backgrounds: Background[];
@@ -1212,7 +1222,7 @@ export type Backgrounds = TdObject & {
  * Describes a background set for a specific chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_background.html
  */
-export type ChatBackground = TdObject & {
+export type ChatBackground = {
 	"@type": "chatBackground";
 	/** The background */
 	background: Background;
@@ -1224,7 +1234,7 @@ export type ChatBackground = TdObject & {
  * Describes a user profile photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_photo.html
  */
-export type ProfilePhoto = TdObject & {
+export type ProfilePhoto = {
 	"@type": "profilePhoto";
 	/** Photo identifier; 0 for an empty photo. Can be used to find a photo in a list of user profile photos */
 	id: string;
@@ -1244,7 +1254,7 @@ export type ProfilePhoto = TdObject & {
  * Contains basic information about the photo of a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_photo_info.html
  */
-export type ChatPhotoInfo = TdObject & {
+export type ChatPhotoInfo = {
 	"@type": "chatPhotoInfo";
 	/** A small (160x160) chat photo variant in JPEG format. The file can be downloaded only before the photo is changed */
 	small: File;
@@ -1262,7 +1272,7 @@ export type ChatPhotoInfo = TdObject & {
  * A regular user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_regular.html
  */
-export type UserTypeRegular = TdObject & {
+export type UserTypeRegular = {
 	"@type": "userTypeRegular";
 };
 
@@ -1270,7 +1280,7 @@ export type UserTypeRegular = TdObject & {
  * A deleted user or deleted bot. No information on the user besides the user identifier is available. It is not possible to perform any active actions on this type of user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_deleted.html
  */
-export type UserTypeDeleted = TdObject & {
+export type UserTypeDeleted = {
 	"@type": "userTypeDeleted";
 };
 
@@ -1278,7 +1288,7 @@ export type UserTypeDeleted = TdObject & {
  * A bot (see https://core.telegram.org/bots)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_bot.html
  */
-export type UserTypeBot = TdObject & {
+export type UserTypeBot = {
 	"@type": "userTypeBot";
 	/** True, if the bot is owned by the current user and can be edited using the methods toggleBotUsernameIsActive, reorderBotActiveUsernames, setBotProfilePhoto, setBotName, setBotInfoDescription, and setBotInfoShortDescription */
 	can_be_edited: boolean;
@@ -1306,7 +1316,7 @@ export type UserTypeBot = TdObject & {
  * No information on the user besides the user identifier is available, yet this user has not been deleted. This object is extremely rare and must be handled like a deleted user. It is not possible to perform any actions on users of this type
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_type_unknown.html
  */
-export type UserTypeUnknown = TdObject & {
+export type UserTypeUnknown = {
 	"@type": "userTypeUnknown";
 };
 
@@ -1314,7 +1324,7 @@ export type UserTypeUnknown = TdObject & {
  * Represents a command supported by a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_command.html
  */
-export type BotCommand = TdObject & {
+export type BotCommand = {
 	"@type": "botCommand";
 	/** Text of the bot command */
 	command: string;
@@ -1326,7 +1336,7 @@ export type BotCommand = TdObject & {
  * Contains a list of bot commands
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_commands.html
  */
-export type BotCommands = TdObject & {
+export type BotCommands = {
 	"@type": "botCommands";
 	/** Bot's user identifier */
 	bot_user_id: number;
@@ -1338,7 +1348,7 @@ export type BotCommands = TdObject & {
  * Describes a button to be shown instead of bot commands menu button
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_menu_button.html
  */
-export type BotMenuButton = TdObject & {
+export type BotMenuButton = {
 	"@type": "botMenuButton";
 	/** Text of the button */
 	text: string;
@@ -1350,7 +1360,7 @@ export type BotMenuButton = TdObject & {
  * Describes parameters of verification that is provided by a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_verification_parameters.html
  */
-export type BotVerificationParameters = TdObject & {
+export type BotVerificationParameters = {
 	"@type": "botVerificationParameters";
 	/** Identifier of the custom emoji that is used as the verification sign */
 	icon_custom_emoji_id: string;
@@ -1366,7 +1376,7 @@ export type BotVerificationParameters = TdObject & {
  * Describes verification status provided by a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_verification.html
  */
-export type BotVerification = TdObject & {
+export type BotVerification = {
 	"@type": "botVerification";
 	/** Identifier of the bot that provided the verification */
 	bot_user_id: number;
@@ -1380,7 +1390,7 @@ export type BotVerification = TdObject & {
  * Contains information about verification status of a chat or a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1verification_status.html
  */
-export type VerificationStatus = TdObject & {
+export type VerificationStatus = {
 	"@type": "verificationStatus";
 	/** True, if the chat or the user is verified by Telegram */
 	is_verified: boolean;
@@ -1396,7 +1406,7 @@ export type VerificationStatus = TdObject & {
  * Represents a location to which a chat is connected
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_location.html
  */
-export type ChatLocation = TdObject & {
+export type ChatLocation = {
 	"@type": "chatLocation";
 	/** The location */
 	location: Location;
@@ -1408,7 +1418,7 @@ export type ChatLocation = TdObject & {
  * Represents a birthdate of a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1birthdate.html
  */
-export type Birthdate = TdObject & {
+export type Birthdate = {
 	"@type": "birthdate";
 	/** Day of the month; 1-31 */
 	day: number;
@@ -1422,7 +1432,7 @@ export type Birthdate = TdObject & {
  * Describes a user that had or will have a birthday soon
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1close_birthday_user.html
  */
-export type CloseBirthdayUser = TdObject & {
+export type CloseBirthdayUser = {
 	"@type": "closeBirthdayUser";
 	/** User identifier */
 	user_id: number;
@@ -1434,7 +1444,7 @@ export type CloseBirthdayUser = TdObject & {
  * Send away messages always
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_away_message_schedule_always.html
  */
-export type BusinessAwayMessageScheduleAlways = TdObject & {
+export type BusinessAwayMessageScheduleAlways = {
 	"@type": "businessAwayMessageScheduleAlways";
 };
 
@@ -1442,7 +1452,7 @@ export type BusinessAwayMessageScheduleAlways = TdObject & {
  * Send away messages outside of the business opening hours
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_away_message_schedule_outside_of_opening_hours.html
  */
-export type BusinessAwayMessageScheduleOutsideOfOpeningHours = TdObject & {
+export type BusinessAwayMessageScheduleOutsideOfOpeningHours = {
 	"@type": "businessAwayMessageScheduleOutsideOfOpeningHours";
 };
 
@@ -1450,7 +1460,7 @@ export type BusinessAwayMessageScheduleOutsideOfOpeningHours = TdObject & {
  * Send away messages only in the specified time span
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_away_message_schedule_custom.html
  */
-export type BusinessAwayMessageScheduleCustom = TdObject & {
+export type BusinessAwayMessageScheduleCustom = {
 	"@type": "businessAwayMessageScheduleCustom";
 	/** Point in time (Unix timestamp) when the away messages will start to be sent */
 	start_date: number;
@@ -1462,7 +1472,7 @@ export type BusinessAwayMessageScheduleCustom = TdObject & {
  * Represents a location of a business
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_location.html
  */
-export type BusinessLocation = TdObject & {
+export type BusinessLocation = {
 	"@type": "businessLocation";
 	/** The location; may be null if not specified */
 	location?: Location;
@@ -1474,7 +1484,7 @@ export type BusinessLocation = TdObject & {
  * Describes private chats chosen for automatic interaction with a business
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_recipients.html
  */
-export type BusinessRecipients = TdObject & {
+export type BusinessRecipients = {
 	"@type": "businessRecipients";
 	/** Identifiers of selected private chats */
 	chat_ids: number[];
@@ -1496,7 +1506,7 @@ export type BusinessRecipients = TdObject & {
  * Describes settings for messages that are automatically sent by a Telegram Business account when it is away
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_away_message_settings.html
  */
-export type BusinessAwayMessageSettings = TdObject & {
+export type BusinessAwayMessageSettings = {
 	"@type": "businessAwayMessageSettings";
 	/** Unique quick reply shortcut identifier for the away messages */
 	shortcut_id: number;
@@ -1512,7 +1522,7 @@ export type BusinessAwayMessageSettings = TdObject & {
  * Describes settings for greeting messages that are automatically sent by a Telegram Business account as response to incoming messages in an inactive private chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_greeting_message_settings.html
  */
-export type BusinessGreetingMessageSettings = TdObject & {
+export type BusinessGreetingMessageSettings = {
 	"@type": "businessGreetingMessageSettings";
 	/** Unique quick reply shortcut identifier for the greeting messages */
 	shortcut_id: number;
@@ -1526,7 +1536,7 @@ export type BusinessGreetingMessageSettings = TdObject & {
  * Describes rights of a business bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_bot_rights.html
  */
-export type BusinessBotRights = TdObject & {
+export type BusinessBotRights = {
 	"@type": "businessBotRights";
 	/** True, if the bot can send and edit messages in the private chats that had incoming messages in the last 24 hours */
 	can_reply: boolean;
@@ -1562,7 +1572,7 @@ export type BusinessBotRights = TdObject & {
  * Describes a bot connected to a business account
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_connected_bot.html
  */
-export type BusinessConnectedBot = TdObject & {
+export type BusinessConnectedBot = {
 	"@type": "businessConnectedBot";
 	/** User identifier of the bot */
 	bot_user_id: number;
@@ -1576,7 +1586,7 @@ export type BusinessConnectedBot = TdObject & {
  * Describes settings for a business account start page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_start_page.html
  */
-export type BusinessStartPage = TdObject & {
+export type BusinessStartPage = {
 	"@type": "businessStartPage";
 	/** Title text of the start page */
 	title: string;
@@ -1590,7 +1600,7 @@ export type BusinessStartPage = TdObject & {
  * Describes settings for a business account start page to set
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_business_start_page.html
  */
-export type InputBusinessStartPage = TdObject & {
+export type InputBusinessStartPage = {
 	"@type": "inputBusinessStartPage";
 	/** Title text of the start page; 0-getOption("business_start_page_title_length_max") characters */
 	title: string;
@@ -1604,7 +1614,7 @@ export type InputBusinessStartPage = TdObject & {
  * Describes an interval of time when the business is open
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_opening_hours_interval.html
  */
-export type BusinessOpeningHoursInterval = TdObject & {
+export type BusinessOpeningHoursInterval = {
 	"@type": "businessOpeningHoursInterval";
 	/** The minute's sequence number in a week, starting on Monday, marking the start of the time interval during which the business is open; 0-7*24*60 */
 	start_minute: number;
@@ -1616,7 +1626,7 @@ export type BusinessOpeningHoursInterval = TdObject & {
  * Describes opening hours of a business
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_opening_hours.html
  */
-export type BusinessOpeningHours = TdObject & {
+export type BusinessOpeningHours = {
 	"@type": "businessOpeningHours";
 	/** Unique time zone identifier */
 	time_zone_id: string;
@@ -1628,7 +1638,7 @@ export type BusinessOpeningHours = TdObject & {
  * Contains information about a Telegram Business account
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_info.html
  */
-export type BusinessInfo = TdObject & {
+export type BusinessInfo = {
 	"@type": "businessInfo";
 	/** Location of the business; may be null if none */
 	location?: BusinessLocation;
@@ -1652,7 +1662,7 @@ export type BusinessInfo = TdObject & {
  * Contains information about a business chat link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_chat_link.html
  */
-export type BusinessChatLink = TdObject & {
+export type BusinessChatLink = {
 	"@type": "businessChatLink";
 	/** The HTTPS link */
 	link: string;
@@ -1668,7 +1678,7 @@ export type BusinessChatLink = TdObject & {
  * Contains a list of business chat links created by the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_chat_links.html
  */
-export type BusinessChatLinks = TdObject & {
+export type BusinessChatLinks = {
 	"@type": "businessChatLinks";
 	/** List of links */
 	links: BusinessChatLink[];
@@ -1678,7 +1688,7 @@ export type BusinessChatLinks = TdObject & {
  * Describes a business chat link to create or edit
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_business_chat_link.html
  */
-export type InputBusinessChatLink = TdObject & {
+export type InputBusinessChatLink = {
 	"@type": "inputBusinessChatLink";
 	/** Message draft text that will be added to the input field */
 	text: FormattedText;
@@ -1690,7 +1700,7 @@ export type InputBusinessChatLink = TdObject & {
  * Contains information about a business chat link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_chat_link_info.html
  */
-export type BusinessChatLinkInfo = TdObject & {
+export type BusinessChatLinkInfo = {
 	"@type": "businessChatLinkInfo";
 	/** Identifier of the private chat that created the link */
 	chat_id: number;
@@ -1702,7 +1712,7 @@ export type BusinessChatLinkInfo = TdObject & {
  * Information about the sticker, which was used to create the chat photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_photo_sticker_type_regular_or_mask.html
  */
-export type ChatPhotoStickerTypeRegularOrMask = TdObject & {
+export type ChatPhotoStickerTypeRegularOrMask = {
 	"@type": "chatPhotoStickerTypeRegularOrMask";
 	/** Sticker set identifier */
 	sticker_set_id: string;
@@ -1714,7 +1724,7 @@ export type ChatPhotoStickerTypeRegularOrMask = TdObject & {
  * Information about the custom emoji, which was used to create the chat photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_photo_sticker_type_custom_emoji.html
  */
-export type ChatPhotoStickerTypeCustomEmoji = TdObject & {
+export type ChatPhotoStickerTypeCustomEmoji = {
 	"@type": "chatPhotoStickerTypeCustomEmoji";
 	/** Identifier of the custom emoji */
 	custom_emoji_id: string;
@@ -1724,7 +1734,7 @@ export type ChatPhotoStickerTypeCustomEmoji = TdObject & {
  * Information about the sticker, which was used to create the chat photo. The sticker is shown at the center of the photo and occupies at most 67% of it
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_photo_sticker.html
  */
-export type ChatPhotoSticker = TdObject & {
+export type ChatPhotoSticker = {
 	"@type": "chatPhotoSticker";
 	/** Type of the sticker */
 	type: ChatPhotoStickerType;
@@ -1736,7 +1746,7 @@ export type ChatPhotoSticker = TdObject & {
  * Animated variant of a chat photo in MPEG4 format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1animated_chat_photo.html
  */
-export type AnimatedChatPhoto = TdObject & {
+export type AnimatedChatPhoto = {
 	"@type": "animatedChatPhoto";
 	/** Animation width and height */
 	length: number;
@@ -1750,7 +1760,7 @@ export type AnimatedChatPhoto = TdObject & {
  * Describes a chat or user profile photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_photo.html
  */
-export type ChatPhoto = TdObject & {
+export type ChatPhoto = {
 	"@type": "chatPhoto";
 	/** Unique photo identifier */
 	id: string;
@@ -1772,7 +1782,7 @@ export type ChatPhoto = TdObject & {
  * Contains a list of chat or user profile photos
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_photos.html
  */
-export type ChatPhotos = TdObject & {
+export type ChatPhotos = {
 	"@type": "chatPhotos";
 	/** Total number of photos */
 	total_count: number;
@@ -1784,7 +1794,7 @@ export type ChatPhotos = TdObject & {
  * A previously used profile photo of the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_chat_photo_previous.html
  */
-export type InputChatPhotoPrevious = TdObject & {
+export type InputChatPhotoPrevious = {
 	"@type": "inputChatPhotoPrevious";
 	/** Identifier of the current user's profile photo to reuse */
 	chat_photo_id: string;
@@ -1794,7 +1804,7 @@ export type InputChatPhotoPrevious = TdObject & {
  * A static photo in JPEG format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_chat_photo_static.html
  */
-export type InputChatPhotoStatic = TdObject & {
+export type InputChatPhotoStatic = {
 	"@type": "inputChatPhotoStatic";
 	/** Photo to be set as profile photo. Only inputFileLocal and inputFileGenerated are allowed */
 	photo: InputFile;
@@ -1804,7 +1814,7 @@ export type InputChatPhotoStatic = TdObject & {
  * An animation in MPEG4 format; must be square, at most 10 seconds long, have width between 160 and 1280 and be at most 2MB in size
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_chat_photo_animation.html
  */
-export type InputChatPhotoAnimation = TdObject & {
+export type InputChatPhotoAnimation = {
 	"@type": "inputChatPhotoAnimation";
 	/** Animation to be set as profile photo. Only inputFileLocal and inputFileGenerated are allowed */
 	animation: InputFile;
@@ -1816,7 +1826,7 @@ export type InputChatPhotoAnimation = TdObject & {
  * A sticker on a custom background
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_chat_photo_sticker.html
  */
-export type InputChatPhotoSticker = TdObject & {
+export type InputChatPhotoSticker = {
 	"@type": "inputChatPhotoSticker";
 	/** Information about the sticker */
 	sticker: ChatPhotoSticker;
@@ -1826,7 +1836,7 @@ export type InputChatPhotoSticker = TdObject & {
  * Describes actions that a user is allowed to take in a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_permissions.html
  */
-export type ChatPermissions = TdObject & {
+export type ChatPermissions = {
 	"@type": "chatPermissions";
 	/** True, if the user can send text messages, contacts, giveaways, giveaway winners, invoices, locations, and venues */
 	can_send_basic_messages: boolean;
@@ -1862,7 +1872,7 @@ export type ChatPermissions = TdObject & {
  * Describes rights of the administrator
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_administrator_rights.html
  */
-export type ChatAdministratorRights = TdObject & {
+export type ChatAdministratorRights = {
 	"@type": "chatAdministratorRights";
 	/** True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report supergroup spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other privilege; applicable to supergroups and channels only */
 	can_manage_chat: boolean;
@@ -1900,7 +1910,7 @@ export type ChatAdministratorRights = TdObject & {
  * Describes a possibly non-integer amount of Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_amount.html
  */
-export type StarAmount = TdObject & {
+export type StarAmount = {
 	"@type": "starAmount";
 	/** The integer amount of Telegram Stars rounded to 0 */
 	star_count: number;
@@ -1912,7 +1922,7 @@ export type StarAmount = TdObject & {
  * Describes a subscription to a channel chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_subscription_type_channel.html
  */
-export type StarSubscriptionTypeChannel = TdObject & {
+export type StarSubscriptionTypeChannel = {
 	"@type": "starSubscriptionTypeChannel";
 	/** True, if the subscription is active and the user can use the method reuseStarSubscription to join the subscribed chat again */
 	can_reuse: boolean;
@@ -1924,7 +1934,7 @@ export type StarSubscriptionTypeChannel = TdObject & {
  * Describes a subscription in a bot or a business account
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_subscription_type_bot.html
  */
-export type StarSubscriptionTypeBot = TdObject & {
+export type StarSubscriptionTypeBot = {
 	"@type": "starSubscriptionTypeBot";
 	/** True, if the subscription was canceled by the bot and can't be extended */
 	is_canceled_by_bot: boolean;
@@ -1940,7 +1950,7 @@ export type StarSubscriptionTypeBot = TdObject & {
  * Describes subscription plan paid in Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_subscription_pricing.html
  */
-export type StarSubscriptionPricing = TdObject & {
+export type StarSubscriptionPricing = {
 	"@type": "starSubscriptionPricing";
 	/** The number of seconds between consecutive Telegram Star debiting */
 	period: number;
@@ -1952,7 +1962,7 @@ export type StarSubscriptionPricing = TdObject & {
  * Contains information about subscription to a channel chat, a bot, or a business account that was paid in Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_subscription.html
  */
-export type StarSubscription = TdObject & {
+export type StarSubscription = {
 	"@type": "starSubscription";
 	/** Unique identifier of the subscription */
 	id: string;
@@ -1974,7 +1984,7 @@ export type StarSubscription = TdObject & {
  * Represents a list of Telegram Star subscriptions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_subscriptions.html
  */
-export type StarSubscriptions = TdObject & {
+export type StarSubscriptions = {
 	"@type": "starSubscriptions";
 	/** The amount of owned Telegram Stars */
 	star_amount: StarAmount;
@@ -1990,7 +2000,7 @@ export type StarSubscriptions = TdObject & {
  * The affiliate is the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_type_current_user.html
  */
-export type AffiliateTypeCurrentUser = TdObject & {
+export type AffiliateTypeCurrentUser = {
 	"@type": "affiliateTypeCurrentUser";
 };
 
@@ -1998,7 +2008,7 @@ export type AffiliateTypeCurrentUser = TdObject & {
  * The affiliate is a bot owned by the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_type_bot.html
  */
-export type AffiliateTypeBot = TdObject & {
+export type AffiliateTypeBot = {
 	"@type": "affiliateTypeBot";
 	/** User identifier of the bot */
 	user_id: number;
@@ -2008,7 +2018,7 @@ export type AffiliateTypeBot = TdObject & {
  * The affiliate is a channel chat where the current user has can_post_messages administrator right
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_type_channel.html
  */
-export type AffiliateTypeChannel = TdObject & {
+export type AffiliateTypeChannel = {
 	"@type": "affiliateTypeChannel";
 	/** Identifier of the channel chat */
 	chat_id: number;
@@ -2018,7 +2028,7 @@ export type AffiliateTypeChannel = TdObject & {
  * The affiliate programs must be sorted by the profitability
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_program_sort_order_profitability.html
  */
-export type AffiliateProgramSortOrderProfitability = TdObject & {
+export type AffiliateProgramSortOrderProfitability = {
 	"@type": "affiliateProgramSortOrderProfitability";
 };
 
@@ -2026,7 +2036,7 @@ export type AffiliateProgramSortOrderProfitability = TdObject & {
  * The affiliate programs must be sorted by creation date
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_program_sort_order_creation_date.html
  */
-export type AffiliateProgramSortOrderCreationDate = TdObject & {
+export type AffiliateProgramSortOrderCreationDate = {
 	"@type": "affiliateProgramSortOrderCreationDate";
 };
 
@@ -2034,7 +2044,7 @@ export type AffiliateProgramSortOrderCreationDate = TdObject & {
  * The affiliate programs must be sorted by the expected revenue
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_program_sort_order_revenue.html
  */
-export type AffiliateProgramSortOrderRevenue = TdObject & {
+export type AffiliateProgramSortOrderRevenue = {
 	"@type": "affiliateProgramSortOrderRevenue";
 };
 
@@ -2042,7 +2052,7 @@ export type AffiliateProgramSortOrderRevenue = TdObject & {
  * Describes parameters of an affiliate program
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_program_parameters.html
  */
-export type AffiliateProgramParameters = TdObject & {
+export type AffiliateProgramParameters = {
 	"@type": "affiliateProgramParameters";
 	/** The number of Telegram Stars received by the affiliate for each 1000 Telegram Stars received by the program owner; getOption("affiliate_program_commission_per_mille_min")-getOption("affiliate_program_commission_per_mille_max") */
 	commission_per_mille: number;
@@ -2054,7 +2064,7 @@ export type AffiliateProgramParameters = TdObject & {
  * Contains information about an active affiliate program
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_program_info.html
  */
-export type AffiliateProgramInfo = TdObject & {
+export type AffiliateProgramInfo = {
 	"@type": "affiliateProgramInfo";
 	/** Parameters of the affiliate program */
 	parameters: AffiliateProgramParameters;
@@ -2068,7 +2078,7 @@ export type AffiliateProgramInfo = TdObject & {
  * Contains information about an affiliate that received commission from a Telegram Star transaction
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1affiliate_info.html
  */
-export type AffiliateInfo = TdObject & {
+export type AffiliateInfo = {
 	"@type": "affiliateInfo";
 	/** The number of Telegram Stars received by the affiliate for each 1000 Telegram Stars received by the program owner */
 	commission_per_mille: number;
@@ -2082,7 +2092,7 @@ export type AffiliateInfo = TdObject & {
  * Describes a found affiliate program
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_affiliate_program.html
  */
-export type FoundAffiliateProgram = TdObject & {
+export type FoundAffiliateProgram = {
 	"@type": "foundAffiliateProgram";
 	/** User identifier of the bot created the program */
 	bot_user_id: number;
@@ -2094,7 +2104,7 @@ export type FoundAffiliateProgram = TdObject & {
  * Represents a list of found affiliate programs
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_affiliate_programs.html
  */
-export type FoundAffiliatePrograms = TdObject & {
+export type FoundAffiliatePrograms = {
 	"@type": "foundAffiliatePrograms";
 	/** The total number of found affiliate programs */
 	total_count: number;
@@ -2108,7 +2118,7 @@ export type FoundAffiliatePrograms = TdObject & {
  * Describes an affiliate program that was connected to an affiliate
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connected_affiliate_program.html
  */
-export type ConnectedAffiliateProgram = TdObject & {
+export type ConnectedAffiliateProgram = {
 	"@type": "connectedAffiliateProgram";
 	/** The link that can be used to refer users if the program is still active */
 	url: string;
@@ -2130,7 +2140,7 @@ export type ConnectedAffiliateProgram = TdObject & {
  * Represents a list of affiliate programs that were connected to an affiliate
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connected_affiliate_programs.html
  */
-export type ConnectedAffiliatePrograms = TdObject & {
+export type ConnectedAffiliatePrograms = {
 	"@type": "connectedAffiliatePrograms";
 	/** The total number of affiliate programs that were connected to the affiliate */
 	total_count: number;
@@ -2144,7 +2154,7 @@ export type ConnectedAffiliatePrograms = TdObject & {
  * Contains information about a product that can be paid with invoice
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1product_info.html
  */
-export type ProductInfo = TdObject & {
+export type ProductInfo = {
 	"@type": "productInfo";
 	/** Product title */
 	title: string;
@@ -2158,7 +2168,7 @@ export type ProductInfo = TdObject & {
  * Describes an option for buying Telegram Premium to a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_payment_option.html
  */
-export type PremiumPaymentOption = TdObject & {
+export type PremiumPaymentOption = {
 	"@type": "premiumPaymentOption";
 	/** ISO 4217 currency code for Telegram Premium subscription payment */
 	currency: string;
@@ -2178,7 +2188,7 @@ export type PremiumPaymentOption = TdObject & {
  * Describes an option for buying or upgrading Telegram Premium for self
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_state_payment_option.html
  */
-export type PremiumStatePaymentOption = TdObject & {
+export type PremiumStatePaymentOption = {
 	"@type": "premiumStatePaymentOption";
 	/** Information about the payment option */
 	payment_option: PremiumPaymentOption;
@@ -2194,7 +2204,7 @@ export type PremiumStatePaymentOption = TdObject & {
  * Describes an option for gifting Telegram Premium to a user. Use telegramPaymentPurposePremiumGift for out-of-store payments or payments in Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_gift_payment_option.html
  */
-export type PremiumGiftPaymentOption = TdObject & {
+export type PremiumGiftPaymentOption = {
 	"@type": "premiumGiftPaymentOption";
 	/** ISO 4217 currency code for the payment */
 	currency: string;
@@ -2216,7 +2226,7 @@ export type PremiumGiftPaymentOption = TdObject & {
  * Contains a list of options for gifting Telegram Premium to a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_gift_payment_options.html
  */
-export type PremiumGiftPaymentOptions = TdObject & {
+export type PremiumGiftPaymentOptions = {
 	"@type": "premiumGiftPaymentOptions";
 	/** The list of options sorted by Telegram Premium subscription duration */
 	options: PremiumGiftPaymentOption[];
@@ -2226,7 +2236,7 @@ export type PremiumGiftPaymentOptions = TdObject & {
  * Describes an option for creating of Telegram Premium giveaway or manual distribution of Telegram Premium among chat members. Use telegramPaymentPurposePremiumGiftCodes or telegramPaymentPurposePremiumGiveaway for out-of-store payments
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_payment_option.html
  */
-export type PremiumGiveawayPaymentOption = TdObject & {
+export type PremiumGiveawayPaymentOption = {
 	"@type": "premiumGiveawayPaymentOption";
 	/** ISO 4217 currency code for Telegram Premium gift code payment */
 	currency: string;
@@ -2246,7 +2256,7 @@ export type PremiumGiveawayPaymentOption = TdObject & {
  * Contains a list of options for creating of Telegram Premium giveaway or manual distribution of Telegram Premium among chat members
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_giveaway_payment_options.html
  */
-export type PremiumGiveawayPaymentOptions = TdObject & {
+export type PremiumGiveawayPaymentOptions = {
 	"@type": "premiumGiveawayPaymentOptions";
 	/** The list of options */
 	options: PremiumGiveawayPaymentOption[];
@@ -2256,7 +2266,7 @@ export type PremiumGiveawayPaymentOptions = TdObject & {
  * Contains information about a Telegram Premium gift code
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_gift_code_info.html
  */
-export type PremiumGiftCodeInfo = TdObject & {
+export type PremiumGiftCodeInfo = {
 	"@type": "premiumGiftCodeInfo";
 	/** Identifier of a chat or a user that created the gift code; may be null if unknown. If null and the code is from messagePremiumGiftCode message, then creator_id from the message can be used */
 	creator_id?: MessageSender;
@@ -2278,7 +2288,7 @@ export type PremiumGiftCodeInfo = TdObject & {
  * Describes an option for buying Telegram Stars. Use telegramPaymentPurposeStars for out-of-store payments
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_payment_option.html
  */
-export type StarPaymentOption = TdObject & {
+export type StarPaymentOption = {
 	"@type": "starPaymentOption";
 	/** ISO 4217 currency code for the payment */
 	currency: string;
@@ -2296,7 +2306,7 @@ export type StarPaymentOption = TdObject & {
  * Contains a list of options for buying Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_payment_options.html
  */
-export type StarPaymentOptions = TdObject & {
+export type StarPaymentOptions = {
 	"@type": "starPaymentOptions";
 	/** The list of options */
 	options: StarPaymentOption[];
@@ -2306,7 +2316,7 @@ export type StarPaymentOptions = TdObject & {
  * Describes an option for the number of winners of a Telegram Star giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_giveaway_winner_option.html
  */
-export type StarGiveawayWinnerOption = TdObject & {
+export type StarGiveawayWinnerOption = {
 	"@type": "starGiveawayWinnerOption";
 	/** The number of users that will be chosen as winners */
 	winner_count: number;
@@ -2320,7 +2330,7 @@ export type StarGiveawayWinnerOption = TdObject & {
  * Describes an option for creating of Telegram Star giveaway. Use telegramPaymentPurposeStarGiveaway for out-of-store payments
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_giveaway_payment_option.html
  */
-export type StarGiveawayPaymentOption = TdObject & {
+export type StarGiveawayPaymentOption = {
 	"@type": "starGiveawayPaymentOption";
 	/** ISO 4217 currency code for the payment */
 	currency: string;
@@ -2344,7 +2354,7 @@ export type StarGiveawayPaymentOption = TdObject & {
  * Contains a list of options for creating of Telegram Star giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_giveaway_payment_options.html
  */
-export type StarGiveawayPaymentOptions = TdObject & {
+export type StarGiveawayPaymentOptions = {
 	"@type": "starGiveawayPaymentOptions";
 	/** The list of options */
 	options: StarGiveawayPaymentOption[];
@@ -2354,7 +2364,7 @@ export type StarGiveawayPaymentOptions = TdObject & {
  * Describes gift types that are accepted by a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accepted_gift_types.html
  */
-export type AcceptedGiftTypes = TdObject & {
+export type AcceptedGiftTypes = {
 	"@type": "acceptedGiftTypes";
 	/** True, if unlimited regular gifts are accepted */
 	unlimited_gifts: boolean;
@@ -2370,7 +2380,7 @@ export type AcceptedGiftTypes = TdObject & {
  * Contains settings for gift receiving for a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_settings.html
  */
-export type GiftSettings = TdObject & {
+export type GiftSettings = {
 	"@type": "giftSettings";
 	/** True, if a button for sending a gift to the user or by the user must always be shown in the input field */
 	show_gift_button: boolean;
@@ -2382,7 +2392,7 @@ export type GiftSettings = TdObject & {
  * Describes a model of an upgraded gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_model.html
  */
-export type UpgradedGiftModel = TdObject & {
+export type UpgradedGiftModel = {
 	"@type": "upgradedGiftModel";
 	/** Name of the model */
 	name: string;
@@ -2396,7 +2406,7 @@ export type UpgradedGiftModel = TdObject & {
  * Describes a symbol shown on the pattern of an upgraded gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_symbol.html
  */
-export type UpgradedGiftSymbol = TdObject & {
+export type UpgradedGiftSymbol = {
 	"@type": "upgradedGiftSymbol";
 	/** Name of the symbol */
 	name: string;
@@ -2410,7 +2420,7 @@ export type UpgradedGiftSymbol = TdObject & {
  * Describes colors of a backdrop of an upgraded gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_backdrop_colors.html
  */
-export type UpgradedGiftBackdropColors = TdObject & {
+export type UpgradedGiftBackdropColors = {
 	"@type": "upgradedGiftBackdropColors";
 	/** A color in the center of the backdrop in the RGB format */
 	center_color: number;
@@ -2426,7 +2436,7 @@ export type UpgradedGiftBackdropColors = TdObject & {
  * Describes a backdrop of an upgraded gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_backdrop.html
  */
-export type UpgradedGiftBackdrop = TdObject & {
+export type UpgradedGiftBackdrop = {
 	"@type": "upgradedGiftBackdrop";
 	/** Unique identifier of the backdrop */
 	id: number;
@@ -2442,7 +2452,7 @@ export type UpgradedGiftBackdrop = TdObject & {
  * Describes the original details about the gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_original_details.html
  */
-export type UpgradedGiftOriginalDetails = TdObject & {
+export type UpgradedGiftOriginalDetails = {
 	"@type": "upgradedGiftOriginalDetails";
 	/** Identifier of the user or the chat that sent the gift; may be null if the gift was private */
 	sender_id?: MessageSender;
@@ -2458,7 +2468,7 @@ export type UpgradedGiftOriginalDetails = TdObject & {
  * Describes a gift that can be sent to another user or channel chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift.html
  */
-export type Gift = TdObject & {
+export type Gift = {
 	"@type": "gift";
 	/** Unique identifier of the gift */
 	id: string;
@@ -2486,7 +2496,7 @@ export type Gift = TdObject & {
  * Describes an upgraded gift that can be transferred to another owner or transferred to the TON blockchain as an NFT
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift.html
  */
-export type UpgradedGift = TdObject & {
+export type UpgradedGift = {
 	"@type": "upgradedGift";
 	/** Unique identifier of the gift */
 	id: string;
@@ -2524,7 +2534,7 @@ export type UpgradedGift = TdObject & {
  * Contains result of gift upgrading
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgrade_gift_result.html
  */
-export type UpgradeGiftResult = TdObject & {
+export type UpgradeGiftResult = {
 	"@type": "upgradeGiftResult";
 	/** The upgraded gift */
 	gift: UpgradedGift;
@@ -2548,7 +2558,7 @@ export type UpgradeGiftResult = TdObject & {
  * Describes a gift that is available for purchase
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1available_gift.html
  */
-export type AvailableGift = TdObject & {
+export type AvailableGift = {
 	"@type": "availableGift";
 	/** The gift */
 	gift: Gift;
@@ -2564,7 +2574,7 @@ export type AvailableGift = TdObject & {
  * Contains a list of gifts that can be sent to another user or channel chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1available_gifts.html
  */
-export type AvailableGifts = TdObject & {
+export type AvailableGifts = {
 	"@type": "availableGifts";
 	/** The list of gifts */
 	gifts: AvailableGift[];
@@ -2574,7 +2584,7 @@ export type AvailableGifts = TdObject & {
  * Identifier of a gift model
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_attribute_id_model.html
  */
-export type UpgradedGiftAttributeIdModel = TdObject & {
+export type UpgradedGiftAttributeIdModel = {
 	"@type": "upgradedGiftAttributeIdModel";
 	/** Identifier of the sticker representing the model */
 	sticker_id: string;
@@ -2584,7 +2594,7 @@ export type UpgradedGiftAttributeIdModel = TdObject & {
  * Identifier of a gift symbol
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_attribute_id_symbol.html
  */
-export type UpgradedGiftAttributeIdSymbol = TdObject & {
+export type UpgradedGiftAttributeIdSymbol = {
 	"@type": "upgradedGiftAttributeIdSymbol";
 	/** Identifier of the sticker representing the symbol */
 	sticker_id: string;
@@ -2594,7 +2604,7 @@ export type UpgradedGiftAttributeIdSymbol = TdObject & {
  * Identifier of a gift backdrop
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_attribute_id_backdrop.html
  */
-export type UpgradedGiftAttributeIdBackdrop = TdObject & {
+export type UpgradedGiftAttributeIdBackdrop = {
 	"@type": "upgradedGiftAttributeIdBackdrop";
 	/** Identifier of the backdrop */
 	backdrop_id: number;
@@ -2604,7 +2614,7 @@ export type UpgradedGiftAttributeIdBackdrop = TdObject & {
  * Describes a model of an upgraded gift with the number of gifts found
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_model_count.html
  */
-export type UpgradedGiftModelCount = TdObject & {
+export type UpgradedGiftModelCount = {
 	"@type": "upgradedGiftModelCount";
 	/** The model */
 	model: UpgradedGiftModel;
@@ -2616,7 +2626,7 @@ export type UpgradedGiftModelCount = TdObject & {
  * Describes a symbol shown on the pattern of an upgraded gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_symbol_count.html
  */
-export type UpgradedGiftSymbolCount = TdObject & {
+export type UpgradedGiftSymbolCount = {
 	"@type": "upgradedGiftSymbolCount";
 	/** The symbol */
 	symbol: UpgradedGiftSymbol;
@@ -2628,7 +2638,7 @@ export type UpgradedGiftSymbolCount = TdObject & {
  * Describes a backdrop of an upgraded gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1upgraded_gift_backdrop_count.html
  */
-export type UpgradedGiftBackdropCount = TdObject & {
+export type UpgradedGiftBackdropCount = {
 	"@type": "upgradedGiftBackdropCount";
 	/** The backdrop */
 	backdrop: UpgradedGiftBackdrop;
@@ -2640,7 +2650,7 @@ export type UpgradedGiftBackdropCount = TdObject & {
  * The gifts will be sorted by their price from the lowest to the highest
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_for_resale_order_price.html
  */
-export type GiftForResaleOrderPrice = TdObject & {
+export type GiftForResaleOrderPrice = {
 	"@type": "giftForResaleOrderPrice";
 };
 
@@ -2648,7 +2658,7 @@ export type GiftForResaleOrderPrice = TdObject & {
  * The gifts will be sorted by the last date when their price was changed from the newest to the oldest
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_for_resale_order_price_change_date.html
  */
-export type GiftForResaleOrderPriceChangeDate = TdObject & {
+export type GiftForResaleOrderPriceChangeDate = {
 	"@type": "giftForResaleOrderPriceChangeDate";
 };
 
@@ -2656,7 +2666,7 @@ export type GiftForResaleOrderPriceChangeDate = TdObject & {
  * The gifts will be sorted by their number from the smallest to the largest
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_for_resale_order_number.html
  */
-export type GiftForResaleOrderNumber = TdObject & {
+export type GiftForResaleOrderNumber = {
 	"@type": "giftForResaleOrderNumber";
 };
 
@@ -2664,7 +2674,7 @@ export type GiftForResaleOrderNumber = TdObject & {
  * Describes a gift available for resale
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_for_resale.html
  */
-export type GiftForResale = TdObject & {
+export type GiftForResale = {
 	"@type": "giftForResale";
 	/** The gift */
 	gift: UpgradedGift;
@@ -2676,7 +2686,7 @@ export type GiftForResale = TdObject & {
  * Describes gifts available for resale
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gifts_for_resale.html
  */
-export type GiftsForResale = TdObject & {
+export type GiftsForResale = {
 	"@type": "giftsForResale";
 	/** Total number of gifts found */
 	total_count: number;
@@ -2696,7 +2706,7 @@ export type GiftsForResale = TdObject & {
  * Regular gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sent_gift_regular.html
  */
-export type SentGiftRegular = TdObject & {
+export type SentGiftRegular = {
 	"@type": "sentGiftRegular";
 	/** The gift */
 	gift: Gift;
@@ -2706,7 +2716,7 @@ export type SentGiftRegular = TdObject & {
  * Upgraded gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sent_gift_upgraded.html
  */
-export type SentGiftUpgraded = TdObject & {
+export type SentGiftUpgraded = {
 	"@type": "sentGiftUpgraded";
 	/** The gift */
 	gift: UpgradedGift;
@@ -2716,7 +2726,7 @@ export type SentGiftUpgraded = TdObject & {
  * Represents a gift received by a user or a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1received_gift.html
  */
-export type ReceivedGift = TdObject & {
+export type ReceivedGift = {
 	"@type": "receivedGift";
 	/** Unique identifier of the received gift for the current user; only for the receiver of the gift */
 	received_gift_id: string;
@@ -2758,7 +2768,7 @@ export type ReceivedGift = TdObject & {
  * Represents a list of gifts received by a user or a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1received_gifts.html
  */
-export type ReceivedGifts = TdObject & {
+export type ReceivedGifts = {
 	"@type": "receivedGifts";
 	/** The total number of received gifts */
 	total_count: number;
@@ -2774,7 +2784,7 @@ export type ReceivedGifts = TdObject & {
  * Contains examples of possible upgraded gifts for the given regular gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1gift_upgrade_preview.html
  */
-export type GiftUpgradePreview = TdObject & {
+export type GiftUpgradePreview = {
 	"@type": "giftUpgradePreview";
 	/** Examples of possible models that can be chosen for the gift after upgrade */
 	models: UpgradedGiftModel[];
@@ -2788,7 +2798,7 @@ export type GiftUpgradePreview = TdObject & {
  * The transaction is incoming and increases the number of owned Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_direction_incoming.html
  */
-export type StarTransactionDirectionIncoming = TdObject & {
+export type StarTransactionDirectionIncoming = {
 	"@type": "starTransactionDirectionIncoming";
 };
 
@@ -2796,7 +2806,7 @@ export type StarTransactionDirectionIncoming = TdObject & {
  * The transaction is outgoing and decreases the number of owned Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_direction_outgoing.html
  */
-export type StarTransactionDirectionOutgoing = TdObject & {
+export type StarTransactionDirectionOutgoing = {
 	"@type": "starTransactionDirectionOutgoing";
 };
 
@@ -2804,7 +2814,7 @@ export type StarTransactionDirectionOutgoing = TdObject & {
  * The transaction is a deposit of Telegram Stars from the Premium bot; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_premium_bot_deposit.html
  */
-export type StarTransactionTypePremiumBotDeposit = TdObject & {
+export type StarTransactionTypePremiumBotDeposit = {
 	"@type": "starTransactionTypePremiumBotDeposit";
 };
 
@@ -2812,7 +2822,7 @@ export type StarTransactionTypePremiumBotDeposit = TdObject & {
  * The transaction is a deposit of Telegram Stars from App Store; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_app_store_deposit.html
  */
-export type StarTransactionTypeAppStoreDeposit = TdObject & {
+export type StarTransactionTypeAppStoreDeposit = {
 	"@type": "starTransactionTypeAppStoreDeposit";
 };
 
@@ -2820,7 +2830,7 @@ export type StarTransactionTypeAppStoreDeposit = TdObject & {
  * The transaction is a deposit of Telegram Stars from Google Play; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_google_play_deposit.html
  */
-export type StarTransactionTypeGooglePlayDeposit = TdObject & {
+export type StarTransactionTypeGooglePlayDeposit = {
 	"@type": "starTransactionTypeGooglePlayDeposit";
 };
 
@@ -2828,7 +2838,7 @@ export type StarTransactionTypeGooglePlayDeposit = TdObject & {
  * The transaction is a deposit of Telegram Stars from Fragment; for regular users and bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_fragment_deposit.html
  */
-export type StarTransactionTypeFragmentDeposit = TdObject & {
+export type StarTransactionTypeFragmentDeposit = {
 	"@type": "starTransactionTypeFragmentDeposit";
 };
 
@@ -2836,7 +2846,7 @@ export type StarTransactionTypeFragmentDeposit = TdObject & {
  * The transaction is a deposit of Telegram Stars by another user; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_user_deposit.html
  */
-export type StarTransactionTypeUserDeposit = TdObject & {
+export type StarTransactionTypeUserDeposit = {
 	"@type": "starTransactionTypeUserDeposit";
 	/** Identifier of the user that gifted Telegram Stars; 0 if the user was anonymous */
 	user_id: number;
@@ -2848,7 +2858,7 @@ export type StarTransactionTypeUserDeposit = TdObject & {
  * The transaction is a deposit of Telegram Stars from a giveaway; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_giveaway_deposit.html
  */
-export type StarTransactionTypeGiveawayDeposit = TdObject & {
+export type StarTransactionTypeGiveawayDeposit = {
 	"@type": "starTransactionTypeGiveawayDeposit";
 	/** Identifier of a supergroup or a channel chat that created the giveaway */
 	chat_id: number;
@@ -2860,7 +2870,7 @@ export type StarTransactionTypeGiveawayDeposit = TdObject & {
  * The transaction is a withdrawal of earned Telegram Stars to Fragment; for regular users, bots, supergroup and channel chats only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_fragment_withdrawal.html
  */
-export type StarTransactionTypeFragmentWithdrawal = TdObject & {
+export type StarTransactionTypeFragmentWithdrawal = {
 	"@type": "starTransactionTypeFragmentWithdrawal";
 	/** State of the withdrawal; may be null for refunds from Fragment */
 	withdrawal_state?: RevenueWithdrawalState;
@@ -2870,7 +2880,7 @@ export type StarTransactionTypeFragmentWithdrawal = TdObject & {
  * The transaction is a withdrawal of earned Telegram Stars to Telegram Ad platform; for bots and channel chats only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_telegram_ads_withdrawal.html
  */
-export type StarTransactionTypeTelegramAdsWithdrawal = TdObject & {
+export type StarTransactionTypeTelegramAdsWithdrawal = {
 	"@type": "starTransactionTypeTelegramAdsWithdrawal";
 };
 
@@ -2878,7 +2888,7 @@ export type StarTransactionTypeTelegramAdsWithdrawal = TdObject & {
  * The transaction is a payment for Telegram API usage; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_telegram_api_usage.html
  */
-export type StarTransactionTypeTelegramApiUsage = TdObject & {
+export type StarTransactionTypeTelegramApiUsage = {
 	"@type": "starTransactionTypeTelegramApiUsage";
 	/** The number of billed requests */
 	request_count: number;
@@ -2888,7 +2898,7 @@ export type StarTransactionTypeTelegramApiUsage = TdObject & {
  * The transaction is a purchase of paid media from a bot or a business account by the current user; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_paid_media_purchase.html
  */
-export type StarTransactionTypeBotPaidMediaPurchase = TdObject & {
+export type StarTransactionTypeBotPaidMediaPurchase = {
 	"@type": "starTransactionTypeBotPaidMediaPurchase";
 	/** Identifier of the bot or the business account user that sent the paid media */
 	user_id: number;
@@ -2900,7 +2910,7 @@ export type StarTransactionTypeBotPaidMediaPurchase = TdObject & {
  * The transaction is a sale of paid media by the bot or a business account managed by the bot; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_paid_media_sale.html
  */
-export type StarTransactionTypeBotPaidMediaSale = TdObject & {
+export type StarTransactionTypeBotPaidMediaSale = {
 	"@type": "starTransactionTypeBotPaidMediaSale";
 	/** Identifier of the user that bought the media */
 	user_id: number;
@@ -2916,7 +2926,7 @@ export type StarTransactionTypeBotPaidMediaSale = TdObject & {
  * The transaction is a purchase of paid media from a channel by the current user; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_paid_media_purchase.html
  */
-export type StarTransactionTypeChannelPaidMediaPurchase = TdObject & {
+export type StarTransactionTypeChannelPaidMediaPurchase = {
 	"@type": "starTransactionTypeChannelPaidMediaPurchase";
 	/** Identifier of the channel chat that sent the paid media */
 	chat_id: number;
@@ -2930,7 +2940,7 @@ export type StarTransactionTypeChannelPaidMediaPurchase = TdObject & {
  * The transaction is a sale of paid media by the channel chat; for channel chats only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_paid_media_sale.html
  */
-export type StarTransactionTypeChannelPaidMediaSale = TdObject & {
+export type StarTransactionTypeChannelPaidMediaSale = {
 	"@type": "starTransactionTypeChannelPaidMediaSale";
 	/** Identifier of the user that bought the media */
 	user_id: number;
@@ -2944,7 +2954,7 @@ export type StarTransactionTypeChannelPaidMediaSale = TdObject & {
  * The transaction is a purchase of a product from a bot or a business account by the current user; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_invoice_purchase.html
  */
-export type StarTransactionTypeBotInvoicePurchase = TdObject & {
+export type StarTransactionTypeBotInvoicePurchase = {
 	"@type": "starTransactionTypeBotInvoicePurchase";
 	/** Identifier of the bot or the business account user that created the invoice */
 	user_id: number;
@@ -2956,7 +2966,7 @@ export type StarTransactionTypeBotInvoicePurchase = TdObject & {
  * The transaction is a sale of a product by the bot; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_invoice_sale.html
  */
-export type StarTransactionTypeBotInvoiceSale = TdObject & {
+export type StarTransactionTypeBotInvoiceSale = {
 	"@type": "starTransactionTypeBotInvoiceSale";
 	/** Identifier of the user that bought the product */
 	user_id: number;
@@ -2972,7 +2982,7 @@ export type StarTransactionTypeBotInvoiceSale = TdObject & {
  * The transaction is a purchase of a subscription from a bot or a business account by the current user; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_subscription_purchase.html
  */
-export type StarTransactionTypeBotSubscriptionPurchase = TdObject & {
+export type StarTransactionTypeBotSubscriptionPurchase = {
 	"@type": "starTransactionTypeBotSubscriptionPurchase";
 	/** Identifier of the bot or the business account user that created the subscription link */
 	user_id: number;
@@ -2986,7 +2996,7 @@ export type StarTransactionTypeBotSubscriptionPurchase = TdObject & {
  * The transaction is a sale of a subscription by the bot; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_bot_subscription_sale.html
  */
-export type StarTransactionTypeBotSubscriptionSale = TdObject & {
+export type StarTransactionTypeBotSubscriptionSale = {
 	"@type": "starTransactionTypeBotSubscriptionSale";
 	/** Identifier of the user that bought the subscription */
 	user_id: number;
@@ -3004,7 +3014,7 @@ export type StarTransactionTypeBotSubscriptionSale = TdObject & {
  * The transaction is a purchase of a subscription to a channel chat by the current user; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_subscription_purchase.html
  */
-export type StarTransactionTypeChannelSubscriptionPurchase = TdObject & {
+export type StarTransactionTypeChannelSubscriptionPurchase = {
 	"@type": "starTransactionTypeChannelSubscriptionPurchase";
 	/** Identifier of the channel chat that created the subscription */
 	chat_id: number;
@@ -3016,7 +3026,7 @@ export type StarTransactionTypeChannelSubscriptionPurchase = TdObject & {
  * The transaction is a sale of a subscription by the channel chat; for channel chats only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_subscription_sale.html
  */
-export type StarTransactionTypeChannelSubscriptionSale = TdObject & {
+export type StarTransactionTypeChannelSubscriptionSale = {
 	"@type": "starTransactionTypeChannelSubscriptionSale";
 	/** Identifier of the user that bought the subscription */
 	user_id: number;
@@ -3028,7 +3038,7 @@ export type StarTransactionTypeChannelSubscriptionSale = TdObject & {
  * The transaction is a purchase of a regular gift; for regular users and bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_purchase.html
  */
-export type StarTransactionTypeGiftPurchase = TdObject & {
+export type StarTransactionTypeGiftPurchase = {
 	"@type": "starTransactionTypeGiftPurchase";
 	/** Identifier of the user or the channel that received the gift */
 	owner_id: MessageSender;
@@ -3040,7 +3050,7 @@ export type StarTransactionTypeGiftPurchase = TdObject & {
  * The transaction is a transfer of an upgraded gift; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_transfer.html
  */
-export type StarTransactionTypeGiftTransfer = TdObject & {
+export type StarTransactionTypeGiftTransfer = {
 	"@type": "starTransactionTypeGiftTransfer";
 	/** Identifier of the user or the channel that received the gift */
 	owner_id: MessageSender;
@@ -3052,7 +3062,7 @@ export type StarTransactionTypeGiftTransfer = TdObject & {
  * The transaction is a sale of a received gift; for regular users and channel chats only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_sale.html
  */
-export type StarTransactionTypeGiftSale = TdObject & {
+export type StarTransactionTypeGiftSale = {
 	"@type": "starTransactionTypeGiftSale";
 	/** Identifier of the user that sent the gift */
 	user_id: number;
@@ -3064,7 +3074,7 @@ export type StarTransactionTypeGiftSale = TdObject & {
  * The transaction is an upgrade of a gift; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_gift_upgrade.html
  */
-export type StarTransactionTypeGiftUpgrade = TdObject & {
+export type StarTransactionTypeGiftUpgrade = {
 	"@type": "starTransactionTypeGiftUpgrade";
 	/** Identifier of the user that initially sent the gift */
 	user_id: number;
@@ -3076,7 +3086,7 @@ export type StarTransactionTypeGiftUpgrade = TdObject & {
  * The transaction is a purchase of an upgraded gift for some user or channel; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_upgraded_gift_purchase.html
  */
-export type StarTransactionTypeUpgradedGiftPurchase = TdObject & {
+export type StarTransactionTypeUpgradedGiftPurchase = {
 	"@type": "starTransactionTypeUpgradedGiftPurchase";
 	/** Identifier of the user that sold the gift */
 	user_id: number;
@@ -3088,7 +3098,7 @@ export type StarTransactionTypeUpgradedGiftPurchase = TdObject & {
  * The transaction is a sale of an upgraded gift; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_upgraded_gift_sale.html
  */
-export type StarTransactionTypeUpgradedGiftSale = TdObject & {
+export type StarTransactionTypeUpgradedGiftSale = {
 	"@type": "starTransactionTypeUpgradedGiftSale";
 	/** Identifier of the user that bought the gift */
 	user_id: number;
@@ -3102,7 +3112,7 @@ export type StarTransactionTypeUpgradedGiftSale = TdObject & {
  * The transaction is a sending of a paid reaction to a message in a channel chat by the current user; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_paid_reaction_send.html
  */
-export type StarTransactionTypeChannelPaidReactionSend = TdObject & {
+export type StarTransactionTypeChannelPaidReactionSend = {
 	"@type": "starTransactionTypeChannelPaidReactionSend";
 	/** Identifier of the channel chat */
 	chat_id: number;
@@ -3114,7 +3124,7 @@ export type StarTransactionTypeChannelPaidReactionSend = TdObject & {
  * The transaction is a receiving of a paid reaction to a message by the channel chat; for channel chats only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_channel_paid_reaction_receive.html
  */
-export type StarTransactionTypeChannelPaidReactionReceive = TdObject & {
+export type StarTransactionTypeChannelPaidReactionReceive = {
 	"@type": "starTransactionTypeChannelPaidReactionReceive";
 	/** Identifier of the user that added the paid reaction */
 	user_id: number;
@@ -3126,7 +3136,7 @@ export type StarTransactionTypeChannelPaidReactionReceive = TdObject & {
  * The transaction is a receiving of a commission from an affiliate program; for regular users, bots and channel chats only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_affiliate_program_commission.html
  */
-export type StarTransactionTypeAffiliateProgramCommission = TdObject & {
+export type StarTransactionTypeAffiliateProgramCommission = {
 	"@type": "starTransactionTypeAffiliateProgramCommission";
 	/** Identifier of the chat that created the affiliate program */
 	chat_id: number;
@@ -3138,7 +3148,7 @@ export type StarTransactionTypeAffiliateProgramCommission = TdObject & {
  * The transaction is a sending of a paid message; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_paid_message_send.html
  */
-export type StarTransactionTypePaidMessageSend = TdObject & {
+export type StarTransactionTypePaidMessageSend = {
 	"@type": "starTransactionTypePaidMessageSend";
 	/** Identifier of the chat that received the payment */
 	chat_id: number;
@@ -3150,7 +3160,7 @@ export type StarTransactionTypePaidMessageSend = TdObject & {
  * The transaction is a receiving of a paid message; for regular users, supergroup and channel chats only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_paid_message_receive.html
  */
-export type StarTransactionTypePaidMessageReceive = TdObject & {
+export type StarTransactionTypePaidMessageReceive = {
 	"@type": "starTransactionTypePaidMessageReceive";
 	/** Identifier of the sender of the message */
 	sender_id: MessageSender;
@@ -3166,7 +3176,7 @@ export type StarTransactionTypePaidMessageReceive = TdObject & {
  * The transaction is a purchase of Telegram Premium subscription; for regular users and bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_premium_purchase.html
  */
-export type StarTransactionTypePremiumPurchase = TdObject & {
+export type StarTransactionTypePremiumPurchase = {
 	"@type": "starTransactionTypePremiumPurchase";
 	/** Identifier of the user that received the Telegram Premium subscription */
 	user_id: number;
@@ -3180,7 +3190,7 @@ export type StarTransactionTypePremiumPurchase = TdObject & {
  * The transaction is a transfer of Telegram Stars to a business bot; for regular users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_business_bot_transfer_send.html
  */
-export type StarTransactionTypeBusinessBotTransferSend = TdObject & {
+export type StarTransactionTypeBusinessBotTransferSend = {
 	"@type": "starTransactionTypeBusinessBotTransferSend";
 	/** Identifier of the bot that received Telegram Stars */
 	user_id: number;
@@ -3190,7 +3200,7 @@ export type StarTransactionTypeBusinessBotTransferSend = TdObject & {
  * The transaction is a transfer of Telegram Stars from a business account; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_business_bot_transfer_receive.html
  */
-export type StarTransactionTypeBusinessBotTransferReceive = TdObject & {
+export type StarTransactionTypeBusinessBotTransferReceive = {
 	"@type": "starTransactionTypeBusinessBotTransferReceive";
 	/** Identifier of the user that sent Telegram Stars */
 	user_id: number;
@@ -3200,7 +3210,7 @@ export type StarTransactionTypeBusinessBotTransferReceive = TdObject & {
  * The transaction is a transaction of an unsupported type
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction_type_unsupported.html
  */
-export type StarTransactionTypeUnsupported = TdObject & {
+export type StarTransactionTypeUnsupported = {
 	"@type": "starTransactionTypeUnsupported";
 };
 
@@ -3208,7 +3218,7 @@ export type StarTransactionTypeUnsupported = TdObject & {
  * Represents a transaction changing the amount of owned Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transaction.html
  */
-export type StarTransaction = TdObject & {
+export type StarTransaction = {
 	"@type": "starTransaction";
 	/** Unique identifier of the transaction */
 	id: string;
@@ -3226,7 +3236,7 @@ export type StarTransaction = TdObject & {
  * Represents a list of Telegram Star transactions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_transactions.html
  */
-export type StarTransactions = TdObject & {
+export type StarTransactions = {
 	"@type": "starTransactions";
 	/** The amount of owned Telegram Stars */
 	star_amount: StarAmount;
@@ -3240,7 +3250,7 @@ export type StarTransactions = TdObject & {
  * The user is eligible for the giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_participant_status_eligible.html
  */
-export type GiveawayParticipantStatusEligible = TdObject & {
+export type GiveawayParticipantStatusEligible = {
 	"@type": "giveawayParticipantStatusEligible";
 };
 
@@ -3248,7 +3258,7 @@ export type GiveawayParticipantStatusEligible = TdObject & {
  * The user participates in the giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_participant_status_participating.html
  */
-export type GiveawayParticipantStatusParticipating = TdObject & {
+export type GiveawayParticipantStatusParticipating = {
 	"@type": "giveawayParticipantStatusParticipating";
 };
 
@@ -3256,7 +3266,7 @@ export type GiveawayParticipantStatusParticipating = TdObject & {
  * The user can't participate in the giveaway, because they have already been member of the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_participant_status_already_was_member.html
  */
-export type GiveawayParticipantStatusAlreadyWasMember = TdObject & {
+export type GiveawayParticipantStatusAlreadyWasMember = {
 	"@type": "giveawayParticipantStatusAlreadyWasMember";
 	/** Point in time (Unix timestamp) when the user joined the chat */
 	joined_chat_date: number;
@@ -3266,7 +3276,7 @@ export type GiveawayParticipantStatusAlreadyWasMember = TdObject & {
  * The user can't participate in the giveaway, because they are an administrator in one of the chats that created the giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_participant_status_administrator.html
  */
-export type GiveawayParticipantStatusAdministrator = TdObject & {
+export type GiveawayParticipantStatusAdministrator = {
 	"@type": "giveawayParticipantStatusAdministrator";
 	/** Identifier of the chat administered by the user */
 	chat_id: number;
@@ -3276,7 +3286,7 @@ export type GiveawayParticipantStatusAdministrator = TdObject & {
  * The user can't participate in the giveaway, because they phone number is from a disallowed country
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_participant_status_disallowed_country.html
  */
-export type GiveawayParticipantStatusDisallowedCountry = TdObject & {
+export type GiveawayParticipantStatusDisallowedCountry = {
 	"@type": "giveawayParticipantStatusDisallowedCountry";
 	/** A two-letter ISO 3166-1 alpha-2 country code of the user's country */
 	user_country_code: string;
@@ -3286,7 +3296,7 @@ export type GiveawayParticipantStatusDisallowedCountry = TdObject & {
  * Describes an ongoing giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_info_ongoing.html
  */
-export type GiveawayInfoOngoing = TdObject & {
+export type GiveawayInfoOngoing = {
 	"@type": "giveawayInfoOngoing";
 	/** Point in time (Unix timestamp) when the giveaway was created */
 	creation_date: number;
@@ -3300,7 +3310,7 @@ export type GiveawayInfoOngoing = TdObject & {
  * Describes a completed giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_info_completed.html
  */
-export type GiveawayInfoCompleted = TdObject & {
+export type GiveawayInfoCompleted = {
 	"@type": "giveawayInfoCompleted";
 	/** Point in time (Unix timestamp) when the giveaway was created */
 	creation_date: number;
@@ -3324,7 +3334,7 @@ export type GiveawayInfoCompleted = TdObject & {
  * The giveaway sends Telegram Premium subscriptions to the winners
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_prize_premium.html
  */
-export type GiveawayPrizePremium = TdObject & {
+export type GiveawayPrizePremium = {
 	"@type": "giveawayPrizePremium";
 	/** Number of months the Telegram Premium subscription will be active after code activation */
 	month_count: number;
@@ -3334,7 +3344,7 @@ export type GiveawayPrizePremium = TdObject & {
  * The giveaway sends Telegram Stars to the winners
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_prize_stars.html
  */
-export type GiveawayPrizeStars = TdObject & {
+export type GiveawayPrizeStars = {
 	"@type": "giveawayPrizeStars";
 	/** Number of Telegram Stars that will be shared by all winners */
 	star_count: number;
@@ -3344,7 +3354,7 @@ export type GiveawayPrizeStars = TdObject & {
  * Contains information about supported accent color for user/chat name, background of empty chat photo, replies to messages and link previews
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1accent_color.html
  */
-export type AccentColor = TdObject & {
+export type AccentColor = {
 	"@type": "accentColor";
 	/** Accent color identifier */
 	id: number;
@@ -3362,7 +3372,7 @@ export type AccentColor = TdObject & {
  * Contains information about supported accent colors for user profile photo background in RGB format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_accent_colors.html
  */
-export type ProfileAccentColors = TdObject & {
+export type ProfileAccentColors = {
 	"@type": "profileAccentColors";
 	/** The list of 1-2 colors in RGB format, describing the colors, as expected to be shown in the color palette settings */
 	palette_colors: number[];
@@ -3376,7 +3386,7 @@ export type ProfileAccentColors = TdObject & {
  * Contains information about supported accent color for user profile photo background
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1profile_accent_color.html
  */
-export type ProfileAccentColor = TdObject & {
+export type ProfileAccentColor = {
 	"@type": "profileAccentColor";
 	/** Profile accent color identifier */
 	id: number;
@@ -3394,7 +3404,7 @@ export type ProfileAccentColor = TdObject & {
  * A custom emoji set as emoji status
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_status_type_custom_emoji.html
  */
-export type EmojiStatusTypeCustomEmoji = TdObject & {
+export type EmojiStatusTypeCustomEmoji = {
 	"@type": "emojiStatusTypeCustomEmoji";
 	/** Identifier of the custom emoji in stickerFormatTgs format */
 	custom_emoji_id: string;
@@ -3404,7 +3414,7 @@ export type EmojiStatusTypeCustomEmoji = TdObject & {
  * An upgraded gift set as emoji status
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_status_type_upgraded_gift.html
  */
-export type EmojiStatusTypeUpgradedGift = TdObject & {
+export type EmojiStatusTypeUpgradedGift = {
 	"@type": "emojiStatusTypeUpgradedGift";
 	/** Identifier of the upgraded gift */
 	upgraded_gift_id: string;
@@ -3424,7 +3434,7 @@ export type EmojiStatusTypeUpgradedGift = TdObject & {
  * Describes an emoji to be shown instead of the Telegram Premium badge
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_status.html
  */
-export type EmojiStatus = TdObject & {
+export type EmojiStatus = {
 	"@type": "emojiStatus";
 	/** Type of the emoji status */
 	type: EmojiStatusType;
@@ -3436,7 +3446,7 @@ export type EmojiStatus = TdObject & {
  * Contains a list of emoji statuses
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_statuses.html
  */
-export type EmojiStatuses = TdObject & {
+export type EmojiStatuses = {
 	"@type": "emojiStatuses";
 	/** The list of emoji statuses identifiers */
 	emoji_statuses: EmojiStatus[];
@@ -3446,7 +3456,7 @@ export type EmojiStatuses = TdObject & {
  * Contains a list of custom emoji identifiers for emoji statuses
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_status_custom_emojis.html
  */
-export type EmojiStatusCustomEmojis = TdObject & {
+export type EmojiStatusCustomEmojis = {
 	"@type": "emojiStatusCustomEmojis";
 	/** The list of custom emoji identifiers */
 	custom_emoji_ids: string[];
@@ -3456,7 +3466,7 @@ export type EmojiStatusCustomEmojis = TdObject & {
  * Describes usernames assigned to a user, a supergroup, or a channel
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1usernames.html
  */
-export type Usernames = TdObject & {
+export type Usernames = {
 	"@type": "usernames";
 	/** List of active usernames; the first one must be shown as the primary username. The order of active usernames can be changed with reorderActiveUsernames, reorderBotActiveUsernames or reorderSupergroupActiveUsernames */
 	active_usernames: string[];
@@ -3470,7 +3480,7 @@ export type Usernames = TdObject & {
  * Represents a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user.html
  */
-export type User = TdObject & {
+export type User = {
 	"@type": "user";
 	/** User identifier */
 	id: number;
@@ -3532,7 +3542,7 @@ export type User = TdObject & {
  * Contains information about a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_info.html
  */
-export type BotInfo = TdObject & {
+export type BotInfo = {
 	"@type": "botInfo";
 	/** The text that is shown on the bot's profile page and is sent together with the link when users share the bot */
 	short_description: string;
@@ -3584,7 +3594,7 @@ export type BotInfo = TdObject & {
  * Contains full information about a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_full_info.html
  */
-export type UserFullInfo = TdObject & {
+export type UserFullInfo = {
 	"@type": "userFullInfo";
 	/** User profile photo set by the current user for the contact; may be null. If null and user.profile_photo is null, then the photo is empty; otherwise, it is unknown. If non-null, then it is the same photo as in user.profile_photo and chat.photo. This photo isn't returned in the list of user photos */
 	personal_photo?: ChatPhoto;
@@ -3640,7 +3650,7 @@ export type UserFullInfo = TdObject & {
  * Represents a list of users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1users.html
  */
-export type Users = TdObject & {
+export type Users = {
 	"@type": "users";
 	/** Approximate total number of users found */
 	total_count: number;
@@ -3652,7 +3662,7 @@ export type Users = TdObject & {
  * Represents a list of found users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_users.html
  */
-export type FoundUsers = TdObject & {
+export type FoundUsers = {
 	"@type": "foundUsers";
 	/** Identifiers of the found users */
 	user_ids: number[];
@@ -3664,7 +3674,7 @@ export type FoundUsers = TdObject & {
  * Contains information about a chat administrator
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_administrator.html
  */
-export type ChatAdministrator = TdObject & {
+export type ChatAdministrator = {
 	"@type": "chatAdministrator";
 	/** User identifier of the administrator */
 	user_id: number;
@@ -3678,7 +3688,7 @@ export type ChatAdministrator = TdObject & {
  * Represents a list of chat administrators
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_administrators.html
  */
-export type ChatAdministrators = TdObject & {
+export type ChatAdministrators = {
 	"@type": "chatAdministrators";
 	/** A list of chat administrators */
 	administrators: ChatAdministrator[];
@@ -3688,7 +3698,7 @@ export type ChatAdministrators = TdObject & {
  * The user is the owner of the chat and has all the administrator privileges
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_member_status_creator.html
  */
-export type ChatMemberStatusCreator = TdObject & {
+export type ChatMemberStatusCreator = {
 	"@type": "chatMemberStatusCreator";
 	/** A custom title of the owner; 0-16 characters without emoji; applicable to supergroups only */
 	custom_title: string;
@@ -3702,7 +3712,7 @@ export type ChatMemberStatusCreator = TdObject & {
  * The user is a member of the chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage video chats. In supergroups and channels, there are more detailed options for administrator privileges
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_member_status_administrator.html
  */
-export type ChatMemberStatusAdministrator = TdObject & {
+export type ChatMemberStatusAdministrator = {
 	"@type": "chatMemberStatusAdministrator";
 	/** A custom title of the administrator; 0-16 characters without emoji; applicable to supergroups only */
 	custom_title: string;
@@ -3716,7 +3726,7 @@ export type ChatMemberStatusAdministrator = TdObject & {
  * The user is a member of the chat, without any additional privileges or restrictions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_member_status_member.html
  */
-export type ChatMemberStatusMember = TdObject & {
+export type ChatMemberStatusMember = {
 	"@type": "chatMemberStatusMember";
 	/** Point in time (Unix timestamp) when the user will be removed from the chat because of the expired subscription; 0 if never. Ignored in setChatMemberStatus */
 	member_until_date: number;
@@ -3726,7 +3736,7 @@ export type ChatMemberStatusMember = TdObject & {
  * The user is under certain restrictions in the chat. Not supported in basic groups and channels
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_member_status_restricted.html
  */
-export type ChatMemberStatusRestricted = TdObject & {
+export type ChatMemberStatusRestricted = {
 	"@type": "chatMemberStatusRestricted";
 	/** True, if the user is a member of the chat */
 	is_member: boolean;
@@ -3740,7 +3750,7 @@ export type ChatMemberStatusRestricted = TdObject & {
  * The user or the chat is not a chat member
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_member_status_left.html
  */
-export type ChatMemberStatusLeft = TdObject & {
+export type ChatMemberStatusLeft = {
 	"@type": "chatMemberStatusLeft";
 };
 
@@ -3748,7 +3758,7 @@ export type ChatMemberStatusLeft = TdObject & {
  * The user or the chat was banned (and hence is not a member of the chat). Implies the user can't return to the chat, view messages, or be used as a participant identifier to join a video chat of the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_member_status_banned.html
  */
-export type ChatMemberStatusBanned = TdObject & {
+export type ChatMemberStatusBanned = {
 	"@type": "chatMemberStatusBanned";
 	/** Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Always 0 in basic groups */
 	banned_until_date: number;
@@ -3758,7 +3768,7 @@ export type ChatMemberStatusBanned = TdObject & {
  * Describes a user or a chat as a member of another chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_member.html
  */
-export type ChatMember = TdObject & {
+export type ChatMember = {
 	"@type": "chatMember";
 	/** Identifier of the chat member. Currently, other chats can be only Left or Banned. Only supergroups and channels can have other chats as Left or Banned members and these chats must be supergroups or channels */
 	member_id: MessageSender;
@@ -3774,7 +3784,7 @@ export type ChatMember = TdObject & {
  * Contains a list of chat members
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_members.html
  */
-export type ChatMembers = TdObject & {
+export type ChatMembers = {
 	"@type": "chatMembers";
 	/** Approximate total number of chat members found */
 	total_count: number;
@@ -3786,7 +3796,7 @@ export type ChatMembers = TdObject & {
  * Returns contacts of the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_members_filter_contacts.html
  */
-export type ChatMembersFilterContacts = TdObject & {
+export type ChatMembersFilterContacts = {
 	"@type": "chatMembersFilterContacts";
 };
 
@@ -3794,7 +3804,7 @@ export type ChatMembersFilterContacts = TdObject & {
  * Returns the owner and administrators
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_members_filter_administrators.html
  */
-export type ChatMembersFilterAdministrators = TdObject & {
+export type ChatMembersFilterAdministrators = {
 	"@type": "chatMembersFilterAdministrators";
 };
 
@@ -3802,7 +3812,7 @@ export type ChatMembersFilterAdministrators = TdObject & {
  * Returns all chat members, including restricted chat members
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_members_filter_members.html
  */
-export type ChatMembersFilterMembers = TdObject & {
+export type ChatMembersFilterMembers = {
 	"@type": "chatMembersFilterMembers";
 };
 
@@ -3810,7 +3820,7 @@ export type ChatMembersFilterMembers = TdObject & {
  * Returns users which can be mentioned in the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_members_filter_mention.html
  */
-export type ChatMembersFilterMention = TdObject & {
+export type ChatMembersFilterMention = {
 	"@type": "chatMembersFilterMention";
 	/** If non-zero, the identifier of the current message thread */
 	message_thread_id: number;
@@ -3820,7 +3830,7 @@ export type ChatMembersFilterMention = TdObject & {
  * Returns users under certain restrictions in the chat; can be used only by administrators in a supergroup
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_members_filter_restricted.html
  */
-export type ChatMembersFilterRestricted = TdObject & {
+export type ChatMembersFilterRestricted = {
 	"@type": "chatMembersFilterRestricted";
 };
 
@@ -3828,7 +3838,7 @@ export type ChatMembersFilterRestricted = TdObject & {
  * Returns users banned from the chat; can be used only by administrators in a supergroup or in a channel
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_members_filter_banned.html
  */
-export type ChatMembersFilterBanned = TdObject & {
+export type ChatMembersFilterBanned = {
 	"@type": "chatMembersFilterBanned";
 };
 
@@ -3836,7 +3846,7 @@ export type ChatMembersFilterBanned = TdObject & {
  * Returns bot members of the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_members_filter_bots.html
  */
-export type ChatMembersFilterBots = TdObject & {
+export type ChatMembersFilterBots = {
 	"@type": "chatMembersFilterBots";
 };
 
@@ -3844,7 +3854,7 @@ export type ChatMembersFilterBots = TdObject & {
  * Returns recently active users in reverse chronological order
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_members_filter_recent.html
  */
-export type SupergroupMembersFilterRecent = TdObject & {
+export type SupergroupMembersFilterRecent = {
 	"@type": "supergroupMembersFilterRecent";
 };
 
@@ -3852,7 +3862,7 @@ export type SupergroupMembersFilterRecent = TdObject & {
  * Returns contacts of the user, which are members of the supergroup or channel
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_members_filter_contacts.html
  */
-export type SupergroupMembersFilterContacts = TdObject & {
+export type SupergroupMembersFilterContacts = {
 	"@type": "supergroupMembersFilterContacts";
 	/** Query to search for */
 	query: string;
@@ -3862,7 +3872,7 @@ export type SupergroupMembersFilterContacts = TdObject & {
  * Returns the owner and administrators
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_members_filter_administrators.html
  */
-export type SupergroupMembersFilterAdministrators = TdObject & {
+export type SupergroupMembersFilterAdministrators = {
 	"@type": "supergroupMembersFilterAdministrators";
 };
 
@@ -3870,7 +3880,7 @@ export type SupergroupMembersFilterAdministrators = TdObject & {
  * Used to search for supergroup or channel members via a (string) query
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_members_filter_search.html
  */
-export type SupergroupMembersFilterSearch = TdObject & {
+export type SupergroupMembersFilterSearch = {
 	"@type": "supergroupMembersFilterSearch";
 	/** Query to search for */
 	query: string;
@@ -3880,7 +3890,7 @@ export type SupergroupMembersFilterSearch = TdObject & {
  * Returns restricted supergroup members; can be used only by administrators
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_members_filter_restricted.html
  */
-export type SupergroupMembersFilterRestricted = TdObject & {
+export type SupergroupMembersFilterRestricted = {
 	"@type": "supergroupMembersFilterRestricted";
 	/** Query to search for */
 	query: string;
@@ -3890,7 +3900,7 @@ export type SupergroupMembersFilterRestricted = TdObject & {
  * Returns users banned from the supergroup or channel; can be used only by administrators
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_members_filter_banned.html
  */
-export type SupergroupMembersFilterBanned = TdObject & {
+export type SupergroupMembersFilterBanned = {
 	"@type": "supergroupMembersFilterBanned";
 	/** Query to search for */
 	query: string;
@@ -3900,7 +3910,7 @@ export type SupergroupMembersFilterBanned = TdObject & {
  * Returns users which can be mentioned in the supergroup
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_members_filter_mention.html
  */
-export type SupergroupMembersFilterMention = TdObject & {
+export type SupergroupMembersFilterMention = {
 	"@type": "supergroupMembersFilterMention";
 	/** Query to search for */
 	query: string;
@@ -3912,7 +3922,7 @@ export type SupergroupMembersFilterMention = TdObject & {
  * Returns bot members of the supergroup or channel
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_members_filter_bots.html
  */
-export type SupergroupMembersFilterBots = TdObject & {
+export type SupergroupMembersFilterBots = {
 	"@type": "supergroupMembersFilterBots";
 };
 
@@ -3920,7 +3930,7 @@ export type SupergroupMembersFilterBots = TdObject & {
  * Contains a chat invite link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_link.html
  */
-export type ChatInviteLink = TdObject & {
+export type ChatInviteLink = {
 	"@type": "chatInviteLink";
 	/** Chat invite link */
 	invite_link: string;
@@ -3956,7 +3966,7 @@ export type ChatInviteLink = TdObject & {
  * Contains a list of chat invite links
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_links.html
  */
-export type ChatInviteLinks = TdObject & {
+export type ChatInviteLinks = {
 	"@type": "chatInviteLinks";
 	/** Approximate total number of chat invite links found */
 	total_count: number;
@@ -3968,7 +3978,7 @@ export type ChatInviteLinks = TdObject & {
  * Describes a chat administrator with a number of active and revoked chat invite links
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_link_count.html
  */
-export type ChatInviteLinkCount = TdObject & {
+export type ChatInviteLinkCount = {
 	"@type": "chatInviteLinkCount";
 	/** Administrator's user identifier */
 	user_id: number;
@@ -3982,7 +3992,7 @@ export type ChatInviteLinkCount = TdObject & {
  * Contains a list of chat invite link counts
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_link_counts.html
  */
-export type ChatInviteLinkCounts = TdObject & {
+export type ChatInviteLinkCounts = {
 	"@type": "chatInviteLinkCounts";
 	/** List of invite link counts */
 	invite_link_counts: ChatInviteLinkCount[];
@@ -3992,7 +4002,7 @@ export type ChatInviteLinkCounts = TdObject & {
  * Describes a chat member joined a chat via an invite link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_link_member.html
  */
-export type ChatInviteLinkMember = TdObject & {
+export type ChatInviteLinkMember = {
 	"@type": "chatInviteLinkMember";
 	/** User identifier */
 	user_id: number;
@@ -4008,7 +4018,7 @@ export type ChatInviteLinkMember = TdObject & {
  * Contains a list of chat members joined a chat via an invite link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_link_members.html
  */
-export type ChatInviteLinkMembers = TdObject & {
+export type ChatInviteLinkMembers = {
 	"@type": "chatInviteLinkMembers";
 	/** Approximate total number of chat members found */
 	total_count: number;
@@ -4020,7 +4030,7 @@ export type ChatInviteLinkMembers = TdObject & {
  * The link is an invite link for a basic group
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_link_chat_type_basic_group.html
  */
-export type InviteLinkChatTypeBasicGroup = TdObject & {
+export type InviteLinkChatTypeBasicGroup = {
 	"@type": "inviteLinkChatTypeBasicGroup";
 };
 
@@ -4028,7 +4038,7 @@ export type InviteLinkChatTypeBasicGroup = TdObject & {
  * The link is an invite link for a supergroup
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_link_chat_type_supergroup.html
  */
-export type InviteLinkChatTypeSupergroup = TdObject & {
+export type InviteLinkChatTypeSupergroup = {
 	"@type": "inviteLinkChatTypeSupergroup";
 };
 
@@ -4036,7 +4046,7 @@ export type InviteLinkChatTypeSupergroup = TdObject & {
  * The link is an invite link for a channel
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_link_chat_type_channel.html
  */
-export type InviteLinkChatTypeChannel = TdObject & {
+export type InviteLinkChatTypeChannel = {
 	"@type": "inviteLinkChatTypeChannel";
 };
 
@@ -4044,7 +4054,7 @@ export type InviteLinkChatTypeChannel = TdObject & {
  * Contains information about subscription plan that must be paid by the user to use a chat invite link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_link_subscription_info.html
  */
-export type ChatInviteLinkSubscriptionInfo = TdObject & {
+export type ChatInviteLinkSubscriptionInfo = {
 	"@type": "chatInviteLinkSubscriptionInfo";
 	/** Information about subscription plan that must be paid by the user to use the link */
 	pricing: StarSubscriptionPricing;
@@ -4058,7 +4068,7 @@ export type ChatInviteLinkSubscriptionInfo = TdObject & {
  * Contains information about a chat invite link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_invite_link_info.html
  */
-export type ChatInviteLinkInfo = TdObject & {
+export type ChatInviteLinkInfo = {
 	"@type": "chatInviteLinkInfo";
 	/** Chat identifier of the invite link; 0 if the user has no access to the chat before joining */
 	chat_id: number;
@@ -4092,7 +4102,7 @@ export type ChatInviteLinkInfo = TdObject & {
  * Describes a user that sent a join request and waits for administrator approval
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_request.html
  */
-export type ChatJoinRequest = TdObject & {
+export type ChatJoinRequest = {
 	"@type": "chatJoinRequest";
 	/** User identifier */
 	user_id: number;
@@ -4106,7 +4116,7 @@ export type ChatJoinRequest = TdObject & {
  * Contains a list of requests to join a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_requests.html
  */
-export type ChatJoinRequests = TdObject & {
+export type ChatJoinRequests = {
 	"@type": "chatJoinRequests";
 	/** Approximate total number of requests found */
 	total_count: number;
@@ -4118,7 +4128,7 @@ export type ChatJoinRequests = TdObject & {
  * Contains information about pending join requests for a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_join_requests_info.html
  */
-export type ChatJoinRequestsInfo = TdObject & {
+export type ChatJoinRequestsInfo = {
 	"@type": "chatJoinRequestsInfo";
 	/** Total number of pending join requests */
 	total_count: number;
@@ -4130,7 +4140,7 @@ export type ChatJoinRequestsInfo = TdObject & {
  * Represents a basic group of 0-200 users (must be upgraded to a supergroup to accommodate more than 200 users)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1basic_group.html
  */
-export type BasicGroup = TdObject & {
+export type BasicGroup = {
 	"@type": "basicGroup";
 	/** Group identifier */
 	id: number;
@@ -4148,7 +4158,7 @@ export type BasicGroup = TdObject & {
  * Contains full information about a basic group
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1basic_group_full_info.html
  */
-export type BasicGroupFullInfo = TdObject & {
+export type BasicGroupFullInfo = {
 	"@type": "basicGroupFullInfo";
 	/** Chat photo; may be null if empty or unknown. If non-null, then it is the same photo as in chat.photo */
 	photo?: ChatPhoto;
@@ -4172,7 +4182,7 @@ export type BasicGroupFullInfo = TdObject & {
  * Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup.html
  */
-export type Supergroup = TdObject & {
+export type Supergroup = {
 	"@type": "supergroup";
 	/** Supergroup or channel identifier */
 	id: number;
@@ -4234,7 +4244,7 @@ export type Supergroup = TdObject & {
  * Contains full information about a supergroup or channel
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1supergroup_full_info.html
  */
-export type SupergroupFullInfo = TdObject & {
+export type SupergroupFullInfo = {
 	"@type": "supergroupFullInfo";
 	/** Chat photo; may be null if empty or unknown. If non-null, then it is the same photo as in chat.photo */
 	photo?: ChatPhoto;
@@ -4318,7 +4328,7 @@ export type SupergroupFullInfo = TdObject & {
  * The secret chat is not yet created; waiting for the other user to get online
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1secret_chat_state_pending.html
  */
-export type SecretChatStatePending = TdObject & {
+export type SecretChatStatePending = {
 	"@type": "secretChatStatePending";
 };
 
@@ -4326,7 +4336,7 @@ export type SecretChatStatePending = TdObject & {
  * The secret chat is ready to use
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1secret_chat_state_ready.html
  */
-export type SecretChatStateReady = TdObject & {
+export type SecretChatStateReady = {
 	"@type": "secretChatStateReady";
 };
 
@@ -4334,7 +4344,7 @@ export type SecretChatStateReady = TdObject & {
  * The secret chat is closed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1secret_chat_state_closed.html
  */
-export type SecretChatStateClosed = TdObject & {
+export type SecretChatStateClosed = {
 	"@type": "secretChatStateClosed";
 };
 
@@ -4342,7 +4352,7 @@ export type SecretChatStateClosed = TdObject & {
  * Represents a secret chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1secret_chat.html
  */
-export type SecretChat = TdObject & {
+export type SecretChat = {
 	"@type": "secretChat";
 	/** Secret chat identifier */
 	id: number;
@@ -4362,7 +4372,7 @@ export type SecretChat = TdObject & {
  * The message was sent by a known user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sender_user.html
  */
-export type MessageSenderUser = TdObject & {
+export type MessageSenderUser = {
 	"@type": "messageSenderUser";
 	/** Identifier of the user that sent the message */
 	user_id: number;
@@ -4372,7 +4382,7 @@ export type MessageSenderUser = TdObject & {
  * The message was sent on behalf of a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sender_chat.html
  */
-export type MessageSenderChat = TdObject & {
+export type MessageSenderChat = {
 	"@type": "messageSenderChat";
 	/** Identifier of the chat that sent the message */
 	chat_id: number;
@@ -4382,7 +4392,7 @@ export type MessageSenderChat = TdObject & {
  * Represents a list of message senders
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_senders.html
  */
-export type MessageSenders = TdObject & {
+export type MessageSenders = {
 	"@type": "messageSenders";
 	/** Approximate total number of messages senders found */
 	total_count: number;
@@ -4394,7 +4404,7 @@ export type MessageSenders = TdObject & {
  * Represents a message sender, which can be used to send messages in a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_message_sender.html
  */
-export type ChatMessageSender = TdObject & {
+export type ChatMessageSender = {
 	"@type": "chatMessageSender";
 	/** The message sender */
 	sender: MessageSender;
@@ -4406,7 +4416,7 @@ export type ChatMessageSender = TdObject & {
  * Represents a list of message senders, which can be used to send messages in a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_message_senders.html
  */
-export type ChatMessageSenders = TdObject & {
+export type ChatMessageSenders = {
 	"@type": "chatMessageSenders";
 	/** List of available message senders */
 	senders: ChatMessageSender[];
@@ -4416,7 +4426,7 @@ export type ChatMessageSenders = TdObject & {
  * Contains read date of the message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_read_date_read.html
  */
-export type MessageReadDateRead = TdObject & {
+export type MessageReadDateRead = {
 	"@type": "messageReadDateRead";
 	/** Point in time (Unix timestamp) when the message was read by the other user */
 	read_date: number;
@@ -4426,7 +4436,7 @@ export type MessageReadDateRead = TdObject & {
  * The message is unread yet
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_read_date_unread.html
  */
-export type MessageReadDateUnread = TdObject & {
+export type MessageReadDateUnread = {
 	"@type": "messageReadDateUnread";
 };
 
@@ -4434,7 +4444,7 @@ export type MessageReadDateUnread = TdObject & {
  * The message is too old to get read date
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_read_date_too_old.html
  */
-export type MessageReadDateTooOld = TdObject & {
+export type MessageReadDateTooOld = {
 	"@type": "messageReadDateTooOld";
 };
 
@@ -4442,7 +4452,7 @@ export type MessageReadDateTooOld = TdObject & {
  * The read date is unknown due to privacy settings of the other user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_read_date_user_privacy_restricted.html
  */
-export type MessageReadDateUserPrivacyRestricted = TdObject & {
+export type MessageReadDateUserPrivacyRestricted = {
 	"@type": "messageReadDateUserPrivacyRestricted";
 };
 
@@ -4450,7 +4460,7 @@ export type MessageReadDateUserPrivacyRestricted = TdObject & {
  * The read date is unknown due to privacy settings of the current user, but will be known if the user subscribes to Telegram Premium
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_read_date_my_privacy_restricted.html
  */
-export type MessageReadDateMyPrivacyRestricted = TdObject & {
+export type MessageReadDateMyPrivacyRestricted = {
 	"@type": "messageReadDateMyPrivacyRestricted";
 };
 
@@ -4458,7 +4468,7 @@ export type MessageReadDateMyPrivacyRestricted = TdObject & {
  * Represents a viewer of a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_viewer.html
  */
-export type MessageViewer = TdObject & {
+export type MessageViewer = {
 	"@type": "messageViewer";
 	/** User identifier of the viewer */
 	user_id: number;
@@ -4470,7 +4480,7 @@ export type MessageViewer = TdObject & {
  * Represents a list of message viewers
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_viewers.html
  */
-export type MessageViewers = TdObject & {
+export type MessageViewers = {
 	"@type": "messageViewers";
 	/** List of message viewers */
 	viewers: MessageViewer[];
@@ -4480,7 +4490,7 @@ export type MessageViewers = TdObject & {
  * The message was originally sent by a known user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_origin_user.html
  */
-export type MessageOriginUser = TdObject & {
+export type MessageOriginUser = {
 	"@type": "messageOriginUser";
 	/** Identifier of the user that originally sent the message */
 	sender_user_id: number;
@@ -4490,7 +4500,7 @@ export type MessageOriginUser = TdObject & {
  * The message was originally sent by a user, which is hidden by their privacy settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_origin_hidden_user.html
  */
-export type MessageOriginHiddenUser = TdObject & {
+export type MessageOriginHiddenUser = {
 	"@type": "messageOriginHiddenUser";
 	/** Name of the sender */
 	sender_name: string;
@@ -4500,7 +4510,7 @@ export type MessageOriginHiddenUser = TdObject & {
  * The message was originally sent on behalf of a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_origin_chat.html
  */
-export type MessageOriginChat = TdObject & {
+export type MessageOriginChat = {
 	"@type": "messageOriginChat";
 	/** Identifier of the chat that originally sent the message */
 	sender_chat_id: number;
@@ -4512,7 +4522,7 @@ export type MessageOriginChat = TdObject & {
  * The message was originally a post in a channel
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_origin_channel.html
  */
-export type MessageOriginChannel = TdObject & {
+export type MessageOriginChannel = {
 	"@type": "messageOriginChannel";
 	/** Identifier of the channel chat to which the message was originally sent */
 	chat_id: number;
@@ -4526,7 +4536,7 @@ export type MessageOriginChannel = TdObject & {
  * Contains information about the last message from which a new message was forwarded last time
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1forward_source.html
  */
-export type ForwardSource = TdObject & {
+export type ForwardSource = {
 	"@type": "forwardSource";
 	/** Identifier of the chat to which the message that was forwarded belonged; may be 0 if unknown */
 	chat_id: number;
@@ -4546,7 +4556,7 @@ export type ForwardSource = TdObject & {
  * A reaction with an emoji
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_type_emoji.html
  */
-export type ReactionTypeEmoji = TdObject & {
+export type ReactionTypeEmoji = {
 	"@type": "reactionTypeEmoji";
 	/** Text representation of the reaction */
 	emoji: string;
@@ -4556,7 +4566,7 @@ export type ReactionTypeEmoji = TdObject & {
  * A reaction with a custom emoji
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_type_custom_emoji.html
  */
-export type ReactionTypeCustomEmoji = TdObject & {
+export type ReactionTypeCustomEmoji = {
 	"@type": "reactionTypeCustomEmoji";
 	/** Unique identifier of the custom emoji */
 	custom_emoji_id: string;
@@ -4566,7 +4576,7 @@ export type ReactionTypeCustomEmoji = TdObject & {
  * The paid reaction in a channel chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_type_paid.html
  */
-export type ReactionTypePaid = TdObject & {
+export type ReactionTypePaid = {
 	"@type": "reactionTypePaid";
 };
 
@@ -4574,7 +4584,7 @@ export type ReactionTypePaid = TdObject & {
  * A paid reaction on behalf of the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_reaction_type_regular.html
  */
-export type PaidReactionTypeRegular = TdObject & {
+export type PaidReactionTypeRegular = {
 	"@type": "paidReactionTypeRegular";
 };
 
@@ -4582,7 +4592,7 @@ export type PaidReactionTypeRegular = TdObject & {
  * An anonymous paid reaction
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_reaction_type_anonymous.html
  */
-export type PaidReactionTypeAnonymous = TdObject & {
+export type PaidReactionTypeAnonymous = {
 	"@type": "paidReactionTypeAnonymous";
 };
 
@@ -4590,7 +4600,7 @@ export type PaidReactionTypeAnonymous = TdObject & {
  * A paid reaction on behalf of an owned chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_reaction_type_chat.html
  */
-export type PaidReactionTypeChat = TdObject & {
+export type PaidReactionTypeChat = {
 	"@type": "paidReactionTypeChat";
 	/** Identifier of the chat */
 	chat_id: number;
@@ -4600,7 +4610,7 @@ export type PaidReactionTypeChat = TdObject & {
  * Contains information about a user that added paid reactions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_reactor.html
  */
-export type PaidReactor = TdObject & {
+export type PaidReactor = {
 	"@type": "paidReactor";
 	/** Identifier of the user or chat that added the reactions; may be null for anonymous reactors that aren't the current user */
 	sender_id?: MessageSender;
@@ -4618,7 +4628,7 @@ export type PaidReactor = TdObject & {
  * Contains information about a forwarded message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_forward_info.html
  */
-export type MessageForwardInfo = TdObject & {
+export type MessageForwardInfo = {
 	"@type": "messageForwardInfo";
 	/** Origin of the forwarded message */
 	origin: MessageOrigin;
@@ -4634,7 +4644,7 @@ export type MessageForwardInfo = TdObject & {
  * Contains information about a message created with importMessages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_import_info.html
  */
-export type MessageImportInfo = TdObject & {
+export type MessageImportInfo = {
 	"@type": "messageImportInfo";
 	/** Name of the original sender */
 	sender_name: string;
@@ -4646,7 +4656,7 @@ export type MessageImportInfo = TdObject & {
  * Contains information about replies to a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_reply_info.html
  */
-export type MessageReplyInfo = TdObject & {
+export type MessageReplyInfo = {
 	"@type": "messageReplyInfo";
 	/** Number of times the message was directly or indirectly replied */
 	reply_count: number;
@@ -4664,7 +4674,7 @@ export type MessageReplyInfo = TdObject & {
  * Contains information about a reaction to a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_reaction.html
  */
-export type MessageReaction = TdObject & {
+export type MessageReaction = {
 	"@type": "messageReaction";
 	/** Type of the reaction */
 	type: ReactionType;
@@ -4682,7 +4692,7 @@ export type MessageReaction = TdObject & {
  * Contains a list of reactions added to a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_reactions.html
  */
-export type MessageReactions = TdObject & {
+export type MessageReactions = {
 	"@type": "messageReactions";
 	/** List of added reactions */
 	reactions: MessageReaction[];
@@ -4698,7 +4708,7 @@ export type MessageReactions = TdObject & {
  * Contains information about interactions with a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_interaction_info.html
  */
-export type MessageInteractionInfo = TdObject & {
+export type MessageInteractionInfo = {
 	"@type": "messageInteractionInfo";
 	/** Number of times the message was viewed */
 	view_count: number;
@@ -4714,7 +4724,7 @@ export type MessageInteractionInfo = TdObject & {
  * Contains information about an unread reaction to a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1unread_reaction.html
  */
-export type UnreadReaction = TdObject & {
+export type UnreadReaction = {
 	"@type": "unreadReaction";
 	/** Type of the reaction */
 	type: ReactionType;
@@ -4728,7 +4738,7 @@ export type UnreadReaction = TdObject & {
  * A topic in a forum supergroup chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_topic_forum.html
  */
-export type MessageTopicForum = TdObject & {
+export type MessageTopicForum = {
 	"@type": "messageTopicForum";
 	/** Unique identifier of the forum topic; all messages in a non-forum supergroup chats belongs to the General topic */
 	forum_topic_id: number;
@@ -4738,7 +4748,7 @@ export type MessageTopicForum = TdObject & {
  * A topic in a channel direct messages chat administered by the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_topic_direct_messages.html
  */
-export type MessageTopicDirectMessages = TdObject & {
+export type MessageTopicDirectMessages = {
 	"@type": "messageTopicDirectMessages";
 	/** Unique identifier of the topic */
 	direct_messages_chat_topic_id: number;
@@ -4748,7 +4758,7 @@ export type MessageTopicDirectMessages = TdObject & {
  * A topic in Saved Messages chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_topic_saved_messages.html
  */
-export type MessageTopicSavedMessages = TdObject & {
+export type MessageTopicSavedMessages = {
 	"@type": "messageTopicSavedMessages";
 	/** Unique identifier of the Saved Messages topic */
 	saved_messages_topic_id: number;
@@ -4758,7 +4768,7 @@ export type MessageTopicSavedMessages = TdObject & {
  * An effect from an emoji reaction
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_effect_type_emoji_reaction.html
  */
-export type MessageEffectTypeEmojiReaction = TdObject & {
+export type MessageEffectTypeEmojiReaction = {
 	"@type": "messageEffectTypeEmojiReaction";
 	/** Select animation for the effect in TGS format */
 	select_animation: Sticker;
@@ -4770,7 +4780,7 @@ export type MessageEffectTypeEmojiReaction = TdObject & {
  * An effect from a premium sticker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_effect_type_premium_sticker.html
  */
-export type MessageEffectTypePremiumSticker = TdObject & {
+export type MessageEffectTypePremiumSticker = {
 	"@type": "messageEffectTypePremiumSticker";
 	/** The premium sticker. The effect can be found at sticker.full_type.premium_animation */
 	sticker: Sticker;
@@ -4780,7 +4790,7 @@ export type MessageEffectTypePremiumSticker = TdObject & {
  * Contains information about an effect added to a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_effect.html
  */
-export type MessageEffect = TdObject & {
+export type MessageEffect = {
 	"@type": "messageEffect";
 	/** Unique identifier of the effect */
 	id: string;
@@ -4798,7 +4808,7 @@ export type MessageEffect = TdObject & {
  * The message is being sent now, but has not yet been delivered to the server
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sending_state_pending.html
  */
-export type MessageSendingStatePending = TdObject & {
+export type MessageSendingStatePending = {
 	"@type": "messageSendingStatePending";
 	/** Non-persistent message sending identifier, specified by the application */
 	sending_id: number;
@@ -4808,10 +4818,10 @@ export type MessageSendingStatePending = TdObject & {
  * The message failed to be sent
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sending_state_failed.html
  */
-export type MessageSendingStateFailed = TdObject & {
+export type MessageSendingStateFailed = {
 	"@type": "messageSendingStateFailed";
 	/** The cause of the message sending failure */
-	error: TdError;
+	error: Error;
 	/** True, if the message can be re-sent using resendMessages or readdQuickReplyShortcutMessages */
 	can_retry: boolean;
 	/** True, if the message can be re-sent only on behalf of a different sender */
@@ -4830,7 +4840,7 @@ export type MessageSendingStateFailed = TdObject & {
  * Describes manually or automatically chosen quote from another message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_quote.html
  */
-export type TextQuote = TdObject & {
+export type TextQuote = {
 	"@type": "textQuote";
 	/** Text of the quote. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities can be present in the text */
 	text: FormattedText;
@@ -4844,7 +4854,7 @@ export type TextQuote = TdObject & {
  * Describes manually chosen quote from another message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_text_quote.html
  */
-export type InputTextQuote = TdObject & {
+export type InputTextQuote = {
 	"@type": "inputTextQuote";
 	/** Text of the quote; 0-getOption("message_reply_quote_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed to be kept and must be kept in the quote */
 	text: FormattedText;
@@ -4856,7 +4866,7 @@ export type InputTextQuote = TdObject & {
  * Describes a message replied by a given message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_reply_to_message.html
  */
-export type MessageReplyToMessage = TdObject & {
+export type MessageReplyToMessage = {
 	"@type": "messageReplyToMessage";
 	/** The identifier of the chat to which the message belongs; may be 0 if the replied message is in unknown chat */
 	chat_id: number;
@@ -4876,7 +4886,7 @@ export type MessageReplyToMessage = TdObject & {
  * Describes a story replied by a given message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_reply_to_story.html
  */
-export type MessageReplyToStory = TdObject & {
+export type MessageReplyToStory = {
 	"@type": "messageReplyToStory";
 	/** The identifier of the poster of the story */
 	story_poster_chat_id: number;
@@ -4888,7 +4898,7 @@ export type MessageReplyToStory = TdObject & {
  * Describes a message to be replied in the same chat and forum topic
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_reply_to_message.html
  */
-export type InputMessageReplyToMessage = TdObject & {
+export type InputMessageReplyToMessage = {
 	"@type": "inputMessageReplyToMessage";
 	/** The identifier of the message to be replied in the same chat and forum topic. A message can be replied in the same chat and forum topic only if messageProperties.can_be_replied */
 	message_id: number;
@@ -4900,7 +4910,7 @@ export type InputMessageReplyToMessage = TdObject & {
  * Describes a message to be replied that is from a different chat or a forum topic; not supported in secret chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_reply_to_external_message.html
  */
-export type InputMessageReplyToExternalMessage = TdObject & {
+export type InputMessageReplyToExternalMessage = {
 	"@type": "inputMessageReplyToExternalMessage";
 	/** The identifier of the chat to which the message to be replied belongs */
 	chat_id: number;
@@ -4914,7 +4924,7 @@ export type InputMessageReplyToExternalMessage = TdObject & {
  * Describes a story to be replied
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_reply_to_story.html
  */
-export type InputMessageReplyToStory = TdObject & {
+export type InputMessageReplyToStory = {
 	"@type": "inputMessageReplyToStory";
 	/** The identifier of the poster of the story. Currently, stories can be replied only in the chat that posted the story; channel stories can't be replied */
 	story_poster_chat_id: number;
@@ -4926,7 +4936,7 @@ export type InputMessageReplyToStory = TdObject & {
  * Describes a fact-check added to the message by an independent checker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1fact_check.html
  */
-export type FactCheck = TdObject & {
+export type FactCheck = {
 	"@type": "factCheck";
 	/** Text of the fact-check */
 	text: FormattedText;
@@ -4938,7 +4948,7 @@ export type FactCheck = TdObject & {
  * Describes a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message.html
  */
-export type Message = TdObject & {
+export type Message = {
 	"@type": "message";
 	/** Message identifier; unique for the chat to which the message belongs */
 	id: number;
@@ -5018,7 +5028,7 @@ export type Message = TdObject & {
  * Contains a list of messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1messages.html
  */
-export type Messages = TdObject & {
+export type Messages = {
 	"@type": "messages";
 	/** Approximate total number of messages found */
 	total_count: number;
@@ -5030,7 +5040,7 @@ export type Messages = TdObject & {
  * Contains a list of messages found by a search
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_messages.html
  */
-export type FoundMessages = TdObject & {
+export type FoundMessages = {
 	"@type": "foundMessages";
 	/** Approximate total number of messages found; -1 if unknown */
 	total_count: number;
@@ -5044,7 +5054,7 @@ export type FoundMessages = TdObject & {
  * Contains a list of messages found by a search in a given chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_chat_messages.html
  */
-export type FoundChatMessages = TdObject & {
+export type FoundChatMessages = {
 	"@type": "foundChatMessages";
 	/** Approximate total number of messages found; -1 if unknown */
 	total_count: number;
@@ -5058,7 +5068,7 @@ export type FoundChatMessages = TdObject & {
  * Contains information about a message in a specific position
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_position.html
  */
-export type MessagePosition = TdObject & {
+export type MessagePosition = {
 	"@type": "messagePosition";
 	/** 0-based message position in the full list of suitable messages */
 	position: number;
@@ -5072,7 +5082,7 @@ export type MessagePosition = TdObject & {
  * Contains a list of message positions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_positions.html
  */
-export type MessagePositions = TdObject & {
+export type MessagePositions = {
 	"@type": "messagePositions";
 	/** Total number of messages found */
 	total_count: number;
@@ -5084,7 +5094,7 @@ export type MessagePositions = TdObject & {
  * Contains information about found messages sent on a specific day
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_calendar_day.html
  */
-export type MessageCalendarDay = TdObject & {
+export type MessageCalendarDay = {
 	"@type": "messageCalendarDay";
 	/** Total number of found messages sent on the day */
 	total_count: number;
@@ -5096,7 +5106,7 @@ export type MessageCalendarDay = TdObject & {
  * Contains information about found messages, split by days according to the option "utc_time_offset"
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_calendar.html
  */
-export type MessageCalendar = TdObject & {
+export type MessageCalendar = {
 	"@type": "messageCalendar";
 	/** Total number of found messages */
 	total_count: number;
@@ -5108,7 +5118,7 @@ export type MessageCalendar = TdObject & {
  * Describes a message from a business account as received by a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_message.html
  */
-export type BusinessMessage = TdObject & {
+export type BusinessMessage = {
 	"@type": "businessMessage";
 	/** The message */
 	message: Message;
@@ -5120,7 +5130,7 @@ export type BusinessMessage = TdObject & {
  * Contains a list of messages from a business account as received by a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_messages.html
  */
-export type BusinessMessages = TdObject & {
+export type BusinessMessages = {
 	"@type": "businessMessages";
 	/** List of business messages */
 	messages: BusinessMessage[];
@@ -5130,7 +5140,7 @@ export type BusinessMessages = TdObject & {
  * The message is from a chat history
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_chat_history.html
  */
-export type MessageSourceChatHistory = TdObject & {
+export type MessageSourceChatHistory = {
 	"@type": "messageSourceChatHistory";
 };
 
@@ -5138,7 +5148,7 @@ export type MessageSourceChatHistory = TdObject & {
  * The message is from history of a message thread
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_message_thread_history.html
  */
-export type MessageSourceMessageThreadHistory = TdObject & {
+export type MessageSourceMessageThreadHistory = {
 	"@type": "messageSourceMessageThreadHistory";
 };
 
@@ -5146,7 +5156,7 @@ export type MessageSourceMessageThreadHistory = TdObject & {
  * The message is from history of a forum topic
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_forum_topic_history.html
  */
-export type MessageSourceForumTopicHistory = TdObject & {
+export type MessageSourceForumTopicHistory = {
 	"@type": "messageSourceForumTopicHistory";
 };
 
@@ -5154,7 +5164,7 @@ export type MessageSourceForumTopicHistory = TdObject & {
  * The message is from history of a topic in a channel direct messages chat administered by the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_direct_messages_chat_topic_history.html
  */
-export type MessageSourceDirectMessagesChatTopicHistory = TdObject & {
+export type MessageSourceDirectMessagesChatTopicHistory = {
 	"@type": "messageSourceDirectMessagesChatTopicHistory";
 };
 
@@ -5162,7 +5172,7 @@ export type MessageSourceDirectMessagesChatTopicHistory = TdObject & {
  * The message is from chat, message thread or forum topic history preview
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_history_preview.html
  */
-export type MessageSourceHistoryPreview = TdObject & {
+export type MessageSourceHistoryPreview = {
 	"@type": "messageSourceHistoryPreview";
 };
 
@@ -5170,7 +5180,7 @@ export type MessageSourceHistoryPreview = TdObject & {
  * The message is from a chat list or a forum topic list
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_chat_list.html
  */
-export type MessageSourceChatList = TdObject & {
+export type MessageSourceChatList = {
 	"@type": "messageSourceChatList";
 };
 
@@ -5178,7 +5188,7 @@ export type MessageSourceChatList = TdObject & {
  * The message is from search results, including file downloads, local file list, outgoing document messages, calendar
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_search.html
  */
-export type MessageSourceSearch = TdObject & {
+export type MessageSourceSearch = {
 	"@type": "messageSourceSearch";
 };
 
@@ -5186,7 +5196,7 @@ export type MessageSourceSearch = TdObject & {
  * The message is from a chat event log
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_chat_event_log.html
  */
-export type MessageSourceChatEventLog = TdObject & {
+export type MessageSourceChatEventLog = {
 	"@type": "messageSourceChatEventLog";
 };
 
@@ -5194,7 +5204,7 @@ export type MessageSourceChatEventLog = TdObject & {
  * The message is from a notification
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_notification.html
  */
-export type MessageSourceNotification = TdObject & {
+export type MessageSourceNotification = {
 	"@type": "messageSourceNotification";
 };
 
@@ -5202,7 +5212,7 @@ export type MessageSourceNotification = TdObject & {
  * The message was screenshotted; the source must be used only if the message content was visible during the screenshot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_screenshot.html
  */
-export type MessageSourceScreenshot = TdObject & {
+export type MessageSourceScreenshot = {
 	"@type": "messageSourceScreenshot";
 };
 
@@ -5210,7 +5220,7 @@ export type MessageSourceScreenshot = TdObject & {
  * The message is from some other source
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_source_other.html
  */
-export type MessageSourceOther = TdObject & {
+export type MessageSourceOther = {
 	"@type": "messageSourceOther";
 };
 
@@ -5218,7 +5228,7 @@ export type MessageSourceOther = TdObject & {
  * Information about the sponsor of a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sponsor.html
  */
-export type MessageSponsor = TdObject & {
+export type MessageSponsor = {
 	"@type": "messageSponsor";
 	/** URL of the sponsor to be opened when the message is clicked */
 	url: string;
@@ -5232,7 +5242,7 @@ export type MessageSponsor = TdObject & {
  * Describes a sponsored message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sponsored_message.html
  */
-export type SponsoredMessage = TdObject & {
+export type SponsoredMessage = {
 	"@type": "sponsoredMessage";
 	/** Message identifier; unique for the chat to which the sponsored message belongs among both ordinary and sponsored messages */
 	message_id: number;
@@ -5260,7 +5270,7 @@ export type SponsoredMessage = TdObject & {
  * Contains a list of sponsored messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sponsored_messages.html
  */
-export type SponsoredMessages = TdObject & {
+export type SponsoredMessages = {
 	"@type": "sponsoredMessages";
 	/** List of sponsored messages */
 	messages: SponsoredMessage[];
@@ -5272,7 +5282,7 @@ export type SponsoredMessages = TdObject & {
  * Describes a sponsored chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sponsored_chat.html
  */
-export type SponsoredChat = TdObject & {
+export type SponsoredChat = {
 	"@type": "sponsoredChat";
 	/** Unique identifier of this result */
 	unique_id: number;
@@ -5288,7 +5298,7 @@ export type SponsoredChat = TdObject & {
  * Contains a list of sponsored chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sponsored_chats.html
  */
-export type SponsoredChats = TdObject & {
+export type SponsoredChats = {
 	"@type": "sponsoredChats";
 	/** List of sponsored chats */
 	chats: SponsoredChat[];
@@ -5298,7 +5308,7 @@ export type SponsoredChats = TdObject & {
  * Describes an option to report an entity to Telegram
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_option.html
  */
-export type ReportOption = TdObject & {
+export type ReportOption = {
 	"@type": "reportOption";
 	/** Unique identifier of the option */
 	id: string;
@@ -5310,7 +5320,7 @@ export type ReportOption = TdObject & {
  * The message was reported successfully
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_sponsored_result_ok.html
  */
-export type ReportSponsoredResultOk = TdObject & {
+export type ReportSponsoredResultOk = {
 	"@type": "reportSponsoredResultOk";
 };
 
@@ -5318,7 +5328,7 @@ export type ReportSponsoredResultOk = TdObject & {
  * The sponsored message is too old or not found
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_sponsored_result_failed.html
  */
-export type ReportSponsoredResultFailed = TdObject & {
+export type ReportSponsoredResultFailed = {
 	"@type": "reportSponsoredResultFailed";
 };
 
@@ -5326,7 +5336,7 @@ export type ReportSponsoredResultFailed = TdObject & {
  * The user must choose an option to report the message and repeat request with the chosen option
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_sponsored_result_option_required.html
  */
-export type ReportSponsoredResultOptionRequired = TdObject & {
+export type ReportSponsoredResultOptionRequired = {
 	"@type": "reportSponsoredResultOptionRequired";
 	/** Title for the option choice */
 	title: string;
@@ -5338,7 +5348,7 @@ export type ReportSponsoredResultOptionRequired = TdObject & {
  * Sponsored messages were hidden for the user in all chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_sponsored_result_ads_hidden.html
  */
-export type ReportSponsoredResultAdsHidden = TdObject & {
+export type ReportSponsoredResultAdsHidden = {
 	"@type": "reportSponsoredResultAdsHidden";
 };
 
@@ -5346,7 +5356,7 @@ export type ReportSponsoredResultAdsHidden = TdObject & {
  * The user asked to hide sponsored messages, but Telegram Premium is required for this
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_sponsored_result_premium_required.html
  */
-export type ReportSponsoredResultPremiumRequired = TdObject & {
+export type ReportSponsoredResultPremiumRequired = {
 	"@type": "reportSponsoredResultPremiumRequired";
 };
 
@@ -5354,7 +5364,7 @@ export type ReportSponsoredResultPremiumRequired = TdObject & {
  * Describes a file added to file download list
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_download.html
  */
-export type FileDownload = TdObject & {
+export type FileDownload = {
 	"@type": "fileDownload";
 	/** File identifier */
 	file_id: number;
@@ -5372,7 +5382,7 @@ export type FileDownload = TdObject & {
  * Contains number of being downloaded and recently downloaded files found
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1downloaded_file_counts.html
  */
-export type DownloadedFileCounts = TdObject & {
+export type DownloadedFileCounts = {
 	"@type": "downloadedFileCounts";
 	/** Number of active file downloads found, including paused */
 	active_count: number;
@@ -5386,7 +5396,7 @@ export type DownloadedFileCounts = TdObject & {
  * Contains a list of downloaded files, found by a search
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_file_downloads.html
  */
-export type FoundFileDownloads = TdObject & {
+export type FoundFileDownloads = {
 	"@type": "foundFileDownloads";
 	/** Total number of suitable files, ignoring offset */
 	total_counts: DownloadedFileCounts;
@@ -5400,7 +5410,7 @@ export type FoundFileDownloads = TdObject & {
  * Notification settings applied to all private and secret chats when the corresponding chat setting has a default value
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_settings_scope_private_chats.html
  */
-export type NotificationSettingsScopePrivateChats = TdObject & {
+export type NotificationSettingsScopePrivateChats = {
 	"@type": "notificationSettingsScopePrivateChats";
 };
 
@@ -5408,7 +5418,7 @@ export type NotificationSettingsScopePrivateChats = TdObject & {
  * Notification settings applied to all basic group and supergroup chats when the corresponding chat setting has a default value
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_settings_scope_group_chats.html
  */
-export type NotificationSettingsScopeGroupChats = TdObject & {
+export type NotificationSettingsScopeGroupChats = {
 	"@type": "notificationSettingsScopeGroupChats";
 };
 
@@ -5416,7 +5426,7 @@ export type NotificationSettingsScopeGroupChats = TdObject & {
  * Notification settings applied to all channel chats when the corresponding chat setting has a default value
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_settings_scope_channel_chats.html
  */
-export type NotificationSettingsScopeChannelChats = TdObject & {
+export type NotificationSettingsScopeChannelChats = {
 	"@type": "notificationSettingsScopeChannelChats";
 };
 
@@ -5424,7 +5434,7 @@ export type NotificationSettingsScopeChannelChats = TdObject & {
  * Contains information about notification settings for a chat or a forum topic
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_notification_settings.html
  */
-export type ChatNotificationSettings = TdObject & {
+export type ChatNotificationSettings = {
 	"@type": "chatNotificationSettings";
 	/** If true, the value for the relevant type of chat or the forum chat is used instead of mute_for */
 	use_default_mute_for: boolean;
@@ -5464,7 +5474,7 @@ export type ChatNotificationSettings = TdObject & {
  * Contains information about notification settings for several chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1scope_notification_settings.html
  */
-export type ScopeNotificationSettings = TdObject & {
+export type ScopeNotificationSettings = {
 	"@type": "scopeNotificationSettings";
 	/** Time left before notifications will be unmuted, in seconds */
 	mute_for: number;
@@ -5490,7 +5500,7 @@ export type ScopeNotificationSettings = TdObject & {
  * Notifications for reactions are disabled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_notification_source_none.html
  */
-export type ReactionNotificationSourceNone = TdObject & {
+export type ReactionNotificationSourceNone = {
 	"@type": "reactionNotificationSourceNone";
 };
 
@@ -5498,7 +5508,7 @@ export type ReactionNotificationSourceNone = TdObject & {
  * Notifications for reactions are shown only for reactions from contacts
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_notification_source_contacts.html
  */
-export type ReactionNotificationSourceContacts = TdObject & {
+export type ReactionNotificationSourceContacts = {
 	"@type": "reactionNotificationSourceContacts";
 };
 
@@ -5506,7 +5516,7 @@ export type ReactionNotificationSourceContacts = TdObject & {
  * Notifications for reactions are shown for all reactions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_notification_source_all.html
  */
-export type ReactionNotificationSourceAll = TdObject & {
+export type ReactionNotificationSourceAll = {
 	"@type": "reactionNotificationSourceAll";
 };
 
@@ -5514,7 +5524,7 @@ export type ReactionNotificationSourceAll = TdObject & {
  * Contains information about notification settings for reactions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_notification_settings.html
  */
-export type ReactionNotificationSettings = TdObject & {
+export type ReactionNotificationSettings = {
 	"@type": "reactionNotificationSettings";
 	/** Source of message reactions for which notifications are shown */
 	message_reaction_source: ReactionNotificationSource;
@@ -5530,7 +5540,7 @@ export type ReactionNotificationSettings = TdObject & {
  * Contains information about a message draft
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1draft_message.html
  */
-export type DraftMessage = TdObject & {
+export type DraftMessage = {
 	"@type": "draftMessage";
 	/** Information about the message to be replied; must be of the type inputMessageReplyToMessage; may be null if none */
 	reply_to?: InputMessageReplyTo;
@@ -5546,7 +5556,7 @@ export type DraftMessage = TdObject & {
  * An ordinary chat with a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_type_private.html
  */
-export type ChatTypePrivate = TdObject & {
+export type ChatTypePrivate = {
 	"@type": "chatTypePrivate";
 	/** User identifier */
 	user_id: number;
@@ -5556,7 +5566,7 @@ export type ChatTypePrivate = TdObject & {
  * A basic group (a chat with 0-200 other users)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_type_basic_group.html
  */
-export type ChatTypeBasicGroup = TdObject & {
+export type ChatTypeBasicGroup = {
 	"@type": "chatTypeBasicGroup";
 	/** Basic group identifier */
 	basic_group_id: number;
@@ -5566,7 +5576,7 @@ export type ChatTypeBasicGroup = TdObject & {
  * A supergroup or channel (with unlimited members)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_type_supergroup.html
  */
-export type ChatTypeSupergroup = TdObject & {
+export type ChatTypeSupergroup = {
 	"@type": "chatTypeSupergroup";
 	/** Supergroup or channel identifier */
 	supergroup_id: number;
@@ -5578,7 +5588,7 @@ export type ChatTypeSupergroup = TdObject & {
  * A secret chat with a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_type_secret.html
  */
-export type ChatTypeSecret = TdObject & {
+export type ChatTypeSecret = {
 	"@type": "chatTypeSecret";
 	/** Secret chat identifier */
 	secret_chat_id: number;
@@ -5590,7 +5600,7 @@ export type ChatTypeSecret = TdObject & {
  * Represents an icon for a chat folder
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_folder_icon.html
  */
-export type ChatFolderIcon = TdObject & {
+export type ChatFolderIcon = {
 	"@type": "chatFolderIcon";
 	/** The chosen icon name for short folder representation; one of "All", "Unread", "Unmuted", "Bots", "Channels", "Groups", "Private", "Custom", "Setup", "Cat", "Crown", "Favorite", "Flower", "Game", "Home", "Love", "Mask", "Party", "Sport", "Study", "Trade", "Travel", "Work", "Airplane", "Book", "Light", "Like", "Money", "Note", "Palette" */
 	name: string;
@@ -5600,7 +5610,7 @@ export type ChatFolderIcon = TdObject & {
  * Describes name of a chat folder
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_folder_name.html
  */
-export type ChatFolderName = TdObject & {
+export type ChatFolderName = {
 	"@type": "chatFolderName";
 	/** The text of the chat folder name; 1-12 characters without line feeds. May contain only CustomEmoji entities */
 	text: FormattedText;
@@ -5612,7 +5622,7 @@ export type ChatFolderName = TdObject & {
  * Represents a folder for user chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_folder.html
  */
-export type ChatFolder = TdObject & {
+export type ChatFolder = {
 	"@type": "chatFolder";
 	/** The name of the folder */
 	name: ChatFolderName;
@@ -5650,7 +5660,7 @@ export type ChatFolder = TdObject & {
  * Contains basic information about a chat folder
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_folder_info.html
  */
-export type ChatFolderInfo = TdObject & {
+export type ChatFolderInfo = {
 	"@type": "chatFolderInfo";
 	/** Unique chat folder identifier */
 	id: number;
@@ -5670,7 +5680,7 @@ export type ChatFolderInfo = TdObject & {
  * Contains a chat folder invite link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_folder_invite_link.html
  */
-export type ChatFolderInviteLink = TdObject & {
+export type ChatFolderInviteLink = {
 	"@type": "chatFolderInviteLink";
 	/** The chat folder invite link */
 	invite_link: string;
@@ -5684,7 +5694,7 @@ export type ChatFolderInviteLink = TdObject & {
  * Represents a list of chat folder invite links
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_folder_invite_links.html
  */
-export type ChatFolderInviteLinks = TdObject & {
+export type ChatFolderInviteLinks = {
 	"@type": "chatFolderInviteLinks";
 	/** List of the invite links */
 	invite_links: ChatFolderInviteLink[];
@@ -5694,7 +5704,7 @@ export type ChatFolderInviteLinks = TdObject & {
  * Contains information about an invite link to a chat folder
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_folder_invite_link_info.html
  */
-export type ChatFolderInviteLinkInfo = TdObject & {
+export type ChatFolderInviteLinkInfo = {
 	"@type": "chatFolderInviteLinkInfo";
 	/** Basic information about the chat folder; chat folder identifier will be 0 if the user didn't have the chat folder yet */
 	chat_folder_info: ChatFolderInfo;
@@ -5708,7 +5718,7 @@ export type ChatFolderInviteLinkInfo = TdObject & {
  * Describes a recommended chat folder
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1recommended_chat_folder.html
  */
-export type RecommendedChatFolder = TdObject & {
+export type RecommendedChatFolder = {
 	"@type": "recommendedChatFolder";
 	/** The chat folder */
 	folder: ChatFolder;
@@ -5720,7 +5730,7 @@ export type RecommendedChatFolder = TdObject & {
  * Contains a list of recommended chat folders
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1recommended_chat_folders.html
  */
-export type RecommendedChatFolders = TdObject & {
+export type RecommendedChatFolders = {
 	"@type": "recommendedChatFolders";
 	/** List of recommended chat folders */
 	chat_folders: RecommendedChatFolder[];
@@ -5730,7 +5740,7 @@ export type RecommendedChatFolders = TdObject & {
  * Contains settings for automatic moving of chats to and from the Archive chat lists
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1archive_chat_list_settings.html
  */
-export type ArchiveChatListSettings = TdObject & {
+export type ArchiveChatListSettings = {
 	"@type": "archiveChatListSettings";
 	/** True, if new chats from non-contacts will be automatically archived and muted. Can be set to true only if the option "can_archive_and_mute_new_chats_from_unknown_users" is true */
 	archive_and_mute_new_chats_from_unknown_users: boolean;
@@ -5744,7 +5754,7 @@ export type ArchiveChatListSettings = TdObject & {
  * A main list of chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_list_main.html
  */
-export type ChatListMain = TdObject & {
+export type ChatListMain = {
 	"@type": "chatListMain";
 };
 
@@ -5752,7 +5762,7 @@ export type ChatListMain = TdObject & {
  * A list of chats usually located at the top of the main chat list. Unmuted chats are automatically moved from the Archive to the Main chat list when a new message arrives
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_list_archive.html
  */
-export type ChatListArchive = TdObject & {
+export type ChatListArchive = {
 	"@type": "chatListArchive";
 };
 
@@ -5760,7 +5770,7 @@ export type ChatListArchive = TdObject & {
  * A list of chats added to a chat folder
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_list_folder.html
  */
-export type ChatListFolder = TdObject & {
+export type ChatListFolder = {
 	"@type": "chatListFolder";
 	/** Chat folder identifier */
 	chat_folder_id: number;
@@ -5770,7 +5780,7 @@ export type ChatListFolder = TdObject & {
  * Contains a list of chat lists
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_lists.html
  */
-export type ChatLists = TdObject & {
+export type ChatLists = {
 	"@type": "chatLists";
 	/** List of chat lists */
 	chat_lists: ChatList[];
@@ -5780,7 +5790,7 @@ export type ChatLists = TdObject & {
  * The chat is sponsored by the user's MTProxy server
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_source_mtproto_proxy.html
  */
-export type ChatSourceMtprotoProxy = TdObject & {
+export type ChatSourceMtprotoProxy = {
 	"@type": "chatSourceMtprotoProxy";
 };
 
@@ -5788,7 +5798,7 @@ export type ChatSourceMtprotoProxy = TdObject & {
  * The chat contains a public service announcement
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_source_public_service_announcement.html
  */
-export type ChatSourcePublicServiceAnnouncement = TdObject & {
+export type ChatSourcePublicServiceAnnouncement = {
 	"@type": "chatSourcePublicServiceAnnouncement";
 	/** The type of the announcement */
 	type: string;
@@ -5800,7 +5810,7 @@ export type ChatSourcePublicServiceAnnouncement = TdObject & {
  * Describes a position of a chat in a chat list
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_position.html
  */
-export type ChatPosition = TdObject & {
+export type ChatPosition = {
 	"@type": "chatPosition";
 	/** The chat list */
 	list: ChatList;
@@ -5816,7 +5826,7 @@ export type ChatPosition = TdObject & {
  * All reactions are available in the chat, excluding the paid reaction and custom reactions in channel chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_available_reactions_all.html
  */
-export type ChatAvailableReactionsAll = TdObject & {
+export type ChatAvailableReactionsAll = {
 	"@type": "chatAvailableReactionsAll";
 	/** The maximum allowed number of reactions per message; 1-11 */
 	max_reaction_count: number;
@@ -5826,7 +5836,7 @@ export type ChatAvailableReactionsAll = TdObject & {
  * Only specific reactions are available in the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_available_reactions_some.html
  */
-export type ChatAvailableReactionsSome = TdObject & {
+export type ChatAvailableReactionsSome = {
 	"@type": "chatAvailableReactionsSome";
 	/** The list of reactions */
 	reactions: ReactionType[];
@@ -5838,7 +5848,7 @@ export type ChatAvailableReactionsSome = TdObject & {
  * Represents a tag used in Saved Messages or a Saved Messages topic
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1saved_messages_tag.html
  */
-export type SavedMessagesTag = TdObject & {
+export type SavedMessagesTag = {
 	"@type": "savedMessagesTag";
 	/** The tag */
 	tag: ReactionType;
@@ -5852,7 +5862,7 @@ export type SavedMessagesTag = TdObject & {
  * Contains a list of tags used in Saved Messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1saved_messages_tags.html
  */
-export type SavedMessagesTags = TdObject & {
+export type SavedMessagesTags = {
 	"@type": "savedMessagesTags";
 	/** List of tags */
 	tags: SavedMessagesTag[];
@@ -5862,7 +5872,7 @@ export type SavedMessagesTags = TdObject & {
  * Contains information about a business bot that manages the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_bot_manage_bar.html
  */
-export type BusinessBotManageBar = TdObject & {
+export type BusinessBotManageBar = {
 	"@type": "businessBotManageBar";
 	/** User identifier of the bot */
 	bot_user_id: number;
@@ -5878,7 +5888,7 @@ export type BusinessBotManageBar = TdObject & {
  * Describes a video chat, i.e. a group call bound to a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1video_chat.html
  */
-export type VideoChat = TdObject & {
+export type VideoChat = {
 	"@type": "videoChat";
 	/** Group call identifier of an active video chat; 0 if none. Full information about the video chat can be received through the method getGroupCall */
 	group_call_id: number;
@@ -5892,7 +5902,7 @@ export type VideoChat = TdObject & {
  * A chat. (Can be a private chat, basic group, supergroup, or secret chat)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat.html
  */
-export type Chat = TdObject & {
+export type Chat = {
 	"@type": "chat";
 	/** Chat unique identifier */
 	id: number;
@@ -5982,7 +5992,7 @@ export type Chat = TdObject & {
  * Represents a list of chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chats.html
  */
-export type Chats = TdObject & {
+export type Chats = {
 	"@type": "chats";
 	/** Approximate total number of chats found */
 	total_count: number;
@@ -5994,7 +6004,7 @@ export type Chats = TdObject & {
  * Contains information about a user that has failed to be added to a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1failed_to_add_member.html
  */
-export type FailedToAddMember = TdObject & {
+export type FailedToAddMember = {
 	"@type": "failedToAddMember";
 	/** User identifier */
 	user_id: number;
@@ -6008,7 +6018,7 @@ export type FailedToAddMember = TdObject & {
  * Represents a list of users that has failed to be added to a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1failed_to_add_members.html
  */
-export type FailedToAddMembers = TdObject & {
+export type FailedToAddMembers = {
 	"@type": "failedToAddMembers";
 	/** Information about users that weren't added to the chat */
 	failed_to_add_members: FailedToAddMember[];
@@ -6018,7 +6028,7 @@ export type FailedToAddMembers = TdObject & {
  * Contains information about a newly created basic group chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1created_basic_group_chat.html
  */
-export type CreatedBasicGroupChat = TdObject & {
+export type CreatedBasicGroupChat = {
 	"@type": "createdBasicGroupChat";
 	/** Chat identifier */
 	chat_id: number;
@@ -6030,7 +6040,7 @@ export type CreatedBasicGroupChat = TdObject & {
  * The chat is public, because it has an active username
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1public_chat_type_has_username.html
  */
-export type PublicChatTypeHasUsername = TdObject & {
+export type PublicChatTypeHasUsername = {
 	"@type": "publicChatTypeHasUsername";
 };
 
@@ -6038,7 +6048,7 @@ export type PublicChatTypeHasUsername = TdObject & {
  * The chat is public, because it is a location-based supergroup
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1public_chat_type_is_location_based.html
  */
-export type PublicChatTypeIsLocationBased = TdObject & {
+export type PublicChatTypeIsLocationBased = {
 	"@type": "publicChatTypeIsLocationBased";
 };
 
@@ -6046,7 +6056,7 @@ export type PublicChatTypeIsLocationBased = TdObject & {
  * Contains basic information about another user that started a chat with the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1account_info.html
  */
-export type AccountInfo = TdObject & {
+export type AccountInfo = {
 	"@type": "accountInfo";
 	/** Month when the user was registered in Telegram; 0-12; may be 0 if unknown */
 	registration_month: number;
@@ -6064,7 +6074,7 @@ export type AccountInfo = TdObject & {
  * The chat can be reported as spam using the method reportChat with an empty option_id and message_ids. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_bar_report_spam.html
  */
-export type ChatActionBarReportSpam = TdObject & {
+export type ChatActionBarReportSpam = {
 	"@type": "chatActionBarReportSpam";
 	/** If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings */
 	can_unarchive: boolean;
@@ -6074,7 +6084,7 @@ export type ChatActionBarReportSpam = TdObject & {
  * The chat is a recently created group chat to which new members can be invited
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_bar_invite_members.html
  */
-export type ChatActionBarInviteMembers = TdObject & {
+export type ChatActionBarInviteMembers = {
 	"@type": "chatActionBarInviteMembers";
 };
 
@@ -6082,7 +6092,7 @@ export type ChatActionBarInviteMembers = TdObject & {
  * The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method setMessageSenderBlockList, or the other user can be added to the contact list using the method addContact. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_bar_report_add_block.html
  */
-export type ChatActionBarReportAddBlock = TdObject & {
+export type ChatActionBarReportAddBlock = {
 	"@type": "chatActionBarReportAddBlock";
 	/** If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings */
 	can_unarchive: boolean;
@@ -6094,7 +6104,7 @@ export type ChatActionBarReportAddBlock = TdObject & {
  * The chat is a private or secret chat and the other user can be added to the contact list using the method addContact
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_bar_add_contact.html
  */
-export type ChatActionBarAddContact = TdObject & {
+export type ChatActionBarAddContact = {
 	"@type": "chatActionBarAddContact";
 };
 
@@ -6102,7 +6112,7 @@ export type ChatActionBarAddContact = TdObject & {
  * The chat is a private or secret chat with a mutual contact and the user's phone number can be shared with the other user using the method sharePhoneNumber
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_bar_share_phone_number.html
  */
-export type ChatActionBarSharePhoneNumber = TdObject & {
+export type ChatActionBarSharePhoneNumber = {
 	"@type": "chatActionBarSharePhoneNumber";
 };
 
@@ -6110,7 +6120,7 @@ export type ChatActionBarSharePhoneNumber = TdObject & {
  * The chat is a private chat with an administrator of a chat to which the user sent join request
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_bar_join_request.html
  */
-export type ChatActionBarJoinRequest = TdObject & {
+export type ChatActionBarJoinRequest = {
 	"@type": "chatActionBarJoinRequest";
 	/** Title of the chat to which the join request was sent */
 	title: string;
@@ -6124,7 +6134,7 @@ export type ChatActionBarJoinRequest = TdObject & {
  * A simple button, with text that must be sent when the button is pressed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_text.html
  */
-export type KeyboardButtonTypeText = TdObject & {
+export type KeyboardButtonTypeText = {
 	"@type": "keyboardButtonTypeText";
 };
 
@@ -6132,7 +6142,7 @@ export type KeyboardButtonTypeText = TdObject & {
  * A button that sends the user's phone number when pressed; available only in private chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_phone_number.html
  */
-export type KeyboardButtonTypeRequestPhoneNumber = TdObject & {
+export type KeyboardButtonTypeRequestPhoneNumber = {
 	"@type": "keyboardButtonTypeRequestPhoneNumber";
 };
 
@@ -6140,7 +6150,7 @@ export type KeyboardButtonTypeRequestPhoneNumber = TdObject & {
  * A button that sends the user's location when pressed; available only in private chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_location.html
  */
-export type KeyboardButtonTypeRequestLocation = TdObject & {
+export type KeyboardButtonTypeRequestLocation = {
 	"@type": "keyboardButtonTypeRequestLocation";
 };
 
@@ -6148,7 +6158,7 @@ export type KeyboardButtonTypeRequestLocation = TdObject & {
  * A button that allows the user to create and send a poll when pressed; available only in private chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_poll.html
  */
-export type KeyboardButtonTypeRequestPoll = TdObject & {
+export type KeyboardButtonTypeRequestPoll = {
 	"@type": "keyboardButtonTypeRequestPoll";
 	/** If true, only regular polls must be allowed to create */
 	force_regular: boolean;
@@ -6160,7 +6170,7 @@ export type KeyboardButtonTypeRequestPoll = TdObject & {
  * A button that requests users to be shared by the current user; available only in private chats. Use the method shareUsersWithBot to complete the request
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_users.html
  */
-export type KeyboardButtonTypeRequestUsers = TdObject & {
+export type KeyboardButtonTypeRequestUsers = {
 	"@type": "keyboardButtonTypeRequestUsers";
 	/** Unique button identifier */
 	id: number;
@@ -6186,7 +6196,7 @@ export type KeyboardButtonTypeRequestUsers = TdObject & {
  * A button that requests a chat to be shared by the current user; available only in private chats. Use the method shareChatWithBot to complete the request
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_request_chat.html
  */
-export type KeyboardButtonTypeRequestChat = TdObject & {
+export type KeyboardButtonTypeRequestChat = {
 	"@type": "keyboardButtonTypeRequestChat";
 	/** Unique button identifier */
 	id: number;
@@ -6220,7 +6230,7 @@ export type KeyboardButtonTypeRequestChat = TdObject & {
  * A button that opens a Web App by calling getWebAppUrl
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button_type_web_app.html
  */
-export type KeyboardButtonTypeWebApp = TdObject & {
+export type KeyboardButtonTypeWebApp = {
 	"@type": "keyboardButtonTypeWebApp";
 	/** An HTTP URL to pass to getWebAppUrl */
 	url: string;
@@ -6230,7 +6240,7 @@ export type KeyboardButtonTypeWebApp = TdObject & {
  * Represents a single button in a bot keyboard
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1keyboard_button.html
  */
-export type KeyboardButton = TdObject & {
+export type KeyboardButton = {
 	"@type": "keyboardButton";
 	/** Text of the button */
 	text: string;
@@ -6242,7 +6252,7 @@ export type KeyboardButton = TdObject & {
  * A button that opens a specified URL
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_url.html
  */
-export type InlineKeyboardButtonTypeUrl = TdObject & {
+export type InlineKeyboardButtonTypeUrl = {
 	"@type": "inlineKeyboardButtonTypeUrl";
 	/** HTTP or tg:// URL to open. If the link is of the type internalLinkTypeWebApp, then the button must be marked as a Web App button */
 	url: string;
@@ -6252,7 +6262,7 @@ export type InlineKeyboardButtonTypeUrl = TdObject & {
  * A button that opens a specified URL and automatically authorize the current user by calling getLoginUrlInfo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_login_url.html
  */
-export type InlineKeyboardButtonTypeLoginUrl = TdObject & {
+export type InlineKeyboardButtonTypeLoginUrl = {
 	"@type": "inlineKeyboardButtonTypeLoginUrl";
 	/** An HTTP URL to pass to getLoginUrlInfo */
 	url: string;
@@ -6266,7 +6276,7 @@ export type InlineKeyboardButtonTypeLoginUrl = TdObject & {
  * A button that opens a Web App by calling openWebApp
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_web_app.html
  */
-export type InlineKeyboardButtonTypeWebApp = TdObject & {
+export type InlineKeyboardButtonTypeWebApp = {
 	"@type": "inlineKeyboardButtonTypeWebApp";
 	/** An HTTP URL to pass to openWebApp */
 	url: string;
@@ -6276,7 +6286,7 @@ export type InlineKeyboardButtonTypeWebApp = TdObject & {
  * A button that sends a callback query to a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_callback.html
  */
-export type InlineKeyboardButtonTypeCallback = TdObject & {
+export type InlineKeyboardButtonTypeCallback = {
 	"@type": "inlineKeyboardButtonTypeCallback";
 	/** Data to be sent to the bot via a callback query */
 	data: string;
@@ -6286,7 +6296,7 @@ export type InlineKeyboardButtonTypeCallback = TdObject & {
  * A button that asks for the 2-step verification password of the current user and then sends a callback query to a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_callback_with_password.html
  */
-export type InlineKeyboardButtonTypeCallbackWithPassword = TdObject & {
+export type InlineKeyboardButtonTypeCallbackWithPassword = {
 	"@type": "inlineKeyboardButtonTypeCallbackWithPassword";
 	/** Data to be sent to the bot via a callback query */
 	data: string;
@@ -6296,7 +6306,7 @@ export type InlineKeyboardButtonTypeCallbackWithPassword = TdObject & {
  * A button with a game that sends a callback query to a bot. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageGame
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_callback_game.html
  */
-export type InlineKeyboardButtonTypeCallbackGame = TdObject & {
+export type InlineKeyboardButtonTypeCallbackGame = {
 	"@type": "inlineKeyboardButtonTypeCallbackGame";
 };
 
@@ -6304,7 +6314,7 @@ export type InlineKeyboardButtonTypeCallbackGame = TdObject & {
  * A button that forces an inline query to the bot to be inserted in the input field
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_switch_inline.html
  */
-export type InlineKeyboardButtonTypeSwitchInline = TdObject & {
+export type InlineKeyboardButtonTypeSwitchInline = {
 	"@type": "inlineKeyboardButtonTypeSwitchInline";
 	/** Inline query to be sent to the bot */
 	query: string;
@@ -6316,7 +6326,7 @@ export type InlineKeyboardButtonTypeSwitchInline = TdObject & {
  * A button to buy something. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageInvoice
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_buy.html
  */
-export type InlineKeyboardButtonTypeBuy = TdObject & {
+export type InlineKeyboardButtonTypeBuy = {
 	"@type": "inlineKeyboardButtonTypeBuy";
 };
 
@@ -6324,7 +6334,7 @@ export type InlineKeyboardButtonTypeBuy = TdObject & {
  * A button with a user reference to be handled in the same way as textEntityTypeMentionName entities
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_user.html
  */
-export type InlineKeyboardButtonTypeUser = TdObject & {
+export type InlineKeyboardButtonTypeUser = {
 	"@type": "inlineKeyboardButtonTypeUser";
 	/** User identifier */
 	user_id: number;
@@ -6334,7 +6344,7 @@ export type InlineKeyboardButtonTypeUser = TdObject & {
  * A button that copies specified text to clipboard
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button_type_copy_text.html
  */
-export type InlineKeyboardButtonTypeCopyText = TdObject & {
+export type InlineKeyboardButtonTypeCopyText = {
 	"@type": "inlineKeyboardButtonTypeCopyText";
 	/** The text to copy to clipboard */
 	text: string;
@@ -6344,7 +6354,7 @@ export type InlineKeyboardButtonTypeCopyText = TdObject & {
  * Represents a single button in an inline keyboard
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_keyboard_button.html
  */
-export type InlineKeyboardButton = TdObject & {
+export type InlineKeyboardButton = {
 	"@type": "inlineKeyboardButton";
 	/** Text of the button */
 	text: string;
@@ -6356,7 +6366,7 @@ export type InlineKeyboardButton = TdObject & {
  * Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, updateChatReplyMarkup with message_id == 0 will be sent
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reply_markup_remove_keyboard.html
  */
-export type ReplyMarkupRemoveKeyboard = TdObject & {
+export type ReplyMarkupRemoveKeyboard = {
 	"@type": "replyMarkupRemoveKeyboard";
 	/** True, if the keyboard is removed only for the mentioned users or the target user of a reply */
 	is_personal: boolean;
@@ -6366,7 +6376,7 @@ export type ReplyMarkupRemoveKeyboard = TdObject & {
  * Instructs application to force a reply to this message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reply_markup_force_reply.html
  */
-export type ReplyMarkupForceReply = TdObject & {
+export type ReplyMarkupForceReply = {
 	"@type": "replyMarkupForceReply";
 	/** True, if a forced reply must automatically be shown to the current user. For outgoing messages, specify true to show the forced reply only for the mentioned users and for the target user of a reply */
 	is_personal: boolean;
@@ -6378,7 +6388,7 @@ export type ReplyMarkupForceReply = TdObject & {
  * Contains a custom keyboard layout to quickly reply to bots
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reply_markup_show_keyboard.html
  */
-export type ReplyMarkupShowKeyboard = TdObject & {
+export type ReplyMarkupShowKeyboard = {
 	"@type": "replyMarkupShowKeyboard";
 	/** A list of rows of bot keyboard buttons */
 	rows: KeyboardButton[][];
@@ -6398,7 +6408,7 @@ export type ReplyMarkupShowKeyboard = TdObject & {
  * Contains an inline keyboard layout
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reply_markup_inline_keyboard.html
  */
-export type ReplyMarkupInlineKeyboard = TdObject & {
+export type ReplyMarkupInlineKeyboard = {
 	"@type": "replyMarkupInlineKeyboard";
 	/** A list of rows of inline keyboard buttons */
 	rows: InlineKeyboardButton[][];
@@ -6408,7 +6418,7 @@ export type ReplyMarkupInlineKeyboard = TdObject & {
  * An HTTP URL needs to be open
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1login_url_info_open.html
  */
-export type LoginUrlInfoOpen = TdObject & {
+export type LoginUrlInfoOpen = {
 	"@type": "loginUrlInfoOpen";
 	/** The URL to open */
 	url: string;
@@ -6420,7 +6430,7 @@ export type LoginUrlInfoOpen = TdObject & {
  * An authorization confirmation dialog needs to be shown to the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1login_url_info_request_confirmation.html
  */
-export type LoginUrlInfoRequestConfirmation = TdObject & {
+export type LoginUrlInfoRequestConfirmation = {
 	"@type": "loginUrlInfoRequestConfirmation";
 	/** An HTTP URL to be opened */
 	url: string;
@@ -6436,7 +6446,7 @@ export type LoginUrlInfoRequestConfirmation = TdObject & {
  * Contains parameters of the application theme
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1theme_parameters.html
  */
-export type ThemeParameters = TdObject & {
+export type ThemeParameters = {
 	"@type": "themeParameters";
 	/** A color of the background in the RGB format */
 	background_color: number;
@@ -6474,7 +6484,7 @@ export type ThemeParameters = TdObject & {
  * The Web App is opened in the compact mode
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app_open_mode_compact.html
  */
-export type WebAppOpenModeCompact = TdObject & {
+export type WebAppOpenModeCompact = {
 	"@type": "webAppOpenModeCompact";
 };
 
@@ -6482,7 +6492,7 @@ export type WebAppOpenModeCompact = TdObject & {
  * The Web App is opened in the full-size mode
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app_open_mode_full_size.html
  */
-export type WebAppOpenModeFullSize = TdObject & {
+export type WebAppOpenModeFullSize = {
 	"@type": "webAppOpenModeFullSize";
 };
 
@@ -6490,7 +6500,7 @@ export type WebAppOpenModeFullSize = TdObject & {
  * The Web App is opened in the full-screen mode
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app_open_mode_full_screen.html
  */
-export type WebAppOpenModeFullScreen = TdObject & {
+export type WebAppOpenModeFullScreen = {
 	"@type": "webAppOpenModeFullScreen";
 };
 
@@ -6498,7 +6508,7 @@ export type WebAppOpenModeFullScreen = TdObject & {
  * Contains information about a Web App found by its short name
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_web_app.html
  */
-export type FoundWebApp = TdObject & {
+export type FoundWebApp = {
 	"@type": "foundWebApp";
 	/** The Web App */
 	web_app: WebApp;
@@ -6512,7 +6522,7 @@ export type FoundWebApp = TdObject & {
  * Contains information about a Web App
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app_info.html
  */
-export type WebAppInfo = TdObject & {
+export type WebAppInfo = {
 	"@type": "webAppInfo";
 	/** Unique identifier for the Web App launch */
 	launch_id: string;
@@ -6524,7 +6534,7 @@ export type WebAppInfo = TdObject & {
  * Contains information about the main Web App of a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1main_web_app.html
  */
-export type MainWebApp = TdObject & {
+export type MainWebApp = {
 	"@type": "mainWebApp";
 	/** URL of the Web App to open */
 	url: string;
@@ -6536,7 +6546,7 @@ export type MainWebApp = TdObject & {
  * Options to be used when a Web App is opened
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_app_open_parameters.html
  */
-export type WebAppOpenParameters = TdObject & {
+export type WebAppOpenParameters = {
 	"@type": "webAppOpenParameters";
 	/** Preferred Web App theme; pass null to use the default theme */
 	theme?: ThemeParameters;
@@ -6550,7 +6560,7 @@ export type WebAppOpenParameters = TdObject & {
  * Contains information about a message thread
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_thread_info.html
  */
-export type MessageThreadInfo = TdObject & {
+export type MessageThreadInfo = {
 	"@type": "messageThreadInfo";
 	/** Identifier of the chat to which the message thread belongs */
 	chat_id: number;
@@ -6570,7 +6580,7 @@ export type MessageThreadInfo = TdObject & {
  * Topic containing messages sent by the current user of forwarded from an unknown chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1saved_messages_topic_type_my_notes.html
  */
-export type SavedMessagesTopicTypeMyNotes = TdObject & {
+export type SavedMessagesTopicTypeMyNotes = {
 	"@type": "savedMessagesTopicTypeMyNotes";
 };
 
@@ -6578,7 +6588,7 @@ export type SavedMessagesTopicTypeMyNotes = TdObject & {
  * Topic containing messages forwarded from a user with hidden privacy
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1saved_messages_topic_type_author_hidden.html
  */
-export type SavedMessagesTopicTypeAuthorHidden = TdObject & {
+export type SavedMessagesTopicTypeAuthorHidden = {
 	"@type": "savedMessagesTopicTypeAuthorHidden";
 };
 
@@ -6586,7 +6596,7 @@ export type SavedMessagesTopicTypeAuthorHidden = TdObject & {
  * Topic containing messages forwarded from a specific chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1saved_messages_topic_type_saved_from_chat.html
  */
-export type SavedMessagesTopicTypeSavedFromChat = TdObject & {
+export type SavedMessagesTopicTypeSavedFromChat = {
 	"@type": "savedMessagesTopicTypeSavedFromChat";
 	/** Identifier of the chat */
 	chat_id: number;
@@ -6596,7 +6606,7 @@ export type SavedMessagesTopicTypeSavedFromChat = TdObject & {
  * Contains information about a Saved Messages topic
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1saved_messages_topic.html
  */
-export type SavedMessagesTopic = TdObject & {
+export type SavedMessagesTopic = {
 	"@type": "savedMessagesTopic";
 	/** Unique topic identifier */
 	id: number;
@@ -6616,7 +6626,7 @@ export type SavedMessagesTopic = TdObject & {
  * Contains information about a topic in a channel direct messages chat administered by the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1direct_messages_chat_topic.html
  */
-export type DirectMessagesChatTopic = TdObject & {
+export type DirectMessagesChatTopic = {
 	"@type": "directMessagesChatTopic";
 	/** Identifier of the chat to which the topic belongs */
 	chat_id: number;
@@ -6646,7 +6656,7 @@ export type DirectMessagesChatTopic = TdObject & {
  * Describes a forum topic icon
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1forum_topic_icon.html
  */
-export type ForumTopicIcon = TdObject & {
+export type ForumTopicIcon = {
 	"@type": "forumTopicIcon";
 	/** Color of the topic icon in RGB format */
 	color: number;
@@ -6658,7 +6668,7 @@ export type ForumTopicIcon = TdObject & {
  * Contains basic information about a forum topic
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1forum_topic_info.html
  */
-export type ForumTopicInfo = TdObject & {
+export type ForumTopicInfo = {
 	"@type": "forumTopicInfo";
 	/** Identifier of the forum chat to which the topic belongs */
 	chat_id: number;
@@ -6688,7 +6698,7 @@ export type ForumTopicInfo = TdObject & {
  * Describes a forum topic
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1forum_topic.html
  */
-export type ForumTopic = TdObject & {
+export type ForumTopic = {
 	"@type": "forumTopic";
 	/** Basic information about the topic */
 	info: ForumTopicInfo;
@@ -6718,7 +6728,7 @@ export type ForumTopic = TdObject & {
  * Describes a list of forum topics
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1forum_topics.html
  */
-export type ForumTopics = TdObject & {
+export type ForumTopics = {
 	"@type": "forumTopics";
 	/** Approximate total number of forum topics found */
 	total_count: number;
@@ -6736,7 +6746,7 @@ export type ForumTopics = TdObject & {
  * Options to be used for generation of a link preview
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_options.html
  */
-export type LinkPreviewOptions = TdObject & {
+export type LinkPreviewOptions = {
 	"@type": "linkPreviewOptions";
 	/** True, if link preview must be disabled */
 	is_disabled: boolean;
@@ -6754,7 +6764,7 @@ export type LinkPreviewOptions = TdObject & {
  * Contains information about a user shared with a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1shared_user.html
  */
-export type SharedUser = TdObject & {
+export type SharedUser = {
 	"@type": "sharedUser";
 	/** User identifier */
 	user_id: number;
@@ -6772,7 +6782,7 @@ export type SharedUser = TdObject & {
  * Contains information about a chat shared with a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1shared_chat.html
  */
-export type SharedChat = TdObject & {
+export type SharedChat = {
 	"@type": "sharedChat";
 	/** Chat identifier */
 	chat_id: number;
@@ -6788,7 +6798,7 @@ export type SharedChat = TdObject & {
  * Describes theme settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1theme_settings.html
  */
-export type ThemeSettings = TdObject & {
+export type ThemeSettings = {
 	"@type": "themeSettings";
 	/** Theme accent color in ARGB format */
 	accent_color: number;
@@ -6806,7 +6816,7 @@ export type ThemeSettings = TdObject & {
  * A plain text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_plain.html
  */
-export type RichTextPlain = TdObject & {
+export type RichTextPlain = {
 	"@type": "richTextPlain";
 	/** Text */
 	text: string;
@@ -6816,7 +6826,7 @@ export type RichTextPlain = TdObject & {
  * A bold rich text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_bold.html
  */
-export type RichTextBold = TdObject & {
+export type RichTextBold = {
 	"@type": "richTextBold";
 	/** Text */
 	text: RichText;
@@ -6826,7 +6836,7 @@ export type RichTextBold = TdObject & {
  * An italicized rich text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_italic.html
  */
-export type RichTextItalic = TdObject & {
+export type RichTextItalic = {
 	"@type": "richTextItalic";
 	/** Text */
 	text: RichText;
@@ -6836,7 +6846,7 @@ export type RichTextItalic = TdObject & {
  * An underlined rich text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_underline.html
  */
-export type RichTextUnderline = TdObject & {
+export type RichTextUnderline = {
 	"@type": "richTextUnderline";
 	/** Text */
 	text: RichText;
@@ -6846,7 +6856,7 @@ export type RichTextUnderline = TdObject & {
  * A strikethrough rich text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_strikethrough.html
  */
-export type RichTextStrikethrough = TdObject & {
+export type RichTextStrikethrough = {
 	"@type": "richTextStrikethrough";
 	/** Text */
 	text: RichText;
@@ -6856,7 +6866,7 @@ export type RichTextStrikethrough = TdObject & {
  * A fixed-width rich text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_fixed.html
  */
-export type RichTextFixed = TdObject & {
+export type RichTextFixed = {
 	"@type": "richTextFixed";
 	/** Text */
 	text: RichText;
@@ -6866,7 +6876,7 @@ export type RichTextFixed = TdObject & {
  * A rich text URL link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_url.html
  */
-export type RichTextUrl = TdObject & {
+export type RichTextUrl = {
 	"@type": "richTextUrl";
 	/** Text */
 	text: RichText;
@@ -6880,7 +6890,7 @@ export type RichTextUrl = TdObject & {
  * A rich text email link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_email_address.html
  */
-export type RichTextEmailAddress = TdObject & {
+export type RichTextEmailAddress = {
 	"@type": "richTextEmailAddress";
 	/** Text */
 	text: RichText;
@@ -6892,7 +6902,7 @@ export type RichTextEmailAddress = TdObject & {
  * A subscript rich text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_subscript.html
  */
-export type RichTextSubscript = TdObject & {
+export type RichTextSubscript = {
 	"@type": "richTextSubscript";
 	/** Text */
 	text: RichText;
@@ -6902,7 +6912,7 @@ export type RichTextSubscript = TdObject & {
  * A superscript rich text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_superscript.html
  */
-export type RichTextSuperscript = TdObject & {
+export type RichTextSuperscript = {
 	"@type": "richTextSuperscript";
 	/** Text */
 	text: RichText;
@@ -6912,7 +6922,7 @@ export type RichTextSuperscript = TdObject & {
  * A marked rich text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_marked.html
  */
-export type RichTextMarked = TdObject & {
+export type RichTextMarked = {
 	"@type": "richTextMarked";
 	/** Text */
 	text: RichText;
@@ -6922,7 +6932,7 @@ export type RichTextMarked = TdObject & {
  * A rich text phone number
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_phone_number.html
  */
-export type RichTextPhoneNumber = TdObject & {
+export type RichTextPhoneNumber = {
 	"@type": "richTextPhoneNumber";
 	/** Text */
 	text: RichText;
@@ -6934,7 +6944,7 @@ export type RichTextPhoneNumber = TdObject & {
  * A small image inside the text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_icon.html
  */
-export type RichTextIcon = TdObject & {
+export type RichTextIcon = {
 	"@type": "richTextIcon";
 	/** The image represented as a document. The image can be in GIF, JPEG or PNG format */
 	document: Document;
@@ -6948,7 +6958,7 @@ export type RichTextIcon = TdObject & {
  * A reference to a richTexts object on the same page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_reference.html
  */
-export type RichTextReference = TdObject & {
+export type RichTextReference = {
 	"@type": "richTextReference";
 	/** The text */
 	text: RichText;
@@ -6962,7 +6972,7 @@ export type RichTextReference = TdObject & {
  * An anchor
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_anchor.html
  */
-export type RichTextAnchor = TdObject & {
+export type RichTextAnchor = {
 	"@type": "richTextAnchor";
 	/** Anchor name */
 	name: string;
@@ -6972,7 +6982,7 @@ export type RichTextAnchor = TdObject & {
  * A link to an anchor on the same page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_text_anchor_link.html
  */
-export type RichTextAnchorLink = TdObject & {
+export type RichTextAnchorLink = {
 	"@type": "richTextAnchorLink";
 	/** The link text */
 	text: RichText;
@@ -6986,7 +6996,7 @@ export type RichTextAnchorLink = TdObject & {
  * A concatenation of rich texts
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rich_texts.html
  */
-export type RichTexts = TdObject & {
+export type RichTexts = {
 	"@type": "richTexts";
 	/** Texts */
 	texts: RichText[];
@@ -6996,7 +7006,7 @@ export type RichTexts = TdObject & {
  * Contains a caption of another block
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_caption.html
  */
-export type PageBlockCaption = TdObject & {
+export type PageBlockCaption = {
 	"@type": "pageBlockCaption";
 	/** Content of the caption */
 	text: RichText;
@@ -7008,7 +7018,7 @@ export type PageBlockCaption = TdObject & {
  * Describes an item of a list page block
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_list_item.html
  */
-export type PageBlockListItem = TdObject & {
+export type PageBlockListItem = {
 	"@type": "pageBlockListItem";
 	/** Item label */
 	label: string;
@@ -7020,7 +7030,7 @@ export type PageBlockListItem = TdObject & {
  * The content must be left-aligned
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_horizontal_alignment_left.html
  */
-export type PageBlockHorizontalAlignmentLeft = TdObject & {
+export type PageBlockHorizontalAlignmentLeft = {
 	"@type": "pageBlockHorizontalAlignmentLeft";
 };
 
@@ -7028,7 +7038,7 @@ export type PageBlockHorizontalAlignmentLeft = TdObject & {
  * The content must be center-aligned
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_horizontal_alignment_center.html
  */
-export type PageBlockHorizontalAlignmentCenter = TdObject & {
+export type PageBlockHorizontalAlignmentCenter = {
 	"@type": "pageBlockHorizontalAlignmentCenter";
 };
 
@@ -7036,7 +7046,7 @@ export type PageBlockHorizontalAlignmentCenter = TdObject & {
  * The content must be right-aligned
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_horizontal_alignment_right.html
  */
-export type PageBlockHorizontalAlignmentRight = TdObject & {
+export type PageBlockHorizontalAlignmentRight = {
 	"@type": "pageBlockHorizontalAlignmentRight";
 };
 
@@ -7044,7 +7054,7 @@ export type PageBlockHorizontalAlignmentRight = TdObject & {
  * The content must be top-aligned
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_vertical_alignment_top.html
  */
-export type PageBlockVerticalAlignmentTop = TdObject & {
+export type PageBlockVerticalAlignmentTop = {
 	"@type": "pageBlockVerticalAlignmentTop";
 };
 
@@ -7052,7 +7062,7 @@ export type PageBlockVerticalAlignmentTop = TdObject & {
  * The content must be middle-aligned
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_vertical_alignment_middle.html
  */
-export type PageBlockVerticalAlignmentMiddle = TdObject & {
+export type PageBlockVerticalAlignmentMiddle = {
 	"@type": "pageBlockVerticalAlignmentMiddle";
 };
 
@@ -7060,7 +7070,7 @@ export type PageBlockVerticalAlignmentMiddle = TdObject & {
  * The content must be bottom-aligned
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_vertical_alignment_bottom.html
  */
-export type PageBlockVerticalAlignmentBottom = TdObject & {
+export type PageBlockVerticalAlignmentBottom = {
 	"@type": "pageBlockVerticalAlignmentBottom";
 };
 
@@ -7068,7 +7078,7 @@ export type PageBlockVerticalAlignmentBottom = TdObject & {
  * Represents a cell of a table
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_table_cell.html
  */
-export type PageBlockTableCell = TdObject & {
+export type PageBlockTableCell = {
 	"@type": "pageBlockTableCell";
 	/** Cell text; may be null. If the text is null, then the cell must be invisible */
 	text?: RichText;
@@ -7088,7 +7098,7 @@ export type PageBlockTableCell = TdObject & {
  * Contains information about a related article
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_related_article.html
  */
-export type PageBlockRelatedArticle = TdObject & {
+export type PageBlockRelatedArticle = {
 	"@type": "pageBlockRelatedArticle";
 	/** Related article URL */
 	url: string;
@@ -7108,7 +7118,7 @@ export type PageBlockRelatedArticle = TdObject & {
  * The title of a page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_title.html
  */
-export type PageBlockTitle = TdObject & {
+export type PageBlockTitle = {
 	"@type": "pageBlockTitle";
 	/** Title */
 	title: RichText;
@@ -7118,7 +7128,7 @@ export type PageBlockTitle = TdObject & {
  * The subtitle of a page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_subtitle.html
  */
-export type PageBlockSubtitle = TdObject & {
+export type PageBlockSubtitle = {
 	"@type": "pageBlockSubtitle";
 	/** Subtitle */
 	subtitle: RichText;
@@ -7128,7 +7138,7 @@ export type PageBlockSubtitle = TdObject & {
  * The author and publishing date of a page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_author_date.html
  */
-export type PageBlockAuthorDate = TdObject & {
+export type PageBlockAuthorDate = {
 	"@type": "pageBlockAuthorDate";
 	/** Author */
 	author: RichText;
@@ -7140,7 +7150,7 @@ export type PageBlockAuthorDate = TdObject & {
  * A header
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_header.html
  */
-export type PageBlockHeader = TdObject & {
+export type PageBlockHeader = {
 	"@type": "pageBlockHeader";
 	/** Header */
 	header: RichText;
@@ -7150,7 +7160,7 @@ export type PageBlockHeader = TdObject & {
  * A subheader
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_subheader.html
  */
-export type PageBlockSubheader = TdObject & {
+export type PageBlockSubheader = {
 	"@type": "pageBlockSubheader";
 	/** Subheader */
 	subheader: RichText;
@@ -7160,7 +7170,7 @@ export type PageBlockSubheader = TdObject & {
  * A kicker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_kicker.html
  */
-export type PageBlockKicker = TdObject & {
+export type PageBlockKicker = {
 	"@type": "pageBlockKicker";
 	/** Kicker */
 	kicker: RichText;
@@ -7170,7 +7180,7 @@ export type PageBlockKicker = TdObject & {
  * A text paragraph
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_paragraph.html
  */
-export type PageBlockParagraph = TdObject & {
+export type PageBlockParagraph = {
 	"@type": "pageBlockParagraph";
 	/** Paragraph text */
 	text: RichText;
@@ -7180,7 +7190,7 @@ export type PageBlockParagraph = TdObject & {
  * A preformatted text paragraph
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_preformatted.html
  */
-export type PageBlockPreformatted = TdObject & {
+export type PageBlockPreformatted = {
 	"@type": "pageBlockPreformatted";
 	/** Paragraph text */
 	text: RichText;
@@ -7192,7 +7202,7 @@ export type PageBlockPreformatted = TdObject & {
  * The footer of a page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_footer.html
  */
-export type PageBlockFooter = TdObject & {
+export type PageBlockFooter = {
 	"@type": "pageBlockFooter";
 	/** Footer */
 	footer: RichText;
@@ -7202,7 +7212,7 @@ export type PageBlockFooter = TdObject & {
  * An empty block separating a page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_divider.html
  */
-export type PageBlockDivider = TdObject & {
+export type PageBlockDivider = {
 	"@type": "pageBlockDivider";
 };
 
@@ -7210,7 +7220,7 @@ export type PageBlockDivider = TdObject & {
  * An invisible anchor on a page, which can be used in a URL to open the page from the specified anchor
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_anchor.html
  */
-export type PageBlockAnchor = TdObject & {
+export type PageBlockAnchor = {
 	"@type": "pageBlockAnchor";
 	/** Name of the anchor */
 	name: string;
@@ -7220,7 +7230,7 @@ export type PageBlockAnchor = TdObject & {
  * A list of data blocks
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_list.html
  */
-export type PageBlockList = TdObject & {
+export type PageBlockList = {
 	"@type": "pageBlockList";
 	/** The items of the list */
 	items: PageBlockListItem[];
@@ -7230,7 +7240,7 @@ export type PageBlockList = TdObject & {
  * A block quote
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_block_quote.html
  */
-export type PageBlockBlockQuote = TdObject & {
+export type PageBlockBlockQuote = {
 	"@type": "pageBlockBlockQuote";
 	/** Quote text */
 	text: RichText;
@@ -7242,7 +7252,7 @@ export type PageBlockBlockQuote = TdObject & {
  * A pull quote
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_pull_quote.html
  */
-export type PageBlockPullQuote = TdObject & {
+export type PageBlockPullQuote = {
 	"@type": "pageBlockPullQuote";
 	/** Quote text */
 	text: RichText;
@@ -7254,7 +7264,7 @@ export type PageBlockPullQuote = TdObject & {
  * An animation
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_animation.html
  */
-export type PageBlockAnimation = TdObject & {
+export type PageBlockAnimation = {
 	"@type": "pageBlockAnimation";
 	/** Animation file; may be null */
 	animation?: Animation;
@@ -7268,7 +7278,7 @@ export type PageBlockAnimation = TdObject & {
  * An audio file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_audio.html
  */
-export type PageBlockAudio = TdObject & {
+export type PageBlockAudio = {
 	"@type": "pageBlockAudio";
 	/** Audio file; may be null */
 	audio?: Audio;
@@ -7280,7 +7290,7 @@ export type PageBlockAudio = TdObject & {
  * A photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_photo.html
  */
-export type PageBlockPhoto = TdObject & {
+export type PageBlockPhoto = {
 	"@type": "pageBlockPhoto";
 	/** Photo file; may be null */
 	photo?: Photo;
@@ -7294,7 +7304,7 @@ export type PageBlockPhoto = TdObject & {
  * A video
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_video.html
  */
-export type PageBlockVideo = TdObject & {
+export type PageBlockVideo = {
 	"@type": "pageBlockVideo";
 	/** Video file; may be null */
 	video?: Video;
@@ -7310,7 +7320,7 @@ export type PageBlockVideo = TdObject & {
  * A voice note
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_voice_note.html
  */
-export type PageBlockVoiceNote = TdObject & {
+export type PageBlockVoiceNote = {
 	"@type": "pageBlockVoiceNote";
 	/** Voice note; may be null */
 	voice_note?: VoiceNote;
@@ -7322,7 +7332,7 @@ export type PageBlockVoiceNote = TdObject & {
  * A page cover
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_cover.html
  */
-export type PageBlockCover = TdObject & {
+export type PageBlockCover = {
 	"@type": "pageBlockCover";
 	/** Cover */
 	cover: PageBlock;
@@ -7332,7 +7342,7 @@ export type PageBlockCover = TdObject & {
  * An embedded web page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_embedded.html
  */
-export type PageBlockEmbedded = TdObject & {
+export type PageBlockEmbedded = {
 	"@type": "pageBlockEmbedded";
 	/** URL of the embedded page, if available */
 	url: string;
@@ -7356,7 +7366,7 @@ export type PageBlockEmbedded = TdObject & {
  * An embedded post
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_embedded_post.html
  */
-export type PageBlockEmbeddedPost = TdObject & {
+export type PageBlockEmbeddedPost = {
 	"@type": "pageBlockEmbeddedPost";
 	/** URL of the embedded post */
 	url: string;
@@ -7376,7 +7386,7 @@ export type PageBlockEmbeddedPost = TdObject & {
  * A collage
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_collage.html
  */
-export type PageBlockCollage = TdObject & {
+export type PageBlockCollage = {
 	"@type": "pageBlockCollage";
 	/** Collage item contents */
 	page_blocks: PageBlock[];
@@ -7388,7 +7398,7 @@ export type PageBlockCollage = TdObject & {
  * A slideshow
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_slideshow.html
  */
-export type PageBlockSlideshow = TdObject & {
+export type PageBlockSlideshow = {
 	"@type": "pageBlockSlideshow";
 	/** Slideshow item contents */
 	page_blocks: PageBlock[];
@@ -7400,7 +7410,7 @@ export type PageBlockSlideshow = TdObject & {
  * A link to a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_chat_link.html
  */
-export type PageBlockChatLink = TdObject & {
+export type PageBlockChatLink = {
 	"@type": "pageBlockChatLink";
 	/** Chat title */
 	title: string;
@@ -7416,7 +7426,7 @@ export type PageBlockChatLink = TdObject & {
  * A table
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_table.html
  */
-export type PageBlockTable = TdObject & {
+export type PageBlockTable = {
 	"@type": "pageBlockTable";
 	/** Table caption */
 	caption: RichText;
@@ -7432,7 +7442,7 @@ export type PageBlockTable = TdObject & {
  * A collapsible block
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_details.html
  */
-export type PageBlockDetails = TdObject & {
+export type PageBlockDetails = {
 	"@type": "pageBlockDetails";
 	/** Always visible heading for the block */
 	header: RichText;
@@ -7446,7 +7456,7 @@ export type PageBlockDetails = TdObject & {
  * Related articles
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_related_articles.html
  */
-export type PageBlockRelatedArticles = TdObject & {
+export type PageBlockRelatedArticles = {
 	"@type": "pageBlockRelatedArticles";
 	/** Block header */
 	header: RichText;
@@ -7458,7 +7468,7 @@ export type PageBlockRelatedArticles = TdObject & {
  * A map
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1page_block_map.html
  */
-export type PageBlockMap = TdObject & {
+export type PageBlockMap = {
 	"@type": "pageBlockMap";
 	/** Location of the map center */
 	location: Location;
@@ -7476,7 +7486,7 @@ export type PageBlockMap = TdObject & {
  * Describes an instant view page for a web page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1web_page_instant_view.html
  */
-export type WebPageInstantView = TdObject & {
+export type WebPageInstantView = {
 	"@type": "webPageInstantView";
 	/** Content of the instant view page */
 	page_blocks: PageBlock[];
@@ -7496,7 +7506,7 @@ export type WebPageInstantView = TdObject & {
  * The media is a photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_album_media_photo.html
  */
-export type LinkPreviewAlbumMediaPhoto = TdObject & {
+export type LinkPreviewAlbumMediaPhoto = {
 	"@type": "linkPreviewAlbumMediaPhoto";
 	/** Photo description */
 	photo: Photo;
@@ -7506,7 +7516,7 @@ export type LinkPreviewAlbumMediaPhoto = TdObject & {
  * The media is a video
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_album_media_video.html
  */
-export type LinkPreviewAlbumMediaVideo = TdObject & {
+export type LinkPreviewAlbumMediaVideo = {
 	"@type": "linkPreviewAlbumMediaVideo";
 	/** Video description */
 	video: Video;
@@ -7516,7 +7526,7 @@ export type LinkPreviewAlbumMediaVideo = TdObject & {
  * The link is a link to a media album consisting of photos and videos
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_album.html
  */
-export type LinkPreviewTypeAlbum = TdObject & {
+export type LinkPreviewTypeAlbum = {
 	"@type": "linkPreviewTypeAlbum";
 	/** The list of album media */
 	media: LinkPreviewAlbumMedia[];
@@ -7528,7 +7538,7 @@ export type LinkPreviewTypeAlbum = TdObject & {
  * The link is a link to an animation
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_animation.html
  */
-export type LinkPreviewTypeAnimation = TdObject & {
+export type LinkPreviewTypeAnimation = {
 	"@type": "linkPreviewTypeAnimation";
 	/** The animation */
 	animation: Animation;
@@ -7538,7 +7548,7 @@ export type LinkPreviewTypeAnimation = TdObject & {
  * The link is a link to an app at App Store or Google Play
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_app.html
  */
-export type LinkPreviewTypeApp = TdObject & {
+export type LinkPreviewTypeApp = {
 	"@type": "linkPreviewTypeApp";
 	/** Photo for the app */
 	photo: Photo;
@@ -7548,7 +7558,7 @@ export type LinkPreviewTypeApp = TdObject & {
  * The link is a link to a web site
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_article.html
  */
-export type LinkPreviewTypeArticle = TdObject & {
+export type LinkPreviewTypeArticle = {
 	"@type": "linkPreviewTypeArticle";
 	/** Article's main photo; may be null */
 	photo?: Photo;
@@ -7558,7 +7568,7 @@ export type LinkPreviewTypeArticle = TdObject & {
  * The link is a link to an audio
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_audio.html
  */
-export type LinkPreviewTypeAudio = TdObject & {
+export type LinkPreviewTypeAudio = {
 	"@type": "linkPreviewTypeAudio";
 	/** The audio description */
 	audio: Audio;
@@ -7568,7 +7578,7 @@ export type LinkPreviewTypeAudio = TdObject & {
  * The link is a link to a background. Link preview title and description are available only for filled backgrounds
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_background.html
  */
-export type LinkPreviewTypeBackground = TdObject & {
+export type LinkPreviewTypeBackground = {
 	"@type": "linkPreviewTypeBackground";
 	/** Document with the background; may be null for filled backgrounds */
 	document?: Document;
@@ -7580,7 +7590,7 @@ export type LinkPreviewTypeBackground = TdObject & {
  * The link is a link to boost a channel chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_channel_boost.html
  */
-export type LinkPreviewTypeChannelBoost = TdObject & {
+export type LinkPreviewTypeChannelBoost = {
 	"@type": "linkPreviewTypeChannelBoost";
 	/** Photo of the chat; may be null */
 	photo?: ChatPhoto;
@@ -7590,7 +7600,7 @@ export type LinkPreviewTypeChannelBoost = TdObject & {
  * The link is a link to a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_chat.html
  */
-export type LinkPreviewTypeChat = TdObject & {
+export type LinkPreviewTypeChat = {
 	"@type": "linkPreviewTypeChat";
 	/** Type of the chat */
 	type: InviteLinkChatType;
@@ -7604,7 +7614,7 @@ export type LinkPreviewTypeChat = TdObject & {
  * The link is a link to a general file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_document.html
  */
-export type LinkPreviewTypeDocument = TdObject & {
+export type LinkPreviewTypeDocument = {
 	"@type": "linkPreviewTypeDocument";
 	/** The document description */
 	document: Document;
@@ -7614,7 +7624,7 @@ export type LinkPreviewTypeDocument = TdObject & {
  * The link is a link to an animation player
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_embedded_animation_player.html
  */
-export type LinkPreviewTypeEmbeddedAnimationPlayer = TdObject & {
+export type LinkPreviewTypeEmbeddedAnimationPlayer = {
 	"@type": "linkPreviewTypeEmbeddedAnimationPlayer";
 	/** URL of the external animation player */
 	url: string;
@@ -7632,7 +7642,7 @@ export type LinkPreviewTypeEmbeddedAnimationPlayer = TdObject & {
  * The link is a link to an audio player
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_embedded_audio_player.html
  */
-export type LinkPreviewTypeEmbeddedAudioPlayer = TdObject & {
+export type LinkPreviewTypeEmbeddedAudioPlayer = {
 	"@type": "linkPreviewTypeEmbeddedAudioPlayer";
 	/** URL of the external audio player */
 	url: string;
@@ -7650,7 +7660,7 @@ export type LinkPreviewTypeEmbeddedAudioPlayer = TdObject & {
  * The link is a link to a video player
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_embedded_video_player.html
  */
-export type LinkPreviewTypeEmbeddedVideoPlayer = TdObject & {
+export type LinkPreviewTypeEmbeddedVideoPlayer = {
 	"@type": "linkPreviewTypeEmbeddedVideoPlayer";
 	/** URL of the external video player */
 	url: string;
@@ -7668,7 +7678,7 @@ export type LinkPreviewTypeEmbeddedVideoPlayer = TdObject & {
  * The link is a link to an audio file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_external_audio.html
  */
-export type LinkPreviewTypeExternalAudio = TdObject & {
+export type LinkPreviewTypeExternalAudio = {
 	"@type": "linkPreviewTypeExternalAudio";
 	/** URL of the audio file */
 	url: string;
@@ -7682,7 +7692,7 @@ export type LinkPreviewTypeExternalAudio = TdObject & {
  * The link is a link to a video file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_external_video.html
  */
-export type LinkPreviewTypeExternalVideo = TdObject & {
+export type LinkPreviewTypeExternalVideo = {
 	"@type": "linkPreviewTypeExternalVideo";
 	/** URL of the video file */
 	url: string;
@@ -7700,7 +7710,7 @@ export type LinkPreviewTypeExternalVideo = TdObject & {
  * The link is a link to a group call that isn't bound to a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_group_call.html
  */
-export type LinkPreviewTypeGroupCall = TdObject & {
+export type LinkPreviewTypeGroupCall = {
 	"@type": "linkPreviewTypeGroupCall";
 };
 
@@ -7708,7 +7718,7 @@ export type LinkPreviewTypeGroupCall = TdObject & {
  * The link is a link to an invoice
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_invoice.html
  */
-export type LinkPreviewTypeInvoice = TdObject & {
+export type LinkPreviewTypeInvoice = {
 	"@type": "linkPreviewTypeInvoice";
 };
 
@@ -7716,7 +7726,7 @@ export type LinkPreviewTypeInvoice = TdObject & {
  * The link is a link to a text or a poll Telegram message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_message.html
  */
-export type LinkPreviewTypeMessage = TdObject & {
+export type LinkPreviewTypeMessage = {
 	"@type": "linkPreviewTypeMessage";
 };
 
@@ -7724,7 +7734,7 @@ export type LinkPreviewTypeMessage = TdObject & {
  * The link is a link to a photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_photo.html
  */
-export type LinkPreviewTypePhoto = TdObject & {
+export type LinkPreviewTypePhoto = {
 	"@type": "linkPreviewTypePhoto";
 	/** The photo */
 	photo: Photo;
@@ -7734,7 +7744,7 @@ export type LinkPreviewTypePhoto = TdObject & {
  * The link is a link to a Telegram Premium gift code
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_premium_gift_code.html
  */
-export type LinkPreviewTypePremiumGiftCode = TdObject & {
+export type LinkPreviewTypePremiumGiftCode = {
 	"@type": "linkPreviewTypePremiumGiftCode";
 };
 
@@ -7742,7 +7752,7 @@ export type LinkPreviewTypePremiumGiftCode = TdObject & {
  * The link is a link to a shareable chat folder
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_shareable_chat_folder.html
  */
-export type LinkPreviewTypeShareableChatFolder = TdObject & {
+export type LinkPreviewTypeShareableChatFolder = {
 	"@type": "linkPreviewTypeShareableChatFolder";
 };
 
@@ -7750,7 +7760,7 @@ export type LinkPreviewTypeShareableChatFolder = TdObject & {
  * The link is a link to a sticker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_sticker.html
  */
-export type LinkPreviewTypeSticker = TdObject & {
+export type LinkPreviewTypeSticker = {
 	"@type": "linkPreviewTypeSticker";
 	/** The sticker. It can be an arbitrary WEBP image and can have dimensions bigger than 512 */
 	sticker: Sticker;
@@ -7760,7 +7770,7 @@ export type LinkPreviewTypeSticker = TdObject & {
  * The link is a link to a sticker set
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_sticker_set.html
  */
-export type LinkPreviewTypeStickerSet = TdObject & {
+export type LinkPreviewTypeStickerSet = {
 	"@type": "linkPreviewTypeStickerSet";
 	/** Up to 4 stickers from the sticker set */
 	stickers: Sticker[];
@@ -7770,7 +7780,7 @@ export type LinkPreviewTypeStickerSet = TdObject & {
  * The link is a link to a story. Link preview description is unavailable
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_story.html
  */
-export type LinkPreviewTypeStory = TdObject & {
+export type LinkPreviewTypeStory = {
 	"@type": "linkPreviewTypeStory";
 	/** The identifier of the chat that posted the story */
 	story_poster_chat_id: number;
@@ -7782,7 +7792,7 @@ export type LinkPreviewTypeStory = TdObject & {
  * The link is a link to boost a supergroup chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_supergroup_boost.html
  */
-export type LinkPreviewTypeSupergroupBoost = TdObject & {
+export type LinkPreviewTypeSupergroupBoost = {
 	"@type": "linkPreviewTypeSupergroupBoost";
 	/** Photo of the chat; may be null */
 	photo?: ChatPhoto;
@@ -7792,7 +7802,7 @@ export type LinkPreviewTypeSupergroupBoost = TdObject & {
  * The link is a link to a cloud theme. TDLib has no theme support yet
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_theme.html
  */
-export type LinkPreviewTypeTheme = TdObject & {
+export type LinkPreviewTypeTheme = {
 	"@type": "linkPreviewTypeTheme";
 	/** The list of files with theme description */
 	documents: Document[];
@@ -7804,7 +7814,7 @@ export type LinkPreviewTypeTheme = TdObject & {
  * The link preview type is unsupported yet
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_unsupported.html
  */
-export type LinkPreviewTypeUnsupported = TdObject & {
+export type LinkPreviewTypeUnsupported = {
 	"@type": "linkPreviewTypeUnsupported";
 };
 
@@ -7812,7 +7822,7 @@ export type LinkPreviewTypeUnsupported = TdObject & {
  * The link is a link to an upgraded gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_upgraded_gift.html
  */
-export type LinkPreviewTypeUpgradedGift = TdObject & {
+export type LinkPreviewTypeUpgradedGift = {
 	"@type": "linkPreviewTypeUpgradedGift";
 	/** The gift */
 	gift: UpgradedGift;
@@ -7822,7 +7832,7 @@ export type LinkPreviewTypeUpgradedGift = TdObject & {
  * The link is a link to a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_user.html
  */
-export type LinkPreviewTypeUser = TdObject & {
+export type LinkPreviewTypeUser = {
 	"@type": "linkPreviewTypeUser";
 	/** Photo of the user; may be null if none */
 	photo?: ChatPhoto;
@@ -7834,7 +7844,7 @@ export type LinkPreviewTypeUser = TdObject & {
  * The link is a link to a video
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_video.html
  */
-export type LinkPreviewTypeVideo = TdObject & {
+export type LinkPreviewTypeVideo = {
 	"@type": "linkPreviewTypeVideo";
 	/** The video description */
 	video: Video;
@@ -7848,7 +7858,7 @@ export type LinkPreviewTypeVideo = TdObject & {
  * The link is a link to a video chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_video_chat.html
  */
-export type LinkPreviewTypeVideoChat = TdObject & {
+export type LinkPreviewTypeVideoChat = {
 	"@type": "linkPreviewTypeVideoChat";
 	/** Photo of the chat with the video chat; may be null if none */
 	photo?: ChatPhoto;
@@ -7860,7 +7870,7 @@ export type LinkPreviewTypeVideoChat = TdObject & {
  * The link is a link to a video note message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_video_note.html
  */
-export type LinkPreviewTypeVideoNote = TdObject & {
+export type LinkPreviewTypeVideoNote = {
 	"@type": "linkPreviewTypeVideoNote";
 	/** The video note */
 	video_note: VideoNote;
@@ -7870,7 +7880,7 @@ export type LinkPreviewTypeVideoNote = TdObject & {
  * The link is a link to a voice note message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_voice_note.html
  */
-export type LinkPreviewTypeVoiceNote = TdObject & {
+export type LinkPreviewTypeVoiceNote = {
 	"@type": "linkPreviewTypeVoiceNote";
 	/** The voice note */
 	voice_note: VoiceNote;
@@ -7880,7 +7890,7 @@ export type LinkPreviewTypeVoiceNote = TdObject & {
  * The link is a link to a Web App
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview_type_web_app.html
  */
-export type LinkPreviewTypeWebApp = TdObject & {
+export type LinkPreviewTypeWebApp = {
 	"@type": "linkPreviewTypeWebApp";
 	/** Web App photo; may be null if none */
 	photo?: Photo;
@@ -7890,7 +7900,7 @@ export type LinkPreviewTypeWebApp = TdObject & {
  * Describes a link preview
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1link_preview.html
  */
-export type LinkPreview = TdObject & {
+export type LinkPreview = {
 	"@type": "linkPreview";
 	/** Original URL of the link */
 	url: string;
@@ -7924,7 +7934,7 @@ export type LinkPreview = TdObject & {
  * Contains information about a country
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1country_info.html
  */
-export type CountryInfo = TdObject & {
+export type CountryInfo = {
 	"@type": "countryInfo";
 	/** A two-letter ISO 3166-1 alpha-2 country code */
 	country_code: string;
@@ -7942,7 +7952,7 @@ export type CountryInfo = TdObject & {
  * Contains information about countries
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1countries.html
  */
-export type Countries = TdObject & {
+export type Countries = {
 	"@type": "countries";
 	/** The list of countries */
 	countries: CountryInfo[];
@@ -7952,7 +7962,7 @@ export type Countries = TdObject & {
  * Contains information about a phone number
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1phone_number_info.html
  */
-export type PhoneNumberInfo = TdObject & {
+export type PhoneNumberInfo = {
 	"@type": "phoneNumberInfo";
 	/** Information about the country to which the phone number belongs; may be null */
 	country?: CountryInfo;
@@ -7968,7 +7978,7 @@ export type PhoneNumberInfo = TdObject & {
  * A username
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1collectible_item_type_username.html
  */
-export type CollectibleItemTypeUsername = TdObject & {
+export type CollectibleItemTypeUsername = {
 	"@type": "collectibleItemTypeUsername";
 	/** The username */
 	username: string;
@@ -7978,7 +7988,7 @@ export type CollectibleItemTypeUsername = TdObject & {
  * A phone number
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1collectible_item_type_phone_number.html
  */
-export type CollectibleItemTypePhoneNumber = TdObject & {
+export type CollectibleItemTypePhoneNumber = {
 	"@type": "collectibleItemTypePhoneNumber";
 	/** The phone number */
 	phone_number: string;
@@ -7988,7 +7998,7 @@ export type CollectibleItemTypePhoneNumber = TdObject & {
  * Contains information about a collectible item and its last purchase
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1collectible_item_info.html
  */
-export type CollectibleItemInfo = TdObject & {
+export type CollectibleItemInfo = {
 	"@type": "collectibleItemInfo";
 	/** Point in time (Unix timestamp) when the item was purchased */
 	purchase_date: number;
@@ -8008,7 +8018,7 @@ export type CollectibleItemInfo = TdObject & {
  * Describes an action associated with a bank card number
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bank_card_action_open_url.html
  */
-export type BankCardActionOpenUrl = TdObject & {
+export type BankCardActionOpenUrl = {
 	"@type": "bankCardActionOpenUrl";
 	/** Action text */
 	text: string;
@@ -8020,7 +8030,7 @@ export type BankCardActionOpenUrl = TdObject & {
  * Information about a bank card
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bank_card_info.html
  */
-export type BankCardInfo = TdObject & {
+export type BankCardInfo = {
 	"@type": "bankCardInfo";
 	/** Title of the bank card description */
 	title: string;
@@ -8032,7 +8042,7 @@ export type BankCardInfo = TdObject & {
  * Describes an address
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1address.html
  */
-export type Address = TdObject & {
+export type Address = {
 	"@type": "address";
 	/** A two-letter ISO 3166-1 alpha-2 country code */
 	country_code: string;
@@ -8052,7 +8062,7 @@ export type Address = TdObject & {
  * Describes an address of a location
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1location_address.html
  */
-export type LocationAddress = TdObject & {
+export type LocationAddress = {
 	"@type": "locationAddress";
 	/** A two-letter ISO 3166-1 alpha-2 country code */
 	country_code: string;
@@ -8068,7 +8078,7 @@ export type LocationAddress = TdObject & {
  * Portion of the price of a product (e.g., "delivery cost", "tax amount")
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1labeled_price_part.html
  */
-export type LabeledPricePart = TdObject & {
+export type LabeledPricePart = {
 	"@type": "labeledPricePart";
 	/** Label for this portion of the product price */
 	label: string;
@@ -8080,7 +8090,7 @@ export type LabeledPricePart = TdObject & {
  * Product invoice
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invoice.html
  */
-export type Invoice = TdObject & {
+export type Invoice = {
 	"@type": "invoice";
 	/** ISO 4217 currency code */
 	currency: string;
@@ -8118,7 +8128,7 @@ export type Invoice = TdObject & {
  * Order information
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1order_info.html
  */
-export type OrderInfo = TdObject & {
+export type OrderInfo = {
 	"@type": "orderInfo";
 	/** Name of the user */
 	name: string;
@@ -8134,7 +8144,7 @@ export type OrderInfo = TdObject & {
  * One shipping option
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1shipping_option.html
  */
-export type ShippingOption = TdObject & {
+export type ShippingOption = {
 	"@type": "shippingOption";
 	/** Shipping option identifier */
 	id: string;
@@ -8148,7 +8158,7 @@ export type ShippingOption = TdObject & {
  * Contains information about saved payment credentials
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1saved_credentials.html
  */
-export type SavedCredentials = TdObject & {
+export type SavedCredentials = {
 	"@type": "savedCredentials";
 	/** Unique identifier of the saved credentials */
 	id: string;
@@ -8160,7 +8170,7 @@ export type SavedCredentials = TdObject & {
  * Applies if a user chooses some previously saved payment credentials. To use their previously saved credentials, the user must have a valid temporary password
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_credentials_saved.html
  */
-export type InputCredentialsSaved = TdObject & {
+export type InputCredentialsSaved = {
 	"@type": "inputCredentialsSaved";
 	/** Identifier of the saved credentials */
 	saved_credentials_id: string;
@@ -8170,7 +8180,7 @@ export type InputCredentialsSaved = TdObject & {
  * Applies if a user enters new credentials on a payment provider website
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_credentials_new.html
  */
-export type InputCredentialsNew = TdObject & {
+export type InputCredentialsNew = {
 	"@type": "inputCredentialsNew";
 	/** JSON-encoded data with the credential identifier from the payment provider */
 	data: string;
@@ -8182,7 +8192,7 @@ export type InputCredentialsNew = TdObject & {
  * Applies if a user enters new credentials using Apple Pay
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_credentials_apple_pay.html
  */
-export type InputCredentialsApplePay = TdObject & {
+export type InputCredentialsApplePay = {
 	"@type": "inputCredentialsApplePay";
 	/** JSON-encoded data with the credential identifier */
 	data: string;
@@ -8192,7 +8202,7 @@ export type InputCredentialsApplePay = TdObject & {
  * Applies if a user enters new credentials using Google Pay
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_credentials_google_pay.html
  */
-export type InputCredentialsGooglePay = TdObject & {
+export type InputCredentialsGooglePay = {
 	"@type": "inputCredentialsGooglePay";
 	/** JSON-encoded data with the credential identifier */
 	data: string;
@@ -8202,7 +8212,7 @@ export type InputCredentialsGooglePay = TdObject & {
  * Smart Glocal payment provider
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_provider_smart_glocal.html
  */
-export type PaymentProviderSmartGlocal = TdObject & {
+export type PaymentProviderSmartGlocal = {
 	"@type": "paymentProviderSmartGlocal";
 	/** Public payment token */
 	public_token: string;
@@ -8214,7 +8224,7 @@ export type PaymentProviderSmartGlocal = TdObject & {
  * Stripe payment provider
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_provider_stripe.html
  */
-export type PaymentProviderStripe = TdObject & {
+export type PaymentProviderStripe = {
 	"@type": "paymentProviderStripe";
 	/** Stripe API publishable key */
 	publishable_key: string;
@@ -8230,7 +8240,7 @@ export type PaymentProviderStripe = TdObject & {
  * Some other payment provider, for which a web payment form must be shown
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_provider_other.html
  */
-export type PaymentProviderOther = TdObject & {
+export type PaymentProviderOther = {
 	"@type": "paymentProviderOther";
 	/** Payment form URL */
 	url: string;
@@ -8240,7 +8250,7 @@ export type PaymentProviderOther = TdObject & {
  * Describes an additional payment option
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_option.html
  */
-export type PaymentOption = TdObject & {
+export type PaymentOption = {
 	"@type": "paymentOption";
 	/** Title for the payment option */
 	title: string;
@@ -8252,7 +8262,7 @@ export type PaymentOption = TdObject & {
  * The payment form is for a regular payment
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_form_type_regular.html
  */
-export type PaymentFormTypeRegular = TdObject & {
+export type PaymentFormTypeRegular = {
 	"@type": "paymentFormTypeRegular";
 	/** Full information about the invoice */
 	invoice: Invoice;
@@ -8276,7 +8286,7 @@ export type PaymentFormTypeRegular = TdObject & {
  * The payment form is for a payment in Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_form_type_stars.html
  */
-export type PaymentFormTypeStars = TdObject & {
+export type PaymentFormTypeStars = {
 	"@type": "paymentFormTypeStars";
 	/** Number of Telegram Stars that will be paid */
 	star_count: number;
@@ -8286,7 +8296,7 @@ export type PaymentFormTypeStars = TdObject & {
  * The payment form is for a payment in Telegram Stars for subscription
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_form_type_star_subscription.html
  */
-export type PaymentFormTypeStarSubscription = TdObject & {
+export type PaymentFormTypeStarSubscription = {
 	"@type": "paymentFormTypeStarSubscription";
 	/** Information about subscription plan */
 	pricing: StarSubscriptionPricing;
@@ -8296,7 +8306,7 @@ export type PaymentFormTypeStarSubscription = TdObject & {
  * Contains information about an invoice payment form
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_form.html
  */
-export type PaymentForm = TdObject & {
+export type PaymentForm = {
 	"@type": "paymentForm";
 	/** The payment form identifier */
 	id: string;
@@ -8312,7 +8322,7 @@ export type PaymentForm = TdObject & {
  * Contains a temporary identifier of validated order information, which is stored for one hour, and the available shipping options
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1validated_order_info.html
  */
-export type ValidatedOrderInfo = TdObject & {
+export type ValidatedOrderInfo = {
 	"@type": "validatedOrderInfo";
 	/** Temporary identifier of the order information */
 	order_info_id: string;
@@ -8324,7 +8334,7 @@ export type ValidatedOrderInfo = TdObject & {
  * Contains the result of a payment request
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_result.html
  */
-export type PaymentResult = TdObject & {
+export type PaymentResult = {
 	"@type": "paymentResult";
 	/** True, if the payment request was successful; otherwise, the verification_url will be non-empty */
 	success: boolean;
@@ -8336,7 +8346,7 @@ export type PaymentResult = TdObject & {
  * The payment was done using a third-party payment provider
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_receipt_type_regular.html
  */
-export type PaymentReceiptTypeRegular = TdObject & {
+export type PaymentReceiptTypeRegular = {
 	"@type": "paymentReceiptTypeRegular";
 	/** User identifier of the payment provider bot */
 	payment_provider_user_id: number;
@@ -8356,7 +8366,7 @@ export type PaymentReceiptTypeRegular = TdObject & {
  * The payment was done using Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_receipt_type_stars.html
  */
-export type PaymentReceiptTypeStars = TdObject & {
+export type PaymentReceiptTypeStars = {
 	"@type": "paymentReceiptTypeStars";
 	/** Number of Telegram Stars that were paid */
 	star_count: number;
@@ -8368,7 +8378,7 @@ export type PaymentReceiptTypeStars = TdObject & {
  * Contains information about a successful payment
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1payment_receipt.html
  */
-export type PaymentReceipt = TdObject & {
+export type PaymentReceipt = {
 	"@type": "paymentReceipt";
 	/** Information about the product */
 	product_info: ProductInfo;
@@ -8384,7 +8394,7 @@ export type PaymentReceipt = TdObject & {
  * An invoice from a message of the type messageInvoice or paid media purchase from messagePaidMedia
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_invoice_message.html
  */
-export type InputInvoiceMessage = TdObject & {
+export type InputInvoiceMessage = {
 	"@type": "inputInvoiceMessage";
 	/** Chat identifier of the message */
 	chat_id: number;
@@ -8396,7 +8406,7 @@ export type InputInvoiceMessage = TdObject & {
  * An invoice from a link of the type internalLinkTypeInvoice
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_invoice_name.html
  */
-export type InputInvoiceName = TdObject & {
+export type InputInvoiceName = {
 	"@type": "inputInvoiceName";
 	/** Name of the invoice */
 	name: string;
@@ -8406,7 +8416,7 @@ export type InputInvoiceName = TdObject & {
  * An invoice for a payment toward Telegram; must not be used in the in-store apps
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_invoice_telegram.html
  */
-export type InputInvoiceTelegram = TdObject & {
+export type InputInvoiceTelegram = {
 	"@type": "inputInvoiceTelegram";
 	/** Transaction purpose */
 	purpose: TelegramPaymentPurpose;
@@ -8416,7 +8426,7 @@ export type InputInvoiceTelegram = TdObject & {
  * The media is hidden until the invoice is paid
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_media_preview.html
  */
-export type PaidMediaPreview = TdObject & {
+export type PaidMediaPreview = {
 	"@type": "paidMediaPreview";
 	/** Media width; 0 if unknown */
 	width: number;
@@ -8432,7 +8442,7 @@ export type PaidMediaPreview = TdObject & {
  * The media is a photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_media_photo.html
  */
-export type PaidMediaPhoto = TdObject & {
+export type PaidMediaPhoto = {
 	"@type": "paidMediaPhoto";
 	/** The photo */
 	photo: Photo;
@@ -8442,7 +8452,7 @@ export type PaidMediaPhoto = TdObject & {
  * The media is a video
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_media_video.html
  */
-export type PaidMediaVideo = TdObject & {
+export type PaidMediaVideo = {
 	"@type": "paidMediaVideo";
 	/** The video */
 	video: Video;
@@ -8456,7 +8466,7 @@ export type PaidMediaVideo = TdObject & {
  * The media is unsupported
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1paid_media_unsupported.html
  */
-export type PaidMediaUnsupported = TdObject & {
+export type PaidMediaUnsupported = {
 	"@type": "paidMediaUnsupported";
 };
 
@@ -8464,7 +8474,7 @@ export type PaidMediaUnsupported = TdObject & {
  * Describes parameters of a giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1giveaway_parameters.html
  */
-export type GiveawayParameters = TdObject & {
+export type GiveawayParameters = {
 	"@type": "giveawayParameters";
 	/** Identifier of the supergroup or channel chat, which will be automatically boosted by the winners of the giveaway for duration of the Telegram Premium subscription, or for the specified time. If the chat is a channel, then can_post_messages right is required in the channel, otherwise, the user must be an administrator in the supergroup */
 	boosted_chat_id: number;
@@ -8486,7 +8496,7 @@ export type GiveawayParameters = TdObject & {
  * File with the date it was uploaded
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1dated_file.html
  */
-export type DatedFile = TdObject & {
+export type DatedFile = {
 	"@type": "datedFile";
 	/** The file */
 	file: File;
@@ -8498,7 +8508,7 @@ export type DatedFile = TdObject & {
  * A Telegram Passport element containing the user's personal details
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_personal_details.html
  */
-export type PassportElementTypePersonalDetails = TdObject & {
+export type PassportElementTypePersonalDetails = {
 	"@type": "passportElementTypePersonalDetails";
 };
 
@@ -8506,7 +8516,7 @@ export type PassportElementTypePersonalDetails = TdObject & {
  * A Telegram Passport element containing the user's passport
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_passport.html
  */
-export type PassportElementTypePassport = TdObject & {
+export type PassportElementTypePassport = {
 	"@type": "passportElementTypePassport";
 };
 
@@ -8514,7 +8524,7 @@ export type PassportElementTypePassport = TdObject & {
  * A Telegram Passport element containing the user's driver license
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_driver_license.html
  */
-export type PassportElementTypeDriverLicense = TdObject & {
+export type PassportElementTypeDriverLicense = {
 	"@type": "passportElementTypeDriverLicense";
 };
 
@@ -8522,7 +8532,7 @@ export type PassportElementTypeDriverLicense = TdObject & {
  * A Telegram Passport element containing the user's identity card
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_identity_card.html
  */
-export type PassportElementTypeIdentityCard = TdObject & {
+export type PassportElementTypeIdentityCard = {
 	"@type": "passportElementTypeIdentityCard";
 };
 
@@ -8530,7 +8540,7 @@ export type PassportElementTypeIdentityCard = TdObject & {
  * A Telegram Passport element containing the user's internal passport
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_internal_passport.html
  */
-export type PassportElementTypeInternalPassport = TdObject & {
+export type PassportElementTypeInternalPassport = {
 	"@type": "passportElementTypeInternalPassport";
 };
 
@@ -8538,7 +8548,7 @@ export type PassportElementTypeInternalPassport = TdObject & {
  * A Telegram Passport element containing the user's address
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_address.html
  */
-export type PassportElementTypeAddress = TdObject & {
+export type PassportElementTypeAddress = {
 	"@type": "passportElementTypeAddress";
 };
 
@@ -8546,7 +8556,7 @@ export type PassportElementTypeAddress = TdObject & {
  * A Telegram Passport element containing the user's utility bill
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_utility_bill.html
  */
-export type PassportElementTypeUtilityBill = TdObject & {
+export type PassportElementTypeUtilityBill = {
 	"@type": "passportElementTypeUtilityBill";
 };
 
@@ -8554,7 +8564,7 @@ export type PassportElementTypeUtilityBill = TdObject & {
  * A Telegram Passport element containing the user's bank statement
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_bank_statement.html
  */
-export type PassportElementTypeBankStatement = TdObject & {
+export type PassportElementTypeBankStatement = {
 	"@type": "passportElementTypeBankStatement";
 };
 
@@ -8562,7 +8572,7 @@ export type PassportElementTypeBankStatement = TdObject & {
  * A Telegram Passport element containing the user's rental agreement
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_rental_agreement.html
  */
-export type PassportElementTypeRentalAgreement = TdObject & {
+export type PassportElementTypeRentalAgreement = {
 	"@type": "passportElementTypeRentalAgreement";
 };
 
@@ -8570,7 +8580,7 @@ export type PassportElementTypeRentalAgreement = TdObject & {
  * A Telegram Passport element containing the registration page of the user's passport
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_passport_registration.html
  */
-export type PassportElementTypePassportRegistration = TdObject & {
+export type PassportElementTypePassportRegistration = {
 	"@type": "passportElementTypePassportRegistration";
 };
 
@@ -8578,7 +8588,7 @@ export type PassportElementTypePassportRegistration = TdObject & {
  * A Telegram Passport element containing the user's temporary registration
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_temporary_registration.html
  */
-export type PassportElementTypeTemporaryRegistration = TdObject & {
+export type PassportElementTypeTemporaryRegistration = {
 	"@type": "passportElementTypeTemporaryRegistration";
 };
 
@@ -8586,7 +8596,7 @@ export type PassportElementTypeTemporaryRegistration = TdObject & {
  * A Telegram Passport element containing the user's phone number
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_phone_number.html
  */
-export type PassportElementTypePhoneNumber = TdObject & {
+export type PassportElementTypePhoneNumber = {
 	"@type": "passportElementTypePhoneNumber";
 };
 
@@ -8594,7 +8604,7 @@ export type PassportElementTypePhoneNumber = TdObject & {
  * A Telegram Passport element containing the user's email address
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_type_email_address.html
  */
-export type PassportElementTypeEmailAddress = TdObject & {
+export type PassportElementTypeEmailAddress = {
 	"@type": "passportElementTypeEmailAddress";
 };
 
@@ -8602,7 +8612,7 @@ export type PassportElementTypeEmailAddress = TdObject & {
  * Represents a date according to the Gregorian calendar
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1date.html
  */
-export type Date = TdObject & {
+export type Date = {
 	"@type": "date";
 	/** Day of the month; 1-31 */
 	day: number;
@@ -8616,7 +8626,7 @@ export type Date = TdObject & {
  * Contains the user's personal details
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1personal_details.html
  */
-export type PersonalDetails = TdObject & {
+export type PersonalDetails = {
 	"@type": "personalDetails";
 	/** First name of the user written in English; 1-255 characters */
 	first_name: string;
@@ -8644,7 +8654,7 @@ export type PersonalDetails = TdObject & {
  * An identity document
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1identity_document.html
  */
-export type IdentityDocument = TdObject & {
+export type IdentityDocument = {
 	"@type": "identityDocument";
 	/** Document number; 1-24 characters */
 	number: string;
@@ -8664,7 +8674,7 @@ export type IdentityDocument = TdObject & {
  * An identity document to be saved to Telegram Passport
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_identity_document.html
  */
-export type InputIdentityDocument = TdObject & {
+export type InputIdentityDocument = {
 	"@type": "inputIdentityDocument";
 	/** Document number; 1-24 characters */
 	number: string;
@@ -8684,7 +8694,7 @@ export type InputIdentityDocument = TdObject & {
  * A personal document, containing some information about a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1personal_document.html
  */
-export type PersonalDocument = TdObject & {
+export type PersonalDocument = {
 	"@type": "personalDocument";
 	/** List of files containing the pages of the document */
 	files: DatedFile[];
@@ -8696,7 +8706,7 @@ export type PersonalDocument = TdObject & {
  * A personal document to be saved to Telegram Passport
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_personal_document.html
  */
-export type InputPersonalDocument = TdObject & {
+export type InputPersonalDocument = {
 	"@type": "inputPersonalDocument";
 	/** List of files containing the pages of the document */
 	files: InputFile[];
@@ -8708,7 +8718,7 @@ export type InputPersonalDocument = TdObject & {
  * A Telegram Passport element containing the user's personal details
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_personal_details.html
  */
-export type PassportElementPersonalDetails = TdObject & {
+export type PassportElementPersonalDetails = {
 	"@type": "passportElementPersonalDetails";
 	/** Personal details of the user */
 	personal_details: PersonalDetails;
@@ -8718,7 +8728,7 @@ export type PassportElementPersonalDetails = TdObject & {
  * A Telegram Passport element containing the user's passport
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_passport.html
  */
-export type PassportElementPassport = TdObject & {
+export type PassportElementPassport = {
 	"@type": "passportElementPassport";
 	/** Passport */
 	passport: IdentityDocument;
@@ -8728,7 +8738,7 @@ export type PassportElementPassport = TdObject & {
  * A Telegram Passport element containing the user's driver license
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_driver_license.html
  */
-export type PassportElementDriverLicense = TdObject & {
+export type PassportElementDriverLicense = {
 	"@type": "passportElementDriverLicense";
 	/** Driver license */
 	driver_license: IdentityDocument;
@@ -8738,7 +8748,7 @@ export type PassportElementDriverLicense = TdObject & {
  * A Telegram Passport element containing the user's identity card
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_identity_card.html
  */
-export type PassportElementIdentityCard = TdObject & {
+export type PassportElementIdentityCard = {
 	"@type": "passportElementIdentityCard";
 	/** Identity card */
 	identity_card: IdentityDocument;
@@ -8748,7 +8758,7 @@ export type PassportElementIdentityCard = TdObject & {
  * A Telegram Passport element containing the user's internal passport
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_internal_passport.html
  */
-export type PassportElementInternalPassport = TdObject & {
+export type PassportElementInternalPassport = {
 	"@type": "passportElementInternalPassport";
 	/** Internal passport */
 	internal_passport: IdentityDocument;
@@ -8758,7 +8768,7 @@ export type PassportElementInternalPassport = TdObject & {
  * A Telegram Passport element containing the user's address
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_address.html
  */
-export type PassportElementAddress = TdObject & {
+export type PassportElementAddress = {
 	"@type": "passportElementAddress";
 	/** Address */
 	address: Address;
@@ -8768,7 +8778,7 @@ export type PassportElementAddress = TdObject & {
  * A Telegram Passport element containing the user's utility bill
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_utility_bill.html
  */
-export type PassportElementUtilityBill = TdObject & {
+export type PassportElementUtilityBill = {
 	"@type": "passportElementUtilityBill";
 	/** Utility bill */
 	utility_bill: PersonalDocument;
@@ -8778,7 +8788,7 @@ export type PassportElementUtilityBill = TdObject & {
  * A Telegram Passport element containing the user's bank statement
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_bank_statement.html
  */
-export type PassportElementBankStatement = TdObject & {
+export type PassportElementBankStatement = {
 	"@type": "passportElementBankStatement";
 	/** Bank statement */
 	bank_statement: PersonalDocument;
@@ -8788,7 +8798,7 @@ export type PassportElementBankStatement = TdObject & {
  * A Telegram Passport element containing the user's rental agreement
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_rental_agreement.html
  */
-export type PassportElementRentalAgreement = TdObject & {
+export type PassportElementRentalAgreement = {
 	"@type": "passportElementRentalAgreement";
 	/** Rental agreement */
 	rental_agreement: PersonalDocument;
@@ -8798,7 +8808,7 @@ export type PassportElementRentalAgreement = TdObject & {
  * A Telegram Passport element containing the user's passport registration pages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_passport_registration.html
  */
-export type PassportElementPassportRegistration = TdObject & {
+export type PassportElementPassportRegistration = {
 	"@type": "passportElementPassportRegistration";
 	/** Passport registration pages */
 	passport_registration: PersonalDocument;
@@ -8808,7 +8818,7 @@ export type PassportElementPassportRegistration = TdObject & {
  * A Telegram Passport element containing the user's temporary registration
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_temporary_registration.html
  */
-export type PassportElementTemporaryRegistration = TdObject & {
+export type PassportElementTemporaryRegistration = {
 	"@type": "passportElementTemporaryRegistration";
 	/** Temporary registration */
 	temporary_registration: PersonalDocument;
@@ -8818,7 +8828,7 @@ export type PassportElementTemporaryRegistration = TdObject & {
  * A Telegram Passport element containing the user's phone number
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_phone_number.html
  */
-export type PassportElementPhoneNumber = TdObject & {
+export type PassportElementPhoneNumber = {
 	"@type": "passportElementPhoneNumber";
 	/** Phone number */
 	phone_number: string;
@@ -8828,7 +8838,7 @@ export type PassportElementPhoneNumber = TdObject & {
  * A Telegram Passport element containing the user's email address
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_email_address.html
  */
-export type PassportElementEmailAddress = TdObject & {
+export type PassportElementEmailAddress = {
 	"@type": "passportElementEmailAddress";
 	/** Email address */
 	email_address: string;
@@ -8838,7 +8848,7 @@ export type PassportElementEmailAddress = TdObject & {
  * A Telegram Passport element to be saved containing the user's personal details
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_personal_details.html
  */
-export type InputPassportElementPersonalDetails = TdObject & {
+export type InputPassportElementPersonalDetails = {
 	"@type": "inputPassportElementPersonalDetails";
 	/** Personal details of the user */
 	personal_details: PersonalDetails;
@@ -8848,7 +8858,7 @@ export type InputPassportElementPersonalDetails = TdObject & {
  * A Telegram Passport element to be saved containing the user's passport
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_passport.html
  */
-export type InputPassportElementPassport = TdObject & {
+export type InputPassportElementPassport = {
 	"@type": "inputPassportElementPassport";
 	/** The passport to be saved */
 	passport: InputIdentityDocument;
@@ -8858,7 +8868,7 @@ export type InputPassportElementPassport = TdObject & {
  * A Telegram Passport element to be saved containing the user's driver license
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_driver_license.html
  */
-export type InputPassportElementDriverLicense = TdObject & {
+export type InputPassportElementDriverLicense = {
 	"@type": "inputPassportElementDriverLicense";
 	/** The driver license to be saved */
 	driver_license: InputIdentityDocument;
@@ -8868,7 +8878,7 @@ export type InputPassportElementDriverLicense = TdObject & {
  * A Telegram Passport element to be saved containing the user's identity card
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_identity_card.html
  */
-export type InputPassportElementIdentityCard = TdObject & {
+export type InputPassportElementIdentityCard = {
 	"@type": "inputPassportElementIdentityCard";
 	/** The identity card to be saved */
 	identity_card: InputIdentityDocument;
@@ -8878,7 +8888,7 @@ export type InputPassportElementIdentityCard = TdObject & {
  * A Telegram Passport element to be saved containing the user's internal passport
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_internal_passport.html
  */
-export type InputPassportElementInternalPassport = TdObject & {
+export type InputPassportElementInternalPassport = {
 	"@type": "inputPassportElementInternalPassport";
 	/** The internal passport to be saved */
 	internal_passport: InputIdentityDocument;
@@ -8888,7 +8898,7 @@ export type InputPassportElementInternalPassport = TdObject & {
  * A Telegram Passport element to be saved containing the user's address
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_address.html
  */
-export type InputPassportElementAddress = TdObject & {
+export type InputPassportElementAddress = {
 	"@type": "inputPassportElementAddress";
 	/** The address to be saved */
 	address: Address;
@@ -8898,7 +8908,7 @@ export type InputPassportElementAddress = TdObject & {
  * A Telegram Passport element to be saved containing the user's utility bill
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_utility_bill.html
  */
-export type InputPassportElementUtilityBill = TdObject & {
+export type InputPassportElementUtilityBill = {
 	"@type": "inputPassportElementUtilityBill";
 	/** The utility bill to be saved */
 	utility_bill: InputPersonalDocument;
@@ -8908,7 +8918,7 @@ export type InputPassportElementUtilityBill = TdObject & {
  * A Telegram Passport element to be saved containing the user's bank statement
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_bank_statement.html
  */
-export type InputPassportElementBankStatement = TdObject & {
+export type InputPassportElementBankStatement = {
 	"@type": "inputPassportElementBankStatement";
 	/** The bank statement to be saved */
 	bank_statement: InputPersonalDocument;
@@ -8918,7 +8928,7 @@ export type InputPassportElementBankStatement = TdObject & {
  * A Telegram Passport element to be saved containing the user's rental agreement
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_rental_agreement.html
  */
-export type InputPassportElementRentalAgreement = TdObject & {
+export type InputPassportElementRentalAgreement = {
 	"@type": "inputPassportElementRentalAgreement";
 	/** The rental agreement to be saved */
 	rental_agreement: InputPersonalDocument;
@@ -8928,7 +8938,7 @@ export type InputPassportElementRentalAgreement = TdObject & {
  * A Telegram Passport element to be saved containing the user's passport registration
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_passport_registration.html
  */
-export type InputPassportElementPassportRegistration = TdObject & {
+export type InputPassportElementPassportRegistration = {
 	"@type": "inputPassportElementPassportRegistration";
 	/** The passport registration page to be saved */
 	passport_registration: InputPersonalDocument;
@@ -8938,7 +8948,7 @@ export type InputPassportElementPassportRegistration = TdObject & {
  * A Telegram Passport element to be saved containing the user's temporary registration
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_temporary_registration.html
  */
-export type InputPassportElementTemporaryRegistration = TdObject & {
+export type InputPassportElementTemporaryRegistration = {
 	"@type": "inputPassportElementTemporaryRegistration";
 	/** The temporary registration document to be saved */
 	temporary_registration: InputPersonalDocument;
@@ -8948,7 +8958,7 @@ export type InputPassportElementTemporaryRegistration = TdObject & {
  * A Telegram Passport element to be saved containing the user's phone number
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_phone_number.html
  */
-export type InputPassportElementPhoneNumber = TdObject & {
+export type InputPassportElementPhoneNumber = {
 	"@type": "inputPassportElementPhoneNumber";
 	/** The phone number to be saved */
 	phone_number: string;
@@ -8958,7 +8968,7 @@ export type InputPassportElementPhoneNumber = TdObject & {
  * A Telegram Passport element to be saved containing the user's email address
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_email_address.html
  */
-export type InputPassportElementEmailAddress = TdObject & {
+export type InputPassportElementEmailAddress = {
 	"@type": "inputPassportElementEmailAddress";
 	/** The email address to be saved */
 	email_address: string;
@@ -8968,7 +8978,7 @@ export type InputPassportElementEmailAddress = TdObject & {
  * Contains information about saved Telegram Passport elements
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_elements.html
  */
-export type PassportElements = TdObject & {
+export type PassportElements = {
 	"@type": "passportElements";
 	/** Telegram Passport elements */
 	elements: PassportElement[];
@@ -8978,7 +8988,7 @@ export type PassportElements = TdObject & {
  * The element contains an error in an unspecified place. The error will be considered resolved when new data is added
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_error_source_unspecified.html
  */
-export type PassportElementErrorSourceUnspecified = TdObject & {
+export type PassportElementErrorSourceUnspecified = {
 	"@type": "passportElementErrorSourceUnspecified";
 };
 
@@ -8986,7 +8996,7 @@ export type PassportElementErrorSourceUnspecified = TdObject & {
  * One of the data fields contains an error. The error will be considered resolved when the value of the field changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_error_source_data_field.html
  */
-export type PassportElementErrorSourceDataField = TdObject & {
+export type PassportElementErrorSourceDataField = {
 	"@type": "passportElementErrorSourceDataField";
 	/** Field name */
 	field_name: string;
@@ -8996,7 +9006,7 @@ export type PassportElementErrorSourceDataField = TdObject & {
  * The front side of the document contains an error. The error will be considered resolved when the file with the front side changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_error_source_front_side.html
  */
-export type PassportElementErrorSourceFrontSide = TdObject & {
+export type PassportElementErrorSourceFrontSide = {
 	"@type": "passportElementErrorSourceFrontSide";
 };
 
@@ -9004,7 +9014,7 @@ export type PassportElementErrorSourceFrontSide = TdObject & {
  * The reverse side of the document contains an error. The error will be considered resolved when the file with the reverse side changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_error_source_reverse_side.html
  */
-export type PassportElementErrorSourceReverseSide = TdObject & {
+export type PassportElementErrorSourceReverseSide = {
 	"@type": "passportElementErrorSourceReverseSide";
 };
 
@@ -9012,7 +9022,7 @@ export type PassportElementErrorSourceReverseSide = TdObject & {
  * The selfie with the document contains an error. The error will be considered resolved when the file with the selfie changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_error_source_selfie.html
  */
-export type PassportElementErrorSourceSelfie = TdObject & {
+export type PassportElementErrorSourceSelfie = {
 	"@type": "passportElementErrorSourceSelfie";
 };
 
@@ -9020,7 +9030,7 @@ export type PassportElementErrorSourceSelfie = TdObject & {
  * One of files with the translation of the document contains an error. The error will be considered resolved when the file changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_error_source_translation_file.html
  */
-export type PassportElementErrorSourceTranslationFile = TdObject & {
+export type PassportElementErrorSourceTranslationFile = {
 	"@type": "passportElementErrorSourceTranslationFile";
 	/** Index of a file with the error */
 	file_index: number;
@@ -9030,7 +9040,7 @@ export type PassportElementErrorSourceTranslationFile = TdObject & {
  * The translation of the document contains an error. The error will be considered resolved when the list of translation files changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_error_source_translation_files.html
  */
-export type PassportElementErrorSourceTranslationFiles = TdObject & {
+export type PassportElementErrorSourceTranslationFiles = {
 	"@type": "passportElementErrorSourceTranslationFiles";
 };
 
@@ -9038,7 +9048,7 @@ export type PassportElementErrorSourceTranslationFiles = TdObject & {
  * The file contains an error. The error will be considered resolved when the file changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_error_source_file.html
  */
-export type PassportElementErrorSourceFile = TdObject & {
+export type PassportElementErrorSourceFile = {
 	"@type": "passportElementErrorSourceFile";
 	/** Index of a file with the error */
 	file_index: number;
@@ -9048,7 +9058,7 @@ export type PassportElementErrorSourceFile = TdObject & {
  * The list of attached files contains an error. The error will be considered resolved when the list of files changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_error_source_files.html
  */
-export type PassportElementErrorSourceFiles = TdObject & {
+export type PassportElementErrorSourceFiles = {
 	"@type": "passportElementErrorSourceFiles";
 };
 
@@ -9056,7 +9066,7 @@ export type PassportElementErrorSourceFiles = TdObject & {
  * Contains the description of an error in a Telegram Passport element
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_element_error.html
  */
-export type PassportElementError = TdObject & {
+export type PassportElementError = {
 	"@type": "passportElementError";
 	/** Type of the Telegram Passport element which has the error */
 	type: PassportElementType;
@@ -9070,7 +9080,7 @@ export type PassportElementError = TdObject & {
  * Contains information about a Telegram Passport element that was requested by a service
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_suitable_element.html
  */
-export type PassportSuitableElement = TdObject & {
+export type PassportSuitableElement = {
 	"@type": "passportSuitableElement";
 	/** Type of the element */
 	type: PassportElementType;
@@ -9086,7 +9096,7 @@ export type PassportSuitableElement = TdObject & {
  * Contains a description of the required Telegram Passport element that was requested by a service
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_required_element.html
  */
-export type PassportRequiredElement = TdObject & {
+export type PassportRequiredElement = {
 	"@type": "passportRequiredElement";
 	/** List of Telegram Passport elements any of which is enough to provide */
 	suitable_elements: PassportSuitableElement[];
@@ -9096,7 +9106,7 @@ export type PassportRequiredElement = TdObject & {
  * Contains information about a Telegram Passport authorization form that was requested
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_authorization_form.html
  */
-export type PassportAuthorizationForm = TdObject & {
+export type PassportAuthorizationForm = {
 	"@type": "passportAuthorizationForm";
 	/** Unique identifier of the authorization form */
 	id: number;
@@ -9110,7 +9120,7 @@ export type PassportAuthorizationForm = TdObject & {
  * Contains information about a Telegram Passport elements and corresponding errors
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1passport_elements_with_errors.html
  */
-export type PassportElementsWithErrors = TdObject & {
+export type PassportElementsWithErrors = {
 	"@type": "passportElementsWithErrors";
 	/** Telegram Passport elements */
 	elements: PassportElement[];
@@ -9122,7 +9132,7 @@ export type PassportElementsWithErrors = TdObject & {
  * Contains encrypted Telegram Passport data credentials
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1encrypted_credentials.html
  */
-export type EncryptedCredentials = TdObject & {
+export type EncryptedCredentials = {
 	"@type": "encryptedCredentials";
 	/** The encrypted credentials */
 	data: string;
@@ -9136,7 +9146,7 @@ export type EncryptedCredentials = TdObject & {
  * Contains information about an encrypted Telegram Passport element; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1encrypted_passport_element.html
  */
-export type EncryptedPassportElement = TdObject & {
+export type EncryptedPassportElement = {
 	"@type": "encryptedPassportElement";
 	/** Type of Telegram Passport element */
 	type: PassportElementType;
@@ -9162,7 +9172,7 @@ export type EncryptedPassportElement = TdObject & {
  * The element contains an error in an unspecified place. The error will be considered resolved when new data is added
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_error_source_unspecified.html
  */
-export type InputPassportElementErrorSourceUnspecified = TdObject & {
+export type InputPassportElementErrorSourceUnspecified = {
 	"@type": "inputPassportElementErrorSourceUnspecified";
 	/** Current hash of the entire element */
 	element_hash: string;
@@ -9172,7 +9182,7 @@ export type InputPassportElementErrorSourceUnspecified = TdObject & {
  * A data field contains an error. The error is considered resolved when the field's value changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_error_source_data_field.html
  */
-export type InputPassportElementErrorSourceDataField = TdObject & {
+export type InputPassportElementErrorSourceDataField = {
 	"@type": "inputPassportElementErrorSourceDataField";
 	/** Field name */
 	field_name: string;
@@ -9184,7 +9194,7 @@ export type InputPassportElementErrorSourceDataField = TdObject & {
  * The front side of the document contains an error. The error is considered resolved when the file with the front side of the document changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_error_source_front_side.html
  */
-export type InputPassportElementErrorSourceFrontSide = TdObject & {
+export type InputPassportElementErrorSourceFrontSide = {
 	"@type": "inputPassportElementErrorSourceFrontSide";
 	/** Current hash of the file containing the front side */
 	file_hash: string;
@@ -9194,7 +9204,7 @@ export type InputPassportElementErrorSourceFrontSide = TdObject & {
  * The reverse side of the document contains an error. The error is considered resolved when the file with the reverse side of the document changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_error_source_reverse_side.html
  */
-export type InputPassportElementErrorSourceReverseSide = TdObject & {
+export type InputPassportElementErrorSourceReverseSide = {
 	"@type": "inputPassportElementErrorSourceReverseSide";
 	/** Current hash of the file containing the reverse side */
 	file_hash: string;
@@ -9204,7 +9214,7 @@ export type InputPassportElementErrorSourceReverseSide = TdObject & {
  * The selfie contains an error. The error is considered resolved when the file with the selfie changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_error_source_selfie.html
  */
-export type InputPassportElementErrorSourceSelfie = TdObject & {
+export type InputPassportElementErrorSourceSelfie = {
 	"@type": "inputPassportElementErrorSourceSelfie";
 	/** Current hash of the file containing the selfie */
 	file_hash: string;
@@ -9214,7 +9224,7 @@ export type InputPassportElementErrorSourceSelfie = TdObject & {
  * One of the files containing the translation of the document contains an error. The error is considered resolved when the file with the translation changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_error_source_translation_file.html
  */
-export type InputPassportElementErrorSourceTranslationFile = TdObject & {
+export type InputPassportElementErrorSourceTranslationFile = {
 	"@type": "inputPassportElementErrorSourceTranslationFile";
 	/** Current hash of the file containing the translation */
 	file_hash: string;
@@ -9224,7 +9234,7 @@ export type InputPassportElementErrorSourceTranslationFile = TdObject & {
  * The translation of the document contains an error. The error is considered resolved when the list of files changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_error_source_translation_files.html
  */
-export type InputPassportElementErrorSourceTranslationFiles = TdObject & {
+export type InputPassportElementErrorSourceTranslationFiles = {
 	"@type": "inputPassportElementErrorSourceTranslationFiles";
 	/** Current hashes of all files with the translation */
 	file_hashes: string[];
@@ -9234,7 +9244,7 @@ export type InputPassportElementErrorSourceTranslationFiles = TdObject & {
  * The file contains an error. The error is considered resolved when the file changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_error_source_file.html
  */
-export type InputPassportElementErrorSourceFile = TdObject & {
+export type InputPassportElementErrorSourceFile = {
 	"@type": "inputPassportElementErrorSourceFile";
 	/** Current hash of the file which has the error */
 	file_hash: string;
@@ -9244,7 +9254,7 @@ export type InputPassportElementErrorSourceFile = TdObject & {
  * The list of attached files contains an error. The error is considered resolved when the file list changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_error_source_files.html
  */
-export type InputPassportElementErrorSourceFiles = TdObject & {
+export type InputPassportElementErrorSourceFiles = {
 	"@type": "inputPassportElementErrorSourceFiles";
 	/** Current hashes of all attached files */
 	file_hashes: string[];
@@ -9254,7 +9264,7 @@ export type InputPassportElementErrorSourceFiles = TdObject & {
  * Contains the description of an error in a Telegram Passport element; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_passport_element_error.html
  */
-export type InputPassportElementError = TdObject & {
+export type InputPassportElementError = {
 	"@type": "inputPassportElementError";
 	/** Type of Telegram Passport element that has the error */
 	type: PassportElementType;
@@ -9268,7 +9278,7 @@ export type InputPassportElementError = TdObject & {
  * A text message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_text.html
  */
-export type MessageText = TdObject & {
+export type MessageText = {
 	"@type": "messageText";
 	/** Text of the message */
 	text: FormattedText;
@@ -9282,7 +9292,7 @@ export type MessageText = TdObject & {
  * An animation message (GIF-style).
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_animation.html
  */
-export type MessageAnimation = TdObject & {
+export type MessageAnimation = {
 	"@type": "messageAnimation";
 	/** The animation description */
 	animation: Animation;
@@ -9300,7 +9310,7 @@ export type MessageAnimation = TdObject & {
  * An audio message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_audio.html
  */
-export type MessageAudio = TdObject & {
+export type MessageAudio = {
 	"@type": "messageAudio";
 	/** The audio description */
 	audio: Audio;
@@ -9312,7 +9322,7 @@ export type MessageAudio = TdObject & {
  * A document message (general file)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_document.html
  */
-export type MessageDocument = TdObject & {
+export type MessageDocument = {
 	"@type": "messageDocument";
 	/** The document description */
 	document: Document;
@@ -9324,7 +9334,7 @@ export type MessageDocument = TdObject & {
  * A message with paid media
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_paid_media.html
  */
-export type MessagePaidMedia = TdObject & {
+export type MessagePaidMedia = {
 	"@type": "messagePaidMedia";
 	/** Number of Telegram Stars needed to buy access to the media in the message */
 	star_count: number;
@@ -9340,7 +9350,7 @@ export type MessagePaidMedia = TdObject & {
  * A photo message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_photo.html
  */
-export type MessagePhoto = TdObject & {
+export type MessagePhoto = {
 	"@type": "messagePhoto";
 	/** The photo */
 	photo: Photo;
@@ -9358,7 +9368,7 @@ export type MessagePhoto = TdObject & {
  * A sticker message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_sticker.html
  */
-export type MessageSticker = TdObject & {
+export type MessageSticker = {
 	"@type": "messageSticker";
 	/** The sticker description */
 	sticker: Sticker;
@@ -9370,7 +9380,7 @@ export type MessageSticker = TdObject & {
  * A video message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_video.html
  */
-export type MessageVideo = TdObject & {
+export type MessageVideo = {
 	"@type": "messageVideo";
 	/** The video description */
 	video: Video;
@@ -9394,7 +9404,7 @@ export type MessageVideo = TdObject & {
  * A video note message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_video_note.html
  */
-export type MessageVideoNote = TdObject & {
+export type MessageVideoNote = {
 	"@type": "messageVideoNote";
 	/** The video note description */
 	video_note: VideoNote;
@@ -9408,7 +9418,7 @@ export type MessageVideoNote = TdObject & {
  * A voice note message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_voice_note.html
  */
-export type MessageVoiceNote = TdObject & {
+export type MessageVoiceNote = {
 	"@type": "messageVoiceNote";
 	/** The voice note description */
 	voice_note: VoiceNote;
@@ -9422,7 +9432,7 @@ export type MessageVoiceNote = TdObject & {
  * A self-destructed photo message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_expired_photo.html
  */
-export type MessageExpiredPhoto = TdObject & {
+export type MessageExpiredPhoto = {
 	"@type": "messageExpiredPhoto";
 };
 
@@ -9430,7 +9440,7 @@ export type MessageExpiredPhoto = TdObject & {
  * A self-destructed video message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_expired_video.html
  */
-export type MessageExpiredVideo = TdObject & {
+export type MessageExpiredVideo = {
 	"@type": "messageExpiredVideo";
 };
 
@@ -9438,7 +9448,7 @@ export type MessageExpiredVideo = TdObject & {
  * A self-destructed video note message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_expired_video_note.html
  */
-export type MessageExpiredVideoNote = TdObject & {
+export type MessageExpiredVideoNote = {
 	"@type": "messageExpiredVideoNote";
 };
 
@@ -9446,7 +9456,7 @@ export type MessageExpiredVideoNote = TdObject & {
  * A self-destructed voice note message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_expired_voice_note.html
  */
-export type MessageExpiredVoiceNote = TdObject & {
+export type MessageExpiredVoiceNote = {
 	"@type": "messageExpiredVoiceNote";
 };
 
@@ -9454,7 +9464,7 @@ export type MessageExpiredVoiceNote = TdObject & {
  * A message with a location
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_location.html
  */
-export type MessageLocation = TdObject & {
+export type MessageLocation = {
 	"@type": "messageLocation";
 	/** The location description */
 	location: Location;
@@ -9472,7 +9482,7 @@ export type MessageLocation = TdObject & {
  * A message with information about a venue
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_venue.html
  */
-export type MessageVenue = TdObject & {
+export type MessageVenue = {
 	"@type": "messageVenue";
 	/** The venue description */
 	venue: Venue;
@@ -9482,7 +9492,7 @@ export type MessageVenue = TdObject & {
  * A message with a user contact
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_contact.html
  */
-export type MessageContact = TdObject & {
+export type MessageContact = {
 	"@type": "messageContact";
 	/** The contact description */
 	contact: Contact;
@@ -9492,7 +9502,7 @@ export type MessageContact = TdObject & {
  * A message with an animated emoji
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_animated_emoji.html
  */
-export type MessageAnimatedEmoji = TdObject & {
+export type MessageAnimatedEmoji = {
 	"@type": "messageAnimatedEmoji";
 	/** The animated emoji */
 	animated_emoji: AnimatedEmoji;
@@ -9504,7 +9514,7 @@ export type MessageAnimatedEmoji = TdObject & {
  * A dice message. The dice value is randomly generated by the server
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_dice.html
  */
-export type MessageDice = TdObject & {
+export type MessageDice = {
 	"@type": "messageDice";
 	/** The animated stickers with the initial dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known */
 	initial_state?: DiceStickers;
@@ -9522,7 +9532,7 @@ export type MessageDice = TdObject & {
  * A message with a game
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_game.html
  */
-export type MessageGame = TdObject & {
+export type MessageGame = {
 	"@type": "messageGame";
 	/** The game description */
 	game: Game;
@@ -9532,7 +9542,7 @@ export type MessageGame = TdObject & {
  * A message with a poll
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_poll.html
  */
-export type MessagePoll = TdObject & {
+export type MessagePoll = {
 	"@type": "messagePoll";
 	/** The poll description */
 	poll: Poll;
@@ -9542,7 +9552,7 @@ export type MessagePoll = TdObject & {
  * A message with a forwarded story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_story.html
  */
-export type MessageStory = TdObject & {
+export type MessageStory = {
 	"@type": "messageStory";
 	/** Identifier of the chat that posted the story */
 	story_poster_chat_id: number;
@@ -9556,7 +9566,7 @@ export type MessageStory = TdObject & {
  * A message with an invoice from a bot. Use getInternalLink with internalLinkTypeBotStart to share the invoice
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_invoice.html
  */
-export type MessageInvoice = TdObject & {
+export type MessageInvoice = {
 	"@type": "messageInvoice";
 	/** Information about the product */
 	product_info: ProductInfo;
@@ -9582,7 +9592,7 @@ export type MessageInvoice = TdObject & {
  * A message with information about an ended call
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_call.html
  */
-export type MessageCall = TdObject & {
+export type MessageCall = {
 	"@type": "messageCall";
 	/** True, if the call was a video call */
 	is_video: boolean;
@@ -9596,7 +9606,7 @@ export type MessageCall = TdObject & {
  * A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use getGroupCallParticipants to show current group call participants on the screen. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call become active or missed, then the call screen must be hidden
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_group_call.html
  */
-export type MessageGroupCall = TdObject & {
+export type MessageGroupCall = {
 	"@type": "messageGroupCall";
 	/** True, if the call is active, i.e. the called user joined the call */
 	is_active: boolean;
@@ -9614,7 +9624,7 @@ export type MessageGroupCall = TdObject & {
  * A new video chat was scheduled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_video_chat_scheduled.html
  */
-export type MessageVideoChatScheduled = TdObject & {
+export type MessageVideoChatScheduled = {
 	"@type": "messageVideoChatScheduled";
 	/** Identifier of the video chat. The video chat can be received through the method getGroupCall */
 	group_call_id: number;
@@ -9626,7 +9636,7 @@ export type MessageVideoChatScheduled = TdObject & {
  * A newly created video chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_video_chat_started.html
  */
-export type MessageVideoChatStarted = TdObject & {
+export type MessageVideoChatStarted = {
 	"@type": "messageVideoChatStarted";
 	/** Identifier of the video chat. The video chat can be received through the method getGroupCall */
 	group_call_id: number;
@@ -9636,7 +9646,7 @@ export type MessageVideoChatStarted = TdObject & {
  * A message with information about an ended video chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_video_chat_ended.html
  */
-export type MessageVideoChatEnded = TdObject & {
+export type MessageVideoChatEnded = {
 	"@type": "messageVideoChatEnded";
 	/** Call duration, in seconds */
 	duration: number;
@@ -9646,7 +9656,7 @@ export type MessageVideoChatEnded = TdObject & {
  * A message with information about an invitation to a video chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_invite_video_chat_participants.html
  */
-export type MessageInviteVideoChatParticipants = TdObject & {
+export type MessageInviteVideoChatParticipants = {
 	"@type": "messageInviteVideoChatParticipants";
 	/** Identifier of the video chat. The video chat can be received through the method getGroupCall */
 	group_call_id: number;
@@ -9658,7 +9668,7 @@ export type MessageInviteVideoChatParticipants = TdObject & {
  * A newly created basic group
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_basic_group_chat_create.html
  */
-export type MessageBasicGroupChatCreate = TdObject & {
+export type MessageBasicGroupChatCreate = {
 	"@type": "messageBasicGroupChatCreate";
 	/** Title of the basic group */
 	title: string;
@@ -9670,7 +9680,7 @@ export type MessageBasicGroupChatCreate = TdObject & {
  * A newly created supergroup or channel
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_supergroup_chat_create.html
  */
-export type MessageSupergroupChatCreate = TdObject & {
+export type MessageSupergroupChatCreate = {
 	"@type": "messageSupergroupChatCreate";
 	/** Title of the supergroup or channel */
 	title: string;
@@ -9680,7 +9690,7 @@ export type MessageSupergroupChatCreate = TdObject & {
  * An updated chat title
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_change_title.html
  */
-export type MessageChatChangeTitle = TdObject & {
+export type MessageChatChangeTitle = {
 	"@type": "messageChatChangeTitle";
 	/** New chat title */
 	title: string;
@@ -9690,7 +9700,7 @@ export type MessageChatChangeTitle = TdObject & {
  * An updated chat photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_change_photo.html
  */
-export type MessageChatChangePhoto = TdObject & {
+export type MessageChatChangePhoto = {
 	"@type": "messageChatChangePhoto";
 	/** New chat photo */
 	photo: ChatPhoto;
@@ -9700,7 +9710,7 @@ export type MessageChatChangePhoto = TdObject & {
  * A deleted chat photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_delete_photo.html
  */
-export type MessageChatDeletePhoto = TdObject & {
+export type MessageChatDeletePhoto = {
 	"@type": "messageChatDeletePhoto";
 };
 
@@ -9708,7 +9718,7 @@ export type MessageChatDeletePhoto = TdObject & {
  * New chat members were added
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_add_members.html
  */
-export type MessageChatAddMembers = TdObject & {
+export type MessageChatAddMembers = {
 	"@type": "messageChatAddMembers";
 	/** User identifiers of the new members */
 	member_user_ids: number[];
@@ -9718,7 +9728,7 @@ export type MessageChatAddMembers = TdObject & {
  * A new member joined the chat via an invite link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_join_by_link.html
  */
-export type MessageChatJoinByLink = TdObject & {
+export type MessageChatJoinByLink = {
 	"@type": "messageChatJoinByLink";
 };
 
@@ -9726,7 +9736,7 @@ export type MessageChatJoinByLink = TdObject & {
  * A new member was accepted to the chat by an administrator
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_join_by_request.html
  */
-export type MessageChatJoinByRequest = TdObject & {
+export type MessageChatJoinByRequest = {
 	"@type": "messageChatJoinByRequest";
 };
 
@@ -9734,7 +9744,7 @@ export type MessageChatJoinByRequest = TdObject & {
  * A chat member was deleted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_delete_member.html
  */
-export type MessageChatDeleteMember = TdObject & {
+export type MessageChatDeleteMember = {
 	"@type": "messageChatDeleteMember";
 	/** User identifier of the deleted chat member */
 	user_id: number;
@@ -9744,7 +9754,7 @@ export type MessageChatDeleteMember = TdObject & {
  * A basic group was upgraded to a supergroup and was deactivated as the result
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_upgrade_to.html
  */
-export type MessageChatUpgradeTo = TdObject & {
+export type MessageChatUpgradeTo = {
 	"@type": "messageChatUpgradeTo";
 	/** Identifier of the supergroup to which the basic group was upgraded */
 	supergroup_id: number;
@@ -9754,7 +9764,7 @@ export type MessageChatUpgradeTo = TdObject & {
  * A supergroup has been created from a basic group
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_upgrade_from.html
  */
-export type MessageChatUpgradeFrom = TdObject & {
+export type MessageChatUpgradeFrom = {
 	"@type": "messageChatUpgradeFrom";
 	/** Title of the newly created supergroup */
 	title: string;
@@ -9766,7 +9776,7 @@ export type MessageChatUpgradeFrom = TdObject & {
  * A message has been pinned
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_pin_message.html
  */
-export type MessagePinMessage = TdObject & {
+export type MessagePinMessage = {
 	"@type": "messagePinMessage";
 	/** Identifier of the pinned message, can be an identifier of a deleted message or 0 */
 	message_id: number;
@@ -9776,7 +9786,7 @@ export type MessagePinMessage = TdObject & {
  * A screenshot of a message in the chat has been taken
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_screenshot_taken.html
  */
-export type MessageScreenshotTaken = TdObject & {
+export type MessageScreenshotTaken = {
 	"@type": "messageScreenshotTaken";
 };
 
@@ -9784,7 +9794,7 @@ export type MessageScreenshotTaken = TdObject & {
  * A new background was set in the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_set_background.html
  */
-export type MessageChatSetBackground = TdObject & {
+export type MessageChatSetBackground = {
 	"@type": "messageChatSetBackground";
 	/** Identifier of the message with a previously set same background; 0 if none. Can be an identifier of a deleted message */
 	old_background_message_id: number;
@@ -9798,7 +9808,7 @@ export type MessageChatSetBackground = TdObject & {
  * A theme in the chat has been changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_set_theme.html
  */
-export type MessageChatSetTheme = TdObject & {
+export type MessageChatSetTheme = {
 	"@type": "messageChatSetTheme";
 	/** If non-empty, name of a new theme, set for the chat. Otherwise, chat theme was reset to the default one */
 	theme_name?: string;
@@ -9808,7 +9818,7 @@ export type MessageChatSetTheme = TdObject & {
  * The auto-delete or self-destruct timer for messages in the chat has been changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_set_message_auto_delete_time.html
  */
-export type MessageChatSetMessageAutoDeleteTime = TdObject & {
+export type MessageChatSetMessageAutoDeleteTime = {
 	"@type": "messageChatSetMessageAutoDeleteTime";
 	/** New value auto-delete or self-destruct time, in seconds; 0 if disabled */
 	message_auto_delete_time: number;
@@ -9820,7 +9830,7 @@ export type MessageChatSetMessageAutoDeleteTime = TdObject & {
  * The chat was boosted by the sender of the message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_boost.html
  */
-export type MessageChatBoost = TdObject & {
+export type MessageChatBoost = {
 	"@type": "messageChatBoost";
 	/** Number of times the chat was boosted */
 	boost_count: number;
@@ -9830,7 +9840,7 @@ export type MessageChatBoost = TdObject & {
  * A forum topic has been created
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_forum_topic_created.html
  */
-export type MessageForumTopicCreated = TdObject & {
+export type MessageForumTopicCreated = {
 	"@type": "messageForumTopicCreated";
 	/** Name of the topic */
 	name: string;
@@ -9842,7 +9852,7 @@ export type MessageForumTopicCreated = TdObject & {
  * A forum topic has been edited
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_forum_topic_edited.html
  */
-export type MessageForumTopicEdited = TdObject & {
+export type MessageForumTopicEdited = {
 	"@type": "messageForumTopicEdited";
 	/** If non-empty, the new name of the topic */
 	name?: string;
@@ -9856,7 +9866,7 @@ export type MessageForumTopicEdited = TdObject & {
  * A forum topic has been closed or opened
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_forum_topic_is_closed_toggled.html
  */
-export type MessageForumTopicIsClosedToggled = TdObject & {
+export type MessageForumTopicIsClosedToggled = {
 	"@type": "messageForumTopicIsClosedToggled";
 	/** True, if the topic was closed; otherwise, the topic was reopened */
 	is_closed: boolean;
@@ -9866,7 +9876,7 @@ export type MessageForumTopicIsClosedToggled = TdObject & {
  * A General forum topic has been hidden or unhidden
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_forum_topic_is_hidden_toggled.html
  */
-export type MessageForumTopicIsHiddenToggled = TdObject & {
+export type MessageForumTopicIsHiddenToggled = {
 	"@type": "messageForumTopicIsHiddenToggled";
 	/** True, if the topic was hidden; otherwise, the topic was unhidden */
 	is_hidden: boolean;
@@ -9876,7 +9886,7 @@ export type MessageForumTopicIsHiddenToggled = TdObject & {
  * A profile photo was suggested to a user in a private chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_suggest_profile_photo.html
  */
-export type MessageSuggestProfilePhoto = TdObject & {
+export type MessageSuggestProfilePhoto = {
 	"@type": "messageSuggestProfilePhoto";
 	/** The suggested chat photo. Use the method setProfilePhoto with inputChatPhotoPrevious to apply the photo */
 	photo: ChatPhoto;
@@ -9886,7 +9896,7 @@ export type MessageSuggestProfilePhoto = TdObject & {
  * A non-standard action has happened in the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_custom_service_action.html
  */
-export type MessageCustomServiceAction = TdObject & {
+export type MessageCustomServiceAction = {
 	"@type": "messageCustomServiceAction";
 	/** Message text to be shown in the chat */
 	text: string;
@@ -9896,7 +9906,7 @@ export type MessageCustomServiceAction = TdObject & {
  * A new high score was achieved in a game
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_game_score.html
  */
-export type MessageGameScore = TdObject & {
+export type MessageGameScore = {
 	"@type": "messageGameScore";
 	/** Identifier of the message with the game, can be an identifier of a deleted message */
 	game_message_id: number;
@@ -9910,7 +9920,7 @@ export type MessageGameScore = TdObject & {
  * A payment has been sent to a bot or a business account
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_payment_successful.html
  */
-export type MessagePaymentSuccessful = TdObject & {
+export type MessagePaymentSuccessful = {
 	"@type": "messagePaymentSuccessful";
 	/** Identifier of the chat, containing the corresponding invoice message */
 	invoice_chat_id: number;
@@ -9934,7 +9944,7 @@ export type MessagePaymentSuccessful = TdObject & {
  * A payment has been received by the bot or the business account
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_payment_successful_bot.html
  */
-export type MessagePaymentSuccessfulBot = TdObject & {
+export type MessagePaymentSuccessfulBot = {
 	"@type": "messagePaymentSuccessfulBot";
 	/** Currency for price of the product */
 	currency: string;
@@ -9962,7 +9972,7 @@ export type MessagePaymentSuccessfulBot = TdObject & {
  * A payment has been refunded
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_payment_refunded.html
  */
-export type MessagePaymentRefunded = TdObject & {
+export type MessagePaymentRefunded = {
 	"@type": "messagePaymentRefunded";
 	/** Identifier of the previous owner of the Telegram Stars that refunds them */
 	owner_id: MessageSender;
@@ -9982,7 +9992,7 @@ export type MessagePaymentRefunded = TdObject & {
  * Telegram Premium was gifted to a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_gifted_premium.html
  */
-export type MessageGiftedPremium = TdObject & {
+export type MessageGiftedPremium = {
 	"@type": "messageGiftedPremium";
 	/** The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous or is outgoing */
 	gifter_user_id: number;
@@ -10008,7 +10018,7 @@ export type MessageGiftedPremium = TdObject & {
  * A Telegram Premium gift code was created for the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_premium_gift_code.html
  */
-export type MessagePremiumGiftCode = TdObject & {
+export type MessagePremiumGiftCode = {
 	"@type": "messagePremiumGiftCode";
 	/** Identifier of a chat or a user that created the gift code; may be null if unknown */
 	creator_id?: MessageSender;
@@ -10038,7 +10048,7 @@ export type MessagePremiumGiftCode = TdObject & {
  * A giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway, storePaymentPurposePremiumGiveaway, telegramPaymentPurposeStarGiveaway, or storePaymentPurposeStarGiveaway to create a giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_giveaway_created.html
  */
-export type MessageGiveawayCreated = TdObject & {
+export type MessageGiveawayCreated = {
 	"@type": "messageGiveawayCreated";
 	/** Number of Telegram Stars that will be shared by winners of the giveaway; 0 for Telegram Premium giveaways */
 	star_count: number;
@@ -10048,7 +10058,7 @@ export type MessageGiveawayCreated = TdObject & {
  * A giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_giveaway.html
  */
-export type MessageGiveaway = TdObject & {
+export type MessageGiveaway = {
 	"@type": "messageGiveaway";
 	/** Giveaway parameters */
 	parameters: GiveawayParameters;
@@ -10064,7 +10074,7 @@ export type MessageGiveaway = TdObject & {
  * A giveaway without public winners has been completed for the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_giveaway_completed.html
  */
-export type MessageGiveawayCompleted = TdObject & {
+export type MessageGiveawayCompleted = {
 	"@type": "messageGiveawayCompleted";
 	/** Identifier of the message with the giveaway; can be 0 if the message was deleted */
 	giveaway_message_id: number;
@@ -10080,7 +10090,7 @@ export type MessageGiveawayCompleted = TdObject & {
  * A giveaway with public winners has been completed for the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_giveaway_winners.html
  */
-export type MessageGiveawayWinners = TdObject & {
+export type MessageGiveawayWinners = {
 	"@type": "messageGiveawayWinners";
 	/** Identifier of the supergroup or channel chat, which was automatically boosted by the winners of the giveaway */
 	boosted_chat_id: number;
@@ -10110,7 +10120,7 @@ export type MessageGiveawayWinners = TdObject & {
  * Telegram Stars were gifted to a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_gifted_stars.html
  */
-export type MessageGiftedStars = TdObject & {
+export type MessageGiftedStars = {
 	"@type": "messageGiftedStars";
 	/** The identifier of a user that gifted Telegram Stars; 0 if the gift was anonymous or is outgoing */
 	gifter_user_id: number;
@@ -10136,7 +10146,7 @@ export type MessageGiftedStars = TdObject & {
  * A Telegram Stars were received by the current user from a giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_giveaway_prize_stars.html
  */
-export type MessageGiveawayPrizeStars = TdObject & {
+export type MessageGiveawayPrizeStars = {
 	"@type": "messageGiveawayPrizeStars";
 	/** Number of Telegram Stars that were received */
 	star_count: number;
@@ -10156,7 +10166,7 @@ export type MessageGiveawayPrizeStars = TdObject & {
  * A regular gift was received or sent by the current user, or the current user was notified about a channel gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_gift.html
  */
-export type MessageGift = TdObject & {
+export type MessageGift = {
 	"@type": "messageGift";
 	/** The gift */
 	gift: Gift;
@@ -10192,7 +10202,7 @@ export type MessageGift = TdObject & {
  * An upgraded gift was received or sent by the current user, or the current user was notified about a channel gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_upgraded_gift.html
  */
-export type MessageUpgradedGift = TdObject & {
+export type MessageUpgradedGift = {
 	"@type": "messageUpgradedGift";
 	/** The gift */
 	gift: UpgradedGift;
@@ -10226,7 +10236,7 @@ export type MessageUpgradedGift = TdObject & {
  * A gift which purchase, upgrade or transfer were refunded
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_refunded_upgraded_gift.html
  */
-export type MessageRefundedUpgradedGift = TdObject & {
+export type MessageRefundedUpgradedGift = {
 	"@type": "messageRefundedUpgradedGift";
 	/** The gift */
 	gift: Gift;
@@ -10242,7 +10252,7 @@ export type MessageRefundedUpgradedGift = TdObject & {
  * Paid messages were refunded
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_paid_messages_refunded.html
  */
-export type MessagePaidMessagesRefunded = TdObject & {
+export type MessagePaidMessagesRefunded = {
 	"@type": "messagePaidMessagesRefunded";
 	/** The number of refunded messages */
 	message_count: number;
@@ -10254,7 +10264,7 @@ export type MessagePaidMessagesRefunded = TdObject & {
  * A price for paid messages was changed in the supergroup chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_paid_message_price_changed.html
  */
-export type MessagePaidMessagePriceChanged = TdObject & {
+export type MessagePaidMessagePriceChanged = {
 	"@type": "messagePaidMessagePriceChanged";
 	/** The new number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message */
 	paid_message_star_count: number;
@@ -10264,7 +10274,7 @@ export type MessagePaidMessagePriceChanged = TdObject & {
  * A price for direct messages was changed in the channel chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_direct_message_price_changed.html
  */
-export type MessageDirectMessagePriceChanged = TdObject & {
+export type MessageDirectMessagePriceChanged = {
 	"@type": "messageDirectMessagePriceChanged";
 	/** True, if direct messages group was enabled for the channel; false otherwise */
 	is_enabled: boolean;
@@ -10276,7 +10286,7 @@ export type MessageDirectMessagePriceChanged = TdObject & {
  * A contact has registered with Telegram
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_contact_registered.html
  */
-export type MessageContactRegistered = TdObject & {
+export type MessageContactRegistered = {
 	"@type": "messageContactRegistered";
 };
 
@@ -10284,7 +10294,7 @@ export type MessageContactRegistered = TdObject & {
  * The current user shared users, which were requested by the bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_users_shared.html
  */
-export type MessageUsersShared = TdObject & {
+export type MessageUsersShared = {
 	"@type": "messageUsersShared";
 	/** The shared users */
 	users: SharedUser[];
@@ -10296,7 +10306,7 @@ export type MessageUsersShared = TdObject & {
  * The current user shared a chat, which was requested by the bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_chat_shared.html
  */
-export type MessageChatShared = TdObject & {
+export type MessageChatShared = {
 	"@type": "messageChatShared";
 	/** The shared chat */
 	chat: SharedChat;
@@ -10308,7 +10318,7 @@ export type MessageChatShared = TdObject & {
  * The user allowed the bot to send messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_bot_write_access_allowed.html
  */
-export type MessageBotWriteAccessAllowed = TdObject & {
+export type MessageBotWriteAccessAllowed = {
 	"@type": "messageBotWriteAccessAllowed";
 	/** The reason why the bot was allowed to write messages */
 	reason: BotWriteAccessAllowReason;
@@ -10318,7 +10328,7 @@ export type MessageBotWriteAccessAllowed = TdObject & {
  * Data from a Web App has been sent to a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_web_app_data_sent.html
  */
-export type MessageWebAppDataSent = TdObject & {
+export type MessageWebAppDataSent = {
 	"@type": "messageWebAppDataSent";
 	/** Text of the keyboardButtonTypeWebApp button, which opened the Web App */
 	button_text: string;
@@ -10328,7 +10338,7 @@ export type MessageWebAppDataSent = TdObject & {
  * Data from a Web App has been received; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_web_app_data_received.html
  */
-export type MessageWebAppDataReceived = TdObject & {
+export type MessageWebAppDataReceived = {
 	"@type": "messageWebAppDataReceived";
 	/** Text of the keyboardButtonTypeWebApp button, which opened the Web App */
 	button_text: string;
@@ -10340,7 +10350,7 @@ export type MessageWebAppDataReceived = TdObject & {
  * Telegram Passport data has been sent to a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_passport_data_sent.html
  */
-export type MessagePassportDataSent = TdObject & {
+export type MessagePassportDataSent = {
 	"@type": "messagePassportDataSent";
 	/** List of Telegram Passport element types sent */
 	types: PassportElementType[];
@@ -10350,7 +10360,7 @@ export type MessagePassportDataSent = TdObject & {
  * Telegram Passport data has been received; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_passport_data_received.html
  */
-export type MessagePassportDataReceived = TdObject & {
+export type MessagePassportDataReceived = {
 	"@type": "messagePassportDataReceived";
 	/** List of received Telegram Passport elements */
 	elements: EncryptedPassportElement[];
@@ -10362,7 +10372,7 @@ export type MessagePassportDataReceived = TdObject & {
  * A user in the chat came within proximity alert range
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_proximity_alert_triggered.html
  */
-export type MessageProximityAlertTriggered = TdObject & {
+export type MessageProximityAlertTriggered = {
 	"@type": "messageProximityAlertTriggered";
 	/** The identifier of a user or chat that triggered the proximity alert */
 	traveler_id: MessageSender;
@@ -10376,7 +10386,7 @@ export type MessageProximityAlertTriggered = TdObject & {
  * A message content that is not supported in the current TDLib version
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_unsupported.html
  */
-export type MessageUnsupported = TdObject & {
+export type MessageUnsupported = {
 	"@type": "messageUnsupported";
 };
 
@@ -10384,7 +10394,7 @@ export type MessageUnsupported = TdObject & {
  * A mention of a user, a supergroup, or a channel by their username
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_mention.html
  */
-export type TextEntityTypeMention = TdObject & {
+export type TextEntityTypeMention = {
 	"@type": "textEntityTypeMention";
 };
 
@@ -10392,7 +10402,7 @@ export type TextEntityTypeMention = TdObject & {
  * A hashtag text, beginning with "#" and optionally containing a chat username at the end
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_hashtag.html
  */
-export type TextEntityTypeHashtag = TdObject & {
+export type TextEntityTypeHashtag = {
 	"@type": "textEntityTypeHashtag";
 };
 
@@ -10400,7 +10410,7 @@ export type TextEntityTypeHashtag = TdObject & {
  * A cashtag text, beginning with "$", consisting of capital English letters (e.g., "$USD"), and optionally containing a chat username at the end
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_cashtag.html
  */
-export type TextEntityTypeCashtag = TdObject & {
+export type TextEntityTypeCashtag = {
 	"@type": "textEntityTypeCashtag";
 };
 
@@ -10408,7 +10418,7 @@ export type TextEntityTypeCashtag = TdObject & {
  * A bot command, beginning with "/"
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_bot_command.html
  */
-export type TextEntityTypeBotCommand = TdObject & {
+export type TextEntityTypeBotCommand = {
 	"@type": "textEntityTypeBotCommand";
 };
 
@@ -10416,7 +10426,7 @@ export type TextEntityTypeBotCommand = TdObject & {
  * An HTTP URL
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_url.html
  */
-export type TextEntityTypeUrl = TdObject & {
+export type TextEntityTypeUrl = {
 	"@type": "textEntityTypeUrl";
 };
 
@@ -10424,7 +10434,7 @@ export type TextEntityTypeUrl = TdObject & {
  * An email address
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_email_address.html
  */
-export type TextEntityTypeEmailAddress = TdObject & {
+export type TextEntityTypeEmailAddress = {
 	"@type": "textEntityTypeEmailAddress";
 };
 
@@ -10432,7 +10442,7 @@ export type TextEntityTypeEmailAddress = TdObject & {
  * A phone number
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_phone_number.html
  */
-export type TextEntityTypePhoneNumber = TdObject & {
+export type TextEntityTypePhoneNumber = {
 	"@type": "textEntityTypePhoneNumber";
 };
 
@@ -10440,7 +10450,7 @@ export type TextEntityTypePhoneNumber = TdObject & {
  * A bank card number. The getBankCardInfo method can be used to get information about the bank card
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_bank_card_number.html
  */
-export type TextEntityTypeBankCardNumber = TdObject & {
+export type TextEntityTypeBankCardNumber = {
 	"@type": "textEntityTypeBankCardNumber";
 };
 
@@ -10448,7 +10458,7 @@ export type TextEntityTypeBankCardNumber = TdObject & {
  * A bold text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_bold.html
  */
-export type TextEntityTypeBold = TdObject & {
+export type TextEntityTypeBold = {
 	"@type": "textEntityTypeBold";
 };
 
@@ -10456,7 +10466,7 @@ export type TextEntityTypeBold = TdObject & {
  * An italic text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_italic.html
  */
-export type TextEntityTypeItalic = TdObject & {
+export type TextEntityTypeItalic = {
 	"@type": "textEntityTypeItalic";
 };
 
@@ -10464,7 +10474,7 @@ export type TextEntityTypeItalic = TdObject & {
  * An underlined text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_underline.html
  */
-export type TextEntityTypeUnderline = TdObject & {
+export type TextEntityTypeUnderline = {
 	"@type": "textEntityTypeUnderline";
 };
 
@@ -10472,7 +10482,7 @@ export type TextEntityTypeUnderline = TdObject & {
  * A strikethrough text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_strikethrough.html
  */
-export type TextEntityTypeStrikethrough = TdObject & {
+export type TextEntityTypeStrikethrough = {
 	"@type": "textEntityTypeStrikethrough";
 };
 
@@ -10480,7 +10490,7 @@ export type TextEntityTypeStrikethrough = TdObject & {
  * A spoiler text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_spoiler.html
  */
-export type TextEntityTypeSpoiler = TdObject & {
+export type TextEntityTypeSpoiler = {
 	"@type": "textEntityTypeSpoiler";
 };
 
@@ -10488,7 +10498,7 @@ export type TextEntityTypeSpoiler = TdObject & {
  * Text that must be formatted as if inside a code HTML tag
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_code.html
  */
-export type TextEntityTypeCode = TdObject & {
+export type TextEntityTypeCode = {
 	"@type": "textEntityTypeCode";
 };
 
@@ -10496,7 +10506,7 @@ export type TextEntityTypeCode = TdObject & {
  * Text that must be formatted as if inside a pre HTML tag
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_pre.html
  */
-export type TextEntityTypePre = TdObject & {
+export type TextEntityTypePre = {
 	"@type": "textEntityTypePre";
 };
 
@@ -10504,7 +10514,7 @@ export type TextEntityTypePre = TdObject & {
  * Text that must be formatted as if inside pre, and code HTML tags
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_pre_code.html
  */
-export type TextEntityTypePreCode = TdObject & {
+export type TextEntityTypePreCode = {
 	"@type": "textEntityTypePreCode";
 	/** Programming language of the code; as defined by the sender */
 	language: string;
@@ -10514,7 +10524,7 @@ export type TextEntityTypePreCode = TdObject & {
  * Text that must be formatted as if inside a blockquote HTML tag; not supported in secret chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_block_quote.html
  */
-export type TextEntityTypeBlockQuote = TdObject & {
+export type TextEntityTypeBlockQuote = {
 	"@type": "textEntityTypeBlockQuote";
 };
 
@@ -10522,7 +10532,7 @@ export type TextEntityTypeBlockQuote = TdObject & {
  * Text that must be formatted as if inside a blockquote HTML tag and collapsed by default to 3 lines with the ability to show full text; not supported in secret chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_expandable_block_quote.html
  */
-export type TextEntityTypeExpandableBlockQuote = TdObject & {
+export type TextEntityTypeExpandableBlockQuote = {
 	"@type": "textEntityTypeExpandableBlockQuote";
 };
 
@@ -10530,7 +10540,7 @@ export type TextEntityTypeExpandableBlockQuote = TdObject & {
  * A text description shown instead of a raw URL
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_text_url.html
  */
-export type TextEntityTypeTextUrl = TdObject & {
+export type TextEntityTypeTextUrl = {
 	"@type": "textEntityTypeTextUrl";
 	/** HTTP or tg:// URL to be opened when the link is clicked */
 	url: string;
@@ -10540,7 +10550,7 @@ export type TextEntityTypeTextUrl = TdObject & {
  * A text shows instead of a raw mention of the user (e.g., when the user has no username)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_mention_name.html
  */
-export type TextEntityTypeMentionName = TdObject & {
+export type TextEntityTypeMentionName = {
 	"@type": "textEntityTypeMentionName";
 	/** Identifier of the mentioned user */
 	user_id: number;
@@ -10550,7 +10560,7 @@ export type TextEntityTypeMentionName = TdObject & {
  * A custom emoji. The text behind a custom emoji must be an emoji. Only premium users can use premium custom emoji
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_custom_emoji.html
  */
-export type TextEntityTypeCustomEmoji = TdObject & {
+export type TextEntityTypeCustomEmoji = {
 	"@type": "textEntityTypeCustomEmoji";
 	/** Unique identifier of the custom emoji */
 	custom_emoji_id: string;
@@ -10560,7 +10570,7 @@ export type TextEntityTypeCustomEmoji = TdObject & {
  * A media timestamp
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_entity_type_media_timestamp.html
  */
-export type TextEntityTypeMediaTimestamp = TdObject & {
+export type TextEntityTypeMediaTimestamp = {
 	"@type": "textEntityTypeMediaTimestamp";
 	/** Timestamp from which a video/audio/video note/voice note/story playing must start, in seconds. The media can be in the content or the link preview of the current message, or in the same places in the replied message */
 	media_timestamp: number;
@@ -10570,7 +10580,7 @@ export type TextEntityTypeMediaTimestamp = TdObject & {
  * A thumbnail to be sent along with a file; must be in JPEG or WEBP format for stickers, and less than 200 KB in size
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_thumbnail.html
  */
-export type InputThumbnail = TdObject & {
+export type InputThumbnail = {
 	"@type": "inputThumbnail";
 	/** Thumbnail file to send. Sending thumbnails by file_id is currently not supported */
 	thumbnail: InputFile;
@@ -10584,7 +10594,7 @@ export type InputThumbnail = TdObject & {
  * The media is a photo. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_paid_media_type_photo.html
  */
-export type InputPaidMediaTypePhoto = TdObject & {
+export type InputPaidMediaTypePhoto = {
 	"@type": "inputPaidMediaTypePhoto";
 };
 
@@ -10592,7 +10602,7 @@ export type InputPaidMediaTypePhoto = TdObject & {
  * The media is a video
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_paid_media_type_video.html
  */
-export type InputPaidMediaTypeVideo = TdObject & {
+export type InputPaidMediaTypeVideo = {
 	"@type": "inputPaidMediaTypeVideo";
 	/** Cover of the video; pass null to skip cover uploading */
 	cover?: InputFile;
@@ -10608,7 +10618,7 @@ export type InputPaidMediaTypeVideo = TdObject & {
  * Describes a paid media to be sent
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_paid_media.html
  */
-export type InputPaidMedia = TdObject & {
+export type InputPaidMedia = {
 	"@type": "inputPaidMedia";
 	/** Type of the media */
 	type: InputPaidMediaType;
@@ -10628,7 +10638,7 @@ export type InputPaidMedia = TdObject & {
  * The message will be sent at the specified date
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_scheduling_state_send_at_date.html
  */
-export type MessageSchedulingStateSendAtDate = TdObject & {
+export type MessageSchedulingStateSendAtDate = {
 	"@type": "messageSchedulingStateSendAtDate";
 	/** Point in time (Unix timestamp) when the message will be sent. The date must be within 367 days in the future */
 	send_date: number;
@@ -10638,7 +10648,7 @@ export type MessageSchedulingStateSendAtDate = TdObject & {
  * The message will be sent when the other user is online. Applicable to private chats only and when the exact online status of the other user is known
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_scheduling_state_send_when_online.html
  */
-export type MessageSchedulingStateSendWhenOnline = TdObject & {
+export type MessageSchedulingStateSendWhenOnline = {
 	"@type": "messageSchedulingStateSendWhenOnline";
 };
 
@@ -10646,7 +10656,7 @@ export type MessageSchedulingStateSendWhenOnline = TdObject & {
  * The message will be sent when the video in the message is converted and optimized; can be used only by the server
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_scheduling_state_send_when_video_processed.html
  */
-export type MessageSchedulingStateSendWhenVideoProcessed = TdObject & {
+export type MessageSchedulingStateSendWhenVideoProcessed = {
 	"@type": "messageSchedulingStateSendWhenVideoProcessed";
 	/** Approximate point in time (Unix timestamp) when the message is expected to be sent */
 	send_date: number;
@@ -10656,7 +10666,7 @@ export type MessageSchedulingStateSendWhenVideoProcessed = TdObject & {
  * The message will be self-destructed in the specified time after its content was opened
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_self_destruct_type_timer.html
  */
-export type MessageSelfDestructTypeTimer = TdObject & {
+export type MessageSelfDestructTypeTimer = {
 	"@type": "messageSelfDestructTypeTimer";
 	/** The message's self-destruct time, in seconds; must be between 0 and 60 in private chats */
 	self_destruct_time: number;
@@ -10666,7 +10676,7 @@ export type MessageSelfDestructTypeTimer = TdObject & {
  * The message can be opened only once and will be self-destructed once closed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_self_destruct_type_immediately.html
  */
-export type MessageSelfDestructTypeImmediately = TdObject & {
+export type MessageSelfDestructTypeImmediately = {
 	"@type": "messageSelfDestructTypeImmediately";
 };
 
@@ -10674,7 +10684,7 @@ export type MessageSelfDestructTypeImmediately = TdObject & {
  * Options to be used when a message is sent
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_send_options.html
  */
-export type MessageSendOptions = TdObject & {
+export type MessageSendOptions = {
 	"@type": "messageSendOptions";
 	/** Unique identifier of the topic in a channel direct messages chat administered by the current user; pass 0 if the chat isn't a channel direct messages chat administered by the current user */
 	direct_messages_chat_topic_id: number;
@@ -10704,7 +10714,7 @@ export type MessageSendOptions = TdObject & {
  * Options to be used when a message content is copied without reference to the original sender. Service messages, messages with messageInvoice, messagePaidMedia, messageGiveaway, or messageGiveawayWinners content can't be copied
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_copy_options.html
  */
-export type MessageCopyOptions = TdObject & {
+export type MessageCopyOptions = {
 	"@type": "messageCopyOptions";
 	/** True, if content of the message needs to be copied without reference to the original sender. Always true if the message is forwarded to a secret chat or is local. Use messageProperties.can_be_copied and messageProperties.can_be_copied_to_secret_chat to check whether the message is suitable */
 	send_copy: boolean;
@@ -10720,7 +10730,7 @@ export type MessageCopyOptions = TdObject & {
  * A text message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_text.html
  */
-export type InputMessageText = TdObject & {
+export type InputMessageText = {
 	"@type": "inputMessageText";
 	/** Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually */
 	text: FormattedText;
@@ -10734,7 +10744,7 @@ export type InputMessageText = TdObject & {
  * An animation message (GIF-style).
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_animation.html
  */
-export type InputMessageAnimation = TdObject & {
+export type InputMessageAnimation = {
 	"@type": "inputMessageAnimation";
 	/** Animation file to be sent */
 	animation: InputFile;
@@ -10760,7 +10770,7 @@ export type InputMessageAnimation = TdObject & {
  * An audio message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_audio.html
  */
-export type InputMessageAudio = TdObject & {
+export type InputMessageAudio = {
 	"@type": "inputMessageAudio";
 	/** Audio file to be sent */
 	audio: InputFile;
@@ -10780,7 +10790,7 @@ export type InputMessageAudio = TdObject & {
  * A document message (general file)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_document.html
  */
-export type InputMessageDocument = TdObject & {
+export type InputMessageDocument = {
 	"@type": "inputMessageDocument";
 	/** Document to be sent */
 	document: InputFile;
@@ -10796,7 +10806,7 @@ export type InputMessageDocument = TdObject & {
  * A message with paid media; can be used only in channel chats with supergroupFullInfo.has_paid_media_allowed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_paid_media.html
  */
-export type InputMessagePaidMedia = TdObject & {
+export type InputMessagePaidMedia = {
 	"@type": "inputMessagePaidMedia";
 	/** The number of Telegram Stars that must be paid to see the media; 1-getOption("paid_media_message_star_count_max") */
 	star_count: number;
@@ -10814,7 +10824,7 @@ export type InputMessagePaidMedia = TdObject & {
  * A photo message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_photo.html
  */
-export type InputMessagePhoto = TdObject & {
+export type InputMessagePhoto = {
 	"@type": "inputMessagePhoto";
 	/** Photo to send. The photo must be at most 10 MB in size. The photo's width and height must not exceed 10000 in total. Width and height ratio must be at most 20 */
 	photo: InputFile;
@@ -10840,7 +10850,7 @@ export type InputMessagePhoto = TdObject & {
  * A sticker message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_sticker.html
  */
-export type InputMessageSticker = TdObject & {
+export type InputMessageSticker = {
 	"@type": "inputMessageSticker";
 	/** Sticker to be sent */
 	sticker: InputFile;
@@ -10858,7 +10868,7 @@ export type InputMessageSticker = TdObject & {
  * A video message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video.html
  */
-export type InputMessageVideo = TdObject & {
+export type InputMessageVideo = {
 	"@type": "inputMessageVideo";
 	/** Video to be sent. The video is expected to be re-encoded to MPEG4 format with H.264 codec by the sender */
 	video: InputFile;
@@ -10892,7 +10902,7 @@ export type InputMessageVideo = TdObject & {
  * A video note message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_video_note.html
  */
-export type InputMessageVideoNote = TdObject & {
+export type InputMessageVideoNote = {
 	"@type": "inputMessageVideoNote";
 	/** Video note to be sent. The video is expected to be encoded to MPEG4 format with H.264 codec and have no data outside of the visible circle */
 	video_note: InputFile;
@@ -10910,7 +10920,7 @@ export type InputMessageVideoNote = TdObject & {
  * A voice note message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_voice_note.html
  */
-export type InputMessageVoiceNote = TdObject & {
+export type InputMessageVoiceNote = {
 	"@type": "inputMessageVoiceNote";
 	/** Voice note to be sent. The voice note must be encoded with the Opus codec and stored inside an OGG container with a single audio channel, or be in MP3 or M4A format as regular audio */
 	voice_note: InputFile;
@@ -10928,7 +10938,7 @@ export type InputMessageVoiceNote = TdObject & {
  * A message with a location
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_location.html
  */
-export type InputMessageLocation = TdObject & {
+export type InputMessageLocation = {
 	"@type": "inputMessageLocation";
 	/** Location to be sent */
 	location: Location;
@@ -10944,7 +10954,7 @@ export type InputMessageLocation = TdObject & {
  * A message with information about a venue
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_venue.html
  */
-export type InputMessageVenue = TdObject & {
+export type InputMessageVenue = {
 	"@type": "inputMessageVenue";
 	/** Venue to send */
 	venue: Venue;
@@ -10954,7 +10964,7 @@ export type InputMessageVenue = TdObject & {
  * A message containing a user contact
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_contact.html
  */
-export type InputMessageContact = TdObject & {
+export type InputMessageContact = {
 	"@type": "inputMessageContact";
 	/** Contact to send */
 	contact: Contact;
@@ -10964,7 +10974,7 @@ export type InputMessageContact = TdObject & {
  * A dice message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_dice.html
  */
-export type InputMessageDice = TdObject & {
+export type InputMessageDice = {
 	"@type": "inputMessageDice";
 	/** Emoji on which the dice throw animation is based */
 	emoji: string;
@@ -10976,7 +10986,7 @@ export type InputMessageDice = TdObject & {
  * A message with a game; not supported for channels or secret chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_game.html
  */
-export type InputMessageGame = TdObject & {
+export type InputMessageGame = {
 	"@type": "inputMessageGame";
 	/** User identifier of the bot that owns the game */
 	bot_user_id: number;
@@ -10988,7 +10998,7 @@ export type InputMessageGame = TdObject & {
  * A message with an invoice; can be used only by bots
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_invoice.html
  */
-export type InputMessageInvoice = TdObject & {
+export type InputMessageInvoice = {
 	"@type": "inputMessageInvoice";
 	/** Invoice */
 	invoice: Invoice;
@@ -11022,7 +11032,7 @@ export type InputMessageInvoice = TdObject & {
  * A message with a poll. Polls can't be sent to secret chats and channel direct messages chats. Polls can be sent to a private chat only if the chat is a chat with a bot or the Saved Messages chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_poll.html
  */
-export type InputMessagePoll = TdObject & {
+export type InputMessagePoll = {
 	"@type": "inputMessagePoll";
 	/** Poll question; 1-255 characters (up to 300 characters for bots). Only custom emoji entities are allowed to be added and only by Premium users */
 	question: FormattedText;
@@ -11044,7 +11054,7 @@ export type InputMessagePoll = TdObject & {
  * A message with a forwarded story. Stories can't be forwarded to secret chats. A story can be forwarded only if story.can_be_forwarded
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_story.html
  */
-export type InputMessageStory = TdObject & {
+export type InputMessageStory = {
 	"@type": "inputMessageStory";
 	/** Identifier of the chat that posted the story */
 	story_poster_chat_id: number;
@@ -11056,7 +11066,7 @@ export type InputMessageStory = TdObject & {
  * A forwarded message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_message_forwarded.html
  */
-export type InputMessageForwarded = TdObject & {
+export type InputMessageForwarded = {
 	"@type": "inputMessageForwarded";
 	/** Identifier for the chat this forwarded message came from */
 	from_chat_id: number;
@@ -11076,7 +11086,7 @@ export type InputMessageForwarded = TdObject & {
  * Contains properties of a message and describes actions that can be done with the message right now
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_properties.html
  */
-export type MessageProperties = TdObject & {
+export type MessageProperties = {
 	"@type": "messageProperties";
 	/** True, if content of the message can be copied using inputMessageForwarded or forwardMessages with copy options */
 	can_be_copied: boolean;
@@ -11140,7 +11150,7 @@ export type MessageProperties = TdObject & {
  * Returns all found messages, no filter is applied
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_empty.html
  */
-export type SearchMessagesFilterEmpty = TdObject & {
+export type SearchMessagesFilterEmpty = {
 	"@type": "searchMessagesFilterEmpty";
 };
 
@@ -11148,7 +11158,7 @@ export type SearchMessagesFilterEmpty = TdObject & {
  * Returns only animation messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_animation.html
  */
-export type SearchMessagesFilterAnimation = TdObject & {
+export type SearchMessagesFilterAnimation = {
 	"@type": "searchMessagesFilterAnimation";
 };
 
@@ -11156,7 +11166,7 @@ export type SearchMessagesFilterAnimation = TdObject & {
  * Returns only audio messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_audio.html
  */
-export type SearchMessagesFilterAudio = TdObject & {
+export type SearchMessagesFilterAudio = {
 	"@type": "searchMessagesFilterAudio";
 };
 
@@ -11164,7 +11174,7 @@ export type SearchMessagesFilterAudio = TdObject & {
  * Returns only document messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_document.html
  */
-export type SearchMessagesFilterDocument = TdObject & {
+export type SearchMessagesFilterDocument = {
 	"@type": "searchMessagesFilterDocument";
 };
 
@@ -11172,7 +11182,7 @@ export type SearchMessagesFilterDocument = TdObject & {
  * Returns only photo messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_photo.html
  */
-export type SearchMessagesFilterPhoto = TdObject & {
+export type SearchMessagesFilterPhoto = {
 	"@type": "searchMessagesFilterPhoto";
 };
 
@@ -11180,7 +11190,7 @@ export type SearchMessagesFilterPhoto = TdObject & {
  * Returns only video messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_video.html
  */
-export type SearchMessagesFilterVideo = TdObject & {
+export type SearchMessagesFilterVideo = {
 	"@type": "searchMessagesFilterVideo";
 };
 
@@ -11188,7 +11198,7 @@ export type SearchMessagesFilterVideo = TdObject & {
  * Returns only voice note messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_voice_note.html
  */
-export type SearchMessagesFilterVoiceNote = TdObject & {
+export type SearchMessagesFilterVoiceNote = {
 	"@type": "searchMessagesFilterVoiceNote";
 };
 
@@ -11196,7 +11206,7 @@ export type SearchMessagesFilterVoiceNote = TdObject & {
  * Returns only photo and video messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_photo_and_video.html
  */
-export type SearchMessagesFilterPhotoAndVideo = TdObject & {
+export type SearchMessagesFilterPhotoAndVideo = {
 	"@type": "searchMessagesFilterPhotoAndVideo";
 };
 
@@ -11204,7 +11214,7 @@ export type SearchMessagesFilterPhotoAndVideo = TdObject & {
  * Returns only messages containing URLs
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_url.html
  */
-export type SearchMessagesFilterUrl = TdObject & {
+export type SearchMessagesFilterUrl = {
 	"@type": "searchMessagesFilterUrl";
 };
 
@@ -11212,7 +11222,7 @@ export type SearchMessagesFilterUrl = TdObject & {
  * Returns only messages containing chat photos
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_chat_photo.html
  */
-export type SearchMessagesFilterChatPhoto = TdObject & {
+export type SearchMessagesFilterChatPhoto = {
 	"@type": "searchMessagesFilterChatPhoto";
 };
 
@@ -11220,7 +11230,7 @@ export type SearchMessagesFilterChatPhoto = TdObject & {
  * Returns only video note messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_video_note.html
  */
-export type SearchMessagesFilterVideoNote = TdObject & {
+export type SearchMessagesFilterVideoNote = {
 	"@type": "searchMessagesFilterVideoNote";
 };
 
@@ -11228,7 +11238,7 @@ export type SearchMessagesFilterVideoNote = TdObject & {
  * Returns only voice and video note messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_voice_and_video_note.html
  */
-export type SearchMessagesFilterVoiceAndVideoNote = TdObject & {
+export type SearchMessagesFilterVoiceAndVideoNote = {
 	"@type": "searchMessagesFilterVoiceAndVideoNote";
 };
 
@@ -11236,7 +11246,7 @@ export type SearchMessagesFilterVoiceAndVideoNote = TdObject & {
  * Returns only messages with mentions of the current user, or messages that are replies to their messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_mention.html
  */
-export type SearchMessagesFilterMention = TdObject & {
+export type SearchMessagesFilterMention = {
 	"@type": "searchMessagesFilterMention";
 };
 
@@ -11244,7 +11254,7 @@ export type SearchMessagesFilterMention = TdObject & {
  * Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_mention.html
  */
-export type SearchMessagesFilterUnreadMention = TdObject & {
+export type SearchMessagesFilterUnreadMention = {
 	"@type": "searchMessagesFilterUnreadMention";
 };
 
@@ -11252,7 +11262,7 @@ export type SearchMessagesFilterUnreadMention = TdObject & {
  * Returns only messages with unread reactions for the current user. When using this filter the results can't be additionally filtered by a query, a message thread or by the sending user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_unread_reaction.html
  */
-export type SearchMessagesFilterUnreadReaction = TdObject & {
+export type SearchMessagesFilterUnreadReaction = {
 	"@type": "searchMessagesFilterUnreadReaction";
 };
 
@@ -11260,7 +11270,7 @@ export type SearchMessagesFilterUnreadReaction = TdObject & {
  * Returns only failed to send messages. This filter can be used only if the message database is used
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_failed_to_send.html
  */
-export type SearchMessagesFilterFailedToSend = TdObject & {
+export type SearchMessagesFilterFailedToSend = {
 	"@type": "searchMessagesFilterFailedToSend";
 };
 
@@ -11268,7 +11278,7 @@ export type SearchMessagesFilterFailedToSend = TdObject & {
  * Returns only pinned messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_filter_pinned.html
  */
-export type SearchMessagesFilterPinned = TdObject & {
+export type SearchMessagesFilterPinned = {
 	"@type": "searchMessagesFilterPinned";
 };
 
@@ -11276,7 +11286,7 @@ export type SearchMessagesFilterPinned = TdObject & {
  * Returns only messages in private chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_chat_type_filter_private.html
  */
-export type SearchMessagesChatTypeFilterPrivate = TdObject & {
+export type SearchMessagesChatTypeFilterPrivate = {
 	"@type": "searchMessagesChatTypeFilterPrivate";
 };
 
@@ -11284,7 +11294,7 @@ export type SearchMessagesChatTypeFilterPrivate = TdObject & {
  * Returns only messages in basic group and supergroup chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_chat_type_filter_group.html
  */
-export type SearchMessagesChatTypeFilterGroup = TdObject & {
+export type SearchMessagesChatTypeFilterGroup = {
 	"@type": "searchMessagesChatTypeFilterGroup";
 };
 
@@ -11292,7 +11302,7 @@ export type SearchMessagesChatTypeFilterGroup = TdObject & {
  * Returns only messages in channel chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1search_messages_chat_type_filter_channel.html
  */
-export type SearchMessagesChatTypeFilterChannel = TdObject & {
+export type SearchMessagesChatTypeFilterChannel = {
 	"@type": "searchMessagesChatTypeFilterChannel";
 };
 
@@ -11300,7 +11310,7 @@ export type SearchMessagesChatTypeFilterChannel = TdObject & {
  * The user is typing a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_typing.html
  */
-export type ChatActionTyping = TdObject & {
+export type ChatActionTyping = {
 	"@type": "chatActionTyping";
 };
 
@@ -11308,7 +11318,7 @@ export type ChatActionTyping = TdObject & {
  * The user is recording a video
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_recording_video.html
  */
-export type ChatActionRecordingVideo = TdObject & {
+export type ChatActionRecordingVideo = {
 	"@type": "chatActionRecordingVideo";
 };
 
@@ -11316,7 +11326,7 @@ export type ChatActionRecordingVideo = TdObject & {
  * The user is uploading a video
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_uploading_video.html
  */
-export type ChatActionUploadingVideo = TdObject & {
+export type ChatActionUploadingVideo = {
 	"@type": "chatActionUploadingVideo";
 	/** Upload progress, as a percentage */
 	progress: number;
@@ -11326,7 +11336,7 @@ export type ChatActionUploadingVideo = TdObject & {
  * The user is recording a voice note
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_recording_voice_note.html
  */
-export type ChatActionRecordingVoiceNote = TdObject & {
+export type ChatActionRecordingVoiceNote = {
 	"@type": "chatActionRecordingVoiceNote";
 };
 
@@ -11334,7 +11344,7 @@ export type ChatActionRecordingVoiceNote = TdObject & {
  * The user is uploading a voice note
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_uploading_voice_note.html
  */
-export type ChatActionUploadingVoiceNote = TdObject & {
+export type ChatActionUploadingVoiceNote = {
 	"@type": "chatActionUploadingVoiceNote";
 	/** Upload progress, as a percentage */
 	progress: number;
@@ -11344,7 +11354,7 @@ export type ChatActionUploadingVoiceNote = TdObject & {
  * The user is uploading a photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_uploading_photo.html
  */
-export type ChatActionUploadingPhoto = TdObject & {
+export type ChatActionUploadingPhoto = {
 	"@type": "chatActionUploadingPhoto";
 	/** Upload progress, as a percentage */
 	progress: number;
@@ -11354,7 +11364,7 @@ export type ChatActionUploadingPhoto = TdObject & {
  * The user is uploading a document
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_uploading_document.html
  */
-export type ChatActionUploadingDocument = TdObject & {
+export type ChatActionUploadingDocument = {
 	"@type": "chatActionUploadingDocument";
 	/** Upload progress, as a percentage */
 	progress: number;
@@ -11364,7 +11374,7 @@ export type ChatActionUploadingDocument = TdObject & {
  * The user is picking a sticker to send
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_choosing_sticker.html
  */
-export type ChatActionChoosingSticker = TdObject & {
+export type ChatActionChoosingSticker = {
 	"@type": "chatActionChoosingSticker";
 };
 
@@ -11372,7 +11382,7 @@ export type ChatActionChoosingSticker = TdObject & {
  * The user is picking a location or venue to send
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_choosing_location.html
  */
-export type ChatActionChoosingLocation = TdObject & {
+export type ChatActionChoosingLocation = {
 	"@type": "chatActionChoosingLocation";
 };
 
@@ -11380,7 +11390,7 @@ export type ChatActionChoosingLocation = TdObject & {
  * The user is picking a contact to send
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_choosing_contact.html
  */
-export type ChatActionChoosingContact = TdObject & {
+export type ChatActionChoosingContact = {
 	"@type": "chatActionChoosingContact";
 };
 
@@ -11388,7 +11398,7 @@ export type ChatActionChoosingContact = TdObject & {
  * The user has started to play a game
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_start_playing_game.html
  */
-export type ChatActionStartPlayingGame = TdObject & {
+export type ChatActionStartPlayingGame = {
 	"@type": "chatActionStartPlayingGame";
 };
 
@@ -11396,7 +11406,7 @@ export type ChatActionStartPlayingGame = TdObject & {
  * The user is recording a video note
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_recording_video_note.html
  */
-export type ChatActionRecordingVideoNote = TdObject & {
+export type ChatActionRecordingVideoNote = {
 	"@type": "chatActionRecordingVideoNote";
 };
 
@@ -11404,7 +11414,7 @@ export type ChatActionRecordingVideoNote = TdObject & {
  * The user is uploading a video note
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_uploading_video_note.html
  */
-export type ChatActionUploadingVideoNote = TdObject & {
+export type ChatActionUploadingVideoNote = {
 	"@type": "chatActionUploadingVideoNote";
 	/** Upload progress, as a percentage */
 	progress: number;
@@ -11414,7 +11424,7 @@ export type ChatActionUploadingVideoNote = TdObject & {
  * The user is watching animations sent by the other party by clicking on an animated emoji
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_watching_animations.html
  */
-export type ChatActionWatchingAnimations = TdObject & {
+export type ChatActionWatchingAnimations = {
 	"@type": "chatActionWatchingAnimations";
 	/** The animated emoji */
 	emoji: string;
@@ -11424,7 +11434,7 @@ export type ChatActionWatchingAnimations = TdObject & {
  * The user has canceled the previous action
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_action_cancel.html
  */
-export type ChatActionCancel = TdObject & {
+export type ChatActionCancel = {
 	"@type": "chatActionCancel";
 };
 
@@ -11432,7 +11442,7 @@ export type ChatActionCancel = TdObject & {
  * The user's status has never been changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_status_empty.html
  */
-export type UserStatusEmpty = TdObject & {
+export type UserStatusEmpty = {
 	"@type": "userStatusEmpty";
 };
 
@@ -11440,7 +11450,7 @@ export type UserStatusEmpty = TdObject & {
  * The user is online
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_status_online.html
  */
-export type UserStatusOnline = TdObject & {
+export type UserStatusOnline = {
 	"@type": "userStatusOnline";
 	/** Point in time (Unix timestamp) when the user's online status will expire */
 	expires: number;
@@ -11450,7 +11460,7 @@ export type UserStatusOnline = TdObject & {
  * The user is offline
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_status_offline.html
  */
-export type UserStatusOffline = TdObject & {
+export type UserStatusOffline = {
 	"@type": "userStatusOffline";
 	/** Point in time (Unix timestamp) when the user was last online */
 	was_online: number;
@@ -11460,7 +11470,7 @@ export type UserStatusOffline = TdObject & {
  * The user was online recently
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_status_recently.html
  */
-export type UserStatusRecently = TdObject & {
+export type UserStatusRecently = {
 	"@type": "userStatusRecently";
 	/** Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium */
 	by_my_privacy_settings: boolean;
@@ -11470,7 +11480,7 @@ export type UserStatusRecently = TdObject & {
  * The user is offline, but was online last week
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_status_last_week.html
  */
-export type UserStatusLastWeek = TdObject & {
+export type UserStatusLastWeek = {
 	"@type": "userStatusLastWeek";
 	/** Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium */
 	by_my_privacy_settings: boolean;
@@ -11480,7 +11490,7 @@ export type UserStatusLastWeek = TdObject & {
  * The user is offline, but was online last month
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_status_last_month.html
  */
-export type UserStatusLastMonth = TdObject & {
+export type UserStatusLastMonth = {
 	"@type": "userStatusLastMonth";
 	/** Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium */
 	by_my_privacy_settings: boolean;
@@ -11490,7 +11500,7 @@ export type UserStatusLastMonth = TdObject & {
  * Represents an emoji with its keyword
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_keyword.html
  */
-export type EmojiKeyword = TdObject & {
+export type EmojiKeyword = {
 	"@type": "emojiKeyword";
 	/** The emoji */
 	emoji: string;
@@ -11502,7 +11512,7 @@ export type EmojiKeyword = TdObject & {
  * Represents a list of emojis with their keywords
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_keywords.html
  */
-export type EmojiKeywords = TdObject & {
+export type EmojiKeywords = {
 	"@type": "emojiKeywords";
 	/** List of emojis with their keywords */
 	emoji_keywords: EmojiKeyword[];
@@ -11512,7 +11522,7 @@ export type EmojiKeywords = TdObject & {
  * Represents a list of stickers
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1stickers.html
  */
-export type Stickers = TdObject & {
+export type Stickers = {
 	"@type": "stickers";
 	/** List of stickers */
 	stickers: Sticker[];
@@ -11522,7 +11532,7 @@ export type Stickers = TdObject & {
  * Represents a list of emojis
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emojis.html
  */
-export type Emojis = TdObject & {
+export type Emojis = {
 	"@type": "emojis";
 	/** List of emojis */
 	emojis: string[];
@@ -11532,7 +11542,7 @@ export type Emojis = TdObject & {
  * Represents a sticker set
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_set.html
  */
-export type StickerSet = TdObject & {
+export type StickerSet = {
 	"@type": "stickerSet";
 	/** Identifier of the sticker set */
 	id: string;
@@ -11570,7 +11580,7 @@ export type StickerSet = TdObject & {
  * Represents short information about a sticker set
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_set_info.html
  */
-export type StickerSetInfo = TdObject & {
+export type StickerSetInfo = {
 	"@type": "stickerSetInfo";
 	/** Identifier of the sticker set */
 	id: string;
@@ -11608,7 +11618,7 @@ export type StickerSetInfo = TdObject & {
  * Represents a list of sticker sets
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sticker_sets.html
  */
-export type StickerSets = TdObject & {
+export type StickerSets = {
 	"@type": "stickerSets";
 	/** Approximate total number of sticker sets found */
 	total_count: number;
@@ -11620,7 +11630,7 @@ export type StickerSets = TdObject & {
  * Represents a list of trending sticker sets
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1trending_sticker_sets.html
  */
-export type TrendingStickerSets = TdObject & {
+export type TrendingStickerSets = {
 	"@type": "trendingStickerSets";
 	/** Approximate total number of trending sticker sets */
 	total_count: number;
@@ -11634,7 +11644,7 @@ export type TrendingStickerSets = TdObject & {
  * The category contains a list of similar emoji to search for in getStickers and searchStickers for stickers, or getInlineQueryResults with the bot getOption("animation_search_bot_username") for animations
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_category_source_search.html
  */
-export type EmojiCategorySourceSearch = TdObject & {
+export type EmojiCategorySourceSearch = {
 	"@type": "emojiCategorySourceSearch";
 	/** List of emojis to search for */
 	emojis: string[];
@@ -11644,7 +11654,7 @@ export type EmojiCategorySourceSearch = TdObject & {
  * The category contains premium stickers that must be found by getPremiumStickers
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_category_source_premium.html
  */
-export type EmojiCategorySourcePremium = TdObject & {
+export type EmojiCategorySourcePremium = {
 	"@type": "emojiCategorySourcePremium";
 };
 
@@ -11652,7 +11662,7 @@ export type EmojiCategorySourcePremium = TdObject & {
  * Describes an emoji category
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_category.html
  */
-export type EmojiCategory = TdObject & {
+export type EmojiCategory = {
 	"@type": "emojiCategory";
 	/** Name of the category */
 	name: string;
@@ -11668,7 +11678,7 @@ export type EmojiCategory = TdObject & {
  * Represents a list of emoji categories
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_categories.html
  */
-export type EmojiCategories = TdObject & {
+export type EmojiCategories = {
 	"@type": "emojiCategories";
 	/** List of categories */
 	categories: EmojiCategory[];
@@ -11678,7 +11688,7 @@ export type EmojiCategories = TdObject & {
  * The category must be used by default (e.g., for custom emoji or animation search)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_category_type_default.html
  */
-export type EmojiCategoryTypeDefault = TdObject & {
+export type EmojiCategoryTypeDefault = {
 	"@type": "emojiCategoryTypeDefault";
 };
 
@@ -11686,7 +11696,7 @@ export type EmojiCategoryTypeDefault = TdObject & {
  * The category must be used by default for regular sticker selection. It may contain greeting emoji category and premium stickers
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_category_type_regular_stickers.html
  */
-export type EmojiCategoryTypeRegularStickers = TdObject & {
+export type EmojiCategoryTypeRegularStickers = {
 	"@type": "emojiCategoryTypeRegularStickers";
 };
 
@@ -11694,7 +11704,7 @@ export type EmojiCategoryTypeRegularStickers = TdObject & {
  * The category must be used for emoji status selection
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_category_type_emoji_status.html
  */
-export type EmojiCategoryTypeEmojiStatus = TdObject & {
+export type EmojiCategoryTypeEmojiStatus = {
 	"@type": "emojiCategoryTypeEmojiStatus";
 };
 
@@ -11702,7 +11712,7 @@ export type EmojiCategoryTypeEmojiStatus = TdObject & {
  * The category must be used for chat photo emoji selection
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_category_type_chat_photo.html
  */
-export type EmojiCategoryTypeChatPhoto = TdObject & {
+export type EmojiCategoryTypeChatPhoto = {
 	"@type": "emojiCategoryTypeChatPhoto";
 };
 
@@ -11710,7 +11720,7 @@ export type EmojiCategoryTypeChatPhoto = TdObject & {
  * Describes the current weather
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1current_weather.html
  */
-export type CurrentWeather = TdObject & {
+export type CurrentWeather = {
 	"@type": "currentWeather";
 	/** Temperature, in degree Celsius */
 	temperature: number;
@@ -11722,7 +11732,7 @@ export type CurrentWeather = TdObject & {
  * Describes position of a clickable rectangle area on a story media
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_area_position.html
  */
-export type StoryAreaPosition = TdObject & {
+export type StoryAreaPosition = {
 	"@type": "storyAreaPosition";
 	/** The abscissa of the rectangle's center, as a percentage of the media width */
 	x_percentage: number;
@@ -11742,7 +11752,7 @@ export type StoryAreaPosition = TdObject & {
  * An area pointing to a location
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_area_type_location.html
  */
-export type StoryAreaTypeLocation = TdObject & {
+export type StoryAreaTypeLocation = {
 	"@type": "storyAreaTypeLocation";
 	/** The location */
 	location: Location;
@@ -11754,7 +11764,7 @@ export type StoryAreaTypeLocation = TdObject & {
  * An area pointing to a venue
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_area_type_venue.html
  */
-export type StoryAreaTypeVenue = TdObject & {
+export type StoryAreaTypeVenue = {
 	"@type": "storyAreaTypeVenue";
 	/** Information about the venue */
 	venue: Venue;
@@ -11764,7 +11774,7 @@ export type StoryAreaTypeVenue = TdObject & {
  * An area pointing to a suggested reaction. App needs to show a clickable reaction on the area and call setStoryReaction when the are is clicked
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_area_type_suggested_reaction.html
  */
-export type StoryAreaTypeSuggestedReaction = TdObject & {
+export type StoryAreaTypeSuggestedReaction = {
 	"@type": "storyAreaTypeSuggestedReaction";
 	/** Type of the reaction */
 	reaction_type: ReactionType;
@@ -11780,7 +11790,7 @@ export type StoryAreaTypeSuggestedReaction = TdObject & {
  * An area pointing to a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_area_type_message.html
  */
-export type StoryAreaTypeMessage = TdObject & {
+export type StoryAreaTypeMessage = {
 	"@type": "storyAreaTypeMessage";
 	/** Identifier of the chat with the message */
 	chat_id: number;
@@ -11792,7 +11802,7 @@ export type StoryAreaTypeMessage = TdObject & {
  * An area pointing to a HTTP or tg:// link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_area_type_link.html
  */
-export type StoryAreaTypeLink = TdObject & {
+export type StoryAreaTypeLink = {
 	"@type": "storyAreaTypeLink";
 	/** HTTP or tg:// URL to be opened when the area is clicked */
 	url: string;
@@ -11802,7 +11812,7 @@ export type StoryAreaTypeLink = TdObject & {
  * An area with information about weather
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_area_type_weather.html
  */
-export type StoryAreaTypeWeather = TdObject & {
+export type StoryAreaTypeWeather = {
 	"@type": "storyAreaTypeWeather";
 	/** Temperature, in degree Celsius */
 	temperature: number;
@@ -11816,7 +11826,7 @@ export type StoryAreaTypeWeather = TdObject & {
  * An area with an upgraded gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_area_type_upgraded_gift.html
  */
-export type StoryAreaTypeUpgradedGift = TdObject & {
+export type StoryAreaTypeUpgradedGift = {
 	"@type": "storyAreaTypeUpgradedGift";
 	/** Unique name of the upgraded gift */
 	gift_name: string;
@@ -11826,7 +11836,7 @@ export type StoryAreaTypeUpgradedGift = TdObject & {
  * Describes a clickable rectangle area on a story media
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_area.html
  */
-export type StoryArea = TdObject & {
+export type StoryArea = {
 	"@type": "storyArea";
 	/** Position of the area */
 	position: StoryAreaPosition;
@@ -11838,7 +11848,7 @@ export type StoryArea = TdObject & {
  * An area pointing to a location
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area_type_location.html
  */
-export type InputStoryAreaTypeLocation = TdObject & {
+export type InputStoryAreaTypeLocation = {
 	"@type": "inputStoryAreaTypeLocation";
 	/** The location */
 	location: Location;
@@ -11850,7 +11860,7 @@ export type InputStoryAreaTypeLocation = TdObject & {
  * An area pointing to a venue found by the bot getOption("venue_search_bot_username")
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area_type_found_venue.html
  */
-export type InputStoryAreaTypeFoundVenue = TdObject & {
+export type InputStoryAreaTypeFoundVenue = {
 	"@type": "inputStoryAreaTypeFoundVenue";
 	/** Identifier of the inline query, used to found the venue */
 	query_id: string;
@@ -11862,7 +11872,7 @@ export type InputStoryAreaTypeFoundVenue = TdObject & {
  * An area pointing to a venue already added to the story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area_type_previous_venue.html
  */
-export type InputStoryAreaTypePreviousVenue = TdObject & {
+export type InputStoryAreaTypePreviousVenue = {
 	"@type": "inputStoryAreaTypePreviousVenue";
 	/** Provider of the venue */
 	venue_provider: string;
@@ -11874,7 +11884,7 @@ export type InputStoryAreaTypePreviousVenue = TdObject & {
  * An area pointing to a suggested reaction
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area_type_suggested_reaction.html
  */
-export type InputStoryAreaTypeSuggestedReaction = TdObject & {
+export type InputStoryAreaTypeSuggestedReaction = {
 	"@type": "inputStoryAreaTypeSuggestedReaction";
 	/** Type of the reaction */
 	reaction_type: ReactionType;
@@ -11888,7 +11898,7 @@ export type InputStoryAreaTypeSuggestedReaction = TdObject & {
  * An area pointing to a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area_type_message.html
  */
-export type InputStoryAreaTypeMessage = TdObject & {
+export type InputStoryAreaTypeMessage = {
 	"@type": "inputStoryAreaTypeMessage";
 	/** Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat */
 	chat_id: number;
@@ -11900,7 +11910,7 @@ export type InputStoryAreaTypeMessage = TdObject & {
  * An area pointing to a HTTP or tg:// link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area_type_link.html
  */
-export type InputStoryAreaTypeLink = TdObject & {
+export type InputStoryAreaTypeLink = {
 	"@type": "inputStoryAreaTypeLink";
 	/** HTTP or tg:// URL to be opened when the area is clicked */
 	url: string;
@@ -11910,7 +11920,7 @@ export type InputStoryAreaTypeLink = TdObject & {
  * An area with information about weather
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area_type_weather.html
  */
-export type InputStoryAreaTypeWeather = TdObject & {
+export type InputStoryAreaTypeWeather = {
 	"@type": "inputStoryAreaTypeWeather";
 	/** Temperature, in degree Celsius */
 	temperature: number;
@@ -11924,7 +11934,7 @@ export type InputStoryAreaTypeWeather = TdObject & {
  * An area with an upgraded gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area_type_upgraded_gift.html
  */
-export type InputStoryAreaTypeUpgradedGift = TdObject & {
+export type InputStoryAreaTypeUpgradedGift = {
 	"@type": "inputStoryAreaTypeUpgradedGift";
 	/** Unique name of the upgraded gift */
 	gift_name: string;
@@ -11934,7 +11944,7 @@ export type InputStoryAreaTypeUpgradedGift = TdObject & {
  * Describes a clickable rectangle area on a story media to be added
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_area.html
  */
-export type InputStoryArea = TdObject & {
+export type InputStoryArea = {
 	"@type": "inputStoryArea";
 	/** Position of the area */
 	position: StoryAreaPosition;
@@ -11946,7 +11956,7 @@ export type InputStoryArea = TdObject & {
  * Contains a list of story areas to be added
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_areas.html
  */
-export type InputStoryAreas = TdObject & {
+export type InputStoryAreas = {
 	"@type": "inputStoryAreas";
 	/** List of input story areas. Currently, a story can have up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas, up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas, up to 1 inputStoryAreaTypeMessage area, up to getOption("story_link_area_count_max") inputStoryAreaTypeLink areas if the current user is a Telegram Premium user, up to 3 inputStoryAreaTypeWeather areas, and up to 1 inputStoryAreaTypeUpgradedGift area */
 	areas: InputStoryArea[];
@@ -11956,7 +11966,7 @@ export type InputStoryAreas = TdObject & {
  * Describes a video file posted as a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_video.html
  */
-export type StoryVideo = TdObject & {
+export type StoryVideo = {
 	"@type": "storyVideo";
 	/** Duration of the video, in seconds */
 	duration: number;
@@ -11984,7 +11994,7 @@ export type StoryVideo = TdObject & {
  * A photo story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_content_photo.html
  */
-export type StoryContentPhoto = TdObject & {
+export type StoryContentPhoto = {
 	"@type": "storyContentPhoto";
 	/** The photo */
 	photo: Photo;
@@ -11994,7 +12004,7 @@ export type StoryContentPhoto = TdObject & {
  * A video story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_content_video.html
  */
-export type StoryContentVideo = TdObject & {
+export type StoryContentVideo = {
 	"@type": "storyContentVideo";
 	/** The video in MPEG4 format */
 	video: StoryVideo;
@@ -12006,7 +12016,7 @@ export type StoryContentVideo = TdObject & {
  * A story content that is not supported in the current TDLib version
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_content_unsupported.html
  */
-export type StoryContentUnsupported = TdObject & {
+export type StoryContentUnsupported = {
 	"@type": "storyContentUnsupported";
 };
 
@@ -12014,7 +12024,7 @@ export type StoryContentUnsupported = TdObject & {
  * A photo story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_content_photo.html
  */
-export type InputStoryContentPhoto = TdObject & {
+export type InputStoryContentPhoto = {
 	"@type": "inputStoryContentPhoto";
 	/** Photo to send. The photo must be at most 10 MB in size. The photo size must be 1080x1920 */
 	photo: InputFile;
@@ -12026,7 +12036,7 @@ export type InputStoryContentPhoto = TdObject & {
  * A video story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_story_content_video.html
  */
-export type InputStoryContentVideo = TdObject & {
+export type InputStoryContentVideo = {
 	"@type": "inputStoryContentVideo";
 	/** Video to be sent. The video size must be 720x1280. The video must be streamable and stored in MPEG4 format, after encoding with H.265 codec and key frames added each second */
 	video: InputFile;
@@ -12044,7 +12054,7 @@ export type InputStoryContentVideo = TdObject & {
  * The list of stories, shown in the main chat list and folder chat lists
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_list_main.html
  */
-export type StoryListMain = TdObject & {
+export type StoryListMain = {
 	"@type": "storyListMain";
 };
 
@@ -12052,7 +12062,7 @@ export type StoryListMain = TdObject & {
  * The list of stories, shown in the Arvhive chat list
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_list_archive.html
  */
-export type StoryListArchive = TdObject & {
+export type StoryListArchive = {
 	"@type": "storyListArchive";
 };
 
@@ -12060,7 +12070,7 @@ export type StoryListArchive = TdObject & {
  * The original story was a public story that was posted by a known chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_origin_public_story.html
  */
-export type StoryOriginPublicStory = TdObject & {
+export type StoryOriginPublicStory = {
 	"@type": "storyOriginPublicStory";
 	/** Identifier of the chat that posted original story */
 	chat_id: number;
@@ -12072,7 +12082,7 @@ export type StoryOriginPublicStory = TdObject & {
  * The original story was posted by an unknown user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_origin_hidden_user.html
  */
-export type StoryOriginHiddenUser = TdObject & {
+export type StoryOriginHiddenUser = {
 	"@type": "storyOriginHiddenUser";
 	/** Name of the user or the chat that posted the story */
 	poster_name: string;
@@ -12082,7 +12092,7 @@ export type StoryOriginHiddenUser = TdObject & {
  * Contains information about original story that was reposted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_repost_info.html
  */
-export type StoryRepostInfo = TdObject & {
+export type StoryRepostInfo = {
 	"@type": "storyRepostInfo";
 	/** Origin of the story that was reposted */
 	origin: StoryOrigin;
@@ -12094,7 +12104,7 @@ export type StoryRepostInfo = TdObject & {
  * Contains information about interactions with a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_interaction_info.html
  */
-export type StoryInteractionInfo = TdObject & {
+export type StoryInteractionInfo = {
 	"@type": "storyInteractionInfo";
 	/** Number of times the story was viewed */
 	view_count: number;
@@ -12110,7 +12120,7 @@ export type StoryInteractionInfo = TdObject & {
  * Represents a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story.html
  */
-export type Story = TdObject & {
+export type Story = {
 	"@type": "story";
 	/** Unique story identifier among stories posted by the given chat */
 	id: number;
@@ -12166,7 +12176,7 @@ export type Story = TdObject & {
  * Represents a list of stories
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1stories.html
  */
-export type Stories = TdObject & {
+export type Stories = {
 	"@type": "stories";
 	/** Approximate total number of stories found */
 	total_count: number;
@@ -12180,7 +12190,7 @@ export type Stories = TdObject & {
  * Contains a list of stories found by a search
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_stories.html
  */
-export type FoundStories = TdObject & {
+export type FoundStories = {
 	"@type": "foundStories";
 	/** Approximate total number of stories found */
 	total_count: number;
@@ -12194,7 +12204,7 @@ export type FoundStories = TdObject & {
  * Contains identifier of a story along with identifier of the chat that posted it
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_full_id.html
  */
-export type StoryFullId = TdObject & {
+export type StoryFullId = {
 	"@type": "storyFullId";
 	/** Identifier of the chat that posted the story */
 	poster_chat_id: number;
@@ -12206,7 +12216,7 @@ export type StoryFullId = TdObject & {
  * Contains basic information about a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_info.html
  */
-export type StoryInfo = TdObject & {
+export type StoryInfo = {
 	"@type": "storyInfo";
 	/** Unique story identifier among stories of the chat */
 	story_id: number;
@@ -12220,7 +12230,7 @@ export type StoryInfo = TdObject & {
  * Describes active stories posted by a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_active_stories.html
  */
-export type ChatActiveStories = TdObject & {
+export type ChatActiveStories = {
 	"@type": "chatActiveStories";
 	/** Identifier of the chat that posted the stories */
 	chat_id: number;
@@ -12238,7 +12248,7 @@ export type ChatActiveStories = TdObject & {
  * A view of the story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_interaction_type_view.html
  */
-export type StoryInteractionTypeView = TdObject & {
+export type StoryInteractionTypeView = {
 	"@type": "storyInteractionTypeView";
 	/** Type of the reaction that was chosen by the viewer; may be null if none */
 	chosen_reaction_type?: ReactionType;
@@ -12248,7 +12258,7 @@ export type StoryInteractionTypeView = TdObject & {
  * A forward of the story as a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_interaction_type_forward.html
  */
-export type StoryInteractionTypeForward = TdObject & {
+export type StoryInteractionTypeForward = {
 	"@type": "storyInteractionTypeForward";
 	/** The message with story forward */
 	message: Message;
@@ -12258,7 +12268,7 @@ export type StoryInteractionTypeForward = TdObject & {
  * A repost of the story as a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_interaction_type_repost.html
  */
-export type StoryInteractionTypeRepost = TdObject & {
+export type StoryInteractionTypeRepost = {
 	"@type": "storyInteractionTypeRepost";
 	/** The reposted story */
 	story: Story;
@@ -12268,7 +12278,7 @@ export type StoryInteractionTypeRepost = TdObject & {
  * Represents interaction with a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_interaction.html
  */
-export type StoryInteraction = TdObject & {
+export type StoryInteraction = {
 	"@type": "storyInteraction";
 	/** Identifier of the user or chat that made the interaction */
 	actor_id: MessageSender;
@@ -12284,7 +12294,7 @@ export type StoryInteraction = TdObject & {
  * Represents a list of interactions with a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_interactions.html
  */
-export type StoryInteractions = TdObject & {
+export type StoryInteractions = {
 	"@type": "storyInteractions";
 	/** Approximate total number of interactions found */
 	total_count: number;
@@ -12302,7 +12312,7 @@ export type StoryInteractions = TdObject & {
  * Describes a message that can be used for quick reply
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1quick_reply_message.html
  */
-export type QuickReplyMessage = TdObject & {
+export type QuickReplyMessage = {
 	"@type": "quickReplyMessage";
 	/** Unique message identifier among all quick replies */
 	id: number;
@@ -12326,7 +12336,7 @@ export type QuickReplyMessage = TdObject & {
  * Contains a list of quick reply messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1quick_reply_messages.html
  */
-export type QuickReplyMessages = TdObject & {
+export type QuickReplyMessages = {
 	"@type": "quickReplyMessages";
 	/** List of quick reply messages; messages may be null */
 	messages: QuickReplyMessage[];
@@ -12336,7 +12346,7 @@ export type QuickReplyMessages = TdObject & {
  * Describes a shortcut that can be used for a quick reply
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1quick_reply_shortcut.html
  */
-export type QuickReplyShortcut = TdObject & {
+export type QuickReplyShortcut = {
 	"@type": "quickReplyShortcut";
 	/** Unique shortcut identifier */
 	id: number;
@@ -12352,7 +12362,7 @@ export type QuickReplyShortcut = TdObject & {
  * Contains a public forward as a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1public_forward_message.html
  */
-export type PublicForwardMessage = TdObject & {
+export type PublicForwardMessage = {
 	"@type": "publicForwardMessage";
 	/** Information about the message */
 	message: Message;
@@ -12362,7 +12372,7 @@ export type PublicForwardMessage = TdObject & {
  * Contains a public repost to a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1public_forward_story.html
  */
-export type PublicForwardStory = TdObject & {
+export type PublicForwardStory = {
 	"@type": "publicForwardStory";
 	/** Information about the story */
 	story: Story;
@@ -12372,7 +12382,7 @@ export type PublicForwardStory = TdObject & {
  * Represents a list of public forwards and reposts as a story of a message or a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1public_forwards.html
  */
-export type PublicForwards = TdObject & {
+export type PublicForwards = {
 	"@type": "publicForwards";
 	/** Approximate total number of messages and stories found */
 	total_count: number;
@@ -12386,7 +12396,7 @@ export type PublicForwards = TdObject & {
  * Describes media previews of a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_media_preview.html
  */
-export type BotMediaPreview = TdObject & {
+export type BotMediaPreview = {
 	"@type": "botMediaPreview";
 	/** Point in time (Unix timestamp) when the preview was added or changed last time */
 	date: number;
@@ -12398,7 +12408,7 @@ export type BotMediaPreview = TdObject & {
  * Contains a list of media previews of a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_media_previews.html
  */
-export type BotMediaPreviews = TdObject & {
+export type BotMediaPreviews = {
 	"@type": "botMediaPreviews";
 	/** List of media previews */
 	previews: BotMediaPreview[];
@@ -12408,7 +12418,7 @@ export type BotMediaPreviews = TdObject & {
  * Contains a list of media previews of a bot for the given language and the list of languages for which the bot has dedicated previews
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_media_preview_info.html
  */
-export type BotMediaPreviewInfo = TdObject & {
+export type BotMediaPreviewInfo = {
 	"@type": "botMediaPreviewInfo";
 	/** List of media previews */
 	previews: BotMediaPreview[];
@@ -12420,7 +12430,7 @@ export type BotMediaPreviewInfo = TdObject & {
  * Contains a list of features available on a specific chat boost level
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_level_features.html
  */
-export type ChatBoostLevelFeatures = TdObject & {
+export type ChatBoostLevelFeatures = {
 	"@type": "chatBoostLevelFeatures";
 	/** Target chat boost level */
 	level: number;
@@ -12458,7 +12468,7 @@ export type ChatBoostLevelFeatures = TdObject & {
  * Contains a list of features available on the first chat boost levels
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_features.html
  */
-export type ChatBoostFeatures = TdObject & {
+export type ChatBoostFeatures = {
 	"@type": "chatBoostFeatures";
 	/** The list of features */
 	features: ChatBoostLevelFeatures[];
@@ -12486,7 +12496,7 @@ export type ChatBoostFeatures = TdObject & {
  * The chat created a Telegram Premium gift code for a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_source_gift_code.html
  */
-export type ChatBoostSourceGiftCode = TdObject & {
+export type ChatBoostSourceGiftCode = {
 	"@type": "chatBoostSourceGiftCode";
 	/** Identifier of a user, for which the gift code was created */
 	user_id: number;
@@ -12498,7 +12508,7 @@ export type ChatBoostSourceGiftCode = TdObject & {
  * The chat created a giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_source_giveaway.html
  */
-export type ChatBoostSourceGiveaway = TdObject & {
+export type ChatBoostSourceGiveaway = {
 	"@type": "chatBoostSourceGiveaway";
 	/** Identifier of a user that won in the giveaway; 0 if none */
 	user_id: number;
@@ -12516,7 +12526,7 @@ export type ChatBoostSourceGiveaway = TdObject & {
  * A user with Telegram Premium subscription or gifted Telegram Premium boosted the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_source_premium.html
  */
-export type ChatBoostSourcePremium = TdObject & {
+export type ChatBoostSourcePremium = {
 	"@type": "chatBoostSourcePremium";
 	/** Identifier of the user */
 	user_id: number;
@@ -12526,7 +12536,7 @@ export type ChatBoostSourcePremium = TdObject & {
  * Describes a prepaid giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1prepaid_giveaway.html
  */
-export type PrepaidGiveaway = TdObject & {
+export type PrepaidGiveaway = {
 	"@type": "prepaidGiveaway";
 	/** Unique identifier of the prepaid giveaway */
 	id: string;
@@ -12544,7 +12554,7 @@ export type PrepaidGiveaway = TdObject & {
  * Describes current boost status of a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_status.html
  */
-export type ChatBoostStatus = TdObject & {
+export type ChatBoostStatus = {
 	"@type": "chatBoostStatus";
 	/** An HTTP URL, which can be used to boost the chat */
 	boost_url: string;
@@ -12572,7 +12582,7 @@ export type ChatBoostStatus = TdObject & {
  * Describes a boost applied to a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost.html
  */
-export type ChatBoost = TdObject & {
+export type ChatBoost = {
 	"@type": "chatBoost";
 	/** Unique identifier of the boost */
 	id: string;
@@ -12590,7 +12600,7 @@ export type ChatBoost = TdObject & {
  * Contains a list of boosts applied to a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_chat_boosts.html
  */
-export type FoundChatBoosts = TdObject & {
+export type FoundChatBoosts = {
 	"@type": "foundChatBoosts";
 	/** Total number of boosts applied to the chat */
 	total_count: number;
@@ -12604,7 +12614,7 @@ export type FoundChatBoosts = TdObject & {
  * Describes a slot for chat boost
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_slot.html
  */
-export type ChatBoostSlot = TdObject & {
+export type ChatBoostSlot = {
 	"@type": "chatBoostSlot";
 	/** Unique identifier of the slot */
 	slot_id: number;
@@ -12622,7 +12632,7 @@ export type ChatBoostSlot = TdObject & {
  * Contains a list of chat boost slots
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_slots.html
  */
-export type ChatBoostSlots = TdObject & {
+export type ChatBoostSlots = {
 	"@type": "chatBoostSlots";
 	/** List of boost slots */
 	slots: ChatBoostSlot[];
@@ -12632,7 +12642,7 @@ export type ChatBoostSlots = TdObject & {
  * The user requested to resend the code
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1resend_code_reason_user_request.html
  */
-export type ResendCodeReasonUserRequest = TdObject & {
+export type ResendCodeReasonUserRequest = {
 	"@type": "resendCodeReasonUserRequest";
 };
 
@@ -12640,7 +12650,7 @@ export type ResendCodeReasonUserRequest = TdObject & {
  * The code is re-sent, because device verification has failed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1resend_code_reason_verification_failed.html
  */
-export type ResendCodeReasonVerificationFailed = TdObject & {
+export type ResendCodeReasonVerificationFailed = {
 	"@type": "resendCodeReasonVerificationFailed";
 	/** Cause of the verification failure, for example, "PLAY_SERVICES_NOT_AVAILABLE", "APNS_RECEIVE_TIMEOUT", or "APNS_INIT_FAILED" */
 	error_message: string;
@@ -12650,7 +12660,7 @@ export type ResendCodeReasonVerificationFailed = TdObject & {
  * The call wasn't discarded, or the reason is unknown
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_discard_reason_empty.html
  */
-export type CallDiscardReasonEmpty = TdObject & {
+export type CallDiscardReasonEmpty = {
 	"@type": "callDiscardReasonEmpty";
 };
 
@@ -12658,7 +12668,7 @@ export type CallDiscardReasonEmpty = TdObject & {
  * The call was ended before the conversation started. It was canceled by the caller or missed by the other party
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_discard_reason_missed.html
  */
-export type CallDiscardReasonMissed = TdObject & {
+export type CallDiscardReasonMissed = {
 	"@type": "callDiscardReasonMissed";
 };
 
@@ -12666,7 +12676,7 @@ export type CallDiscardReasonMissed = TdObject & {
  * The call was ended before the conversation started. It was declined by the other party
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_discard_reason_declined.html
  */
-export type CallDiscardReasonDeclined = TdObject & {
+export type CallDiscardReasonDeclined = {
 	"@type": "callDiscardReasonDeclined";
 };
 
@@ -12674,7 +12684,7 @@ export type CallDiscardReasonDeclined = TdObject & {
  * The call was ended during the conversation because the users were disconnected
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_discard_reason_disconnected.html
  */
-export type CallDiscardReasonDisconnected = TdObject & {
+export type CallDiscardReasonDisconnected = {
 	"@type": "callDiscardReasonDisconnected";
 };
 
@@ -12682,7 +12692,7 @@ export type CallDiscardReasonDisconnected = TdObject & {
  * The call was ended because one of the parties hung up
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_discard_reason_hung_up.html
  */
-export type CallDiscardReasonHungUp = TdObject & {
+export type CallDiscardReasonHungUp = {
 	"@type": "callDiscardReasonHungUp";
 };
 
@@ -12690,7 +12700,7 @@ export type CallDiscardReasonHungUp = TdObject & {
  * The call was ended because it has been upgraded to a group call
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_discard_reason_upgrade_to_group_call.html
  */
-export type CallDiscardReasonUpgradeToGroupCall = TdObject & {
+export type CallDiscardReasonUpgradeToGroupCall = {
 	"@type": "callDiscardReasonUpgradeToGroupCall";
 	/** Invite link for the group call */
 	invite_link: string;
@@ -12700,7 +12710,7 @@ export type CallDiscardReasonUpgradeToGroupCall = TdObject & {
  * Specifies the supported call protocols
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_protocol.html
  */
-export type CallProtocol = TdObject & {
+export type CallProtocol = {
 	"@type": "callProtocol";
 	/** True, if UDP peer-to-peer connections are supported */
 	udp_p2p: boolean;
@@ -12718,7 +12728,7 @@ export type CallProtocol = TdObject & {
  * A Telegram call reflector
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_server_type_telegram_reflector.html
  */
-export type CallServerTypeTelegramReflector = TdObject & {
+export type CallServerTypeTelegramReflector = {
 	"@type": "callServerTypeTelegramReflector";
 	/** A peer tag to be used with the reflector */
 	peer_tag: string;
@@ -12730,7 +12740,7 @@ export type CallServerTypeTelegramReflector = TdObject & {
  * A WebRTC server
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_server_type_webrtc.html
  */
-export type CallServerTypeWebrtc = TdObject & {
+export type CallServerTypeWebrtc = {
 	"@type": "callServerTypeWebrtc";
 	/** Username to be used for authentication */
 	username: string;
@@ -12746,7 +12756,7 @@ export type CallServerTypeWebrtc = TdObject & {
  * Describes a server for relaying call data
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_server.html
  */
-export type CallServer = TdObject & {
+export type CallServer = {
 	"@type": "callServer";
 	/** Server identifier */
 	id: string;
@@ -12764,7 +12774,7 @@ export type CallServer = TdObject & {
  * Contains the call identifier
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_id.html
  */
-export type CallId = TdObject & {
+export type CallId = {
 	"@type": "callId";
 	/** Call identifier */
 	id: number;
@@ -12774,7 +12784,7 @@ export type CallId = TdObject & {
  * Contains the group call identifier
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_id.html
  */
-export type GroupCallId = TdObject & {
+export type GroupCallId = {
 	"@type": "groupCallId";
 	/** Group call identifier */
 	id: number;
@@ -12784,7 +12794,7 @@ export type GroupCallId = TdObject & {
  * The call is pending, waiting to be accepted by a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_state_pending.html
  */
-export type CallStatePending = TdObject & {
+export type CallStatePending = {
 	"@type": "callStatePending";
 	/** True, if the call has already been created by the server */
 	is_created: boolean;
@@ -12796,7 +12806,7 @@ export type CallStatePending = TdObject & {
  * The call has been answered and encryption keys are being exchanged
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_state_exchanging_keys.html
  */
-export type CallStateExchangingKeys = TdObject & {
+export type CallStateExchangingKeys = {
 	"@type": "callStateExchangingKeys";
 };
 
@@ -12804,7 +12814,7 @@ export type CallStateExchangingKeys = TdObject & {
  * The call is ready to use
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_state_ready.html
  */
-export type CallStateReady = TdObject & {
+export type CallStateReady = {
 	"@type": "callStateReady";
 	/** Call protocols supported by the other call participant */
 	protocol: CallProtocol;
@@ -12828,7 +12838,7 @@ export type CallStateReady = TdObject & {
  * The call is hanging up after discardCall has been called
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_state_hanging_up.html
  */
-export type CallStateHangingUp = TdObject & {
+export type CallStateHangingUp = {
 	"@type": "callStateHangingUp";
 };
 
@@ -12836,7 +12846,7 @@ export type CallStateHangingUp = TdObject & {
  * The call has ended successfully
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_state_discarded.html
  */
-export type CallStateDiscarded = TdObject & {
+export type CallStateDiscarded = {
 	"@type": "callStateDiscarded";
 	/** The reason why the call has ended */
 	reason: CallDiscardReason;
@@ -12852,17 +12862,17 @@ export type CallStateDiscarded = TdObject & {
  * The call has ended with an error
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_state_error.html
  */
-export type CallStateError = TdObject & {
+export type CallStateError = {
 	"@type": "callStateError";
 	/** Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout */
-	error: TdError;
+	error: Error;
 };
 
 /**
  * Describes parameters used to join a group call
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_join_parameters.html
  */
-export type GroupCallJoinParameters = TdObject & {
+export type GroupCallJoinParameters = {
 	"@type": "groupCallJoinParameters";
 	/** Audio channel synchronization source identifier; received from tgcalls */
 	audio_source_id: number;
@@ -12878,7 +12888,7 @@ export type GroupCallJoinParameters = TdObject & {
  * The worst available video quality
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_video_quality_thumbnail.html
  */
-export type GroupCallVideoQualityThumbnail = TdObject & {
+export type GroupCallVideoQualityThumbnail = {
 	"@type": "groupCallVideoQualityThumbnail";
 };
 
@@ -12886,7 +12896,7 @@ export type GroupCallVideoQualityThumbnail = TdObject & {
  * The medium video quality
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_video_quality_medium.html
  */
-export type GroupCallVideoQualityMedium = TdObject & {
+export type GroupCallVideoQualityMedium = {
 	"@type": "groupCallVideoQualityMedium";
 };
 
@@ -12894,7 +12904,7 @@ export type GroupCallVideoQualityMedium = TdObject & {
  * The best available video quality
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_video_quality_full.html
  */
-export type GroupCallVideoQualityFull = TdObject & {
+export type GroupCallVideoQualityFull = {
 	"@type": "groupCallVideoQualityFull";
 };
 
@@ -12902,7 +12912,7 @@ export type GroupCallVideoQualityFull = TdObject & {
  * Describes an available stream in a video chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1video_chat_stream.html
  */
-export type VideoChatStream = TdObject & {
+export type VideoChatStream = {
 	"@type": "videoChatStream";
 	/** Identifier of an audio/video channel */
 	channel_id: number;
@@ -12916,7 +12926,7 @@ export type VideoChatStream = TdObject & {
  * Represents a list of video chat streams
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1video_chat_streams.html
  */
-export type VideoChatStreams = TdObject & {
+export type VideoChatStreams = {
 	"@type": "videoChatStreams";
 	/** A list of video chat streams */
 	streams: VideoChatStream[];
@@ -12926,7 +12936,7 @@ export type VideoChatStreams = TdObject & {
  * Represents an RTMP URL
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1rtmp_url.html
  */
-export type RtmpUrl = TdObject & {
+export type RtmpUrl = {
 	"@type": "rtmpUrl";
 	/** The URL */
 	url: string;
@@ -12938,7 +12948,7 @@ export type RtmpUrl = TdObject & {
  * Describes a recently speaking participant in a group call
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_recent_speaker.html
  */
-export type GroupCallRecentSpeaker = TdObject & {
+export type GroupCallRecentSpeaker = {
 	"@type": "groupCallRecentSpeaker";
 	/** Group call participant identifier */
 	participant_id: MessageSender;
@@ -12950,7 +12960,7 @@ export type GroupCallRecentSpeaker = TdObject & {
  * Describes a group call
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call.html
  */
-export type GroupCall = TdObject & {
+export type GroupCall = {
 	"@type": "groupCall";
 	/** Group call identifier */
 	id: number;
@@ -13006,7 +13016,7 @@ export type GroupCall = TdObject & {
  * Describes a group of video synchronization source identifiers
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_video_source_group.html
  */
-export type GroupCallVideoSourceGroup = TdObject & {
+export type GroupCallVideoSourceGroup = {
 	"@type": "groupCallVideoSourceGroup";
 	/** The semantics of sources, one of "SIM" or "FID" */
 	semantics: string;
@@ -13018,7 +13028,7 @@ export type GroupCallVideoSourceGroup = TdObject & {
  * Contains information about a group call participant's video channel
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_participant_video_info.html
  */
-export type GroupCallParticipantVideoInfo = TdObject & {
+export type GroupCallParticipantVideoInfo = {
 	"@type": "groupCallParticipantVideoInfo";
 	/** List of synchronization source groups of the video */
 	source_groups: GroupCallVideoSourceGroup[];
@@ -13032,7 +13042,7 @@ export type GroupCallParticipantVideoInfo = TdObject & {
  * Represents a group call participant
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_participant.html
  */
-export type GroupCallParticipant = TdObject & {
+export type GroupCallParticipant = {
 	"@type": "groupCallParticipant";
 	/** Identifier of the group call participant */
 	participant_id: MessageSender;
@@ -13076,7 +13086,7 @@ export type GroupCallParticipant = TdObject & {
  * Contains identifiers of group call participants
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_participants.html
  */
-export type GroupCallParticipants = TdObject & {
+export type GroupCallParticipants = {
 	"@type": "groupCallParticipants";
 	/** Total number of group call participants */
 	total_count: number;
@@ -13088,7 +13098,7 @@ export type GroupCallParticipants = TdObject & {
  * Contains information about a just created or just joined group call
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_info.html
  */
-export type GroupCallInfo = TdObject & {
+export type GroupCallInfo = {
 	"@type": "groupCallInfo";
 	/** Identifier of the group call */
 	group_call_id: number;
@@ -13100,7 +13110,7 @@ export type GroupCallInfo = TdObject & {
  * The user can't be invited due to their privacy settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_group_call_participant_result_user_privacy_restricted.html
  */
-export type InviteGroupCallParticipantResultUserPrivacyRestricted = TdObject & {
+export type InviteGroupCallParticipantResultUserPrivacyRestricted = {
 	"@type": "inviteGroupCallParticipantResultUserPrivacyRestricted";
 };
 
@@ -13108,16 +13118,15 @@ export type InviteGroupCallParticipantResultUserPrivacyRestricted = TdObject & {
  * The user can't be invited because they are already a participant of the call
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_group_call_participant_result_user_already_participant.html
  */
-export type InviteGroupCallParticipantResultUserAlreadyParticipant =
-	TdObject & {
-		"@type": "inviteGroupCallParticipantResultUserAlreadyParticipant";
-	};
+export type InviteGroupCallParticipantResultUserAlreadyParticipant = {
+	"@type": "inviteGroupCallParticipantResultUserAlreadyParticipant";
+};
 
 /**
  * The user can't be invited because they were banned by the owner of the call and can be invited back only by the owner of the group call
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_group_call_participant_result_user_was_banned.html
  */
-export type InviteGroupCallParticipantResultUserWasBanned = TdObject & {
+export type InviteGroupCallParticipantResultUserWasBanned = {
 	"@type": "inviteGroupCallParticipantResultUserWasBanned";
 };
 
@@ -13125,7 +13134,7 @@ export type InviteGroupCallParticipantResultUserWasBanned = TdObject & {
  * The user was invited and a service message of the type messageGroupCall was sent which can be used in declineGroupCallInvitation to cancel the invitation
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1invite_group_call_participant_result_success.html
  */
-export type InviteGroupCallParticipantResultSuccess = TdObject & {
+export type InviteGroupCallParticipantResultSuccess = {
 	"@type": "inviteGroupCallParticipantResultSuccess";
 	/** Identifier of the chat with the invitation message */
 	chat_id: number;
@@ -13137,7 +13146,7 @@ export type InviteGroupCallParticipantResultSuccess = TdObject & {
  * The main data channel for audio and video data
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_data_channel_main.html
  */
-export type GroupCallDataChannelMain = TdObject & {
+export type GroupCallDataChannelMain = {
 	"@type": "groupCallDataChannelMain";
 };
 
@@ -13145,7 +13154,7 @@ export type GroupCallDataChannelMain = TdObject & {
  * The data channel for screen sharing
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1group_call_data_channel_screen_sharing.html
  */
-export type GroupCallDataChannelScreenSharing = TdObject & {
+export type GroupCallDataChannelScreenSharing = {
 	"@type": "groupCallDataChannelScreenSharing";
 };
 
@@ -13153,7 +13162,7 @@ export type GroupCallDataChannelScreenSharing = TdObject & {
  * The group call is accessible through a link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_group_call_link.html
  */
-export type InputGroupCallLink = TdObject & {
+export type InputGroupCallLink = {
 	"@type": "inputGroupCallLink";
 	/** The link for the group call */
 	link: string;
@@ -13163,7 +13172,7 @@ export type InputGroupCallLink = TdObject & {
  * The group call is accessible through a message of the type messageGroupCall
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_group_call_message.html
  */
-export type InputGroupCallMessage = TdObject & {
+export type InputGroupCallMessage = {
 	"@type": "inputGroupCallMessage";
 	/** Identifier of the chat with the message */
 	chat_id: number;
@@ -13175,7 +13184,7 @@ export type InputGroupCallMessage = TdObject & {
  * The user heard their own voice
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_problem_echo.html
  */
-export type CallProblemEcho = TdObject & {
+export type CallProblemEcho = {
 	"@type": "callProblemEcho";
 };
 
@@ -13183,7 +13192,7 @@ export type CallProblemEcho = TdObject & {
  * The user heard background noise
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_problem_noise.html
  */
-export type CallProblemNoise = TdObject & {
+export type CallProblemNoise = {
 	"@type": "callProblemNoise";
 };
 
@@ -13191,7 +13200,7 @@ export type CallProblemNoise = TdObject & {
  * The other side kept disappearing
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_problem_interruptions.html
  */
-export type CallProblemInterruptions = TdObject & {
+export type CallProblemInterruptions = {
 	"@type": "callProblemInterruptions";
 };
 
@@ -13199,7 +13208,7 @@ export type CallProblemInterruptions = TdObject & {
  * The speech was distorted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_problem_distorted_speech.html
  */
-export type CallProblemDistortedSpeech = TdObject & {
+export type CallProblemDistortedSpeech = {
 	"@type": "callProblemDistortedSpeech";
 };
 
@@ -13207,7 +13216,7 @@ export type CallProblemDistortedSpeech = TdObject & {
  * The user couldn't hear the other side
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_problem_silent_local.html
  */
-export type CallProblemSilentLocal = TdObject & {
+export type CallProblemSilentLocal = {
 	"@type": "callProblemSilentLocal";
 };
 
@@ -13215,7 +13224,7 @@ export type CallProblemSilentLocal = TdObject & {
  * The other side couldn't hear the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_problem_silent_remote.html
  */
-export type CallProblemSilentRemote = TdObject & {
+export type CallProblemSilentRemote = {
 	"@type": "callProblemSilentRemote";
 };
 
@@ -13223,7 +13232,7 @@ export type CallProblemSilentRemote = TdObject & {
  * The call ended unexpectedly
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_problem_dropped.html
  */
-export type CallProblemDropped = TdObject & {
+export type CallProblemDropped = {
 	"@type": "callProblemDropped";
 };
 
@@ -13231,7 +13240,7 @@ export type CallProblemDropped = TdObject & {
  * The video was distorted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_problem_distorted_video.html
  */
-export type CallProblemDistortedVideo = TdObject & {
+export type CallProblemDistortedVideo = {
 	"@type": "callProblemDistortedVideo";
 };
 
@@ -13239,7 +13248,7 @@ export type CallProblemDistortedVideo = TdObject & {
  * The video was pixelated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call_problem_pixelated_video.html
  */
-export type CallProblemPixelatedVideo = TdObject & {
+export type CallProblemPixelatedVideo = {
 	"@type": "callProblemPixelatedVideo";
 };
 
@@ -13247,7 +13256,7 @@ export type CallProblemPixelatedVideo = TdObject & {
  * Describes a call
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1call.html
  */
-export type Call = TdObject & {
+export type Call = {
 	"@type": "call";
 	/** Call identifier, not persistent */
 	id: number;
@@ -13265,7 +13274,7 @@ export type Call = TdObject & {
  * Settings for Firebase Authentication in the official Android application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1firebase_authentication_settings_android.html
  */
-export type FirebaseAuthenticationSettingsAndroid = TdObject & {
+export type FirebaseAuthenticationSettingsAndroid = {
 	"@type": "firebaseAuthenticationSettingsAndroid";
 };
 
@@ -13273,7 +13282,7 @@ export type FirebaseAuthenticationSettingsAndroid = TdObject & {
  * Settings for Firebase Authentication in the official iOS application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1firebase_authentication_settings_ios.html
  */
-export type FirebaseAuthenticationSettingsIos = TdObject & {
+export type FirebaseAuthenticationSettingsIos = {
 	"@type": "firebaseAuthenticationSettingsIos";
 	/** Device token from Apple Push Notification service */
 	device_token: string;
@@ -13285,7 +13294,7 @@ export type FirebaseAuthenticationSettingsIos = TdObject & {
  * Contains settings for the authentication of the user's phone number
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1phone_number_authentication_settings.html
  */
-export type PhoneNumberAuthenticationSettings = TdObject & {
+export type PhoneNumberAuthenticationSettings = {
 	"@type": "phoneNumberAuthenticationSettings";
 	/** Pass true if the authentication code may be sent via a flash call to the specified phone number */
 	allow_flash_call: boolean;
@@ -13307,7 +13316,7 @@ export type PhoneNumberAuthenticationSettings = TdObject & {
  * Represents a reaction applied to a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1added_reaction.html
  */
-export type AddedReaction = TdObject & {
+export type AddedReaction = {
 	"@type": "addedReaction";
 	/** Type of the reaction */
 	type: ReactionType;
@@ -13323,7 +13332,7 @@ export type AddedReaction = TdObject & {
  * Represents a list of reactions added to a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1added_reactions.html
  */
-export type AddedReactions = TdObject & {
+export type AddedReactions = {
 	"@type": "addedReactions";
 	/** The total number of found reactions */
 	total_count: number;
@@ -13337,7 +13346,7 @@ export type AddedReactions = TdObject & {
  * Represents an available reaction
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1available_reaction.html
  */
-export type AvailableReaction = TdObject & {
+export type AvailableReaction = {
 	"@type": "availableReaction";
 	/** Type of the reaction */
 	type: ReactionType;
@@ -13349,7 +13358,7 @@ export type AvailableReaction = TdObject & {
  * Represents a list of reactions that can be added to a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1available_reactions.html
  */
-export type AvailableReactions = TdObject & {
+export type AvailableReactions = {
 	"@type": "availableReactions";
 	/** List of reactions to be shown at the top */
 	top_reactions: AvailableReaction[];
@@ -13369,7 +13378,7 @@ export type AvailableReactions = TdObject & {
  * Contains information about an emoji reaction
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1emoji_reaction.html
  */
-export type EmojiReaction = TdObject & {
+export type EmojiReaction = {
 	"@type": "emojiReaction";
 	/** Text representation of the reaction */
 	emoji: string;
@@ -13397,7 +13406,7 @@ export type EmojiReaction = TdObject & {
  * The user is an anonymous administrator in the supergroup, but isn't a creator of it, so they can't vote on behalf of the supergroup
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_unavailability_reason_anonymous_administrator.html
  */
-export type ReactionUnavailabilityReasonAnonymousAdministrator = TdObject & {
+export type ReactionUnavailabilityReasonAnonymousAdministrator = {
 	"@type": "reactionUnavailabilityReasonAnonymousAdministrator";
 };
 
@@ -13405,7 +13414,7 @@ export type ReactionUnavailabilityReasonAnonymousAdministrator = TdObject & {
  * The user isn't a member of the supergroup and can't send messages and reactions there without joining
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reaction_unavailability_reason_guest.html
  */
-export type ReactionUnavailabilityReasonGuest = TdObject & {
+export type ReactionUnavailabilityReasonGuest = {
 	"@type": "reactionUnavailabilityReasonGuest";
 };
 
@@ -13413,7 +13422,7 @@ export type ReactionUnavailabilityReasonGuest = TdObject & {
  * Represents a list of animations
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1animations.html
  */
-export type Animations = TdObject & {
+export type Animations = {
 	"@type": "animations";
 	/** List of animations */
 	animations: Animation[];
@@ -13423,7 +13432,7 @@ export type Animations = TdObject & {
  * A regular animated sticker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1dice_stickers_regular.html
  */
-export type DiceStickersRegular = TdObject & {
+export type DiceStickersRegular = {
 	"@type": "diceStickersRegular";
 	/** The animated sticker with the dice animation */
 	sticker: Sticker;
@@ -13433,7 +13442,7 @@ export type DiceStickersRegular = TdObject & {
  * Animated stickers to be combined into a slot machine
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1dice_stickers_slot_machine.html
  */
-export type DiceStickersSlotMachine = TdObject & {
+export type DiceStickersSlotMachine = {
 	"@type": "diceStickersSlotMachine";
 	/** The animated sticker with the slot machine background. The background animation must start playing after all reel animations finish */
 	background: Sticker;
@@ -13451,7 +13460,7 @@ export type DiceStickersSlotMachine = TdObject & {
  * Represents the result of an importContacts request
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1imported_contacts.html
  */
-export type ImportedContacts = TdObject & {
+export type ImportedContacts = {
 	"@type": "importedContacts";
 	/** User identifiers of the imported contacts in the same order as they were specified in the request; 0 if the contact is not yet a registered user */
 	user_ids: number[];
@@ -13463,7 +13472,7 @@ export type ImportedContacts = TdObject & {
  * The speech recognition is ongoing
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1speech_recognition_result_pending.html
  */
-export type SpeechRecognitionResultPending = TdObject & {
+export type SpeechRecognitionResultPending = {
 	"@type": "speechRecognitionResultPending";
 	/** Partially recognized text */
 	partial_text: string;
@@ -13473,7 +13482,7 @@ export type SpeechRecognitionResultPending = TdObject & {
  * The speech recognition successfully finished
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1speech_recognition_result_text.html
  */
-export type SpeechRecognitionResultText = TdObject & {
+export type SpeechRecognitionResultText = {
 	"@type": "speechRecognitionResultText";
 	/** Recognized text */
 	text: string;
@@ -13483,17 +13492,17 @@ export type SpeechRecognitionResultText = TdObject & {
  * The speech recognition failed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1speech_recognition_result_error.html
  */
-export type SpeechRecognitionResultError = TdObject & {
+export type SpeechRecognitionResultError = {
 	"@type": "speechRecognitionResultError";
 	/** Recognition error. An error with a message "MSG_VOICE_TOO_LONG" is returned when media duration is too big to be recognized */
-	error: TdError;
+	error: Error;
 };
 
 /**
  * Describes a connection of the bot with a business account
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_connection.html
  */
-export type BusinessConnection = TdObject & {
+export type BusinessConnection = {
 	"@type": "businessConnection";
 	/** Unique identifier of the connection */
 	id: string;
@@ -13513,7 +13522,7 @@ export type BusinessConnection = TdObject & {
  * Describes a color to highlight a bot added to attachment menu
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1attachment_menu_bot_color.html
  */
-export type AttachmentMenuBotColor = TdObject & {
+export type AttachmentMenuBotColor = {
 	"@type": "attachmentMenuBotColor";
 	/** Color in the RGB format for light themes */
 	light_color: number;
@@ -13525,7 +13534,7 @@ export type AttachmentMenuBotColor = TdObject & {
  * Represents a bot, which can be added to attachment or side menu
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1attachment_menu_bot.html
  */
-export type AttachmentMenuBot = TdObject & {
+export type AttachmentMenuBot = {
 	"@type": "attachmentMenuBot";
 	/** User identifier of the bot */
 	bot_user_id: number;
@@ -13579,7 +13588,7 @@ export type AttachmentMenuBot = TdObject & {
  * Information about the message sent by answerWebAppQuery
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sent_web_app_message.html
  */
-export type SentWebAppMessage = TdObject & {
+export type SentWebAppMessage = {
 	"@type": "sentWebAppMessage";
 	/** Identifier of the sent inline message, if known */
 	inline_message_id: string;
@@ -13589,7 +13598,7 @@ export type SentWebAppMessage = TdObject & {
  * The user connected a website by logging in using Telegram Login Widget on it
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_write_access_allow_reason_connected_website.html
  */
-export type BotWriteAccessAllowReasonConnectedWebsite = TdObject & {
+export type BotWriteAccessAllowReasonConnectedWebsite = {
 	"@type": "botWriteAccessAllowReasonConnectedWebsite";
 	/** Domain name of the connected website */
 	domain_name: string;
@@ -13599,7 +13608,7 @@ export type BotWriteAccessAllowReasonConnectedWebsite = TdObject & {
  * The user added the bot to attachment or side menu using toggleBotIsAddedToAttachmentMenu
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_write_access_allow_reason_added_to_attachment_menu.html
  */
-export type BotWriteAccessAllowReasonAddedToAttachmentMenu = TdObject & {
+export type BotWriteAccessAllowReasonAddedToAttachmentMenu = {
 	"@type": "botWriteAccessAllowReasonAddedToAttachmentMenu";
 };
 
@@ -13607,7 +13616,7 @@ export type BotWriteAccessAllowReasonAddedToAttachmentMenu = TdObject & {
  * The user launched a Web App using getWebAppLinkUrl
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_write_access_allow_reason_launched_web_app.html
  */
-export type BotWriteAccessAllowReasonLaunchedWebApp = TdObject & {
+export type BotWriteAccessAllowReasonLaunchedWebApp = {
 	"@type": "botWriteAccessAllowReasonLaunchedWebApp";
 	/** Information about the Web App */
 	web_app: WebApp;
@@ -13617,7 +13626,7 @@ export type BotWriteAccessAllowReasonLaunchedWebApp = TdObject & {
  * The user accepted bot's request to send messages with allowBotToSendMessages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_write_access_allow_reason_accepted_request.html
  */
-export type BotWriteAccessAllowReasonAcceptedRequest = TdObject & {
+export type BotWriteAccessAllowReasonAcceptedRequest = {
 	"@type": "botWriteAccessAllowReasonAcceptedRequest";
 };
 
@@ -13625,7 +13634,7 @@ export type BotWriteAccessAllowReasonAcceptedRequest = TdObject & {
  * Contains an HTTP URL
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1http_url.html
  */
-export type HttpUrl = TdObject & {
+export type HttpUrl = {
 	"@type": "httpUrl";
 	/** The URL */
 	url: string;
@@ -13635,7 +13644,7 @@ export type HttpUrl = TdObject & {
  * Contains an HTTPS URL, which can be used to get information about a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_link.html
  */
-export type UserLink = TdObject & {
+export type UserLink = {
 	"@type": "userLink";
 	/** The URL */
 	url: string;
@@ -13647,7 +13656,7 @@ export type UserLink = TdObject & {
  * Describes allowed types for the target chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1target_chat_types.html
  */
-export type TargetChatTypes = TdObject & {
+export type TargetChatTypes = {
 	"@type": "targetChatTypes";
 	/** True, if private chats with ordinary users are allowed */
 	allow_user_chats: boolean;
@@ -13663,7 +13672,7 @@ export type TargetChatTypes = TdObject & {
  * The currently opened chat and forum topic must be kept
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1target_chat_current.html
  */
-export type TargetChatCurrent = TdObject & {
+export type TargetChatCurrent = {
 	"@type": "targetChatCurrent";
 };
 
@@ -13671,7 +13680,7 @@ export type TargetChatCurrent = TdObject & {
  * The chat needs to be chosen by the user among chats of the specified types
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1target_chat_chosen.html
  */
-export type TargetChatChosen = TdObject & {
+export type TargetChatChosen = {
 	"@type": "targetChatChosen";
 	/** Allowed types for the chat */
 	types: TargetChatTypes;
@@ -13681,7 +13690,7 @@ export type TargetChatChosen = TdObject & {
  * The chat needs to be open with the provided internal link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1target_chat_internal_link.html
  */
-export type TargetChatInternalLink = TdObject & {
+export type TargetChatInternalLink = {
 	"@type": "targetChatInternalLink";
 	/** An internal link pointing to the chat */
 	link: InternalLinkType;
@@ -13691,7 +13700,7 @@ export type TargetChatInternalLink = TdObject & {
  * Represents a link to an animated GIF or an animated (i.e., without sound) H.264/MPEG-4 AVC video
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_animation.html
  */
-export type InputInlineQueryResultAnimation = TdObject & {
+export type InputInlineQueryResultAnimation = {
 	"@type": "inputInlineQueryResultAnimation";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13721,7 +13730,7 @@ export type InputInlineQueryResultAnimation = TdObject & {
  * Represents a link to an article or web page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_article.html
  */
-export type InputInlineQueryResultArticle = TdObject & {
+export type InputInlineQueryResultArticle = {
 	"@type": "inputInlineQueryResultArticle";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13747,7 +13756,7 @@ export type InputInlineQueryResultArticle = TdObject & {
  * Represents a link to an MP3 audio file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_audio.html
  */
-export type InputInlineQueryResultAudio = TdObject & {
+export type InputInlineQueryResultAudio = {
 	"@type": "inputInlineQueryResultAudio";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13769,7 +13778,7 @@ export type InputInlineQueryResultAudio = TdObject & {
  * Represents a user contact
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_contact.html
  */
-export type InputInlineQueryResultContact = TdObject & {
+export type InputInlineQueryResultContact = {
 	"@type": "inputInlineQueryResultContact";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13791,7 +13800,7 @@ export type InputInlineQueryResultContact = TdObject & {
  * Represents a link to a file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_document.html
  */
-export type InputInlineQueryResultDocument = TdObject & {
+export type InputInlineQueryResultDocument = {
 	"@type": "inputInlineQueryResultDocument";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13819,7 +13828,7 @@ export type InputInlineQueryResultDocument = TdObject & {
  * Represents a game
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_game.html
  */
-export type InputInlineQueryResultGame = TdObject & {
+export type InputInlineQueryResultGame = {
 	"@type": "inputInlineQueryResultGame";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13833,7 +13842,7 @@ export type InputInlineQueryResultGame = TdObject & {
  * Represents a point on the map
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_location.html
  */
-export type InputInlineQueryResultLocation = TdObject & {
+export type InputInlineQueryResultLocation = {
 	"@type": "inputInlineQueryResultLocation";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13859,7 +13868,7 @@ export type InputInlineQueryResultLocation = TdObject & {
  * Represents link to a JPEG image
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_photo.html
  */
-export type InputInlineQueryResultPhoto = TdObject & {
+export type InputInlineQueryResultPhoto = {
 	"@type": "inputInlineQueryResultPhoto";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13885,7 +13894,7 @@ export type InputInlineQueryResultPhoto = TdObject & {
  * Represents a link to a WEBP, TGS, or WEBM sticker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_sticker.html
  */
-export type InputInlineQueryResultSticker = TdObject & {
+export type InputInlineQueryResultSticker = {
 	"@type": "inputInlineQueryResultSticker";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13907,7 +13916,7 @@ export type InputInlineQueryResultSticker = TdObject & {
  * Represents information about a venue
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_venue.html
  */
-export type InputInlineQueryResultVenue = TdObject & {
+export type InputInlineQueryResultVenue = {
 	"@type": "inputInlineQueryResultVenue";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13929,7 +13938,7 @@ export type InputInlineQueryResultVenue = TdObject & {
  * Represents a link to a page containing an embedded video player or a video file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_video.html
  */
-export type InputInlineQueryResultVideo = TdObject & {
+export type InputInlineQueryResultVideo = {
 	"@type": "inputInlineQueryResultVideo";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13959,7 +13968,7 @@ export type InputInlineQueryResultVideo = TdObject & {
  * Represents a link to an opus-encoded audio file within an OGG container, single channel audio
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_inline_query_result_voice_note.html
  */
-export type InputInlineQueryResultVoiceNote = TdObject & {
+export type InputInlineQueryResultVoiceNote = {
 	"@type": "inputInlineQueryResultVoiceNote";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13979,7 +13988,7 @@ export type InputInlineQueryResultVoiceNote = TdObject & {
  * Represents a link to an article or web page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_article.html
  */
-export type InlineQueryResultArticle = TdObject & {
+export type InlineQueryResultArticle = {
 	"@type": "inlineQueryResultArticle";
 	/** Unique identifier of the query result */
 	id: string;
@@ -13997,7 +14006,7 @@ export type InlineQueryResultArticle = TdObject & {
  * Represents a user contact
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_contact.html
  */
-export type InlineQueryResultContact = TdObject & {
+export type InlineQueryResultContact = {
 	"@type": "inlineQueryResultContact";
 	/** Unique identifier of the query result */
 	id: string;
@@ -14011,7 +14020,7 @@ export type InlineQueryResultContact = TdObject & {
  * Represents a point on the map
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_location.html
  */
-export type InlineQueryResultLocation = TdObject & {
+export type InlineQueryResultLocation = {
 	"@type": "inlineQueryResultLocation";
 	/** Unique identifier of the query result */
 	id: string;
@@ -14027,7 +14036,7 @@ export type InlineQueryResultLocation = TdObject & {
  * Represents information about a venue
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_venue.html
  */
-export type InlineQueryResultVenue = TdObject & {
+export type InlineQueryResultVenue = {
 	"@type": "inlineQueryResultVenue";
 	/** Unique identifier of the query result */
 	id: string;
@@ -14041,7 +14050,7 @@ export type InlineQueryResultVenue = TdObject & {
  * Represents information about a game
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_game.html
  */
-export type InlineQueryResultGame = TdObject & {
+export type InlineQueryResultGame = {
 	"@type": "inlineQueryResultGame";
 	/** Unique identifier of the query result */
 	id: string;
@@ -14053,7 +14062,7 @@ export type InlineQueryResultGame = TdObject & {
  * Represents an animation file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_animation.html
  */
-export type InlineQueryResultAnimation = TdObject & {
+export type InlineQueryResultAnimation = {
 	"@type": "inlineQueryResultAnimation";
 	/** Unique identifier of the query result */
 	id: string;
@@ -14067,7 +14076,7 @@ export type InlineQueryResultAnimation = TdObject & {
  * Represents an audio file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_audio.html
  */
-export type InlineQueryResultAudio = TdObject & {
+export type InlineQueryResultAudio = {
 	"@type": "inlineQueryResultAudio";
 	/** Unique identifier of the query result */
 	id: string;
@@ -14079,7 +14088,7 @@ export type InlineQueryResultAudio = TdObject & {
  * Represents a document
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_document.html
  */
-export type InlineQueryResultDocument = TdObject & {
+export type InlineQueryResultDocument = {
 	"@type": "inlineQueryResultDocument";
 	/** Unique identifier of the query result */
 	id: string;
@@ -14095,7 +14104,7 @@ export type InlineQueryResultDocument = TdObject & {
  * Represents a photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_photo.html
  */
-export type InlineQueryResultPhoto = TdObject & {
+export type InlineQueryResultPhoto = {
 	"@type": "inlineQueryResultPhoto";
 	/** Unique identifier of the query result */
 	id: string;
@@ -14111,7 +14120,7 @@ export type InlineQueryResultPhoto = TdObject & {
  * Represents a sticker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_sticker.html
  */
-export type InlineQueryResultSticker = TdObject & {
+export type InlineQueryResultSticker = {
 	"@type": "inlineQueryResultSticker";
 	/** Unique identifier of the query result */
 	id: string;
@@ -14123,7 +14132,7 @@ export type InlineQueryResultSticker = TdObject & {
  * Represents a video
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_video.html
  */
-export type InlineQueryResultVideo = TdObject & {
+export type InlineQueryResultVideo = {
 	"@type": "inlineQueryResultVideo";
 	/** Unique identifier of the query result */
 	id: string;
@@ -14139,7 +14148,7 @@ export type InlineQueryResultVideo = TdObject & {
  * Represents a voice note
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_result_voice_note.html
  */
-export type InlineQueryResultVoiceNote = TdObject & {
+export type InlineQueryResultVoiceNote = {
 	"@type": "inlineQueryResultVoiceNote";
 	/** Unique identifier of the query result */
 	id: string;
@@ -14153,7 +14162,7 @@ export type InlineQueryResultVoiceNote = TdObject & {
  * Describes the button that opens a private chat with the bot and sends a start message to the bot with the given parameter
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_results_button_type_start_bot.html
  */
-export type InlineQueryResultsButtonTypeStartBot = TdObject & {
+export type InlineQueryResultsButtonTypeStartBot = {
 	"@type": "inlineQueryResultsButtonTypeStartBot";
 	/** The parameter for the bot start message */
 	parameter: string;
@@ -14163,7 +14172,7 @@ export type InlineQueryResultsButtonTypeStartBot = TdObject & {
  * Describes the button that opens a Web App by calling getWebAppUrl
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_results_button_type_web_app.html
  */
-export type InlineQueryResultsButtonTypeWebApp = TdObject & {
+export type InlineQueryResultsButtonTypeWebApp = {
 	"@type": "inlineQueryResultsButtonTypeWebApp";
 	/** An HTTP URL to pass to getWebAppUrl */
 	url: string;
@@ -14173,7 +14182,7 @@ export type InlineQueryResultsButtonTypeWebApp = TdObject & {
  * Represents a button to be shown above inline query results
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_results_button.html
  */
-export type InlineQueryResultsButton = TdObject & {
+export type InlineQueryResultsButton = {
 	"@type": "inlineQueryResultsButton";
 	/** The text of the button */
 	text: string;
@@ -14185,7 +14194,7 @@ export type InlineQueryResultsButton = TdObject & {
  * Represents the results of the inline query. Use sendInlineQueryResultMessage to send the result of the query
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1inline_query_results.html
  */
-export type InlineQueryResults = TdObject & {
+export type InlineQueryResults = {
 	"@type": "inlineQueryResults";
 	/** Unique identifier of the inline query */
 	inline_query_id: string;
@@ -14201,7 +14210,7 @@ export type InlineQueryResults = TdObject & {
  * Represents an inline message that can be sent via the bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1prepared_inline_message_id.html
  */
-export type PreparedInlineMessageId = TdObject & {
+export type PreparedInlineMessageId = {
 	"@type": "preparedInlineMessageId";
 	/** Unique identifier for the message */
 	id: string;
@@ -14213,7 +14222,7 @@ export type PreparedInlineMessageId = TdObject & {
  * Represents a ready to send inline message. Use sendInlineQueryResultMessage to send the message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1prepared_inline_message.html
  */
-export type PreparedInlineMessage = TdObject & {
+export type PreparedInlineMessage = {
 	"@type": "preparedInlineMessage";
 	/** Unique identifier of the inline query to pass to sendInlineQueryResultMessage */
 	inline_query_id: string;
@@ -14227,7 +14236,7 @@ export type PreparedInlineMessage = TdObject & {
  * The payload for a general callback button
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1callback_query_payload_data.html
  */
-export type CallbackQueryPayloadData = TdObject & {
+export type CallbackQueryPayloadData = {
 	"@type": "callbackQueryPayloadData";
 	/** Data that was attached to the callback button */
 	data: string;
@@ -14237,7 +14246,7 @@ export type CallbackQueryPayloadData = TdObject & {
  * The payload for a callback button requiring password
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1callback_query_payload_data_with_password.html
  */
-export type CallbackQueryPayloadDataWithPassword = TdObject & {
+export type CallbackQueryPayloadDataWithPassword = {
 	"@type": "callbackQueryPayloadDataWithPassword";
 	/** The 2-step verification password for the current user */
 	password: string;
@@ -14249,7 +14258,7 @@ export type CallbackQueryPayloadDataWithPassword = TdObject & {
  * The payload for a game callback button
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1callback_query_payload_game.html
  */
-export type CallbackQueryPayloadGame = TdObject & {
+export type CallbackQueryPayloadGame = {
 	"@type": "callbackQueryPayloadGame";
 	/** A short name of the game that was attached to the callback button */
 	game_short_name: string;
@@ -14259,7 +14268,7 @@ export type CallbackQueryPayloadGame = TdObject & {
  * Contains a bot's answer to a callback query
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1callback_query_answer.html
  */
-export type CallbackQueryAnswer = TdObject & {
+export type CallbackQueryAnswer = {
 	"@type": "callbackQueryAnswer";
 	/** Text of the answer */
 	text: string;
@@ -14273,7 +14282,7 @@ export type CallbackQueryAnswer = TdObject & {
  * Contains the result of a custom request
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1custom_request_result.html
  */
-export type CustomRequestResult = TdObject & {
+export type CustomRequestResult = {
 	"@type": "customRequestResult";
 	/** A JSON-serialized result */
 	result: string;
@@ -14283,7 +14292,7 @@ export type CustomRequestResult = TdObject & {
  * Contains one row of the game high score table
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1game_high_score.html
  */
-export type GameHighScore = TdObject & {
+export type GameHighScore = {
 	"@type": "gameHighScore";
 	/** Position in the high score table */
 	position: number;
@@ -14297,7 +14306,7 @@ export type GameHighScore = TdObject & {
  * Contains a list of game high scores
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1game_high_scores.html
  */
-export type GameHighScores = TdObject & {
+export type GameHighScores = {
 	"@type": "gameHighScores";
 	/** A list of game high scores */
 	scores: GameHighScore[];
@@ -14307,7 +14316,7 @@ export type GameHighScores = TdObject & {
  * A message was edited
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_message_edited.html
  */
-export type ChatEventMessageEdited = TdObject & {
+export type ChatEventMessageEdited = {
 	"@type": "chatEventMessageEdited";
 	/** The original message before the edit */
 	old_message: Message;
@@ -14319,7 +14328,7 @@ export type ChatEventMessageEdited = TdObject & {
  * A message was deleted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_message_deleted.html
  */
-export type ChatEventMessageDeleted = TdObject & {
+export type ChatEventMessageDeleted = {
 	"@type": "chatEventMessageDeleted";
 	/** Deleted message */
 	message: Message;
@@ -14331,7 +14340,7 @@ export type ChatEventMessageDeleted = TdObject & {
  * A message was pinned
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_message_pinned.html
  */
-export type ChatEventMessagePinned = TdObject & {
+export type ChatEventMessagePinned = {
 	"@type": "chatEventMessagePinned";
 	/** Pinned message */
 	message: Message;
@@ -14341,7 +14350,7 @@ export type ChatEventMessagePinned = TdObject & {
  * A message was unpinned
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_message_unpinned.html
  */
-export type ChatEventMessageUnpinned = TdObject & {
+export type ChatEventMessageUnpinned = {
 	"@type": "chatEventMessageUnpinned";
 	/** Unpinned message */
 	message: Message;
@@ -14351,7 +14360,7 @@ export type ChatEventMessageUnpinned = TdObject & {
  * A poll in a message was stopped
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_poll_stopped.html
  */
-export type ChatEventPollStopped = TdObject & {
+export type ChatEventPollStopped = {
 	"@type": "chatEventPollStopped";
 	/** The message with the poll */
 	message: Message;
@@ -14361,7 +14370,7 @@ export type ChatEventPollStopped = TdObject & {
  * A new member joined the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_member_joined.html
  */
-export type ChatEventMemberJoined = TdObject & {
+export type ChatEventMemberJoined = {
 	"@type": "chatEventMemberJoined";
 };
 
@@ -14369,7 +14378,7 @@ export type ChatEventMemberJoined = TdObject & {
  * A new member joined the chat via an invite link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_member_joined_by_invite_link.html
  */
-export type ChatEventMemberJoinedByInviteLink = TdObject & {
+export type ChatEventMemberJoinedByInviteLink = {
 	"@type": "chatEventMemberJoinedByInviteLink";
 	/** Invite link used to join the chat */
 	invite_link: ChatInviteLink;
@@ -14381,7 +14390,7 @@ export type ChatEventMemberJoinedByInviteLink = TdObject & {
  * A new member was accepted to the chat by an administrator
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_member_joined_by_request.html
  */
-export type ChatEventMemberJoinedByRequest = TdObject & {
+export type ChatEventMemberJoinedByRequest = {
 	"@type": "chatEventMemberJoinedByRequest";
 	/** User identifier of the chat administrator, approved user join request */
 	approver_user_id: number;
@@ -14393,7 +14402,7 @@ export type ChatEventMemberJoinedByRequest = TdObject & {
  * A new chat member was invited
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_member_invited.html
  */
-export type ChatEventMemberInvited = TdObject & {
+export type ChatEventMemberInvited = {
 	"@type": "chatEventMemberInvited";
 	/** New member user identifier */
 	user_id: number;
@@ -14405,7 +14414,7 @@ export type ChatEventMemberInvited = TdObject & {
  * A member left the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_member_left.html
  */
-export type ChatEventMemberLeft = TdObject & {
+export type ChatEventMemberLeft = {
 	"@type": "chatEventMemberLeft";
 };
 
@@ -14413,7 +14422,7 @@ export type ChatEventMemberLeft = TdObject & {
  * A chat member has gained/lost administrator status, or the list of their administrator privileges has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_member_promoted.html
  */
-export type ChatEventMemberPromoted = TdObject & {
+export type ChatEventMemberPromoted = {
 	"@type": "chatEventMemberPromoted";
 	/** Affected chat member user identifier */
 	user_id: number;
@@ -14427,7 +14436,7 @@ export type ChatEventMemberPromoted = TdObject & {
  * A chat member was restricted/unrestricted or banned/unbanned, or the list of their restrictions has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_member_restricted.html
  */
-export type ChatEventMemberRestricted = TdObject & {
+export type ChatEventMemberRestricted = {
 	"@type": "chatEventMemberRestricted";
 	/** Affected chat member identifier */
 	member_id: MessageSender;
@@ -14441,7 +14450,7 @@ export type ChatEventMemberRestricted = TdObject & {
  * A chat member extended their subscription to the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_member_subscription_extended.html
  */
-export type ChatEventMemberSubscriptionExtended = TdObject & {
+export type ChatEventMemberSubscriptionExtended = {
 	"@type": "chatEventMemberSubscriptionExtended";
 	/** Affected chat member user identifier */
 	user_id: number;
@@ -14455,7 +14464,7 @@ export type ChatEventMemberSubscriptionExtended = TdObject & {
  * The chat available reactions were changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_available_reactions_changed.html
  */
-export type ChatEventAvailableReactionsChanged = TdObject & {
+export type ChatEventAvailableReactionsChanged = {
 	"@type": "chatEventAvailableReactionsChanged";
 	/** Previous chat available reactions */
 	old_available_reactions: ChatAvailableReactions;
@@ -14467,7 +14476,7 @@ export type ChatEventAvailableReactionsChanged = TdObject & {
  * The chat background was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_background_changed.html
  */
-export type ChatEventBackgroundChanged = TdObject & {
+export type ChatEventBackgroundChanged = {
 	"@type": "chatEventBackgroundChanged";
 	/** Previous background; may be null if none */
 	old_background?: ChatBackground;
@@ -14479,7 +14488,7 @@ export type ChatEventBackgroundChanged = TdObject & {
  * The chat description was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_description_changed.html
  */
-export type ChatEventDescriptionChanged = TdObject & {
+export type ChatEventDescriptionChanged = {
 	"@type": "chatEventDescriptionChanged";
 	/** Previous chat description */
 	old_description: string;
@@ -14491,7 +14500,7 @@ export type ChatEventDescriptionChanged = TdObject & {
  * The chat emoji status was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_emoji_status_changed.html
  */
-export type ChatEventEmojiStatusChanged = TdObject & {
+export type ChatEventEmojiStatusChanged = {
 	"@type": "chatEventEmojiStatusChanged";
 	/** Previous emoji status; may be null if none */
 	old_emoji_status?: EmojiStatus;
@@ -14503,7 +14512,7 @@ export type ChatEventEmojiStatusChanged = TdObject & {
  * The linked chat of a supergroup was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_linked_chat_changed.html
  */
-export type ChatEventLinkedChatChanged = TdObject & {
+export type ChatEventLinkedChatChanged = {
 	"@type": "chatEventLinkedChatChanged";
 	/** Previous supergroup linked chat identifier */
 	old_linked_chat_id: number;
@@ -14515,7 +14524,7 @@ export type ChatEventLinkedChatChanged = TdObject & {
  * The supergroup location was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_location_changed.html
  */
-export type ChatEventLocationChanged = TdObject & {
+export type ChatEventLocationChanged = {
 	"@type": "chatEventLocationChanged";
 	/** Previous location; may be null */
 	old_location?: ChatLocation;
@@ -14527,7 +14536,7 @@ export type ChatEventLocationChanged = TdObject & {
  * The message auto-delete timer was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_message_auto_delete_time_changed.html
  */
-export type ChatEventMessageAutoDeleteTimeChanged = TdObject & {
+export type ChatEventMessageAutoDeleteTimeChanged = {
 	"@type": "chatEventMessageAutoDeleteTimeChanged";
 	/** Previous value of message_auto_delete_time */
 	old_message_auto_delete_time: number;
@@ -14539,7 +14548,7 @@ export type ChatEventMessageAutoDeleteTimeChanged = TdObject & {
  * The chat permissions were changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_permissions_changed.html
  */
-export type ChatEventPermissionsChanged = TdObject & {
+export type ChatEventPermissionsChanged = {
 	"@type": "chatEventPermissionsChanged";
 	/** Previous chat permissions */
 	old_permissions: ChatPermissions;
@@ -14551,7 +14560,7 @@ export type ChatEventPermissionsChanged = TdObject & {
  * The chat photo was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_photo_changed.html
  */
-export type ChatEventPhotoChanged = TdObject & {
+export type ChatEventPhotoChanged = {
 	"@type": "chatEventPhotoChanged";
 	/** Previous chat photo value; may be null */
 	old_photo?: ChatPhoto;
@@ -14563,7 +14572,7 @@ export type ChatEventPhotoChanged = TdObject & {
  * The slow_mode_delay setting of a supergroup was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_slow_mode_delay_changed.html
  */
-export type ChatEventSlowModeDelayChanged = TdObject & {
+export type ChatEventSlowModeDelayChanged = {
 	"@type": "chatEventSlowModeDelayChanged";
 	/** Previous value of slow_mode_delay, in seconds */
 	old_slow_mode_delay: number;
@@ -14575,7 +14584,7 @@ export type ChatEventSlowModeDelayChanged = TdObject & {
  * The supergroup sticker set was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_sticker_set_changed.html
  */
-export type ChatEventStickerSetChanged = TdObject & {
+export type ChatEventStickerSetChanged = {
 	"@type": "chatEventStickerSetChanged";
 	/** Previous identifier of the chat sticker set; 0 if none */
 	old_sticker_set_id: string;
@@ -14587,7 +14596,7 @@ export type ChatEventStickerSetChanged = TdObject & {
  * The supergroup sticker set with allowed custom emoji was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_custom_emoji_sticker_set_changed.html
  */
-export type ChatEventCustomEmojiStickerSetChanged = TdObject & {
+export type ChatEventCustomEmojiStickerSetChanged = {
 	"@type": "chatEventCustomEmojiStickerSetChanged";
 	/** Previous identifier of the chat sticker set; 0 if none */
 	old_sticker_set_id: string;
@@ -14599,7 +14608,7 @@ export type ChatEventCustomEmojiStickerSetChanged = TdObject & {
  * The chat title was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_title_changed.html
  */
-export type ChatEventTitleChanged = TdObject & {
+export type ChatEventTitleChanged = {
 	"@type": "chatEventTitleChanged";
 	/** Previous chat title */
 	old_title: string;
@@ -14611,7 +14620,7 @@ export type ChatEventTitleChanged = TdObject & {
  * The chat editable username was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_username_changed.html
  */
-export type ChatEventUsernameChanged = TdObject & {
+export type ChatEventUsernameChanged = {
 	"@type": "chatEventUsernameChanged";
 	/** Previous chat username */
 	old_username: string;
@@ -14623,7 +14632,7 @@ export type ChatEventUsernameChanged = TdObject & {
  * The chat active usernames were changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_active_usernames_changed.html
  */
-export type ChatEventActiveUsernamesChanged = TdObject & {
+export type ChatEventActiveUsernamesChanged = {
 	"@type": "chatEventActiveUsernamesChanged";
 	/** Previous list of active usernames */
 	old_usernames: string[];
@@ -14635,7 +14644,7 @@ export type ChatEventActiveUsernamesChanged = TdObject & {
  * The chat accent color or background custom emoji were changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_accent_color_changed.html
  */
-export type ChatEventAccentColorChanged = TdObject & {
+export type ChatEventAccentColorChanged = {
 	"@type": "chatEventAccentColorChanged";
 	/** Previous identifier of chat accent color */
 	old_accent_color_id: number;
@@ -14651,7 +14660,7 @@ export type ChatEventAccentColorChanged = TdObject & {
  * The chat's profile accent color or profile background custom emoji were changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_profile_accent_color_changed.html
  */
-export type ChatEventProfileAccentColorChanged = TdObject & {
+export type ChatEventProfileAccentColorChanged = {
 	"@type": "chatEventProfileAccentColorChanged";
 	/** Previous identifier of chat's profile accent color; -1 if none */
 	old_profile_accent_color_id: number;
@@ -14667,7 +14676,7 @@ export type ChatEventProfileAccentColorChanged = TdObject & {
  * The has_protected_content setting of a channel was toggled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_has_protected_content_toggled.html
  */
-export type ChatEventHasProtectedContentToggled = TdObject & {
+export type ChatEventHasProtectedContentToggled = {
 	"@type": "chatEventHasProtectedContentToggled";
 	/** New value of has_protected_content */
 	has_protected_content: boolean;
@@ -14677,7 +14686,7 @@ export type ChatEventHasProtectedContentToggled = TdObject & {
  * The can_invite_users permission of a supergroup chat was toggled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_invites_toggled.html
  */
-export type ChatEventInvitesToggled = TdObject & {
+export type ChatEventInvitesToggled = {
 	"@type": "chatEventInvitesToggled";
 	/** New value of can_invite_users permission */
 	can_invite_users: boolean;
@@ -14687,7 +14696,7 @@ export type ChatEventInvitesToggled = TdObject & {
  * The is_all_history_available setting of a supergroup was toggled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_is_all_history_available_toggled.html
  */
-export type ChatEventIsAllHistoryAvailableToggled = TdObject & {
+export type ChatEventIsAllHistoryAvailableToggled = {
 	"@type": "chatEventIsAllHistoryAvailableToggled";
 	/** New value of is_all_history_available */
 	is_all_history_available: boolean;
@@ -14697,7 +14706,7 @@ export type ChatEventIsAllHistoryAvailableToggled = TdObject & {
  * The has_aggressive_anti_spam_enabled setting of a supergroup was toggled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_has_aggressive_anti_spam_enabled_toggled.html
  */
-export type ChatEventHasAggressiveAntiSpamEnabledToggled = TdObject & {
+export type ChatEventHasAggressiveAntiSpamEnabledToggled = {
 	"@type": "chatEventHasAggressiveAntiSpamEnabledToggled";
 	/** New value of has_aggressive_anti_spam_enabled */
 	has_aggressive_anti_spam_enabled: boolean;
@@ -14707,7 +14716,7 @@ export type ChatEventHasAggressiveAntiSpamEnabledToggled = TdObject & {
  * The sign_messages setting of a channel was toggled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_sign_messages_toggled.html
  */
-export type ChatEventSignMessagesToggled = TdObject & {
+export type ChatEventSignMessagesToggled = {
 	"@type": "chatEventSignMessagesToggled";
 	/** New value of sign_messages */
 	sign_messages: boolean;
@@ -14717,7 +14726,7 @@ export type ChatEventSignMessagesToggled = TdObject & {
  * The show_message_sender setting of a channel was toggled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_show_message_sender_toggled.html
  */
-export type ChatEventShowMessageSenderToggled = TdObject & {
+export type ChatEventShowMessageSenderToggled = {
 	"@type": "chatEventShowMessageSenderToggled";
 	/** New value of show_message_sender */
 	show_message_sender: boolean;
@@ -14727,7 +14736,7 @@ export type ChatEventShowMessageSenderToggled = TdObject & {
  * The has_automatic_translation setting of a channel was toggled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_automatic_translation_toggled.html
  */
-export type ChatEventAutomaticTranslationToggled = TdObject & {
+export type ChatEventAutomaticTranslationToggled = {
 	"@type": "chatEventAutomaticTranslationToggled";
 	/** New value of has_automatic_translation */
 	has_automatic_translation: boolean;
@@ -14737,7 +14746,7 @@ export type ChatEventAutomaticTranslationToggled = TdObject & {
  * A chat invite link was edited
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_invite_link_edited.html
  */
-export type ChatEventInviteLinkEdited = TdObject & {
+export type ChatEventInviteLinkEdited = {
 	"@type": "chatEventInviteLinkEdited";
 	/** Previous information about the invite link */
 	old_invite_link: ChatInviteLink;
@@ -14749,7 +14758,7 @@ export type ChatEventInviteLinkEdited = TdObject & {
  * A chat invite link was revoked
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_invite_link_revoked.html
  */
-export type ChatEventInviteLinkRevoked = TdObject & {
+export type ChatEventInviteLinkRevoked = {
 	"@type": "chatEventInviteLinkRevoked";
 	/** The invite link */
 	invite_link: ChatInviteLink;
@@ -14759,7 +14768,7 @@ export type ChatEventInviteLinkRevoked = TdObject & {
  * A revoked chat invite link was deleted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_invite_link_deleted.html
  */
-export type ChatEventInviteLinkDeleted = TdObject & {
+export type ChatEventInviteLinkDeleted = {
 	"@type": "chatEventInviteLinkDeleted";
 	/** The invite link */
 	invite_link: ChatInviteLink;
@@ -14769,7 +14778,7 @@ export type ChatEventInviteLinkDeleted = TdObject & {
  * A video chat was created
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_video_chat_created.html
  */
-export type ChatEventVideoChatCreated = TdObject & {
+export type ChatEventVideoChatCreated = {
 	"@type": "chatEventVideoChatCreated";
 	/** Identifier of the video chat. The video chat can be received through the method getGroupCall */
 	group_call_id: number;
@@ -14779,7 +14788,7 @@ export type ChatEventVideoChatCreated = TdObject & {
  * A video chat was ended
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_video_chat_ended.html
  */
-export type ChatEventVideoChatEnded = TdObject & {
+export type ChatEventVideoChatEnded = {
 	"@type": "chatEventVideoChatEnded";
 	/** Identifier of the video chat. The video chat can be received through the method getGroupCall */
 	group_call_id: number;
@@ -14789,7 +14798,7 @@ export type ChatEventVideoChatEnded = TdObject & {
  * The mute_new_participants setting of a video chat was toggled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_video_chat_mute_new_participants_toggled.html
  */
-export type ChatEventVideoChatMuteNewParticipantsToggled = TdObject & {
+export type ChatEventVideoChatMuteNewParticipantsToggled = {
 	"@type": "chatEventVideoChatMuteNewParticipantsToggled";
 	/** New value of the mute_new_participants setting */
 	mute_new_participants: boolean;
@@ -14799,7 +14808,7 @@ export type ChatEventVideoChatMuteNewParticipantsToggled = TdObject & {
  * A video chat participant was muted or unmuted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_video_chat_participant_is_muted_toggled.html
  */
-export type ChatEventVideoChatParticipantIsMutedToggled = TdObject & {
+export type ChatEventVideoChatParticipantIsMutedToggled = {
 	"@type": "chatEventVideoChatParticipantIsMutedToggled";
 	/** Identifier of the affected group call participant */
 	participant_id: MessageSender;
@@ -14811,7 +14820,7 @@ export type ChatEventVideoChatParticipantIsMutedToggled = TdObject & {
  * A video chat participant volume level was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_video_chat_participant_volume_level_changed.html
  */
-export type ChatEventVideoChatParticipantVolumeLevelChanged = TdObject & {
+export type ChatEventVideoChatParticipantVolumeLevelChanged = {
 	"@type": "chatEventVideoChatParticipantVolumeLevelChanged";
 	/** Identifier of the affected group call participant */
 	participant_id: MessageSender;
@@ -14823,7 +14832,7 @@ export type ChatEventVideoChatParticipantVolumeLevelChanged = TdObject & {
  * The is_forum setting of a channel was toggled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_is_forum_toggled.html
  */
-export type ChatEventIsForumToggled = TdObject & {
+export type ChatEventIsForumToggled = {
 	"@type": "chatEventIsForumToggled";
 	/** New value of is_forum */
 	is_forum: boolean;
@@ -14833,7 +14842,7 @@ export type ChatEventIsForumToggled = TdObject & {
  * A new forum topic was created
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_forum_topic_created.html
  */
-export type ChatEventForumTopicCreated = TdObject & {
+export type ChatEventForumTopicCreated = {
 	"@type": "chatEventForumTopicCreated";
 	/** Information about the topic */
 	topic_info: ForumTopicInfo;
@@ -14843,7 +14852,7 @@ export type ChatEventForumTopicCreated = TdObject & {
  * A forum topic was edited
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_forum_topic_edited.html
  */
-export type ChatEventForumTopicEdited = TdObject & {
+export type ChatEventForumTopicEdited = {
 	"@type": "chatEventForumTopicEdited";
 	/** Old information about the topic */
 	old_topic_info: ForumTopicInfo;
@@ -14855,7 +14864,7 @@ export type ChatEventForumTopicEdited = TdObject & {
  * A forum topic was closed or reopened
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_forum_topic_toggle_is_closed.html
  */
-export type ChatEventForumTopicToggleIsClosed = TdObject & {
+export type ChatEventForumTopicToggleIsClosed = {
 	"@type": "chatEventForumTopicToggleIsClosed";
 	/** New information about the topic */
 	topic_info: ForumTopicInfo;
@@ -14865,7 +14874,7 @@ export type ChatEventForumTopicToggleIsClosed = TdObject & {
  * The General forum topic was hidden or unhidden
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_forum_topic_toggle_is_hidden.html
  */
-export type ChatEventForumTopicToggleIsHidden = TdObject & {
+export type ChatEventForumTopicToggleIsHidden = {
 	"@type": "chatEventForumTopicToggleIsHidden";
 	/** New information about the topic */
 	topic_info: ForumTopicInfo;
@@ -14875,7 +14884,7 @@ export type ChatEventForumTopicToggleIsHidden = TdObject & {
  * A forum topic was deleted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_forum_topic_deleted.html
  */
-export type ChatEventForumTopicDeleted = TdObject & {
+export type ChatEventForumTopicDeleted = {
 	"@type": "chatEventForumTopicDeleted";
 	/** Information about the topic */
 	topic_info: ForumTopicInfo;
@@ -14885,7 +14894,7 @@ export type ChatEventForumTopicDeleted = TdObject & {
  * A pinned forum topic was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_forum_topic_pinned.html
  */
-export type ChatEventForumTopicPinned = TdObject & {
+export type ChatEventForumTopicPinned = {
 	"@type": "chatEventForumTopicPinned";
 	/** Information about the old pinned topic; may be null */
 	old_topic_info?: ForumTopicInfo;
@@ -14897,7 +14906,7 @@ export type ChatEventForumTopicPinned = TdObject & {
  * Represents a chat event
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event.html
  */
-export type ChatEvent = TdObject & {
+export type ChatEvent = {
 	"@type": "chatEvent";
 	/** Chat event identifier */
 	id: string;
@@ -14913,7 +14922,7 @@ export type ChatEvent = TdObject & {
  * Contains a list of chat events
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_events.html
  */
-export type ChatEvents = TdObject & {
+export type ChatEvents = {
 	"@type": "chatEvents";
 	/** List of events */
 	events: ChatEvent[];
@@ -14923,7 +14932,7 @@ export type ChatEvents = TdObject & {
  * Represents a set of filters used to obtain a chat event log
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_event_log_filters.html
  */
-export type ChatEventLogFilters = TdObject & {
+export type ChatEventLogFilters = {
 	"@type": "chatEventLogFilters";
 	/** True, if message edits need to be returned */
 	message_edits: boolean;
@@ -14959,7 +14968,7 @@ export type ChatEventLogFilters = TdObject & {
  * An ordinary language pack string
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1language_pack_string_value_ordinary.html
  */
-export type LanguagePackStringValueOrdinary = TdObject & {
+export type LanguagePackStringValueOrdinary = {
 	"@type": "languagePackStringValueOrdinary";
 	/** String value */
 	value: string;
@@ -14969,7 +14978,7 @@ export type LanguagePackStringValueOrdinary = TdObject & {
  * A language pack string which has different forms based on the number of some object it mentions. See https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html for more information
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1language_pack_string_value_pluralized.html
  */
-export type LanguagePackStringValuePluralized = TdObject & {
+export type LanguagePackStringValuePluralized = {
 	"@type": "languagePackStringValuePluralized";
 	/** Value for zero objects */
 	zero_value: string;
@@ -14989,7 +14998,7 @@ export type LanguagePackStringValuePluralized = TdObject & {
  * A deleted language pack string, the value must be taken from the built-in English language pack
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1language_pack_string_value_deleted.html
  */
-export type LanguagePackStringValueDeleted = TdObject & {
+export type LanguagePackStringValueDeleted = {
 	"@type": "languagePackStringValueDeleted";
 };
 
@@ -14997,7 +15006,7 @@ export type LanguagePackStringValueDeleted = TdObject & {
  * Represents one language pack string
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1language_pack_string.html
  */
-export type LanguagePackString = TdObject & {
+export type LanguagePackString = {
 	"@type": "languagePackString";
 	/** String key */
 	key: string;
@@ -15009,7 +15018,7 @@ export type LanguagePackString = TdObject & {
  * Contains a list of language pack strings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1language_pack_strings.html
  */
-export type LanguagePackStrings = TdObject & {
+export type LanguagePackStrings = {
 	"@type": "languagePackStrings";
 	/** A list of language pack strings */
 	strings: LanguagePackString[];
@@ -15019,7 +15028,7 @@ export type LanguagePackStrings = TdObject & {
  * Contains information about a language pack
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1language_pack_info.html
  */
-export type LanguagePackInfo = TdObject & {
+export type LanguagePackInfo = {
 	"@type": "languagePackInfo";
 	/** Unique language pack identifier */
 	id: string;
@@ -15053,7 +15062,7 @@ export type LanguagePackInfo = TdObject & {
  * Contains information about the current localization target
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1localization_target_info.html
  */
-export type LocalizationTargetInfo = TdObject & {
+export type LocalizationTargetInfo = {
 	"@type": "localizationTargetInfo";
 	/** List of available language packs for this application */
 	language_packs: LanguagePackInfo[];
@@ -15063,7 +15072,7 @@ export type LocalizationTargetInfo = TdObject & {
  * The maximum number of joined supergroups and channels
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_supergroup_count.html
  */
-export type PremiumLimitTypeSupergroupCount = TdObject & {
+export type PremiumLimitTypeSupergroupCount = {
 	"@type": "premiumLimitTypeSupergroupCount";
 };
 
@@ -15071,7 +15080,7 @@ export type PremiumLimitTypeSupergroupCount = TdObject & {
  * The maximum number of pinned chats in the main chat list
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_pinned_chat_count.html
  */
-export type PremiumLimitTypePinnedChatCount = TdObject & {
+export type PremiumLimitTypePinnedChatCount = {
 	"@type": "premiumLimitTypePinnedChatCount";
 };
 
@@ -15079,7 +15088,7 @@ export type PremiumLimitTypePinnedChatCount = TdObject & {
  * The maximum number of created public chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_created_public_chat_count.html
  */
-export type PremiumLimitTypeCreatedPublicChatCount = TdObject & {
+export type PremiumLimitTypeCreatedPublicChatCount = {
 	"@type": "premiumLimitTypeCreatedPublicChatCount";
 };
 
@@ -15087,7 +15096,7 @@ export type PremiumLimitTypeCreatedPublicChatCount = TdObject & {
  * The maximum number of saved animations
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_saved_animation_count.html
  */
-export type PremiumLimitTypeSavedAnimationCount = TdObject & {
+export type PremiumLimitTypeSavedAnimationCount = {
 	"@type": "premiumLimitTypeSavedAnimationCount";
 };
 
@@ -15095,7 +15104,7 @@ export type PremiumLimitTypeSavedAnimationCount = TdObject & {
  * The maximum number of favorite stickers
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_favorite_sticker_count.html
  */
-export type PremiumLimitTypeFavoriteStickerCount = TdObject & {
+export type PremiumLimitTypeFavoriteStickerCount = {
 	"@type": "premiumLimitTypeFavoriteStickerCount";
 };
 
@@ -15103,7 +15112,7 @@ export type PremiumLimitTypeFavoriteStickerCount = TdObject & {
  * The maximum number of chat folders
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_chat_folder_count.html
  */
-export type PremiumLimitTypeChatFolderCount = TdObject & {
+export type PremiumLimitTypeChatFolderCount = {
 	"@type": "premiumLimitTypeChatFolderCount";
 };
 
@@ -15111,7 +15120,7 @@ export type PremiumLimitTypeChatFolderCount = TdObject & {
  * The maximum number of pinned and always included, or always excluded chats in a chat folder
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_chat_folder_chosen_chat_count.html
  */
-export type PremiumLimitTypeChatFolderChosenChatCount = TdObject & {
+export type PremiumLimitTypeChatFolderChosenChatCount = {
 	"@type": "premiumLimitTypeChatFolderChosenChatCount";
 };
 
@@ -15119,7 +15128,7 @@ export type PremiumLimitTypeChatFolderChosenChatCount = TdObject & {
  * The maximum number of pinned chats in the archive chat list
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_pinned_archived_chat_count.html
  */
-export type PremiumLimitTypePinnedArchivedChatCount = TdObject & {
+export type PremiumLimitTypePinnedArchivedChatCount = {
 	"@type": "premiumLimitTypePinnedArchivedChatCount";
 };
 
@@ -15127,7 +15136,7 @@ export type PremiumLimitTypePinnedArchivedChatCount = TdObject & {
  * The maximum number of pinned Saved Messages topics
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_pinned_saved_messages_topic_count.html
  */
-export type PremiumLimitTypePinnedSavedMessagesTopicCount = TdObject & {
+export type PremiumLimitTypePinnedSavedMessagesTopicCount = {
 	"@type": "premiumLimitTypePinnedSavedMessagesTopicCount";
 };
 
@@ -15135,7 +15144,7 @@ export type PremiumLimitTypePinnedSavedMessagesTopicCount = TdObject & {
  * The maximum length of sent media caption
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_caption_length.html
  */
-export type PremiumLimitTypeCaptionLength = TdObject & {
+export type PremiumLimitTypeCaptionLength = {
 	"@type": "premiumLimitTypeCaptionLength";
 };
 
@@ -15143,7 +15152,7 @@ export type PremiumLimitTypeCaptionLength = TdObject & {
  * The maximum length of the user's bio
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_bio_length.html
  */
-export type PremiumLimitTypeBioLength = TdObject & {
+export type PremiumLimitTypeBioLength = {
 	"@type": "premiumLimitTypeBioLength";
 };
 
@@ -15151,7 +15160,7 @@ export type PremiumLimitTypeBioLength = TdObject & {
  * The maximum number of invite links for a chat folder
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_chat_folder_invite_link_count.html
  */
-export type PremiumLimitTypeChatFolderInviteLinkCount = TdObject & {
+export type PremiumLimitTypeChatFolderInviteLinkCount = {
 	"@type": "premiumLimitTypeChatFolderInviteLinkCount";
 };
 
@@ -15159,7 +15168,7 @@ export type PremiumLimitTypeChatFolderInviteLinkCount = TdObject & {
  * The maximum number of added shareable chat folders
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_shareable_chat_folder_count.html
  */
-export type PremiumLimitTypeShareableChatFolderCount = TdObject & {
+export type PremiumLimitTypeShareableChatFolderCount = {
 	"@type": "premiumLimitTypeShareableChatFolderCount";
 };
 
@@ -15167,7 +15176,7 @@ export type PremiumLimitTypeShareableChatFolderCount = TdObject & {
  * The maximum number of active stories
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_active_story_count.html
  */
-export type PremiumLimitTypeActiveStoryCount = TdObject & {
+export type PremiumLimitTypeActiveStoryCount = {
 	"@type": "premiumLimitTypeActiveStoryCount";
 };
 
@@ -15175,7 +15184,7 @@ export type PremiumLimitTypeActiveStoryCount = TdObject & {
  * The maximum number of stories posted per week
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_weekly_posted_story_count.html
  */
-export type PremiumLimitTypeWeeklyPostedStoryCount = TdObject & {
+export type PremiumLimitTypeWeeklyPostedStoryCount = {
 	"@type": "premiumLimitTypeWeeklyPostedStoryCount";
 };
 
@@ -15183,7 +15192,7 @@ export type PremiumLimitTypeWeeklyPostedStoryCount = TdObject & {
  * The maximum number of stories posted per month
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_monthly_posted_story_count.html
  */
-export type PremiumLimitTypeMonthlyPostedStoryCount = TdObject & {
+export type PremiumLimitTypeMonthlyPostedStoryCount = {
 	"@type": "premiumLimitTypeMonthlyPostedStoryCount";
 };
 
@@ -15191,7 +15200,7 @@ export type PremiumLimitTypeMonthlyPostedStoryCount = TdObject & {
  * The maximum length of captions of posted stories
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_story_caption_length.html
  */
-export type PremiumLimitTypeStoryCaptionLength = TdObject & {
+export type PremiumLimitTypeStoryCaptionLength = {
 	"@type": "premiumLimitTypeStoryCaptionLength";
 };
 
@@ -15199,7 +15208,7 @@ export type PremiumLimitTypeStoryCaptionLength = TdObject & {
  * The maximum number of suggested reaction areas on a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_story_suggested_reaction_area_count.html
  */
-export type PremiumLimitTypeStorySuggestedReactionAreaCount = TdObject & {
+export type PremiumLimitTypeStorySuggestedReactionAreaCount = {
 	"@type": "premiumLimitTypeStorySuggestedReactionAreaCount";
 };
 
@@ -15207,7 +15216,7 @@ export type PremiumLimitTypeStorySuggestedReactionAreaCount = TdObject & {
  * The maximum number of received similar chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit_type_similar_chat_count.html
  */
-export type PremiumLimitTypeSimilarChatCount = TdObject & {
+export type PremiumLimitTypeSimilarChatCount = {
 	"@type": "premiumLimitTypeSimilarChatCount";
 };
 
@@ -15215,7 +15224,7 @@ export type PremiumLimitTypeSimilarChatCount = TdObject & {
  * Increased limits
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_increased_limits.html
  */
-export type PremiumFeatureIncreasedLimits = TdObject & {
+export type PremiumFeatureIncreasedLimits = {
 	"@type": "premiumFeatureIncreasedLimits";
 };
 
@@ -15223,7 +15232,7 @@ export type PremiumFeatureIncreasedLimits = TdObject & {
  * Increased maximum upload file size
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_increased_upload_file_size.html
  */
-export type PremiumFeatureIncreasedUploadFileSize = TdObject & {
+export type PremiumFeatureIncreasedUploadFileSize = {
 	"@type": "premiumFeatureIncreasedUploadFileSize";
 };
 
@@ -15231,7 +15240,7 @@ export type PremiumFeatureIncreasedUploadFileSize = TdObject & {
  * Improved download speed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_improved_download_speed.html
  */
-export type PremiumFeatureImprovedDownloadSpeed = TdObject & {
+export type PremiumFeatureImprovedDownloadSpeed = {
 	"@type": "premiumFeatureImprovedDownloadSpeed";
 };
 
@@ -15239,7 +15248,7 @@ export type PremiumFeatureImprovedDownloadSpeed = TdObject & {
  * The ability to convert voice notes to text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_voice_recognition.html
  */
-export type PremiumFeatureVoiceRecognition = TdObject & {
+export type PremiumFeatureVoiceRecognition = {
 	"@type": "premiumFeatureVoiceRecognition";
 };
 
@@ -15247,7 +15256,7 @@ export type PremiumFeatureVoiceRecognition = TdObject & {
  * Disabled ads
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_disabled_ads.html
  */
-export type PremiumFeatureDisabledAds = TdObject & {
+export type PremiumFeatureDisabledAds = {
 	"@type": "premiumFeatureDisabledAds";
 };
 
@@ -15255,7 +15264,7 @@ export type PremiumFeatureDisabledAds = TdObject & {
  * Allowed to use more reactions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_unique_reactions.html
  */
-export type PremiumFeatureUniqueReactions = TdObject & {
+export type PremiumFeatureUniqueReactions = {
 	"@type": "premiumFeatureUniqueReactions";
 };
 
@@ -15263,7 +15272,7 @@ export type PremiumFeatureUniqueReactions = TdObject & {
  * Allowed to use premium stickers with unique effects
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_unique_stickers.html
  */
-export type PremiumFeatureUniqueStickers = TdObject & {
+export type PremiumFeatureUniqueStickers = {
 	"@type": "premiumFeatureUniqueStickers";
 };
 
@@ -15271,7 +15280,7 @@ export type PremiumFeatureUniqueStickers = TdObject & {
  * Allowed to use custom emoji stickers in message texts and captions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_custom_emoji.html
  */
-export type PremiumFeatureCustomEmoji = TdObject & {
+export type PremiumFeatureCustomEmoji = {
 	"@type": "premiumFeatureCustomEmoji";
 };
 
@@ -15279,7 +15288,7 @@ export type PremiumFeatureCustomEmoji = TdObject & {
  * Ability to change position of the main chat list, archive and mute all new chats from non-contacts, and completely disable notifications about the user's contacts joined Telegram
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_advanced_chat_management.html
  */
-export type PremiumFeatureAdvancedChatManagement = TdObject & {
+export type PremiumFeatureAdvancedChatManagement = {
 	"@type": "premiumFeatureAdvancedChatManagement";
 };
 
@@ -15287,7 +15296,7 @@ export type PremiumFeatureAdvancedChatManagement = TdObject & {
  * A badge in the user's profile
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_profile_badge.html
  */
-export type PremiumFeatureProfileBadge = TdObject & {
+export type PremiumFeatureProfileBadge = {
 	"@type": "premiumFeatureProfileBadge";
 };
 
@@ -15295,7 +15304,7 @@ export type PremiumFeatureProfileBadge = TdObject & {
  * The ability to show an emoji status along with the user's name
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_emoji_status.html
  */
-export type PremiumFeatureEmojiStatus = TdObject & {
+export type PremiumFeatureEmojiStatus = {
 	"@type": "premiumFeatureEmojiStatus";
 };
 
@@ -15303,7 +15312,7 @@ export type PremiumFeatureEmojiStatus = TdObject & {
  * Profile photo animation on message and chat screens
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_animated_profile_photo.html
  */
-export type PremiumFeatureAnimatedProfilePhoto = TdObject & {
+export type PremiumFeatureAnimatedProfilePhoto = {
 	"@type": "premiumFeatureAnimatedProfilePhoto";
 };
 
@@ -15311,7 +15320,7 @@ export type PremiumFeatureAnimatedProfilePhoto = TdObject & {
  * The ability to set a custom emoji as a forum topic icon
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_forum_topic_icon.html
  */
-export type PremiumFeatureForumTopicIcon = TdObject & {
+export type PremiumFeatureForumTopicIcon = {
 	"@type": "premiumFeatureForumTopicIcon";
 };
 
@@ -15319,7 +15328,7 @@ export type PremiumFeatureForumTopicIcon = TdObject & {
  * Allowed to set a premium application icons
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_app_icons.html
  */
-export type PremiumFeatureAppIcons = TdObject & {
+export type PremiumFeatureAppIcons = {
 	"@type": "premiumFeatureAppIcons";
 };
 
@@ -15327,7 +15336,7 @@ export type PremiumFeatureAppIcons = TdObject & {
  * Allowed to translate chat messages real-time
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_real_time_chat_translation.html
  */
-export type PremiumFeatureRealTimeChatTranslation = TdObject & {
+export type PremiumFeatureRealTimeChatTranslation = {
 	"@type": "premiumFeatureRealTimeChatTranslation";
 };
 
@@ -15335,7 +15344,7 @@ export type PremiumFeatureRealTimeChatTranslation = TdObject & {
  * Allowed to use many additional features for stories
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_upgraded_stories.html
  */
-export type PremiumFeatureUpgradedStories = TdObject & {
+export type PremiumFeatureUpgradedStories = {
 	"@type": "premiumFeatureUpgradedStories";
 };
 
@@ -15343,7 +15352,7 @@ export type PremiumFeatureUpgradedStories = TdObject & {
  * The ability to boost chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_chat_boost.html
  */
-export type PremiumFeatureChatBoost = TdObject & {
+export type PremiumFeatureChatBoost = {
 	"@type": "premiumFeatureChatBoost";
 };
 
@@ -15351,7 +15360,7 @@ export type PremiumFeatureChatBoost = TdObject & {
  * The ability to choose accent color for replies and user profile
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_accent_color.html
  */
-export type PremiumFeatureAccentColor = TdObject & {
+export type PremiumFeatureAccentColor = {
 	"@type": "premiumFeatureAccentColor";
 };
 
@@ -15359,7 +15368,7 @@ export type PremiumFeatureAccentColor = TdObject & {
  * The ability to set private chat background for both users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_background_for_both.html
  */
-export type PremiumFeatureBackgroundForBoth = TdObject & {
+export type PremiumFeatureBackgroundForBoth = {
 	"@type": "premiumFeatureBackgroundForBoth";
 };
 
@@ -15367,7 +15376,7 @@ export type PremiumFeatureBackgroundForBoth = TdObject & {
  * The ability to use tags in Saved Messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_saved_messages_tags.html
  */
-export type PremiumFeatureSavedMessagesTags = TdObject & {
+export type PremiumFeatureSavedMessagesTags = {
 	"@type": "premiumFeatureSavedMessagesTags";
 };
 
@@ -15375,7 +15384,7 @@ export type PremiumFeatureSavedMessagesTags = TdObject & {
  * The ability to disallow incoming voice and video note messages in private chats using setUserPrivacySettingRules with userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages and to restrict incoming messages from non-contacts using setNewChatPrivacySettings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_message_privacy.html
  */
-export type PremiumFeatureMessagePrivacy = TdObject & {
+export type PremiumFeatureMessagePrivacy = {
 	"@type": "premiumFeatureMessagePrivacy";
 };
 
@@ -15383,7 +15392,7 @@ export type PremiumFeatureMessagePrivacy = TdObject & {
  * The ability to view last seen and read times of other users even they can't view last seen or read time for the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_last_seen_times.html
  */
-export type PremiumFeatureLastSeenTimes = TdObject & {
+export type PremiumFeatureLastSeenTimes = {
 	"@type": "premiumFeatureLastSeenTimes";
 };
 
@@ -15391,7 +15400,7 @@ export type PremiumFeatureLastSeenTimes = TdObject & {
  * The ability to use Business features
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_business.html
  */
-export type PremiumFeatureBusiness = TdObject & {
+export type PremiumFeatureBusiness = {
 	"@type": "premiumFeatureBusiness";
 };
 
@@ -15399,7 +15408,7 @@ export type PremiumFeatureBusiness = TdObject & {
  * The ability to use all available message effects
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_message_effects.html
  */
-export type PremiumFeatureMessageEffects = TdObject & {
+export type PremiumFeatureMessageEffects = {
 	"@type": "premiumFeatureMessageEffects";
 };
 
@@ -15407,7 +15416,7 @@ export type PremiumFeatureMessageEffects = TdObject & {
  * The ability to set location
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_location.html
  */
-export type BusinessFeatureLocation = TdObject & {
+export type BusinessFeatureLocation = {
 	"@type": "businessFeatureLocation";
 };
 
@@ -15415,7 +15424,7 @@ export type BusinessFeatureLocation = TdObject & {
  * The ability to set opening hours
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_opening_hours.html
  */
-export type BusinessFeatureOpeningHours = TdObject & {
+export type BusinessFeatureOpeningHours = {
 	"@type": "businessFeatureOpeningHours";
 };
 
@@ -15423,7 +15432,7 @@ export type BusinessFeatureOpeningHours = TdObject & {
  * The ability to use quick replies
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_quick_replies.html
  */
-export type BusinessFeatureQuickReplies = TdObject & {
+export type BusinessFeatureQuickReplies = {
 	"@type": "businessFeatureQuickReplies";
 };
 
@@ -15431,7 +15440,7 @@ export type BusinessFeatureQuickReplies = TdObject & {
  * The ability to set up a greeting message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_greeting_message.html
  */
-export type BusinessFeatureGreetingMessage = TdObject & {
+export type BusinessFeatureGreetingMessage = {
 	"@type": "businessFeatureGreetingMessage";
 };
 
@@ -15439,7 +15448,7 @@ export type BusinessFeatureGreetingMessage = TdObject & {
  * The ability to set up an away message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_away_message.html
  */
-export type BusinessFeatureAwayMessage = TdObject & {
+export type BusinessFeatureAwayMessage = {
 	"@type": "businessFeatureAwayMessage";
 };
 
@@ -15447,7 +15456,7 @@ export type BusinessFeatureAwayMessage = TdObject & {
  * The ability to create links to the business account with predefined message text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_account_links.html
  */
-export type BusinessFeatureAccountLinks = TdObject & {
+export type BusinessFeatureAccountLinks = {
 	"@type": "businessFeatureAccountLinks";
 };
 
@@ -15455,7 +15464,7 @@ export type BusinessFeatureAccountLinks = TdObject & {
  * The ability to customize start page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_start_page.html
  */
-export type BusinessFeatureStartPage = TdObject & {
+export type BusinessFeatureStartPage = {
 	"@type": "businessFeatureStartPage";
 };
 
@@ -15463,7 +15472,7 @@ export type BusinessFeatureStartPage = TdObject & {
  * The ability to connect a bot to the account
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_bots.html
  */
-export type BusinessFeatureBots = TdObject & {
+export type BusinessFeatureBots = {
 	"@type": "businessFeatureBots";
 };
 
@@ -15471,7 +15480,7 @@ export type BusinessFeatureBots = TdObject & {
  * The ability to show an emoji status along with the business name
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_emoji_status.html
  */
-export type BusinessFeatureEmojiStatus = TdObject & {
+export type BusinessFeatureEmojiStatus = {
 	"@type": "businessFeatureEmojiStatus";
 };
 
@@ -15479,7 +15488,7 @@ export type BusinessFeatureEmojiStatus = TdObject & {
  * The ability to display folder names for each chat in the chat list
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_chat_folder_tags.html
  */
-export type BusinessFeatureChatFolderTags = TdObject & {
+export type BusinessFeatureChatFolderTags = {
 	"@type": "businessFeatureChatFolderTags";
 };
 
@@ -15487,7 +15496,7 @@ export type BusinessFeatureChatFolderTags = TdObject & {
  * Allowed to use many additional features for stories
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_upgraded_stories.html
  */
-export type BusinessFeatureUpgradedStories = TdObject & {
+export type BusinessFeatureUpgradedStories = {
 	"@type": "businessFeatureUpgradedStories";
 };
 
@@ -15495,7 +15504,7 @@ export type BusinessFeatureUpgradedStories = TdObject & {
  * Stories of the current user are displayed before stories of non-Premium contacts, supergroups, and channels
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_story_feature_priority_order.html
  */
-export type PremiumStoryFeaturePriorityOrder = TdObject & {
+export type PremiumStoryFeaturePriorityOrder = {
 	"@type": "premiumStoryFeaturePriorityOrder";
 };
 
@@ -15503,7 +15512,7 @@ export type PremiumStoryFeaturePriorityOrder = TdObject & {
  * The ability to hide the fact that the user viewed other's stories
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_story_feature_stealth_mode.html
  */
-export type PremiumStoryFeatureStealthMode = TdObject & {
+export type PremiumStoryFeatureStealthMode = {
 	"@type": "premiumStoryFeatureStealthMode";
 };
 
@@ -15511,7 +15520,7 @@ export type PremiumStoryFeatureStealthMode = TdObject & {
  * The ability to check who opened the current user's stories after they expire
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_story_feature_permanent_views_history.html
  */
-export type PremiumStoryFeaturePermanentViewsHistory = TdObject & {
+export type PremiumStoryFeaturePermanentViewsHistory = {
 	"@type": "premiumStoryFeaturePermanentViewsHistory";
 };
 
@@ -15519,7 +15528,7 @@ export type PremiumStoryFeaturePermanentViewsHistory = TdObject & {
  * The ability to set custom expiration duration for stories
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_story_feature_custom_expiration_duration.html
  */
-export type PremiumStoryFeatureCustomExpirationDuration = TdObject & {
+export type PremiumStoryFeatureCustomExpirationDuration = {
 	"@type": "premiumStoryFeatureCustomExpirationDuration";
 };
 
@@ -15527,7 +15536,7 @@ export type PremiumStoryFeatureCustomExpirationDuration = TdObject & {
  * The ability to save other's unprotected stories
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_story_feature_save_stories.html
  */
-export type PremiumStoryFeatureSaveStories = TdObject & {
+export type PremiumStoryFeatureSaveStories = {
 	"@type": "premiumStoryFeatureSaveStories";
 };
 
@@ -15535,7 +15544,7 @@ export type PremiumStoryFeatureSaveStories = TdObject & {
  * The ability to use links and formatting in story caption, and use inputStoryAreaTypeLink areas
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_story_feature_links_and_formatting.html
  */
-export type PremiumStoryFeatureLinksAndFormatting = TdObject & {
+export type PremiumStoryFeatureLinksAndFormatting = {
 	"@type": "premiumStoryFeatureLinksAndFormatting";
 };
 
@@ -15543,7 +15552,7 @@ export type PremiumStoryFeatureLinksAndFormatting = TdObject & {
  * The ability to choose better quality for viewed stories
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_story_feature_video_quality.html
  */
-export type PremiumStoryFeatureVideoQuality = TdObject & {
+export type PremiumStoryFeatureVideoQuality = {
 	"@type": "premiumStoryFeatureVideoQuality";
 };
 
@@ -15551,7 +15560,7 @@ export type PremiumStoryFeatureVideoQuality = TdObject & {
  * Contains information about a limit, increased for Premium users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_limit.html
  */
-export type PremiumLimit = TdObject & {
+export type PremiumLimit = {
 	"@type": "premiumLimit";
 	/** The type of the limit */
 	type: PremiumLimitType;
@@ -15565,7 +15574,7 @@ export type PremiumLimit = TdObject & {
  * Contains information about features, available to Premium users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_features.html
  */
-export type PremiumFeatures = TdObject & {
+export type PremiumFeatures = {
 	"@type": "premiumFeatures";
 	/** The list of available features */
 	features: PremiumFeature[];
@@ -15579,7 +15588,7 @@ export type PremiumFeatures = TdObject & {
  * Contains information about features, available to Business user accounts
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_features.html
  */
-export type BusinessFeatures = TdObject & {
+export type BusinessFeatures = {
 	"@type": "businessFeatures";
 	/** The list of available business features */
 	features: BusinessFeature[];
@@ -15589,7 +15598,7 @@ export type BusinessFeatures = TdObject & {
  * A limit was exceeded
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_source_limit_exceeded.html
  */
-export type PremiumSourceLimitExceeded = TdObject & {
+export type PremiumSourceLimitExceeded = {
 	"@type": "premiumSourceLimitExceeded";
 	/** Type of the exceeded limit */
 	limit_type: PremiumLimitType;
@@ -15599,7 +15608,7 @@ export type PremiumSourceLimitExceeded = TdObject & {
  * A user tried to use a Premium feature
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_source_feature.html
  */
-export type PremiumSourceFeature = TdObject & {
+export type PremiumSourceFeature = {
 	"@type": "premiumSourceFeature";
 	/** The used feature */
 	feature: PremiumFeature;
@@ -15609,7 +15618,7 @@ export type PremiumSourceFeature = TdObject & {
  * A user tried to use a Business feature
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_source_business_feature.html
  */
-export type PremiumSourceBusinessFeature = TdObject & {
+export type PremiumSourceBusinessFeature = {
 	"@type": "premiumSourceBusinessFeature";
 	/** The used feature; pass null if none specific feature was used */
 	feature?: BusinessFeature;
@@ -15619,7 +15628,7 @@ export type PremiumSourceBusinessFeature = TdObject & {
  * A user tried to use a Premium story feature
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_source_story_feature.html
  */
-export type PremiumSourceStoryFeature = TdObject & {
+export type PremiumSourceStoryFeature = {
 	"@type": "premiumSourceStoryFeature";
 	/** The used feature */
 	feature: PremiumStoryFeature;
@@ -15629,7 +15638,7 @@ export type PremiumSourceStoryFeature = TdObject & {
  * A user opened an internal link of the type internalLinkTypePremiumFeatures
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_source_link.html
  */
-export type PremiumSourceLink = TdObject & {
+export type PremiumSourceLink = {
 	"@type": "premiumSourceLink";
 	/** The referrer from the link */
 	referrer: string;
@@ -15639,7 +15648,7 @@ export type PremiumSourceLink = TdObject & {
  * A user opened the Premium features screen from settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_source_settings.html
  */
-export type PremiumSourceSettings = TdObject & {
+export type PremiumSourceSettings = {
 	"@type": "premiumSourceSettings";
 };
 
@@ -15647,7 +15656,7 @@ export type PremiumSourceSettings = TdObject & {
  * Describes a promotion animation for a Premium feature
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_feature_promotion_animation.html
  */
-export type PremiumFeaturePromotionAnimation = TdObject & {
+export type PremiumFeaturePromotionAnimation = {
 	"@type": "premiumFeaturePromotionAnimation";
 	/** Premium feature */
 	feature: PremiumFeature;
@@ -15659,7 +15668,7 @@ export type PremiumFeaturePromotionAnimation = TdObject & {
  * Describes a promotion animation for a Business feature
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1business_feature_promotion_animation.html
  */
-export type BusinessFeaturePromotionAnimation = TdObject & {
+export type BusinessFeaturePromotionAnimation = {
 	"@type": "businessFeaturePromotionAnimation";
 	/** Business feature */
 	feature: BusinessFeature;
@@ -15671,7 +15680,7 @@ export type BusinessFeaturePromotionAnimation = TdObject & {
  * Contains state of Telegram Premium subscription and promotion videos for Premium features
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1premium_state.html
  */
-export type PremiumState = TdObject & {
+export type PremiumState = {
 	"@type": "premiumState";
 	/** Text description of the state of the current Premium subscription; may be empty if the current user has no Telegram Premium subscription */
 	state?: FormattedText;
@@ -15687,7 +15696,7 @@ export type PremiumState = TdObject & {
  * The user subscribing to Telegram Premium
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_premium_subscription.html
  */
-export type StorePaymentPurposePremiumSubscription = TdObject & {
+export type StorePaymentPurposePremiumSubscription = {
 	"@type": "storePaymentPurposePremiumSubscription";
 	/** Pass true if this is a restore of a Telegram Premium purchase; only for App Store */
 	is_restore: boolean;
@@ -15699,7 +15708,7 @@ export type StorePaymentPurposePremiumSubscription = TdObject & {
  * The user gifting Telegram Premium to another user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_premium_gift.html
  */
-export type StorePaymentPurposePremiumGift = TdObject & {
+export type StorePaymentPurposePremiumGift = {
 	"@type": "storePaymentPurposePremiumGift";
 	/** ISO 4217 currency code of the payment currency */
 	currency: string;
@@ -15715,7 +15724,7 @@ export type StorePaymentPurposePremiumGift = TdObject & {
  * The user boosting a chat by creating Telegram Premium gift codes for other users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_premium_gift_codes.html
  */
-export type StorePaymentPurposePremiumGiftCodes = TdObject & {
+export type StorePaymentPurposePremiumGiftCodes = {
 	"@type": "storePaymentPurposePremiumGiftCodes";
 	/** Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user */
 	boosted_chat_id: number;
@@ -15733,7 +15742,7 @@ export type StorePaymentPurposePremiumGiftCodes = TdObject & {
  * The user creating a Telegram Premium giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_premium_giveaway.html
  */
-export type StorePaymentPurposePremiumGiveaway = TdObject & {
+export type StorePaymentPurposePremiumGiveaway = {
 	"@type": "storePaymentPurposePremiumGiveaway";
 	/** Giveaway parameters */
 	parameters: GiveawayParameters;
@@ -15747,7 +15756,7 @@ export type StorePaymentPurposePremiumGiveaway = TdObject & {
  * The user creating a Telegram Star giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_star_giveaway.html
  */
-export type StorePaymentPurposeStarGiveaway = TdObject & {
+export type StorePaymentPurposeStarGiveaway = {
 	"@type": "storePaymentPurposeStarGiveaway";
 	/** Giveaway parameters */
 	parameters: GiveawayParameters;
@@ -15765,7 +15774,7 @@ export type StorePaymentPurposeStarGiveaway = TdObject & {
  * The user buying Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_stars.html
  */
-export type StorePaymentPurposeStars = TdObject & {
+export type StorePaymentPurposeStars = {
 	"@type": "storePaymentPurposeStars";
 	/** ISO 4217 currency code of the payment currency */
 	currency: string;
@@ -15779,7 +15788,7 @@ export type StorePaymentPurposeStars = TdObject & {
  * The user buying Telegram Stars for other users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_payment_purpose_gifted_stars.html
  */
-export type StorePaymentPurposeGiftedStars = TdObject & {
+export type StorePaymentPurposeGiftedStars = {
 	"@type": "storePaymentPurposeGiftedStars";
 	/** Identifier of the user to which Telegram Stars are gifted */
 	user_id: number;
@@ -15795,7 +15804,7 @@ export type StorePaymentPurposeGiftedStars = TdObject & {
  * A purchase through App Store
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_transaction_app_store.html
  */
-export type StoreTransactionAppStore = TdObject & {
+export type StoreTransactionAppStore = {
 	"@type": "storeTransactionAppStore";
 	/** App Store receipt */
 	receipt: string;
@@ -15805,7 +15814,7 @@ export type StoreTransactionAppStore = TdObject & {
  * A purchase through Google Play
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1store_transaction_google_play.html
  */
-export type StoreTransactionGooglePlay = TdObject & {
+export type StoreTransactionGooglePlay = {
 	"@type": "storeTransactionGooglePlay";
 	/** Application package name */
 	package_name: string;
@@ -15819,7 +15828,7 @@ export type StoreTransactionGooglePlay = TdObject & {
  * The user gifting Telegram Premium to another user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_premium_gift.html
  */
-export type TelegramPaymentPurposePremiumGift = TdObject & {
+export type TelegramPaymentPurposePremiumGift = {
 	"@type": "telegramPaymentPurposePremiumGift";
 	/** ISO 4217 currency code of the payment currency, or "XTR" for payments in Telegram Stars */
 	currency: string;
@@ -15837,7 +15846,7 @@ export type TelegramPaymentPurposePremiumGift = TdObject & {
  * The user boosting a chat by creating Telegram Premium gift codes for other users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_premium_gift_codes.html
  */
-export type TelegramPaymentPurposePremiumGiftCodes = TdObject & {
+export type TelegramPaymentPurposePremiumGiftCodes = {
 	"@type": "telegramPaymentPurposePremiumGiftCodes";
 	/** Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user */
 	boosted_chat_id: number;
@@ -15857,7 +15866,7 @@ export type TelegramPaymentPurposePremiumGiftCodes = TdObject & {
  * The user creating a Telegram Premium giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_premium_giveaway.html
  */
-export type TelegramPaymentPurposePremiumGiveaway = TdObject & {
+export type TelegramPaymentPurposePremiumGiveaway = {
 	"@type": "telegramPaymentPurposePremiumGiveaway";
 	/** Giveaway parameters */
 	parameters: GiveawayParameters;
@@ -15875,7 +15884,7 @@ export type TelegramPaymentPurposePremiumGiveaway = TdObject & {
  * The user buying Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_stars.html
  */
-export type TelegramPaymentPurposeStars = TdObject & {
+export type TelegramPaymentPurposeStars = {
 	"@type": "telegramPaymentPurposeStars";
 	/** ISO 4217 currency code of the payment currency */
 	currency: string;
@@ -15889,7 +15898,7 @@ export type TelegramPaymentPurposeStars = TdObject & {
  * The user buying Telegram Stars for other users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_gifted_stars.html
  */
-export type TelegramPaymentPurposeGiftedStars = TdObject & {
+export type TelegramPaymentPurposeGiftedStars = {
 	"@type": "telegramPaymentPurposeGiftedStars";
 	/** Identifier of the user to which Telegram Stars are gifted */
 	user_id: number;
@@ -15905,7 +15914,7 @@ export type TelegramPaymentPurposeGiftedStars = TdObject & {
  * The user creating a Telegram Star giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_star_giveaway.html
  */
-export type TelegramPaymentPurposeStarGiveaway = TdObject & {
+export type TelegramPaymentPurposeStarGiveaway = {
 	"@type": "telegramPaymentPurposeStarGiveaway";
 	/** Giveaway parameters */
 	parameters: GiveawayParameters;
@@ -15923,7 +15932,7 @@ export type TelegramPaymentPurposeStarGiveaway = TdObject & {
  * The user joins a chat and subscribes to regular payments in Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1telegram_payment_purpose_join_chat.html
  */
-export type TelegramPaymentPurposeJoinChat = TdObject & {
+export type TelegramPaymentPurposeJoinChat = {
 	"@type": "telegramPaymentPurposeJoinChat";
 	/** Invite link to use */
 	invite_link: string;
@@ -15933,7 +15942,7 @@ export type TelegramPaymentPurposeJoinChat = TdObject & {
  * A token for Firebase Cloud Messaging
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_firebase_cloud_messaging.html
  */
-export type DeviceTokenFirebaseCloudMessaging = TdObject & {
+export type DeviceTokenFirebaseCloudMessaging = {
 	"@type": "deviceTokenFirebaseCloudMessaging";
 	/** Device registration token; may be empty to deregister a device */
 	token?: string;
@@ -15945,7 +15954,7 @@ export type DeviceTokenFirebaseCloudMessaging = TdObject & {
  * A token for Apple Push Notification service
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_apple_push.html
  */
-export type DeviceTokenApplePush = TdObject & {
+export type DeviceTokenApplePush = {
 	"@type": "deviceTokenApplePush";
 	/** Device token; may be empty to deregister a device */
 	device_token?: string;
@@ -15957,7 +15966,7 @@ export type DeviceTokenApplePush = TdObject & {
  * A token for Apple Push Notification service VoIP notifications
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_apple_push_vo_i_p.html
  */
-export type DeviceTokenApplePushVoIP = TdObject & {
+export type DeviceTokenApplePushVoIP = {
 	"@type": "deviceTokenApplePushVoIP";
 	/** Device token; may be empty to deregister a device */
 	device_token?: string;
@@ -15971,7 +15980,7 @@ export type DeviceTokenApplePushVoIP = TdObject & {
  * A token for Windows Push Notification Services
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_windows_push.html
  */
-export type DeviceTokenWindowsPush = TdObject & {
+export type DeviceTokenWindowsPush = {
 	"@type": "deviceTokenWindowsPush";
 	/** The access token that will be used to send notifications; may be empty to deregister a device */
 	access_token?: string;
@@ -15981,7 +15990,7 @@ export type DeviceTokenWindowsPush = TdObject & {
  * A token for Microsoft Push Notification Service
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_microsoft_push.html
  */
-export type DeviceTokenMicrosoftPush = TdObject & {
+export type DeviceTokenMicrosoftPush = {
 	"@type": "deviceTokenMicrosoftPush";
 	/** Push notification channel URI; may be empty to deregister a device */
 	channel_uri?: string;
@@ -15991,7 +16000,7 @@ export type DeviceTokenMicrosoftPush = TdObject & {
  * A token for Microsoft Push Notification Service VoIP channel
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_microsoft_push_vo_i_p.html
  */
-export type DeviceTokenMicrosoftPushVoIP = TdObject & {
+export type DeviceTokenMicrosoftPushVoIP = {
 	"@type": "deviceTokenMicrosoftPushVoIP";
 	/** Push notification channel URI; may be empty to deregister a device */
 	channel_uri?: string;
@@ -16001,7 +16010,7 @@ export type DeviceTokenMicrosoftPushVoIP = TdObject & {
  * A token for web Push API
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_web_push.html
  */
-export type DeviceTokenWebPush = TdObject & {
+export type DeviceTokenWebPush = {
 	"@type": "deviceTokenWebPush";
 	/** Absolute URL exposed by the push service where the application server can send push messages; may be empty to deregister a device */
 	endpoint?: string;
@@ -16015,7 +16024,7 @@ export type DeviceTokenWebPush = TdObject & {
  * A token for Simple Push API for Firefox OS
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_simple_push.html
  */
-export type DeviceTokenSimplePush = TdObject & {
+export type DeviceTokenSimplePush = {
 	"@type": "deviceTokenSimplePush";
 	/** Absolute URL exposed by the push service where the application server can send push messages; may be empty to deregister a device */
 	endpoint?: string;
@@ -16025,7 +16034,7 @@ export type DeviceTokenSimplePush = TdObject & {
  * A token for Ubuntu Push Client service
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_ubuntu_push.html
  */
-export type DeviceTokenUbuntuPush = TdObject & {
+export type DeviceTokenUbuntuPush = {
 	"@type": "deviceTokenUbuntuPush";
 	/** Token; may be empty to deregister a device */
 	token?: string;
@@ -16035,7 +16044,7 @@ export type DeviceTokenUbuntuPush = TdObject & {
  * A token for BlackBerry Push Service
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_black_berry_push.html
  */
-export type DeviceTokenBlackBerryPush = TdObject & {
+export type DeviceTokenBlackBerryPush = {
 	"@type": "deviceTokenBlackBerryPush";
 	/** Token; may be empty to deregister a device */
 	token?: string;
@@ -16045,7 +16054,7 @@ export type DeviceTokenBlackBerryPush = TdObject & {
  * A token for Tizen Push Service
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_tizen_push.html
  */
-export type DeviceTokenTizenPush = TdObject & {
+export type DeviceTokenTizenPush = {
 	"@type": "deviceTokenTizenPush";
 	/** Push service registration identifier; may be empty to deregister a device */
 	reg_id?: string;
@@ -16055,7 +16064,7 @@ export type DeviceTokenTizenPush = TdObject & {
  * A token for HUAWEI Push Service
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1device_token_huawei_push.html
  */
-export type DeviceTokenHuaweiPush = TdObject & {
+export type DeviceTokenHuaweiPush = {
 	"@type": "deviceTokenHuaweiPush";
 	/** Device registration token; may be empty to deregister a device */
 	token?: string;
@@ -16067,7 +16076,7 @@ export type DeviceTokenHuaweiPush = TdObject & {
  * Contains a globally unique push receiver identifier, which can be used to identify which account has received a push notification
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_receiver_id.html
  */
-export type PushReceiverId = TdObject & {
+export type PushReceiverId = {
 	"@type": "pushReceiverId";
 	/** The globally unique identifier of push notification subscription */
 	id: string;
@@ -16077,7 +16086,7 @@ export type PushReceiverId = TdObject & {
  * Describes a solid fill of a background
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_fill_solid.html
  */
-export type BackgroundFillSolid = TdObject & {
+export type BackgroundFillSolid = {
 	"@type": "backgroundFillSolid";
 	/** A color of the background in the RGB format */
 	color: number;
@@ -16087,7 +16096,7 @@ export type BackgroundFillSolid = TdObject & {
  * Describes a gradient fill of a background
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_fill_gradient.html
  */
-export type BackgroundFillGradient = TdObject & {
+export type BackgroundFillGradient = {
 	"@type": "backgroundFillGradient";
 	/** A top color of the background in the RGB format */
 	top_color: number;
@@ -16101,7 +16110,7 @@ export type BackgroundFillGradient = TdObject & {
  * Describes a freeform gradient fill of a background
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_fill_freeform_gradient.html
  */
-export type BackgroundFillFreeformGradient = TdObject & {
+export type BackgroundFillFreeformGradient = {
 	"@type": "backgroundFillFreeformGradient";
 	/** A list of 3 or 4 colors of the freeform gradient in the RGB format */
 	colors: number[];
@@ -16111,7 +16120,7 @@ export type BackgroundFillFreeformGradient = TdObject & {
  * A wallpaper in JPEG format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_type_wallpaper.html
  */
-export type BackgroundTypeWallpaper = TdObject & {
+export type BackgroundTypeWallpaper = {
 	"@type": "backgroundTypeWallpaper";
 	/** True, if the wallpaper must be downscaled to fit in 450x450 square and then box-blurred with radius 12 */
 	is_blurred: boolean;
@@ -16123,7 +16132,7 @@ export type BackgroundTypeWallpaper = TdObject & {
  * A PNG or TGV (gzipped subset of SVG with MIME type "application/x-tgwallpattern") pattern to be combined with the background fill chosen by the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_type_pattern.html
  */
-export type BackgroundTypePattern = TdObject & {
+export type BackgroundTypePattern = {
 	"@type": "backgroundTypePattern";
 	/** Fill of the background */
 	fill: BackgroundFill;
@@ -16139,7 +16148,7 @@ export type BackgroundTypePattern = TdObject & {
  * A filled background
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_type_fill.html
  */
-export type BackgroundTypeFill = TdObject & {
+export type BackgroundTypeFill = {
 	"@type": "backgroundTypeFill";
 	/** The background fill */
 	fill: BackgroundFill;
@@ -16149,7 +16158,7 @@ export type BackgroundTypeFill = TdObject & {
  * A background from a chat theme; can be used only as a chat background in channels
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1background_type_chat_theme.html
  */
-export type BackgroundTypeChatTheme = TdObject & {
+export type BackgroundTypeChatTheme = {
 	"@type": "backgroundTypeChatTheme";
 	/** Name of the chat theme */
 	theme_name: string;
@@ -16159,7 +16168,7 @@ export type BackgroundTypeChatTheme = TdObject & {
  * A background from a local file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_background_local.html
  */
-export type InputBackgroundLocal = TdObject & {
+export type InputBackgroundLocal = {
 	"@type": "inputBackgroundLocal";
 	/** Background file to use. Only inputFileLocal and inputFileGenerated are supported. The file must be in JPEG format for wallpapers and in PNG format for patterns */
 	background: InputFile;
@@ -16169,7 +16178,7 @@ export type InputBackgroundLocal = TdObject & {
  * A background from the server
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_background_remote.html
  */
-export type InputBackgroundRemote = TdObject & {
+export type InputBackgroundRemote = {
 	"@type": "inputBackgroundRemote";
 	/** The background identifier */
 	background_id: string;
@@ -16179,7 +16188,7 @@ export type InputBackgroundRemote = TdObject & {
  * A background previously set in the chat; for chat backgrounds only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_background_previous.html
  */
-export type InputBackgroundPrevious = TdObject & {
+export type InputBackgroundPrevious = {
 	"@type": "inputBackgroundPrevious";
 	/** Identifier of the message with the background */
 	message_id: number;
@@ -16189,7 +16198,7 @@ export type InputBackgroundPrevious = TdObject & {
  * Describes a chat theme
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_theme.html
  */
-export type ChatTheme = TdObject & {
+export type ChatTheme = {
 	"@type": "chatTheme";
 	/** Theme name */
 	name: string;
@@ -16203,7 +16212,7 @@ export type ChatTheme = TdObject & {
  * Describes a time zone
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1time_zone.html
  */
-export type TimeZone = TdObject & {
+export type TimeZone = {
 	"@type": "timeZone";
 	/** Unique time zone identifier */
 	id: string;
@@ -16217,7 +16226,7 @@ export type TimeZone = TdObject & {
  * Contains a list of time zones
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1time_zones.html
  */
-export type TimeZones = TdObject & {
+export type TimeZones = {
 	"@type": "timeZones";
 	/** A list of time zones */
 	time_zones: TimeZone[];
@@ -16227,7 +16236,7 @@ export type TimeZones = TdObject & {
  * Contains a list of hashtags
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1hashtags.html
  */
-export type Hashtags = TdObject & {
+export type Hashtags = {
 	"@type": "hashtags";
 	/** A list of hashtags */
 	hashtags: string[];
@@ -16237,7 +16246,7 @@ export type Hashtags = TdObject & {
  * A story can be sent
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_ok.html
  */
-export type CanPostStoryResultOk = TdObject & {
+export type CanPostStoryResultOk = {
 	"@type": "canPostStoryResultOk";
 	/** Number of stories that can be posted by the user */
 	story_count: number;
@@ -16247,7 +16256,7 @@ export type CanPostStoryResultOk = TdObject & {
  * The user must subscribe to Telegram Premium to be able to post stories
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_premium_needed.html
  */
-export type CanPostStoryResultPremiumNeeded = TdObject & {
+export type CanPostStoryResultPremiumNeeded = {
 	"@type": "canPostStoryResultPremiumNeeded";
 };
 
@@ -16255,7 +16264,7 @@ export type CanPostStoryResultPremiumNeeded = TdObject & {
  * The chat must be boosted first by Telegram Premium subscribers to post more stories. Call getChatBoostStatus to get current boost status of the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_boost_needed.html
  */
-export type CanPostStoryResultBoostNeeded = TdObject & {
+export type CanPostStoryResultBoostNeeded = {
 	"@type": "canPostStoryResultBoostNeeded";
 };
 
@@ -16263,7 +16272,7 @@ export type CanPostStoryResultBoostNeeded = TdObject & {
  * The limit for the number of active stories exceeded. The user can buy Telegram Premium, delete an active story, or wait for the oldest story to expire
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_active_story_limit_exceeded.html
  */
-export type CanPostStoryResultActiveStoryLimitExceeded = TdObject & {
+export type CanPostStoryResultActiveStoryLimitExceeded = {
 	"@type": "canPostStoryResultActiveStoryLimitExceeded";
 };
 
@@ -16271,7 +16280,7 @@ export type CanPostStoryResultActiveStoryLimitExceeded = TdObject & {
  * The weekly limit for the number of posted stories exceeded. The user needs to buy Telegram Premium or wait specified time
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_weekly_limit_exceeded.html
  */
-export type CanPostStoryResultWeeklyLimitExceeded = TdObject & {
+export type CanPostStoryResultWeeklyLimitExceeded = {
 	"@type": "canPostStoryResultWeeklyLimitExceeded";
 	/** Time left before the user can post the next story */
 	retry_after: number;
@@ -16281,7 +16290,7 @@ export type CanPostStoryResultWeeklyLimitExceeded = TdObject & {
  * The monthly limit for the number of posted stories exceeded. The user needs to buy Telegram Premium or wait specified time
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_post_story_result_monthly_limit_exceeded.html
  */
-export type CanPostStoryResultMonthlyLimitExceeded = TdObject & {
+export type CanPostStoryResultMonthlyLimitExceeded = {
 	"@type": "canPostStoryResultMonthlyLimitExceeded";
 	/** Time left before the user can post the next story */
 	retry_after: number;
@@ -16291,7 +16300,7 @@ export type CanPostStoryResultMonthlyLimitExceeded = TdObject & {
  * The session can be used
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_transfer_ownership_result_ok.html
  */
-export type CanTransferOwnershipResultOk = TdObject & {
+export type CanTransferOwnershipResultOk = {
 	"@type": "canTransferOwnershipResultOk";
 };
 
@@ -16299,7 +16308,7 @@ export type CanTransferOwnershipResultOk = TdObject & {
  * The 2-step verification needs to be enabled first
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_transfer_ownership_result_password_needed.html
  */
-export type CanTransferOwnershipResultPasswordNeeded = TdObject & {
+export type CanTransferOwnershipResultPasswordNeeded = {
 	"@type": "canTransferOwnershipResultPasswordNeeded";
 };
 
@@ -16307,7 +16316,7 @@ export type CanTransferOwnershipResultPasswordNeeded = TdObject & {
  * The 2-step verification was enabled recently, user needs to wait
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_transfer_ownership_result_password_too_fresh.html
  */
-export type CanTransferOwnershipResultPasswordTooFresh = TdObject & {
+export type CanTransferOwnershipResultPasswordTooFresh = {
 	"@type": "canTransferOwnershipResultPasswordTooFresh";
 	/** Time left before the session can be used to transfer ownership of a chat, in seconds */
 	retry_after: number;
@@ -16317,7 +16326,7 @@ export type CanTransferOwnershipResultPasswordTooFresh = TdObject & {
  * The session was created recently, user needs to wait
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_transfer_ownership_result_session_too_fresh.html
  */
-export type CanTransferOwnershipResultSessionTooFresh = TdObject & {
+export type CanTransferOwnershipResultSessionTooFresh = {
 	"@type": "canTransferOwnershipResultSessionTooFresh";
 	/** Time left before the session can be used to transfer ownership of a chat, in seconds */
 	retry_after: number;
@@ -16327,7 +16336,7 @@ export type CanTransferOwnershipResultSessionTooFresh = TdObject & {
  * The username can be set
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_chat_username_result_ok.html
  */
-export type CheckChatUsernameResultOk = TdObject & {
+export type CheckChatUsernameResultOk = {
 	"@type": "checkChatUsernameResultOk";
 };
 
@@ -16335,7 +16344,7 @@ export type CheckChatUsernameResultOk = TdObject & {
  * The username is invalid
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_chat_username_result_username_invalid.html
  */
-export type CheckChatUsernameResultUsernameInvalid = TdObject & {
+export type CheckChatUsernameResultUsernameInvalid = {
 	"@type": "checkChatUsernameResultUsernameInvalid";
 };
 
@@ -16343,7 +16352,7 @@ export type CheckChatUsernameResultUsernameInvalid = TdObject & {
  * The username is occupied
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_chat_username_result_username_occupied.html
  */
-export type CheckChatUsernameResultUsernameOccupied = TdObject & {
+export type CheckChatUsernameResultUsernameOccupied = {
 	"@type": "checkChatUsernameResultUsernameOccupied";
 };
 
@@ -16351,7 +16360,7 @@ export type CheckChatUsernameResultUsernameOccupied = TdObject & {
  * The username can be purchased at https://fragment.com. Information about the username can be received using getCollectibleItemInfo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_chat_username_result_username_purchasable.html
  */
-export type CheckChatUsernameResultUsernamePurchasable = TdObject & {
+export type CheckChatUsernameResultUsernamePurchasable = {
 	"@type": "checkChatUsernameResultUsernamePurchasable";
 };
 
@@ -16359,7 +16368,7 @@ export type CheckChatUsernameResultUsernamePurchasable = TdObject & {
  * The user has too many chats with username, one of them must be made private first
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_chat_username_result_public_chats_too_many.html
  */
-export type CheckChatUsernameResultPublicChatsTooMany = TdObject & {
+export type CheckChatUsernameResultPublicChatsTooMany = {
 	"@type": "checkChatUsernameResultPublicChatsTooMany";
 };
 
@@ -16367,7 +16376,7 @@ export type CheckChatUsernameResultPublicChatsTooMany = TdObject & {
  * The user can't be a member of a public supergroup
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_chat_username_result_public_groups_unavailable.html
  */
-export type CheckChatUsernameResultPublicGroupsUnavailable = TdObject & {
+export type CheckChatUsernameResultPublicGroupsUnavailable = {
 	"@type": "checkChatUsernameResultPublicGroupsUnavailable";
 };
 
@@ -16375,7 +16384,7 @@ export type CheckChatUsernameResultPublicGroupsUnavailable = TdObject & {
  * The name can be set
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_sticker_set_name_result_ok.html
  */
-export type CheckStickerSetNameResultOk = TdObject & {
+export type CheckStickerSetNameResultOk = {
 	"@type": "checkStickerSetNameResultOk";
 };
 
@@ -16383,7 +16392,7 @@ export type CheckStickerSetNameResultOk = TdObject & {
  * The name is invalid
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_sticker_set_name_result_name_invalid.html
  */
-export type CheckStickerSetNameResultNameInvalid = TdObject & {
+export type CheckStickerSetNameResultNameInvalid = {
 	"@type": "checkStickerSetNameResultNameInvalid";
 };
 
@@ -16391,7 +16400,7 @@ export type CheckStickerSetNameResultNameInvalid = TdObject & {
  * The name is occupied
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1check_sticker_set_name_result_name_occupied.html
  */
-export type CheckStickerSetNameResultNameOccupied = TdObject & {
+export type CheckStickerSetNameResultNameOccupied = {
 	"@type": "checkStickerSetNameResultNameOccupied";
 };
 
@@ -16399,7 +16408,7 @@ export type CheckStickerSetNameResultNameOccupied = TdObject & {
  * The password was reset
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reset_password_result_ok.html
  */
-export type ResetPasswordResultOk = TdObject & {
+export type ResetPasswordResultOk = {
 	"@type": "resetPasswordResultOk";
 };
 
@@ -16407,7 +16416,7 @@ export type ResetPasswordResultOk = TdObject & {
  * The password reset request is pending
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reset_password_result_pending.html
  */
-export type ResetPasswordResultPending = TdObject & {
+export type ResetPasswordResultPending = {
 	"@type": "resetPasswordResultPending";
 	/** Point in time (Unix timestamp) after which the password can be reset immediately using resetPassword */
 	pending_reset_date: number;
@@ -16417,7 +16426,7 @@ export type ResetPasswordResultPending = TdObject & {
  * The password reset request was declined
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1reset_password_result_declined.html
  */
-export type ResetPasswordResultDeclined = TdObject & {
+export type ResetPasswordResultDeclined = {
 	"@type": "resetPasswordResultDeclined";
 	/** Point in time (Unix timestamp) when the password reset can be retried */
 	retry_date: number;
@@ -16427,7 +16436,7 @@ export type ResetPasswordResultDeclined = TdObject & {
  * The messages were exported from a private chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_file_type_private.html
  */
-export type MessageFileTypePrivate = TdObject & {
+export type MessageFileTypePrivate = {
 	"@type": "messageFileTypePrivate";
 	/** Name of the other party; may be empty if unrecognized */
 	name?: string;
@@ -16437,7 +16446,7 @@ export type MessageFileTypePrivate = TdObject & {
  * The messages were exported from a group chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_file_type_group.html
  */
-export type MessageFileTypeGroup = TdObject & {
+export type MessageFileTypeGroup = {
 	"@type": "messageFileTypeGroup";
 	/** Title of the group chat; may be empty if unrecognized */
 	title?: string;
@@ -16447,7 +16456,7 @@ export type MessageFileTypeGroup = TdObject & {
  * The messages were exported from a chat of unknown type
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_file_type_unknown.html
  */
-export type MessageFileTypeUnknown = TdObject & {
+export type MessageFileTypeUnknown = {
 	"@type": "messageFileTypeUnknown";
 };
 
@@ -16455,7 +16464,7 @@ export type MessageFileTypeUnknown = TdObject & {
  * A general message with hidden content
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_hidden.html
  */
-export type PushMessageContentHidden = TdObject & {
+export type PushMessageContentHidden = {
 	"@type": "pushMessageContentHidden";
 	/** True, if the message is a pinned message with the specified content */
 	is_pinned: boolean;
@@ -16465,7 +16474,7 @@ export type PushMessageContentHidden = TdObject & {
  * An animation message (GIF-style).
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_animation.html
  */
-export type PushMessageContentAnimation = TdObject & {
+export type PushMessageContentAnimation = {
 	"@type": "pushMessageContentAnimation";
 	/** Message content; may be null */
 	animation?: Animation;
@@ -16479,7 +16488,7 @@ export type PushMessageContentAnimation = TdObject & {
  * An audio message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_audio.html
  */
-export type PushMessageContentAudio = TdObject & {
+export type PushMessageContentAudio = {
 	"@type": "pushMessageContentAudio";
 	/** Message content; may be null */
 	audio?: Audio;
@@ -16491,7 +16500,7 @@ export type PushMessageContentAudio = TdObject & {
  * A message with a user contact
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_contact.html
  */
-export type PushMessageContentContact = TdObject & {
+export type PushMessageContentContact = {
 	"@type": "pushMessageContentContact";
 	/** Contact's name */
 	name: string;
@@ -16503,7 +16512,7 @@ export type PushMessageContentContact = TdObject & {
  * A contact has registered with Telegram
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_contact_registered.html
  */
-export type PushMessageContentContactRegistered = TdObject & {
+export type PushMessageContentContactRegistered = {
 	"@type": "pushMessageContentContactRegistered";
 };
 
@@ -16511,7 +16520,7 @@ export type PushMessageContentContactRegistered = TdObject & {
  * A document message (a general file)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_document.html
  */
-export type PushMessageContentDocument = TdObject & {
+export type PushMessageContentDocument = {
 	"@type": "pushMessageContentDocument";
 	/** Message content; may be null */
 	document?: Document;
@@ -16523,7 +16532,7 @@ export type PushMessageContentDocument = TdObject & {
  * A message with a game
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_game.html
  */
-export type PushMessageContentGame = TdObject & {
+export type PushMessageContentGame = {
 	"@type": "pushMessageContentGame";
 	/** Game title, empty for pinned game message */
 	title: string;
@@ -16535,7 +16544,7 @@ export type PushMessageContentGame = TdObject & {
  * A new high score was achieved in a game
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_game_score.html
  */
-export type PushMessageContentGameScore = TdObject & {
+export type PushMessageContentGameScore = {
 	"@type": "pushMessageContentGameScore";
 	/** Game title, empty for pinned message */
 	title: string;
@@ -16549,7 +16558,7 @@ export type PushMessageContentGameScore = TdObject & {
  * A message with an invoice from a bot
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_invoice.html
  */
-export type PushMessageContentInvoice = TdObject & {
+export type PushMessageContentInvoice = {
 	"@type": "pushMessageContentInvoice";
 	/** Product price */
 	price: string;
@@ -16561,7 +16570,7 @@ export type PushMessageContentInvoice = TdObject & {
  * A message with a location
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_location.html
  */
-export type PushMessageContentLocation = TdObject & {
+export type PushMessageContentLocation = {
 	"@type": "pushMessageContentLocation";
 	/** True, if the location is live */
 	is_live: boolean;
@@ -16573,7 +16582,7 @@ export type PushMessageContentLocation = TdObject & {
  * A message with paid media
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_paid_media.html
  */
-export type PushMessageContentPaidMedia = TdObject & {
+export type PushMessageContentPaidMedia = {
 	"@type": "pushMessageContentPaidMedia";
 	/** Number of Telegram Stars needed to buy access to the media in the message; 0 for pinned message */
 	star_count: number;
@@ -16585,7 +16594,7 @@ export type PushMessageContentPaidMedia = TdObject & {
  * A photo message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_photo.html
  */
-export type PushMessageContentPhoto = TdObject & {
+export type PushMessageContentPhoto = {
 	"@type": "pushMessageContentPhoto";
 	/** Message content; may be null */
 	photo?: Photo;
@@ -16601,7 +16610,7 @@ export type PushMessageContentPhoto = TdObject & {
  * A message with a poll
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_poll.html
  */
-export type PushMessageContentPoll = TdObject & {
+export type PushMessageContentPoll = {
 	"@type": "pushMessageContentPoll";
 	/** Poll question */
 	question: string;
@@ -16615,7 +16624,7 @@ export type PushMessageContentPoll = TdObject & {
  * A message with a Telegram Premium gift code created for the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_premium_gift_code.html
  */
-export type PushMessageContentPremiumGiftCode = TdObject & {
+export type PushMessageContentPremiumGiftCode = {
 	"@type": "pushMessageContentPremiumGiftCode";
 	/** Number of months the Telegram Premium subscription will be active after code activation */
 	month_count: number;
@@ -16625,7 +16634,7 @@ export type PushMessageContentPremiumGiftCode = TdObject & {
  * A message with a giveaway
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_giveaway.html
  */
-export type PushMessageContentGiveaway = TdObject & {
+export type PushMessageContentGiveaway = {
 	"@type": "pushMessageContentGiveaway";
 	/** Number of users which will receive giveaway prizes; 0 for pinned message */
 	winner_count: number;
@@ -16639,7 +16648,7 @@ export type PushMessageContentGiveaway = TdObject & {
  * A message with a gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_gift.html
  */
-export type PushMessageContentGift = TdObject & {
+export type PushMessageContentGift = {
 	"@type": "pushMessageContentGift";
 	/** Number of Telegram Stars that sender paid for the gift */
 	star_count: number;
@@ -16649,7 +16658,7 @@ export type PushMessageContentGift = TdObject & {
  * A message with an upgraded gift
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_upgraded_gift.html
  */
-export type PushMessageContentUpgradedGift = TdObject & {
+export type PushMessageContentUpgradedGift = {
 	"@type": "pushMessageContentUpgradedGift";
 	/** True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred or resold gift */
 	is_upgrade: boolean;
@@ -16659,7 +16668,7 @@ export type PushMessageContentUpgradedGift = TdObject & {
  * A screenshot of a message in the chat has been taken
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_screenshot_taken.html
  */
-export type PushMessageContentScreenshotTaken = TdObject & {
+export type PushMessageContentScreenshotTaken = {
 	"@type": "pushMessageContentScreenshotTaken";
 };
 
@@ -16667,7 +16676,7 @@ export type PushMessageContentScreenshotTaken = TdObject & {
  * A message with a sticker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_sticker.html
  */
-export type PushMessageContentSticker = TdObject & {
+export type PushMessageContentSticker = {
 	"@type": "pushMessageContentSticker";
 	/** Message content; may be null */
 	sticker?: Sticker;
@@ -16681,7 +16690,7 @@ export type PushMessageContentSticker = TdObject & {
  * A message with a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_story.html
  */
-export type PushMessageContentStory = TdObject & {
+export type PushMessageContentStory = {
 	"@type": "pushMessageContentStory";
 	/** True, if the user was mentioned in the story */
 	is_mention: boolean;
@@ -16693,7 +16702,7 @@ export type PushMessageContentStory = TdObject & {
  * A text message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_text.html
  */
-export type PushMessageContentText = TdObject & {
+export type PushMessageContentText = {
 	"@type": "pushMessageContentText";
 	/** Message text */
 	text: string;
@@ -16705,7 +16714,7 @@ export type PushMessageContentText = TdObject & {
  * A video message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_video.html
  */
-export type PushMessageContentVideo = TdObject & {
+export type PushMessageContentVideo = {
 	"@type": "pushMessageContentVideo";
 	/** Message content; may be null */
 	video?: Video;
@@ -16721,7 +16730,7 @@ export type PushMessageContentVideo = TdObject & {
  * A video note message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_video_note.html
  */
-export type PushMessageContentVideoNote = TdObject & {
+export type PushMessageContentVideoNote = {
 	"@type": "pushMessageContentVideoNote";
 	/** Message content; may be null */
 	video_note?: VideoNote;
@@ -16733,7 +16742,7 @@ export type PushMessageContentVideoNote = TdObject & {
  * A voice note message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_voice_note.html
  */
-export type PushMessageContentVoiceNote = TdObject & {
+export type PushMessageContentVoiceNote = {
 	"@type": "pushMessageContentVoiceNote";
 	/** Message content; may be null */
 	voice_note?: VoiceNote;
@@ -16745,7 +16754,7 @@ export type PushMessageContentVoiceNote = TdObject & {
  * A newly created basic group
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_basic_group_chat_create.html
  */
-export type PushMessageContentBasicGroupChatCreate = TdObject & {
+export type PushMessageContentBasicGroupChatCreate = {
 	"@type": "pushMessageContentBasicGroupChatCreate";
 };
 
@@ -16753,7 +16762,7 @@ export type PushMessageContentBasicGroupChatCreate = TdObject & {
  * A video chat or live stream was started
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_video_chat_started.html
  */
-export type PushMessageContentVideoChatStarted = TdObject & {
+export type PushMessageContentVideoChatStarted = {
 	"@type": "pushMessageContentVideoChatStarted";
 };
 
@@ -16761,7 +16770,7 @@ export type PushMessageContentVideoChatStarted = TdObject & {
  * A video chat or live stream has ended
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_video_chat_ended.html
  */
-export type PushMessageContentVideoChatEnded = TdObject & {
+export type PushMessageContentVideoChatEnded = {
 	"@type": "pushMessageContentVideoChatEnded";
 };
 
@@ -16769,7 +16778,7 @@ export type PushMessageContentVideoChatEnded = TdObject & {
  * An invitation of participants to a video chat or live stream
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_invite_video_chat_participants.html
  */
-export type PushMessageContentInviteVideoChatParticipants = TdObject & {
+export type PushMessageContentInviteVideoChatParticipants = {
 	"@type": "pushMessageContentInviteVideoChatParticipants";
 	/** True, if the current user was invited to the video chat or the live stream */
 	is_current_user: boolean;
@@ -16779,7 +16788,7 @@ export type PushMessageContentInviteVideoChatParticipants = TdObject & {
  * New chat members were invited to a group
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_chat_add_members.html
  */
-export type PushMessageContentChatAddMembers = TdObject & {
+export type PushMessageContentChatAddMembers = {
 	"@type": "pushMessageContentChatAddMembers";
 	/** Name of the added member */
 	member_name: string;
@@ -16793,7 +16802,7 @@ export type PushMessageContentChatAddMembers = TdObject & {
  * A chat photo was edited
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_chat_change_photo.html
  */
-export type PushMessageContentChatChangePhoto = TdObject & {
+export type PushMessageContentChatChangePhoto = {
 	"@type": "pushMessageContentChatChangePhoto";
 };
 
@@ -16801,7 +16810,7 @@ export type PushMessageContentChatChangePhoto = TdObject & {
  * A chat title was edited
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_chat_change_title.html
  */
-export type PushMessageContentChatChangeTitle = TdObject & {
+export type PushMessageContentChatChangeTitle = {
 	"@type": "pushMessageContentChatChangeTitle";
 	/** New chat title */
 	title: string;
@@ -16811,7 +16820,7 @@ export type PushMessageContentChatChangeTitle = TdObject & {
  * A chat background was edited
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_chat_set_background.html
  */
-export type PushMessageContentChatSetBackground = TdObject & {
+export type PushMessageContentChatSetBackground = {
 	"@type": "pushMessageContentChatSetBackground";
 	/** True, if the set background is the same as the background of the current user */
 	is_same: boolean;
@@ -16821,7 +16830,7 @@ export type PushMessageContentChatSetBackground = TdObject & {
  * A chat theme was edited
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_chat_set_theme.html
  */
-export type PushMessageContentChatSetTheme = TdObject & {
+export type PushMessageContentChatSetTheme = {
 	"@type": "pushMessageContentChatSetTheme";
 	/** If non-empty, name of a new theme, set for the chat. Otherwise, the chat theme was reset to the default one */
 	theme_name?: string;
@@ -16831,7 +16840,7 @@ export type PushMessageContentChatSetTheme = TdObject & {
  * A chat member was deleted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_chat_delete_member.html
  */
-export type PushMessageContentChatDeleteMember = TdObject & {
+export type PushMessageContentChatDeleteMember = {
 	"@type": "pushMessageContentChatDeleteMember";
 	/** Name of the deleted member */
 	member_name: string;
@@ -16845,7 +16854,7 @@ export type PushMessageContentChatDeleteMember = TdObject & {
  * A new member joined the chat via an invite link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_chat_join_by_link.html
  */
-export type PushMessageContentChatJoinByLink = TdObject & {
+export type PushMessageContentChatJoinByLink = {
 	"@type": "pushMessageContentChatJoinByLink";
 };
 
@@ -16853,7 +16862,7 @@ export type PushMessageContentChatJoinByLink = TdObject & {
  * A new member was accepted to the chat by an administrator
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_chat_join_by_request.html
  */
-export type PushMessageContentChatJoinByRequest = TdObject & {
+export type PushMessageContentChatJoinByRequest = {
 	"@type": "pushMessageContentChatJoinByRequest";
 };
 
@@ -16861,7 +16870,7 @@ export type PushMessageContentChatJoinByRequest = TdObject & {
  * A new recurring payment was made by the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_recurring_payment.html
  */
-export type PushMessageContentRecurringPayment = TdObject & {
+export type PushMessageContentRecurringPayment = {
 	"@type": "pushMessageContentRecurringPayment";
 	/** The paid amount */
 	amount: string;
@@ -16871,7 +16880,7 @@ export type PushMessageContentRecurringPayment = TdObject & {
  * A profile photo was suggested to the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_suggest_profile_photo.html
  */
-export type PushMessageContentSuggestProfilePhoto = TdObject & {
+export type PushMessageContentSuggestProfilePhoto = {
 	"@type": "pushMessageContentSuggestProfilePhoto";
 };
 
@@ -16879,7 +16888,7 @@ export type PushMessageContentSuggestProfilePhoto = TdObject & {
  * A user in the chat came within proximity alert range from the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_proximity_alert_triggered.html
  */
-export type PushMessageContentProximityAlertTriggered = TdObject & {
+export type PushMessageContentProximityAlertTriggered = {
 	"@type": "pushMessageContentProximityAlertTriggered";
 	/** The distance to the user */
 	distance: number;
@@ -16889,7 +16898,7 @@ export type PushMessageContentProximityAlertTriggered = TdObject & {
  * A forwarded messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_message_forwards.html
  */
-export type PushMessageContentMessageForwards = TdObject & {
+export type PushMessageContentMessageForwards = {
 	"@type": "pushMessageContentMessageForwards";
 	/** Number of forwarded messages */
 	total_count: number;
@@ -16899,7 +16908,7 @@ export type PushMessageContentMessageForwards = TdObject & {
  * A media album
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1push_message_content_media_album.html
  */
-export type PushMessageContentMediaAlbum = TdObject & {
+export type PushMessageContentMediaAlbum = {
 	"@type": "pushMessageContentMediaAlbum";
 	/** Number of messages in the album */
 	total_count: number;
@@ -16917,7 +16926,7 @@ export type PushMessageContentMediaAlbum = TdObject & {
  * New message was received
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_type_new_message.html
  */
-export type NotificationTypeNewMessage = TdObject & {
+export type NotificationTypeNewMessage = {
 	"@type": "notificationTypeNewMessage";
 	/** The message */
 	message: Message;
@@ -16929,7 +16938,7 @@ export type NotificationTypeNewMessage = TdObject & {
  * New secret chat was created
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_type_new_secret_chat.html
  */
-export type NotificationTypeNewSecretChat = TdObject & {
+export type NotificationTypeNewSecretChat = {
 	"@type": "notificationTypeNewSecretChat";
 };
 
@@ -16937,7 +16946,7 @@ export type NotificationTypeNewSecretChat = TdObject & {
  * New call was received
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_type_new_call.html
  */
-export type NotificationTypeNewCall = TdObject & {
+export type NotificationTypeNewCall = {
 	"@type": "notificationTypeNewCall";
 	/** Call identifier */
 	call_id: number;
@@ -16947,7 +16956,7 @@ export type NotificationTypeNewCall = TdObject & {
  * New message was received through a push notification
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_type_new_push_message.html
  */
-export type NotificationTypeNewPushMessage = TdObject & {
+export type NotificationTypeNewPushMessage = {
 	"@type": "notificationTypeNewPushMessage";
 	/** The message identifier. The message will not be available in the chat history, but the identifier can be used in viewMessages, or as a message to be replied in the same chat */
 	message_id: number;
@@ -16965,7 +16974,7 @@ export type NotificationTypeNewPushMessage = TdObject & {
  * A group containing notifications of type notificationTypeNewMessage and notificationTypeNewPushMessage with ordinary unread messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_group_type_messages.html
  */
-export type NotificationGroupTypeMessages = TdObject & {
+export type NotificationGroupTypeMessages = {
 	"@type": "notificationGroupTypeMessages";
 };
 
@@ -16973,7 +16982,7 @@ export type NotificationGroupTypeMessages = TdObject & {
  * A group containing notifications of type notificationTypeNewMessage and notificationTypeNewPushMessage with unread mentions of the current user, replies to their messages, or a pinned message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_group_type_mentions.html
  */
-export type NotificationGroupTypeMentions = TdObject & {
+export type NotificationGroupTypeMentions = {
 	"@type": "notificationGroupTypeMentions";
 };
 
@@ -16981,7 +16990,7 @@ export type NotificationGroupTypeMentions = TdObject & {
  * A group containing a notification of type notificationTypeNewSecretChat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_group_type_secret_chat.html
  */
-export type NotificationGroupTypeSecretChat = TdObject & {
+export type NotificationGroupTypeSecretChat = {
 	"@type": "notificationGroupTypeSecretChat";
 };
 
@@ -16989,7 +16998,7 @@ export type NotificationGroupTypeSecretChat = TdObject & {
  * A group containing notifications of type notificationTypeNewCall
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_group_type_calls.html
  */
-export type NotificationGroupTypeCalls = TdObject & {
+export type NotificationGroupTypeCalls = {
 	"@type": "notificationGroupTypeCalls";
 };
 
@@ -16997,7 +17006,7 @@ export type NotificationGroupTypeCalls = TdObject & {
  * Describes a notification sound in MP3 format
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_sound.html
  */
-export type NotificationSound = TdObject & {
+export type NotificationSound = {
 	"@type": "notificationSound";
 	/** Unique identifier of the notification sound */
 	id: string;
@@ -17017,7 +17026,7 @@ export type NotificationSound = TdObject & {
  * Contains a list of notification sounds
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_sounds.html
  */
-export type NotificationSounds = TdObject & {
+export type NotificationSounds = {
 	"@type": "notificationSounds";
 	/** A list of notification sounds */
 	notification_sounds: NotificationSound[];
@@ -17027,7 +17036,7 @@ export type NotificationSounds = TdObject & {
  * Contains information about a notification
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification.html
  */
-export type Notification = TdObject & {
+export type Notification = {
 	"@type": "notification";
 	/** Unique persistent identifier of this notification */
 	id: number;
@@ -17043,7 +17052,7 @@ export type Notification = TdObject & {
  * Describes a group of notifications
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1notification_group.html
  */
-export type NotificationGroup = TdObject & {
+export type NotificationGroup = {
 	"@type": "notificationGroup";
 	/** Unique persistent auto-incremented from 1 identifier of the notification group */
 	id: number;
@@ -17061,7 +17070,7 @@ export type NotificationGroup = TdObject & {
  * Represents a boolean option
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1option_value_boolean.html
  */
-export type OptionValueBoolean = TdObject & {
+export type OptionValueBoolean = {
 	"@type": "optionValueBoolean";
 	/** The value of the option */
 	value: boolean;
@@ -17071,7 +17080,7 @@ export type OptionValueBoolean = TdObject & {
  * Represents an unknown option or an option which has a default value
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1option_value_empty.html
  */
-export type OptionValueEmpty = TdObject & {
+export type OptionValueEmpty = {
 	"@type": "optionValueEmpty";
 };
 
@@ -17079,7 +17088,7 @@ export type OptionValueEmpty = TdObject & {
  * Represents an integer option
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1option_value_integer.html
  */
-export type OptionValueInteger = TdObject & {
+export type OptionValueInteger = {
 	"@type": "optionValueInteger";
 	/** The value of the option */
 	value: string;
@@ -17089,7 +17098,7 @@ export type OptionValueInteger = TdObject & {
  * Represents a string option
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1option_value_string.html
  */
-export type OptionValueString = TdObject & {
+export type OptionValueString = {
 	"@type": "optionValueString";
 	/** The value of the option */
 	value: string;
@@ -17099,7 +17108,7 @@ export type OptionValueString = TdObject & {
  * Represents one member of a JSON object
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1json_object_member.html
  */
-export type JsonObjectMember = TdObject & {
+export type JsonObjectMember = {
 	"@type": "jsonObjectMember";
 	/** Member's key */
 	key: string;
@@ -17111,7 +17120,7 @@ export type JsonObjectMember = TdObject & {
  * Represents a null JSON value
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1json_value_null.html
  */
-export type JsonValueNull = TdObject & {
+export type JsonValueNull = {
 	"@type": "jsonValueNull";
 };
 
@@ -17119,7 +17128,7 @@ export type JsonValueNull = TdObject & {
  * Represents a boolean JSON value
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1json_value_boolean.html
  */
-export type JsonValueBoolean = TdObject & {
+export type JsonValueBoolean = {
 	"@type": "jsonValueBoolean";
 	/** The value */
 	value: boolean;
@@ -17129,7 +17138,7 @@ export type JsonValueBoolean = TdObject & {
  * Represents a numeric JSON value
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1json_value_number.html
  */
-export type JsonValueNumber = TdObject & {
+export type JsonValueNumber = {
 	"@type": "jsonValueNumber";
 	/** The value */
 	value: number;
@@ -17139,7 +17148,7 @@ export type JsonValueNumber = TdObject & {
  * Represents a string JSON value
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1json_value_string.html
  */
-export type JsonValueString = TdObject & {
+export type JsonValueString = {
 	"@type": "jsonValueString";
 	/** The value */
 	value: string;
@@ -17149,7 +17158,7 @@ export type JsonValueString = TdObject & {
  * Represents a JSON array
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1json_value_array.html
  */
-export type JsonValueArray = TdObject & {
+export type JsonValueArray = {
 	"@type": "jsonValueArray";
 	/** The list of array elements */
 	values: JsonValue[];
@@ -17159,7 +17168,7 @@ export type JsonValueArray = TdObject & {
  * Represents a JSON object
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1json_value_object.html
  */
-export type JsonValueObject = TdObject & {
+export type JsonValueObject = {
 	"@type": "jsonValueObject";
 	/** The list of object members */
 	members: JsonObjectMember[];
@@ -17169,7 +17178,7 @@ export type JsonValueObject = TdObject & {
  * The story can be viewed by everyone
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_privacy_settings_everyone.html
  */
-export type StoryPrivacySettingsEveryone = TdObject & {
+export type StoryPrivacySettingsEveryone = {
 	"@type": "storyPrivacySettingsEveryone";
 	/** Identifiers of the users that can't see the story; always unknown and empty for non-owned stories */
 	except_user_ids: number[];
@@ -17179,7 +17188,7 @@ export type StoryPrivacySettingsEveryone = TdObject & {
  * The story can be viewed by all contacts except chosen users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_privacy_settings_contacts.html
  */
-export type StoryPrivacySettingsContacts = TdObject & {
+export type StoryPrivacySettingsContacts = {
 	"@type": "storyPrivacySettingsContacts";
 	/** User identifiers of the contacts that can't see the story; always unknown and empty for non-owned stories */
 	except_user_ids: number[];
@@ -17189,7 +17198,7 @@ export type StoryPrivacySettingsContacts = TdObject & {
  * The story can be viewed by all close friends
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_privacy_settings_close_friends.html
  */
-export type StoryPrivacySettingsCloseFriends = TdObject & {
+export type StoryPrivacySettingsCloseFriends = {
 	"@type": "storyPrivacySettingsCloseFriends";
 };
 
@@ -17197,7 +17206,7 @@ export type StoryPrivacySettingsCloseFriends = TdObject & {
  * The story can be viewed by certain specified users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_privacy_settings_selected_users.html
  */
-export type StoryPrivacySettingsSelectedUsers = TdObject & {
+export type StoryPrivacySettingsSelectedUsers = {
 	"@type": "storyPrivacySettingsSelectedUsers";
 	/** Identifiers of the users; always unknown and empty for non-owned stories */
 	user_ids: number[];
@@ -17207,7 +17216,7 @@ export type StoryPrivacySettingsSelectedUsers = TdObject & {
  * A rule to allow all users to do something
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_allow_all.html
  */
-export type UserPrivacySettingRuleAllowAll = TdObject & {
+export type UserPrivacySettingRuleAllowAll = {
 	"@type": "userPrivacySettingRuleAllowAll";
 };
 
@@ -17215,7 +17224,7 @@ export type UserPrivacySettingRuleAllowAll = TdObject & {
  * A rule to allow all contacts of the user to do something
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_allow_contacts.html
  */
-export type UserPrivacySettingRuleAllowContacts = TdObject & {
+export type UserPrivacySettingRuleAllowContacts = {
 	"@type": "userPrivacySettingRuleAllowContacts";
 };
 
@@ -17223,7 +17232,7 @@ export type UserPrivacySettingRuleAllowContacts = TdObject & {
  * A rule to allow all bots to do something
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_allow_bots.html
  */
-export type UserPrivacySettingRuleAllowBots = TdObject & {
+export type UserPrivacySettingRuleAllowBots = {
 	"@type": "userPrivacySettingRuleAllowBots";
 };
 
@@ -17231,7 +17240,7 @@ export type UserPrivacySettingRuleAllowBots = TdObject & {
  * A rule to allow all Premium Users to do something; currently, allowed only for userPrivacySettingAllowChatInvites
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_allow_premium_users.html
  */
-export type UserPrivacySettingRuleAllowPremiumUsers = TdObject & {
+export type UserPrivacySettingRuleAllowPremiumUsers = {
 	"@type": "userPrivacySettingRuleAllowPremiumUsers";
 };
 
@@ -17239,7 +17248,7 @@ export type UserPrivacySettingRuleAllowPremiumUsers = TdObject & {
  * A rule to allow certain specified users to do something
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_allow_users.html
  */
-export type UserPrivacySettingRuleAllowUsers = TdObject & {
+export type UserPrivacySettingRuleAllowUsers = {
 	"@type": "userPrivacySettingRuleAllowUsers";
 	/** The user identifiers, total number of users in all rules must not exceed 1000 */
 	user_ids: number[];
@@ -17249,7 +17258,7 @@ export type UserPrivacySettingRuleAllowUsers = TdObject & {
  * A rule to allow all members of certain specified basic groups and supergroups to doing something
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_allow_chat_members.html
  */
-export type UserPrivacySettingRuleAllowChatMembers = TdObject & {
+export type UserPrivacySettingRuleAllowChatMembers = {
 	"@type": "userPrivacySettingRuleAllowChatMembers";
 	/** The chat identifiers, total number of chats in all rules must not exceed 20 */
 	chat_ids: number[];
@@ -17259,7 +17268,7 @@ export type UserPrivacySettingRuleAllowChatMembers = TdObject & {
  * A rule to restrict all users from doing something
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_restrict_all.html
  */
-export type UserPrivacySettingRuleRestrictAll = TdObject & {
+export type UserPrivacySettingRuleRestrictAll = {
 	"@type": "userPrivacySettingRuleRestrictAll";
 };
 
@@ -17267,7 +17276,7 @@ export type UserPrivacySettingRuleRestrictAll = TdObject & {
  * A rule to restrict all contacts of the user from doing something
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_restrict_contacts.html
  */
-export type UserPrivacySettingRuleRestrictContacts = TdObject & {
+export type UserPrivacySettingRuleRestrictContacts = {
 	"@type": "userPrivacySettingRuleRestrictContacts";
 };
 
@@ -17275,7 +17284,7 @@ export type UserPrivacySettingRuleRestrictContacts = TdObject & {
  * A rule to restrict all bots from doing something
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_restrict_bots.html
  */
-export type UserPrivacySettingRuleRestrictBots = TdObject & {
+export type UserPrivacySettingRuleRestrictBots = {
 	"@type": "userPrivacySettingRuleRestrictBots";
 };
 
@@ -17283,7 +17292,7 @@ export type UserPrivacySettingRuleRestrictBots = TdObject & {
  * A rule to restrict all specified users from doing something
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_restrict_users.html
  */
-export type UserPrivacySettingRuleRestrictUsers = TdObject & {
+export type UserPrivacySettingRuleRestrictUsers = {
 	"@type": "userPrivacySettingRuleRestrictUsers";
 	/** The user identifiers, total number of users in all rules must not exceed 1000 */
 	user_ids: number[];
@@ -17293,7 +17302,7 @@ export type UserPrivacySettingRuleRestrictUsers = TdObject & {
  * A rule to restrict all members of specified basic groups and supergroups from doing something
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rule_restrict_chat_members.html
  */
-export type UserPrivacySettingRuleRestrictChatMembers = TdObject & {
+export type UserPrivacySettingRuleRestrictChatMembers = {
 	"@type": "userPrivacySettingRuleRestrictChatMembers";
 	/** The chat identifiers, total number of chats in all rules must not exceed 20 */
 	chat_ids: number[];
@@ -17303,7 +17312,7 @@ export type UserPrivacySettingRuleRestrictChatMembers = TdObject & {
  * A list of privacy rules. Rules are matched in the specified order. The first matched rule defines the privacy setting for a given user. If no rule matches, the action is not allowed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_rules.html
  */
-export type UserPrivacySettingRules = TdObject & {
+export type UserPrivacySettingRules = {
 	"@type": "userPrivacySettingRules";
 	/** A list of rules */
 	rules: UserPrivacySettingRule[];
@@ -17313,7 +17322,7 @@ export type UserPrivacySettingRules = TdObject & {
  * A privacy setting for managing whether the user's online status is visible
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_show_status.html
  */
-export type UserPrivacySettingShowStatus = TdObject & {
+export type UserPrivacySettingShowStatus = {
 	"@type": "userPrivacySettingShowStatus";
 };
 
@@ -17321,7 +17330,7 @@ export type UserPrivacySettingShowStatus = TdObject & {
  * A privacy setting for managing whether the user's profile photo is visible
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_show_profile_photo.html
  */
-export type UserPrivacySettingShowProfilePhoto = TdObject & {
+export type UserPrivacySettingShowProfilePhoto = {
 	"@type": "userPrivacySettingShowProfilePhoto";
 };
 
@@ -17329,7 +17338,7 @@ export type UserPrivacySettingShowProfilePhoto = TdObject & {
  * A privacy setting for managing whether a link to the user's account is included in forwarded messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_show_link_in_forwarded_messages.html
  */
-export type UserPrivacySettingShowLinkInForwardedMessages = TdObject & {
+export type UserPrivacySettingShowLinkInForwardedMessages = {
 	"@type": "userPrivacySettingShowLinkInForwardedMessages";
 };
 
@@ -17337,7 +17346,7 @@ export type UserPrivacySettingShowLinkInForwardedMessages = TdObject & {
  * A privacy setting for managing whether the user's phone number is visible
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_show_phone_number.html
  */
-export type UserPrivacySettingShowPhoneNumber = TdObject & {
+export type UserPrivacySettingShowPhoneNumber = {
 	"@type": "userPrivacySettingShowPhoneNumber";
 };
 
@@ -17345,7 +17354,7 @@ export type UserPrivacySettingShowPhoneNumber = TdObject & {
  * A privacy setting for managing whether the user's bio is visible
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_show_bio.html
  */
-export type UserPrivacySettingShowBio = TdObject & {
+export type UserPrivacySettingShowBio = {
 	"@type": "userPrivacySettingShowBio";
 };
 
@@ -17353,7 +17362,7 @@ export type UserPrivacySettingShowBio = TdObject & {
  * A privacy setting for managing whether the user's birthdate is visible
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_show_birthdate.html
  */
-export type UserPrivacySettingShowBirthdate = TdObject & {
+export type UserPrivacySettingShowBirthdate = {
 	"@type": "userPrivacySettingShowBirthdate";
 };
 
@@ -17361,7 +17370,7 @@ export type UserPrivacySettingShowBirthdate = TdObject & {
  * A privacy setting for managing whether the user can be invited to chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_allow_chat_invites.html
  */
-export type UserPrivacySettingAllowChatInvites = TdObject & {
+export type UserPrivacySettingAllowChatInvites = {
 	"@type": "userPrivacySettingAllowChatInvites";
 };
 
@@ -17369,7 +17378,7 @@ export type UserPrivacySettingAllowChatInvites = TdObject & {
  * A privacy setting for managing whether the user can be called
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_allow_calls.html
  */
-export type UserPrivacySettingAllowCalls = TdObject & {
+export type UserPrivacySettingAllowCalls = {
 	"@type": "userPrivacySettingAllowCalls";
 };
 
@@ -17377,7 +17386,7 @@ export type UserPrivacySettingAllowCalls = TdObject & {
  * A privacy setting for managing whether peer-to-peer connections can be used for calls
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_allow_peer_to_peer_calls.html
  */
-export type UserPrivacySettingAllowPeerToPeerCalls = TdObject & {
+export type UserPrivacySettingAllowPeerToPeerCalls = {
 	"@type": "userPrivacySettingAllowPeerToPeerCalls";
 };
 
@@ -17385,7 +17394,7 @@ export type UserPrivacySettingAllowPeerToPeerCalls = TdObject & {
  * A privacy setting for managing whether the user can be found by their phone number. Checked only if the phone number is not known to the other user. Can be set only to "Allow contacts" or "Allow all"
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_allow_finding_by_phone_number.html
  */
-export type UserPrivacySettingAllowFindingByPhoneNumber = TdObject & {
+export type UserPrivacySettingAllowFindingByPhoneNumber = {
 	"@type": "userPrivacySettingAllowFindingByPhoneNumber";
 };
 
@@ -17393,16 +17402,15 @@ export type UserPrivacySettingAllowFindingByPhoneNumber = TdObject & {
  * A privacy setting for managing whether the user can receive voice and video messages in private chats; for Telegram Premium users only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_allow_private_voice_and_video_note_messages.html
  */
-export type UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages =
-	TdObject & {
-		"@type": "userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages";
-	};
+export type UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages = {
+	"@type": "userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages";
+};
 
 /**
  * A privacy setting for managing whether received gifts are automatically shown on the user's profile page
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_autosave_gifts.html
  */
-export type UserPrivacySettingAutosaveGifts = TdObject & {
+export type UserPrivacySettingAutosaveGifts = {
 	"@type": "userPrivacySettingAutosaveGifts";
 };
 
@@ -17410,7 +17418,7 @@ export type UserPrivacySettingAutosaveGifts = TdObject & {
  * A privacy setting for managing whether the user can receive messages without additional payment
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_privacy_setting_allow_unpaid_messages.html
  */
-export type UserPrivacySettingAllowUnpaidMessages = TdObject & {
+export type UserPrivacySettingAllowUnpaidMessages = {
 	"@type": "userPrivacySettingAllowUnpaidMessages";
 };
 
@@ -17418,7 +17426,7 @@ export type UserPrivacySettingAllowUnpaidMessages = TdObject & {
  * Contains privacy settings for message read date in private chats. Read dates are always shown to the users that can see online status of the current user regardless of this setting
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1read_date_privacy_settings.html
  */
-export type ReadDatePrivacySettings = TdObject & {
+export type ReadDatePrivacySettings = {
 	"@type": "readDatePrivacySettings";
 	/** True, if message read date is shown to other users in private chats. If false and the current user isn't a Telegram Premium user, then they will not be able to see other's message read date */
 	show_read_date: boolean;
@@ -17428,7 +17436,7 @@ export type ReadDatePrivacySettings = TdObject & {
  * Contains privacy settings for chats with non-contacts
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1new_chat_privacy_settings.html
  */
-export type NewChatPrivacySettings = TdObject & {
+export type NewChatPrivacySettings = {
 	"@type": "newChatPrivacySettings";
 	/** True, if non-contacts users are able to write first to the current user. Telegram Premium subscribers are able to write first regardless of this setting */
 	allow_new_chats_from_unknown_users: boolean;
@@ -17440,7 +17448,7 @@ export type NewChatPrivacySettings = TdObject & {
  * The user can be messaged
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_message_to_user_result_ok.html
  */
-export type CanSendMessageToUserResultOk = TdObject & {
+export type CanSendMessageToUserResultOk = {
 	"@type": "canSendMessageToUserResultOk";
 };
 
@@ -17448,7 +17456,7 @@ export type CanSendMessageToUserResultOk = TdObject & {
  * The user can be messaged, but the messages are paid
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_message_to_user_result_user_has_paid_messages.html
  */
-export type CanSendMessageToUserResultUserHasPaidMessages = TdObject & {
+export type CanSendMessageToUserResultUserHasPaidMessages = {
 	"@type": "canSendMessageToUserResultUserHasPaidMessages";
 	/** Number of Telegram Stars that must be paid by the current user for each sent message to the user */
 	outgoing_paid_message_star_count: number;
@@ -17458,7 +17466,7 @@ export type CanSendMessageToUserResultUserHasPaidMessages = TdObject & {
  * The user can't be messaged, because they are deleted or unknown
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_message_to_user_result_user_is_deleted.html
  */
-export type CanSendMessageToUserResultUserIsDeleted = TdObject & {
+export type CanSendMessageToUserResultUserIsDeleted = {
 	"@type": "canSendMessageToUserResultUserIsDeleted";
 };
 
@@ -17466,7 +17474,7 @@ export type CanSendMessageToUserResultUserIsDeleted = TdObject & {
  * The user can't be messaged, because they restrict new chats with non-contacts
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1can_send_message_to_user_result_user_restricts_new_chats.html
  */
-export type CanSendMessageToUserResultUserRestrictsNewChats = TdObject & {
+export type CanSendMessageToUserResultUserRestrictsNewChats = {
 	"@type": "canSendMessageToUserResultUserRestrictsNewChats";
 };
 
@@ -17474,7 +17482,7 @@ export type CanSendMessageToUserResultUserRestrictsNewChats = TdObject & {
  * Contains information about the period of inactivity after which the current user's account will automatically be deleted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1account_ttl.html
  */
-export type AccountTtl = TdObject & {
+export type AccountTtl = {
 	"@type": "accountTtl";
 	/** Number of days of inactivity before the account will be flagged for deletion; 30-730 days */
 	days: number;
@@ -17484,7 +17492,7 @@ export type AccountTtl = TdObject & {
  * Contains default auto-delete timer setting for new chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_auto_delete_time.html
  */
-export type MessageAutoDeleteTime = TdObject & {
+export type MessageAutoDeleteTime = {
 	"@type": "messageAutoDeleteTime";
 	/** Message auto-delete time, in seconds. If 0, then messages aren't deleted automatically */
 	time: number;
@@ -17494,7 +17502,7 @@ export type MessageAutoDeleteTime = TdObject & {
  * The session is running on an Android device
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_android.html
  */
-export type SessionTypeAndroid = TdObject & {
+export type SessionTypeAndroid = {
 	"@type": "sessionTypeAndroid";
 };
 
@@ -17502,7 +17510,7 @@ export type SessionTypeAndroid = TdObject & {
  * The session is running on a generic Apple device
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_apple.html
  */
-export type SessionTypeApple = TdObject & {
+export type SessionTypeApple = {
 	"@type": "sessionTypeApple";
 };
 
@@ -17510,7 +17518,7 @@ export type SessionTypeApple = TdObject & {
  * The session is running on the Brave browser
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_brave.html
  */
-export type SessionTypeBrave = TdObject & {
+export type SessionTypeBrave = {
 	"@type": "sessionTypeBrave";
 };
 
@@ -17518,7 +17526,7 @@ export type SessionTypeBrave = TdObject & {
  * The session is running on the Chrome browser
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_chrome.html
  */
-export type SessionTypeChrome = TdObject & {
+export type SessionTypeChrome = {
 	"@type": "sessionTypeChrome";
 };
 
@@ -17526,7 +17534,7 @@ export type SessionTypeChrome = TdObject & {
  * The session is running on the Edge browser
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_edge.html
  */
-export type SessionTypeEdge = TdObject & {
+export type SessionTypeEdge = {
 	"@type": "sessionTypeEdge";
 };
 
@@ -17534,7 +17542,7 @@ export type SessionTypeEdge = TdObject & {
  * The session is running on the Firefox browser
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_firefox.html
  */
-export type SessionTypeFirefox = TdObject & {
+export type SessionTypeFirefox = {
 	"@type": "sessionTypeFirefox";
 };
 
@@ -17542,7 +17550,7 @@ export type SessionTypeFirefox = TdObject & {
  * The session is running on an iPad device
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_ipad.html
  */
-export type SessionTypeIpad = TdObject & {
+export type SessionTypeIpad = {
 	"@type": "sessionTypeIpad";
 };
 
@@ -17550,7 +17558,7 @@ export type SessionTypeIpad = TdObject & {
  * The session is running on an iPhone device
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_iphone.html
  */
-export type SessionTypeIphone = TdObject & {
+export type SessionTypeIphone = {
 	"@type": "sessionTypeIphone";
 };
 
@@ -17558,7 +17566,7 @@ export type SessionTypeIphone = TdObject & {
  * The session is running on a Linux device
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_linux.html
  */
-export type SessionTypeLinux = TdObject & {
+export type SessionTypeLinux = {
 	"@type": "sessionTypeLinux";
 };
 
@@ -17566,7 +17574,7 @@ export type SessionTypeLinux = TdObject & {
  * The session is running on a Mac device
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_mac.html
  */
-export type SessionTypeMac = TdObject & {
+export type SessionTypeMac = {
 	"@type": "sessionTypeMac";
 };
 
@@ -17574,7 +17582,7 @@ export type SessionTypeMac = TdObject & {
  * The session is running on the Opera browser
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_opera.html
  */
-export type SessionTypeOpera = TdObject & {
+export type SessionTypeOpera = {
 	"@type": "sessionTypeOpera";
 };
 
@@ -17582,7 +17590,7 @@ export type SessionTypeOpera = TdObject & {
  * The session is running on the Safari browser
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_safari.html
  */
-export type SessionTypeSafari = TdObject & {
+export type SessionTypeSafari = {
 	"@type": "sessionTypeSafari";
 };
 
@@ -17590,7 +17598,7 @@ export type SessionTypeSafari = TdObject & {
  * The session is running on an Ubuntu device
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_ubuntu.html
  */
-export type SessionTypeUbuntu = TdObject & {
+export type SessionTypeUbuntu = {
 	"@type": "sessionTypeUbuntu";
 };
 
@@ -17598,7 +17606,7 @@ export type SessionTypeUbuntu = TdObject & {
  * The session is running on an unknown type of device
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_unknown.html
  */
-export type SessionTypeUnknown = TdObject & {
+export type SessionTypeUnknown = {
 	"@type": "sessionTypeUnknown";
 };
 
@@ -17606,7 +17614,7 @@ export type SessionTypeUnknown = TdObject & {
  * The session is running on the Vivaldi browser
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_vivaldi.html
  */
-export type SessionTypeVivaldi = TdObject & {
+export type SessionTypeVivaldi = {
 	"@type": "sessionTypeVivaldi";
 };
 
@@ -17614,7 +17622,7 @@ export type SessionTypeVivaldi = TdObject & {
  * The session is running on a Windows device
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_windows.html
  */
-export type SessionTypeWindows = TdObject & {
+export type SessionTypeWindows = {
 	"@type": "sessionTypeWindows";
 };
 
@@ -17622,7 +17630,7 @@ export type SessionTypeWindows = TdObject & {
  * The session is running on an Xbox console
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session_type_xbox.html
  */
-export type SessionTypeXbox = TdObject & {
+export type SessionTypeXbox = {
 	"@type": "sessionTypeXbox";
 };
 
@@ -17630,7 +17638,7 @@ export type SessionTypeXbox = TdObject & {
  * Contains information about one session in a Telegram application used by the current user. Sessions must be shown to the user in the returned order
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1session.html
  */
-export type Session = TdObject & {
+export type Session = {
 	"@type": "session";
 	/** Session identifier */
 	id: string;
@@ -17674,7 +17682,7 @@ export type Session = TdObject & {
  * Contains a list of sessions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1sessions.html
  */
-export type Sessions = TdObject & {
+export type Sessions = {
 	"@type": "sessions";
 	/** List of sessions */
 	sessions: Session[];
@@ -17686,7 +17694,7 @@ export type Sessions = TdObject & {
  * Contains information about an unconfirmed session
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1unconfirmed_session.html
  */
-export type UnconfirmedSession = TdObject & {
+export type UnconfirmedSession = {
 	"@type": "unconfirmedSession";
 	/** Session identifier */
 	id: string;
@@ -17702,7 +17710,7 @@ export type UnconfirmedSession = TdObject & {
  * Contains information about one website the current user is logged in with Telegram
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connected_website.html
  */
-export type ConnectedWebsite = TdObject & {
+export type ConnectedWebsite = {
 	"@type": "connectedWebsite";
 	/** Website identifier */
 	id: string;
@@ -17728,7 +17736,7 @@ export type ConnectedWebsite = TdObject & {
  * Contains a list of websites the current user is logged in with Telegram
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connected_websites.html
  */
-export type ConnectedWebsites = TdObject & {
+export type ConnectedWebsites = {
 	"@type": "connectedWebsites";
 	/** List of connected websites */
 	websites: ConnectedWebsite[];
@@ -17738,7 +17746,7 @@ export type ConnectedWebsites = TdObject & {
  * The chat contains spam messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_reason_spam.html
  */
-export type ReportReasonSpam = TdObject & {
+export type ReportReasonSpam = {
 	"@type": "reportReasonSpam";
 };
 
@@ -17746,7 +17754,7 @@ export type ReportReasonSpam = TdObject & {
  * The chat promotes violence
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_reason_violence.html
  */
-export type ReportReasonViolence = TdObject & {
+export type ReportReasonViolence = {
 	"@type": "reportReasonViolence";
 };
 
@@ -17754,7 +17762,7 @@ export type ReportReasonViolence = TdObject & {
  * The chat contains pornographic messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_reason_pornography.html
  */
-export type ReportReasonPornography = TdObject & {
+export type ReportReasonPornography = {
 	"@type": "reportReasonPornography";
 };
 
@@ -17762,7 +17770,7 @@ export type ReportReasonPornography = TdObject & {
  * The chat has child abuse related content
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_reason_child_abuse.html
  */
-export type ReportReasonChildAbuse = TdObject & {
+export type ReportReasonChildAbuse = {
 	"@type": "reportReasonChildAbuse";
 };
 
@@ -17770,7 +17778,7 @@ export type ReportReasonChildAbuse = TdObject & {
  * The chat contains copyrighted content
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_reason_copyright.html
  */
-export type ReportReasonCopyright = TdObject & {
+export type ReportReasonCopyright = {
 	"@type": "reportReasonCopyright";
 };
 
@@ -17778,7 +17786,7 @@ export type ReportReasonCopyright = TdObject & {
  * The location-based chat is unrelated to its stated location
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_reason_unrelated_location.html
  */
-export type ReportReasonUnrelatedLocation = TdObject & {
+export type ReportReasonUnrelatedLocation = {
 	"@type": "reportReasonUnrelatedLocation";
 };
 
@@ -17786,7 +17794,7 @@ export type ReportReasonUnrelatedLocation = TdObject & {
  * The chat represents a fake account
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_reason_fake.html
  */
-export type ReportReasonFake = TdObject & {
+export type ReportReasonFake = {
 	"@type": "reportReasonFake";
 };
 
@@ -17794,7 +17802,7 @@ export type ReportReasonFake = TdObject & {
  * The chat has illegal drugs related content
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_reason_illegal_drugs.html
  */
-export type ReportReasonIllegalDrugs = TdObject & {
+export type ReportReasonIllegalDrugs = {
 	"@type": "reportReasonIllegalDrugs";
 };
 
@@ -17802,7 +17810,7 @@ export type ReportReasonIllegalDrugs = TdObject & {
  * The chat contains messages with personal details
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_reason_personal_details.html
  */
-export type ReportReasonPersonalDetails = TdObject & {
+export type ReportReasonPersonalDetails = {
 	"@type": "reportReasonPersonalDetails";
 };
 
@@ -17810,7 +17818,7 @@ export type ReportReasonPersonalDetails = TdObject & {
  * A custom reason provided by the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_reason_custom.html
  */
-export type ReportReasonCustom = TdObject & {
+export type ReportReasonCustom = {
 	"@type": "reportReasonCustom";
 };
 
@@ -17818,7 +17826,7 @@ export type ReportReasonCustom = TdObject & {
  * The chat was reported successfully
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_result_ok.html
  */
-export type ReportChatResultOk = TdObject & {
+export type ReportChatResultOk = {
 	"@type": "reportChatResultOk";
 };
 
@@ -17826,7 +17834,7 @@ export type ReportChatResultOk = TdObject & {
  * The user must choose an option to report the chat and repeat request with the chosen option
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_result_option_required.html
  */
-export type ReportChatResultOptionRequired = TdObject & {
+export type ReportChatResultOptionRequired = {
 	"@type": "reportChatResultOptionRequired";
 	/** Title for the option choice */
 	title: string;
@@ -17838,7 +17846,7 @@ export type ReportChatResultOptionRequired = TdObject & {
  * The user must add additional text details to the report
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_result_text_required.html
  */
-export type ReportChatResultTextRequired = TdObject & {
+export type ReportChatResultTextRequired = {
 	"@type": "reportChatResultTextRequired";
 	/** Option identifier for the next reportChat request */
 	option_id: string;
@@ -17850,7 +17858,7 @@ export type ReportChatResultTextRequired = TdObject & {
  * The user must choose messages to report and repeat the reportChat request with the chosen messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_chat_result_messages_required.html
  */
-export type ReportChatResultMessagesRequired = TdObject & {
+export type ReportChatResultMessagesRequired = {
 	"@type": "reportChatResultMessagesRequired";
 };
 
@@ -17858,7 +17866,7 @@ export type ReportChatResultMessagesRequired = TdObject & {
  * The story was reported successfully
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_story_result_ok.html
  */
-export type ReportStoryResultOk = TdObject & {
+export type ReportStoryResultOk = {
 	"@type": "reportStoryResultOk";
 };
 
@@ -17866,7 +17874,7 @@ export type ReportStoryResultOk = TdObject & {
  * The user must choose an option to report the story and repeat request with the chosen option
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_story_result_option_required.html
  */
-export type ReportStoryResultOptionRequired = TdObject & {
+export type ReportStoryResultOptionRequired = {
 	"@type": "reportStoryResultOptionRequired";
 	/** Title for the option choice */
 	title: string;
@@ -17878,7 +17886,7 @@ export type ReportStoryResultOptionRequired = TdObject & {
  * The user must add additional text details to the report
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1report_story_result_text_required.html
  */
-export type ReportStoryResultTextRequired = TdObject & {
+export type ReportStoryResultTextRequired = {
 	"@type": "reportStoryResultTextRequired";
 	/** Option identifier for the next reportStory request */
 	option_id: string;
@@ -17890,7 +17898,7 @@ export type ReportStoryResultTextRequired = TdObject & {
  * The link is a link to the Devices section of the application. Use getActiveSessions to get the list of active sessions and show them to the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_active_sessions.html
  */
-export type InternalLinkTypeActiveSessions = TdObject & {
+export type InternalLinkTypeActiveSessions = {
 	"@type": "internalLinkTypeActiveSessions";
 };
 
@@ -17898,7 +17906,7 @@ export type InternalLinkTypeActiveSessions = TdObject & {
  * The link is a link to an attachment menu bot to be opened in the specified or a chosen chat. Process given target_chat to open the chat. Then, call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to attachment menu, then show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the attachment menu bot can't be used in the opened chat, show an error to the user. If the bot is added to attachment menu and can be used in the chat, then use openWebApp with the given URL
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_attachment_menu_bot.html
  */
-export type InternalLinkTypeAttachmentMenuBot = TdObject & {
+export type InternalLinkTypeAttachmentMenuBot = {
 	"@type": "internalLinkTypeAttachmentMenuBot";
 	/** Target chat to be opened */
 	target_chat: TargetChat;
@@ -17912,7 +17920,7 @@ export type InternalLinkTypeAttachmentMenuBot = TdObject & {
  * The link contains an authentication code. Call checkAuthenticationCode with the code if the current authorization state is authorizationStateWaitCode
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_authentication_code.html
  */
-export type InternalLinkTypeAuthenticationCode = TdObject & {
+export type InternalLinkTypeAuthenticationCode = {
 	"@type": "internalLinkTypeAuthenticationCode";
 	/** The authentication code */
 	code: string;
@@ -17922,7 +17930,7 @@ export type InternalLinkTypeAuthenticationCode = TdObject & {
  * The link is a link to a background. Call searchBackground with the given background name to process the link. If background is found and the user wants to apply it, then call setDefaultBackground
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_background.html
  */
-export type InternalLinkTypeBackground = TdObject & {
+export type InternalLinkTypeBackground = {
 	"@type": "internalLinkTypeBackground";
 	/** Name of the background */
 	background_name: string;
@@ -17932,7 +17940,7 @@ export type InternalLinkTypeBackground = TdObject & {
  * The link is a link to a Telegram bot, which is expected to be added to a channel chat as an administrator. Call searchPublicChat with the given bot username and check that the user is a bot, ask the current user to select a channel chat to add the bot to as an administrator. Then, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights and combine received rights with the requested administrator rights. Then, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed rights
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_bot_add_to_channel.html
  */
-export type InternalLinkTypeBotAddToChannel = TdObject & {
+export type InternalLinkTypeBotAddToChannel = {
 	"@type": "internalLinkTypeBotAddToChannel";
 	/** Username of the bot */
 	bot_username: string;
@@ -17944,7 +17952,7 @@ export type InternalLinkTypeBotAddToChannel = TdObject & {
  * The link is a link to a chat with a Telegram bot. Call searchPublicChat with the given bot username, check that the user is a bot, show START button in the chat with the bot, and then call sendBotStartMessage with the given start parameter after the button is pressed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_bot_start.html
  */
-export type InternalLinkTypeBotStart = TdObject & {
+export type InternalLinkTypeBotStart = {
 	"@type": "internalLinkTypeBotStart";
 	/** Username of the bot */
 	bot_username: string;
@@ -17958,7 +17966,7 @@ export type InternalLinkTypeBotStart = TdObject & {
  * The link is a link to a Telegram bot, which is expected to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then, if start_parameter isn't empty, call sendBotStartMessage with the given start parameter and the chosen chat; otherwise, just send /start message with bot's username added to the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_bot_start_in_group.html
  */
-export type InternalLinkTypeBotStartInGroup = TdObject & {
+export type InternalLinkTypeBotStartInGroup = {
 	"@type": "internalLinkTypeBotStartInGroup";
 	/** Username of the bot */
 	bot_username: string;
@@ -17972,7 +17980,7 @@ export type InternalLinkTypeBotStartInGroup = TdObject & {
  * The link is a link to a business chat. Use getBusinessChatLinkInfo with the provided link name to get information about the link, then open received private chat and replace chat draft with the provided text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_business_chat.html
  */
-export type InternalLinkTypeBusinessChat = TdObject & {
+export type InternalLinkTypeBusinessChat = {
 	"@type": "internalLinkTypeBusinessChat";
 	/** Name of the link */
 	link_name: string;
@@ -17982,7 +17990,7 @@ export type InternalLinkTypeBusinessChat = TdObject & {
  * The link is a link to the Telegram Star purchase section of the application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_buy_stars.html
  */
-export type InternalLinkTypeBuyStars = TdObject & {
+export type InternalLinkTypeBuyStars = {
 	"@type": "internalLinkTypeBuyStars";
 	/** The number of Telegram Stars that must be owned by the user */
 	star_count: number;
@@ -17994,7 +18002,7 @@ export type InternalLinkTypeBuyStars = TdObject & {
  * The link is a link to the change phone number section of the application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_change_phone_number.html
  */
-export type InternalLinkTypeChangePhoneNumber = TdObject & {
+export type InternalLinkTypeChangePhoneNumber = {
 	"@type": "internalLinkTypeChangePhoneNumber";
 };
 
@@ -18002,7 +18010,7 @@ export type InternalLinkTypeChangePhoneNumber = TdObject & {
  * The link is an affiliate program link. Call searchChatAffiliateProgram with the given username and referrer to process the link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_chat_affiliate_program.html
  */
-export type InternalLinkTypeChatAffiliateProgram = TdObject & {
+export type InternalLinkTypeChatAffiliateProgram = {
 	"@type": "internalLinkTypeChatAffiliateProgram";
 	/** Username to be passed to searchChatAffiliateProgram */
 	username: string;
@@ -18014,7 +18022,7 @@ export type InternalLinkTypeChatAffiliateProgram = TdObject & {
  * The link is a link to boost a Telegram chat. Call getChatBoostLinkInfo with the given URL to process the link. If the chat is found, then call getChatBoostStatus and getAvailableChatBoostSlots to get the current boost status and check whether the chat can be boosted. If the user wants to boost the chat and the chat can be boosted, then call boostChat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_chat_boost.html
  */
-export type InternalLinkTypeChatBoost = TdObject & {
+export type InternalLinkTypeChatBoost = {
 	"@type": "internalLinkTypeChatBoost";
 	/** URL to be passed to getChatBoostLinkInfo */
 	url: string;
@@ -18024,7 +18032,7 @@ export type InternalLinkTypeChatBoost = TdObject & {
  * The link is an invite link to a chat folder. Call checkChatFolderInviteLink with the given invite link to process the link. If the link is valid and the user wants to join the chat folder, then call addChatFolderByInviteLink
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_chat_folder_invite.html
  */
-export type InternalLinkTypeChatFolderInvite = TdObject & {
+export type InternalLinkTypeChatFolderInvite = {
 	"@type": "internalLinkTypeChatFolderInvite";
 	/** Internal representation of the invite link */
 	invite_link: string;
@@ -18034,7 +18042,7 @@ export type InternalLinkTypeChatFolderInvite = TdObject & {
  * The link is a link to the folder section of the application settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_chat_folder_settings.html
  */
-export type InternalLinkTypeChatFolderSettings = TdObject & {
+export type InternalLinkTypeChatFolderSettings = {
 	"@type": "internalLinkTypeChatFolderSettings";
 };
 
@@ -18042,7 +18050,7 @@ export type InternalLinkTypeChatFolderSettings = TdObject & {
  * The link is a chat invite link. Call checkChatInviteLink with the given invite link to process the link. If the link is valid and the user wants to join the chat, then call joinChatByInviteLink
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_chat_invite.html
  */
-export type InternalLinkTypeChatInvite = TdObject & {
+export type InternalLinkTypeChatInvite = {
 	"@type": "internalLinkTypeChatInvite";
 	/** Internal representation of the invite link */
 	invite_link: string;
@@ -18052,7 +18060,7 @@ export type InternalLinkTypeChatInvite = TdObject & {
  * The link is a link to the default message auto-delete timer settings section of the application settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_default_message_auto_delete_timer_settings.html
  */
-export type InternalLinkTypeDefaultMessageAutoDeleteTimerSettings = TdObject & {
+export type InternalLinkTypeDefaultMessageAutoDeleteTimerSettings = {
 	"@type": "internalLinkTypeDefaultMessageAutoDeleteTimerSettings";
 };
 
@@ -18060,7 +18068,7 @@ export type InternalLinkTypeDefaultMessageAutoDeleteTimerSettings = TdObject & {
  * The link is a link to the edit profile section of the application settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_edit_profile_settings.html
  */
-export type InternalLinkTypeEditProfileSettings = TdObject & {
+export type InternalLinkTypeEditProfileSettings = {
 	"@type": "internalLinkTypeEditProfileSettings";
 };
 
@@ -18068,7 +18076,7 @@ export type InternalLinkTypeEditProfileSettings = TdObject & {
  * The link is a link to a game. Call searchPublicChat with the given bot username, check that the user is a bot, ask the current user to select a chat to send the game, and then call sendMessage with inputMessageGame
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_game.html
  */
-export type InternalLinkTypeGame = TdObject & {
+export type InternalLinkTypeGame = {
 	"@type": "internalLinkTypeGame";
 	/** Username of the bot that owns the game */
 	bot_username: string;
@@ -18080,7 +18088,7 @@ export type InternalLinkTypeGame = TdObject & {
  * The link is a link to a group call that isn't bound to a chat. Use getGroupCallParticipants to get the list of group call participants and show them on the join group call screen. Call joinGroupCall with the given invite_link to join the call
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_group_call.html
  */
-export type InternalLinkTypeGroupCall = TdObject & {
+export type InternalLinkTypeGroupCall = {
 	"@type": "internalLinkTypeGroupCall";
 	/** Internal representation of the invite link */
 	invite_link: string;
@@ -18090,7 +18098,7 @@ export type InternalLinkTypeGroupCall = TdObject & {
  * The link must be opened in an Instant View. Call getWebPageInstantView with the given URL to process the link. If Instant View is found, then show it, otherwise, open the fallback URL in an external browser
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_instant_view.html
  */
-export type InternalLinkTypeInstantView = TdObject & {
+export type InternalLinkTypeInstantView = {
 	"@type": "internalLinkTypeInstantView";
 	/** URL to be passed to getWebPageInstantView */
 	url: string;
@@ -18102,7 +18110,7 @@ export type InternalLinkTypeInstantView = TdObject & {
  * The link is a link to an invoice. Call getPaymentForm with the given invoice name to process the link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_invoice.html
  */
-export type InternalLinkTypeInvoice = TdObject & {
+export type InternalLinkTypeInvoice = {
 	"@type": "internalLinkTypeInvoice";
 	/** Name of the invoice */
 	invoice_name: string;
@@ -18112,7 +18120,7 @@ export type InternalLinkTypeInvoice = TdObject & {
  * The link is a link to a language pack. Call getLanguagePackInfo with the given language pack identifier to process the link. If the language pack is found and the user wants to apply it, then call setOption for the option "language_pack_id"
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_language_pack.html
  */
-export type InternalLinkTypeLanguagePack = TdObject & {
+export type InternalLinkTypeLanguagePack = {
 	"@type": "internalLinkTypeLanguagePack";
 	/** Language pack identifier */
 	language_pack_id: string;
@@ -18122,7 +18130,7 @@ export type InternalLinkTypeLanguagePack = TdObject & {
  * The link is a link to the language section of the application settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_language_settings.html
  */
-export type InternalLinkTypeLanguageSettings = TdObject & {
+export type InternalLinkTypeLanguageSettings = {
 	"@type": "internalLinkTypeLanguageSettings";
 };
 
@@ -18130,7 +18138,7 @@ export type InternalLinkTypeLanguageSettings = TdObject & {
  * The link is a link to the main Web App of a bot. Call searchPublicChat with the given bot username, check that the user is a bot and has the main Web App. If the bot can be added to attachment menu, then use getAttachmentMenuBot to receive information about the bot, then if the bot isn't added to side menu, show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu, then if the user accepts the terms and confirms adding, use toggleBotIsAddedToAttachmentMenu to add the bot. Then, use getMainWebApp with the given start parameter and mode and open the returned URL as a Web App
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_main_web_app.html
  */
-export type InternalLinkTypeMainWebApp = TdObject & {
+export type InternalLinkTypeMainWebApp = {
 	"@type": "internalLinkTypeMainWebApp";
 	/** Username of the bot */
 	bot_username: string;
@@ -18144,7 +18152,7 @@ export type InternalLinkTypeMainWebApp = TdObject & {
  * The link is a link to a Telegram message or a forum topic. Call getMessageLinkInfo with the given URL to process the link, and then open received forum topic or chat and show the message there
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_message.html
  */
-export type InternalLinkTypeMessage = TdObject & {
+export type InternalLinkTypeMessage = {
 	"@type": "internalLinkTypeMessage";
 	/** URL to be passed to getMessageLinkInfo */
 	url: string;
@@ -18154,7 +18162,7 @@ export type InternalLinkTypeMessage = TdObject & {
  * The link contains a message draft text. A share screen needs to be shown to the user, then the chosen chat must be opened and the text is added to the input field
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_message_draft.html
  */
-export type InternalLinkTypeMessageDraft = TdObject & {
+export type InternalLinkTypeMessageDraft = {
 	"@type": "internalLinkTypeMessageDraft";
 	/** Message draft text */
 	text: FormattedText;
@@ -18166,7 +18174,7 @@ export type InternalLinkTypeMessageDraft = TdObject & {
  * The link is a link to the screen with information about Telegram Star balance and transactions of the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_my_stars.html
  */
-export type InternalLinkTypeMyStars = TdObject & {
+export type InternalLinkTypeMyStars = {
 	"@type": "internalLinkTypeMyStars";
 };
 
@@ -18174,7 +18182,7 @@ export type InternalLinkTypeMyStars = TdObject & {
  * The link contains a request of Telegram passport data. Call getPassportAuthorizationForm with the given parameters to process the link if the link was received from outside of the application; otherwise, ignore it
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_passport_data_request.html
  */
-export type InternalLinkTypePassportDataRequest = TdObject & {
+export type InternalLinkTypePassportDataRequest = {
 	"@type": "internalLinkTypePassportDataRequest";
 	/** User identifier of the service's bot; the corresponding user may be unknown yet */
 	bot_user_id: number;
@@ -18192,7 +18200,7 @@ export type InternalLinkTypePassportDataRequest = TdObject & {
  * The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberCode with the given phone number and with phoneNumberCodeTypeConfirmOwnership with the given hash to process the link. If succeeded, call checkPhoneNumberCode to check entered by the user code, or resendPhoneNumberCode to resend it
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_phone_number_confirmation.html
  */
-export type InternalLinkTypePhoneNumberConfirmation = TdObject & {
+export type InternalLinkTypePhoneNumberConfirmation = {
 	"@type": "internalLinkTypePhoneNumberConfirmation";
 	/** Hash value from the link */
 	hash: string;
@@ -18204,7 +18212,7 @@ export type InternalLinkTypePhoneNumberConfirmation = TdObject & {
  * The link is a link to the Premium features screen of the application from which the user can subscribe to Telegram Premium. Call getPremiumFeatures with the given referrer to process the link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_premium_features.html
  */
-export type InternalLinkTypePremiumFeatures = TdObject & {
+export type InternalLinkTypePremiumFeatures = {
 	"@type": "internalLinkTypePremiumFeatures";
 	/** Referrer specified in the link */
 	referrer: string;
@@ -18214,7 +18222,7 @@ export type InternalLinkTypePremiumFeatures = TdObject & {
  * The link is a link to the screen for gifting Telegram Premium subscriptions to friends via inputInvoiceTelegram with telegramPaymentPurposePremiumGift payments or in-store purchases
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_premium_gift.html
  */
-export type InternalLinkTypePremiumGift = TdObject & {
+export type InternalLinkTypePremiumGift = {
 	"@type": "internalLinkTypePremiumGift";
 	/** Referrer specified in the link */
 	referrer: string;
@@ -18224,7 +18232,7 @@ export type InternalLinkTypePremiumGift = TdObject & {
  * The link is a link with a Telegram Premium gift code. Call checkPremiumGiftCode with the given code to process the link. If the code is valid and the user wants to apply it, then call applyPremiumGiftCode
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_premium_gift_code.html
  */
-export type InternalLinkTypePremiumGiftCode = TdObject & {
+export type InternalLinkTypePremiumGiftCode = {
 	"@type": "internalLinkTypePremiumGiftCode";
 	/** The Telegram Premium gift code */
 	code: string;
@@ -18234,7 +18242,7 @@ export type InternalLinkTypePremiumGiftCode = TdObject & {
  * The link is a link to the privacy and security section of the application settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_privacy_and_security_settings.html
  */
-export type InternalLinkTypePrivacyAndSecuritySettings = TdObject & {
+export type InternalLinkTypePrivacyAndSecuritySettings = {
 	"@type": "internalLinkTypePrivacyAndSecuritySettings";
 };
 
@@ -18242,7 +18250,7 @@ export type InternalLinkTypePrivacyAndSecuritySettings = TdObject & {
  * The link is a link to a proxy. Call addProxy with the given parameters to process the link and add the proxy
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_proxy.html
  */
-export type InternalLinkTypeProxy = TdObject & {
+export type InternalLinkTypeProxy = {
 	"@type": "internalLinkTypeProxy";
 	/** Proxy server domain or IP address */
 	server: string;
@@ -18256,7 +18264,7 @@ export type InternalLinkTypeProxy = TdObject & {
  * The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link. If the chat is found, open its profile information screen or the chat itself. If draft text isn't empty and the chat is a private chat with a regular user, then put the draft text in the input field
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_public_chat.html
  */
-export type InternalLinkTypePublicChat = TdObject & {
+export type InternalLinkTypePublicChat = {
 	"@type": "internalLinkTypePublicChat";
 	/** Username of the chat */
 	chat_username: string;
@@ -18270,7 +18278,7 @@ export type InternalLinkTypePublicChat = TdObject & {
  * The link can be used to login the current user on another device, but it must be scanned from QR-code using in-app camera. An alert similar to "This code can be used to allow someone to log in to your Telegram account. To confirm Telegram login, please go to Settings > Devices > Scan QR and scan the code" needs to be shown
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_qr_code_authentication.html
  */
-export type InternalLinkTypeQrCodeAuthentication = TdObject & {
+export type InternalLinkTypeQrCodeAuthentication = {
 	"@type": "internalLinkTypeQrCodeAuthentication";
 };
 
@@ -18278,7 +18286,7 @@ export type InternalLinkTypeQrCodeAuthentication = TdObject & {
  * The link forces restore of App Store purchases when opened. For official iOS application only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_restore_purchases.html
  */
-export type InternalLinkTypeRestorePurchases = TdObject & {
+export type InternalLinkTypeRestorePurchases = {
 	"@type": "internalLinkTypeRestorePurchases";
 };
 
@@ -18286,7 +18294,7 @@ export type InternalLinkTypeRestorePurchases = TdObject & {
  * The link is a link to application settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_settings.html
  */
-export type InternalLinkTypeSettings = TdObject & {
+export type InternalLinkTypeSettings = {
 	"@type": "internalLinkTypeSettings";
 };
 
@@ -18294,7 +18302,7 @@ export type InternalLinkTypeSettings = TdObject & {
  * The link is a link to a sticker set. Call searchStickerSet with the given sticker set name to process the link and show the sticker set. If the sticker set is found and the user wants to add it, then call changeStickerSet
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_sticker_set.html
  */
-export type InternalLinkTypeStickerSet = TdObject & {
+export type InternalLinkTypeStickerSet = {
 	"@type": "internalLinkTypeStickerSet";
 	/** Name of the sticker set */
 	sticker_set_name: string;
@@ -18306,7 +18314,7 @@ export type InternalLinkTypeStickerSet = TdObject & {
  * The link is a link to a story. Call searchPublicChat with the given poster username, then call getStory with the received chat identifier and the given story identifier, then show the story if received
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_story.html
  */
-export type InternalLinkTypeStory = TdObject & {
+export type InternalLinkTypeStory = {
 	"@type": "internalLinkTypeStory";
 	/** Username of the poster of the story */
 	story_poster_username: string;
@@ -18318,7 +18326,7 @@ export type InternalLinkTypeStory = TdObject & {
  * The link is a link to a cloud theme. TDLib has no theme support yet
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_theme.html
  */
-export type InternalLinkTypeTheme = TdObject & {
+export type InternalLinkTypeTheme = {
 	"@type": "internalLinkTypeTheme";
 	/** Name of the theme */
 	theme_name: string;
@@ -18328,7 +18336,7 @@ export type InternalLinkTypeTheme = TdObject & {
  * The link is a link to the theme section of the application settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_theme_settings.html
  */
-export type InternalLinkTypeThemeSettings = TdObject & {
+export type InternalLinkTypeThemeSettings = {
 	"@type": "internalLinkTypeThemeSettings";
 };
 
@@ -18336,7 +18344,7 @@ export type InternalLinkTypeThemeSettings = TdObject & {
  * The link is an unknown tg: link. Call getDeepLinkInfo to process the link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_unknown_deep_link.html
  */
-export type InternalLinkTypeUnknownDeepLink = TdObject & {
+export type InternalLinkTypeUnknownDeepLink = {
 	"@type": "internalLinkTypeUnknownDeepLink";
 	/** Link to be passed to getDeepLinkInfo */
 	link: string;
@@ -18346,7 +18354,7 @@ export type InternalLinkTypeUnknownDeepLink = TdObject & {
  * The link is a link to an unsupported proxy. An alert can be shown to the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_unsupported_proxy.html
  */
-export type InternalLinkTypeUnsupportedProxy = TdObject & {
+export type InternalLinkTypeUnsupportedProxy = {
 	"@type": "internalLinkTypeUnsupportedProxy";
 };
 
@@ -18354,7 +18362,7 @@ export type InternalLinkTypeUnsupportedProxy = TdObject & {
  * The link is a link to an upgraded gift. Call getUpgradedGift with the given name to process the link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_upgraded_gift.html
  */
-export type InternalLinkTypeUpgradedGift = TdObject & {
+export type InternalLinkTypeUpgradedGift = {
 	"@type": "internalLinkTypeUpgradedGift";
 	/** Name of the unique gift */
 	name: string;
@@ -18364,7 +18372,7 @@ export type InternalLinkTypeUpgradedGift = TdObject & {
  * The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link. If the user is found, then call createPrivateChat and open user's profile information screen or the chat itself. If draft text isn't empty, then put the draft text in the input field
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_user_phone_number.html
  */
-export type InternalLinkTypeUserPhoneNumber = TdObject & {
+export type InternalLinkTypeUserPhoneNumber = {
 	"@type": "internalLinkTypeUserPhoneNumber";
 	/** Phone number of the user */
 	phone_number: string;
@@ -18378,7 +18386,7 @@ export type InternalLinkTypeUserPhoneNumber = TdObject & {
  * The link is a link to a user by a temporary token. Call searchUserByToken with the given token to process the link. If the user is found, then call createPrivateChat and open the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_user_token.html
  */
-export type InternalLinkTypeUserToken = TdObject & {
+export type InternalLinkTypeUserToken = {
 	"@type": "internalLinkTypeUserToken";
 	/** The token */
 	token: string;
@@ -18388,7 +18396,7 @@ export type InternalLinkTypeUserToken = TdObject & {
  * The link is a link to a video chat. Call searchPublicChat with the given chat username, and then joinVideoChat with the given invite hash to process the link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_video_chat.html
  */
-export type InternalLinkTypeVideoChat = TdObject & {
+export type InternalLinkTypeVideoChat = {
 	"@type": "internalLinkTypeVideoChat";
 	/** Username of the chat with the video chat */
 	chat_username: string;
@@ -18402,7 +18410,7 @@ export type InternalLinkTypeVideoChat = TdObject & {
  * The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot. If the bot is restricted for the current user, then show an error message. Otherwise, call searchWebApp with the received bot and the given web_app_short_name. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a disclaimer about Mini Apps being third-party applications instead of the dialog and ask the user to accept their Terms of service. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. Then, call getWebAppLinkUrl and open the returned URL as a Web App
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1internal_link_type_web_app.html
  */
-export type InternalLinkTypeWebApp = TdObject & {
+export type InternalLinkTypeWebApp = {
 	"@type": "internalLinkTypeWebApp";
 	/** Username of the bot that owns the Web App */
 	bot_username: string;
@@ -18418,7 +18426,7 @@ export type InternalLinkTypeWebApp = TdObject & {
  * Contains an HTTPS link to a message in a supergroup or channel, or a forum topic
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_link.html
  */
-export type MessageLink = TdObject & {
+export type MessageLink = {
 	"@type": "messageLink";
 	/** The link */
 	link: string;
@@ -18430,7 +18438,7 @@ export type MessageLink = TdObject & {
  * Contains information about a link to a message or a forum topic in a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_link_info.html
  */
-export type MessageLinkInfo = TdObject & {
+export type MessageLinkInfo = {
 	"@type": "messageLinkInfo";
 	/** True, if the link is a public link for a message or a forum topic in a chat */
 	is_public: boolean;
@@ -18450,7 +18458,7 @@ export type MessageLinkInfo = TdObject & {
  * Contains an HTTPS link to boost a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_link.html
  */
-export type ChatBoostLink = TdObject & {
+export type ChatBoostLink = {
 	"@type": "chatBoostLink";
 	/** The link */
 	link: string;
@@ -18462,7 +18470,7 @@ export type ChatBoostLink = TdObject & {
  * Contains information about a link to boost a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_boost_link_info.html
  */
-export type ChatBoostLinkInfo = TdObject & {
+export type ChatBoostLinkInfo = {
 	"@type": "chatBoostLinkInfo";
 	/** True, if the link will work for non-members of the chat */
 	is_public: boolean;
@@ -18474,7 +18482,7 @@ export type ChatBoostLinkInfo = TdObject & {
  * The main block list that disallows writing messages to the current user, receiving their status and photo, viewing of stories, and some other actions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1block_list_main.html
  */
-export type BlockListMain = TdObject & {
+export type BlockListMain = {
 	"@type": "blockListMain";
 };
 
@@ -18482,7 +18490,7 @@ export type BlockListMain = TdObject & {
  * The block list that disallows viewing of stories of the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1block_list_stories.html
  */
-export type BlockListStories = TdObject & {
+export type BlockListStories = {
 	"@type": "blockListStories";
 };
 
@@ -18490,7 +18498,7 @@ export type BlockListStories = TdObject & {
  * The data is not a file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_none.html
  */
-export type FileTypeNone = TdObject & {
+export type FileTypeNone = {
 	"@type": "fileTypeNone";
 };
 
@@ -18498,7 +18506,7 @@ export type FileTypeNone = TdObject & {
  * The file is an animation
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_animation.html
  */
-export type FileTypeAnimation = TdObject & {
+export type FileTypeAnimation = {
 	"@type": "fileTypeAnimation";
 };
 
@@ -18506,7 +18514,7 @@ export type FileTypeAnimation = TdObject & {
  * The file is an audio file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_audio.html
  */
-export type FileTypeAudio = TdObject & {
+export type FileTypeAudio = {
 	"@type": "fileTypeAudio";
 };
 
@@ -18514,7 +18522,7 @@ export type FileTypeAudio = TdObject & {
  * The file is a document
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_document.html
  */
-export type FileTypeDocument = TdObject & {
+export type FileTypeDocument = {
 	"@type": "fileTypeDocument";
 };
 
@@ -18522,7 +18530,7 @@ export type FileTypeDocument = TdObject & {
  * The file is a notification sound
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_notification_sound.html
  */
-export type FileTypeNotificationSound = TdObject & {
+export type FileTypeNotificationSound = {
 	"@type": "fileTypeNotificationSound";
 };
 
@@ -18530,7 +18538,7 @@ export type FileTypeNotificationSound = TdObject & {
  * The file is a photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_photo.html
  */
-export type FileTypePhoto = TdObject & {
+export type FileTypePhoto = {
 	"@type": "fileTypePhoto";
 };
 
@@ -18538,7 +18546,7 @@ export type FileTypePhoto = TdObject & {
  * The file is a photo published as a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_photo_story.html
  */
-export type FileTypePhotoStory = TdObject & {
+export type FileTypePhotoStory = {
 	"@type": "fileTypePhotoStory";
 };
 
@@ -18546,7 +18554,7 @@ export type FileTypePhotoStory = TdObject & {
  * The file is a profile photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_profile_photo.html
  */
-export type FileTypeProfilePhoto = TdObject & {
+export type FileTypeProfilePhoto = {
 	"@type": "fileTypeProfilePhoto";
 };
 
@@ -18554,7 +18562,7 @@ export type FileTypeProfilePhoto = TdObject & {
  * The file was sent to a secret chat (the file type is not known to the server)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_secret.html
  */
-export type FileTypeSecret = TdObject & {
+export type FileTypeSecret = {
 	"@type": "fileTypeSecret";
 };
 
@@ -18562,7 +18570,7 @@ export type FileTypeSecret = TdObject & {
  * The file is a thumbnail of a file from a secret chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_secret_thumbnail.html
  */
-export type FileTypeSecretThumbnail = TdObject & {
+export type FileTypeSecretThumbnail = {
 	"@type": "fileTypeSecretThumbnail";
 };
 
@@ -18570,7 +18578,7 @@ export type FileTypeSecretThumbnail = TdObject & {
  * The file is a file from Secure storage used for storing Telegram Passport files
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_secure.html
  */
-export type FileTypeSecure = TdObject & {
+export type FileTypeSecure = {
 	"@type": "fileTypeSecure";
 };
 
@@ -18578,7 +18586,7 @@ export type FileTypeSecure = TdObject & {
  * The file is a self-destructing photo in a private chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_self_destructing_photo.html
  */
-export type FileTypeSelfDestructingPhoto = TdObject & {
+export type FileTypeSelfDestructingPhoto = {
 	"@type": "fileTypeSelfDestructingPhoto";
 };
 
@@ -18586,7 +18594,7 @@ export type FileTypeSelfDestructingPhoto = TdObject & {
  * The file is a self-destructing video in a private chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_self_destructing_video.html
  */
-export type FileTypeSelfDestructingVideo = TdObject & {
+export type FileTypeSelfDestructingVideo = {
 	"@type": "fileTypeSelfDestructingVideo";
 };
 
@@ -18594,7 +18602,7 @@ export type FileTypeSelfDestructingVideo = TdObject & {
  * The file is a self-destructing video note in a private chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_self_destructing_video_note.html
  */
-export type FileTypeSelfDestructingVideoNote = TdObject & {
+export type FileTypeSelfDestructingVideoNote = {
 	"@type": "fileTypeSelfDestructingVideoNote";
 };
 
@@ -18602,7 +18610,7 @@ export type FileTypeSelfDestructingVideoNote = TdObject & {
  * The file is a self-destructing voice note in a private chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_self_destructing_voice_note.html
  */
-export type FileTypeSelfDestructingVoiceNote = TdObject & {
+export type FileTypeSelfDestructingVoiceNote = {
 	"@type": "fileTypeSelfDestructingVoiceNote";
 };
 
@@ -18610,7 +18618,7 @@ export type FileTypeSelfDestructingVoiceNote = TdObject & {
  * The file is a sticker
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_sticker.html
  */
-export type FileTypeSticker = TdObject & {
+export type FileTypeSticker = {
 	"@type": "fileTypeSticker";
 };
 
@@ -18618,7 +18626,7 @@ export type FileTypeSticker = TdObject & {
  * The file is a thumbnail of another file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_thumbnail.html
  */
-export type FileTypeThumbnail = TdObject & {
+export type FileTypeThumbnail = {
 	"@type": "fileTypeThumbnail";
 };
 
@@ -18626,7 +18634,7 @@ export type FileTypeThumbnail = TdObject & {
  * The file type is not yet known
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_unknown.html
  */
-export type FileTypeUnknown = TdObject & {
+export type FileTypeUnknown = {
 	"@type": "fileTypeUnknown";
 };
 
@@ -18634,7 +18642,7 @@ export type FileTypeUnknown = TdObject & {
  * The file is a video
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_video.html
  */
-export type FileTypeVideo = TdObject & {
+export type FileTypeVideo = {
 	"@type": "fileTypeVideo";
 };
 
@@ -18642,7 +18650,7 @@ export type FileTypeVideo = TdObject & {
  * The file is a video note
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_video_note.html
  */
-export type FileTypeVideoNote = TdObject & {
+export type FileTypeVideoNote = {
 	"@type": "fileTypeVideoNote";
 };
 
@@ -18650,7 +18658,7 @@ export type FileTypeVideoNote = TdObject & {
  * The file is a video published as a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_video_story.html
  */
-export type FileTypeVideoStory = TdObject & {
+export type FileTypeVideoStory = {
 	"@type": "fileTypeVideoStory";
 };
 
@@ -18658,7 +18666,7 @@ export type FileTypeVideoStory = TdObject & {
  * The file is a voice note
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_voice_note.html
  */
-export type FileTypeVoiceNote = TdObject & {
+export type FileTypeVoiceNote = {
 	"@type": "fileTypeVoiceNote";
 };
 
@@ -18666,7 +18674,7 @@ export type FileTypeVoiceNote = TdObject & {
  * The file is a wallpaper or a background pattern
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_type_wallpaper.html
  */
-export type FileTypeWallpaper = TdObject & {
+export type FileTypeWallpaper = {
 	"@type": "fileTypeWallpaper";
 };
 
@@ -18674,7 +18682,7 @@ export type FileTypeWallpaper = TdObject & {
  * Contains the storage usage statistics for a specific file type
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1storage_statistics_by_file_type.html
  */
-export type StorageStatisticsByFileType = TdObject & {
+export type StorageStatisticsByFileType = {
 	"@type": "storageStatisticsByFileType";
 	/** File type */
 	file_type: FileType;
@@ -18688,7 +18696,7 @@ export type StorageStatisticsByFileType = TdObject & {
  * Contains the storage usage statistics for a specific chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1storage_statistics_by_chat.html
  */
-export type StorageStatisticsByChat = TdObject & {
+export type StorageStatisticsByChat = {
 	"@type": "storageStatisticsByChat";
 	/** Chat identifier; 0 if none */
 	chat_id: number;
@@ -18704,7 +18712,7 @@ export type StorageStatisticsByChat = TdObject & {
  * Contains the exact storage usage statistics split by chats and file type
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1storage_statistics.html
  */
-export type StorageStatistics = TdObject & {
+export type StorageStatistics = {
 	"@type": "storageStatistics";
 	/** Total size of files, in bytes */
 	size: number;
@@ -18718,7 +18726,7 @@ export type StorageStatistics = TdObject & {
  * Contains approximate storage usage statistics, excluding files of unknown file type
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1storage_statistics_fast.html
  */
-export type StorageStatisticsFast = TdObject & {
+export type StorageStatisticsFast = {
 	"@type": "storageStatisticsFast";
 	/** Approximate total size of files, in bytes */
 	files_size: number;
@@ -18736,7 +18744,7 @@ export type StorageStatisticsFast = TdObject & {
  * Contains database statistics
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1database_statistics.html
  */
-export type DatabaseStatistics = TdObject & {
+export type DatabaseStatistics = {
 	"@type": "databaseStatistics";
 	/** Database statistics in an unspecified human-readable format */
 	statistics: string;
@@ -18746,7 +18754,7 @@ export type DatabaseStatistics = TdObject & {
  * The network is not available
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1network_type_none.html
  */
-export type NetworkTypeNone = TdObject & {
+export type NetworkTypeNone = {
 	"@type": "networkTypeNone";
 };
 
@@ -18754,7 +18762,7 @@ export type NetworkTypeNone = TdObject & {
  * A mobile network
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1network_type_mobile.html
  */
-export type NetworkTypeMobile = TdObject & {
+export type NetworkTypeMobile = {
 	"@type": "networkTypeMobile";
 };
 
@@ -18762,7 +18770,7 @@ export type NetworkTypeMobile = TdObject & {
  * A mobile roaming network
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1network_type_mobile_roaming.html
  */
-export type NetworkTypeMobileRoaming = TdObject & {
+export type NetworkTypeMobileRoaming = {
 	"@type": "networkTypeMobileRoaming";
 };
 
@@ -18770,7 +18778,7 @@ export type NetworkTypeMobileRoaming = TdObject & {
  * A Wi-Fi network
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1network_type_wi_fi.html
  */
-export type NetworkTypeWiFi = TdObject & {
+export type NetworkTypeWiFi = {
 	"@type": "networkTypeWiFi";
 };
 
@@ -18778,7 +18786,7 @@ export type NetworkTypeWiFi = TdObject & {
  * A different network type (e.g., Ethernet network)
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1network_type_other.html
  */
-export type NetworkTypeOther = TdObject & {
+export type NetworkTypeOther = {
 	"@type": "networkTypeOther";
 };
 
@@ -18786,7 +18794,7 @@ export type NetworkTypeOther = TdObject & {
  * Contains information about the total amount of data that was used to send and receive files
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1network_statistics_entry_file.html
  */
-export type NetworkStatisticsEntryFile = TdObject & {
+export type NetworkStatisticsEntryFile = {
 	"@type": "networkStatisticsEntryFile";
 	/** Type of the file the data is part of; pass null if the data isn't related to files */
 	file_type?: FileType;
@@ -18802,7 +18810,7 @@ export type NetworkStatisticsEntryFile = TdObject & {
  * Contains information about the total amount of data that was used for calls
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1network_statistics_entry_call.html
  */
-export type NetworkStatisticsEntryCall = TdObject & {
+export type NetworkStatisticsEntryCall = {
 	"@type": "networkStatisticsEntryCall";
 	/** Type of the network the data was sent through. Call setNetworkType to maintain the actual network type */
 	network_type: NetworkType;
@@ -18818,7 +18826,7 @@ export type NetworkStatisticsEntryCall = TdObject & {
  * A full list of available network statistic entries
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1network_statistics.html
  */
-export type NetworkStatistics = TdObject & {
+export type NetworkStatistics = {
 	"@type": "networkStatistics";
 	/** Point in time (Unix timestamp) from which the statistics are collected */
 	since_date: number;
@@ -18830,7 +18838,7 @@ export type NetworkStatistics = TdObject & {
  * Contains auto-download settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1auto_download_settings.html
  */
-export type AutoDownloadSettings = TdObject & {
+export type AutoDownloadSettings = {
 	"@type": "autoDownloadSettings";
 	/** True, if the auto-download is enabled */
 	is_auto_download_enabled: boolean;
@@ -18856,7 +18864,7 @@ export type AutoDownloadSettings = TdObject & {
  * Contains auto-download settings presets for the current user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1auto_download_settings_presets.html
  */
-export type AutoDownloadSettingsPresets = TdObject & {
+export type AutoDownloadSettingsPresets = {
 	"@type": "autoDownloadSettingsPresets";
 	/** Preset with lowest settings; expected to be used by default when roaming */
 	low: AutoDownloadSettings;
@@ -18870,7 +18878,7 @@ export type AutoDownloadSettingsPresets = TdObject & {
  * Autosave settings applied to all private chats without chat-specific settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1autosave_settings_scope_private_chats.html
  */
-export type AutosaveSettingsScopePrivateChats = TdObject & {
+export type AutosaveSettingsScopePrivateChats = {
 	"@type": "autosaveSettingsScopePrivateChats";
 };
 
@@ -18878,7 +18886,7 @@ export type AutosaveSettingsScopePrivateChats = TdObject & {
  * Autosave settings applied to all basic group and supergroup chats without chat-specific settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1autosave_settings_scope_group_chats.html
  */
-export type AutosaveSettingsScopeGroupChats = TdObject & {
+export type AutosaveSettingsScopeGroupChats = {
 	"@type": "autosaveSettingsScopeGroupChats";
 };
 
@@ -18886,7 +18894,7 @@ export type AutosaveSettingsScopeGroupChats = TdObject & {
  * Autosave settings applied to all channel chats without chat-specific settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1autosave_settings_scope_channel_chats.html
  */
-export type AutosaveSettingsScopeChannelChats = TdObject & {
+export type AutosaveSettingsScopeChannelChats = {
 	"@type": "autosaveSettingsScopeChannelChats";
 };
 
@@ -18894,7 +18902,7 @@ export type AutosaveSettingsScopeChannelChats = TdObject & {
  * Autosave settings applied to a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1autosave_settings_scope_chat.html
  */
-export type AutosaveSettingsScopeChat = TdObject & {
+export type AutosaveSettingsScopeChat = {
 	"@type": "autosaveSettingsScopeChat";
 	/** Chat identifier */
 	chat_id: number;
@@ -18904,7 +18912,7 @@ export type AutosaveSettingsScopeChat = TdObject & {
  * Contains autosave settings for an autosave settings scope
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1scope_autosave_settings.html
  */
-export type ScopeAutosaveSettings = TdObject & {
+export type ScopeAutosaveSettings = {
 	"@type": "scopeAutosaveSettings";
 	/** True, if photo autosave is enabled */
 	autosave_photos: boolean;
@@ -18918,7 +18926,7 @@ export type ScopeAutosaveSettings = TdObject & {
  * Contains autosave settings for a chat, which overrides default settings for the corresponding scope
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1autosave_settings_exception.html
  */
-export type AutosaveSettingsException = TdObject & {
+export type AutosaveSettingsException = {
 	"@type": "autosaveSettingsException";
 	/** Chat identifier */
 	chat_id: number;
@@ -18930,7 +18938,7 @@ export type AutosaveSettingsException = TdObject & {
  * Describes autosave settings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1autosave_settings.html
  */
-export type AutosaveSettings = TdObject & {
+export type AutosaveSettings = {
 	"@type": "autosaveSettings";
 	/** Default autosave settings for private chats */
 	private_chat_settings: ScopeAutosaveSettings;
@@ -18946,7 +18954,7 @@ export type AutosaveSettings = TdObject & {
  * Waiting for the network to become available. Use setNetworkType to change the available network type
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connection_state_waiting_for_network.html
  */
-export type ConnectionStateWaitingForNetwork = TdObject & {
+export type ConnectionStateWaitingForNetwork = {
 	"@type": "connectionStateWaitingForNetwork";
 };
 
@@ -18954,7 +18962,7 @@ export type ConnectionStateWaitingForNetwork = TdObject & {
  * Establishing a connection with a proxy server
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connection_state_connecting_to_proxy.html
  */
-export type ConnectionStateConnectingToProxy = TdObject & {
+export type ConnectionStateConnectingToProxy = {
 	"@type": "connectionStateConnectingToProxy";
 };
 
@@ -18962,7 +18970,7 @@ export type ConnectionStateConnectingToProxy = TdObject & {
  * Establishing a connection to the Telegram servers
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connection_state_connecting.html
  */
-export type ConnectionStateConnecting = TdObject & {
+export type ConnectionStateConnecting = {
 	"@type": "connectionStateConnecting";
 };
 
@@ -18970,7 +18978,7 @@ export type ConnectionStateConnecting = TdObject & {
  * Downloading data expected to be received while the application was offline
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connection_state_updating.html
  */
-export type ConnectionStateUpdating = TdObject & {
+export type ConnectionStateUpdating = {
 	"@type": "connectionStateUpdating";
 };
 
@@ -18978,7 +18986,7 @@ export type ConnectionStateUpdating = TdObject & {
  * There is a working connection to the Telegram servers
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1connection_state_ready.html
  */
-export type ConnectionStateReady = TdObject & {
+export type ConnectionStateReady = {
 	"@type": "connectionStateReady";
 };
 
@@ -18986,7 +18994,7 @@ export type ConnectionStateReady = TdObject & {
  * A category containing frequently used private chats with non-bot users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1top_chat_category_users.html
  */
-export type TopChatCategoryUsers = TdObject & {
+export type TopChatCategoryUsers = {
 	"@type": "topChatCategoryUsers";
 };
 
@@ -18994,7 +19002,7 @@ export type TopChatCategoryUsers = TdObject & {
  * A category containing frequently used private chats with bot users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1top_chat_category_bots.html
  */
-export type TopChatCategoryBots = TdObject & {
+export type TopChatCategoryBots = {
 	"@type": "topChatCategoryBots";
 };
 
@@ -19002,7 +19010,7 @@ export type TopChatCategoryBots = TdObject & {
  * A category containing frequently used basic groups and supergroups
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1top_chat_category_groups.html
  */
-export type TopChatCategoryGroups = TdObject & {
+export type TopChatCategoryGroups = {
 	"@type": "topChatCategoryGroups";
 };
 
@@ -19010,7 +19018,7 @@ export type TopChatCategoryGroups = TdObject & {
  * A category containing frequently used channels
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1top_chat_category_channels.html
  */
-export type TopChatCategoryChannels = TdObject & {
+export type TopChatCategoryChannels = {
 	"@type": "topChatCategoryChannels";
 };
 
@@ -19018,7 +19026,7 @@ export type TopChatCategoryChannels = TdObject & {
  * A category containing frequently used chats with inline bots sorted by their usage in inline mode
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1top_chat_category_inline_bots.html
  */
-export type TopChatCategoryInlineBots = TdObject & {
+export type TopChatCategoryInlineBots = {
 	"@type": "topChatCategoryInlineBots";
 };
 
@@ -19026,7 +19034,7 @@ export type TopChatCategoryInlineBots = TdObject & {
  * A category containing frequently used chats with bots, which Web Apps were opened
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1top_chat_category_web_app_bots.html
  */
-export type TopChatCategoryWebAppBots = TdObject & {
+export type TopChatCategoryWebAppBots = {
 	"@type": "topChatCategoryWebAppBots";
 };
 
@@ -19034,7 +19042,7 @@ export type TopChatCategoryWebAppBots = TdObject & {
  * A category containing frequently used chats used for calls
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1top_chat_category_calls.html
  */
-export type TopChatCategoryCalls = TdObject & {
+export type TopChatCategoryCalls = {
 	"@type": "topChatCategoryCalls";
 };
 
@@ -19042,7 +19050,7 @@ export type TopChatCategoryCalls = TdObject & {
  * A category containing frequently used chats used to forward messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1top_chat_category_forward_chats.html
  */
-export type TopChatCategoryForwardChats = TdObject & {
+export type TopChatCategoryForwardChats = {
 	"@type": "topChatCategoryForwardChats";
 };
 
@@ -19050,7 +19058,7 @@ export type TopChatCategoryForwardChats = TdObject & {
  * Contains 0-based match position
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_position.html
  */
-export type FoundPosition = TdObject & {
+export type FoundPosition = {
 	"@type": "foundPosition";
 	/** The position of the match */
 	position: number;
@@ -19060,7 +19068,7 @@ export type FoundPosition = TdObject & {
  * Contains 0-based positions of matched objects
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1found_positions.html
  */
-export type FoundPositions = TdObject & {
+export type FoundPositions = {
 	"@type": "foundPositions";
 	/** Total number of matched objects */
 	total_count: number;
@@ -19072,7 +19080,7 @@ export type FoundPositions = TdObject & {
  * A URL linking to a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1t_me_url_type_user.html
  */
-export type TMeUrlTypeUser = TdObject & {
+export type TMeUrlTypeUser = {
 	"@type": "tMeUrlTypeUser";
 	/** Identifier of the user */
 	user_id: number;
@@ -19082,7 +19090,7 @@ export type TMeUrlTypeUser = TdObject & {
  * A URL linking to a public supergroup or channel
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1t_me_url_type_supergroup.html
  */
-export type TMeUrlTypeSupergroup = TdObject & {
+export type TMeUrlTypeSupergroup = {
 	"@type": "tMeUrlTypeSupergroup";
 	/** Identifier of the supergroup or channel */
 	supergroup_id: number;
@@ -19092,7 +19100,7 @@ export type TMeUrlTypeSupergroup = TdObject & {
  * A chat invite link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1t_me_url_type_chat_invite.html
  */
-export type TMeUrlTypeChatInvite = TdObject & {
+export type TMeUrlTypeChatInvite = {
 	"@type": "tMeUrlTypeChatInvite";
 	/** Information about the chat invite link */
 	info: ChatInviteLinkInfo;
@@ -19102,7 +19110,7 @@ export type TMeUrlTypeChatInvite = TdObject & {
  * A URL linking to a sticker set
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1t_me_url_type_sticker_set.html
  */
-export type TMeUrlTypeStickerSet = TdObject & {
+export type TMeUrlTypeStickerSet = {
 	"@type": "tMeUrlTypeStickerSet";
 	/** Identifier of the sticker set */
 	sticker_set_id: string;
@@ -19112,7 +19120,7 @@ export type TMeUrlTypeStickerSet = TdObject & {
  * Represents a URL linking to an internal Telegram entity
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1t_me_url.html
  */
-export type TMeUrl = TdObject & {
+export type TMeUrl = {
 	"@type": "tMeUrl";
 	/** URL */
 	url: string;
@@ -19124,7 +19132,7 @@ export type TMeUrl = TdObject & {
  * Contains a list of t.me URLs
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1t_me_urls.html
  */
-export type TMeUrls = TdObject & {
+export type TMeUrls = {
 	"@type": "tMeUrls";
 	/** List of URLs */
 	urls: TMeUrl[];
@@ -19134,7 +19142,7 @@ export type TMeUrls = TdObject & {
  * Suggests the user to enable archive_and_mute_new_chats_from_unknown_users setting in archiveChatListSettings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_enable_archive_and_mute_new_chats.html
  */
-export type SuggestedActionEnableArchiveAndMuteNewChats = TdObject & {
+export type SuggestedActionEnableArchiveAndMuteNewChats = {
 	"@type": "suggestedActionEnableArchiveAndMuteNewChats";
 };
 
@@ -19142,7 +19150,7 @@ export type SuggestedActionEnableArchiveAndMuteNewChats = TdObject & {
  * Suggests the user to check whether they still remember their 2-step verification password
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_check_password.html
  */
-export type SuggestedActionCheckPassword = TdObject & {
+export type SuggestedActionCheckPassword = {
 	"@type": "suggestedActionCheckPassword";
 };
 
@@ -19150,7 +19158,7 @@ export type SuggestedActionCheckPassword = TdObject & {
  * Suggests the user to check whether authorization phone number is correct and change the phone number if it is inaccessible
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_check_phone_number.html
  */
-export type SuggestedActionCheckPhoneNumber = TdObject & {
+export type SuggestedActionCheckPhoneNumber = {
 	"@type": "suggestedActionCheckPhoneNumber";
 };
 
@@ -19158,7 +19166,7 @@ export type SuggestedActionCheckPhoneNumber = TdObject & {
  * Suggests the user to view a hint about the meaning of one and two check marks on sent messages
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_view_checks_hint.html
  */
-export type SuggestedActionViewChecksHint = TdObject & {
+export type SuggestedActionViewChecksHint = {
 	"@type": "suggestedActionViewChecksHint";
 };
 
@@ -19166,7 +19174,7 @@ export type SuggestedActionViewChecksHint = TdObject & {
  * Suggests the user to convert specified supergroup to a broadcast group
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_convert_to_broadcast_group.html
  */
-export type SuggestedActionConvertToBroadcastGroup = TdObject & {
+export type SuggestedActionConvertToBroadcastGroup = {
 	"@type": "suggestedActionConvertToBroadcastGroup";
 	/** Supergroup identifier */
 	supergroup_id: number;
@@ -19176,7 +19184,7 @@ export type SuggestedActionConvertToBroadcastGroup = TdObject & {
  * Suggests the user to set a 2-step verification password to be able to log in again
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_set_password.html
  */
-export type SuggestedActionSetPassword = TdObject & {
+export type SuggestedActionSetPassword = {
 	"@type": "suggestedActionSetPassword";
 	/** The number of days to pass between consecutive authorizations if the user declines to set password; if 0, then the user is advised to set the password for security reasons */
 	authorization_delay: number;
@@ -19186,7 +19194,7 @@ export type SuggestedActionSetPassword = TdObject & {
  * Suggests the user to upgrade the Premium subscription from monthly payments to annual payments
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_upgrade_premium.html
  */
-export type SuggestedActionUpgradePremium = TdObject & {
+export type SuggestedActionUpgradePremium = {
 	"@type": "suggestedActionUpgradePremium";
 };
 
@@ -19194,7 +19202,7 @@ export type SuggestedActionUpgradePremium = TdObject & {
  * Suggests the user to restore a recently expired Premium subscription
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_restore_premium.html
  */
-export type SuggestedActionRestorePremium = TdObject & {
+export type SuggestedActionRestorePremium = {
 	"@type": "suggestedActionRestorePremium";
 };
 
@@ -19202,7 +19210,7 @@ export type SuggestedActionRestorePremium = TdObject & {
  * Suggests the user to subscribe to the Premium subscription with annual payments
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_subscribe_to_annual_premium.html
  */
-export type SuggestedActionSubscribeToAnnualPremium = TdObject & {
+export type SuggestedActionSubscribeToAnnualPremium = {
 	"@type": "suggestedActionSubscribeToAnnualPremium";
 };
 
@@ -19210,7 +19218,7 @@ export type SuggestedActionSubscribeToAnnualPremium = TdObject & {
  * Suggests the user to gift Telegram Premium to friends for Christmas
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_gift_premium_for_christmas.html
  */
-export type SuggestedActionGiftPremiumForChristmas = TdObject & {
+export type SuggestedActionGiftPremiumForChristmas = {
 	"@type": "suggestedActionGiftPremiumForChristmas";
 };
 
@@ -19218,7 +19226,7 @@ export type SuggestedActionGiftPremiumForChristmas = TdObject & {
  * Suggests the user to set birthdate
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_set_birthdate.html
  */
-export type SuggestedActionSetBirthdate = TdObject & {
+export type SuggestedActionSetBirthdate = {
 	"@type": "suggestedActionSetBirthdate";
 };
 
@@ -19226,7 +19234,7 @@ export type SuggestedActionSetBirthdate = TdObject & {
  * Suggests the user to set profile photo
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_set_profile_photo.html
  */
-export type SuggestedActionSetProfilePhoto = TdObject & {
+export type SuggestedActionSetProfilePhoto = {
 	"@type": "suggestedActionSetProfilePhoto";
 };
 
@@ -19234,7 +19242,7 @@ export type SuggestedActionSetProfilePhoto = TdObject & {
  * Suggests the user to extend their expiring Telegram Premium subscription
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_extend_premium.html
  */
-export type SuggestedActionExtendPremium = TdObject & {
+export type SuggestedActionExtendPremium = {
 	"@type": "suggestedActionExtendPremium";
 	/** A URL for managing Telegram Premium subscription */
 	manage_premium_subscription_url: string;
@@ -19244,7 +19252,7 @@ export type SuggestedActionExtendPremium = TdObject & {
  * Suggests the user to extend their expiring Telegram Star subscriptions. Call getStarSubscriptions with only_expiring == true to get the number of expiring subscriptions and the number of required to buy Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_extend_star_subscriptions.html
  */
-export type SuggestedActionExtendStarSubscriptions = TdObject & {
+export type SuggestedActionExtendStarSubscriptions = {
 	"@type": "suggestedActionExtendStarSubscriptions";
 };
 
@@ -19252,7 +19260,7 @@ export type SuggestedActionExtendStarSubscriptions = TdObject & {
  * A custom suggestion to be shown at the top of the chat list
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1suggested_action_custom.html
  */
-export type SuggestedActionCustom = TdObject & {
+export type SuggestedActionCustom = {
 	"@type": "suggestedActionCustom";
 	/** Unique name of the suggestion */
 	name: string;
@@ -19268,7 +19276,7 @@ export type SuggestedActionCustom = TdObject & {
  * Contains a counter
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1count.html
  */
-export type Count = TdObject & {
+export type Count = {
 	"@type": "count";
 	/** Count */
 	count: number;
@@ -19278,7 +19286,7 @@ export type Count = TdObject & {
  * Contains some text
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text.html
  */
-export type Text = TdObject & {
+export type Text = {
 	"@type": "text";
 	/** Text */
 	text: string;
@@ -19288,7 +19296,7 @@ export type Text = TdObject & {
  * Contains some binary data
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1data.html
  */
-export type Data = TdObject & {
+export type Data = {
 	"@type": "data";
 	/** Data */
 	data: string;
@@ -19298,7 +19306,7 @@ export type Data = TdObject & {
  * Contains a value representing a number of seconds
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1seconds.html
  */
-export type Seconds = TdObject & {
+export type Seconds = {
 	"@type": "seconds";
 	/** Number of seconds */
 	seconds: number;
@@ -19308,7 +19316,7 @@ export type Seconds = TdObject & {
  * Contains size of downloaded prefix of a file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1file_downloaded_prefix_size.html
  */
-export type FileDownloadedPrefixSize = TdObject & {
+export type FileDownloadedPrefixSize = {
 	"@type": "fileDownloadedPrefixSize";
 	/** The prefix size, in bytes */
 	size: number;
@@ -19318,7 +19326,7 @@ export type FileDownloadedPrefixSize = TdObject & {
  * Contains a number of Telegram Stars
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_count.html
  */
-export type StarCount = TdObject & {
+export type StarCount = {
 	"@type": "starCount";
 	/** Number of Telegram Stars */
 	star_count: number;
@@ -19328,7 +19336,7 @@ export type StarCount = TdObject & {
  * Contains information about a tg: deep link
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1deep_link_info.html
  */
-export type DeepLinkInfo = TdObject & {
+export type DeepLinkInfo = {
 	"@type": "deepLinkInfo";
 	/** Text to be shown to the user */
 	text: FormattedText;
@@ -19340,7 +19348,7 @@ export type DeepLinkInfo = TdObject & {
  * The text uses Markdown-style formatting
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_parse_mode_markdown.html
  */
-export type TextParseModeMarkdown = TdObject & {
+export type TextParseModeMarkdown = {
 	"@type": "textParseModeMarkdown";
 	/** Version of the parser: 0 or 1 - Telegram Bot API "Markdown" parse mode, 2 - Telegram Bot API "MarkdownV2" parse mode */
 	version: number;
@@ -19350,7 +19358,7 @@ export type TextParseModeMarkdown = TdObject & {
  * The text uses HTML-style formatting. The same as Telegram Bot API "HTML" parse mode
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1text_parse_mode_h_t_m_l.html
  */
-export type TextParseModeHTML = TdObject & {
+export type TextParseModeHTML = {
 	"@type": "textParseModeHTML";
 };
 
@@ -19358,7 +19366,7 @@ export type TextParseModeHTML = TdObject & {
  * A SOCKS5 proxy server
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1proxy_type_socks5.html
  */
-export type ProxyTypeSocks5 = TdObject & {
+export type ProxyTypeSocks5 = {
 	"@type": "proxyTypeSocks5";
 	/** Username for logging in; may be empty */
 	username?: string;
@@ -19370,7 +19378,7 @@ export type ProxyTypeSocks5 = TdObject & {
  * A HTTP transparent proxy server
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1proxy_type_http.html
  */
-export type ProxyTypeHttp = TdObject & {
+export type ProxyTypeHttp = {
 	"@type": "proxyTypeHttp";
 	/** Username for logging in; may be empty */
 	username?: string;
@@ -19384,7 +19392,7 @@ export type ProxyTypeHttp = TdObject & {
  * An MTProto proxy server
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1proxy_type_mtproto.html
  */
-export type ProxyTypeMtproto = TdObject & {
+export type ProxyTypeMtproto = {
 	"@type": "proxyTypeMtproto";
 	/** The proxy's secret in hexadecimal encoding */
 	secret: string;
@@ -19394,7 +19402,7 @@ export type ProxyTypeMtproto = TdObject & {
  * Contains information about a proxy server
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1proxy.html
  */
-export type Proxy = TdObject & {
+export type Proxy = {
 	"@type": "proxy";
 	/** Unique identifier of the proxy */
 	id: number;
@@ -19414,7 +19422,7 @@ export type Proxy = TdObject & {
  * Represents a list of proxy servers
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1proxies.html
  */
-export type Proxies = TdObject & {
+export type Proxies = {
 	"@type": "proxies";
 	/** List of proxy servers */
 	proxies: Proxy[];
@@ -19424,7 +19432,7 @@ export type Proxies = TdObject & {
  * A sticker to be added to a sticker set
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1input_sticker.html
  */
-export type InputSticker = TdObject & {
+export type InputSticker = {
 	"@type": "inputSticker";
 	/** File with the sticker; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements */
 	sticker: InputFile;
@@ -19442,7 +19450,7 @@ export type InputSticker = TdObject & {
  * Represents a date range
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1date_range.html
  */
-export type DateRange = TdObject & {
+export type DateRange = {
 	"@type": "dateRange";
 	/** Point in time (Unix timestamp) at which the date range begins */
 	start_date: number;
@@ -19454,7 +19462,7 @@ export type DateRange = TdObject & {
  * A value with information about its recent changes
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1statistical_value.html
  */
-export type StatisticalValue = TdObject & {
+export type StatisticalValue = {
 	"@type": "statisticalValue";
 	/** The current value */
 	value: number;
@@ -19468,7 +19476,7 @@ export type StatisticalValue = TdObject & {
  * A graph data
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1statistical_graph_data.html
  */
-export type StatisticalGraphData = TdObject & {
+export type StatisticalGraphData = {
 	"@type": "statisticalGraphData";
 	/** Graph data in JSON format */
 	json_data: string;
@@ -19480,7 +19488,7 @@ export type StatisticalGraphData = TdObject & {
  * The graph data to be asynchronously loaded through getStatisticalGraph
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1statistical_graph_async.html
  */
-export type StatisticalGraphAsync = TdObject & {
+export type StatisticalGraphAsync = {
 	"@type": "statisticalGraphAsync";
 	/** The token to use for data loading */
 	token: string;
@@ -19490,7 +19498,7 @@ export type StatisticalGraphAsync = TdObject & {
  * An error message to be shown to the user instead of the graph
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1statistical_graph_error.html
  */
-export type StatisticalGraphError = TdObject & {
+export type StatisticalGraphError = {
 	"@type": "statisticalGraphError";
 	/** The error message */
 	error_message: string;
@@ -19500,7 +19508,7 @@ export type StatisticalGraphError = TdObject & {
  * Describes a message sent in the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_statistics_object_type_message.html
  */
-export type ChatStatisticsObjectTypeMessage = TdObject & {
+export type ChatStatisticsObjectTypeMessage = {
 	"@type": "chatStatisticsObjectTypeMessage";
 	/** Message identifier */
 	message_id: number;
@@ -19510,7 +19518,7 @@ export type ChatStatisticsObjectTypeMessage = TdObject & {
  * Describes a story posted on behalf of the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_statistics_object_type_story.html
  */
-export type ChatStatisticsObjectTypeStory = TdObject & {
+export type ChatStatisticsObjectTypeStory = {
 	"@type": "chatStatisticsObjectTypeStory";
 	/** Story identifier */
 	story_id: number;
@@ -19520,7 +19528,7 @@ export type ChatStatisticsObjectTypeStory = TdObject & {
  * Contains statistics about interactions with a message sent in the chat or a story posted on behalf of the chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_statistics_interaction_info.html
  */
-export type ChatStatisticsInteractionInfo = TdObject & {
+export type ChatStatisticsInteractionInfo = {
 	"@type": "chatStatisticsInteractionInfo";
 	/** Type of the object */
 	object_type: ChatStatisticsObjectType;
@@ -19536,7 +19544,7 @@ export type ChatStatisticsInteractionInfo = TdObject & {
  * Contains statistics about messages sent by a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_statistics_message_sender_info.html
  */
-export type ChatStatisticsMessageSenderInfo = TdObject & {
+export type ChatStatisticsMessageSenderInfo = {
 	"@type": "chatStatisticsMessageSenderInfo";
 	/** User identifier */
 	user_id: number;
@@ -19550,7 +19558,7 @@ export type ChatStatisticsMessageSenderInfo = TdObject & {
  * Contains statistics about administrator actions done by a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_statistics_administrator_actions_info.html
  */
-export type ChatStatisticsAdministratorActionsInfo = TdObject & {
+export type ChatStatisticsAdministratorActionsInfo = {
 	"@type": "chatStatisticsAdministratorActionsInfo";
 	/** Administrator user identifier */
 	user_id: number;
@@ -19566,7 +19574,7 @@ export type ChatStatisticsAdministratorActionsInfo = TdObject & {
  * Contains statistics about number of new members invited by a user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_statistics_inviter_info.html
  */
-export type ChatStatisticsInviterInfo = TdObject & {
+export type ChatStatisticsInviterInfo = {
 	"@type": "chatStatisticsInviterInfo";
 	/** User identifier */
 	user_id: number;
@@ -19578,7 +19586,7 @@ export type ChatStatisticsInviterInfo = TdObject & {
  * A detailed statistics about a supergroup chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_statistics_supergroup.html
  */
-export type ChatStatisticsSupergroup = TdObject & {
+export type ChatStatisticsSupergroup = {
 	"@type": "chatStatisticsSupergroup";
 	/** A period to which the statistics applies */
 	period: DateRange;
@@ -19618,7 +19626,7 @@ export type ChatStatisticsSupergroup = TdObject & {
  * A detailed statistics about a channel chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_statistics_channel.html
  */
-export type ChatStatisticsChannel = TdObject & {
+export type ChatStatisticsChannel = {
 	"@type": "chatStatisticsChannel";
 	/** A period to which the statistics applies */
 	period: DateRange;
@@ -19670,7 +19678,7 @@ export type ChatStatisticsChannel = TdObject & {
  * Contains information about revenue earned from sponsored messages in a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_amount.html
  */
-export type ChatRevenueAmount = TdObject & {
+export type ChatRevenueAmount = {
 	"@type": "chatRevenueAmount";
 	/** Cryptocurrency in which revenue is calculated */
 	cryptocurrency: string;
@@ -19688,7 +19696,7 @@ export type ChatRevenueAmount = TdObject & {
  * A detailed statistics about revenue earned from sponsored messages in a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_statistics.html
  */
-export type ChatRevenueStatistics = TdObject & {
+export type ChatRevenueStatistics = {
 	"@type": "chatRevenueStatistics";
 	/** A graph containing amount of revenue in a given hour */
 	revenue_by_hour_graph: StatisticalGraph;
@@ -19704,7 +19712,7 @@ export type ChatRevenueStatistics = TdObject & {
  * A detailed statistics about a message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1message_statistics.html
  */
-export type MessageStatistics = TdObject & {
+export type MessageStatistics = {
 	"@type": "messageStatistics";
 	/** A graph containing number of message views and shares */
 	message_interaction_graph: StatisticalGraph;
@@ -19716,7 +19724,7 @@ export type MessageStatistics = TdObject & {
  * A detailed statistics about a story
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1story_statistics.html
  */
-export type StoryStatistics = TdObject & {
+export type StoryStatistics = {
 	"@type": "storyStatistics";
 	/** A graph containing number of story views and shares */
 	story_interaction_graph: StatisticalGraph;
@@ -19728,7 +19736,7 @@ export type StoryStatistics = TdObject & {
  * Withdrawal is pending
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1revenue_withdrawal_state_pending.html
  */
-export type RevenueWithdrawalStatePending = TdObject & {
+export type RevenueWithdrawalStatePending = {
 	"@type": "revenueWithdrawalStatePending";
 };
 
@@ -19736,7 +19744,7 @@ export type RevenueWithdrawalStatePending = TdObject & {
  * Withdrawal succeeded
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1revenue_withdrawal_state_succeeded.html
  */
-export type RevenueWithdrawalStateSucceeded = TdObject & {
+export type RevenueWithdrawalStateSucceeded = {
 	"@type": "revenueWithdrawalStateSucceeded";
 	/** Point in time (Unix timestamp) when the withdrawal was completed */
 	date: number;
@@ -19748,7 +19756,7 @@ export type RevenueWithdrawalStateSucceeded = TdObject & {
  * Withdrawal failed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1revenue_withdrawal_state_failed.html
  */
-export type RevenueWithdrawalStateFailed = TdObject & {
+export type RevenueWithdrawalStateFailed = {
 	"@type": "revenueWithdrawalStateFailed";
 };
 
@@ -19756,7 +19764,7 @@ export type RevenueWithdrawalStateFailed = TdObject & {
  * Describes earnings from sponsored messages in a chat in some time frame
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction_type_earnings.html
  */
-export type ChatRevenueTransactionTypeEarnings = TdObject & {
+export type ChatRevenueTransactionTypeEarnings = {
 	"@type": "chatRevenueTransactionTypeEarnings";
 	/** Point in time (Unix timestamp) when the earnings started */
 	start_date: number;
@@ -19768,7 +19776,7 @@ export type ChatRevenueTransactionTypeEarnings = TdObject & {
  * Describes a withdrawal of earnings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction_type_withdrawal.html
  */
-export type ChatRevenueTransactionTypeWithdrawal = TdObject & {
+export type ChatRevenueTransactionTypeWithdrawal = {
 	"@type": "chatRevenueTransactionTypeWithdrawal";
 	/** Point in time (Unix timestamp) when the earnings withdrawal started */
 	withdrawal_date: number;
@@ -19782,7 +19790,7 @@ export type ChatRevenueTransactionTypeWithdrawal = TdObject & {
  * Describes a refund for failed withdrawal of earnings
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction_type_refund.html
  */
-export type ChatRevenueTransactionTypeRefund = TdObject & {
+export type ChatRevenueTransactionTypeRefund = {
 	"@type": "chatRevenueTransactionTypeRefund";
 	/** Point in time (Unix timestamp) when the transaction was refunded */
 	refund_date: number;
@@ -19794,7 +19802,7 @@ export type ChatRevenueTransactionTypeRefund = TdObject & {
  * Contains a chat revenue transactions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transaction.html
  */
-export type ChatRevenueTransaction = TdObject & {
+export type ChatRevenueTransaction = {
 	"@type": "chatRevenueTransaction";
 	/** Cryptocurrency in which revenue is calculated */
 	cryptocurrency: string;
@@ -19808,7 +19816,7 @@ export type ChatRevenueTransaction = TdObject & {
  * Contains a list of chat revenue transactions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1chat_revenue_transactions.html
  */
-export type ChatRevenueTransactions = TdObject & {
+export type ChatRevenueTransactions = {
 	"@type": "chatRevenueTransactions";
 	/** Total number of transactions */
 	total_count: number;
@@ -19820,7 +19828,7 @@ export type ChatRevenueTransactions = TdObject & {
  * Contains information about Telegram Stars earned by a bot or a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_revenue_status.html
  */
-export type StarRevenueStatus = TdObject & {
+export type StarRevenueStatus = {
 	"@type": "starRevenueStatus";
 	/** Total amount of Telegram Stars earned */
 	total_amount: StarAmount;
@@ -19838,7 +19846,7 @@ export type StarRevenueStatus = TdObject & {
  * A detailed statistics about Telegram Stars earned by a bot or a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1star_revenue_statistics.html
  */
-export type StarRevenueStatistics = TdObject & {
+export type StarRevenueStatistics = {
 	"@type": "starRevenueStatistics";
 	/** A graph containing amount of revenue in a given day */
 	revenue_by_day_graph: StatisticalGraph;
@@ -19852,7 +19860,7 @@ export type StarRevenueStatistics = TdObject & {
  * A point on a Cartesian plane
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1point.html
  */
-export type Point = TdObject & {
+export type Point = {
 	"@type": "point";
 	/** The point's first coordinate */
 	x: number;
@@ -19864,7 +19872,7 @@ export type Point = TdObject & {
  * A straight line to a given point
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1vector_path_command_line.html
  */
-export type VectorPathCommandLine = TdObject & {
+export type VectorPathCommandLine = {
 	"@type": "vectorPathCommandLine";
 	/** The end point of the straight line */
 	end_point: Point;
@@ -19874,7 +19882,7 @@ export type VectorPathCommandLine = TdObject & {
  * A cubic Bézier curve to a given point
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1vector_path_command_cubic_bezier_curve.html
  */
-export type VectorPathCommandCubicBezierCurve = TdObject & {
+export type VectorPathCommandCubicBezierCurve = {
 	"@type": "vectorPathCommandCubicBezierCurve";
 	/** The start control point of the curve */
 	start_control_point: Point;
@@ -19888,7 +19896,7 @@ export type VectorPathCommandCubicBezierCurve = TdObject & {
  * A scope covering all users
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_command_scope_default.html
  */
-export type BotCommandScopeDefault = TdObject & {
+export type BotCommandScopeDefault = {
 	"@type": "botCommandScopeDefault";
 };
 
@@ -19896,7 +19904,7 @@ export type BotCommandScopeDefault = TdObject & {
  * A scope covering all private chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_command_scope_all_private_chats.html
  */
-export type BotCommandScopeAllPrivateChats = TdObject & {
+export type BotCommandScopeAllPrivateChats = {
 	"@type": "botCommandScopeAllPrivateChats";
 };
 
@@ -19904,7 +19912,7 @@ export type BotCommandScopeAllPrivateChats = TdObject & {
  * A scope covering all group and supergroup chats
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_command_scope_all_group_chats.html
  */
-export type BotCommandScopeAllGroupChats = TdObject & {
+export type BotCommandScopeAllGroupChats = {
 	"@type": "botCommandScopeAllGroupChats";
 };
 
@@ -19912,7 +19920,7 @@ export type BotCommandScopeAllGroupChats = TdObject & {
  * A scope covering all group and supergroup chat administrators
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_command_scope_all_chat_administrators.html
  */
-export type BotCommandScopeAllChatAdministrators = TdObject & {
+export type BotCommandScopeAllChatAdministrators = {
 	"@type": "botCommandScopeAllChatAdministrators";
 };
 
@@ -19920,7 +19928,7 @@ export type BotCommandScopeAllChatAdministrators = TdObject & {
  * A scope covering all members of a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_command_scope_chat.html
  */
-export type BotCommandScopeChat = TdObject & {
+export type BotCommandScopeChat = {
 	"@type": "botCommandScopeChat";
 	/** Chat identifier */
 	chat_id: number;
@@ -19930,7 +19938,7 @@ export type BotCommandScopeChat = TdObject & {
  * A scope covering all administrators of a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_command_scope_chat_administrators.html
  */
-export type BotCommandScopeChatAdministrators = TdObject & {
+export type BotCommandScopeChatAdministrators = {
 	"@type": "botCommandScopeChatAdministrators";
 	/** Chat identifier */
 	chat_id: number;
@@ -19940,7 +19948,7 @@ export type BotCommandScopeChatAdministrators = TdObject & {
  * A scope covering a member of a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1bot_command_scope_chat_member.html
  */
-export type BotCommandScopeChatMember = TdObject & {
+export type BotCommandScopeChatMember = {
 	"@type": "botCommandScopeChatMember";
 	/** Chat identifier */
 	chat_id: number;
@@ -19952,7 +19960,7 @@ export type BotCommandScopeChatMember = TdObject & {
  * Checks ownership of a new phone number to change the user's authentication phone number; for official Android and iOS applications only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1phone_number_code_type_change.html
  */
-export type PhoneNumberCodeTypeChange = TdObject & {
+export type PhoneNumberCodeTypeChange = {
 	"@type": "phoneNumberCodeTypeChange";
 };
 
@@ -19960,7 +19968,7 @@ export type PhoneNumberCodeTypeChange = TdObject & {
  * Verifies ownership of a phone number to be added to the user's Telegram Passport
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1phone_number_code_type_verify.html
  */
-export type PhoneNumberCodeTypeVerify = TdObject & {
+export type PhoneNumberCodeTypeVerify = {
 	"@type": "phoneNumberCodeTypeVerify";
 };
 
@@ -19968,7 +19976,7 @@ export type PhoneNumberCodeTypeVerify = TdObject & {
  * Confirms ownership of a phone number to prevent account deletion while handling links of the type internalLinkTypePhoneNumberConfirmation
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1phone_number_code_type_confirm_ownership.html
  */
-export type PhoneNumberCodeTypeConfirmOwnership = TdObject & {
+export type PhoneNumberCodeTypeConfirmOwnership = {
 	"@type": "phoneNumberCodeTypeConfirmOwnership";
 	/** Hash value from the link */
 	hash: string;
@@ -19978,7 +19986,7 @@ export type PhoneNumberCodeTypeConfirmOwnership = TdObject & {
  * The log is written to stderr or an OS specific log
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1log_stream_default.html
  */
-export type LogStreamDefault = TdObject & {
+export type LogStreamDefault = {
 	"@type": "logStreamDefault";
 };
 
@@ -19986,7 +19994,7 @@ export type LogStreamDefault = TdObject & {
  * The log is written to a file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1log_stream_file.html
  */
-export type LogStreamFile = TdObject & {
+export type LogStreamFile = {
 	"@type": "logStreamFile";
 	/** Path to the file to where the internal TDLib log will be written */
 	path: string;
@@ -20000,7 +20008,7 @@ export type LogStreamFile = TdObject & {
  * The log is written nowhere
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1log_stream_empty.html
  */
-export type LogStreamEmpty = TdObject & {
+export type LogStreamEmpty = {
 	"@type": "logStreamEmpty";
 };
 
@@ -20008,7 +20016,7 @@ export type LogStreamEmpty = TdObject & {
  * Contains a TDLib internal log verbosity level
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1log_verbosity_level.html
  */
-export type LogVerbosityLevel = TdObject & {
+export type LogVerbosityLevel = {
 	"@type": "logVerbosityLevel";
 	/** Log verbosity level */
 	verbosity_level: number;
@@ -20018,7 +20026,7 @@ export type LogVerbosityLevel = TdObject & {
  * Contains a list of available TDLib internal log tags
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1log_tags.html
  */
-export type LogTags = TdObject & {
+export type LogTags = {
 	"@type": "logTags";
 	/** List of log tags */
 	tags: string[];
@@ -20028,7 +20036,7 @@ export type LogTags = TdObject & {
  * Contains custom information about the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1user_support_info.html
  */
-export type UserSupportInfo = TdObject & {
+export type UserSupportInfo = {
 	"@type": "userSupportInfo";
 	/** Information message */
 	message: FormattedText;
@@ -20042,7 +20050,7 @@ export type UserSupportInfo = TdObject & {
  * A simple object containing a number; for testing only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_int.html
  */
-export type TestInt = TdObject & {
+export type TestInt = {
 	"@type": "testInt";
 	/** Number */
 	value: number;
@@ -20052,7 +20060,7 @@ export type TestInt = TdObject & {
  * A simple object containing a string; for testing only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_string.html
  */
-export type TestString = TdObject & {
+export type TestString = {
 	"@type": "testString";
 	/** String */
 	value: string;
@@ -20062,7 +20070,7 @@ export type TestString = TdObject & {
  * A simple object containing a sequence of bytes; for testing only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_bytes.html
  */
-export type TestBytes = TdObject & {
+export type TestBytes = {
 	"@type": "testBytes";
 	/** Bytes */
 	value: string;
@@ -20072,7 +20080,7 @@ export type TestBytes = TdObject & {
  * A simple object containing a vector of numbers; for testing only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_vector_int.html
  */
-export type TestVectorInt = TdObject & {
+export type TestVectorInt = {
 	"@type": "testVectorInt";
 	/** Vector of numbers */
 	value: number[];
@@ -20082,7 +20090,7 @@ export type TestVectorInt = TdObject & {
  * A simple object containing a vector of objects that hold a number; for testing only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_vector_int_object.html
  */
-export type TestVectorIntObject = TdObject & {
+export type TestVectorIntObject = {
 	"@type": "testVectorIntObject";
 	/** Vector of objects */
 	value: TestInt[];
@@ -20092,7 +20100,7 @@ export type TestVectorIntObject = TdObject & {
  * A simple object containing a vector of strings; for testing only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_vector_string.html
  */
-export type TestVectorString = TdObject & {
+export type TestVectorString = {
 	"@type": "testVectorString";
 	/** Vector of strings */
 	value: string[];
@@ -20102,7 +20110,7 @@ export type TestVectorString = TdObject & {
  * A simple object containing a vector of objects that hold a string; for testing only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1test_vector_string_object.html
  */
-export type TestVectorStringObject = TdObject & {
+export type TestVectorStringObject = {
 	"@type": "testVectorStringObject";
 	/** Vector of objects */
 	value: TestString[];
@@ -20112,7 +20120,7 @@ export type TestVectorStringObject = TdObject & {
  * The user authorization state has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_authorization_state.html
  */
-export type UpdateAuthorizationState = TdObject & {
+export type UpdateAuthorizationState = {
 	"@type": "updateAuthorizationState";
 	/** New authorization state */
 	authorization_state: AuthorizationState;
@@ -20122,7 +20130,7 @@ export type UpdateAuthorizationState = TdObject & {
  * A new message was received; can also be an outgoing message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_message.html
  */
-export type UpdateNewMessage = TdObject & {
+export type UpdateNewMessage = {
 	"@type": "updateNewMessage";
 	/** The new message */
 	message: Message;
@@ -20132,7 +20140,7 @@ export type UpdateNewMessage = TdObject & {
  * A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully. This update is sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_send_acknowledged.html
  */
-export type UpdateMessageSendAcknowledged = TdObject & {
+export type UpdateMessageSendAcknowledged = {
 	"@type": "updateMessageSendAcknowledged";
 	/** The chat identifier of the sent message */
 	chat_id: number;
@@ -20144,7 +20152,7 @@ export type UpdateMessageSendAcknowledged = TdObject & {
  * A message has been successfully sent
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_send_succeeded.html
  */
-export type UpdateMessageSendSucceeded = TdObject & {
+export type UpdateMessageSendSucceeded = {
 	"@type": "updateMessageSendSucceeded";
 	/** The sent message. Almost any field of the new message can be different from the corresponding field of the original message. For example, the field scheduling_state may change, making the message scheduled, or non-scheduled */
 	message: Message;
@@ -20156,21 +20164,21 @@ export type UpdateMessageSendSucceeded = TdObject & {
  * A message failed to send. Be aware that some messages being sent can be irrecoverably deleted, in which case updateDeleteMessages will be received instead of this update
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_send_failed.html
  */
-export type UpdateMessageSendFailed = TdObject & {
+export type UpdateMessageSendFailed = {
 	"@type": "updateMessageSendFailed";
 	/** The failed to send message */
 	message: Message;
 	/** The previous temporary message identifier */
 	old_message_id: number;
 	/** The cause of the message sending failure */
-	error: TdError;
+	error: Error;
 };
 
 /**
  * The message content has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_content.html
  */
-export type UpdateMessageContent = TdObject & {
+export type UpdateMessageContent = {
 	"@type": "updateMessageContent";
 	/** Chat identifier */
 	chat_id: number;
@@ -20184,7 +20192,7 @@ export type UpdateMessageContent = TdObject & {
  * A message was edited. Changes in the message content will come in a separate updateMessageContent
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_edited.html
  */
-export type UpdateMessageEdited = TdObject & {
+export type UpdateMessageEdited = {
 	"@type": "updateMessageEdited";
 	/** Chat identifier */
 	chat_id: number;
@@ -20200,7 +20208,7 @@ export type UpdateMessageEdited = TdObject & {
  * The message pinned state was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_is_pinned.html
  */
-export type UpdateMessageIsPinned = TdObject & {
+export type UpdateMessageIsPinned = {
 	"@type": "updateMessageIsPinned";
 	/** Chat identifier */
 	chat_id: number;
@@ -20214,7 +20222,7 @@ export type UpdateMessageIsPinned = TdObject & {
  * The information about interactions with a message has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_interaction_info.html
  */
-export type UpdateMessageInteractionInfo = TdObject & {
+export type UpdateMessageInteractionInfo = {
 	"@type": "updateMessageInteractionInfo";
 	/** Chat identifier */
 	chat_id: number;
@@ -20228,7 +20236,7 @@ export type UpdateMessageInteractionInfo = TdObject & {
  * The message content was opened. Updates voice note messages to "listened", video note messages to "viewed" and starts the self-destruct timer
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_content_opened.html
  */
-export type UpdateMessageContentOpened = TdObject & {
+export type UpdateMessageContentOpened = {
 	"@type": "updateMessageContentOpened";
 	/** Chat identifier */
 	chat_id: number;
@@ -20240,7 +20248,7 @@ export type UpdateMessageContentOpened = TdObject & {
  * A message with an unread mention was read
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_mention_read.html
  */
-export type UpdateMessageMentionRead = TdObject & {
+export type UpdateMessageMentionRead = {
 	"@type": "updateMessageMentionRead";
 	/** Chat identifier */
 	chat_id: number;
@@ -20254,7 +20262,7 @@ export type UpdateMessageMentionRead = TdObject & {
  * The list of unread reactions added to a message was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_unread_reactions.html
  */
-export type UpdateMessageUnreadReactions = TdObject & {
+export type UpdateMessageUnreadReactions = {
 	"@type": "updateMessageUnreadReactions";
 	/** Chat identifier */
 	chat_id: number;
@@ -20270,7 +20278,7 @@ export type UpdateMessageUnreadReactions = TdObject & {
  * A fact-check added to a message was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_fact_check.html
  */
-export type UpdateMessageFactCheck = TdObject & {
+export type UpdateMessageFactCheck = {
 	"@type": "updateMessageFactCheck";
 	/** Chat identifier */
 	chat_id: number;
@@ -20284,7 +20292,7 @@ export type UpdateMessageFactCheck = TdObject & {
  * A message with a live location was viewed. When the update is received, the application is expected to update the live location
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_live_location_viewed.html
  */
-export type UpdateMessageLiveLocationViewed = TdObject & {
+export type UpdateMessageLiveLocationViewed = {
 	"@type": "updateMessageLiveLocationViewed";
 	/** Identifier of the chat with the live location message */
 	chat_id: number;
@@ -20296,7 +20304,7 @@ export type UpdateMessageLiveLocationViewed = TdObject & {
  * An automatically scheduled message with video has been successfully sent after conversion
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_video_published.html
  */
-export type UpdateVideoPublished = TdObject & {
+export type UpdateVideoPublished = {
 	"@type": "updateVideoPublished";
 	/** Identifier of the chat with the message */
 	chat_id: number;
@@ -20308,7 +20316,7 @@ export type UpdateVideoPublished = TdObject & {
  * A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the application. The chat field changes will be reported through separate updates
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_chat.html
  */
-export type UpdateNewChat = TdObject & {
+export type UpdateNewChat = {
 	"@type": "updateNewChat";
 	/** The chat */
 	chat: Chat;
@@ -20318,7 +20326,7 @@ export type UpdateNewChat = TdObject & {
  * The title of a chat was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_title.html
  */
-export type UpdateChatTitle = TdObject & {
+export type UpdateChatTitle = {
 	"@type": "updateChatTitle";
 	/** Chat identifier */
 	chat_id: number;
@@ -20330,7 +20338,7 @@ export type UpdateChatTitle = TdObject & {
  * A chat photo was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_photo.html
  */
-export type UpdateChatPhoto = TdObject & {
+export type UpdateChatPhoto = {
 	"@type": "updateChatPhoto";
 	/** Chat identifier */
 	chat_id: number;
@@ -20342,7 +20350,7 @@ export type UpdateChatPhoto = TdObject & {
  * Chat accent colors have changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_accent_colors.html
  */
-export type UpdateChatAccentColors = TdObject & {
+export type UpdateChatAccentColors = {
 	"@type": "updateChatAccentColors";
 	/** Chat identifier */
 	chat_id: number;
@@ -20360,7 +20368,7 @@ export type UpdateChatAccentColors = TdObject & {
  * Chat permissions were changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_permissions.html
  */
-export type UpdateChatPermissions = TdObject & {
+export type UpdateChatPermissions = {
 	"@type": "updateChatPermissions";
 	/** Chat identifier */
 	chat_id: number;
@@ -20372,7 +20380,7 @@ export type UpdateChatPermissions = TdObject & {
  * The last message of a chat was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_last_message.html
  */
-export type UpdateChatLastMessage = TdObject & {
+export type UpdateChatLastMessage = {
 	"@type": "updateChatLastMessage";
 	/** Chat identifier */
 	chat_id: number;
@@ -20386,7 +20394,7 @@ export type UpdateChatLastMessage = TdObject & {
  * The position of a chat in a chat list has changed. An updateChatLastMessage or updateChatDraftMessage update might be sent instead of the update
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_position.html
  */
-export type UpdateChatPosition = TdObject & {
+export type UpdateChatPosition = {
 	"@type": "updateChatPosition";
 	/** Chat identifier */
 	chat_id: number;
@@ -20398,7 +20406,7 @@ export type UpdateChatPosition = TdObject & {
  * A chat was added to a chat list
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_added_to_list.html
  */
-export type UpdateChatAddedToList = TdObject & {
+export type UpdateChatAddedToList = {
 	"@type": "updateChatAddedToList";
 	/** Chat identifier */
 	chat_id: number;
@@ -20410,7 +20418,7 @@ export type UpdateChatAddedToList = TdObject & {
  * A chat was removed from a chat list
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_removed_from_list.html
  */
-export type UpdateChatRemovedFromList = TdObject & {
+export type UpdateChatRemovedFromList = {
 	"@type": "updateChatRemovedFromList";
 	/** Chat identifier */
 	chat_id: number;
@@ -20422,7 +20430,7 @@ export type UpdateChatRemovedFromList = TdObject & {
  * Incoming messages were read or the number of unread messages has been changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_read_inbox.html
  */
-export type UpdateChatReadInbox = TdObject & {
+export type UpdateChatReadInbox = {
 	"@type": "updateChatReadInbox";
 	/** Chat identifier */
 	chat_id: number;
@@ -20436,7 +20444,7 @@ export type UpdateChatReadInbox = TdObject & {
  * Outgoing messages were read
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_read_outbox.html
  */
-export type UpdateChatReadOutbox = TdObject & {
+export type UpdateChatReadOutbox = {
 	"@type": "updateChatReadOutbox";
 	/** Chat identifier */
 	chat_id: number;
@@ -20448,7 +20456,7 @@ export type UpdateChatReadOutbox = TdObject & {
  * The chat action bar was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_action_bar.html
  */
-export type UpdateChatActionBar = TdObject & {
+export type UpdateChatActionBar = {
 	"@type": "updateChatActionBar";
 	/** Chat identifier */
 	chat_id: number;
@@ -20460,7 +20468,7 @@ export type UpdateChatActionBar = TdObject & {
  * The bar for managing business bot was changed in a chat
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_business_bot_manage_bar.html
  */
-export type UpdateChatBusinessBotManageBar = TdObject & {
+export type UpdateChatBusinessBotManageBar = {
 	"@type": "updateChatBusinessBotManageBar";
 	/** Chat identifier */
 	chat_id: number;
@@ -20472,7 +20480,7 @@ export type UpdateChatBusinessBotManageBar = TdObject & {
  * The chat available reactions were changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_available_reactions.html
  */
-export type UpdateChatAvailableReactions = TdObject & {
+export type UpdateChatAvailableReactions = {
 	"@type": "updateChatAvailableReactions";
 	/** Chat identifier */
 	chat_id: number;
@@ -20484,7 +20492,7 @@ export type UpdateChatAvailableReactions = TdObject & {
  * A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update mustn't be applied
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_draft_message.html
  */
-export type UpdateChatDraftMessage = TdObject & {
+export type UpdateChatDraftMessage = {
 	"@type": "updateChatDraftMessage";
 	/** Chat identifier */
 	chat_id: number;
@@ -20498,7 +20506,7 @@ export type UpdateChatDraftMessage = TdObject & {
  * Chat emoji status has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_emoji_status.html
  */
-export type UpdateChatEmojiStatus = TdObject & {
+export type UpdateChatEmojiStatus = {
 	"@type": "updateChatEmojiStatus";
 	/** Chat identifier */
 	chat_id: number;
@@ -20510,7 +20518,7 @@ export type UpdateChatEmojiStatus = TdObject & {
  * The message sender that is selected to send messages in a chat has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_message_sender.html
  */
-export type UpdateChatMessageSender = TdObject & {
+export type UpdateChatMessageSender = {
 	"@type": "updateChatMessageSender";
 	/** Chat identifier */
 	chat_id: number;
@@ -20522,7 +20530,7 @@ export type UpdateChatMessageSender = TdObject & {
  * The message auto-delete or self-destruct timer setting for a chat was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_message_auto_delete_time.html
  */
-export type UpdateChatMessageAutoDeleteTime = TdObject & {
+export type UpdateChatMessageAutoDeleteTime = {
 	"@type": "updateChatMessageAutoDeleteTime";
 	/** Chat identifier */
 	chat_id: number;
@@ -20534,7 +20542,7 @@ export type UpdateChatMessageAutoDeleteTime = TdObject & {
  * Notification settings for a chat were changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_notification_settings.html
  */
-export type UpdateChatNotificationSettings = TdObject & {
+export type UpdateChatNotificationSettings = {
 	"@type": "updateChatNotificationSettings";
 	/** Chat identifier */
 	chat_id: number;
@@ -20546,7 +20554,7 @@ export type UpdateChatNotificationSettings = TdObject & {
  * The chat pending join requests were changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_pending_join_requests.html
  */
-export type UpdateChatPendingJoinRequests = TdObject & {
+export type UpdateChatPendingJoinRequests = {
 	"@type": "updateChatPendingJoinRequests";
 	/** Chat identifier */
 	chat_id: number;
@@ -20558,7 +20566,7 @@ export type UpdateChatPendingJoinRequests = TdObject & {
  * The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_reply_markup.html
  */
-export type UpdateChatReplyMarkup = TdObject & {
+export type UpdateChatReplyMarkup = {
 	"@type": "updateChatReplyMarkup";
 	/** Chat identifier */
 	chat_id: number;
@@ -20570,7 +20578,7 @@ export type UpdateChatReplyMarkup = TdObject & {
  * The chat background was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_background.html
  */
-export type UpdateChatBackground = TdObject & {
+export type UpdateChatBackground = {
 	"@type": "updateChatBackground";
 	/** Chat identifier */
 	chat_id: number;
@@ -20582,7 +20590,7 @@ export type UpdateChatBackground = TdObject & {
  * The chat theme was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_theme.html
  */
-export type UpdateChatTheme = TdObject & {
+export type UpdateChatTheme = {
 	"@type": "updateChatTheme";
 	/** Chat identifier */
 	chat_id: number;
@@ -20594,7 +20602,7 @@ export type UpdateChatTheme = TdObject & {
  * The chat unread_mention_count has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_unread_mention_count.html
  */
-export type UpdateChatUnreadMentionCount = TdObject & {
+export type UpdateChatUnreadMentionCount = {
 	"@type": "updateChatUnreadMentionCount";
 	/** Chat identifier */
 	chat_id: number;
@@ -20606,7 +20614,7 @@ export type UpdateChatUnreadMentionCount = TdObject & {
  * The chat unread_reaction_count has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_unread_reaction_count.html
  */
-export type UpdateChatUnreadReactionCount = TdObject & {
+export type UpdateChatUnreadReactionCount = {
 	"@type": "updateChatUnreadReactionCount";
 	/** Chat identifier */
 	chat_id: number;
@@ -20618,7 +20626,7 @@ export type UpdateChatUnreadReactionCount = TdObject & {
  * A chat video chat state has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_video_chat.html
  */
-export type UpdateChatVideoChat = TdObject & {
+export type UpdateChatVideoChat = {
 	"@type": "updateChatVideoChat";
 	/** Chat identifier */
 	chat_id: number;
@@ -20630,7 +20638,7 @@ export type UpdateChatVideoChat = TdObject & {
  * The value of the default disable_notification parameter, used when a message is sent to the chat, was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_default_disable_notification.html
  */
-export type UpdateChatDefaultDisableNotification = TdObject & {
+export type UpdateChatDefaultDisableNotification = {
 	"@type": "updateChatDefaultDisableNotification";
 	/** Chat identifier */
 	chat_id: number;
@@ -20642,7 +20650,7 @@ export type UpdateChatDefaultDisableNotification = TdObject & {
  * A chat content was allowed or restricted for saving
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_has_protected_content.html
  */
-export type UpdateChatHasProtectedContent = TdObject & {
+export type UpdateChatHasProtectedContent = {
 	"@type": "updateChatHasProtectedContent";
 	/** Chat identifier */
 	chat_id: number;
@@ -20654,7 +20662,7 @@ export type UpdateChatHasProtectedContent = TdObject & {
  * Translation of chat messages was enabled or disabled
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_is_translatable.html
  */
-export type UpdateChatIsTranslatable = TdObject & {
+export type UpdateChatIsTranslatable = {
 	"@type": "updateChatIsTranslatable";
 	/** Chat identifier */
 	chat_id: number;
@@ -20666,7 +20674,7 @@ export type UpdateChatIsTranslatable = TdObject & {
  * A chat was marked as unread or was read
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_is_marked_as_unread.html
  */
-export type UpdateChatIsMarkedAsUnread = TdObject & {
+export type UpdateChatIsMarkedAsUnread = {
 	"@type": "updateChatIsMarkedAsUnread";
 	/** Chat identifier */
 	chat_id: number;
@@ -20678,7 +20686,7 @@ export type UpdateChatIsMarkedAsUnread = TdObject & {
  * A chat default appearance has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_view_as_topics.html
  */
-export type UpdateChatViewAsTopics = TdObject & {
+export type UpdateChatViewAsTopics = {
 	"@type": "updateChatViewAsTopics";
 	/** Chat identifier */
 	chat_id: number;
@@ -20690,7 +20698,7 @@ export type UpdateChatViewAsTopics = TdObject & {
  * A chat was blocked or unblocked
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_block_list.html
  */
-export type UpdateChatBlockList = TdObject & {
+export type UpdateChatBlockList = {
 	"@type": "updateChatBlockList";
 	/** Chat identifier */
 	chat_id: number;
@@ -20702,7 +20710,7 @@ export type UpdateChatBlockList = TdObject & {
  * A chat's has_scheduled_messages field has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_has_scheduled_messages.html
  */
-export type UpdateChatHasScheduledMessages = TdObject & {
+export type UpdateChatHasScheduledMessages = {
 	"@type": "updateChatHasScheduledMessages";
 	/** Chat identifier */
 	chat_id: number;
@@ -20714,7 +20722,7 @@ export type UpdateChatHasScheduledMessages = TdObject & {
  * The list of chat folders or a chat folder has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_folders.html
  */
-export type UpdateChatFolders = TdObject & {
+export type UpdateChatFolders = {
 	"@type": "updateChatFolders";
 	/** The new list of chat folders */
 	chat_folders: ChatFolderInfo[];
@@ -20728,7 +20736,7 @@ export type UpdateChatFolders = TdObject & {
  * The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats. There is no guarantee that it is sent just after the number of online users has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_online_member_count.html
  */
-export type UpdateChatOnlineMemberCount = TdObject & {
+export type UpdateChatOnlineMemberCount = {
 	"@type": "updateChatOnlineMemberCount";
 	/** Identifier of the chat */
 	chat_id: number;
@@ -20740,7 +20748,7 @@ export type UpdateChatOnlineMemberCount = TdObject & {
  * Basic information about a Saved Messages topic has changed. This update is guaranteed to come before the topic identifier is returned to the application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_saved_messages_topic.html
  */
-export type UpdateSavedMessagesTopic = TdObject & {
+export type UpdateSavedMessagesTopic = {
 	"@type": "updateSavedMessagesTopic";
 	/** New data about the topic */
 	topic: SavedMessagesTopic;
@@ -20750,7 +20758,7 @@ export type UpdateSavedMessagesTopic = TdObject & {
  * Number of Saved Messages topics has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_saved_messages_topic_count.html
  */
-export type UpdateSavedMessagesTopicCount = TdObject & {
+export type UpdateSavedMessagesTopicCount = {
 	"@type": "updateSavedMessagesTopicCount";
 	/** Approximate total number of Saved Messages topics */
 	topic_count: number;
@@ -20760,7 +20768,7 @@ export type UpdateSavedMessagesTopicCount = TdObject & {
  * Basic information about a topic in a channel direct messages chat administered by the current user has changed. This update is guaranteed to come before the topic identifier is returned to the application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_direct_messages_chat_topic.html
  */
-export type UpdateDirectMessagesChatTopic = TdObject & {
+export type UpdateDirectMessagesChatTopic = {
 	"@type": "updateDirectMessagesChatTopic";
 	/** New data about the topic */
 	topic: DirectMessagesChatTopic;
@@ -20770,7 +20778,7 @@ export type UpdateDirectMessagesChatTopic = TdObject & {
  * Number of messages in a topic has changed; for Saved Messages and channel direct messages chat topics only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_topic_message_count.html
  */
-export type UpdateTopicMessageCount = TdObject & {
+export type UpdateTopicMessageCount = {
 	"@type": "updateTopicMessageCount";
 	/** Identifier of the chat in topic of which the number of messages has changed */
 	chat_id: number;
@@ -20784,7 +20792,7 @@ export type UpdateTopicMessageCount = TdObject & {
  * Basic information about a quick reply shortcut has changed. This update is guaranteed to come before the quick shortcut name is returned to the application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_quick_reply_shortcut.html
  */
-export type UpdateQuickReplyShortcut = TdObject & {
+export type UpdateQuickReplyShortcut = {
 	"@type": "updateQuickReplyShortcut";
 	/** New data about the shortcut */
 	shortcut: QuickReplyShortcut;
@@ -20794,7 +20802,7 @@ export type UpdateQuickReplyShortcut = TdObject & {
  * A quick reply shortcut and all its messages were deleted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_quick_reply_shortcut_deleted.html
  */
-export type UpdateQuickReplyShortcutDeleted = TdObject & {
+export type UpdateQuickReplyShortcutDeleted = {
 	"@type": "updateQuickReplyShortcutDeleted";
 	/** The identifier of the deleted shortcut */
 	shortcut_id: number;
@@ -20804,7 +20812,7 @@ export type UpdateQuickReplyShortcutDeleted = TdObject & {
  * The list of quick reply shortcuts has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_quick_reply_shortcuts.html
  */
-export type UpdateQuickReplyShortcuts = TdObject & {
+export type UpdateQuickReplyShortcuts = {
 	"@type": "updateQuickReplyShortcuts";
 	/** The new list of identifiers of quick reply shortcuts */
 	shortcut_ids: number[];
@@ -20814,7 +20822,7 @@ export type UpdateQuickReplyShortcuts = TdObject & {
  * The list of quick reply shortcut messages has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_quick_reply_shortcut_messages.html
  */
-export type UpdateQuickReplyShortcutMessages = TdObject & {
+export type UpdateQuickReplyShortcutMessages = {
 	"@type": "updateQuickReplyShortcutMessages";
 	/** The identifier of the shortcut */
 	shortcut_id: number;
@@ -20826,7 +20834,7 @@ export type UpdateQuickReplyShortcutMessages = TdObject & {
  * Basic information about a topic in a forum chat was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_forum_topic_info.html
  */
-export type UpdateForumTopicInfo = TdObject & {
+export type UpdateForumTopicInfo = {
 	"@type": "updateForumTopicInfo";
 	/** New information about the topic */
 	info: ForumTopicInfo;
@@ -20836,7 +20844,7 @@ export type UpdateForumTopicInfo = TdObject & {
  * Information about a topic in a forum chat was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_forum_topic.html
  */
-export type UpdateForumTopic = TdObject & {
+export type UpdateForumTopic = {
 	"@type": "updateForumTopic";
 	/** Chat identifier */
 	chat_id: number;
@@ -20860,7 +20868,7 @@ export type UpdateForumTopic = TdObject & {
  * Notification settings for some type of chats were updated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_scope_notification_settings.html
  */
-export type UpdateScopeNotificationSettings = TdObject & {
+export type UpdateScopeNotificationSettings = {
 	"@type": "updateScopeNotificationSettings";
 	/** Types of chats for which notification settings were updated */
 	scope: NotificationSettingsScope;
@@ -20872,7 +20880,7 @@ export type UpdateScopeNotificationSettings = TdObject & {
  * Notification settings for reactions were updated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_reaction_notification_settings.html
  */
-export type UpdateReactionNotificationSettings = TdObject & {
+export type UpdateReactionNotificationSettings = {
 	"@type": "updateReactionNotificationSettings";
 	/** The new notification settings */
 	notification_settings: ReactionNotificationSettings;
@@ -20882,7 +20890,7 @@ export type UpdateReactionNotificationSettings = TdObject & {
  * A notification was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_notification.html
  */
-export type UpdateNotification = TdObject & {
+export type UpdateNotification = {
 	"@type": "updateNotification";
 	/** Unique notification group identifier */
 	notification_group_id: number;
@@ -20894,7 +20902,7 @@ export type UpdateNotification = TdObject & {
  * A list of active notifications in a notification group has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_notification_group.html
  */
-export type UpdateNotificationGroup = TdObject & {
+export type UpdateNotificationGroup = {
 	"@type": "updateNotificationGroup";
 	/** Unique notification group identifier */
 	notification_group_id: number;
@@ -20918,7 +20926,7 @@ export type UpdateNotificationGroup = TdObject & {
  * Contains active notifications that were shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_active_notifications.html
  */
-export type UpdateActiveNotifications = TdObject & {
+export type UpdateActiveNotifications = {
 	"@type": "updateActiveNotifications";
 	/** Lists of active notification groups */
 	groups: NotificationGroup[];
@@ -20928,7 +20936,7 @@ export type UpdateActiveNotifications = TdObject & {
  * Describes whether there are some pending notification updates. Can be used to prevent application from killing, while there are some pending notifications
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_have_pending_notifications.html
  */
-export type UpdateHavePendingNotifications = TdObject & {
+export type UpdateHavePendingNotifications = {
 	"@type": "updateHavePendingNotifications";
 	/** True, if there are some delayed notification updates, which will be sent soon */
 	have_delayed_notifications: boolean;
@@ -20940,7 +20948,7 @@ export type UpdateHavePendingNotifications = TdObject & {
  * Some messages were deleted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_delete_messages.html
  */
-export type UpdateDeleteMessages = TdObject & {
+export type UpdateDeleteMessages = {
 	"@type": "updateDeleteMessages";
 	/** Chat identifier */
 	chat_id: number;
@@ -20956,7 +20964,7 @@ export type UpdateDeleteMessages = TdObject & {
  * A message sender activity in the chat has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_action.html
  */
-export type UpdateChatAction = TdObject & {
+export type UpdateChatAction = {
 	"@type": "updateChatAction";
 	/** Chat identifier */
 	chat_id: number;
@@ -20972,7 +20980,7 @@ export type UpdateChatAction = TdObject & {
  * The user went online or offline
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_user_status.html
  */
-export type UpdateUserStatus = TdObject & {
+export type UpdateUserStatus = {
 	"@type": "updateUserStatus";
 	/** User identifier */
 	user_id: number;
@@ -20984,7 +20992,7 @@ export type UpdateUserStatus = TdObject & {
  * Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_user.html
  */
-export type UpdateUser = TdObject & {
+export type UpdateUser = {
 	"@type": "updateUser";
 	/** New data about the user */
 	user: User;
@@ -20994,7 +21002,7 @@ export type UpdateUser = TdObject & {
  * Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_basic_group.html
  */
-export type UpdateBasicGroup = TdObject & {
+export type UpdateBasicGroup = {
 	"@type": "updateBasicGroup";
 	/** New data about the group */
 	basic_group: BasicGroup;
@@ -21004,7 +21012,7 @@ export type UpdateBasicGroup = TdObject & {
  * Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_supergroup.html
  */
-export type UpdateSupergroup = TdObject & {
+export type UpdateSupergroup = {
 	"@type": "updateSupergroup";
 	/** New data about the supergroup */
 	supergroup: Supergroup;
@@ -21014,7 +21022,7 @@ export type UpdateSupergroup = TdObject & {
  * Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_secret_chat.html
  */
-export type UpdateSecretChat = TdObject & {
+export type UpdateSecretChat = {
 	"@type": "updateSecretChat";
 	/** New data about the secret chat */
 	secret_chat: SecretChat;
@@ -21024,7 +21032,7 @@ export type UpdateSecretChat = TdObject & {
  * Some data in userFullInfo has been changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_user_full_info.html
  */
-export type UpdateUserFullInfo = TdObject & {
+export type UpdateUserFullInfo = {
 	"@type": "updateUserFullInfo";
 	/** User identifier */
 	user_id: number;
@@ -21036,7 +21044,7 @@ export type UpdateUserFullInfo = TdObject & {
  * Some data in basicGroupFullInfo has been changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_basic_group_full_info.html
  */
-export type UpdateBasicGroupFullInfo = TdObject & {
+export type UpdateBasicGroupFullInfo = {
 	"@type": "updateBasicGroupFullInfo";
 	/** Identifier of a basic group */
 	basic_group_id: number;
@@ -21048,7 +21056,7 @@ export type UpdateBasicGroupFullInfo = TdObject & {
  * Some data in supergroupFullInfo has been changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_supergroup_full_info.html
  */
-export type UpdateSupergroupFullInfo = TdObject & {
+export type UpdateSupergroupFullInfo = {
 	"@type": "updateSupergroupFullInfo";
 	/** Identifier of the supergroup or channel */
 	supergroup_id: number;
@@ -21060,7 +21068,7 @@ export type UpdateSupergroupFullInfo = TdObject & {
  * A service notification from the server was received. Upon receiving this the application must show a popup with the content of the notification
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_service_notification.html
  */
-export type UpdateServiceNotification = TdObject & {
+export type UpdateServiceNotification = {
 	"@type": "updateServiceNotification";
 	/** Notification type. If type begins with "AUTH_KEY_DROP_", then two buttons "Cancel" and "Log out" must be shown under notification; if user presses the second, all local data must be destroyed using Destroy method */
 	type: string;
@@ -21072,7 +21080,7 @@ export type UpdateServiceNotification = TdObject & {
  * Information about a file was updated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_file.html
  */
-export type UpdateFile = TdObject & {
+export type UpdateFile = {
 	"@type": "updateFile";
 	/** New data about the file */
 	file: File;
@@ -21082,7 +21090,7 @@ export type UpdateFile = TdObject & {
  * The file generation process needs to be started by the application. Use setFileGenerationProgress and finishFileGeneration to generate the file
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_file_generation_start.html
  */
-export type UpdateFileGenerationStart = TdObject & {
+export type UpdateFileGenerationStart = {
 	"@type": "updateFileGenerationStart";
 	/** Unique identifier for the generation process */
 	generation_id: string;
@@ -21098,7 +21106,7 @@ export type UpdateFileGenerationStart = TdObject & {
  * File generation is no longer needed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_file_generation_stop.html
  */
-export type UpdateFileGenerationStop = TdObject & {
+export type UpdateFileGenerationStop = {
 	"@type": "updateFileGenerationStop";
 	/** Unique identifier for the generation process */
 	generation_id: string;
@@ -21108,7 +21116,7 @@ export type UpdateFileGenerationStop = TdObject & {
  * The state of the file download list has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_file_downloads.html
  */
-export type UpdateFileDownloads = TdObject & {
+export type UpdateFileDownloads = {
 	"@type": "updateFileDownloads";
 	/** Total size of files in the file download list, in bytes */
 	total_size: number;
@@ -21122,7 +21130,7 @@ export type UpdateFileDownloads = TdObject & {
  * A file was added to the file download list. This update is sent only after file download list is loaded for the first time
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_file_added_to_downloads.html
  */
-export type UpdateFileAddedToDownloads = TdObject & {
+export type UpdateFileAddedToDownloads = {
 	"@type": "updateFileAddedToDownloads";
 	/** The added file download */
 	file_download: FileDownload;
@@ -21134,7 +21142,7 @@ export type UpdateFileAddedToDownloads = TdObject & {
  * A file download was changed. This update is sent only after file download list is loaded for the first time
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_file_download.html
  */
-export type UpdateFileDownload = TdObject & {
+export type UpdateFileDownload = {
 	"@type": "updateFileDownload";
 	/** File identifier */
 	file_id: number;
@@ -21150,7 +21158,7 @@ export type UpdateFileDownload = TdObject & {
  * A file was removed from the file download list. This update is sent only after file download list is loaded for the first time
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_file_removed_from_downloads.html
  */
-export type UpdateFileRemovedFromDownloads = TdObject & {
+export type UpdateFileRemovedFromDownloads = {
 	"@type": "updateFileRemovedFromDownloads";
 	/** File identifier */
 	file_id: number;
@@ -21162,7 +21170,7 @@ export type UpdateFileRemovedFromDownloads = TdObject & {
  * A request can't be completed unless application verification is performed; for official mobile applications only. The method setApplicationVerificationToken must be called once the verification is completed or failed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_application_verification_required.html
  */
-export type UpdateApplicationVerificationRequired = TdObject & {
+export type UpdateApplicationVerificationRequired = {
 	"@type": "updateApplicationVerificationRequired";
 	/** Unique identifier for the verification process */
 	verification_id: number;
@@ -21176,7 +21184,7 @@ export type UpdateApplicationVerificationRequired = TdObject & {
  * A request can't be completed unless reCAPTCHA verification is performed; for official mobile applications only. The method setApplicationVerificationToken must be called once the verification is completed or failed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_application_recaptcha_verification_required.html
  */
-export type UpdateApplicationRecaptchaVerificationRequired = TdObject & {
+export type UpdateApplicationRecaptchaVerificationRequired = {
 	"@type": "updateApplicationRecaptchaVerificationRequired";
 	/** Unique identifier for the verification process */
 	verification_id: number;
@@ -21190,7 +21198,7 @@ export type UpdateApplicationRecaptchaVerificationRequired = TdObject & {
  * New call was created or information about a call was updated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_call.html
  */
-export type UpdateCall = TdObject & {
+export type UpdateCall = {
 	"@type": "updateCall";
 	/** New data about a call */
 	call: Call;
@@ -21200,7 +21208,7 @@ export type UpdateCall = TdObject & {
  * Information about a group call was updated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call.html
  */
-export type UpdateGroupCall = TdObject & {
+export type UpdateGroupCall = {
 	"@type": "updateGroupCall";
 	/** New data about the group call */
 	group_call: GroupCall;
@@ -21210,7 +21218,7 @@ export type UpdateGroupCall = TdObject & {
  * Information about a group call participant was changed. The updates are sent only after the group call is received through getGroupCall and only if the call is joined or being joined
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call_participant.html
  */
-export type UpdateGroupCallParticipant = TdObject & {
+export type UpdateGroupCallParticipant = {
 	"@type": "updateGroupCallParticipant";
 	/** Identifier of the group call */
 	group_call_id: number;
@@ -21222,7 +21230,7 @@ export type UpdateGroupCallParticipant = TdObject & {
  * The list of group call participants that can send and receive encrypted call data has changed; for group calls not bound to a chat only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call_participants.html
  */
-export type UpdateGroupCallParticipants = TdObject & {
+export type UpdateGroupCallParticipants = {
 	"@type": "updateGroupCallParticipants";
 	/** Identifier of the group call */
 	group_call_id: number;
@@ -21234,7 +21242,7 @@ export type UpdateGroupCallParticipants = TdObject & {
  * The verification state of an encrypted group call has changed; for group calls not bound to a chat only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_group_call_verification_state.html
  */
-export type UpdateGroupCallVerificationState = TdObject & {
+export type UpdateGroupCallVerificationState = {
 	"@type": "updateGroupCallVerificationState";
 	/** Identifier of the group call */
 	group_call_id: number;
@@ -21248,7 +21256,7 @@ export type UpdateGroupCallVerificationState = TdObject & {
  * New call signaling data arrived
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_call_signaling_data.html
  */
-export type UpdateNewCallSignalingData = TdObject & {
+export type UpdateNewCallSignalingData = {
 	"@type": "updateNewCallSignalingData";
 	/** The call identifier */
 	call_id: number;
@@ -21260,7 +21268,7 @@ export type UpdateNewCallSignalingData = TdObject & {
  * Some privacy setting rules have been changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_user_privacy_setting_rules.html
  */
-export type UpdateUserPrivacySettingRules = TdObject & {
+export type UpdateUserPrivacySettingRules = {
 	"@type": "updateUserPrivacySettingRules";
 	/** The privacy setting */
 	setting: UserPrivacySetting;
@@ -21272,7 +21280,7 @@ export type UpdateUserPrivacySettingRules = TdObject & {
  * Number of unread messages in a chat list has changed. This update is sent only if the message database is used
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_unread_message_count.html
  */
-export type UpdateUnreadMessageCount = TdObject & {
+export type UpdateUnreadMessageCount = {
 	"@type": "updateUnreadMessageCount";
 	/** The chat list with changed number of unread messages */
 	chat_list: ChatList;
@@ -21286,7 +21294,7 @@ export type UpdateUnreadMessageCount = TdObject & {
  * Number of unread chats, i.e. with unread messages or marked as unread, has changed. This update is sent only if the message database is used
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_unread_chat_count.html
  */
-export type UpdateUnreadChatCount = TdObject & {
+export type UpdateUnreadChatCount = {
 	"@type": "updateUnreadChatCount";
 	/** The chat list with changed number of unread messages */
 	chat_list: ChatList;
@@ -21306,7 +21314,7 @@ export type UpdateUnreadChatCount = TdObject & {
  * A story was changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_story.html
  */
-export type UpdateStory = TdObject & {
+export type UpdateStory = {
 	"@type": "updateStory";
 	/** The new information about the story */
 	story: Story;
@@ -21316,7 +21324,7 @@ export type UpdateStory = TdObject & {
  * A story became inaccessible
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_story_deleted.html
  */
-export type UpdateStoryDeleted = TdObject & {
+export type UpdateStoryDeleted = {
 	"@type": "updateStoryDeleted";
 	/** Identifier of the chat that posted the story */
 	story_poster_chat_id: number;
@@ -21328,7 +21336,7 @@ export type UpdateStoryDeleted = TdObject & {
  * A story has been successfully posted
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_story_post_succeeded.html
  */
-export type UpdateStoryPostSucceeded = TdObject & {
+export type UpdateStoryPostSucceeded = {
 	"@type": "updateStoryPostSucceeded";
 	/** The posted story */
 	story: Story;
@@ -21340,12 +21348,12 @@ export type UpdateStoryPostSucceeded = TdObject & {
  * A story failed to post. If the story posting is canceled, then updateStoryDeleted will be received instead of this update
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_story_post_failed.html
  */
-export type UpdateStoryPostFailed = TdObject & {
+export type UpdateStoryPostFailed = {
 	"@type": "updateStoryPostFailed";
 	/** The failed to post story */
 	story: Story;
 	/** The cause of the story posting failure */
-	error: TdError;
+	error: Error;
 	/** Type of the error; may be null if unknown */
 	error_type?: CanPostStoryResult;
 };
@@ -21354,7 +21362,7 @@ export type UpdateStoryPostFailed = TdObject & {
  * The list of active stories posted by a specific chat has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_active_stories.html
  */
-export type UpdateChatActiveStories = TdObject & {
+export type UpdateChatActiveStories = {
 	"@type": "updateChatActiveStories";
 	/** The new list of active stories */
 	active_stories: ChatActiveStories;
@@ -21364,7 +21372,7 @@ export type UpdateChatActiveStories = TdObject & {
  * Number of chats in a story list has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_story_list_chat_count.html
  */
-export type UpdateStoryListChatCount = TdObject & {
+export type UpdateStoryListChatCount = {
 	"@type": "updateStoryListChatCount";
 	/** The story list */
 	story_list: StoryList;
@@ -21376,7 +21384,7 @@ export type UpdateStoryListChatCount = TdObject & {
  * Story stealth mode settings have changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_story_stealth_mode.html
  */
-export type UpdateStoryStealthMode = TdObject & {
+export type UpdateStoryStealthMode = {
 	"@type": "updateStoryStealthMode";
 	/** Point in time (Unix timestamp) until stealth mode is active; 0 if it is disabled */
 	active_until_date: number;
@@ -21388,7 +21396,7 @@ export type UpdateStoryStealthMode = TdObject & {
  * An option changed its value
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_option.html
  */
-export type UpdateOption = TdObject & {
+export type UpdateOption = {
 	"@type": "updateOption";
 	/** The option name */
 	name: string;
@@ -21400,7 +21408,7 @@ export type UpdateOption = TdObject & {
  * A sticker set has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_sticker_set.html
  */
-export type UpdateStickerSet = TdObject & {
+export type UpdateStickerSet = {
 	"@type": "updateStickerSet";
 	/** The sticker set */
 	sticker_set: StickerSet;
@@ -21410,7 +21418,7 @@ export type UpdateStickerSet = TdObject & {
  * The list of installed sticker sets was updated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_installed_sticker_sets.html
  */
-export type UpdateInstalledStickerSets = TdObject & {
+export type UpdateInstalledStickerSets = {
 	"@type": "updateInstalledStickerSets";
 	/** Type of the affected stickers */
 	sticker_type: StickerType;
@@ -21422,7 +21430,7 @@ export type UpdateInstalledStickerSets = TdObject & {
  * The list of trending sticker sets was updated or some of them were viewed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_trending_sticker_sets.html
  */
-export type UpdateTrendingStickerSets = TdObject & {
+export type UpdateTrendingStickerSets = {
 	"@type": "updateTrendingStickerSets";
 	/** Type of the affected stickers */
 	sticker_type: StickerType;
@@ -21434,7 +21442,7 @@ export type UpdateTrendingStickerSets = TdObject & {
  * The list of recently used stickers was updated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_recent_stickers.html
  */
-export type UpdateRecentStickers = TdObject & {
+export type UpdateRecentStickers = {
 	"@type": "updateRecentStickers";
 	/** True, if the list of stickers attached to photo or video files was updated; otherwise, the list of sent stickers is updated */
 	is_attached: boolean;
@@ -21446,7 +21454,7 @@ export type UpdateRecentStickers = TdObject & {
  * The list of favorite stickers was updated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_favorite_stickers.html
  */
-export type UpdateFavoriteStickers = TdObject & {
+export type UpdateFavoriteStickers = {
 	"@type": "updateFavoriteStickers";
 	/** The new list of file identifiers of favorite stickers */
 	sticker_ids: number[];
@@ -21456,7 +21464,7 @@ export type UpdateFavoriteStickers = TdObject & {
  * The list of saved animations was updated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_saved_animations.html
  */
-export type UpdateSavedAnimations = TdObject & {
+export type UpdateSavedAnimations = {
 	"@type": "updateSavedAnimations";
 	/** The new list of file identifiers of saved animations */
 	animation_ids: number[];
@@ -21466,7 +21474,7 @@ export type UpdateSavedAnimations = TdObject & {
  * The list of saved notification sounds was updated. This update may not be sent until information about a notification sound was requested for the first time
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_saved_notification_sounds.html
  */
-export type UpdateSavedNotificationSounds = TdObject & {
+export type UpdateSavedNotificationSounds = {
 	"@type": "updateSavedNotificationSounds";
 	/** The new list of identifiers of saved notification sounds */
 	notification_sound_ids: string[];
@@ -21476,7 +21484,7 @@ export type UpdateSavedNotificationSounds = TdObject & {
  * The default background has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_default_background.html
  */
-export type UpdateDefaultBackground = TdObject & {
+export type UpdateDefaultBackground = {
 	"@type": "updateDefaultBackground";
 	/** True, if default background for dark theme has changed */
 	for_dark_theme: boolean;
@@ -21488,7 +21496,7 @@ export type UpdateDefaultBackground = TdObject & {
  * The list of available chat themes has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_themes.html
  */
-export type UpdateChatThemes = TdObject & {
+export type UpdateChatThemes = {
 	"@type": "updateChatThemes";
 	/** The new list of chat themes */
 	chat_themes: ChatTheme[];
@@ -21498,7 +21506,7 @@ export type UpdateChatThemes = TdObject & {
  * The list of supported accent colors has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_accent_colors.html
  */
-export type UpdateAccentColors = TdObject & {
+export type UpdateAccentColors = {
 	"@type": "updateAccentColors";
 	/** Information about supported colors; colors with identifiers 0 (red), 1 (orange), 2 (purple/violet), 3 (green), 4 (cyan), 5 (blue), 6 (pink) must always be supported and aren't included in the list. The exact colors for the accent colors with identifiers 0-6 must be taken from the app theme */
 	colors: AccentColor[];
@@ -21510,7 +21518,7 @@ export type UpdateAccentColors = TdObject & {
  * The list of supported accent colors for user profiles has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_profile_accent_colors.html
  */
-export type UpdateProfileAccentColors = TdObject & {
+export type UpdateProfileAccentColors = {
 	"@type": "updateProfileAccentColors";
 	/** Information about supported colors */
 	colors: ProfileAccentColor[];
@@ -21522,7 +21530,7 @@ export type UpdateProfileAccentColors = TdObject & {
  * Some language pack strings have been updated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_language_pack_strings.html
  */
-export type UpdateLanguagePackStrings = TdObject & {
+export type UpdateLanguagePackStrings = {
 	"@type": "updateLanguagePackStrings";
 	/** Localization target to which the language pack belongs */
 	localization_target: string;
@@ -21536,7 +21544,7 @@ export type UpdateLanguagePackStrings = TdObject & {
  * The connection state has changed. This update must be used only to show a human-readable description of the connection state
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_connection_state.html
  */
-export type UpdateConnectionState = TdObject & {
+export type UpdateConnectionState = {
 	"@type": "updateConnectionState";
 	/** The new connection state */
 	state: ConnectionState;
@@ -21546,7 +21554,7 @@ export type UpdateConnectionState = TdObject & {
  * The freeze state of the current user's account has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_freeze_state.html
  */
-export type UpdateFreezeState = TdObject & {
+export type UpdateFreezeState = {
 	"@type": "updateFreezeState";
 	/** True, if the account is frozen */
 	is_frozen: boolean;
@@ -21562,7 +21570,7 @@ export type UpdateFreezeState = TdObject & {
  * New terms of service must be accepted by the user. If the terms of service are declined, then the deleteAccount method must be called with the reason "Decline ToS update"
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_terms_of_service.html
  */
-export type UpdateTermsOfService = TdObject & {
+export type UpdateTermsOfService = {
 	"@type": "updateTermsOfService";
 	/** Identifier of the terms of service */
 	terms_of_service_id: string;
@@ -21574,7 +21582,7 @@ export type UpdateTermsOfService = TdObject & {
  * The first unconfirmed session has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_unconfirmed_session.html
  */
-export type UpdateUnconfirmedSession = TdObject & {
+export type UpdateUnconfirmedSession = {
 	"@type": "updateUnconfirmedSession";
 	/** The unconfirmed session; may be null if none */
 	session?: UnconfirmedSession;
@@ -21584,7 +21592,7 @@ export type UpdateUnconfirmedSession = TdObject & {
  * The list of bots added to attachment or side menu has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_attachment_menu_bots.html
  */
-export type UpdateAttachmentMenuBots = TdObject & {
+export type UpdateAttachmentMenuBots = {
 	"@type": "updateAttachmentMenuBots";
 	/** The new list of bots. The bots must not be shown on scheduled messages screen */
 	bots: AttachmentMenuBot[];
@@ -21594,7 +21602,7 @@ export type UpdateAttachmentMenuBots = TdObject & {
  * A message was sent by an opened Web App, so the Web App needs to be closed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_web_app_message_sent.html
  */
-export type UpdateWebAppMessageSent = TdObject & {
+export type UpdateWebAppMessageSent = {
 	"@type": "updateWebAppMessageSent";
 	/** Identifier of Web App launch */
 	web_app_launch_id: string;
@@ -21604,7 +21612,7 @@ export type UpdateWebAppMessageSent = TdObject & {
  * The list of active emoji reactions has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_active_emoji_reactions.html
  */
-export type UpdateActiveEmojiReactions = TdObject & {
+export type UpdateActiveEmojiReactions = {
 	"@type": "updateActiveEmojiReactions";
 	/** The new list of active emoji reactions */
 	emojis: string[];
@@ -21614,7 +21622,7 @@ export type UpdateActiveEmojiReactions = TdObject & {
  * The list of available message effects has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_available_message_effects.html
  */
-export type UpdateAvailableMessageEffects = TdObject & {
+export type UpdateAvailableMessageEffects = {
 	"@type": "updateAvailableMessageEffects";
 	/** The new list of available message effects from emoji reactions */
 	reaction_effect_ids: string[];
@@ -21626,7 +21634,7 @@ export type UpdateAvailableMessageEffects = TdObject & {
  * The type of default reaction has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_default_reaction_type.html
  */
-export type UpdateDefaultReactionType = TdObject & {
+export type UpdateDefaultReactionType = {
 	"@type": "updateDefaultReactionType";
 	/** The new type of the default reaction */
 	reaction_type: ReactionType;
@@ -21636,7 +21644,7 @@ export type UpdateDefaultReactionType = TdObject & {
  * The type of default paid reaction has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_default_paid_reaction_type.html
  */
-export type UpdateDefaultPaidReactionType = TdObject & {
+export type UpdateDefaultPaidReactionType = {
 	"@type": "updateDefaultPaidReactionType";
 	/** The new type of the default paid reaction */
 	type: PaidReactionType;
@@ -21646,7 +21654,7 @@ export type UpdateDefaultPaidReactionType = TdObject & {
  * Tags used in Saved Messages or a Saved Messages topic have changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_saved_messages_tags.html
  */
-export type UpdateSavedMessagesTags = TdObject & {
+export type UpdateSavedMessagesTags = {
 	"@type": "updateSavedMessagesTags";
 	/** Identifier of Saved Messages topic which tags were changed; 0 if tags for the whole chat has changed */
 	saved_messages_topic_id: number;
@@ -21658,7 +21666,7 @@ export type UpdateSavedMessagesTags = TdObject & {
  * The list of messages with active live location that need to be updated by the application has changed. The list is persistent across application restarts only if the message database is used
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_active_live_location_messages.html
  */
-export type UpdateActiveLiveLocationMessages = TdObject & {
+export type UpdateActiveLiveLocationMessages = {
 	"@type": "updateActiveLiveLocationMessages";
 	/** The list of messages with active live locations */
 	messages: Message[];
@@ -21668,7 +21676,7 @@ export type UpdateActiveLiveLocationMessages = TdObject & {
  * The number of Telegram Stars owned by the current user has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_owned_star_count.html
  */
-export type UpdateOwnedStarCount = TdObject & {
+export type UpdateOwnedStarCount = {
 	"@type": "updateOwnedStarCount";
 	/** The new amount of owned Telegram Stars */
 	star_amount: StarAmount;
@@ -21678,7 +21686,7 @@ export type UpdateOwnedStarCount = TdObject & {
  * The revenue earned from sponsored messages in a chat has changed. If chat revenue screen is opened, then getChatRevenueTransactions may be called to fetch new transactions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_revenue_amount.html
  */
-export type UpdateChatRevenueAmount = TdObject & {
+export type UpdateChatRevenueAmount = {
 	"@type": "updateChatRevenueAmount";
 	/** Identifier of the chat */
 	chat_id: number;
@@ -21690,7 +21698,7 @@ export type UpdateChatRevenueAmount = TdObject & {
  * The Telegram Star revenue earned by a bot or a chat has changed. If Telegram Star transaction screen of the chat is opened, then getStarTransactions may be called to fetch new transactions
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_star_revenue_status.html
  */
-export type UpdateStarRevenueStatus = TdObject & {
+export type UpdateStarRevenueStatus = {
 	"@type": "updateStarRevenueStatus";
 	/** Identifier of the owner of the Telegram Stars */
 	owner_id: MessageSender;
@@ -21702,7 +21710,7 @@ export type UpdateStarRevenueStatus = TdObject & {
  * The parameters of speech recognition without Telegram Premium subscription has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_speech_recognition_trial.html
  */
-export type UpdateSpeechRecognitionTrial = TdObject & {
+export type UpdateSpeechRecognitionTrial = {
 	"@type": "updateSpeechRecognitionTrial";
 	/** The maximum allowed duration of media for speech recognition without Telegram Premium subscription, in seconds */
 	max_media_duration: number;
@@ -21718,7 +21726,7 @@ export type UpdateSpeechRecognitionTrial = TdObject & {
  * The list of supported dice emojis has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_dice_emojis.html
  */
-export type UpdateDiceEmojis = TdObject & {
+export type UpdateDiceEmojis = {
 	"@type": "updateDiceEmojis";
 	/** The new list of supported dice emojis */
 	emojis: string[];
@@ -21728,7 +21736,7 @@ export type UpdateDiceEmojis = TdObject & {
  * Some animated emoji message was clicked and a big animated sticker must be played if the message is visible on the screen. chatActionWatchingAnimations with the text of the message needs to be sent if the sticker is played
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_animated_emoji_message_clicked.html
  */
-export type UpdateAnimatedEmojiMessageClicked = TdObject & {
+export type UpdateAnimatedEmojiMessageClicked = {
 	"@type": "updateAnimatedEmojiMessageClicked";
 	/** Chat identifier */
 	chat_id: number;
@@ -21742,7 +21750,7 @@ export type UpdateAnimatedEmojiMessageClicked = TdObject & {
  * The parameters of animation search through getOption("animation_search_bot_username") bot has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_animation_search_parameters.html
  */
-export type UpdateAnimationSearchParameters = TdObject & {
+export type UpdateAnimationSearchParameters = {
 	"@type": "updateAnimationSearchParameters";
 	/** Name of the animation search provider */
 	provider: string;
@@ -21754,7 +21762,7 @@ export type UpdateAnimationSearchParameters = TdObject & {
  * The list of suggested to the user actions has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_suggested_actions.html
  */
-export type UpdateSuggestedActions = TdObject & {
+export type UpdateSuggestedActions = {
 	"@type": "updateSuggestedActions";
 	/** Added suggested actions */
 	added_actions: SuggestedAction[];
@@ -21766,7 +21774,7 @@ export type UpdateSuggestedActions = TdObject & {
  * Download or upload file speed for the user was limited, but it can be restored by subscription to Telegram Premium. The notification can be postponed until a being downloaded or uploaded file is visible to the user. Use getOption("premium_download_speedup") or getOption("premium_upload_speedup") to get expected speedup after subscription to Telegram Premium
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_speed_limit_notification.html
  */
-export type UpdateSpeedLimitNotification = TdObject & {
+export type UpdateSpeedLimitNotification = {
 	"@type": "updateSpeedLimitNotification";
 	/** True, if upload speed was limited; false, if download speed was limited */
 	is_upload: boolean;
@@ -21776,7 +21784,7 @@ export type UpdateSpeedLimitNotification = TdObject & {
  * The list of contacts that had birthdays recently or will have birthday soon has changed
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_contact_close_birthdays.html
  */
-export type UpdateContactCloseBirthdays = TdObject & {
+export type UpdateContactCloseBirthdays = {
 	"@type": "updateContactCloseBirthdays";
 	/** List of contact users with close birthday */
 	close_birthday_users: CloseBirthdayUser[];
@@ -21786,7 +21794,7 @@ export type UpdateContactCloseBirthdays = TdObject & {
  * Autosave settings for some type of chats were updated
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_autosave_settings.html
  */
-export type UpdateAutosaveSettings = TdObject & {
+export type UpdateAutosaveSettings = {
 	"@type": "updateAutosaveSettings";
 	/** Type of chats for which autosave settings were updated */
 	scope: AutosaveSettingsScope;
@@ -21798,7 +21806,7 @@ export type UpdateAutosaveSettings = TdObject & {
  * A business connection has changed; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_business_connection.html
  */
-export type UpdateBusinessConnection = TdObject & {
+export type UpdateBusinessConnection = {
 	"@type": "updateBusinessConnection";
 	/** New data about the connection */
 	connection: BusinessConnection;
@@ -21808,7 +21816,7 @@ export type UpdateBusinessConnection = TdObject & {
  * A new message was added to a business account; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_business_message.html
  */
-export type UpdateNewBusinessMessage = TdObject & {
+export type UpdateNewBusinessMessage = {
 	"@type": "updateNewBusinessMessage";
 	/** Unique identifier of the business connection */
 	connection_id: string;
@@ -21820,7 +21828,7 @@ export type UpdateNewBusinessMessage = TdObject & {
  * A message in a business account was edited; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_business_message_edited.html
  */
-export type UpdateBusinessMessageEdited = TdObject & {
+export type UpdateBusinessMessageEdited = {
 	"@type": "updateBusinessMessageEdited";
 	/** Unique identifier of the business connection */
 	connection_id: string;
@@ -21832,7 +21840,7 @@ export type UpdateBusinessMessageEdited = TdObject & {
  * Messages in a business account were deleted; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_business_messages_deleted.html
  */
-export type UpdateBusinessMessagesDeleted = TdObject & {
+export type UpdateBusinessMessagesDeleted = {
 	"@type": "updateBusinessMessagesDeleted";
 	/** Unique identifier of the business connection */
 	connection_id: string;
@@ -21846,7 +21854,7 @@ export type UpdateBusinessMessagesDeleted = TdObject & {
  * A new incoming inline query; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_inline_query.html
  */
-export type UpdateNewInlineQuery = TdObject & {
+export type UpdateNewInlineQuery = {
 	"@type": "updateNewInlineQuery";
 	/** Unique query identifier */
 	id: string;
@@ -21866,7 +21874,7 @@ export type UpdateNewInlineQuery = TdObject & {
  * The user has chosen a result of an inline query; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_chosen_inline_result.html
  */
-export type UpdateNewChosenInlineResult = TdObject & {
+export type UpdateNewChosenInlineResult = {
 	"@type": "updateNewChosenInlineResult";
 	/** Identifier of the user who sent the query */
 	sender_user_id: number;
@@ -21884,7 +21892,7 @@ export type UpdateNewChosenInlineResult = TdObject & {
  * A new incoming callback query; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_callback_query.html
  */
-export type UpdateNewCallbackQuery = TdObject & {
+export type UpdateNewCallbackQuery = {
 	"@type": "updateNewCallbackQuery";
 	/** Unique query identifier */
 	id: string;
@@ -21904,7 +21912,7 @@ export type UpdateNewCallbackQuery = TdObject & {
  * A new incoming callback query from a message sent via a bot; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_inline_callback_query.html
  */
-export type UpdateNewInlineCallbackQuery = TdObject & {
+export type UpdateNewInlineCallbackQuery = {
 	"@type": "updateNewInlineCallbackQuery";
 	/** Unique query identifier */
 	id: string;
@@ -21922,7 +21930,7 @@ export type UpdateNewInlineCallbackQuery = TdObject & {
  * A new incoming callback query from a business message; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_business_callback_query.html
  */
-export type UpdateNewBusinessCallbackQuery = TdObject & {
+export type UpdateNewBusinessCallbackQuery = {
 	"@type": "updateNewBusinessCallbackQuery";
 	/** Unique query identifier */
 	id: string;
@@ -21942,7 +21950,7 @@ export type UpdateNewBusinessCallbackQuery = TdObject & {
  * A new incoming shipping query; for bots only. Only for invoices with flexible price
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_shipping_query.html
  */
-export type UpdateNewShippingQuery = TdObject & {
+export type UpdateNewShippingQuery = {
 	"@type": "updateNewShippingQuery";
 	/** Unique query identifier */
 	id: string;
@@ -21958,7 +21966,7 @@ export type UpdateNewShippingQuery = TdObject & {
  * A new incoming pre-checkout query; for bots only. Contains full information about a checkout
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_pre_checkout_query.html
  */
-export type UpdateNewPreCheckoutQuery = TdObject & {
+export type UpdateNewPreCheckoutQuery = {
 	"@type": "updateNewPreCheckoutQuery";
 	/** Unique query identifier */
 	id: string;
@@ -21980,7 +21988,7 @@ export type UpdateNewPreCheckoutQuery = TdObject & {
  * A new incoming event; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_custom_event.html
  */
-export type UpdateNewCustomEvent = TdObject & {
+export type UpdateNewCustomEvent = {
 	"@type": "updateNewCustomEvent";
 	/** A JSON-serialized event */
 	event: string;
@@ -21990,7 +21998,7 @@ export type UpdateNewCustomEvent = TdObject & {
  * A new incoming query; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_custom_query.html
  */
-export type UpdateNewCustomQuery = TdObject & {
+export type UpdateNewCustomQuery = {
 	"@type": "updateNewCustomQuery";
 	/** The query identifier */
 	id: string;
@@ -22004,7 +22012,7 @@ export type UpdateNewCustomQuery = TdObject & {
  * A poll was updated; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_poll.html
  */
-export type UpdatePoll = TdObject & {
+export type UpdatePoll = {
 	"@type": "updatePoll";
 	/** New data about the poll */
 	poll: Poll;
@@ -22014,7 +22022,7 @@ export type UpdatePoll = TdObject & {
  * A user changed the answer to a poll; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_poll_answer.html
  */
-export type UpdatePollAnswer = TdObject & {
+export type UpdatePollAnswer = {
 	"@type": "updatePollAnswer";
 	/** Unique poll identifier */
 	poll_id: string;
@@ -22028,7 +22036,7 @@ export type UpdatePollAnswer = TdObject & {
  * User rights changed in a chat; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_member.html
  */
-export type UpdateChatMember = TdObject & {
+export type UpdateChatMember = {
 	"@type": "updateChatMember";
 	/** Chat identifier */
 	chat_id: number;
@@ -22052,7 +22060,7 @@ export type UpdateChatMember = TdObject & {
  * A user sent a join request to a chat; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_new_chat_join_request.html
  */
-export type UpdateNewChatJoinRequest = TdObject & {
+export type UpdateNewChatJoinRequest = {
 	"@type": "updateNewChatJoinRequest";
 	/** Chat identifier */
 	chat_id: number;
@@ -22068,7 +22076,7 @@ export type UpdateNewChatJoinRequest = TdObject & {
  * A chat boost has changed; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_chat_boost.html
  */
-export type UpdateChatBoost = TdObject & {
+export type UpdateChatBoost = {
 	"@type": "updateChatBoost";
 	/** Chat identifier */
 	chat_id: number;
@@ -22080,7 +22088,7 @@ export type UpdateChatBoost = TdObject & {
  * User changed its reactions on a message with public reactions; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_reaction.html
  */
-export type UpdateMessageReaction = TdObject & {
+export type UpdateMessageReaction = {
 	"@type": "updateMessageReaction";
 	/** Chat identifier */
 	chat_id: number;
@@ -22100,7 +22108,7 @@ export type UpdateMessageReaction = TdObject & {
  * Reactions added to a message with anonymous reactions have changed; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_message_reactions.html
  */
-export type UpdateMessageReactions = TdObject & {
+export type UpdateMessageReactions = {
 	"@type": "updateMessageReactions";
 	/** Chat identifier */
 	chat_id: number;
@@ -22116,7 +22124,7 @@ export type UpdateMessageReactions = TdObject & {
  * Paid media were purchased by a user; for bots only
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1update_paid_media_purchased.html
  */
-export type UpdatePaidMediaPurchased = TdObject & {
+export type UpdatePaidMediaPurchased = {
 	"@type": "updatePaidMediaPurchased";
 	/** User identifier */
 	user_id: number;
@@ -22128,7 +22136,7 @@ export type UpdatePaidMediaPurchased = TdObject & {
  * Contains a list of updates
  * @see https://core.telegram.org/tdlib/docs/classtd_1_1td__api_1_1updates.html
  */
-export type Updates = TdObject & {
+export type Updates = {
 	"@type": "updates";
 	/** List of updates */
 	updates: Update[];

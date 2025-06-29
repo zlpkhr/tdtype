@@ -1,7 +1,5 @@
 import type * as Obj from "./object";
 
-import type { TdError } from "tdweb";
-
 /** TDLib callable functions */
 
 /**
@@ -5433,7 +5431,7 @@ export type FinishFileGeneration = (args: {
 	/** The identifier of the generation process */
 	generation_id: string;
 	/** If passed, the file generation has failed and must be terminated; pass null if the file generation succeeded */
-	error?: TdError;
+	error?: Obj.Error;
 }) => Obj.Ok;
 
 /**
@@ -10433,5 +10431,5 @@ export type TestUseUpdate = (args: { "@type": "testUseUpdate" }) => Obj.Update;
 export type TestReturnError = (args: {
 	"@type": "testReturnError";
 	/** The error to be returned */
-	error: TdError;
-}) => TdError;
+	error: Obj.Error;
+}) => Obj.Error;

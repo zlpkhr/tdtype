@@ -6,9 +6,6 @@
         "@biomejs/biome": "2.0.6",
         "typescript": "^5.8.3",
       },
-      "peerDependencies": {
-        "@types/tdweb": "^1.4.6",
-      },
     },
   },
   "packages": {
@@ -29,8 +26,6 @@
     "@biomejs/cli-win32-arm64": ["@biomejs/cli-win32-arm64@2.0.6", "", { "os": "win32", "cpu": "arm64" }, "sha512-290V4oSFoKaprKE1zkYVsDfAdn0An5DowZ+GIABgjoq1ndhvNxkJcpxPsiYtT7slbVe3xmlT0ncdfOsN7KruzA=="],
 
     "@biomejs/cli-win32-x64": ["@biomejs/cli-win32-x64@2.0.6", "", { "os": "win32", "cpu": "x64" }, "sha512-bfM1Bce0d69Ao7pjTjUS+AWSZ02+5UHdiAP85Th8e9yV5xzw6JrHXbL5YWlcEKQ84FIZMdDc7ncuti1wd2sdbw=="],
-
-    "@types/tdweb": ["@types/tdweb@1.4.6", "", {}, "sha512-2SuH5m2RfqJ0U2S2E5AnKQ6NTbd/BI4aX4fcGLNRLX7ceIWfwf2kJ1trrw0alX0Q5Jd6X1cgtDqRKFZ7hW63Mw=="],
 
     "typescript": ["typescript@5.8.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ=="],
   }
