@@ -9,7 +9,7 @@ gen:
 
 fmt:
 	uv run ruff format .
-	bun run biome check --write .
+	bun run prettier --write .
 
 typecheck:
 	bun run tsc
