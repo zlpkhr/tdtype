@@ -18,7 +18,7 @@ bun add -D tdtype
 # Install JavaScript and Python dependencies
 make install
 
-# Generate types/object.d.ts and types/function.d.ts
+# Generate types/object.d.ts, types/function.d.ts and types/update.d.ts
 make gen
 
 # Format the codebase
@@ -33,9 +33,10 @@ make typecheck
 1. **td_api.json** – A JSON dump of the TDLib TL schema. This file is sourced from:
    [https://github.com/pytdbot/client/blob/main/td_api.json](https://github.com/pytdbot/client/blob/main/td_api.json)
 
-2. **generate_schema.py** – Generates two declaration files:
+2. **generate_schema.py** – Generates three declaration files:
    - `types/object.d.ts` – Contains both final and abstract object types, including updates.
    - `types/function.d.ts` – Contains function declarations with `(args) => ReturnType` signatures.
+   - `types/update.d.ts` – Provides the `Up` type, which maps each update event name to its object type.
 
 ## Versioning
 
