@@ -36,3 +36,7 @@ make typecheck
 2. **generate_schema.py** – Generates two declaration files:
    - `types/object.d.ts` – Contains both final and abstract object types, including updates.
    - `types/function.d.ts` – Contains function declarations with `(args) => ReturnType` signatures.
+
+## Versioning
+
+The `tdtype` version matches the TDLib version, with dots removed. For example, TDLib `1.8.50` becomes `1850`, so package versions starting with `1850` use TDLib `1.8.50`.
