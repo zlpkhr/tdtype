@@ -149,7 +149,7 @@ def main():
     for name, data in td_json["types"].items():
         append_object(name, data)
 
-    # -- updates (exclude container 'updates')
+    # -- updates (include container 'updates' as a normal object)
     for name, data in td_json["updates"].items():
         append_object(name, data)
 
@@ -217,7 +217,41 @@ def main():
 
     (types_dir / "function.d.ts").write_text("\n".join(fn_lines))
 
-    print(f"Declaration files written to {types_dir}/object.d.ts and function.d.ts")
+    # ------------------------------------------------------------------
+    # update.ts  – mapping of update object names to their types (Up map)
+    # ------------------------------------------------------------------
+
+    up_lines: List[str] = [
+        "import type * as Obj from './object';\n",
+        "export type Up = {\n",
+    ]
+
+    for name, data in td_json["updates"].items():
+        # Skip the special container object "updates"; we want only individual update events
+        if name == "updates":
+            continue
+        # Documentation for each update type
+        doc_lines = [
+            "/**",
+            f" * {data['description']}",
+            f" * @see {DOCS_BASE.format(to_snake_case(name))}",
+            " */",
+        ]
+        up_lines.extend([f"  {line}" for line in doc_lines])
+
+        # Determine the key and mapped TypeScript type
+        key = name if re.match(r"^[A-Za-z_][A-Za-z0-9_]*$", name) else f"'{name}'"
+        ts_type = f"Obj.{to_camel_case(name, is_class=True)}"
+        up_lines.append(f"  {key}: {ts_type};\n")
+
+    # Close the Up map definition.
+    up_lines.append("};\n")
+
+    (types_dir / "update.d.ts").write_text("\n".join(up_lines))
+
+    print(
+        f"Declaration files written to {types_dir}/object.d.ts, function.d.ts and update.d.ts"
+    )
 
 
 if __name__ == "__main__":
