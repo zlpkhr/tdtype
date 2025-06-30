@@ -1,6 +1,6 @@
 {
   "name": "tdtype",
-  "version": "1850.0.0",
+  "version": "1850.0.1",
   "description": "TypeScript declarations for TDLib",
   "license": "MIT",
   "repository": "https://github.com/zlpkhr/tdtype",
