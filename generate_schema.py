@@ -170,8 +170,14 @@ def main():
         "import type * as Obj from './object';\n",
     ]
 
+    # Collect generated function type names to later create a convenient union.
+    fn_type_names: List[str] = []
+
     for name, data in td_json["functions"].items():
         ts_name = to_camel_case(name, is_class=True)
+
+        # Remember the function type name for the global union.
+        fn_type_names.append(ts_name)
 
         # Build param object type inline
         param_lines: List[str] = []
@@ -198,6 +204,12 @@ def main():
         fn_lines.append(
             f"export type {ts_name} = (args: {params_obj}) => {return_ts};\n"
         )
+
+    # ------------------------------------------------------------------
+    # Export a union of all function types for ergonomic wildcard typing.
+    # ------------------------------------------------------------------
+    if fn_type_names:
+        fn_lines.append(f"export type Fn = {' | '.join(fn_type_names)};\n")
 
     (types_dir / "function.d.ts").write_text("\n".join(fn_lines))
 
