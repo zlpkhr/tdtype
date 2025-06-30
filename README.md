@@ -1,20 +1,26 @@
 # tdtype
 
-Generate TypeScript declaration files for TDLib.
+TypeScript declarations for TDLib.
 
-## Quick Start
+## Installation
 
 ```bash
-# Install JS and Python dependencies
+npm install --save-dev tdtype
+
+pnpm add -D tdtype
+
+bun add -D tdtype
+```
+
+## Development
+
+```bash
+# Install JavaScript and Python dependencies
 make install
 
 # Generate types/object.d.ts and types/function.d.ts
 make gen
-```
 
-## Optional Helpers
-
-```bash
 # Format the codebase
 make fmt
 
@@ -28,5 +34,5 @@ make typecheck
    [https://github.com/pytdbot/client/blob/main/td_api.json](https://github.com/pytdbot/client/blob/main/td_api.json)
 
 2. **generate_schema.py** – Generates two declaration files:
-   - `types/object.d.ts` – Contains final and abstract object types, including updates.
+   - `types/object.d.ts` – Contains both final and abstract object types, including updates.
    - `types/function.d.ts` – Contains function declarations with `(args) => ReturnType` signatures.
