@@ -11,6 +11,7 @@ Run from project root:
 """
 
 import json
+import re
 from pathlib import Path
 from typing import List
 
@@ -166,18 +167,15 @@ def main():
     # function.ts  – function signatures  (params) => return
     # ------------------------------------------------------------------
 
+    # Begin output for function declarations; each TDLib function signature will be inlined
+    # directly in the `Fn` map instead of having separate type aliases.
     fn_lines: List[str] = [
         "import type * as Obj from './object';\n",
+        "export type Fn = {\n",
     ]
 
-    # Collect generated function type names to later create a convenient union.
-    fn_type_names: List[str] = []
-
     for name, data in td_json["functions"].items():
-        ts_name = to_camel_case(name, is_class=True)
-
-        # Remember the function type name for the global union.
-        fn_type_names.append(ts_name)
+        # No separate alias names are generated; everything will be inlined in the Fn map.
 
         # Build param object type inline
         param_lines: List[str] = []
@@ -194,22 +192,28 @@ def main():
 
         return_ts = tl_to_ts_type(data["type"], external=True)
 
+        # Prepare documentation and property for the Fn map.
         doc_lines = [
             "/**",
             f" * {data['description']}",
             f" * @see {DOCS_BASE.format(to_snake_case(name))}",
             " */",
         ]
-        fn_lines.extend(doc_lines)
-        fn_lines.append(
-            f"export type {ts_name} = (args: {params_obj}) => {return_ts};\n"
-        )
 
-    # ------------------------------------------------------------------
-    # Export a union of all function types for ergonomic wildcard typing.
-    # ------------------------------------------------------------------
-    if fn_type_names:
-        fn_lines.append(f"export type Fn = {' | '.join(fn_type_names)};\n")
+        # Indent documentation lines inside the map (two spaces)
+        fn_lines.extend([f"  {line}" for line in doc_lines])
+
+        # Prepare parameter object with proper indentation (4 spaces within the map)
+        indented_params_obj = "\n".join(["    " + pl for pl in param_lines])
+
+        # Determine a valid TS key (quote if needed)
+        key = name if re.match(r"^[A-Za-z_][A-Za-z0-9_]*$", name) else f"'{name}'"
+
+        # Append the property with the full signature
+        fn_lines.append(f"  {key}: (args: {indented_params_obj}) => {return_ts};\n")
+
+    # Close the Fn map definition.
+    fn_lines.append("};\n")
 
     (types_dir / "function.d.ts").write_text("\n".join(fn_lines))
 
